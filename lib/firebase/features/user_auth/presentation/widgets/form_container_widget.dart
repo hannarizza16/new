@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class FormContainerWidget extends StatefulWidget {
-  final TextEditingController? controller;
+  //Assigning of data type in variable
+  final TextEditingController? controller; //
   final Key? fieldKey;
   final bool? isPasswordField;
   final String? hintText;
@@ -11,6 +12,7 @@ class FormContainerWidget extends StatefulWidget {
   final FormFieldValidator<String>? validator;
   final ValueChanged<String>? onFieldSubmitted;
   final TextInputType? inputType;
+  final InputDecoration? customDecoration; //parameter
 
   const FormContainerWidget(
       {this.controller,
@@ -22,7 +24,9 @@ class FormContainerWidget extends StatefulWidget {
       this.onSaved,
       this.validator,
       this.onFieldSubmitted,
-      this.inputType});
+      this.inputType,
+      this.customDecoration
+      });
 
   @override
   _FormContainerWidgetState createState() => new _FormContainerWidgetState();
@@ -56,6 +60,7 @@ class _FormContainerWidgetState extends State<FormContainerWidget> {
           border: OutlineInputBorder(),
           filled: true,
           hintText: widget.hintText,
+          labelText: widget.labelText,
           hintStyle: TextStyle(color: Colors.black45),
           suffixIcon: new GestureDetector(
             onTap: () {

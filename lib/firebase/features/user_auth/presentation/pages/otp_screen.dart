@@ -2,13 +2,14 @@ import 'package:first_project/firebase/features/user_auth/presentation/pages/hom
 import 'package:flutter/material.dart';
 
 class OTPScreen extends StatelessWidget {
-   OTPScreen({Key? key}) : super(key: key);
+  OTPScreen({Key? key}) : super(key: key);
 
   // Define your text constants
   static const String tOtpTitle = "Enter OTP";
   static const String tOtpSubTitle = "Please enter the verification code";
-  static const String tOtpMessage = "For support, email us at support@codingwitht.com";
-  static const String tNext = "Next";
+  static const String tOtpMessage =
+      "For support, email us at support@codingwitht.com";
+  static const String tNext = "NEXT";
 
   // Define a value for tDefaultSize (replace with your desired padding)
   static const double tDefaultSize = 20.0;
@@ -27,7 +28,8 @@ class OTPScreen extends StatelessWidget {
               tOtpTitle,
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 80.0),
             ),
-            Text(tOtpSubTitle.toUpperCase(), style: Theme.of(context).textTheme.headline6),
+            Text(tOtpSubTitle.toUpperCase(),
+                style: Theme.of(context).textTheme.headline6),
             const SizedBox(height: 40.0),
             const Text(tOtpMessage, textAlign: TextAlign.center),
             const SizedBox(height: 20.0),
@@ -43,19 +45,36 @@ class OTPScreen extends StatelessWidget {
                 // You can use code for further processing
               },
             ),
+
+            //  ENTER OTP FIELD
             const SizedBox(height: 20.0),
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: () { Navigator.push(context, MaterialPageRoute(builder:(context) => HomePage() ));
-                  // Handle the "Next" button click
-                  String otp = otpController.text;
-                  print("OTP is => $otp");
-                  // Add code to process the OTP as needed
-                },
-                child: Text(tNext),
+
+
+            // OTP BUTTON
+        SizedBox(
+                width: 350,
+                height: 50,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => HomePage()));
+
+                    // Handle the "Next" button click
+                    String otp = otpController.text;
+                    print("OTP is => $otp");
+
+                    // Add code to process the OTP as needed
+                  },
+                  style: ElevatedButton.styleFrom(
+                    primary: Color(0xFF30CBF8),
+                  ),
+                  child: Text(tNext,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        letterSpacing: 2.0,
+                      )),
+                ),
               ),
-            ),
           ],
         ),
       ),

@@ -39,15 +39,19 @@ class _SignUpPageState extends State<SignUpPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Text(
-                "Sign Up",
-                style: TextStyle(fontSize: 27, fontWeight: FontWeight.bold),
+                "Let's create your account",
+                style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: 2.50),
               ),
               const SizedBox(
                 height: 30,
               ),
               FormContainerWidget(
                 controller: _studentIDController,
-                hintText: "Student-ID",
+                labelText: "Student Number",
+                hintText: "2023-102724",
                 isPasswordField: false,
               ),
               const SizedBox(
@@ -55,17 +59,28 @@ class _SignUpPageState extends State<SignUpPage> {
               ),
               FormContainerWidget(
                 controller: _emailController,
-                hintText: "RTU Email",
+                labelText: "School Email",
+                hintText: "Jrizal@rtu.edu.ph",
                 isPasswordField: false,
               ),
               const SizedBox(
                 height: 10,
               ),
               FormContainerWidget(
-                controller: _passwordController,
-                hintText: "Password",
-                isPasswordField: true,
-              ),
+                  controller: _passwordController,
+                  labelText: "Password",
+                  hintText: "Enter Secure Password ",
+                  isPasswordField: true,
+                 ),
+
+              Row(children: [
+                  Align( alignment: Alignment.centerLeft,
+
+                  child: const Text('Password must contain special character', style: TextStyle(
+                    color: Colors.green),
+                  ))]),
+
+
               const SizedBox(
                 height: 30,
               ),
@@ -77,17 +92,19 @@ class _SignUpPageState extends State<SignUpPage> {
                   width: double.infinity,
                   height: 45,
                   decoration: BoxDecoration(
-                    color: Colors.blue,
-                    borderRadius: BorderRadius.circular(10),
+                    color: Color(0xFF30CBF8),
+                    borderRadius: BorderRadius.circular(5),
                   ),
                   child: Center(
                     child: isSigningUp
                         ? const CircularProgressIndicator(color: Colors.white)
                         : const Text(
-                      "Sign Up",
-                      style: TextStyle(
-                          color: Colors.white, fontWeight: FontWeight.bold),
-                    ),
+                            "Sign Up",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                letterSpacing: 2.0),
+                          ),
                   ),
                 ),
               ),
@@ -104,7 +121,10 @@ class _SignUpPageState extends State<SignUpPage> {
                   GestureDetector(
                     onTap: () {
                       // Navigate to the login page
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginPage()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const LoginPage()));
                     },
                     child: const Text(
                       "Login",
@@ -149,13 +169,16 @@ class _SignUpPageState extends State<SignUpPage> {
       if (user != null) {
         showToast(message: "User is successfully created");
         // Navigate to the login page after signing up
-        Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginPage()));
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const LoginPage()));
       }
     } else {
       setState(() {
         isSigningUp = false;
       });
-      showToast(message: "Please use an RTU email address (e.g., yourname@rtu.edu.ph).");
+      showToast(
+          message:
+              "Please use an RTU email address (e.g., yourname@rtu.edu.ph).");
     }
   }
 }

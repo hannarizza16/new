@@ -33,14 +33,11 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(primarySwatch: Colors.lightBlue),
-        home: Scaffold(
+        return Scaffold(
           backgroundColor: Colors.white,
           body: SingleChildScrollView(
             child: Stack(
-    children: [
+      children: [
 
               ParticlesFly(
               height: size.height,
@@ -49,8 +46,6 @@ class _LoginPageState extends State<LoginPage> {
               numberOfParticles: 20,
               lineColor: Colors.black26 ,
               particleColor: Colors.blue,
-
-
               // particleColor: particleColors,
               // speedOfParticles: 1,
               // maxParticleSize: ,
@@ -58,11 +53,12 @@ class _LoginPageState extends State<LoginPage> {
 
           Column(
               children: [
-                Padding(
-              padding: const EdgeInsets.only(top: 75),
+               const Padding(
+              padding: EdgeInsets.only(top: 75),
               child: Stack(
+                alignment: Alignment.center,
                 children: [
-                  Container(
+                  SizedBox(
                     width: 250,
                     height: 250,
                     child: Image(image: AssetImage('assets/codexname.png')
@@ -72,11 +68,10 @@ class _LoginPageState extends State<LoginPage> {
               )),
 
           Padding( padding: EdgeInsets.symmetric(horizontal: 15),
-
-
                   child: FormContainerWidget(
                     controller: _emailController,
-                    hintText: "Email",
+                    labelText: "Email",
+                    hintText: "student@rtu.edu.ph",
                     isPasswordField: false,
                   )),
 
@@ -86,6 +81,7 @@ class _LoginPageState extends State<LoginPage> {
 
                child: FormContainerWidget(
                     controller: _passwordController,
+                    labelText: "Password",
                     hintText: "Password",
                     isPasswordField: true,
                   )),
@@ -110,14 +106,14 @@ class _LoginPageState extends State<LoginPage> {
                         height: 50,
                       decoration: BoxDecoration(
                         color: Color(0xFF30CBF8),
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(5),
 
                       ),
                       child: Center(
                         child: _isSigning
                             ? CircularProgressIndicator(color: Colors.white)
                             : Text(
-                                "LOGIN",
+                                "Log In",
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
@@ -160,7 +156,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
 
           ]),
-        )));
+        ));
   }
 
   void _signIn(BuildContext context) async {
