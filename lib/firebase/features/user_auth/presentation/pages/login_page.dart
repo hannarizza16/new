@@ -1,4 +1,7 @@
+library particles_fly;
+
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:first_project/MAIN%20PROFILE/particles_fly.dart';
 import 'package:flutter/material.dart';
 import 'package:first_project/firebase/features/user_auth/presentation/pages/sign_up_page.dart';
 import 'package:first_project/firebase/features/user_auth/presentation/widgets/form_container_widget.dart';
@@ -29,94 +32,135 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                width: 250,
-                height: 180,
-                child: Image(image: AssetImage('assets/codexname.png')),
-              ),
-              SizedBox(
-                height: 0,
-              ),
-              FormContainerWidget(
-                controller: _emailController,
-                hintText: "Email",
-                isPasswordField: false,
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              FormContainerWidget(
-                controller: _passwordController,
-                hintText: "Password",
-                isPasswordField: true,
-              ),
-              SizedBox(
-                height: 30,
-              ),
-              GestureDetector(
-                onTap: () {
-                  _signIn(context); // Pass the context to _signIn method
-                },
-                child: Container(
-                  width: double.infinity,
-                  height: 45,
-                  decoration: BoxDecoration(
-                    color: Colors.blue,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Center(
-                    child: _isSigning
-                        ? CircularProgressIndicator(color: Colors.white)
-                        : Text(
-                      "Login",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+    final Size size = MediaQuery.of(context).size;
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(primarySwatch: Colors.lightBlue),
+        home: Scaffold(
+          backgroundColor: Colors.white,
+          body: SingleChildScrollView(
+            child: Stack(
+    children: [
+
+              ParticlesFly(
+              height: size.height,
+              width: size.width,
+              connectDots: true,
+              numberOfParticles: 20,
+              lineColor: Colors.black26 ,
+              particleColor: Colors.blue,
+
+
+              // particleColor: particleColors,
+              // speedOfParticles: 1,
+              // maxParticleSize: ,
+            ),
+
+          Column(
+              children: [
+                Padding(
+              padding: const EdgeInsets.only(top: 75),
+              child: Stack(
                 children: [
-                  Text("Don't have an account?"),
-                  SizedBox(
-                    width: 5,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(builder: (context) => SignUpPage()),
-                            (route) => false,
-                      );
-                    },
-                    child: Text(
-                      "Sign Up",
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontWeight: FontWeight.bold,
-                      ),
+                  Container(
+                    width: 250,
+                    height: 250,
+                    child: Image(image: AssetImage('assets/codexname.png')
                     ),
                   ),
                 ],
+              )),
+
+          Padding( padding: EdgeInsets.symmetric(horizontal: 15),
+
+
+                  child: FormContainerWidget(
+                    controller: _emailController,
+                    hintText: "Email",
+                    isPasswordField: false,
+                  )),
+
+            Padding(
+              padding: const EdgeInsets.only(
+                  left: 15.0, right: 15.0, top: 15, bottom: 0),
+
+               child: FormContainerWidget(
+                    controller: _passwordController,
+                    hintText: "Password",
+                    isPasswordField: true,
+                  )),
+                  Align(
+                      alignment: Alignment.centerRight,
+
+                      child: TextButton(
+                        onPressed: (){
+                                          },
+                        child: Text('Forget Password ?'),
+
+                      )),
+
+                  GestureDetector(
+                    onTap: () {
+                      _signIn(context); // Pass the context to _signIn method
+                    },
+
+                    //LOGIN BUTTON
+                    child: Container(
+                      width: 350,
+                        height: 50,
+                      decoration: BoxDecoration(
+                        color: Color(0xFF30CBF8),
+                        borderRadius: BorderRadius.circular(10),
+
+                      ),
+                      child: Center(
+                        child: _isSigning
+                            ? CircularProgressIndicator(color: Colors.white)
+                            : Text(
+                                "LOGIN",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  letterSpacing: 2.0,
+                                ),
+                              ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text("Don't have an account?"),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SignUpPage()),
+                            (route) => false,
+                          );
+                        },
+                        child: Text(
+                          "Sign Up",
+                          style: TextStyle(
+                            color: Colors.blue,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
-            ],
-          ),
-        ),
-      ),
-    );
+
+          ]),
+        )));
   }
 
   void _signIn(BuildContext context) async {
