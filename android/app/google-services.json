@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "100023595531",
+    "project_id": "codecultivator-3bdd6",
+    "storage_bucket": "codecultivator-3bdd6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:100023595531:android:845875063e7fc1c3800d0e",
+        "android_client_info": {
+          "package_name": "com.example.first_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMCuN03y3s62Wl1Kg1dpFZp2LwD_ZWPMU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
