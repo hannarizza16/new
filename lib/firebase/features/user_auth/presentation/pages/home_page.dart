@@ -6,7 +6,7 @@ import 'package:first_project/MAIN%20PROFILE/LANGUAGES/languages_dart.dart';
 import 'package:first_project/MAIN%20PROFILE/LANGUAGES/languages_java.dart';
 import 'package:first_project/MAIN%20PROFILE/LANGUAGES/languages_ruby.dart';
 import 'package:flutter/material.dart';
-import '../../../../../MAIN PROFILE/BOTTOM NAVIGATION BAR/bottomnavbar.dart';
+import '../../../../../bottom_navigations/bottomnavbar.dart';
 import '../../../../../MAIN PROFILE/SIDE NAVIGATION BAR/sidebar.dart';
 import 'package:draggable_fab/draggable_fab.dart';
 

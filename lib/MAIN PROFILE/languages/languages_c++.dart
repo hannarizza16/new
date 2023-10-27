@@ -1,9 +1,9 @@
 import 'package:first_project/MAIN%20PROFILE/SIDE%20NAVIGATION%20BAR/sidebar.dart';
 import 'package:flutter/material.dart';
-import 'package:first_project/MAIN%20PROFILE/BOTTOM%20NAVIGATION%20BAR/bottomnavbar.dart';
+import 'package:first_project/bottom_navigations//bottomnavbar.dart';
 
-class languageArduino extends StatelessWidget {
-  const languageArduino({super.key});
+class languageCplus extends StatelessWidget {
+  const languageCplus ({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,12 +11,12 @@ class languageArduino extends StatelessWidget {
       drawer: sideBar(),
 
       appBar: AppBar(
-        title: const Text('Arduino Languauge'),
+        title: const Text('C++ Languauge'),
         backgroundColor: Colors.transparent,
       ),
       bottomNavigationBar: BottomNavBar(),
       backgroundColor: Color(0xFFEEEEEE),
-      // body: languagesAll(),
+
 
 
     );

@@ -1,6 +1,6 @@
 import 'package:first_project/MAIN%20PROFILE/SIDE%20NAVIGATION%20BAR/sidebar.dart';
 import 'package:flutter/material.dart';
-import 'package:first_project/MAIN%20PROFILE/BOTTOM%20NAVIGATION%20BAR/bottomnavbar.dart';
+import 'package:first_project/bottom_navigations//bottomnavbar.dart';
 import 'package:first_project/MAIN%20PROFILE/LANGUAGES/languages_all.dart';
 
 class languageJava extends StatelessWidget {
