@@ -1,7 +1,7 @@
 library particles_fly;
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:first_project/MAIN%20PROFILE/particles_fly.dart';
+import 'package:first_project/main_profile//particles_fly.dart';
 import 'package:flutter/material.dart';
 import 'package:first_project/firebase/features/user_auth/presentation/pages/sign_up_page.dart';
 import 'package:first_project/firebase/features/user_auth/presentation/widgets/form_container_widget.dart';

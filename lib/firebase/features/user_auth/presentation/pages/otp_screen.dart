@@ -1,3 +1,4 @@
+import 'package:first_project/bottom_navigations/home_bottom.dart';
 import 'package:first_project/firebase/features/user_auth/presentation/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
@@ -57,7 +58,7 @@ class OTPScreen extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => HomePage()));
+                        MaterialPageRoute(builder: (context) => MainHomePage()));
 
                     // Handle the "Next" button click
                     String otp = otpController.text;
