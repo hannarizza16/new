@@ -49,7 +49,7 @@ class _AllLanguagesState extends State<AllLanguages> {
 
               //selectedScreen == null
               // if index is not equal to selected screen ang kulay niya is deep purple  but if == ang color niya is deepPurple[300]
-              backgroundColor: index != selectedScreen ? Colors.deepPurple[300] : Colors.deepPurple,
+              backgroundColor: index != selectedScreen ? Colors.lightBlue[400] : Colors.lightBlue[600],
             ),
 
             onPressed: () => _onViewScreen(index),
