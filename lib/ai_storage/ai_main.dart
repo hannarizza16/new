@@ -20,8 +20,7 @@ class ChatMessage {
 }
 // enumerate ung user tas bot parang differentiate ung sa type ng message
 enum ChatMessageType {
-  User,
-  Bot,
+  User, Bot,
 }
 // create ka ng screen for chat screen ng ai at user
 class ChatScreen extends StatefulWidget {

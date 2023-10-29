@@ -1,7 +1,5 @@
 import 'package:draggable_fab/draggable_fab.dart';
-import 'package:first_project/ai_storage/ai_main.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show rootBundle;
 
 class PersonalHelper extends StatelessWidget {
   const PersonalHelper({super.key});
@@ -14,8 +12,39 @@ class PersonalHelper extends StatelessWidget {
           showDialog(
             context: context,
             builder: (BuildContext context) {
-              return ChatBotApp(
-              );},
+              return AlertDialog(
+                title: const Text('Input Modal'),
+                content: const SizedBox(
+                  // HEIGHT OF MODAL
+                  width: 300,
+                  height: 300,
+                  child: Column(
+                    children: [
+                      TextField(
+                        decoration: InputDecoration(
+                          suffixIcon: Icon(Icons.send),
+                          hintText: 'Type here',
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                actions: <Widget>[
+                  TextButton(
+                    child: const Text('Cancel'),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                  TextButton(
+                    child: const Text('Send'),
+                    onPressed: () {
+                      Navigator.of(context).pop(); // Close the dialog
+                    },
+                  ),
+                ],
+              );
+            },
           );
         },
         child: ClipOval(
