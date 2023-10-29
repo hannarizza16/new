@@ -40,7 +40,7 @@ class _ChatScreenState extends State<ChatScreen> {
     super.initState();
     loadBotResponses(); // Load bot responses when the app starts
     _addBotMessage( // built in message sa top ng aiscreen
-        "Hello! I am RizalBot, your personal chatbot. How may I help you?");
+        "Hello there! I'm your friendly assistant bot. I'm here to help answer your questions and provide information on a variety of topics. I'll do my best to assist you.");
   }
 
   Future<void> loadBotResponses() async {
