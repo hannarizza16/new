@@ -8,6 +8,7 @@ import 'package:first_project/firebase/features/user_auth/presentation/widgets/f
 import 'package:first_project/firebase/global/common/toast.dart';
 
 import '../../firebase_auth_implementation/firebase_auth_services.dart';
+import 'home_page.dart';
 import 'otp_screen.dart'; // Import the OTPScreen widget
 
 class LoginPage extends StatefulWidget {
@@ -185,7 +186,7 @@ class _LoginPageState extends State<LoginPage> {
     if (user != null) {
       showToast(message: "User is successfully signed in");
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => OTPScreen()));
+          context, MaterialPageRoute(builder: (context) => MainHomePage()));
     }
   }
 }

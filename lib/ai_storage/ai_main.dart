@@ -39,7 +39,7 @@ class _ChatScreenState extends State<ChatScreen> {
     super.initState();
     loadBotResponses(); // Load bot responses when the app starts
     _addBotMessage( // built in message sa top ng aiscreen
-        "Hello! I am RizalBot, your personal chatbot. How may I help you?");
+        "Hello there! I'm your friendly assistant bot. I'm here to help answer your questions and provide information on a variety of topics. I'll do my best to assist you.");
   }
 
   Future<void> loadBotResponses() async {
@@ -50,19 +50,26 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 //gawa ka ng condition para sa function ng pano ihahandle ung submitted message and ung response ng ai sa user
   void _handleSubmitted(String text) {
-    if (text.trim().isNotEmpty) {
+    // Check if the text is not empty and doesn't contain symbols
+    if (text.trim().isNotEmpty && !_containsSymbols(text)) {
       _textController.clear();
       _addUserMessage(text);
       setState(() {
         isBotResponding = true;
       });
-      Future.delayed(Duration(seconds: 3), () { // delay ng message ng ai sa user
+      Future.delayed(Duration(seconds: 3), () {
         setState(() {
           isBotResponding = false;
           _addBotMessage(getResponse(text));
         });
       });
     }
+  }
+
+  bool _containsSymbols(String text) {
+    // Regular expression to check for symbols
+    RegExp regex = RegExp(r'[!@#$%^&*(),.?":{}|<>]');
+    return regex.hasMatch(text);
   }
 
   void _addUserMessage(String text) { // eto na ung structure kung pano mag message si user
@@ -91,20 +98,22 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Simple Chatbot')),
+      appBar: AppBar(title: Text('Chatbot')),
       body: Column(
         children: <Widget>[
           Expanded(
-            child: ListView.builder(
-              reverse: true, // Display the messages from the bottom to the top
+            child: // Inside the ChatScreen build method
+
+            ListView.builder(
+              reverse: true,
               itemCount: messages.length,
               itemBuilder: (BuildContext context, int index) {
                 return Align(
                   alignment: messages[index].messageType == ChatMessageType.User
-                      ? Alignment.topRight
+                      ? Alignment.topRight //alignment to parang sa word naka justify
                       : Alignment.topLeft,
                   child: Container(
-                    margin: EdgeInsets.all(8.0),
+                    margin: EdgeInsets.all(10.0),
                     padding: EdgeInsets.all(12.0),
                     decoration: BoxDecoration(
                       color: messages[index].messageType == ChatMessageType.User
@@ -112,14 +121,21 @@ class _ChatScreenState extends State<ChatScreen> {
                           : Colors.green,
                       borderRadius: BorderRadius.circular(8.0),
                     ),
-                    child: Text(messages[index].text,
-                        style: TextStyle(color: Colors.white)),
+                    child: Text(
+                      messages[index].text,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18, // Adjust the font size as needed
+                      ),
+                      textAlign: TextAlign.justify, // Set text alignment to justify
+                    ),
                   ),
                 );
               },
             ),
+
           ),
-          Divider(height: 1.0),
+          Divider(height: 20.0),
           Container(color: Colors.white, child: _buildTextComposer()),
         ],
       ),
