@@ -6,16 +6,16 @@ import 'package:first_project/firebase/features/user_auth/presentation/pages/log
 import 'package:first_project/firebase/features/user_auth/presentation/pages/sign_up_page.dart';
 import 'firebase/features/app/splash_screen/splash_screen.dart';
 
-//hgellojsa
+
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   if (kIsWeb) {
     await Firebase.initializeApp(
       options: const FirebaseOptions(
-        apiKey: "AIzaSyCsHDQtI9DItQgSqwy45_y2xG9tDGxuER8",
-        appId: "1:540215271818:web:8b22d4aee01acdce862873",
-        messagingSenderId: "540215271818",
-        projectId: "flutter-firebase-9c136",
+        apiKey: "AIzaSyCMCuN03y3s62Wl1Kg1dpFZp2LwD_ZWPMU",
+        appId: "1:100023595531:android:845875063e7fc1c3800d0e",
+        messagingSenderId: "100023595531",
+        projectId: "codecultivator-3bdd6",
         // Your web Firebase config options
       ),
     );
