@@ -96,6 +96,7 @@ flutter:
     - assets/zoro.gif
     - assets/gojo.gif
     - assets/ai/chatbot_response.json
+    - assets/ai/ai_responses/java/java_syntax.jpg
 
 
   #   - images/a_dot_burr.jpeg

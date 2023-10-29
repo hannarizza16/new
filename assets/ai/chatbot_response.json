@@ -1,8 +1,26 @@
 {
   "hi": "Hello! How can I help you?",
   "hello": "Hello! How can I help you?",
+  "what is java":  "If you're referring to Java language, Java is a high-level, versatile, object-oriented programming language originally developed by Sun Microsystems and released in 1995.\n\nIt was designed to be platform-independent, meaning that Java code can run on any device that has a Java Virtual Machine (JVM).\n \nThis \"write once, run anywhere\" capability made Java highly popular.",
+  "what is java programming":  "If you're referring to Java language, Java is a high-level, versatile, object-oriented programming language originally developed by Sun Microsystems and released in 1995.\n\nIt was designed to be platform-independent, meaning that Java code can run on any device that has a Java Virtual Machine (JVM).\n \nThis \"write once, run anywhere\" capability made Java highly popular.",
+  "what is java programming language":  "If you're referring to Java language, Java is a high-level, versatile, object-oriented programming language originally developed by Sun Microsystems and released in 1995.\n\nIt was designed to be platform-independent, meaning that Java code can run on any device that has a Java Virtual Machine (JVM).\n \nThis \"write once, run anywhere\" capability made Java highly popular.",
+  "what is the syntax for java": "public class HelloWorld {\n    public static void main(String[] args) {\n        System.out.println(\"Hello, World!\");\n    }\n}",
+  "syntax for java": "public class HelloWorld {\n    public static void main(String[] args) {\n        System.out.println(\"Hello, World!\");\n    }\n}",
+  "syntax of java": "public class HelloWorld {\n    public static void main(String[] args) {\n        System.out.println(\"Hello, World!\");\n    }\n}",
+  "hello world": "public class HelloWorld {\n    public static void main(String[] args) {\n        System.out.println(\"Hello, World!\");\n    }\n}",
+  "java syntax": "public class HelloWorld {\n    public static void main(String[] args) {\n        System.out.println(\"Hello, World!\");\n    }\n}",
+  "what is the basic syntax for java": "public class HelloWorld {\n    public static void main(String[] args) {\n        System.out.println(\"Hello, World!\");\n    }\n}",
+  "java hello world": "public class HelloWorld {\n    public static void main(String[] args) {\n        System.out.println(\"Hello, World!\");\n    }\n}",
+  "java output": "public class HelloWorld {\n    public static void main(String[] args) {\n        System.out.println(\"Hello, World!\");\n    }\n}",
+  "java": "If you're referring to Java language, Java is a high-level, versatile, object-oriented programming language originally developed by Sun Microsystems and released in 1995.\n\nIt was designed to be platform-independent, meaning that Java code can run on any device that has a Java Virtual Machine (JVM).\n \nThis \"write once, run anywhere\" capability made Java highly popular.",
+  "java programming":  "If you're referring to Java language, Java is a high-level, versatile, object-oriented programming language originally developed by Sun Microsystems and released in 1995.\n\nIt was designed to be platform-independent, meaning that Java code can run on any device that has a Java Virtual Machine (JVM).\n \nThis \"write once, run anywhere\" capability made Java highly popular.",
 
-  "": "",
+
+
+
+
+
+  "programming": "Programming is the process of creating sequences of instructions that enable a computer to perform specific tasks.\n\nIt involves designing, coding, testing, and maintaining the source code of computer programs.\n\nProgrammers use programming languages such as Python, Java, C++, and many others to write these instructions.\n\nThey utilize these languages to create algorithms and logic that instruct computers to carry out various operations, from simple calculations to complex tasks like running applications, creating websites, or controlling hardware.\n\nProgramming involves breaking down a problem into smaller, more manageable parts and writing step-by-step instructions to solve it.\n\nIt requires logical thinking, problem-solving skills, and attention to detail to ensure that the code functions correctly.\n\nProgrammers also often collaborate, use various tools and libraries, and follow best practices to write efficient and maintainable code.",
   "how are you": "I'm just a bot, but I'm here to assist you!",
   "bye": "Goodbye! Feel free to ask if you have more questions."
 }
