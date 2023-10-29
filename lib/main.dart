@@ -6,7 +6,7 @@ import 'package:first_project/firebase/features/user_auth/presentation/pages/log
 import 'package:first_project/firebase/features/user_auth/presentation/pages/sign_up_page.dart';
 import 'firebase/features/app/splash_screen/splash_screen.dart';
 
-
+//hgellojsa
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   if (kIsWeb) {
