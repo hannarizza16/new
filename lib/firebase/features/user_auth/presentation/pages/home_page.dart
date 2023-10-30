@@ -28,14 +28,14 @@ class MainHomePage extends StatefulWidget {
 
 class _MainHomePageState extends State<MainHomePage> {
   final _bottomScreens = [
-    const AllLanguages(),
     const NewsFeedPage(),
     const CodePage(),
+    const AllLanguages(),
     const ChallengesPage(),
     const ProfilePage(),
   ];
 
-  int selectedCurrentIndex = 0;
+  int selectedCurrentIndex = 2;
 
   Future<void> _handleLogout() async {
     final shouldLogout = await showDialog(
