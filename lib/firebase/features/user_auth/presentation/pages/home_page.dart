@@ -3,11 +3,17 @@ import 'package:first_project/bottom_navigations/code_bottom.dart';
 import 'package:first_project/bottom_navigations/home_bottom.dart';
 import 'package:first_project/bottom_navigations/newsfeed_bottom.dart';
 import 'package:first_project/bottom_navigations/profile_bottom.dart';
+import 'package:first_project/bottom_navigations/challenges_bottom.dart';
 import 'package:first_project/firebase/features/user_auth/presentation/widgets/draggable_fab.dart';
 import 'package:first_project/firebase/features/user_auth/presentation/widgets/sidebar.dart';
 import 'package:first_project/extension/bottom_nav_ext.dart';
 import 'package:first_project/enums/enums.dart';
+import 'package:first_project/subject/application_dev.dart';
+import 'package:first_project/subject/game_dev.dart';
+import 'package:first_project/subject/machine_dev.dart';
+import 'package:first_project/subject/web_dev.dart';
 import 'package:flutter/material.dart';
+
 // DESIGN
 class MainHomePage extends StatefulWidget {
   const MainHomePage({super.key});
@@ -22,10 +28,12 @@ class _MainHomePageState extends State<MainHomePage> {
     const AllLanguages(),
     const NewsFeedPage(),
     const CodePage(),
+    const ChallengesPage(),
     const ProfilePage(),
-  ];
+  ];// kung anong pinindot mo na button sa bottom nav //this is home
 
-  int selectedCurrentIndex = 0; // kung anong pinindot mo na button sa bottom nav
+  int selectedCurrentIndex = 0;
+
 
   @override
   Widget build(BuildContext context) {
@@ -33,9 +41,9 @@ class _MainHomePageState extends State<MainHomePage> {
       drawer: const SideBar(),
       appBar: AppBar(
         title: const Text('CodeX'),
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.lightBlue[400], // app bar color only
       ),
-      backgroundColor: const Color(0xFFFAFAFA),  // black // BACKGROUND OF top app and other pages
+      backgroundColor: const Color(0xFFFAFAFA), // BACKGROUND OF top app and other pages
       body: _bottomScreens[selectedCurrentIndex],
 
       bottomNavigationBar: BottomNavigationBar(

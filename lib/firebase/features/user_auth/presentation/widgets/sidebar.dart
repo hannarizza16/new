@@ -13,6 +13,7 @@ class SideBar extends StatelessWidget {
       case SideBarSection.leaderboards:
         return Navigator.of(context).pop();
       case SideBarSection.settings:
+
         return Navigator.of(context).pop();
       case SideBarSection.logout:
         Navigator.push(

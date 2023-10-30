@@ -1,3 +1,4 @@
+
 import 'package:first_project/enums/enums.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +11,8 @@ extension BottomNavsExt on BottomNavs {
         return Icons.newspaper;
       case BottomNavs.code:
         return Icons.code;
+      case BottomNavs.challenges:
+        return Icons.bar_chart;
       case BottomNavs.profile:
         return Icons.account_circle;
     }
