@@ -1,6 +1,8 @@
 import 'package:first_project/firebase/features/user_auth/presentation/pages/login_page.dart';
 import 'package:flutter/material.dart';
 
+import 'firebase/features/user_auth/presentation/pages/sign_up_page.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -142,7 +144,7 @@ class _MyPageViewState extends State<MyPageView> {
                   ElevatedButton(
                     onPressed: () {
                       // Navigate to the LoginPage when the button is pressed
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoginPage()));
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => SignUpPage()));
                     },
                     style: ElevatedButton.styleFrom(
                       minimumSize: Size(250, 50), // Set the width and height here
