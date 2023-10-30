@@ -100,7 +100,6 @@ flutter:
     - assets/gojo.gif
     - assets/ai/chatbot_response.json
     - assets/ai/ai_responses/java/java_syntax.jpg
-    - google_fonts/
 
 
   #   - images/a_dot_burr.jpeg

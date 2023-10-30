@@ -1,4 +1,3 @@
-
 import 'package:first_project/bottom_navigations/code_bottom.dart';
 import 'package:first_project/bottom_navigations/home_bottom.dart';
 import 'package:first_project/bottom_navigations/newsfeed_bottom.dart';
