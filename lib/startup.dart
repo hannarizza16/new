@@ -1,6 +1,4 @@
-import 'package:first_project/firebase/features/user_auth/presentation/pages/login_page.dart';
 import 'package:flutter/material.dart';
-
 import 'firebase/features/user_auth/presentation/pages/sign_up_page.dart';
 
 void main() {
@@ -10,9 +8,7 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: MyPageView(),
-    );
+    return MaterialApp(home: MyPageView());
   }
 }
 
@@ -36,15 +32,15 @@ class _MyPageViewState extends State<MyPageView> {
 
   List<String> descriptions = [
     "CodeX, your one-stop solution for all your coding needs."
-        "Designed to help you master coding skills from your device.",
-    "Learn programming through hands-on, "
-        "\n and interactive tutorials on various languages.",
+        "\nDesigned to help you master coding skills from your device.",
+    "Learn programming through hands-on"
+        "\nand interactive tutorials on various languages.",
     "Test and enhance your skills "
-        "\n with coding challenges that reinforce your knowledge.",
-    "Find extensive reference materials "
-        "\n and documentation within the app.",
-    "Ready to take your coding skills to the next level? "
-        "\n Click the button below to get started.",
+        "\nwith coding challenges that reinforce your knowledge.",
+    "Find extensive reference materials"
+        "\nand documentation within the app.",
+    "Ready to take your coding skills to the next level?"
+        "\nClick the button below to get started.",
   ];
 
   List<String> imageLocation = [
@@ -83,28 +79,28 @@ class _MyPageViewState extends State<MyPageView> {
               return Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset(
+                  Image.asset( // image loc
                     imageLocation[index],
-                    width: 120, // Set the width to 200 pixels
-                    height: 110, // Set the height to 200 pixels
-                    fit: BoxFit.contain, // Adjust the fit as needed
+                    width: 300,
+                    height: 300,
+                    fit: BoxFit.contain,
                   ),
-                  SizedBox(height: 10),// heading code
+                  SizedBox(height: 10),
                   Text(
-                    headings[index],
+                    headings[index], //heading loc
                     style: TextStyle(
                       fontSize: 30,
                       fontWeight: FontWeight.bold,
                       color: Colors.lightBlue[700],
                     ),
                   ),
-                  SizedBox(height: 5),//description code
+                  SizedBox(height: 5),
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 5),
-                    padding: EdgeInsets.all(10),
+                    padding: EdgeInsets.all(12),
                     child: Text(
                       descriptions[index],
-                      style: TextStyle(fontSize: 17),
+                      style: TextStyle(fontSize: 15.5),
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -112,16 +108,16 @@ class _MyPageViewState extends State<MyPageView> {
               );
             },
           ),
-          Positioned(
-            bottom: 270.0, // Adjust this value as needed
+          Positioned( //NAVIGATION DOTS
+            bottom: 195.0,
             left: 0,
             right: 0,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: List.generate(totalPages, (index) {
                 return Container(
-                  width: 10,
-                  height: 30,
+                  width: 15,
+                  height: 10,
                   margin: EdgeInsets.symmetric(horizontal: 5),
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
@@ -131,29 +127,25 @@ class _MyPageViewState extends State<MyPageView> {
               }),
             ),
           ),
-          Positioned(
-            bottom: 210.0, // Adjust this value as needed
+          Positioned( // button position
+            bottom: 80,
             left: 0,
             right: 0,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-
                 if (currentPage == 4)
-
                   ElevatedButton(
                     onPressed: () {
-                      // Navigate to the LoginPage when the button is pressed
                       Navigator.of(context).push(MaterialPageRoute(builder: (context) => SignUpPage()));
                     },
                     style: ElevatedButton.styleFrom(
-                      minimumSize: Size(250, 50), // Set the width and height here
+                      minimumSize: Size(250, 50),
                       backgroundColor: Color(0xFF30CBF8),
                     ),
-                    child: Text("Get Started",
-                      style: TextStyle(fontSize: 15.0,
-                        letterSpacing: 1.5,
-                      ),
+                    child: Text(
+                      "Get Started",
+                      style: TextStyle(fontSize: 15.0, letterSpacing: 1.5),
                     ),
                   ),
               ],
