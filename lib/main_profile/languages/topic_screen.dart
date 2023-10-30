@@ -89,26 +89,6 @@ class _TopicScreenState extends State<TopicScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-
-
-            // Padding(
-            //   padding: EdgeInsets.only(left: 0, right: 0, top: 0, bottom: 10), // Adjusting the left margin to 20
-            //   child: Text(
-            //     topics[selectedTopicIndex].topic,
-            //     style: TextStyle(
-            //       fontSize: 20,
-            //       color: Colors.blue,
-            //       fontStyle: FontStyle.italic,
-            //     ),
-            //     textAlign: TextAlign.center,
-            //   ),
-            // ),
-
-
-
-
-
-
             Padding(
               padding: EdgeInsets.all(0),
               child: Row(
@@ -131,11 +111,6 @@ class _TopicScreenState extends State<TopicScreen> {
                 ],
               ),
             ),
-
-
-
-
-
 
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),

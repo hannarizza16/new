@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:convert'; // Import the 'dart:convert' library to parse JSON
+import 'package:animated_text_kit/animated_text_kit.dart';
 
 // ai mainnn
 void main() => runApp(ChatBotApp());
@@ -49,10 +50,12 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   void initState() {
     super.initState();
-    loadBotResponses(); // Load bot responses when the app starts
+    loadBotResponses();
+    // Load bot responses when the app starts
     _addBotMessage(// built in message sa top ng aiscreen
         "Hello there! I'm your friendly assistant bot. I'm here to help answer your questions and provide information on a variety of topics. I'll do my best to assist you.");
   }
+
 
   Future<void> loadBotResponses() async {
     // Load the JSON data from the asset file
@@ -61,7 +64,7 @@ class _ChatScreenState extends State<ChatScreen> {
     botResponses = json.decode(data);
   }
 
-//gawa ka ng condition para sa function ng pano ihahandle ung submitted message and ung response ng ai sa user
+//condition para sa function ng pano ihahandle ung submitted message and ung response ng ai sa user
   void _handleSubmitted(String text) {
     // Check if the text is not empty and doesn't contain symbols
     if (text.trim().isNotEmpty && !_containsSymbols(text)) {
@@ -92,7 +95,8 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   void _addBotMessage(String text) {
-    //same den sa ai magbase ka sa json file ng structure
+    //same din sa ai magbase ka sa json file ng structure
+
     messages.insert(
         0, ChatMessage(text: text, messageType: ChatMessageType.Bot));
   }
@@ -134,12 +138,14 @@ class _ChatScreenState extends State<ChatScreen> {
 
                     left: messages[index].messageType == ChatMessageType.User // IF messageType is equal to chat message
                         ? 80.0  // pag hindi naman equal yung left padding niya is 80
-                        : 20.0,   // yung left padding niya is 20
+                        : 20.0,   // yung left padding niya is 20x
                     right: messages[index].messageType != ChatMessageType.User //IF messageType is not equal to chat message
                         ? 80.0 // if not equal naman yung right padding niya is 80
                         : 20.0, //  and pag equal naman siya sa user is 20 yung magiging padding niya.
                     top: 15.0),
                   padding: EdgeInsets.all(10.0),
+
+
                   // BOX DECORATION MESSAGE DECORATION
                   decoration: BoxDecoration(
 
@@ -148,12 +154,36 @@ class _ChatScreenState extends State<ChatScreen> {
                         : Colors.green,
                     borderRadius: BorderRadius.circular(8.0),
                   ),
-                  child: Text(
+
+                  child:messages[index].messageType == ChatMessageType.Bot
+                      ? AnimatedTextKit( //  MAY PROBLEM PA DITO NEED CONDITION
+
+                    repeatForever: false,
+                    isRepeatingAnimation: false,
+                    animatedTexts: [
+                      TypewriterAnimatedText(
+                        messages[index].text,
+                        textStyle: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+
+                        ),
+                      ),
+                    ],
+                  )
+
+                      : Text(
                     messages[index].text,
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 18, // Adjust the font size as needed
+                      fontSize: 18,
                     ),
+                  // Text(
+                  //   messages[index].text,
+                  //   style: TextStyle(
+                  //     color: Colors.white,
+                  //     fontSize: 18, // Adjust the font size as needed
+                  //   ),
                     textAlign:
                         TextAlign.justify, // Set text alignment to justify
                   ),
@@ -168,16 +198,21 @@ class _ChatScreenState extends State<ChatScreen> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
-              children: [
+              children: [ // ANIMATED TEXT HERE AND FONT
                 SizedBox(
-                  width: 20,
-                  height: 20,
-                  child: CircularProgressIndicator(strokeWidth: 4),
-                ),
-                SizedBox(
-                    width:
-                        10), // Add spacing between the indicator and the send icon
-                Text('AI is typing...'),
+                    width: 10, ),
+              AnimatedTextKit(
+                  repeatForever: true,
+                    animatedTexts:[
+                      TypewriterAnimatedText('AI is typing...',
+                      speed: const Duration(milliseconds: 50),
+                        textStyle: (TextStyle(
+                          fontSize: 15,
+                          fontFamily: 'Canterbury', // NOT WORKING NEED TO IMPORT IN PUBSEC
+                        ))
+                      )
+                    ]
+                )
               ],
             ),
           ),
