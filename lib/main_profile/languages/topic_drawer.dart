@@ -1,4 +1,4 @@
-import 'package:first_project/main_profile//languages/topic.dart';
+import 'package:first_project/main_profile/languages/topic.dart'; // Correct the path to the Topic class
 import 'package:flutter/material.dart';
 
 class TopicDrawer extends StatelessWidget {
