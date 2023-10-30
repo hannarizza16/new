@@ -11,7 +11,7 @@ class ChatBotApp extends StatelessWidget {
     );
   }
 }
-// gawa ka ng variable for text tas sa message ng user at ai
+// gawa ka ng variable for text tas sa message ng usesr at ai
 class ChatMessage {
   final String text;
   final ChatMessageType messageType;
