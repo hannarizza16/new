@@ -38,7 +38,7 @@ class _MyPageViewState extends State<MyPageView> {
     "CodeX, your one-stop solution for all your coding needs."
         "Designed to help you master coding skills from your device.",
     "Learn programming through hands-on, "
-        "\n interactive tutorials on various languages.",
+        "\n and interactive tutorials on various languages.",
     "Test and enhance your skills "
         "\n with coding challenges that reinforce your knowledge.",
     "Find extensive reference materials "
@@ -48,11 +48,11 @@ class _MyPageViewState extends State<MyPageView> {
   ];
 
   List<String> imageLocation = [
-    "assets/zoro.gif",
     "assets/1.gif",
     "assets/2.gif",
     "assets/3.gif",
     "assets/4.gif",
+    "assets/5.gif",
   ];
 
   @override
