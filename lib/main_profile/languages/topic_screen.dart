@@ -72,11 +72,9 @@ class _TopicScreenState extends State<TopicScreen> {
       ),
       body: topics.isNotEmpty
           ? SingleChildScrollView(
-
-        //SIDE PADDING
+              //SIDE PADDING
               child: Padding(
-                padding: EdgeInsets.all(
-                    20.0), // Add vertical padding
+                padding: EdgeInsets.all(20.0), // Add vertical padding
 
                 //TOPIC CUSTOM TEXT STYLE
                 child: Column(
@@ -122,8 +120,8 @@ class _TopicScreenState extends State<TopicScreen> {
                               ),
                             ),
 
-
-                            SizedBox( // SPACE BETWEEN PREVIOUS SUBTOPIC TO CURRENT SUBTOPIC
+                            SizedBox(
+                                // SPACE BETWEEN PREVIOUS SUBTOPIC TO CURRENT SUBTOPIC
                                 height:
                                     50), // Add some spacing between subtopics
                           ],
