@@ -46,6 +46,91 @@ const codex = {
         'body': "Java is a computer programming language that allows people to write instructions for computers. "
             "What's unique about Java is that these instructions can work on different types of computers without needing to be changed. "
             "It's like writing a recipe that can be used in different kitchens around the world."
+            "Java is a computer programming language that allows people to write instructions for computers. "
+            "What's unique about Java is that these instructions can work on different types of computers without needing to be changed. "
+            "It's like writing a recipe that can be used in different kitchens around the world."
+            "Java is a computer programming language that allows people to write instructions for computers. "
+            "What's unique about Java is that these instructions can work on different types of computers without needing to be changed. "
+            "It's like writing a recipe that can be used in different kitchens around the world."
+            "Java is a computer programming language that allows people to write instructions for computers. "
+            "What's unique about Java is that these instructions can work on different types of computers without needing to be changed. "
+            "It's like writing a recipe that can be used in different kitchens around the world."
+            "Java is a computer programming language that allows people to write instructions for computers. "
+            "What's unique about Java is that these instructions can work on different types of computers without needing to be changed. "
+            "It's like writing a recipe that can be used in different kitchens around the world."
+            "Java is a computer programming language that allows people to write instructions for computers. "
+            "What's unique about Java is that these instructions can work on different types of computers without needing to be changed. "
+            "It's like writing a recipe that can be used in different kitchens around the world."
+            "Java is a computer programming language that allows people to write instructions for computers. "
+            "What's unique about Java is that these instructions can work on different types of computers without needing to be changed. "
+            "It's like writing a recipe that can be used in different kitchens around the world."
+            "Java is a computer programming language that allows people to write instructions for computers. "
+            "What's unique about Java is that these instructions can work on different types of computers without needing to be changed. "
+            "It's like writing a recipe that can be used in different kitchens around the world."
+            "Java is a computer programming language that allows people to write instructions for computers. "
+            "What's unique about Java is that these instructions can work on different types of computers without needing to be changed. "
+            "It's like writing a recipe that can be used in different kitchens around the world."
+            "Java is a computer programming language that allows people to write instructions for computers. "
+            "What's unique about Java is that these instructions can work on different types of computers without needing to be changed. "
+            "It's like writing a recipe that can be used in different kitchens around the world.""Java is a computer programming language that allows people to write instructions for computers. "
+            "What's unique about Java is that these instructions can work on different types of computers without needing to be changed. "
+            "It's like writing a recipe that can be used in different kitchens around the world.""Java is a computer programming language that allows people to write instructions for computers. "
+            "What's unique about Java is that these instructions can work on different types of computers without needing to be changed. "
+            "It's like writing a recipe that can be used in different kitchens around the world.""Java is a computer programming language that allows people to write instructions for computers. "
+            "What's unique about Java is that these instructions can work on different types of computers without needing to be changed. "
+            "It's like writing a recipe that can be used in different kitchens around the world.""Java is a computer programming language that allows people to write instructions for computers. "
+            "What's unique about Java is that these instructions can work on different types of computers without needing to be changed. "
+            "It's like writing a recipe that can be used in different kitchens around the world.""Java is a computer programming language that allows people to write instructions for computers. "
+            "What's unique about Java is that these instructions can work on different types of computers without needing to be changed. "
+            "It's like writing a recipe that can be used in different kitchens around the world.""Java is a computer programming language that allows people to write instructions for computers. "
+            "What's unique about Java is that these instructions can work on different types of computers without needing to be changed. "
+            "It's like writing a recipe that can be used in different kitchens around the world.""Java is a computer programming language that allows people to write instructions for computers. "
+            "What's unique about Java is that these instructions can work on different types of computers without needing to be changed. "
+            "It's like writing a recipe that can be used in different kitchens around the world.""Java is a computer programming language that allows people to write instructions for computers. "
+            "What's unique about Java is that these instructions can work on different types of computers without needing to be changed. "
+            "It's like writing a recipe that can be used in different kitchens around the world.""Java is a computer programming language that allows people to write instructions for computers. "
+            "What's unique about Java is that these instructions can work on different types of computers without needing to be changed. "
+            "It's like writing a recipe that can be used in different kitchens around the world.""Java is a computer programming language that allows people to write instructions for computers. "
+            "What's unique about Java is that these instructions can work on different types of computers without needing to be changed. "
+            "It's like writing a recipe that can be used in different kitchens around the world.""Java is a computer programming language that allows people to write instructions for computers. "
+            "What's unique about Java is that these instructions can work on different types of computers without needing to be changed. "
+            "It's like writing a recipe that can be used in different kitchens around the world.""Java is a computer programming language that allows people to write instructions for computers. "
+            "What's unique about Java is that these instructions can work on different types of computers without needing to be changed. "
+            "It's like writing a recipe that can be used in different kitchens around the world.""Java is a computer programming language that allows people to write instructions for computers. "
+            "What's unique about Java is that these instructions can work on different types of computers without needing to be changed. "
+            "It's like writing a recipe that can be used in different kitchens around the world.""Java is a computer programming language that allows people to write instructions for computers. "
+            "What's unique about Java is that these instructions can work on different types of computers without needing to be changed. "
+            "It's like writing a recipe that can be used in different kitchens around the world.""Java is a computer programming language that allows people to write instructions for computers. "
+            "What's unique about Java is that these instructions can work on different types of computers without needing to be changed. "
+            "It's like writing a recipe that can be used in different kitchens around the world.""Java is a computer programming language that allows people to write instructions for computers. "
+            "What's unique about Java is that these instructions can work on different types of computers without needing to be changed. "
+            "It's like writing a recipe that can be used in different kitchens around the world.""Java is a computer programming language that allows people to write instructions for computers. "
+            "What's unique about Java is that these instructions can work on different types of computers without needing to be changed. "
+            "It's like writing a recipe that can be used in different kitchens around the world.""Java is a computer programming language that allows people to write instructions for computers. "
+            "What's unique about Java is that these instructions can work on different types of computers without needing to be changed. "
+            "It's like writing a recipe that can be used in different kitchens around the world.""Java is a computer programming language that allows people to write instructions for computers. "
+            "What's unique about Java is that these instructions can work on different types of computers without needing to be changed. "
+            "It's like writing a recipe that can be used in different kitchens around the world."
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       }
     },
     Categories.intermediate: {},
