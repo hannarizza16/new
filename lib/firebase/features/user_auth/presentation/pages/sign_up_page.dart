@@ -155,7 +155,7 @@ class _SignUpPageState extends State<SignUpPage> {
       setState(() {
         isSigningUp = false;
       });
-      showToast(message: "Please fill in all required fields.");
+      showToast(message: "Please fill in all required fields");
       return;
     }
 

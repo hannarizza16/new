@@ -103,7 +103,6 @@ class _ChatScreenState extends State<ChatScreen> {
         children: <Widget>[
           Expanded(
             child: // Inside the ChatScreen build method
-
             ListView.builder(
               reverse: true,
               itemCount: messages.length,

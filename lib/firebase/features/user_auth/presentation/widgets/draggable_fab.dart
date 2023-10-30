@@ -1,54 +1,27 @@
 import 'package:draggable_fab/draggable_fab.dart';
+import 'package:first_project/ai_storage/ai_main.dart'; // Replace with your correct import path
 import 'package:flutter/material.dart';
 
 class PersonalHelper extends StatelessWidget {
-  const PersonalHelper({super.key});
+  const PersonalHelper({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return DraggableFab(
       child: FloatingActionButton(
         onPressed: () {
-          showDialog(
-            context: context,
-            builder: (BuildContext context) {
-              return AlertDialog(
-                title: const Text('Input Modal'),
-                content: const SizedBox(
-                  // HEIGHT OF MODAL
-                  width: 300,
-                  height: 300,
-                  child: Column(
-                    children: [
-                      TextField(
-                        decoration: InputDecoration(
-                          suffixIcon: Icon(Icons.send),
-                          hintText: 'Type here',
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                actions: <Widget>[
-                  TextButton(
-                    child: const Text('Cancel'),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                  ),
-                  TextButton(
-                    child: const Text('Send'),
-                    onPressed: () {
-                      Navigator.of(context).pop(); // Close the dialog
-                    },
-                  ),
-                ],
-              );
-            },
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => ChatBotApp()), // Replace AI_Main() with your AI screen
           );
         },
         child: ClipOval(
-          child: Image.asset('assets/jrizal.jpg', width: 60, height: 60, fit: BoxFit.cover),
+          child: Image.asset(
+            'assets/jrizal.jpg',
+            width: 60,
+            height: 60,
+            fit: BoxFit.cover,
+          ),
         ),
       ),
     );

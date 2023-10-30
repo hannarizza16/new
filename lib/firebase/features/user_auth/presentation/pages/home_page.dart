@@ -14,6 +14,8 @@ import 'package:first_project/subject/machine_dev.dart';
 import 'package:first_project/subject/web_dev.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../../ai_storage/ai_main.dart';
+
 // DESIGN
 class MainHomePage extends StatefulWidget {
   const MainHomePage({super.key});
@@ -62,7 +64,7 @@ class _MainHomePageState extends State<MainHomePage> {
         selectedIconTheme: const IconThemeData(size: 30), // Size ng selected icon sa bott navbar
         unselectedIconTheme: const IconThemeData(size: 25), // size naman kapag di selected
       ),
-      floatingActionButton: const PersonalHelper(),
+            floatingActionButton: PersonalHelper(),
     );
   }
 }

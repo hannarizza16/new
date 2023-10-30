@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:first_project/firebase/features/user_auth/presentation/pages/sign_up_page.dart';
 import 'package:first_project/firebase/features/user_auth/presentation/widgets/form_container_widget.dart';
 import 'package:first_project/firebase/global/common/toast.dart';
-
 import '../../firebase_auth_implementation/firebase_auth_services.dart';
 import 'home_page.dart';
 import 'otp_screen.dart'; // Import the OTPScreen widget
@@ -170,7 +169,7 @@ class _LoginPageState extends State<LoginPage> {
 
     // Add a condition to check if both fields are filled
     if (email.isEmpty || password.isEmpty) {
-      showToast(message: 'Please fill in both email and password.');
+      showToast(message: 'Please fill in all required fields');
       setState(() {
         _isSigning = false;
       });
