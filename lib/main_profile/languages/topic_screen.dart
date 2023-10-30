@@ -51,57 +51,105 @@ class _TopicScreenState extends State<TopicScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+
         automaticallyImplyLeading: false,
         leading: IconButton(
           onPressed: () => Navigator.of(context).pop(),
           icon: const Icon(Icons.arrow_left),
         ),
         actions: [
+
+
           Builder(
-            builder: (scaffoldContext) => IconButton(
-              onPressed: () => Scaffold.of(scaffoldContext).openDrawer(),
-              icon: const Icon(Icons.menu_book),
-            ),
+            builder: (scaffoldContext) =>
+                IconButton(
+                  onPressed: () => Scaffold.of(scaffoldContext).openDrawer(),
+                  icon: const Icon(Icons.menu_book),
+                ),
           )
         ],
         title: Text(widget.language.value),
       ),
       drawer: Builder(
-        builder: (scaffoldContext) => TopicDrawer(
-          topics: topics,
-          onUpdateSelectedTopic: onUpdateSelectedTopic,
-        ),
+
+
+
+
+        builder: (scaffoldContext) =>
+            TopicDrawer(
+              topics: topics,
+              onUpdateSelectedTopic: onUpdateSelectedTopic,
+            ),
       ),
       body: topics.isNotEmpty
-          ? SingleChildScrollView(
-        child: Column(
-          children: [
-            Text(
-              topics[selectedTopicIndex].topic,
-              style: TextStyle(
-                fontSize: 20, // Set the font size for the topic text
-                color: Colors.blue, // Change the color of the topic text
-                fontStyle: FontStyle.italic, // Apply italic style
 
+
+
+          ? SingleChildScrollView( //scrolling feature
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+
+
+            // Padding(
+            //   padding: EdgeInsets.only(left: 0, right: 0, top: 0, bottom: 10), // Adjusting the left margin to 20
+            //   child: Text(
+            //     topics[selectedTopicIndex].topic,
+            //     style: TextStyle(
+            //       fontSize: 20,
+            //       color: Colors.blue,
+            //       fontStyle: FontStyle.italic,
+            //     ),
+            //     textAlign: TextAlign.center,
+            //   ),
+            // ),
+
+
+
+
+
+
+            Padding(
+              padding: EdgeInsets.all(0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center, // Centering the content within the Row
+                children: [
+                  Expanded(
+                    child: Container(
+                      margin: EdgeInsets.only(left: 0, right: 0, top: 50, bottom: 0),
+                      child: Text(
+                        topics[selectedTopicIndex].heading,
+                        style: TextStyle(
+                          fontSize: 30,
+                          color: Colors.red,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        textAlign: TextAlign.center, // Align text in the center
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
-            Text(
-              topics[selectedTopicIndex].heading,
-              style: TextStyle(
-                fontSize: 18, // Set the font size for the heading text
-                color: Colors.red, // Change the color of the heading text
-                fontWeight: FontWeight.bold, // Apply bold style
+
+
+
+
+
+
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              child: Text(
+                topics[selectedTopicIndex].body,
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.green,
+                  height: 1.8, // Adjust the height to your preferred line spacing (1.0 represents normal line height)
+                ),
               ),
             ),
-            Text(
-              topics[selectedTopicIndex].body,
-              style: TextStyle(
-                fontSize: 16, // Set the font size for the body text
-                color: Colors.black, // Change the color of the body text
-                // Other text styling properties can be added here
-              ),
-            ),
-            SizedBox(height: 40),
+
+            SizedBox(height: 50),
           ],
         ),
       )
