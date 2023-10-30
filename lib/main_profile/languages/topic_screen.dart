@@ -3,17 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:first_project/main_profile/languages/topic.dart';
 import 'package:first_project/enums/enums.dart';
 import 'package:first_project/main_profile/languages/constant.dart';
+import 'package:first_project/main_profile/languages/subtopic.dart';
 
 class TopicScreen extends StatefulWidget {
   const TopicScreen({
     required this.language,
     required this.category,
-    Key? key,
-  }) : super(key: key);
-
+    super.key,
+  });
   final Languages language;
   final Categories category;
-
   @override
   State<TopicScreen> createState() => _TopicScreenState();
 }
@@ -21,7 +20,6 @@ class TopicScreen extends StatefulWidget {
 class _TopicScreenState extends State<TopicScreen> {
   late final List<Topic> topics;
   late int selectedTopicIndex;
-
   @override
   void initState() {
     super.initState();
@@ -33,14 +31,12 @@ class _TopicScreenState extends State<TopicScreen> {
     if (codex.containsKey(widget.language) &&
         codex[widget.language]!.containsKey(widget.category)) {
       final topics = [...codex[widget.language]![widget.category]!.values];
-
       return topics.map((topic) => Topic.fromJson(topic)).toList();
     }
     return List.empty();
   }
 
   Topic get selectedTopics => topics[selectedTopicIndex];
-
   void onUpdateSelectedTopic(int index) {
     setState(() {
       selectedTopicIndex = index;
@@ -49,85 +45,96 @@ class _TopicScreenState extends State<TopicScreen> {
 
   @override
   Widget build(BuildContext context) {
+    print({"selectedTopics": selectedTopics.subTopic});
+
     return Scaffold(
       appBar: AppBar(
-
         automaticallyImplyLeading: false,
         leading: IconButton(
           onPressed: () => Navigator.of(context).pop(),
           icon: const Icon(Icons.arrow_left),
         ),
         actions: [
-
-
           Builder(
-            builder: (scaffoldContext) =>
-                IconButton(
-                  onPressed: () => Scaffold.of(scaffoldContext).openDrawer(),
-                  icon: const Icon(Icons.menu_book),
-                ),
+            builder: (scaffoldContext) => IconButton(
+              onPressed: () => Scaffold.of(scaffoldContext).openDrawer(),
+              icon: const Icon(Icons.menu),
+            ),
           )
         ],
         title: Text(widget.language.value),
       ),
       drawer: Builder(
-
-
-
-
-        builder: (scaffoldContext) =>
-            TopicDrawer(
-              topics: topics,
-              onUpdateSelectedTopic: onUpdateSelectedTopic,
-            ),
+        builder: (scaffoldContext) => TopicDrawer(
+          topics: topics,
+          onUpdateSelectedTopic: onUpdateSelectedTopic,
+        ),
       ),
       body: topics.isNotEmpty
+          ? SingleChildScrollView(
 
+        //SIDE PADDING
+              child: Padding(
+                padding: EdgeInsets.all(
+                    20.0), // Add vertical padding
 
-
-          ? SingleChildScrollView( //scrolling feature
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Padding(
-              padding: EdgeInsets.all(0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center, // Centering the content within the Row
-                children: [
-                  Expanded(
-                    child: Container(
-                      margin: EdgeInsets.only(left: 0, right: 0, top: 50, bottom: 0),
-                      child: Text(
-                        topics[selectedTopicIndex].heading,
-                        style: TextStyle(
-                          fontSize: 30,
-                          color: Colors.red,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        textAlign: TextAlign.center, // Align text in the center
+                //TOPIC CUSTOM TEXT STYLE
+                child: Column(
+                  crossAxisAlignment:
+                      CrossAxisAlignment.start, // Adjust alignment as needed
+                  children: [
+                    Text(
+                      topics[selectedTopicIndex].topic,
+                      style: TextStyle(
+                        fontSize: 30,
+                        color: Colors.red,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ),
 
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-              child: Text(
-                topics[selectedTopicIndex].body,
-                style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.green,
-                  height: 1.8, // Adjust the height to your preferred line spacing (1.0 represents normal line height)
+                    SizedBox(height: 20),
+
+                    //SUBTOPIC CUSTOM TEXT STYLE
+                    ListView.builder(
+                      shrinkWrap: true,
+                      physics:
+                          NeverScrollableScrollPhysics(), // Ensure it doesn't scroll
+                      itemBuilder: (context, index) {
+                        final subTopic =
+                            SubTopic.fromJson(selectedTopics.subTopic[index]);
+
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment
+                              .start, // Adjust alignment as needed
+                          children: [
+                            Text(
+                              subTopic.heading,
+                              style: TextStyle(
+                                fontSize: 30, // Adjust the font size as needed
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              subTopic.body,
+                              style: TextStyle(
+                                fontSize: 16, // Adjust the font size as needed
+                                color: Colors.black, // Adjust the text color
+                              ),
+                            ),
+
+
+                            SizedBox( // SPACE BETWEEN PREVIOUS SUBTOPIC TO CURRENT SUBTOPIC
+                                height:
+                                    50), // Add some spacing between subtopics
+                          ],
+                        );
+                      },
+                      itemCount: selectedTopics.subTopic.length,
+                    ),
+                  ],
                 ),
               ),
-            ),
-
-            SizedBox(height: 50),
-          ],
-        ),
-      )
+            )
           : const Center(child: Text('No topics prepared.')),
     );
   }

@@ -23,7 +23,7 @@ class ChatMessage {
 
   ChatMessage(
       {required this.text,
-        required this.messageType}); // bago mag output ng text si ai required si user na mag message muna
+      required this.messageType}); // bago mag output ng text si ai required si user na mag message muna
 }
 
 // enumerate ung user tas bot parang differentiate ung sa type ng message
@@ -43,9 +43,9 @@ class _ChatScreenState extends State<ChatScreen> {
   final TextEditingController _textController = TextEditingController();
   final List<ChatMessage> messages = []; // ginawa kong list ung message
   bool isBotResponding =
-  false; //kapag hindi nagmessage si user the bot will not respond
+      false; //kapag hindi nagmessage si user the bot will not respond
   late Map<String, dynamic>
-  botResponses; // ginawa kong late list den ung sa ai kaya nakalate jan hindi mag rerespo si ai kung walang message si user
+      botResponses; // ginawa kong late list den ung sa ai kaya nakalate jan hindi mag rerespo si ai kung walang message si user
 
   @override
   void initState() {
@@ -121,7 +121,7 @@ class _ChatScreenState extends State<ChatScreen> {
       body: Column(children: <Widget>[
         Expanded(
           child: // Inside the ChatScreen build method
-          ListView.builder(
+              ListView.builder(
             reverse: true,
             itemCount: messages.length,
             itemBuilder: (BuildContext context, int index) {
@@ -129,20 +129,20 @@ class _ChatScreenState extends State<ChatScreen> {
                 // USER CONDITION KAPAG NAG RESPONSE SI USER PUPUNTA SIYA SA RIGHT KAPAG HINDI NAMAN SA LEFT.
                 alignment: messages[index].messageType == ChatMessageType.User
                     ? Alignment
-                    .topRight //alignment to parang sa word naka justify
+                        .topRight //alignment to parang sa word naka justify
                     : Alignment.topLeft,
 
 
                 child: Container( // SEPERATED AND MADE A CONDITION NA
                   margin: EdgeInsets.only(
 
-                      left: messages[index].messageType == ChatMessageType.User // IF messageType is equal to chat message
-                          ? 80.0  // pag hindi naman equal yung left padding niya is 80
-                          : 20.0,   // yung left padding niya is 20x
-                      right: messages[index].messageType != ChatMessageType.User //IF messageType is not equal to chat message
-                          ? 80.0 // if not equal naman yung right padding niya is 80
-                          : 20.0, //  and pag equal naman siya sa user is 20 yung magiging padding niya.
-                      top: 15.0),
+                    left: messages[index].messageType == ChatMessageType.User // IF messageType is equal to chat message
+                        ? 80.0  // pag hindi naman equal yung left padding niya is 80
+                        : 20.0,   // yung left padding niya is 20x
+                    right: messages[index].messageType != ChatMessageType.User //IF messageType is not equal to chat message
+                        ? 80.0 // if not equal naman yung right padding niya is 80
+                        : 20.0, //  and pag equal naman siya sa user is 20 yung magiging padding niya.
+                    top: 15.0),
                   padding: EdgeInsets.all(10.0),
 
 
@@ -155,7 +155,22 @@ class _ChatScreenState extends State<ChatScreen> {
                     borderRadius: BorderRadius.circular(8.0),
                   ),
 
-                  child
+                  child:messages[index].messageType == ChatMessageType.Bot
+                      ? AnimatedTextKit( //  MAY PROBLEM PA DITO NEED CONDITION
+
+                    repeatForever: false,
+                    isRepeatingAnimation: false,
+                    animatedTexts: [
+                      TypewriterAnimatedText(
+                        messages[index].text,
+                        textStyle: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+
+                        ),
+                      ),
+                    ],
+                  )
 
                       : Text(
                     messages[index].text,
@@ -163,14 +178,14 @@ class _ChatScreenState extends State<ChatScreen> {
                       color: Colors.white,
                       fontSize: 18,
                     ),
-                    // Text(
-                    //   messages[index].text,
-                    //   style: TextStyle(
-                    //     color: Colors.white,
-                    //     fontSize: 18, // Adjust the font size as needed
-                    //   ),
+                  // Text(
+                  //   messages[index].text,
+                  //   style: TextStyle(
+                  //     color: Colors.white,
+                  //     fontSize: 18, // Adjust the font size as needed
+                  //   ),
                     textAlign:
-                    TextAlign.justify, // Set text alignment to justify
+                        TextAlign.justify, // Set text alignment to justify
                   ),
                 ),
               );
@@ -185,16 +200,16 @@ class _ChatScreenState extends State<ChatScreen> {
             child: Row(
               children: [ // ANIMATED TEXT HERE AND FONT
                 SizedBox(
-                  width: 10, ),
-                AnimatedTextKit(
-                    repeatForever: true,
+                    width: 10, ),
+              AnimatedTextKit(
+                  repeatForever: true,
                     animatedTexts:[
                       TypewriterAnimatedText('AI is typing...',
-                          speed: const Duration(milliseconds: 50),
-                          textStyle: (TextStyle(
-                            fontSize: 15,
-                            fontFamily: 'Canterbury', // NOT WORKING NEED TO IMPORT IN PUBSEC
-                          ))
+                      speed: const Duration(milliseconds: 50),
+                        textStyle: (TextStyle(
+                          fontSize: 15,
+                          fontFamily: 'Canterbury', // NOT WORKING NEED TO IMPORT IN PUBSEC
+                        ))
                       )
                     ]
                 )
@@ -222,7 +237,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   controller: _textController,
                   onSubmitted: _handleSubmitted,
                   decoration:
-                  InputDecoration.collapsed(hintText: 'Send a message'),
+                      InputDecoration.collapsed(hintText: 'Send a message'),
                 ),
               ),
               GestureDetector(
