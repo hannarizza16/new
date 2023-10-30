@@ -27,14 +27,14 @@ class MainHomePage extends StatefulWidget {
 class _MainHomePageState extends State<MainHomePage> {
 
   final _bottomScreens = [
-    const AllLanguages(),
     const NewsFeedPage(),
     const CodePage(),
+    const AllLanguages(),
     const ChallengesPage(),
     const ProfilePage(),
   ];// kung anong pinindot mo na button sa bottom nav //this is home
 
-  int selectedCurrentIndex = 0;
+  int selectedCurrentIndex = 2;
 
 
   @override
