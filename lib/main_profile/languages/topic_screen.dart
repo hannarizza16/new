@@ -5,21 +5,26 @@ import 'package:first_project/enums/enums.dart';
 import 'package:first_project/main_profile/languages/constant.dart';
 import 'package:first_project/main_profile/languages/subtopic.dart';
 
+// Enums and other required classes/constants
+
 class TopicScreen extends StatefulWidget {
   const TopicScreen({
     required this.language,
     required this.category,
-    super.key,
-  });
+    Key? key,
+  }) : super(key: key);
+
   final Languages language;
   final Categories category;
+
   @override
   State<TopicScreen> createState() => _TopicScreenState();
 }
 
 class _TopicScreenState extends State<TopicScreen> {
-  late final List<Topic> topics;
+  late List<Topic> topics;
   late int selectedTopicIndex;
+
   @override
   void initState() {
     super.initState();
@@ -33,10 +38,11 @@ class _TopicScreenState extends State<TopicScreen> {
       final topics = [...codex[widget.language]![widget.category]!.values];
       return topics.map((topic) => Topic.fromJson(topic)).toList();
     }
-    return List.empty();
+    return [];
   }
 
   Topic get selectedTopics => topics[selectedTopicIndex];
+
   void onUpdateSelectedTopic(int index) {
     setState(() {
       selectedTopicIndex = index;
@@ -45,8 +51,6 @@ class _TopicScreenState extends State<TopicScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print({"selectedTopics": selectedTopics.subTopic});
-
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -72,58 +76,57 @@ class _TopicScreenState extends State<TopicScreen> {
       ),
       body: topics.isNotEmpty
           ? SingleChildScrollView(
-              //SIDE PADDING
               child: Padding(
-                padding: EdgeInsets.all(20.0), // Add vertical padding
-
-                //TOPIC CUSTOM TEXT STYLE
+                padding: EdgeInsets.all(20.0),
                 child: Column(
-                  crossAxisAlignment:
-                      CrossAxisAlignment.start, // Adjust alignment as needed
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      topics[selectedTopicIndex].topic,
-                      style: TextStyle(
-                        fontSize: 30,
-                        color: Colors.red,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-
-                    SizedBox(height: 20),
-
-                    //SUBTOPIC CUSTOM TEXT STYLE
+                    // Text(
+                    //   topics[selectedTopicIndex].topic,
+                    //   style: TextStyle(
+                    //     fontSize: 30,
+                    //     color: Colors.red,
+                    //     fontWeight: FontWeight.bold,
+                    //   ),
+                    // ),
+                    // SizedBox(height: 20),
                     ListView.builder(
                       shrinkWrap: true,
-                      physics:
-                          NeverScrollableScrollPhysics(), // Ensure it doesn't scroll
+                      physics: NeverScrollableScrollPhysics(),
                       itemBuilder: (context, index) {
                         final subTopic =
                             SubTopic.fromJson(selectedTopics.subTopic[index]);
-
                         return Column(
-                          crossAxisAlignment: CrossAxisAlignment
-                              .start, // Adjust alignment as needed
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              subTopic.heading,
-                              style: TextStyle(
-                                fontSize: 30, // Adjust the font size as needed
-                                fontWeight: FontWeight.bold,
+                            Center(
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(vertical: 10.0),
+                                child: Text(
+                                  subTopic.heading,
+                                  style: TextStyle(
+                                    fontSize: 30,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
                               ),
                             ),
-                            Text(
-                              subTopic.body,
-                              style: TextStyle(
-                                fontSize: 16, // Adjust the font size as needed
-                                color: Colors.black, // Adjust the text color
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                vertical: 5.0,
+                                horizontal: 0.0,
+                              ),
+                              child: Text(
+                                subTopic.body,
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.black,
+                                ),
                               ),
                             ),
-
-                            SizedBox(
-                                // SPACE BETWEEN PREVIOUS SUBTOPIC TO CURRENT SUBTOPIC
-                                height:
-                                    50), // Add some spacing between subtopics
+                            SizedBox(height:30),
                           ],
                         );
                       },

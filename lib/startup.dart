@@ -81,7 +81,7 @@ class _MyPageViewState extends State<MyPageView> {
                 children: [
                   Image.asset( // image loc
                     imageLocation[index],
-                    width: 300,
+                    width: 500,
                     height: 300,
                     fit: BoxFit.contain,
                   ),
