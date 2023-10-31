@@ -1,4 +1,7 @@
+library particles_fly;
+
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:first_project/main_profile/particles_fly.dart';
 import 'package:flutter/material.dart';
 import 'package:first_project/firebase/features/user_auth/firebase_auth_implementation/firebase_auth_services.dart';
 import 'package:first_project/firebase/features/user_auth/presentation/pages/login_page.dart';
@@ -31,11 +34,26 @@ class _SignUpPageState extends State<SignUpPage> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size; // PARA TO SA PAG DEFINE NG size.height AND size.width
     return Scaffold(
-      body: Center(
-        child: Padding(
+        body: SingleChildScrollView(
+            child: Stack(children: [
+      ParticlesFly(
+        height: size.height,
+        width: size.width,
+        connectDots: true,
+        numberOfParticles: 20,
+        lineColor: Colors.black26,
+        particleColor: Colors.blue,
+      ),
+
+
+      Column(children: [
+        Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
-          child: Column(
+         child:   Padding( padding: const EdgeInsets.only(top: 275 ),
+
+         child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Text(
@@ -67,20 +85,19 @@ class _SignUpPageState extends State<SignUpPage> {
                 height: 10,
               ),
               FormContainerWidget(
-                  controller: _passwordController,
-                  labelText: "Password",
-                  hintText: "Enter Secure Password ",
-                  isPasswordField: true,
-                 ),
-
+                controller: _passwordController,
+                labelText: "Password",
+                hintText: "Enter Secure Password ",
+                isPasswordField: true,
+              ),
               Row(children: [
-                  Align( alignment: Alignment.centerLeft,
-
-                  child: const Text('Password must contain special character', style: TextStyle(
-                    color: Colors.green),
-                  ))]),
-
-
+                Align(
+                    alignment: Alignment.centerLeft,
+                    child: const Text(
+                      'Password must contain special character',
+                      style: TextStyle(color: Colors.green),
+                    ))
+              ]),
               const SizedBox(
                 height: 30,
               ),
@@ -137,8 +154,8 @@ class _SignUpPageState extends State<SignUpPage> {
             ],
           ),
         ),
-      ),
-    );
+        )]),
+    ])));
   }
 
   void _signUp() async {
@@ -182,6 +199,3 @@ class _SignUpPageState extends State<SignUpPage> {
     }
   }
 }
-
-
-
