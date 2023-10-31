@@ -138,14 +138,12 @@ class _ChatScreenState extends State<ChatScreen> {
 
                     left: messages[index].messageType == ChatMessageType.User // IF messageType is equal to chat message
                         ? 80.0  // pag hindi naman equal yung left padding niya is 80
-                        : 20.0,   // yung left padding niya is 20x
+                        : 20.0,   // yung left padding niya is 20
                     right: messages[index].messageType != ChatMessageType.User //IF messageType is not equal to chat message
                         ? 80.0 // if not equal naman yung right padding niya is 80
                         : 20.0, //  and pag equal naman siya sa user is 20 yung magiging padding niya.
                     top: 15.0),
                   padding: EdgeInsets.all(10.0),
-
-
                   // BOX DECORATION MESSAGE DECORATION
                   decoration: BoxDecoration(
 
@@ -154,36 +152,12 @@ class _ChatScreenState extends State<ChatScreen> {
                         : Colors.green,
                     borderRadius: BorderRadius.circular(8.0),
                   ),
-
-                  child:messages[index].messageType == ChatMessageType.Bot
-                      ? AnimatedTextKit( //  MAY PROBLEM PA DITO NEED CONDITION
-
-                    repeatForever: false,
-                    isRepeatingAnimation: false,
-                    animatedTexts: [
-                      TypewriterAnimatedText(
-                        messages[index].text,
-                        textStyle: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-
-                        ),
-                      ),
-                    ],
-                  )
-
-                      : Text(
+                  child: Text(
                     messages[index].text,
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 18,
+                      fontSize: 18, // Adjust the font size as needed
                     ),
-                  // Text(
-                  //   messages[index].text,
-                  //   style: TextStyle(
-                  //     color: Colors.white,
-                  //     fontSize: 18, // Adjust the font size as needed
-                  //   ),
                     textAlign:
                         TextAlign.justify, // Set text alignment to justify
                   ),
@@ -198,7 +172,7 @@ class _ChatScreenState extends State<ChatScreen> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
-              children: [ // ANIMATED TEXT HERE AND FONT
+              children: [ // animated text here
                 SizedBox(
                     width: 10, ),
               AnimatedTextKit(
@@ -206,10 +180,6 @@ class _ChatScreenState extends State<ChatScreen> {
                     animatedTexts:[
                       TypewriterAnimatedText('AI is typing...',
                       speed: const Duration(milliseconds: 50),
-                        textStyle: (TextStyle(
-                          fontSize: 15,
-                          fontFamily: 'Canterbury', // NOT WORKING NEED TO IMPORT IN PUBSEC
-                        ))
                       )
                     ]
                 )
