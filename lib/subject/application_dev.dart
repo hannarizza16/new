@@ -7,7 +7,7 @@ class AppDevPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Center(
       child: Text(
-        'APPLICATION DEVELOPMENT',
+        'MOBILE APPLICATION DEVELOPMENT',
         style: TextStyle(fontSize: 60),
       ),
     );

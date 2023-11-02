@@ -45,17 +45,23 @@ class _AllLanguagesState extends State<AllLanguages> {
   static final _viewSubjectScreen = [
     const AppDevPage(),
     const GameDevPage(),
-    const MachineDevPage(),
     const WebDevPage(),
+    const MachineDevPage(),
+
   ];
 
   int? selectedSubject;
 
   void _onViewSubject(int index) {
-    setState(() {
-      selectedSubject = selectedSubject != index ? index : null;
-    });
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) {
+          return _viewSubjectScreen[index];
+        },
+      ),
+    );
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -129,7 +135,7 @@ class _AllLanguagesState extends State<AllLanguages> {
                             ),
                           ),
                           //CALLING THE IMAGE IN SUBJECT BUTTON
-                          onPressed: _isButtonEnabled ?  () => _onViewSubject(index) : null,
+                          onPressed: _isButtonEnabled ? () => _onViewSubject(index) : () {}, // : null,
                           child: Image.asset(
                               SubjectSection.values[index].imagePath,
                           // width: 100,

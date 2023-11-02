@@ -5,13 +5,13 @@ extension SubjectSectionExt on SubjectSection {
   String get imagePath {
     switch (this) {
       case SubjectSection.applicationdev:
-        return 'assets/TEST.png';
+        return 'assets/final_mobile.png';
       case SubjectSection.gamedev:
-        return 'assets/TEST2.png';
+        return 'assets/final_game.png';
       case SubjectSection.webdev:
-        return 'assets/web_dev.png';
+        return 'assets/final_web.png';
       case SubjectSection.machinedev:
-        return 'assets/machine_learning.png';
+        return 'assets/final_machine.png';
     }
   }
 }
