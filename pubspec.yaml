@@ -99,6 +99,17 @@ flutter:
     - assets/5.gif
     - assets/ai/chatbot_response.json
     - assets/ai/ai_responses/java/java_syntax.jpg
+    - assets/GameDev.jpg
+    - assets/MobileDev.jpg
+    - assets/WebDev.jpg
+    - assets/game_dev.png
+    - assets/mobile_dev.png
+    - assets/machine_learning.png
+    - assets/web_dev.png
+    - assets/TEST.png
+    - assets/TEST2.png
+
+
 
 
   #   - images/a_dot_burr.jpeg

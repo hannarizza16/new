@@ -59,7 +59,7 @@ class _SignUpPageState extends State<SignUpPage> {
               const Text(
                 "Let's create your account",
                 style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 25,
                     fontWeight: FontWeight.w600,
                     letterSpacing: 2.50),
               ),

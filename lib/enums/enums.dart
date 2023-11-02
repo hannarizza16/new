@@ -51,7 +51,7 @@ const Categories (this.text);
 enum SubjectSection {
   applicationdev('Mobile Application Development'),
   gamedev('Mobile Game Development'),
-  webdev('Web Deevelopment'),
+  webdev('Web Development'),
   machinedev('Machine Learning');
 
   final String text;

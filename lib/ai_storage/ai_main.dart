@@ -155,24 +155,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     borderRadius: BorderRadius.circular(8.0),
                   ),
 
-                  child:messages[index].messageType == ChatMessageType.Bot
-                      ? AnimatedTextKit( //  MAY PROBLEM PA DITO NEED CONDITION
-
-                    repeatForever: false,
-                    isRepeatingAnimation: false,
-                    animatedTexts: [
-                      TypewriterAnimatedText(
-                        messages[index].text,
-                        textStyle: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-
-                        ),
-                      ),
-                    ],
-                  )
-
-                      : Text(
+                  child: Text(
                     messages[index].text,
                     style: TextStyle(
                       color: Colors.white,

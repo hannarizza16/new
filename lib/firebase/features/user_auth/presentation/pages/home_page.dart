@@ -25,14 +25,14 @@ class MainHomePage extends StatefulWidget {
 
 class _MainHomePageState extends State<MainHomePage> {
   final _bottomScreens = [
-    const AllLanguages(),
     const NewsFeedPage(),
     const CodePage(),
+    const AllLanguages(),
     const ChallengesPage(),
     const ProfilePage(),
   ]; // kung anong pinindot mo na button sa bottom nav //this is home
 
-  int selectedCurrentIndex = 0;
+  int selectedCurrentIndex = 2;
 
   Future<bool> _onWillPop() async {
     if (selectedCurrentIndex == 0) {
@@ -79,7 +79,7 @@ class _MainHomePageState extends State<MainHomePage> {
         drawer: const SideBar(),
         appBar: AppBar(
           title: const Text('CodeX'),
-          backgroundColor: Colors.lightBlue[400], // app bar color only
+          backgroundColor: Colors.transparent, // app bar color only
         ),
         backgroundColor: const Color(0xFFFAFAFA), // BACKGROUND OF top app and other pages
         body: _bottomScreens[selectedCurrentIndex],
