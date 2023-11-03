@@ -76,62 +76,67 @@ class _TopicScreenState extends State<TopicScreen> {
       ),
       body: topics.isNotEmpty
           ? SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.all(20.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              ListView.builder(
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) {
-                  final subTopic =
-                  SubTopic.fromJson(selectedTopics.subTopic[index]);
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Center(
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(vertical: 10.0),
-                          child: Text(
-                            subTopic.heading,
-                            style: TextStyle(
-                              fontSize: 30,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
+              child: Padding(
+                padding: EdgeInsets.all(20.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ListView.builder(
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        final subTopic =
+                            SubTopic.fromJson(selectedTopics.subTopic[index]);
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Center(
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(vertical: 10.0),
+                                child: Text(
+                                  subTopic.heading,
+                                  style: TextStyle(
+                                    fontSize: 30,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
                             ),
-                            textAlign: TextAlign.center,
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                          vertical: 5.0,
-                          horizontal: 0.0,
-                        ),
-                        child: Text(
-                          subTopic.body,
-                          style: TextStyle(
-                            fontSize: 18,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 20), // Adjust the height between body text and image
+                            Padding(
+                              padding: EdgeInsets.symmetric(
+                                vertical: 5.0,
+                                horizontal: 0.0,
+                              ),
+                              child: Text(
+                                subTopic.body,
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                                height:
+                                    20), // Adjust the height between body text and image
 
-                      if (subTopic.attachment != null && subTopic.attachment!.isNotEmpty)
-                        Image.asset(subTopic.attachment!), // Assuming the attachment is the image path
-                      // DITO YUNG SA IMAGE NG LANGUAGES
-
-                    ],
-                  );
-                },
-                itemCount: selectedTopics.subTopic.length,
+                            if (subTopic.attachment != null &&
+                                subTopic.attachment!.isNotEmpty)
+                              Center(
+                                child: Image.asset(
+                                    subTopic.attachment!), // Wrap with Center
+                              ), // Assuming the attachment is the image path
+                            // DITO YUNG SA IMAGE NG LANGUAGES
+                          ],
+                        );
+                      },
+                      itemCount: selectedTopics.subTopic.length,
+                    ),
+                  ],
+                ),
               ),
-            ],
-          ),
-        ),
-      )
+            )
           : const Center(child: Text('No topics prepared.')),
     );
   }

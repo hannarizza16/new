@@ -110,17 +110,42 @@ const codex = {
             'body': "In Java, every application begins with a class name, and that class must match the filename."
                 "\n\nLet's create our first Java file, called Main.java, which can be done in any text editor (like Notepad)."
             "\n\nThe file should contain a `Hello World` message, which is written with the following code:"
-          }
-
-
-
-
+          },
+          {
+            'attachment': 'assets/java_lessons_image/step8_get_started.jpg',
+            'body': "Don't worry if you don't understand the code above - we will discuss it in detail in later chapters. For now, focus on how to run the code above."
+                "\n\nSave the code in Notepad as `Main.java`. Open Command Prompt (cmd.exe), navigate to the directory where you saved your file, and type `javac Main.java:`"
+          },
+          {
+            'attachment': 'assets/java_lessons_image/step9_get_started.jpg',
+            'body': "This will compile your code. If there are no errors in the code, the command prompt will take you to the next line. Now, type `java Main` to run the file:"
+          },
+          {
+            'attachment': 'assets/java_lessons_image/step10_get_started.jpg',
+            'body': "The output should read:"
+          },
         ]
       },
       2: {
         'topic': '3.     Syntax',
         'subTopic': [
-          {'heading': '', 'body': " "}
+          {
+            'heading': 'Java Syntax',
+            'attachment': 'assets/java_lessons_image/step7_get_started.jpg',
+            'body': "In the previous chapter, we created a Java file called Main.java, and we used the following code to print `Hello World` to the screen: "
+          },
+          {
+            'heading': '\n\nExample Explained',
+            'attachment': 'assets/java_lessons_image/step10_get_started.jpg',
+            'body': "Every line of code that runs in Java must be inside a class. In our example, we named the class Main. A class should always start with an uppercase first letter."
+            "\n\nNOTE: Java is case-sensitive: `MyClass` and `myclass` has different meaning."
+            "\n\nThe name of the java file must match the class name. When saving the file, save it using the class name and add `.java` to the end of the filename. "
+                "\n\nTo run the example above on your computer, make sure that Java is properly installed: Go to the Get Started Chapter for how to install Java. The output should be:"
+          },
+
+
+
+
         ]
       },
       3: {'topic': '4.     Output', 'heading': '', 'body': ""},
