@@ -109,7 +109,7 @@ class _MyPageViewState extends State<MyPageView> {
             },
           ),
           Positioned( //NAVIGATION DOTS
-            bottom: 195.0,
+            bottom: 181.0,
             left: 0,
             right: 0,
             child: Row(

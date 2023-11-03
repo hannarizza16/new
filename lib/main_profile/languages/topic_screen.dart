@@ -99,6 +99,10 @@ class _TopicScreenState extends State<TopicScreen> {
                         return Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+
+                            if (subTopic.attachment.isNotEmpty) // DITO YUNG SA IMAGE NG LANGUAGES
+                            Image.asset('assets/final_game.png'),
+
                             Center(
                               child: Padding(
                                 padding: EdgeInsets.symmetric(vertical: 10.0),
