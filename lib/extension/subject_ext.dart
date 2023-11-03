@@ -1,18 +1,17 @@
 import 'package:first_project/enums/enums.dart';
-import 'package:flutter/material.dart';
 
 
 extension SubjectSectionExt on SubjectSection {
-  AssetImage get imageAsset {
+  String get imagePath {
     switch (this) {
       case SubjectSection.applicationdev:
-        return AssetImage('assets/subject_image/application.png');
+        return 'assets/final_mobile.png';
       case SubjectSection.gamedev:
-        return AssetImage('assets/subject_image/game.png');
+        return 'assets/final_game.png';
       case SubjectSection.webdev:
-        return AssetImage('assets/subject_image/web.png');
+        return 'assets/final_web.png';
       case SubjectSection.machinedev:
-        return AssetImage('assets/subject_image/machine.png');
+        return 'assets/final_machine.png';
     }
   }
 }

@@ -1,3 +1,4 @@
+import 'package:first_project/extension/subject_ext.dart';
 import 'package:first_project/main_profile/languages/languages_arduino.dart';
 import 'package:first_project/main_profile/languages/languages_c++.dart';
 import 'package:first_project/main_profile/languages/languages_c.dart';
@@ -29,7 +30,8 @@ class _AllLanguagesState extends State<AllLanguages> {
     const ArduinoLanguage(),
   ];
 
-  int? selectedScreen; //  pwedeng mag hold ng either may value or null itong variable na ito
+  int?
+      selectedScreen; //  pwedeng mag hold ng either may value or null itong variable na ito
 
   void _onViewScreen(int index) {
     //_onViewScreen is a function na may parameter na index
@@ -43,21 +45,27 @@ class _AllLanguagesState extends State<AllLanguages> {
   static final _viewSubjectScreen = [
     const AppDevPage(),
     const GameDevPage(),
-    const MachineDevPage(),
     const WebDevPage(),
+    const MachineDevPage(),
 
   ];
 
   int? selectedSubject;
 
   void _onViewSubject(int index) {
-    setState(() {
-      selectedSubject = selectedSubject != index ? index : null;
-    });
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) {
+          return _viewSubjectScreen[index];
+        },
+      ),
+    );
   }
+
 
   @override
   Widget build(BuildContext context) {
+    bool _isButtonEnabled = true;
     return Column(
       children: [
         Expanded(
@@ -69,21 +77,20 @@ class _AllLanguagesState extends State<AllLanguages> {
             // direction scroll
 
             // then tsaka gagawa ng elevated button
-            itemBuilder: (context, index) =>
-                ElevatedButton(
-                  // has a callback function ito yung ginagamit para ibuild o mag generate
-                  // ulit ng sinelect mo na index
-                  style: ElevatedButton.styleFrom(
-                    //selectedScreen == null
-                    // if index is not equal to selected screen ang kulay niya is deep purple  but if == ang color niya is deepPurple[300]
-                    backgroundColor: index != selectedScreen
-                        ? Colors.lightBlue[400]
-                        : Colors.lightBlue[700],
-                  ),
+            itemBuilder: (context, index) => ElevatedButton(
+              // has a callback function ito yung ginagamit para ibuild o mag generate
+              // ulit ng sinelect mo na index
+              style: ElevatedButton.styleFrom(
+                //selectedScreen == null
+                // if index is not equal to selected screen ang kulay niya is deep purple  but if == ang color niya is deepPurple[300]
+                backgroundColor: index != selectedScreen
+                    ? Colors.lightBlue[400]
+                    : Colors.lightBlue[700],
+              ),
 
-                  onPressed: () => _onViewScreen(index),
-                  child: Text(Languages.values[index].value),
-                ),
+              onPressed: () => _onViewScreen(index),
+              child: Text(Languages.values[index].value),
+            ),
             itemCount: Languages.values
                 .length, // ilalabas lahat ng values or list ni Languages na nakaindicate sa enums
           ),
@@ -91,47 +98,60 @@ class _AllLanguagesState extends State<AllLanguages> {
 
 
         Expanded(
-          flex:
-          10,
+          flex: 10,
           // space o kung gano kalaki yung space na nakalaan for language button
           child: selectedScreen == null // kapag si selected screen ay null
               ? Container(
-            color: Colors.lightBlue[50],
-            // color of button
-            child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: GridView.builder(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    mainAxisSpacing: 16,
-                    crossAxisSpacing: 16,
-                    // Number of columns in the grid
-                  ),
-                  itemBuilder: (context, index) =>
-                      ElevatedButton(
-                        // has a callback function ito yung ginagamit para ibuild o mag generate
-                        // ulit ng sinelect mo na index
-                        style: ElevatedButton.styleFrom(
-                          //selectedScreen == null
-                          // if index is not equal to selected screen ang kulay niya is deep purple  but if == ang color niya is deepPurple[300]
-                          backgroundColor: index != selectedSubject
-                              ? Colors.lightBlue[400]
-                              : Colors.lightBlue[700],
+                  color: Colors.white, //BACKGROUND COLOR OF HOME PAGE
+                  // color of button
+                  child: Padding(
+                      padding: const EdgeInsets.only(top: 30, left: 10, right: 10),
+                      child: GridView.builder(
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          mainAxisSpacing: 20,
+                          crossAxisSpacing: 15,
+
                         ),
 
-                        onPressed: () => _onViewSubject(index),
-                        child: Text(SubjectSection.values[index].text),
+                        // then tsaka gagawa ng elevated button
+                        itemBuilder: (context, index) => ElevatedButton(
+                          // has a callback function ito yung ginagamit para ibuild o mag generate
+                          // ulit ng sinelect mo na index
+                          style: ElevatedButton.styleFrom(
+                            // Change the button color
+                            elevation: 8,
 
-                      ),
 
-                  itemCount: SubjectSection.values
-                      .length, // ilalabas lahat ng values or list ni Languages na nakaindicate sa enums
-                )),
-          )
+                            //selectedScreen == null
+                            // if index is not equal to selected screen ang kulay niya is deep purple  but if == ang color niya is deepPurple[300]
+                            backgroundColor: index != selectedSubject
+                                ? Colors.white
+                                : Colors.cyan[600],
+                            // padding: EdgeInsets.all(1),
+
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                          ),
+                          //CALLING THE IMAGE IN SUBJECT BUTTON
+                          onPressed: _isButtonEnabled ? () => _onViewSubject(index) : () {}, // : null,
+                          child: Image.asset(
+                              SubjectSection.values[index].imagePath,
+                          // width: 100,
+                          height: 150,),
+                        ),
+
+
+                        itemCount: SubjectSection.values
+                            .length, // ilalabas lahat ng values or list ni Languages na nakaindicate sa enums
+                      )),
+                )
               : _viewLanguageScreen[
-          selectedScreen!], //"!" is an indication na hindi siya pwede maging null.
+                  selectedScreen!], //"!" is an indication na hindi siya pwede maging null.
           //   pag nag click siya sa mga languages ang lalabas is ito pero kapag hindi naman siya nag click yung sa ? ang ilalabas.
         )
+
       ],
     );
   }

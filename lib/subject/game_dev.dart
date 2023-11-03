@@ -7,7 +7,7 @@ class GameDevPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Center(
       child: Text(
-        'APPLICATION DEVELOPMENT',
+        'GAME DEVELOPMENT',
         style: TextStyle(fontSize: 60),
       ),
     );
