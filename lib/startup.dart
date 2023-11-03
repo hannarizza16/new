@@ -8,16 +8,16 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: MyPageView());
+    return MaterialApp(home: GetStarted());
   }
 }
 
-class MyPageView extends StatefulWidget {
+class GetStarted extends StatefulWidget {
   @override
-  _MyPageViewState createState() => _MyPageViewState();
+  _GetStarted createState() => _GetStarted();
 }
 
-class _MyPageViewState extends State<MyPageView> {
+class _GetStarted extends State<GetStarted> {
   PageController _pageController = PageController(initialPage: 0);
   int currentPage = 0;
   int totalPages = 5;
