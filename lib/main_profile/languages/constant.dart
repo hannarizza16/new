@@ -54,11 +54,22 @@ const codex = {
           }
         ]
       },
-
-
-
-      1: {'topic': '2.     Get Started', 'heading': '', 'body': ""},
-      2: {'topic': '3.     Syntax', 'heading': '', 'body': ""},
+      1: {
+        'topic': '2.     Get Started',
+        'subTopic': [
+          {
+            'heading': 'Java Install',
+            'body': "Some PCs might have Java already installed."
+                "\n\nTo check if you have Java installed on a Windows PC, search in the start bar for Java or type the following in Command Prompt (cmd.exe):"
+          }
+        ]
+      },
+      2: {
+        'topic': '3.     Syntax',
+        'subTopic': [
+          {'heading': '', 'body': " "}
+        ]
+      },
       3: {'topic': '4.     Output', 'heading': '', 'body': ""},
       4: {'topic': '     4.1     Print Text', 'heading': '', 'body': ""},
       5: {'topic': '     4.2     Print Numbers', 'heading': '', 'body': ""},
