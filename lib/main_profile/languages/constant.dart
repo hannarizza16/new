@@ -73,7 +73,7 @@ const codex = {
             'body':
                 "If you do not have Java installed on your computer, you can download it for free at oracle.com"
                 "\n\nNOTE: In this tutorial, we will write Java code in a text editor."
-                    " However, it is possible to write Java in an Integrated Development Environment, such as IntelliJ IDEA, Netbeans or Eclipse, which are particularly useful when managing larger collections of Java files."
+                    " However, it is possible to write Java in an Integrated Development Environment, such as IntelliJ IDEA, Netbeans or Eclipse, which are particularly useful when managing larger collections of Java files.\n\n"
           },
           {
             'heading': 'Setup For Windows',
@@ -102,8 +102,19 @@ const codex = {
           },
           {
             'attachment': 'assets/java_lessons_image/step6_get_started.jpg',
-            'body': "\nIf Java was successfully installed, you will see something like this (depending on version):"
+            'body': "If Java was successfully installed, you will see something like this (depending on version):"
+          },
+          {
+            'heading': '\n\nJava Quickstart',
+            'attachment': 'assets/java_lessons_image/step7_get_started.jpg',
+            'body': "In Java, every application begins with a class name, and that class must match the filename."
+                "\n\nLet's create our first Java file, called Main.java, which can be done in any text editor (like Notepad)."
+            "\n\nThe file should contain a `Hello World` message, which is written with the following code:"
           }
+
+
+
+
         ]
       },
       2: {
