@@ -100,7 +100,9 @@ class _TopicScreenState extends State<TopicScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
 
-                            if (subTopic.attachment.isNotEmpty) // DITO YUNG SA IMAGE NG LANGUAGES
+                            if (subTopic.attachment != null && subTopic.attachment!.isNotEmpty)
+                              Image.asset(subTopic.attachment!), // Assuming the attachment is the image path
+                         // DITO YUNG SA IMAGE NG LANGUAGES
                             Image.asset('assets/final_game.png'),
 
                             Center(
