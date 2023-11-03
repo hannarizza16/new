@@ -81,6 +81,11 @@ class _TopicScreenState extends State<TopicScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+
+                    // if (subTopic.attachment.isNotEmpty) // DITO YUNG SA IMAGE NG LANGUAGES
+                    Image.asset('assets/final_game.png'),
+
+
                     // Text(
                     //   topics[selectedTopicIndex].topic,
                     //   style: TextStyle(
@@ -100,8 +105,7 @@ class _TopicScreenState extends State<TopicScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
 
-                            if (subTopic.attachment.isNotEmpty) // DITO YUNG SA IMAGE NG LANGUAGES
-                            Image.asset('assets/final_game.png'),
+
 
                             Center(
                               child: Padding(

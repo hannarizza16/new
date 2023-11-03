@@ -1,13 +1,13 @@
 class SubTopic {
   final String heading;
   final String body;
-  final String attachment;
+  final String? attachment;
 
 
   SubTopic({
     required this.heading,
     required this.body,
-    required this.attachment,
+    this.attachment,
   });
 
   factory SubTopic.fromJson(Map<String, dynamic> json) => SubTopic(
