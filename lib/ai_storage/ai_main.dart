@@ -53,9 +53,7 @@ class _ChatScreenState extends State<ChatScreen> {
     loadBotResponses();
     // Load bot responses when the app starts
     _addBotMessage(// built in message sa top ng aiscreen
-        "Hello there! I'm your friendly assistant bot. I'm here to help answer your questions and provide information on a variety of topics. I'll do my best to assist you.");
-  }
-
+        "Hello there! I'm Aether, your friendly assistant bot. I'm here to help answer your questions and provide information on a variety of topics. I'll do my best to assist you.");  }
 
   Future<void> loadBotResponses() async {
     // Load the JSON data from the asset file
@@ -117,7 +115,7 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Chatbot')),
+      appBar: AppBar(title: Text('Aether')),
       body: Column(children: <Widget>[
         Expanded(
           child: // Inside the ChatScreen build method
@@ -132,23 +130,24 @@ class _ChatScreenState extends State<ChatScreen> {
                         .topRight //alignment to parang sa word naka justify
                     : Alignment.topLeft,
 
-
-                child: Container( // SEPERATED AND MADE A CONDITION NA
+                child: Container(
+                  // SEPERATED AND MADE A CONDITION NA
                   margin: EdgeInsets.only(
-
-                    left: messages[index].messageType == ChatMessageType.User // IF messageType is equal to chat message
-                        ? 80.0  // pag hindi naman equal yung left padding niya is 80
-                        : 20.0,   // yung left padding niya is 20x
-                    right: messages[index].messageType != ChatMessageType.User //IF messageType is not equal to chat message
-                        ? 80.0 // if not equal naman yung right padding niya is 80
-                        : 20.0, //  and pag equal naman siya sa user is 20 yung magiging padding niya.
-                    top: 15.0),
+                      left: messages[index].messageType ==
+                              ChatMessageType
+                                  .User // IF messageType is equal to chat message
+                          ? 80.0 // pag hindi naman equal yung left padding niya is 80
+                          : 20.0, // yung left padding niya is 20x
+                      right: messages[index].messageType !=
+                              ChatMessageType
+                                  .User //IF messageType is not equal to chat message
+                          ? 80.0 // if not equal naman yung right padding niya is 80
+                          : 20.0, //  and pag equal naman siya sa user is 20 yung magiging padding niya.
+                      top: 15.0),
                   padding: EdgeInsets.all(10.0),
-
 
                   // BOX DECORATION MESSAGE DECORATION
                   decoration: BoxDecoration(
-
                     color: messages[index].messageType == ChatMessageType.User
                         ? Colors.blue
                         : Colors.green,
@@ -161,12 +160,12 @@ class _ChatScreenState extends State<ChatScreen> {
                       color: Colors.white,
                       fontSize: 18,
                     ),
-                  // Text(
-                  //   messages[index].text,
-                  //   style: TextStyle(
-                  //     color: Colors.white,
-                  //     fontSize: 18, // Adjust the font size as needed
-                  //   ),
+                    // Text(
+                    //   messages[index].text,
+                    //   style: TextStyle(
+                    //     color: Colors.white,
+                    //     fontSize: 18, // Adjust the font size as needed
+                    //   ),
                     textAlign:
                         TextAlign.justify, // Set text alignment to justify
                   ),
@@ -181,25 +180,23 @@ class _ChatScreenState extends State<ChatScreen> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
-              children: [ // ANIMATED TEXT HERE AND FONT
+              children: [
+                // ANIMATED TEXT HERE AND FONT
                 SizedBox(
-                    width: 10, ),
-              AnimatedTextKit(
-                  repeatForever: true,
-                    animatedTexts:[
-                      TypewriterAnimatedText('AI is typing...',
+                  width: 10,
+                ),
+                AnimatedTextKit(repeatForever: true, animatedTexts: [
+                  TypewriterAnimatedText('AI is typing...',
                       speed: const Duration(milliseconds: 50),
-                        textStyle: (TextStyle(
-                          fontSize: 15,
-                          fontFamily: 'Canterbury', // NOT WORKING NEED TO IMPORT IN PUBSEC
-                        ))
-                      )
-                    ]
-                )
+                      textStyle: (TextStyle(
+                        fontSize: 15,
+                        fontFamily:
+                            'Canterbury', // NOT WORKING NEED TO IMPORT IN PUBSEC
+                      )))
+                ])
               ],
             ),
           ),
-
 
         Divider(height: 20.0),
         Container(color: Colors.white, child: _buildTextComposer()),

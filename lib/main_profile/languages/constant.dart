@@ -142,10 +142,27 @@ const codex = {
             "\n\nThe name of the java file must match the class name. When saving the file, save it using the class name and add `.java` to the end of the filename. "
                 "\n\nTo run the example above on your computer, make sure that Java is properly installed: Go to the Get Started Chapter for how to install Java. The output should be:"
           },
-
-
-
-
+          {
+            'heading': '\n\nThe main Method',
+            'attachment': 'assets/java_lessons_image/syntax_1.jpg',
+            'body': "The main() method is required and you will see it in every Java program:"
+          },
+          {
+            'body': "Any code inside the main() method will be executed. Don't worry about the keywords before and after main. You will get to know them bit by bit while reading this tutorial."
+            "\n\nFor now, just remember that every Java program has a class name which must match the filename, and that every program must contain the main() method."
+          },
+          {
+            'heading': 'System.out.println()',
+            'attachment': 'assets/java_lessons_image/syntax_2.jpg',
+            'body': "Inside the main() method, we can use the println() method to print a line of text to the screen:"
+          },
+          {
+            'heading': 'Note',
+            'body': "The curly braces {} marks the beginning and the end of a block of code."
+              "\n\nSystem is a built-in Java class that contains useful members, such as out, which is short for `output`. The println() method, short for `print line`, is used to print a value to the screen (or a file)."
+              "\n\nDon't worry too much about System, out and println(). Just know that you need them together to print stuff to the screen."
+              "\n\nYou should also note that each code statement must end with a semicolon (;)."
+          }
         ]
       },
       3: {'topic': '4.     Output', 'heading': '', 'body': ""},
