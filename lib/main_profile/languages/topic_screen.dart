@@ -81,20 +81,6 @@ class _TopicScreenState extends State<TopicScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-
-                    // if (subTopic.attachment.isNotEmpty) // DITO YUNG SA IMAGE NG LANGUAGES
-                    Image.asset('assets/final_game.png'),
-
-
-                    // Text(
-                    //   topics[selectedTopicIndex].topic,
-                    //   style: TextStyle(
-                    //     fontSize: 30,
-                    //     color: Colors.red,
-                    //     fontWeight: FontWeight.bold,
-                    //   ),
-                    // ),
-                    // SizedBox(height: 20),
                     ListView.builder(
                       shrinkWrap: true,
                       physics: NeverScrollableScrollPhysics(),
@@ -104,9 +90,6 @@ class _TopicScreenState extends State<TopicScreen> {
                         return Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-
-
-
                             Center(
                               child: Padding(
                                 padding: EdgeInsets.symmetric(vertical: 10.0),
@@ -134,7 +117,17 @@ class _TopicScreenState extends State<TopicScreen> {
                                 ),
                               ),
                             ),
-                            SizedBox(height:30),
+                            SizedBox(
+                                height:
+                                    20), // Adjust the height between body text and image
+
+                            if (subTopic.attachment != null &&
+                                subTopic.attachment!.isNotEmpty)
+                              Center(
+                                child: Image.asset(
+                                    subTopic.attachment!), // Wrap with Center
+                              ), // Assuming the attachment is the image path
+                            // DITO YUNG SA IMAGE NG LANGUAGES
                           ],
                         );
                       },

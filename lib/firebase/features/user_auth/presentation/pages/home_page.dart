@@ -75,7 +75,36 @@ class _MainHomePageState extends State<MainHomePage> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: _onWillPop,
+      onWillPop: () async {
+        final shouldLogout = await showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: Text('Logout'),
+              content: Text('Are you sure you want to log out?'),
+              actions: <Widget>[
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop(true);
+                  },
+                  child: Text('Yes'),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop(false);
+                  },
+                  child: Text('No'),
+                ),
+              ],
+            );
+          },
+        );
+
+        if (shouldLogout ?? false) {
+          Navigator.of(context).pop('LoginPage'); // Replace '/login' with your login screen route
+        }
+        return shouldLogout ?? false;
+      },
       child: Scaffold(
         drawer: const SideBar(),
         appBar: AppBar(

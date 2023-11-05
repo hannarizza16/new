@@ -105,6 +105,22 @@ flutter:
     - assets/final_web.png
     - assets/triangles.png
 
+    - assets/java_lessons_image/get_started1.png
+    - assets/java_lessons_image/get_started2.jpg
+    - assets/java_lessons_image/step1_get_started.jpg
+    - assets/java_lessons_image/step2_get_started.jpg
+    - assets/java_lessons_image/step3_get_started.jpg
+    - assets/java_lessons_image/step4_get_started.jpg
+    - assets/java_lessons_image/step5_get_started.jpg
+    - assets/java_lessons_image/step6_get_started.jpg
+    - assets/java_lessons_image/step7_get_started.jpg
+    - assets/java_lessons_image/step8_get_started.jpg
+    - assets/java_lessons_image/step9_get_started.jpg
+    - assets/java_lessons_image/step10_get_started.jpg
+    - assets/java_lessons_image/syntax_1.jpg
+    - assets/java_lessons_image/syntax_2.jpg
+
+
 
 
 

@@ -17,7 +17,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Future.delayed(Duration(seconds: 3), () {
       Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (context) => MyPageView()), // Replace with your Startup widget
+        MaterialPageRoute(builder: (context) => GetStarted()), // Replace with your Startup widget
             (Route<dynamic> route) => false,
       );
     });
