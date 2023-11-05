@@ -14,13 +14,41 @@ class CategoryScreen extends StatelessWidget {
     return ListView.builder(
       itemBuilder: (context, index) {
         final category = Categories.values[index];
+        SizedBox:
 
-        return GestureDetector(
-          onTap: () => onUpdateCategory(category),
-          child: ListTile(
-            title: Text(category.text),
+        return Column ( children: [ SizedBox(height: 70),
+        Padding(
+          padding: const EdgeInsets.only(top: 20, left: 80, right: 80),
+          child: OutlinedButton(
+            //SUBJECT CATEGORY STYLE
+            style: ButtonStyle(
+              side: MaterialStateProperty.all(BorderSide(
+                color: Colors.black,
+                width: 2.0,
+              )),
+              foregroundColor: MaterialStateProperty.all(
+                  Colors.black54), // Default text color
+              overlayColor: MaterialStateProperty.all(
+                  Colors.lightBlue[300]), // Color when long-pressed
+            ),
+            onPressed: () => onUpdateCategory(category),
+            child: ListTile(
+              title: Center(
+                child: RichText(
+                  text: TextSpan(
+                    text: category.text,
+                    style: const TextStyle(
+                      fontSize: 24, // Change the font size
+                      color: Colors.black54, // Change the text color
+                      fontWeight: FontWeight.bold, // Apply font weight
+                      letterSpacing: 1.5, // Apply letter spacing
+                    ),
+                  ),
+                ),
+              ),
+            ),
           ),
-        );
+        )]);
       },
       itemCount: Categories.values.length,
     );

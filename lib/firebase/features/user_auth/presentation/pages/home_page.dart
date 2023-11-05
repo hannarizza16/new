@@ -62,7 +62,8 @@ class _MainHomePageState extends State<MainHomePage> {
 
       if (shouldLogout ?? false) {
         // If the user confirms logout, navigate to the login screen
-        Navigator.of(context).pushReplacementNamed('/login'); // Replace '/login' with your login screen route
+        Navigator.of(context).pushReplacementNamed(
+            '/login'); // Replace '/login' with your login screen route
         return false; // Returning false to prevent default system navigation
       }
 
@@ -108,11 +109,25 @@ class _MainHomePageState extends State<MainHomePage> {
         drawer: const SideBar(),
         appBar: AppBar(
           title: const Text('CodeX'),
-          backgroundColor: Colors.transparent, // app bar color only
+          backgroundColor: Colors.lightBlue[300], // app bar color only
         ),
-        backgroundColor: const Color(0xFFFAFAFA), // BACKGROUND OF top app and other pages
-        body: _bottomScreens[selectedCurrentIndex],
-
+        backgroundColor:
+            Colors.transparent, // BACKGROUND OF top app and other pages
+        body: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(
+                  'assets/triangles.png',), // BG IMAGE IN CATEGORY SCREEN
+              fit: BoxFit.cover,
+              colorFilter: ColorFilter.mode(
+                Colors.white.withOpacity(0.5), // Set the opacity level here
+                BlendMode.srcOver,
+              ), // You can adjust the fit as needed
+              // You can adjust the fit as needed
+            ),
+          ),
+          child: _bottomScreens[selectedCurrentIndex],
+        ),
         bottomNavigationBar: BottomNavigationBar(
           backgroundColor: Colors.green, //Color(0xFF30CBF8),
           selectedItemColor: Colors.black, // ICON in bottom navigation
@@ -120,14 +135,18 @@ class _MainHomePageState extends State<MainHomePage> {
           currentIndex: selectedCurrentIndex,
 
           onTap: (index) => setState(() => selectedCurrentIndex = index),
-          items: BottomNavs.values // BottomNavs contains the list items located in enums.
-              .map((nav) => BottomNavigationBarItem( // then ipinasok sa .map para mairelocate sa (nav)
-            icon: Icon(nav.icon),
-            label: nav.text,
-          ))
+          items: BottomNavs
+              .values // BottomNavs contains the list items located in enums.
+              .map((nav) => BottomNavigationBarItem(
+                    // then ipinasok sa .map para mairelocate sa (nav)
+                    icon: Icon(nav.icon),
+                    label: nav.text,
+                  ))
               .toList(), //
-          selectedIconTheme: const IconThemeData(size: 30), // Size ng selected icon sa bott navbar
-          unselectedIconTheme: const IconThemeData(size: 25), // size naman kapag di selected
+          selectedIconTheme: const IconThemeData(
+              size: 30), // Size ng selected icon sa bott navbar
+          unselectedIconTheme:
+              const IconThemeData(size: 25), // size naman kapag di selected
         ),
         floatingActionButton: PersonalHelper(),
       ),
