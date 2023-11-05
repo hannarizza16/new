@@ -77,19 +77,28 @@ class _AllLanguagesState extends State<AllLanguages> {
             // direction scroll
 
             // then tsaka gagawa ng elevated button
-            itemBuilder: (context, index) => ElevatedButton(
+            itemBuilder: (context, index) => OutlinedButton(
               // has a callback function ito yung ginagamit para ibuild o mag generate
               // ulit ng sinelect mo na index
-              style: ElevatedButton.styleFrom(
-                //selectedScreen == null
-                // if index is not equal to selected screen ang kulay niya is deep purple  but if == ang color niya is deepPurple[300]
-                backgroundColor: index != selectedScreen
-                    ? Colors.lightBlue[400]
-                    : Colors.lightBlue[700],
+              style: ButtonStyle(
+                side: MaterialStateProperty.all(
+                  BorderSide(
+                    color: selectedScreen == index
+                        ? Colors.lightBlue[400]!
+                        : Colors.black,
+                    width: 1.0,
+                  ),
+                ),
+                backgroundColor: MaterialStateProperty.all(selectedScreen == index ? Colors.lightBlue[400] : Colors.transparent),
               ),
 
               onPressed: () => _onViewScreen(index),
-              child: Text(Languages.values[index].value),
+              child: Text(Languages.values[index].value, //TEXT SCREEN COLOR LANGUAGE
+              style: TextStyle(
+                color: selectedScreen == index
+                    ? Colors.white
+                    : Colors.black,
+              ),),
             ),
             itemCount: Languages.values
                 .length, // ilalabas lahat ng values or list ni Languages na nakaindicate sa enums
@@ -115,7 +124,7 @@ class _AllLanguagesState extends State<AllLanguages> {
                         ),
 
                         // then tsaka gagawa ng elevated button
-                        itemBuilder: (context, index) => ElevatedButton(
+                        itemBuilder: (context, index) => ElevatedButton( // SUBBJECT CARD
                           // has a callback function ito yung ginagamit para ibuild o mag generate
                           // ulit ng sinelect mo na index
                           style: ElevatedButton.styleFrom(
@@ -139,7 +148,7 @@ class _AllLanguagesState extends State<AllLanguages> {
                           child: Image.asset(
                               SubjectSection.values[index].imagePath,
                           // width: 100,
-                          height: 150,),
+                          height: 150 ),
                         ),
 
 

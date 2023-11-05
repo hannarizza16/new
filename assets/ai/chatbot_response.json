@@ -14,7 +14,7 @@
   "java output": "public class HelloWorld {\n    public static void main(String[] args) {\n        System.out.println(\"Hello, World!\");\n    }\n}",
   "java": "If you're referring to Java language, Java is a high-level, versatile, object-oriented programming language originally developed by Sun Microsystems and released in 1995.\n\nIt was designed to be platform-independent, meaning that Java code can run on any device that has a Java Virtual Machine (JVM).\n \nThis \"write once, run anywhere\" capability made Java highly popular.",
   "java programming":  "If you're referring to Java language, Java is a high-level, versatile, object-oriented programming language originally developed by Sun Microsystems and released in 1995.\n\nIt was designed to be platform-independent, meaning that Java code can run on any device that has a Java Virtual Machine (JVM).\n \nThis \"write once, run anywhere\" capability made Java highly popular.",
-
+  "can you show me an image": "assets/ai_response/java/java_syntax.jpg",
 
 
 

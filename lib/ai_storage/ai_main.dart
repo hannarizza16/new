@@ -20,10 +20,12 @@ class ChatBotApp extends StatelessWidget {
 class ChatMessage {
   final String text;
   final ChatMessageType messageType;
+  final String image;
 
   ChatMessage(
       {required this.text,
-      required this.messageType}); // bago mag output ng text si ai required si user na mag message muna
+      required this.messageType,
+      this.image='',}); // bago mag output ng text si ai required si user na mag message muna
 }
 
 // enumerate ung user tas bot parang differentiate ung sa type ng message
@@ -45,7 +47,22 @@ class _ChatScreenState extends State<ChatScreen> {
   bool isBotResponding =
       false; //kapag hindi nagmessage si user the bot will not respond
   late Map<String, dynamic>
-      botResponses; // ginawa kong late list den ung sa ai kaya nakalate jan hindi mag rerespo si ai kung walang message si user
+      botResponses;// ginawa kong late list den ung sa ai kaya nakalate jan hindi mag rerespo si ai kung walang message si user
+
+  // void _handleResponse(String response) {
+  //   final responseJson = json.decode(data);// Parse the JSON response
+  //
+  //   if (responseJson.containsKey("image")) {
+  //     final image = responseJson["image"];
+  //     setState(() {
+  //       messages.insert(0, ChatMessage(text: response, image: image));
+  //     });
+  //   } else {
+  //     setState(() {
+  //       messages.insert(0, ChatMessage(text: response));
+  //     });
+  //   }
+  // }
 
   @override
   void initState() {

@@ -127,7 +127,7 @@ class _MyPageViewState extends State<MyPageView> {
               }),
             ),
           ),
-          Positioned( // button position
+          Positioned( // BUTTON POSITION
             bottom: 80,
             left: 0,
             right: 0,
