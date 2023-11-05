@@ -100,16 +100,60 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   String getResponse(String message) {
-    // dito naman geget nya ung response sa json file
-    message = message
-        .toLowerCase(); //lahat ng itype ni user na text will be converted into lowercase para mag match sa list of responses sa json
-    for (var key in botResponses.keys) {
-      if (message.contains(key)) {
-        return botResponses[key];
-      }
-    } //kapag wala ung message ni user sa json file eto ung message na ibibigay ni ai
-    return "I'm sorry, I don't understand that. Please ask another question.";
+    message = message.toLowerCase();
+
+    switch (message) {
+      case "hi":
+      case "hello":
+        return "Hello! How can I assist you today?";
+
+      case "who are you":
+      case "what's your name":
+        return "Hello! I'm Aether, your friendly assistant bot. I'm here to help answer your questions and provide information on a variety of topics. I'll do my best to assist you.";
+      case "who created you":
+        return"Hello! I'm an AI assistant developed to assist RTU IT students.\n\nMy creation and development were managed by a team focusing on application development.\n\nI'm here to help answer questions and provide information relevant to IT studies at RTU.\n\nWhile I'm a part of your system to provide assistance based on my training, I don't possess specific information about the individual developer who implemented me into your platform ";
+      case "java hello world":
+      case "hello world java":
+      case "hello world":
+        return "If you're referring to the basic 'Hello, World!' output syntax in Java:\n\npublic class HelloWorld {\n    public static void main(String[] args) {\n        System.out.println(\"Hello, World!\");\n    }\n}";
+
+      case "what is the basic syntax for java":
+      case "what is the basic syntax of java":
+      case "what is the basic hello world syntax for java":
+      case "what is the basic hello world syntax of java":
+      case "java syntax":
+      case "java output":
+        return "The basic 'Hello, World!' output syntax in Java:\n\npublic class HelloWorld {\n    public static void main(String[] args) {\n        System.out.println(\"Hello, World!\");\n    }\n}";
+
+      case "how to print text in java":
+      case "java print text":
+        return "In Java, to print text, you can use System.out.println(). \nFor example: \n\nSystem.out.println(\"Hello, Java!\");";
+
+      case "how to print number in java":
+      case "java print number":
+        return "To print a number in Java, use System.out.println(). \nFor example: \n\nSystem.out.println(42);";
+
+      case "java data types":
+      case "what are the data types in java":
+        return "Java has several data types, including \n\nint (for integers), \n\ndouble (for floating-point numbers), \n\nboolean (for true/false values), \n\nchar (for single characters), and more.";
+
+      case "java comments":
+      case "java comments explanation":
+      case "what are java comments":
+      case "what are comments in java":
+        return "Java comments can be used to explain code and make it more readable. They help prevent execution when testing alternative code.\n\nSingle-line comments start with // and ignore text from // to the end of the line. \n\nMulti-line comments start with /* and end with */, ignoring text between them.\n\nExample of single-line comment:\n// This is a comment\nSystem.out.println(\"Hello World\");\n\nExample of single-line comment at the end of a line:\nSystem.out.println(\"Hello World\"); \n// This is a comment\n\nExample of multi-line comment:\n/* The code below will print the words Hello World\nto the screen, and it is amazing */\nSystem.out.println(\"Hello World\");";
+
+      case "what is java":
+      case "what is java programming":
+      case "what is java programming language":
+        return "Java is a high-level, object-oriented programming language initially developed by Sun Microsystems and released in 1995. It's platform-independent, running on any device with a Java Virtual Machine (JVM).";
+
+      default:
+        return "I'm sorry, I don't understand that. Please ask another question.";
+    }
   }
+
+
 
   //eto na ung design
   @override
