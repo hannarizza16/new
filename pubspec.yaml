@@ -104,6 +104,10 @@ flutter:
     - assets/final_mobile.png
     - assets/final_web.png
     - assets/triangles.png
+    - assets/whitemosaic.jpg
+    - assets/colorfulmosaic.jpg
+    - assets/blueshade.jpg
+    - assets/white_and_lightblue.jpg
 
     - assets/java_lessons_image/get_started1.png
     - assets/java_lessons_image/get_started2.jpg

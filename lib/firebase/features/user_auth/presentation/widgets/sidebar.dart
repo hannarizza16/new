@@ -69,14 +69,14 @@ class SideBar extends StatelessWidget {
                 .toList(),
 
 
-            Divider(),
-            InkWell(
-              onTap: () => _onItemTapped(context, SideBarSection.logout),
-              child: ListTile(
-                leading: Icon(SideBarSection.logout.icon),
-                title: Text(SideBarSection.logout.text),
-              ),
-            ),
+            // Divider(),
+            // InkWell(
+            //   onTap: () => _onItemTapped(context, SideBarSection.logout),
+            //   child: ListTile(
+            //     leading: Icon(SideBarSection.logout.icon),
+            //     title: Text(SideBarSection.logout.text),
+            //   ),
+            // ),
           ],
 
         ));

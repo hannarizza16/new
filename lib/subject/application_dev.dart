@@ -8,7 +8,7 @@ class AppDevPage extends StatelessWidget {
     return const Center(
       child: Text(
         'MOBILE APPLICATION DEVELOPMENT',
-        style: TextStyle(fontSize: 60),
+        style: TextStyle(fontSize: 10),
       ),
     );
   }

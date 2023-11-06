@@ -117,19 +117,20 @@ class _MainHomePageState extends State<MainHomePage> {
           decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage(
-                  'assets/triangles.png',), // BG IMAGE IN CATEGORY SCREEN
+                  'assets/white_and_lightblue.jpg',), // BG IMAGE IN CATEGORY SCREEN
               fit: BoxFit.cover,
-              colorFilter: ColorFilter.mode(
-                Colors.white.withOpacity(0.5), // Set the opacity level here
-                BlendMode.srcOver,
-              ), // You can adjust the fit as needed
+              // colorFilter: ColorFilter.mode( // SET OPACITY
+              //   Colors.white.withOpacity(0.5), // Set the opacity level here
+              //   BlendMode.srcOver,
+              // ), // You can adjust the fit as needed
               // You can adjust the fit as needed
             ),
           ),
           child: _bottomScreens[selectedCurrentIndex],
         ),
         bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Colors.green, //Color(0xFF30CBF8),
+
+          backgroundColor: Colors.red, //Color(0xFF30CBF8),
           selectedItemColor: Colors.black, // ICON in bottom navigation
           unselectedItemColor: Colors.black26,
           currentIndex: selectedCurrentIndex,
