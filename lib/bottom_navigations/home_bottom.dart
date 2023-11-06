@@ -110,8 +110,15 @@ class _AllLanguagesState extends State<AllLanguages> {
           flex: 10,
           // space o kung gano kalaki yung space na nakalaan for language button
           child: selectedScreen == null // kapag si selected screen ay null
-              ? Container(
-                  color: Colors.white, //BACKGROUND COLOR OF HOME PAGE
+              ? Container( // BACKGROUND IMAGE
+                  decoration: BoxDecoration(
+    image: DecorationImage(
+    image: AssetImage('assets/white_and_lightblue.jpg'),
+    fit:  BoxFit.cover,
+
+    )
+
+    ),
                   // color of button
                   child: Padding(
                       padding: const EdgeInsets.only(top: 30, left: 10, right: 10),

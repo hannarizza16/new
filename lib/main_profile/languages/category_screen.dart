@@ -29,7 +29,7 @@ class CategoryScreen extends StatelessWidget {
               foregroundColor: MaterialStateProperty.all(
                   Colors.black54), // Default text color
               overlayColor: MaterialStateProperty.all(
-                  Colors.lightBlue[300]), // Color when long-pressed
+                  Colors.lightBlue[200]), // Color when long-pressed
             ),
             onPressed: () => onUpdateCategory(category),
             child: ListTile(
@@ -39,7 +39,7 @@ class CategoryScreen extends StatelessWidget {
                     text: category.text,
                     style: const TextStyle(
                       fontSize: 24, // Change the font size
-                      color: Colors.black54, // Change the text color
+                      color: Colors.black, // Change the text color
                       fontWeight: FontWeight.bold, // Apply font weight
                       letterSpacing: 1.5, // Apply letter spacing
                     ),
