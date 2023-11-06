@@ -7,10 +7,6 @@ import 'package:first_project/firebase/features/user_auth/presentation/widgets/d
 import 'package:first_project/firebase/features/user_auth/presentation/widgets/sidebar.dart';
 import 'package:first_project/extension/bottom_nav_ext.dart';
 import 'package:first_project/enums/enums.dart';
-import 'package:first_project/subject/application_dev.dart';
-import 'package:first_project/subject/game_dev.dart';
-import 'package:first_project/subject/machine_dev.dart';
-import 'package:first_project/subject/web_dev.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../ai_storage/ai_main.dart';
