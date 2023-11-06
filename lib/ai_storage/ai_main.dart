@@ -153,7 +153,7 @@ class _ChatScreenState extends State<ChatScreen> {
       case "java data types":
       case "what are the data types in java":
         return "Java has several data types, including \n\nint (for integers), \n\ndouble (for floating-point numbers), \n\nboolean (for true/false values), \n\nchar (for single characters), and more.";
-
+//asdsa
       case "java comments":
       case "java comments explanation":
       case "what are java comments":
