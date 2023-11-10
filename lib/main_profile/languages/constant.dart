@@ -166,7 +166,32 @@ const codex = {
         ]
       },
       3: {'topic': '4.     Output', 'heading': '', 'body': ""},
-      4: {'topic': '     4.1     Print Text', 'heading': '', 'body': ""},
+
+
+
+      4: {'topic': '     4.1     Print Text',
+        'subTopic' : [
+          {
+            'heading': 'Print Text',
+            'attachment': 'assets/java_lessons_image/output_text_1.jpg',
+            'body': "You learned from the previous chapter that you can use the println() method to output values or print text in Java: "
+          }
+
+        ]
+
+
+      },
+
+
+
+
+
+
+
+
+
+
+
       5: {'topic': '     4.2     Print Numbers', 'heading': '', 'body': ""},
       6: {'topic': '5.     Comments', 'heading': '', 'body': ""},
       7: {'topic': '6.     Variables', 'heading': '', 'body': ""},
