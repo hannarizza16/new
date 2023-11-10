@@ -175,25 +175,95 @@ const codex = {
             'heading': 'Print Text',
             'attachment': 'assets/java_lessons_image/output_text_1.jpg',
             'body': "You learned from the previous chapter that you can use the println() method to output values or print text in Java: "
-          }
+          },
+          {
+            'attachment': 'assets/java_lessons_image/output_text_2.jpg',
+            'body': " You can add as many println() methods as you want. Note that it will add a new line for each method"
+          },
+          {
+            'heading': 'Double Quotes',
+            'attachment' : 'assets/java_lessons_image/output_text_3.jpg',
+            'body' : "When you are working with text, it must be wrapped inside double quotations marks ""."
 
+            "If you forget the double quotes, an error occurs:"
+
+          },
+          {
+            'heading': 'The Print() Method',
+            'attachment': 'assets/java_lessons_image/output_text_4.jpg',
+            'body' : "There is also a print() method, which is similar to println()."
+
+            "The only difference is that it does not insert a new line at the end of the output:"
+
+
+          },
+          {
+            'body' : "Note that we add an extra space (after `Hello World`! in the example above), for better readability."
+          },
+          {
+
+
+          },
         ]
-
-
       },
 
 
+      5: {'topic': '     4.2     Print Numbers',
+        'subTopic' : [{
+          'heading': 'Print Numbers',
+          'attachment': 'assets/java_lessons_image/output_number_1.jpg',
+          'body' : "You can also use the println() method to print numbers."
+
+              "However, unlike text, we don't put numbers inside double quotes:"
+        },
 
 
+          {
+            'attachment': 'assets/java_lessons_image/output_number_2.jpg',
+            'body' : "You can also perform mathematical calculations inside the println() method:"
+
+          },
+
+          {
+            'attachment': 'assets/java_lessons_image/output_number_3.jpg',
+          }
+        ]
+
+      },
+      6: {'topic': '5.     Comments',
+      'subTopic': [{
+        'heading': "Java Comments",
+        'body': "Comments can be used to explain Java code, and to make it more readable. It can also be used to prevent execution when testing alternative code.",
 
 
+      },
+        {
+          'heading': "Single-line comments",
+          'attachment': 'assets/java_lessons_image/comments_1.jpg',
+          'body': "Single-line comments start with two forward slashes (//)."
+              "\n\nAny text between // and the end of the line is ignored by Java (will not be executed)."
+          "\n\nThis example uses a single-line comment before a line of code:"
 
 
+        },
+        {
+
+          'attachment': 'assets/java_lessons_image/comments_2.jpg',
+          'body': "This example uses a single-line comment at the end of a line of code:"
 
 
+        },
 
-      5: {'topic': '     4.2     Print Numbers', 'heading': '', 'body': ""},
-      6: {'topic': '5.     Comments', 'heading': '', 'body': ""},
+        {
+          'heading': "Java Multi-line Comments",
+          'attachment': 'assets/java_lessons_image/comments_3.jpg',
+          'body': "Multi-line comments start with /* and ends with */."
+              "\n\nAny text between /* and */ will be ignored by Java."
+              "\n\nThis example uses a multi-line comment (a comment block) to explain the code:"
+        },
+      ]
+      },
+
       7: {'topic': '6.     Variables', 'heading': '', 'body': ""},
       8: {'topic': '     6.1     Print Variables', 'heading': '', 'body': ""},
       9: {
