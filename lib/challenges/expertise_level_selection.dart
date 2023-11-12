@@ -1,8 +1,8 @@
-import 'package:first_project/challenges/quiz_screen.dart';
+
 import 'package:flutter/material.dart';
 import 'categories.dart';
 import 'quiz_app.dart';
-import 'quiz_screen.dart';
+
 
 class ExpertiseLevelSelection extends StatelessWidget {
   final String category;

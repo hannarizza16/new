@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'questions.dart';
+import 'result_screen.dart';
 
 class QuizApp extends StatefulWidget {
   final String category;
@@ -14,6 +15,7 @@ class QuizApp extends StatefulWidget {
 class _QuizAppState extends State<QuizApp> {
   int currentQuestionIndex = 0;
   List<QuizQuestion> questions = [];
+  bool showNextQuestionButton = false;
 
   @override
   void initState() {
@@ -22,27 +24,42 @@ class _QuizAppState extends State<QuizApp> {
     questions = getQuestionsForCategoryAndLevel(widget.category, widget.expertiseLevel);
   }
 
-  void handleAnswer(bool isCorrect) {
-    // Handle the answer logic here if needed
-    // For simplicity, you can just move to the next question for now
-    goToNextQuestion();
+  void handleAnswer(int answerIndex) {
+    setState(() {
+      for (int i = 0; i < questions[currentQuestionIndex].answerChoices.length; i++) {
+        questions[currentQuestionIndex].answerChoices[i].isSelected = i == answerIndex;
+      }
+      showNextQuestionButton = true;
+    });
   }
 
   void goToNextQuestion() {
     setState(() {
+      showNextQuestionButton = false;
+
       if (currentQuestionIndex < questions.length - 1) {
-        // Move to the next question
         currentQuestionIndex++;
       } else {
-        // Quiz is completed, you can navigate to a result screen or perform any other action
-        // For now, let's just go back to the previous screen
-        Navigator.pop(context);
+        // If it's the last question, navigate to the result screen
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ResultScreen(
+              questions: questions,
+              userAnswers: questions
+                  .map((q) => q.answerChoices.indexWhere((choice) => choice.isSelected))
+                  .toList(),
+            ),
+          ),
+        );
       }
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    final isLastQuestion = currentQuestionIndex == questions.length - 1;
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Quiz: ${widget.category} - ${widget.expertiseLevel}'),
@@ -74,16 +91,17 @@ class _QuizAppState extends State<QuizApp> {
             ),
             SizedBox(height: 20),
             // Answer Choices
-            ...questions[currentQuestionIndex].answerChoices.map((choice) {
+            ...List.generate(questions[currentQuestionIndex].answerChoices.length, (index) {
+              final choice = questions[currentQuestionIndex].answerChoices[index];
               return GestureDetector(
                 onTap: () {
-                  handleAnswer(choice.isCorrect);
+                  handleAnswer(index);
                 },
                 child: Container(
                   margin: EdgeInsets.symmetric(vertical: 5),
                   padding: EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    color: Color(0xFF263238),
+                    color: choice.isSelected ? Colors.pink[900] : Color(0xFF263238),
                     borderRadius: BorderRadius.circular(15.0),
                   ),
                   child: Text(
@@ -92,16 +110,26 @@ class _QuizAppState extends State<QuizApp> {
                   ),
                 ),
               );
-            }).toList(),
+            }),
             SizedBox(height: 20),
-            // Next Question Button
-            ElevatedButton(
-              onPressed: goToNextQuestion,
-              child: Text('Next Question'),
-            ),
+            // Next Question / Submit Button
+            if (showNextQuestionButton)
+              ElevatedButton(
+                onPressed: isLastQuestion ? goToNextQuestion : goToNextQuestion,
+                child: Text(isLastQuestion ? 'Submit' : 'Next Question'),
+              ),
           ],
         ),
       ),
     );
+  }
+}
+
+List<QuizQuestion> getQuestionsForCategoryAndLevel(String category, String expertiseLevel) {
+  final key = '$category' + '_' + '$expertiseLevel';
+  if (questionsMap.containsKey(key)) {
+    return questionsMap[key]!;
+  } else {
+    throw ArgumentError('Invalid category or expertise level');
   }
 }
