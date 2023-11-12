@@ -2,23 +2,27 @@ import 'package:flutter/material.dart';
 import 'firebase/features/user_auth/presentation/pages/sign_up_page.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: GetStarted());
+    return const MaterialApp(home: GetStarted());
   }
 }
 
 class GetStarted extends StatefulWidget {
+  const GetStarted({super.key});
+
   @override
   _GetStarted createState() => _GetStarted();
 }
 
 class _GetStarted extends State<GetStarted> {
-  PageController _pageController = PageController(initialPage: 0);
+  final PageController _pageController = PageController(initialPage: 0);
   int currentPage = 0;
   int totalPages = 5;
 
@@ -85,7 +89,7 @@ class _GetStarted extends State<GetStarted> {
                     height: 300,
                     fit: BoxFit.contain,
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   Text(
                     headings[index], //heading loc
                     style: TextStyle(
@@ -94,13 +98,13 @@ class _GetStarted extends State<GetStarted> {
                       color: Colors.lightBlue[700],
                     ),
                   ),
-                  SizedBox(height: 5),
+                  const SizedBox(height: 5),
                   Container(
-                    margin: EdgeInsets.symmetric(horizontal: 5),
-                    padding: EdgeInsets.all(12),
+                    margin: const EdgeInsets.symmetric(horizontal: 5),
+                    padding: const EdgeInsets.all(12),
                     child: Text(
                       descriptions[index],
-                      style: TextStyle(fontSize: 15.5),
+                      style: const TextStyle(fontSize: 15.5),
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -118,7 +122,7 @@ class _GetStarted extends State<GetStarted> {
                 return Container(
                   width: 15,
                   height: 10,
-                  margin: EdgeInsets.symmetric(horizontal: 5),
+                  margin: const EdgeInsets.symmetric(horizontal: 5),
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: currentPage == index ? Colors.lightBlue[700] : Colors.grey,
@@ -137,13 +141,13 @@ class _GetStarted extends State<GetStarted> {
                 if (currentPage == 4)
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => SignUpPage()));
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => const SignUpPage()));
                     },
                     style: ElevatedButton.styleFrom(
-                      minimumSize: Size(250, 50),
-                      backgroundColor: Color(0xFF30CBF8),
+                      minimumSize: const Size(250, 50),
+                      backgroundColor: const Color(0xFF30CBF8),
                     ),
-                    child: Text(
+                    child: const Text(
                       "Get Started",
                       style: TextStyle(fontSize: 15.0, letterSpacing: 1.5),
                     ),

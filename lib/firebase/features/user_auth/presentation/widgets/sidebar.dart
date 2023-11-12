@@ -43,7 +43,7 @@ class SideBar extends StatelessWidget {
             UserAccountsDrawerHeader(
               accountName: const Text("Hanna Rizza Malana"),
               accountEmail: const Text("hmalana@rtu.edu.ph"),
-              currentAccountPicture: CircleAvatar(
+              currentAccountPicture: const CircleAvatar(
                 radius: 100,
                 backgroundColor: Color(0xffFDCF09),
                 backgroundImage: AssetImage('assets/jrizal.jpg')

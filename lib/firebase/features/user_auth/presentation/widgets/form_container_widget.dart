@@ -15,7 +15,7 @@ class FormContainerWidget extends StatefulWidget {
   final InputDecoration? customDecoration; //parameter
 
   const FormContainerWidget(
-      {this.controller,
+      {super.key, this.controller,
       this.isPasswordField,
       this.fieldKey,
       this.hintText,
@@ -29,7 +29,7 @@ class FormContainerWidget extends StatefulWidget {
       });
 
   @override
-  _FormContainerWidgetState createState() => new _FormContainerWidgetState();
+  _FormContainerWidgetState createState() => _FormContainerWidgetState();
 }
 
 class _FormContainerWidgetState extends State<FormContainerWidget> {
@@ -47,8 +47,8 @@ class _FormContainerWidgetState extends State<FormContainerWidget> {
       ),
 
       // INPUT FIELD
-      child: new TextFormField(
-        style: TextStyle(color: Colors.black), // input text color for Password and Email
+      child: TextFormField(
+        style: const TextStyle(color: Colors.black), // input text color for Password and Email
         controller: widget.controller,
         keyboardType: widget.inputType,
         key: widget.fieldKey,
@@ -56,13 +56,13 @@ class _FormContainerWidgetState extends State<FormContainerWidget> {
         onSaved: widget.onSaved,
         validator: widget.validator,
         onFieldSubmitted: widget.onFieldSubmitted,
-        decoration: new InputDecoration(
-          border: OutlineInputBorder(),
+        decoration: InputDecoration(
+          border: const OutlineInputBorder(),
           filled: true,
           hintText: widget.hintText,
           labelText: widget.labelText,
-          hintStyle: TextStyle(color: Colors.black45),
-          suffixIcon: new GestureDetector(
+          hintStyle: const TextStyle(color: Colors.black45),
+          suffixIcon: GestureDetector(
             onTap: () {
               setState(() {
                 _obscureText = !_obscureText;
@@ -73,7 +73,7 @@ class _FormContainerWidgetState extends State<FormContainerWidget> {
                     _obscureText ? Icons.visibility_off : Icons.visibility,
                     color: _obscureText == false ? Colors.blue : Colors.grey,
                   )
-                : Text(""),
+                : const Text(""),
           ),
         ),
       ),

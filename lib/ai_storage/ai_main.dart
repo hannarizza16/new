@@ -3,13 +3,15 @@ import 'dart:convert'; // Import the 'dart:convert' library to parse JSON
 import 'package:animated_text_kit/animated_text_kit.dart';
 
 // ai mainnn
-void main() => runApp(ChatBotApp());
+void main() => runApp(const ChatBotApp());
 
 // gawa ka class for chatbotapp
 class ChatBotApp extends StatelessWidget {
+  const ChatBotApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: ChatScreen(),
     );
@@ -22,10 +24,11 @@ class ChatMessage {
   final ChatMessageType messageType;
   final String image;
 
-  ChatMessage(
-      {required this.text,
-      required this.messageType,
-      this.image='',}); // bago mag output ng text si ai required si user na mag message muna
+  ChatMessage({
+    required this.text,
+    required this.messageType,
+    this.image = '',
+  }); // bago mag output ng text si ai required si user na mag message muna
 }
 
 // enumerate ung user tas bot parang differentiate ung sa type ng message
@@ -36,6 +39,8 @@ enum ChatMessageType {
 
 // create ka ng screen for chat screen ng ai at user
 class ChatScreen extends StatefulWidget {
+  const ChatScreen({super.key});
+
   @override
   _ChatScreenState createState() => _ChatScreenState();
 }
@@ -47,7 +52,7 @@ class _ChatScreenState extends State<ChatScreen> {
   bool isBotResponding =
       false; //kapag hindi nagmessage si user the bot will not respond
   late Map<String, dynamic>
-      botResponses;// ginawa kong late list den ung sa ai kaya nakalate jan hindi mag rerespo si ai kung walang message si user
+      botResponses; // ginawa kong late list den ung sa ai kaya nakalate jan hindi mag rerespo si ai kung walang message si user
 
   // void _handleResponse(String response) {
   //   final responseJson = json.decode(data);// Parse the JSON response
@@ -70,7 +75,8 @@ class _ChatScreenState extends State<ChatScreen> {
     loadBotResponses();
     // Load bot responses when the app starts
     _addBotMessage(// built in message sa top ng aiscreen
-        "Hello there! I'm Aether, your friendly assistant bot. I'm here to help answer your questions and provide information on a variety of topics. I'll do my best to assist you.");  }
+        "Hello there! I'm Aether, your friendly assistant bot. I'm here to help answer your questions and provide information on a variety of topics. I'll do my best to assist you.");
+  }
 
   Future<void> loadBotResponses() async {
     // Load the JSON data from the asset file
@@ -88,7 +94,7 @@ class _ChatScreenState extends State<ChatScreen> {
       setState(() {
         isBotResponding = true;
       });
-      Future.delayed(Duration(seconds: 3), () {
+      Future.delayed(const Duration(seconds: 3), () {
         setState(() {
           isBotResponding = false;
           _addBotMessage(getResponse(text));
@@ -128,7 +134,7 @@ class _ChatScreenState extends State<ChatScreen> {
       case "what's your name":
         return "Hello! I'm Aether, your friendly assistant bot. I'm here to help answer your questions and provide information on a variety of topics. I'll do my best to assist you.";
       case "who created you":
-        return"Hello! I'm an AI assistant developed to assist RTU IT students.\n\nMy creation and development were managed by a team focusing on application development.\n\nI'm here to help answer questions and provide information relevant to IT studies at RTU.\n\nWhile I'm a part of your system to provide assistance based on my training, I don't possess specific information about the individual developer who implemented me into your platform ";
+        return "Hello! I'm an AI assistant developed to assist RTU IT students.\n\nMy creation and development were managed by a team focusing on application development.\n\nI'm here to help answer questions and provide information relevant to IT studies at RTU.\n\nWhile I'm a part of your system to provide assistance based on my training, I don't possess specific information about the individual developer who implemented me into your platform ";
       case "java hello world":
       case "hello world java":
       case "hello world":
@@ -170,13 +176,11 @@ class _ChatScreenState extends State<ChatScreen> {
     }
   }
 
-
-
   //eto na ung design
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Aether')),
+      appBar: AppBar(title: const Text('Aether')),
       body: Column(children: <Widget>[
         Expanded(
           child: // Inside the ChatScreen build method
@@ -205,7 +209,7 @@ class _ChatScreenState extends State<ChatScreen> {
                           ? 80.0 // if not equal naman yung right padding niya is 80
                           : 20.0, //  and pag equal naman siya sa user is 20 yung magiging padding niya.
                       top: 15.0),
-                  padding: EdgeInsets.all(10.0),
+                  padding: const EdgeInsets.all(10.0),
 
                   // BOX DECORATION MESSAGE DECORATION
                   decoration: BoxDecoration(
@@ -217,7 +221,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
                   child: Text(
                     messages[index].text,
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.white,
                       fontSize: 18,
                     ),
@@ -243,13 +247,13 @@ class _ChatScreenState extends State<ChatScreen> {
             child: Row(
               children: [
                 // ANIMATED TEXT HERE AND FONT
-                SizedBox(
+                const SizedBox(
                   width: 10,
                 ),
                 AnimatedTextKit(repeatForever: true, animatedTexts: [
                   TypewriterAnimatedText('AI is typing...',
                       speed: const Duration(milliseconds: 50),
-                      textStyle: (TextStyle(
+                      textStyle: (const TextStyle(
                         fontSize: 15,
                         fontFamily:
                             'Canterbury', // NOT WORKING NEED TO IMPORT IN PUBSEC
@@ -259,7 +263,7 @@ class _ChatScreenState extends State<ChatScreen> {
             ),
           ),
 
-        Divider(height: 20.0),
+        const Divider(height: 20.0),
         Container(color: Colors.white, child: _buildTextComposer()),
       ]),
     );
@@ -267,7 +271,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
   Widget _buildTextComposer() {
     return IconTheme(
-      data: IconThemeData(color: Colors.blue),
+      data: const IconThemeData(color: Colors.blue),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -278,13 +282,13 @@ class _ChatScreenState extends State<ChatScreen> {
                   controller: _textController,
                   onSubmitted: _handleSubmitted,
                   decoration:
-                      InputDecoration.collapsed(hintText: 'Send a message'),
+                      const InputDecoration.collapsed(hintText: 'Send a message'),
                 ),
               ),
               GestureDetector(
                 onTap: () => _handleSubmitted(_textController.text),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                child: const Padding(
+                  padding: EdgeInsets.all(8.0),
                   child: Icon(Icons.send),
                 ),
               ),

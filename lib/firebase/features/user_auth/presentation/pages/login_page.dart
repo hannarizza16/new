@@ -8,10 +8,10 @@ import 'package:first_project/firebase/features/user_auth/presentation/widgets/f
 import 'package:first_project/firebase/global/common/toast.dart';
 import '../../firebase_auth_implementation/firebase_auth_services.dart';
 import 'home_page.dart';
-import 'otp_screen.dart'; // Import the OTPScreen widget
+// Import the OTPScreen widget
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key});
+  const LoginPage({super.key});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -20,8 +20,8 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   bool _isSigning = false;
   final FirebaseAuthService _auth = FirebaseAuthService();
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
 
 
@@ -75,7 +75,7 @@ class _LoginPageState extends State<LoginPage> {
                 ],
               )),
 
-          Padding( padding: EdgeInsets.symmetric(horizontal: 15),
+          Padding( padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: FormContainerWidget(
                     controller: _emailController,
                     labelText: "Email",
@@ -99,7 +99,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: TextButton(
                         onPressed: (){
                                           },
-                        child: Text('Forget Password ?'),
+                        child: const Text('Forget Password ?'),
 
                       )),
 
@@ -113,14 +113,14 @@ class _LoginPageState extends State<LoginPage> {
                       width: 350,
                         height: 50,
                       decoration: BoxDecoration(
-                        color: Color(0xFF30CBF8),
+                        color: const Color(0xFF30CBF8),
                         borderRadius: BorderRadius.circular(5),
 
                       ),
                       child: Center(
                         child: _isSigning
-                            ? CircularProgressIndicator(color: Colors.white)
-                            : Text(
+                            ? const CircularProgressIndicator(color: Colors.white)
+                            : const Text(
                                 "Log In",
                                 style: TextStyle(
                                   color: Colors.white,
@@ -131,14 +131,14 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text("Don't have an account?"),
-                      SizedBox(
+                      const Text("Don't have an account?"),
+                      const SizedBox(
                         width: 5,
                       ),
                       GestureDetector(
@@ -146,11 +146,11 @@ class _LoginPageState extends State<LoginPage> {
                           Navigator.pushAndRemoveUntil(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => SignUpPage()),
+                                builder: (context) => const SignUpPage()),
                             (route) => false,
                           );
                         },
-                        child: Text(
+                        child: const Text(
                           "Sign Up",
                           style: TextStyle(
                             color: Colors.blue,
@@ -193,7 +193,7 @@ class _LoginPageState extends State<LoginPage> {
     if (user != null) {
       showToast(message: "User is successfully signed in");
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => MainHomePage()));
+          context, MaterialPageRoute(builder: (context) => const MainHomePage()));
     }
   }
 }

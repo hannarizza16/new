@@ -77,13 +77,13 @@ class _TopicScreenState extends State<TopicScreen> {
       body: topics.isNotEmpty
           ? SingleChildScrollView(
               child: Padding(
-                padding: EdgeInsets.all(20.0),
+                padding: const EdgeInsets.all(20.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     ListView.builder(
                       shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
+                      physics: const NeverScrollableScrollPhysics(),
                       itemBuilder: (context, index) {
                         final subTopic =
                             SubTopic.fromJson(selectedTopics.subTopic[index]);
@@ -92,10 +92,10 @@ class _TopicScreenState extends State<TopicScreen> {
                           children: [
                             Center(
                               child: Padding(
-                                padding: EdgeInsets.symmetric(vertical: 10.0),
+                                padding: const EdgeInsets.symmetric(vertical: 10.0),
                                 child: Text(
                                   subTopic.heading,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontSize: 30,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.black,
@@ -105,19 +105,19 @@ class _TopicScreenState extends State<TopicScreen> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsets.symmetric(
+                              padding: const EdgeInsets.symmetric(
                                 vertical: 5.0,
                                 horizontal: 0.0,
                               ),
                               child: Text(
                                 subTopic.body,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 18,
                                   color: Colors.black,
                                 ),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                                 height:
                                     20), // Adjust the height between body text and image
 

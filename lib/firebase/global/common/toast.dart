@@ -13,7 +13,7 @@ void showToast({required String message}) {
   );
 
   // Wait for a short duration and then cancel the toast
-  Future.delayed(Duration(milliseconds: 1400), () {
+  Future.delayed(const Duration(milliseconds: 1400), () {
     Fluttertoast.cancel();
   });
 }

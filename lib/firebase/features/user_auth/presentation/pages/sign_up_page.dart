@@ -90,10 +90,10 @@ class _SignUpPageState extends State<SignUpPage> {
                 hintText: "Enter Secure Password ",
                 isPasswordField: true,
               ),
-              Row(children: [
+              const Row(children: [
                 Align(
                     alignment: Alignment.centerLeft,
-                    child: const Text(
+                    child: Text(
                       'Password must contain special character',
                       style: TextStyle(color: Colors.green),
                     ))
@@ -109,7 +109,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   width: double.infinity,
                   height: 45,
                   decoration: BoxDecoration(
-                    color: Color(0xFF30CBF8),
+                    color: const Color(0xFF30CBF8),
                     borderRadius: BorderRadius.circular(5),
                   ),
                   child: Center(

@@ -65,7 +65,7 @@ class _AllLanguagesState extends State<AllLanguages> {
 
   @override
   Widget build(BuildContext context) {
-    bool _isButtonEnabled = true;
+    bool isButtonEnabled = true;
     return Column(
       children: [
         Expanded(
@@ -111,7 +111,7 @@ class _AllLanguagesState extends State<AllLanguages> {
           // space o kung gano kalaki yung space na nakalaan for language button
           child: selectedScreen == null // kapag si selected screen ay null
               ? Container( // BACKGROUND IMAGE
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
     image: DecorationImage(
     image: AssetImage('assets/white_and_lightblue.jpg'),
     fit:  BoxFit.cover,
@@ -123,7 +123,7 @@ class _AllLanguagesState extends State<AllLanguages> {
                   child: Padding(
                       padding: const EdgeInsets.only(top: 30, left: 10, right: 10),
                       child: GridView.builder(
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
                           mainAxisSpacing: 20,
                           crossAxisSpacing: 15,
@@ -151,7 +151,7 @@ class _AllLanguagesState extends State<AllLanguages> {
                             ),
                           ),
                           //CALLING THE IMAGE IN SUBJECT BUTTON
-                          onPressed: _isButtonEnabled ? () => _onViewSubject(index) : () {}, // : null,
+                          onPressed: isButtonEnabled ? () => _onViewSubject(index) : () {}, // : null,
                           child: Image.asset(
                               SubjectSection.values[index].imagePath,
                           // width: 100,

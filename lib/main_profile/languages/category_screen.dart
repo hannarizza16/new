@@ -16,13 +16,13 @@ class CategoryScreen extends StatelessWidget {
         final category = Categories.values[index];
         SizedBox:
 
-        return Column ( children: [ SizedBox(height: 70),
+        return Column ( children: [ const SizedBox(height: 70),
         Padding(
           padding: const EdgeInsets.only(top: 20, left: 80, right: 80),
           child: OutlinedButton(
             //SUBJECT CATEGORY STYLE
             style: ButtonStyle(
-              side: MaterialStateProperty.all(BorderSide(
+              side: MaterialStateProperty.all(const BorderSide(
                 color: Colors.black,
                 width: 2.0,
               )),

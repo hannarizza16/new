@@ -22,10 +22,12 @@ Future main() async {
   } else {
     await Firebase.initializeApp();
   }
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
 
@@ -38,7 +40,7 @@ class MyApp extends StatelessWidget {
         ),
         '/login': (context) => const LoginPage(),
         '/signUp': (context) => const SignUpPage(),
-        '/home': (context) => AllLanguages(),
+        '/home': (context) => const AllLanguages(),
       },
     );
   }

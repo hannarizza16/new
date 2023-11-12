@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:first_project/startup.dart';
 
-import '../../../../startup.dart'; // Replace with the correct import path
+// Replace with the correct import path
 
 class SplashScreen extends StatefulWidget {
   final Widget? child;
@@ -15,9 +15,9 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 3), () {
+    Future.delayed(const Duration(seconds: 3), () {
       Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (context) => GetStarted()), // Replace with your Startup widget
+        MaterialPageRoute(builder: (context) => const GetStarted()), // Replace with your Startup widget
             (Route<dynamic> route) => false,
       );
     });

@@ -9,8 +9,6 @@ import 'package:first_project/extension/bottom_nav_ext.dart';
 import 'package:first_project/enums/enums.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../ai_storage/ai_main.dart';
-import 'package:flutter/material.dart';
 
 class MainHomePage extends StatefulWidget {
   const MainHomePage({Key? key}) : super(key: key);
@@ -36,20 +34,20 @@ class _MainHomePageState extends State<MainHomePage> {
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: Text('Logout'),
-            content: Text('Are you sure you want to log out?'),
+            title: const Text('Logout'),
+            content: const Text('Are you sure you want to log out?'),
             actions: <Widget>[
               TextButton(
                 onPressed: () {
                   Navigator.of(context).pop(true);
                 },
-                child: Text('Yes'),
+                child: const Text('Yes'),
               ),
               TextButton(
                 onPressed: () {
                   Navigator.of(context).pop(false);
                 },
-                child: Text('No'),
+                child: const Text('No'),
               ),
             ],
           );
@@ -76,20 +74,20 @@ class _MainHomePageState extends State<MainHomePage> {
           context: context,
           builder: (context) {
             return AlertDialog(
-              title: Text('Logout'),
-              content: Text('Are you sure you want to log out?'),
+              title: const Text('Logout'),
+              content: const Text('Are you sure you want to log out?'),
               actions: <Widget>[
                 TextButton(
                   onPressed: () {
                     Navigator.of(context).pop(true);
                   },
-                  child: Text('Yes'),
+                  child: const Text('Yes'),
                 ),
                 TextButton(
                   onPressed: () {
                     Navigator.of(context).pop(false);
                   },
-                  child: Text('No'),
+                  child: const Text('No'),
                 ),
               ],
             );
@@ -110,7 +108,7 @@ class _MainHomePageState extends State<MainHomePage> {
         backgroundColor:
             Colors.transparent, // BACKGROUND OF top app and other pages
         body: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage(
                   'assets/white_and_lightblue.jpg',), // BG IMAGE IN CATEGORY SCREEN
@@ -145,7 +143,7 @@ class _MainHomePageState extends State<MainHomePage> {
           unselectedIconTheme:
               const IconThemeData(size: 25), // size naman kapag di selected
         ),
-        floatingActionButton: PersonalHelper(),
+        floatingActionButton: const PersonalHelper(),
       ),
     );
   }
