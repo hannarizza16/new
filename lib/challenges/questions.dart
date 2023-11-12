@@ -11,76 +11,65 @@ class QuizQuestion {
 class AnswerChoice {
   final String text;
   final bool isCorrect;
-  final String? imageUrl; // Make imageUrl optional
+  final String? imageUrl;
 
   AnswerChoice({required this.text, required this.isCorrect, this.imageUrl});
 }
 
-Map<String, Map<String, List<QuizQuestion>>> questionsMap = {
-  'C': {
-    'Beginner': [
-      QuizQuestion(
-        questionText: 'What is a variable in C?',
-        answerChoices: [
-          AnswerChoice(text: 'A data type', isCorrect: false),
-          AnswerChoice(text: 'A storage location identified by a memory address', isCorrect: true),
-          AnswerChoice(text: 'A constant value', isCorrect: false),
-          AnswerChoice(text: 'A reserved keyword', isCorrect: false),
-        ],
-      ),
-    ],
-    'Beginner' :[
-      QuizQuestion(
-        questionText: 'What is the difference between C and another programming language?',
-        answerChoices: [
-          AnswerChoice(text: 'Syntax', isCorrect: false),
-          AnswerChoice(text: 'Execution speed', isCorrect: false),
-          AnswerChoice(text: 'Paradigm', isCorrect: false),
-          AnswerChoice(text: 'All of the above', isCorrect: true),
-        ],
-      ),
-      // Add more beginner questions for C
-    ],
-    'Intermediate': [
-      QuizQuestion(
-        questionText: 'What is the difference between C and another programming language?',
-        answerChoices: [
-          AnswerChoice(text: 'Syntax', isCorrect: false),
-          AnswerChoice(text: 'Execution speed', isCorrect: false),
-          AnswerChoice(text: 'Paradigm', isCorrect: false),
-          AnswerChoice(text: 'All of the above', isCorrect: true),
-        ],
-      ),
-      // Add more intermediate questions for C
-    ],
-    'Advanced': [
-      QuizQuestion(
-        questionText: 'How does memory management work in C?',
-        answerChoices: [
-          AnswerChoice(text: 'Automatic Garbage Collection', isCorrect: true),
-          AnswerChoice(text: 'Manual Memory Allocation/Deallocation', isCorrect: false),
-          AnswerChoice(text: 'Memory Pooling', isCorrect: false),
-          AnswerChoice(text: 'Dynamic Memory Allocation', isCorrect: false),
-        ],
-      ),
-      // Add more advanced questions for C
-    ],
-  },
-  'C++': {
-    // Repeat the structure for C++, Java, Dart, Arduino, Ruby, etc.
-  },
-  // Repeat for other languages
+Map<String, List<QuizQuestion>> questionsMap = {
+  'C_Beginner': [
+    QuizQuestion(
+      questionText: 'What is a variable in C?',
+      answerChoices: [
+        AnswerChoice(text: 'A data type', isCorrect: false),
+        AnswerChoice(text: 'A storage location identified by a memory address', isCorrect: true),
+        AnswerChoice(text: 'A constant value', isCorrect: false),
+        AnswerChoice(text: 'A reserved keyword', isCorrect: false),
+      ],
+    ),
+    QuizQuestion(
+      questionText: 'What does the "printf" function do in C?',
+      answerChoices: [
+        AnswerChoice(text: 'Reads input from the user', isCorrect: false),
+        AnswerChoice(text: 'Prints formatted output to the console', isCorrect: true),
+        AnswerChoice(text: 'Allocates memory for variables', isCorrect: false),
+        AnswerChoice(text: 'Defines a new variable', isCorrect: false),
+      ],
+    ),
+    QuizQuestion(
+      questionText: 'Which symbol is used for comments in C?',
+      answerChoices: [
+        AnswerChoice(text: '//', isCorrect: true),
+        AnswerChoice(text: '--', isCorrect: false),
+        AnswerChoice(text: '**', isCorrect: false),
+        AnswerChoice(text: '%%', isCorrect: false),
+      ],
+    ),
+    QuizQuestion(
+      questionText: 'What is the purpose of the "return" statement in a C function?',
+      answerChoices: [
+        AnswerChoice(text: 'Terminates the program', isCorrect: false),
+        AnswerChoice(text: 'Returns a value from the function', isCorrect: true),
+        AnswerChoice(text: 'Declares a new function', isCorrect: false),
+        AnswerChoice(text: 'Loops through code', isCorrect: false),
+      ],
+    ),
+    // Add more beginner questions for C
+  ],
+  'C_Intermediate': [
+    // Intermediate questions for C
+  ],
+  'C_Advanced': [
+    // Advanced questions for C
+  ],
+  // Repeat for other categories and levels
 };
 
 List<QuizQuestion> getQuestionsForCategoryAndLevel(String category, String expertiseLevel) {
-  if (questionsMap.containsKey(category)) {
-    final categoryQuestions = questionsMap[category];
-    if (categoryQuestions != null && categoryQuestions.containsKey(expertiseLevel)) {
-      return categoryQuestions[expertiseLevel]!;
-    } else {
-      throw ArgumentError('Invalid expertise level: $expertiseLevel');
-    }
+  final key = '$category' + '_' + '$expertiseLevel';
+  if (questionsMap.containsKey(key)) {
+    return questionsMap[key]!;
   } else {
-    throw ArgumentError('Invalid category: $category');
+    throw ArgumentError('Invalid category or expertise level');
   }
 }
