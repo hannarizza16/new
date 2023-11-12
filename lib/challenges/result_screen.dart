@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import '../bottom_navigations/challenges_bottom.dart';
-import '../firebase/features/user_auth/presentation/pages/home_page.dart';
 import 'category_selection.dart';
 import 'questions.dart';
 
@@ -24,8 +22,15 @@ class ResultScreen extends StatelessWidget {
       }
     }
 
-    // Add your motivating quote here
-    String motivatingQuote = "You did great! Keep up the good work.";
+    // Determine the motivating quote based on the score
+    String motivatingQuote = '';
+    if (correctAnswers == questions.length) {
+      motivatingQuote = "Congratulations! You got a perfect score!";
+    } else if (correctAnswers >= questions.length - 2) {
+      motivatingQuote = "You did great! Keep up the good work.";
+    } else {
+      motivatingQuote = "BOBO! HAHAHAHAHHAHA";
+    }
 
     return WillPopScope(
       onWillPop: () async {
@@ -39,7 +44,6 @@ class ResultScreen extends StatelessWidget {
           backgroundColor: Color(0xFF164863),
         ),
         body: Container(
-          padding: EdgeInsets.all(16),
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [Color(0xFF3D84A8), Color(0xFF27496D)],
@@ -51,21 +55,33 @@ class ResultScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(
-                'Your Score: $correctAnswers / ${questions.length}',
-                style: TextStyle(fontSize: 24, color: Colors.white),
-              ),
-              SizedBox(height: 20),
-              if (wrongQuestions.isNotEmpty)
-                Text(
-                  'Incorrect Answers: ${wrongQuestions.join(', ')}',
-                  style: TextStyle(fontSize: 18, color: Colors.red),
+              Expanded( // Added Expanded widget
+                child: Padding(
+                  padding: EdgeInsets.all(20),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Your Score: $correctAnswers / ${questions.length}',
+                        style: TextStyle(fontSize: 24, color: Colors.white),
+                        textAlign: TextAlign.center,
+                      ),
+                      SizedBox(height: 20),
+                      if (wrongQuestions.isNotEmpty)
+                        Text(
+                          'Incorrect Answers: ${wrongQuestions.join(', ')}',
+                          style: TextStyle(fontSize: 18, color: Colors.red),
+                        ),
+                      SizedBox(height: 20),
+                      Text(
+                        motivatingQuote,
+                        style: TextStyle(fontSize: 18, color: Colors.white),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
                 ),
-              SizedBox(height: 20),
-              Text(
-                motivatingQuote,
-                style: TextStyle(fontSize: 18, color: Colors.white),
-                textAlign: TextAlign.center,
               ),
             ],
           ),
@@ -80,7 +96,7 @@ class ResultScreen extends StatelessWidget {
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text('Confirm Exit'),
-          content: Text('Are you sure you want to exit to category level selection?'),
+          content: Text('Are you sure you want to exit to expertise level selection?'),
           actions: <Widget>[
             TextButton(
               onPressed: () {
@@ -94,7 +110,7 @@ class ResultScreen extends StatelessWidget {
                 Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => MainHomePage(),
+                    builder: (context) => CategorySelection(),
                   ),
                       (route) => false, // This line clears the navigation stack
                 );
@@ -106,5 +122,4 @@ class ResultScreen extends StatelessWidget {
       },
     );
   }
-
 }
