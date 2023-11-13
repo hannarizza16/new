@@ -27,7 +27,7 @@ List<QuizCategory> getQuizCategories() {
     QuizCategory(
       name: 'Dart',
       expertiseLevels: ['Beginner', 'Intermediate', 'Advanced'],
-      subtext: ['Demonstrate proficiency in Dart, Flutter, and UI responsiveness'],
+      subtext: ['Demonstrate proficiency in Dart, Flutter, \nand UI responsiveness'],
     ),
     QuizCategory(
       name: 'Ruby',
@@ -37,7 +37,7 @@ List<QuizCategory> getQuizCategories() {
     QuizCategory(
       name: 'Arduino',
       expertiseLevels: ['Beginner', 'Intermediate', 'Advanced'],
-      subtext: ['Master embedded systems, coding for microcontrollers \nand creating real-world projects'],
+      subtext: ['Master embedded systems, coding for \nmicrocontrollers and creating real-world projects'],
     ),
     // Add more categories as needed
   ];

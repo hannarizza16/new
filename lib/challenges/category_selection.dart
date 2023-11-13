@@ -4,6 +4,7 @@ import 'categories.dart';
 import 'expertise_level_selection.dart';
 
 class CategorySelection extends StatelessWidget {
+  const CategorySelection ({Key? key});
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -13,10 +14,10 @@ class CategorySelection extends StatelessWidget {
         return false;
       },
       child: Scaffold(
-        appBar: AppBar(
-          title: Text('Select a Category'),
-          backgroundColor: Color(0xFF164863), // Custom AppBar color
-        ),
+        // appBar: AppBar(
+        //   title: Text('Select a Category'),
+        //   backgroundColor: Color(0xFF164863), // Custom AppBar color
+        // ),
         body: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
