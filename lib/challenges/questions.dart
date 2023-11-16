@@ -18,10 +18,23 @@ class AnswerChoice {
     required this.isCorrect,
     this.imageUrl,
     this.isSelected = false,
+
   });
+  AnswerChoice copyWith({
+    String? text,
+    bool? isCorrect,
+    String? imageUrl,
+    bool? isSelected,
+  }) =>
+      AnswerChoice(
+        text: text ?? this.text,
+        isCorrect: isCorrect ?? this.isCorrect,
+        imageUrl: imageUrl ?? this.imageUrl,
+        isSelected: isSelected ?? this.isSelected,
+      );
 }
 
-
+//firebase
 Map<String, List<QuizQuestion>> questionsMap = {
   'C_Beginner': [
     QuizQuestion(

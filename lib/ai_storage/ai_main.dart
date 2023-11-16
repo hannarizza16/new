@@ -133,6 +133,7 @@ class _ChatScreenState extends State<ChatScreen> {
       case "who are you":
       case "what's your name":
         return "Hello! I'm Aether, your friendly assistant bot. I'm here to help answer your questions and provide information on a variety of topics. I'll do my best to assist you.";
+
       case "who created you":
         return "Hello! I'm an AI assistant developed to assist RTU IT students.\n\nMy creation and development were managed by a team focusing on application development.\n\nI'm here to help answer questions and provide information relevant to IT studies at RTU.\n\nWhile I'm a part of your system to provide assistance based on my training, I don't possess specific information about the individual developer who implemented me into your platform ";
       case "java hello world":

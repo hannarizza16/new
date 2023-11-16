@@ -14,16 +14,13 @@ class ResultScreen extends StatelessWidget {
     int correctAnswers = 0;
     List<int> wrongQuestions = [];
 
-
     for (int i = 0; i < questions.length; i++) {
       if (userAnswers[i] == questions[i].answerChoices.indexWhere((choice) => choice.isCorrect)) {
         correctAnswers++;
       } else {
         wrongQuestions.add(i + 1); // Question numbers start from 1, not 0
       }
-    }
-
-
+    } print(userAnswers);
 
 
     // Determine the motivating quote based on the score
