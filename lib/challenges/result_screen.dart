@@ -1,3 +1,4 @@
+import 'package:first_project/firebase/features/user_auth/presentation/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'category_selection.dart';
 import 'questions.dart';
@@ -13,23 +14,23 @@ class ResultScreen extends StatelessWidget {
     int correctAnswers = 0;
     List<int> wrongQuestions = [];
 
-    // Calculate the score and identify correct/wrong answers
     for (int i = 0; i < questions.length; i++) {
       if (userAnswers[i] == questions[i].answerChoices.indexWhere((choice) => choice.isCorrect)) {
         correctAnswers++;
       } else {
         wrongQuestions.add(i + 1); // Question numbers start from 1, not 0
       }
-    }
+    } print(userAnswers);
+
 
     // Determine the motivating quote based on the score
     String motivatingQuote = '';
     if (correctAnswers == questions.length) {
       motivatingQuote = "Congratulations! You got a perfect score!";
-    } else if (correctAnswers >= questions.length - 2) {
+    } else if (correctAnswers >= questions.length - 1) {
       motivatingQuote = "You did great! Keep up the good work.";
     } else {
-      motivatingQuote = "BOBO! HAHAHAHAHHAHA";
+      motivatingQuote = "Aral kapa";
     }
 
     return WillPopScope(
@@ -110,7 +111,7 @@ class ResultScreen extends StatelessWidget {
                 Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => CategorySelection(),
+                    builder: (context) => MainHomePage(),
                   ),
                       (route) => false, // This line clears the navigation stack
                 );

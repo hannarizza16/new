@@ -1,8 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'categories.dart';
 import 'quiz_app.dart';
-
 
 class ExpertiseLevelSelection extends StatelessWidget {
   final String category;
@@ -17,7 +15,6 @@ class ExpertiseLevelSelection extends StatelessWidget {
         backgroundColor: Color(0xFF164863),
       ),
       body: Container(
-        padding: EdgeInsets.all(16),
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [Color(0xFF3D84A8), Color(0xFF27496D)],
@@ -34,12 +31,29 @@ class ExpertiseLevelSelection extends StatelessWidget {
             final expertiseLevel = getQuizCategories()
                 .firstWhere((element) => element.name == category)
                 .expertiseLevels[index];
+
+            // Calculate top margin
+            EdgeInsetsGeometry margin = EdgeInsets.symmetric(horizontal: 16);
+            if (index == 0) {
+              margin = EdgeInsets.fromLTRB(16, 16, 16, 8); // Larger top margin for the first item
+            } else if (index ==
+                getQuizCategories()
+                    .firstWhere((element) => element.name == category)
+                    .expertiseLevels
+                    .length -
+                    1) {
+              margin = EdgeInsets.fromLTRB(16, 8, 16, 16); // Larger bottom margin for the last item
+            } else {
+              margin = EdgeInsets.symmetric(horizontal: 16, vertical: 8); // Equal vertical margins for other items
+            }
+
             return Card(
               elevation: 5,
               color: Color(0xFF263238),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15.0),
               ),
+              margin: margin,
               child: GestureDetector(
                 onTap: () {
                   // Navigate to QuizScreen and pass selected category and expertise level
@@ -55,6 +69,7 @@ class ExpertiseLevelSelection extends StatelessWidget {
                 },
                 child: Container(
                   height: 80,
+                  width: MediaQuery.of(context).size.width - 32,
                   child: Row(
                     children: [
                       Expanded(

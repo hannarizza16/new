@@ -7,7 +7,11 @@ class QuizApp extends StatefulWidget {
   final String category;
   final String expertiseLevel;
 
-  QuizApp({required this.category, required this.expertiseLevel});
+  const QuizApp({
+    super.key,
+    required this.category,
+    required this.expertiseLevel,
+  });
 
   @override
   _QuizAppState createState() => _QuizAppState();
@@ -25,10 +29,22 @@ class _QuizAppState extends State<QuizApp> {
     questions = getQuestionsForCategoryAndLevel(widget.category, widget.expertiseLevel);
   }
 
+  @override
+  void dispose() {
+    resetSelectedAnswers();
+    super.dispose();
+  }
+
   void handleAnswer(int answerIndex) {
     setState(() {
       for (int i = 0; i < questions[currentQuestionIndex].answerChoices.length; i++) {
+        // print(questions[currentQuestionIndex].answerChoices[i].isSelected);
+
         questions[currentQuestionIndex].answerChoices[i].isSelected = i == answerIndex;
+
+        final answerChoice = questions[currentQuestionIndex].answerChoices[i].copyWith(isSelected: i == answerIndex);
+
+        questions[currentQuestionIndex].answerChoices[i] = answerChoice;
       }
       showNextQuestionButton = true;
     });
@@ -50,14 +66,14 @@ class _QuizAppState extends State<QuizApp> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Confirm Exit'),
-          content: Text('Are you sure you want to exit?'),
+          title: const Text('Confirm Exit'),
+          content: const Text('Are you sure you want to exit?'),
           actions: <Widget>[
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text('Cancel'),
+              child: const Text('Cancel'),
             ),
             TextButton(
               onPressed: () {
@@ -67,12 +83,12 @@ class _QuizAppState extends State<QuizApp> {
                 Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => CategorySelection(),
+                    builder: (context) => const CategorySelection(),
                   ),
                       (route) => false, // This line clears the navigation stack
                 );
               },
-              child: Text('Exit'),
+              child: const Text('Exit'),
             ),
           ],
         );
@@ -88,15 +104,15 @@ class _QuizAppState extends State<QuizApp> {
         currentQuestionIndex++;
       } else {
         // If it's the last question, navigate to the result screen
-        resetSelectedAnswers(); // Reset selected answers before navigating to the result screen
+        // Reset selected answers before navigating to the result screen
+
+
         Navigator.push(
           context,
           MaterialPageRoute(
             builder: (context) => ResultScreen(
               questions: questions,
-              userAnswers: questions
-                  .map((q) => q.answerChoices.indexWhere((choice) => choice.isSelected))
-                  .toList(),
+              userAnswers: getUserAnswer(),
             ),
           ),
         );
@@ -104,22 +120,31 @@ class _QuizAppState extends State<QuizApp> {
     });
   }
 
+  List<int> getUserAnswer() {
+    final answer = questions.map((q) {
+      return q.answerChoices.indexWhere((choice) {
+        return choice.isSelected;
+      });
+    }).toList();
+    return answer;
+  }
+
   Future<bool> _onWillPop() async {
     final exitConfirmed = await showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text('Confirm Exit'),
-        content: Text('Are you sure you want to exit the quiz? Your progress will be lost.'),
+        title: const Text('Confirm Exit'),
+        content: const Text('Are you sure you want to exit the quiz? Your progress will be lost.'),
         actions: <Widget>[
           TextButton(
             onPressed: () => Navigator.of(context).pop(false),
-            child: Text('Cancel'),
+            child: const Text('Cancel'),
           ),
           TextButton(
             onPressed: () {
               Navigator.of(context).pop(true);
             },
-            child: Text('Exit'),
+            child: const Text('Exit'),
           ),
         ],
       ),
@@ -142,11 +167,11 @@ class _QuizAppState extends State<QuizApp> {
       child: Scaffold(
         appBar: AppBar(
           title: Text('Quiz: ${widget.category} - ${widget.expertiseLevel}'),
-          backgroundColor: Color(0xFF164863),
+          backgroundColor: const Color(0xFF164863),
         ),
         body: Container(
-          padding: EdgeInsets.all(16),
-          decoration: BoxDecoration(
+          padding: const EdgeInsets.all(16),
+          decoration: const BoxDecoration(
             gradient: LinearGradient(
               colors: [Color(0xFF3D84A8), Color(0xFF27496D)],
               begin: Alignment.topLeft,
@@ -158,17 +183,17 @@ class _QuizAppState extends State<QuizApp> {
             children: [
               // Question
               Container(
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: Color(0xFF263238),
+                  color: const Color(0xFF263238),
                   borderRadius: BorderRadius.circular(15.0),
                 ),
                 child: Text(
                   questions[currentQuestionIndex].questionText,
-                  style: TextStyle(fontSize: 18, color: Colors.white),
+                  style: const TextStyle(fontSize: 18, color: Colors.white),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               // Answer Choices
               ...List.generate(questions[currentQuestionIndex].answerChoices.length, (index) {
                 final choice = questions[currentQuestionIndex].answerChoices[index];
@@ -177,20 +202,20 @@ class _QuizAppState extends State<QuizApp> {
                     handleAnswer(index);
                   },
                   child: Container(
-                    margin: EdgeInsets.symmetric(vertical: 5),
-                    padding: EdgeInsets.all(10),
+                    margin: const EdgeInsets.symmetric(vertical: 5),
+                    padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
-                      color: choice.isSelected ? Colors.pink[900] : Color(0xFF263238),
+                      color: choice.isSelected ? Colors.pink[900] : const Color(0xFF263238),
                       borderRadius: BorderRadius.circular(15.0),
                     ),
                     child: Text(
                       choice.text,
-                      style: TextStyle(fontSize: 16, color: Colors.white),
+                      style: const TextStyle(fontSize: 16, color: Colors.white),
                     ),
                   ),
                 );
               }),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               // Next Question / Submit Button
               if (showNextQuestionButton)
                 ElevatedButton(
