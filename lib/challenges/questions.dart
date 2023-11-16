@@ -25,7 +25,7 @@ class AnswerChoice {
 Map<String, List<QuizQuestion>> questionsMap = {
   'C_Beginner': [
     QuizQuestion(
-      questionText: 'What is a asdasvariable in C?',
+      questionText: 'What is a variable in C?',
       answerChoices: [
         AnswerChoice(text: 'A data type', isCorrect: false),
         AnswerChoice(text: 'A storage location identified by a memory address', isCorrect: true),
@@ -34,7 +34,7 @@ Map<String, List<QuizQuestion>> questionsMap = {
       ],
     ),
     QuizQuestion(
-      questionText: 'What does the asdasda"printf" function do in C?',
+      questionText: 'What does the "printf" function do in C?',
       answerChoices: [
         AnswerChoice(text: 'Reads input from the user', isCorrect: false),
         AnswerChoice(text: 'Prints formatted output to the console', isCorrect: true),

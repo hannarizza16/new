@@ -85,8 +85,8 @@ class _AllLanguagesState extends State<AllLanguages> {
                   BorderSide(
                     color: selectedScreen == index
                         ? Colors.lightBlue[400]!
-                        : Colors.black,
-                    width: 1.0,
+                        : Color(0xFF164863),
+                    width: 1.5,
                   ),
                 ),
                 backgroundColor: MaterialStateProperty.all(selectedScreen == index ? Colors.lightBlue[400] : Colors.transparent),
@@ -97,7 +97,7 @@ class _AllLanguagesState extends State<AllLanguages> {
               style: TextStyle(
                 color: selectedScreen == index
                     ? Colors.white
-                    : Colors.black,
+                    : Colors.white,
               ),),
             ),
             itemCount: Languages.values
@@ -108,19 +108,17 @@ class _AllLanguagesState extends State<AllLanguages> {
 
         Expanded(
           flex: 10,
-          // space o kung gano kalaki yung space na nakalaan for language button
-          child: selectedScreen == null // kapag si selected screen ay null
-              ? Container( // BACKGROUND IMAGE
-                  decoration: const BoxDecoration(
-    image: DecorationImage(
-    image: AssetImage('assets/white_and_lightblue.jpg'),
-    fit:  BoxFit.cover,
-
-    )
-
-    ),
-                  // color of button
-                  child: Padding(
+          child: selectedScreen == null
+              ? Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Color(0xFF3D84A8), Color(0xFF27496D)],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+            ),
+            // color of button
+            child: Padding(
                       padding: const EdgeInsets.only(top: 30, left: 10, right: 10),
                       child: GridView.builder(
                         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
