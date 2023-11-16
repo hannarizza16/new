@@ -126,14 +126,14 @@ class _AllLanguagesState extends State<AllLanguages> {
                       children: [
                         Text(
                           'Courses',
-                          style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.normal,
+                          style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.normal,
                           ),
 
                         ),
                         Container(
                           width: MediaQuery.of(context).size.width -80 , // Adjust the width of the line
                           height: 1, // Adjust the height of the line to make it long
-                          color: Colors.black, // Adjust the color of the line
+                          color: Colors.white, // Adjust the color of the line
                         ),
                       ],
                     ),

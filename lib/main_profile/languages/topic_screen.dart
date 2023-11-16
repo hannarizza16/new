@@ -53,6 +53,7 @@ class _TopicScreenState extends State<TopicScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.black, // APP BAR COLOR
         automaticallyImplyLeading: false,
         leading: IconButton(
           onPressed: () => Navigator.of(context).pop(),
@@ -124,10 +125,9 @@ class _TopicScreenState extends State<TopicScreen> {
                             if (subTopic.attachment != null &&
                                 subTopic.attachment!.isNotEmpty)
                               Center(
-                                child: Image.asset(
+                                child: Image.asset( // DITO YUNG SA IMAGE NG LANGUAGES
                                     subTopic.attachment!), // Wrap with Center
                               ), // Assuming the attachment is the image path
-                            // DITO YUNG SA IMAGE NG LANGUAGES
                           ],
                         );
                       },

@@ -8,7 +8,7 @@ class GameDevPage extends StatelessWidget {
     return const Center(
       child: Text(
         'GAME DEVELOPMENT',
-        style: TextStyle(fontSize: 60),
+        style: TextStyle(fontSize: 10),
       ),
     );
   }
