@@ -2,7 +2,7 @@ import 'package:first_project/bottom_navigations/code_bottom.dart';
 import 'package:first_project/bottom_navigations/home_bottom.dart';
 import 'package:first_project/bottom_navigations/newsfeed_bottom.dart';
 import 'package:first_project/bottom_navigations/profile_bottom.dart';
-import 'package:first_project/bottom_navigations/challenges_bottom.dart';
+import 'package:first_project/challenges/category_selection.dart';
 import 'package:first_project/firebase/features/user_auth/presentation/widgets/draggable_fab.dart';
 import 'package:first_project/firebase/features/user_auth/presentation/widgets/sidebar.dart';
 import 'package:first_project/extension/bottom_nav_ext.dart';
@@ -22,7 +22,7 @@ class _MainHomePageState extends State<MainHomePage> {
     const NewsFeedPage(),
     const CodePage(),
     const AllLanguages(),
-    const ChallengesPage(),
+    const CategorySelection(),
     const ProfilePage(),
   ]; // kung anong pinindot mo na button sa bottom nav //this is home
 
@@ -103,16 +103,21 @@ class _MainHomePageState extends State<MainHomePage> {
         drawer: const SideBar(),
         appBar: AppBar(
           title: const Text('CodeX'),
-          backgroundColor: Colors.lightBlue[300], // app bar color only
+          backgroundColor: Color(0xFF164863), // app bar color only
         ),
         backgroundColor:
             Colors.transparent, // BACKGROUND OF top app and other pages
         body: Container(
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(
-                  'assets/white_and_lightblue.jpg',), // BG IMAGE IN CATEGORY SCREEN
-              fit: BoxFit.cover,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Color(0xFF3D84A8), Color(0xFF27496D)],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+          // decoration: const BoxDecoration(
+          //   image: DecorationImage(
+          //     image: AssetImage(
+          //         'assets/white_and_lightblue.jpg',), // BG IMAGE IN CATEGORY SCREEN
+          //     fit: BoxFit.cover,
               // colorFilter: ColorFilter.mode( // SET OPACITY
               //   Colors.white.withOpacity(0.5), // Set the opacity level here
               //   BlendMode.srcOver,
