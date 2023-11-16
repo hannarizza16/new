@@ -85,7 +85,7 @@ class _AllLanguagesState extends State<AllLanguages> {
                   BorderSide(
                     color: selectedScreen == index
                         ? Colors.lightBlue[400]!
-                        : Colors.black,
+                        : Colors.white, // LANGUAGE BORDER COLOR
                     width: 1.0,
                   ),
                 ),
@@ -97,13 +97,15 @@ class _AllLanguagesState extends State<AllLanguages> {
               style: TextStyle(
                 color: selectedScreen == index
                     ? Colors.white
-                    : Colors.black,
+                    : Colors.white, // LANGUAGE BUTTON TEXT
               ),),
             ),
             itemCount: Languages.values
                 .length, // ilalabas lahat ng values or list ni Languages na nakaindicate sa enums
           ),
         ),
+
+
 
 
         Expanded(
@@ -116,12 +118,38 @@ class _AllLanguagesState extends State<AllLanguages> {
     image: AssetImage('assets/white_and_lightblue.jpg'),
     fit:  BoxFit.cover,
 
-    )
+    ),
 
     ),
-                  // color of button
-                  child: Padding(
-                      padding: const EdgeInsets.only(top: 30, left: 10, right: 10),
+
+
+
+    child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      SizedBox(height: 15),
+Row(
+  children: [
+    Text(
+    'Courses',
+    style: TextStyle(color: Colors.black, fontSize: 18, fontWeight: FontWeight.normal,
+    ),
+
+    ),
+                        Container(
+                          width: MediaQuery.of(context).size.width -80 , // Adjust the width of the line
+                          height: 1, // Adjust the height of the line to make it long
+                          color: Colors.black, // Adjust the color of the line
+                        ),
+                  ],
+        ),
+
+    // Adjust the height as needed
+    Expanded(
+
+
+                  // child:  Padding(
+                  //     padding: const EdgeInsets.only(top: 20, left: 10, right: 10),
                       child: GridView.builder(
                         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
@@ -139,30 +167,27 @@ class _AllLanguagesState extends State<AllLanguages> {
                             elevation: 8,
 
 
-                            //selectedScreen == null
-                            // if index is not equal to selected screen ang kulay niya is deep purple  but if == ang color niya is deepPurple[300]
-                            backgroundColor: index != selectedSubject
+                           backgroundColor: index != selectedSubject
                                 ? Colors.white
                                 : Colors.cyan[600],
-                            // padding: EdgeInsets.all(1),
 
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20),
+                              borderRadius: BorderRadius.circular(100),
                             ),
                           ),
                           //CALLING THE IMAGE IN SUBJECT BUTTON
-                          onPressed: isButtonEnabled ? () => _onViewSubject(index) : () {}, // : null,
+                          onPressed: isButtonEnabled ? () => _onViewSubject(index) : () {},              // : null,
                           child: Image.asset(
                               SubjectSection.values[index].imagePath,
                           // width: 100,
-                          height: 150 ),
+                          height: 150 ), // IMAGE HEIGHT
                         ),
 
 
                         itemCount: SubjectSection.values
                             .length, // ilalabas lahat ng values or list ni Languages na nakaindicate sa enums
-                      )),
-                )
+                      ),
+                )]))
               : _viewLanguageScreen[
                   selectedScreen!], //"!" is an indication na hindi siya pwede maging null.
           //   pag nag click siya sa mga languages ang lalabas is ito pero kapag hindi naman siya nag click yung sa ? ang ilalabas.
