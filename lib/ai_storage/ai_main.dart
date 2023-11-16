@@ -281,8 +281,8 @@ class _ChatScreenState extends State<ChatScreen> {
                 child: TextField(
                   controller: _textController,
                   onSubmitted: _handleSubmitted,
-                  decoration:
-                      const InputDecoration.collapsed(hintText: 'Send a message'),
+                  decoration: const InputDecoration.collapsed(
+                      hintText: 'Send a message'),
                 ),
               ),
               GestureDetector(
