@@ -23,7 +23,7 @@ class CategoryScreen extends StatelessWidget {
             //SUBJECT CATEGORY STYLE
             style: ButtonStyle(
               side: MaterialStateProperty.all(const BorderSide(
-                color: Colors.white,
+                color: Colors.black,
                 width: 2.0,
               )),
               foregroundColor: MaterialStateProperty.all(
@@ -39,7 +39,7 @@ class CategoryScreen extends StatelessWidget {
                     text: category.text,
                     style: const TextStyle(
                       fontSize: 24, // Change the font size
-                      color: Colors.white, // Change the text color
+                      color: Colors.black, // Change the text color
                       fontWeight: FontWeight.bold, // Apply font weight
                       letterSpacing: 1.5, // Apply letter spacing
                     ),

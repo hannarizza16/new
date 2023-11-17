@@ -181,7 +181,9 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Aether')),
+      appBar: AppBar(title: const Text('Aether'),
+        backgroundColor: Color(0xFF164863),
+      ),
       body: Column(children: <Widget>[
         Expanded(
           child: // Inside the ChatScreen build method
@@ -215,8 +217,8 @@ class _ChatScreenState extends State<ChatScreen> {
                   // BOX DECORATION MESSAGE DECORATION
                   decoration: BoxDecoration(
                     color: messages[index].messageType == ChatMessageType.User
-                        ? Colors.blue
-                        : Colors.green,
+                        ? Colors.lightBlue
+                        : Color(0xFF164863),
                     borderRadius: BorderRadius.circular(8.0),
                   ),
 
