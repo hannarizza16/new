@@ -15,23 +15,26 @@ class ResultScreen extends StatelessWidget {
     List<int> wrongQuestions = [];
 
     for (int i = 0; i < questions.length; i++) {
-      if (userAnswers[i] == questions[i].answerChoices.indexWhere((choice) => choice.isCorrect)) {
+      if (userAnswers[i] ==
+          questions[i].answerChoices.indexWhere((choice) => choice.isCorrect)) {
         correctAnswers++;
       } else {
         wrongQuestions.add(i + 1); // Question numbers start from 1, not 0
       }
-    } print(userAnswers);
-
+    }
+    print(userAnswers);
 
     // Determine the motivating quote based on the score
     String motivatingQuote = '';
     if (correctAnswers == questions.length) {
-      motivatingQuote = "Congratulations! You got a perfect score!";
+      motivatingQuote = "Congratulations! Achieving a perfect score is a testament to your dedication and knowledge. It's not just a victory; it's a milestone in your journey of continuous learning.";
     } else if (correctAnswers >= questions.length - 1) {
-      motivatingQuote = "You did great! Keep up the good work.";
+      motivatingQuote = "You did great! Success is not just about the destination; it's about the journey. Your commitment and effort are evident in your performance.";
     } else {
-      motivatingQuote = "Aral kapa";
+      motivatingQuote =
+      "Don't be discouraged by a low score. Every mistake is a step towards learning and improvement. Keep pushing yourself, and success will follow!";
     }
+
 
     return WillPopScope(
       onWillPop: () async {
@@ -42,49 +45,60 @@ class ResultScreen extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: Text('Quiz Result'),
-          backgroundColor: Color(0xFF164863),
+          backgroundColor: Color(0xFF279EFF),
         ),
         body: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [Color(0xFF3D84A8), Color(0xFF27496D)],
+              colors: [
+                Color(0xFFE0F4FF),
+                Color(0xFF87C4FF)
+              ], // background color
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
           ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Expanded( // Added Expanded widget
-                child: Padding(
-                  padding: EdgeInsets.all(20),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Your Score: $correctAnswers / ${questions.length}',
-                        style: TextStyle(fontSize: 24, color: Colors.white),
-                        textAlign: TextAlign.center,
-                      ),
-                      SizedBox(height: 20),
-                      if (wrongQuestions.isNotEmpty)
+          child: Center(
+            child: Padding(
+              padding: EdgeInsets.all(20),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
                         Text(
-                          'Incorrect Answers: ${wrongQuestions.join(', ')}',
-                          style: TextStyle(fontSize: 18, color: Colors.red),
+                          'Your Score: $correctAnswers / ${questions.length}',
+                          style:
+                              TextStyle(fontSize: 30, color: Color(0xFF0C356A)),
+                          textAlign: TextAlign.center,
                         ),
-                      SizedBox(height: 20),
-                      Text(
-                        motivatingQuote,
-                        style: TextStyle(fontSize: 18, color: Colors.white),
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
+                        SizedBox(height: 20),
+                        if (wrongQuestions.isNotEmpty)
+                          Text(
+                            'Incorrect Answers in Question: ${wrongQuestions.join(', ')}',
+                            style: TextStyle(fontSize: 18, color: Colors.red),
+                          ),
+                        SizedBox(height: 20),
+                        Text(
+                          motivatingQuote,
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Color(0xFF0C356A),
+                            fontStyle: FontStyle.italic, // Italicize the quote
+                            fontWeight: FontWeight.bold,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    ),
                   ),
-                ),
+                ],
               ),
-            ],
+            ),
           ),
         ),
       ),
@@ -97,7 +111,8 @@ class ResultScreen extends StatelessWidget {
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text('Confirm Exit'),
-          content: Text('Are you sure you want to exit to expertise level selection?'),
+          content: Text(
+              'Are you sure you want to exit to expertise level selection?'),
           actions: <Widget>[
             TextButton(
               onPressed: () {
@@ -113,7 +128,7 @@ class ResultScreen extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (context) => MainHomePage(),
                   ),
-                      (route) => false, // This line clears the navigation stack
+                  (route) => false, // This line clears the navigation stack
                 );
               },
               child: Text('Exit'),

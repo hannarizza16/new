@@ -26,7 +26,8 @@ class _QuizAppState extends State<QuizApp> {
   void initState() {
     super.initState();
     // Get questions for the specified category and expertise level
-    questions = getQuestionsForCategoryAndLevel(widget.category, widget.expertiseLevel);
+    questions =
+        getQuestionsForCategoryAndLevel(widget.category, widget.expertiseLevel);
   }
 
   @override
@@ -37,12 +38,17 @@ class _QuizAppState extends State<QuizApp> {
 
   void handleAnswer(int answerIndex) {
     setState(() {
-      for (int i = 0; i < questions[currentQuestionIndex].answerChoices.length; i++) {
+      for (int i = 0;
+          i < questions[currentQuestionIndex].answerChoices.length;
+          i++) {
         // print(questions[currentQuestionIndex].answerChoices[i].isSelected);
 
-        questions[currentQuestionIndex].answerChoices[i].isSelected = i == answerIndex;
+        questions[currentQuestionIndex].answerChoices[i].isSelected =
+            i == answerIndex;
 
-        final answerChoice = questions[currentQuestionIndex].answerChoices[i].copyWith(isSelected: i == answerIndex);
+        final answerChoice = questions[currentQuestionIndex]
+            .answerChoices[i]
+            .copyWith(isSelected: i == answerIndex);
 
         questions[currentQuestionIndex].answerChoices[i] = answerChoice;
       }
@@ -85,7 +91,7 @@ class _QuizAppState extends State<QuizApp> {
                   MaterialPageRoute(
                     builder: (context) => const CategorySelection(),
                   ),
-                      (route) => false, // This line clears the navigation stack
+                  (route) => false, // This line clears the navigation stack
                 );
               },
               child: const Text('Exit'),
@@ -105,7 +111,6 @@ class _QuizAppState extends State<QuizApp> {
       } else {
         // If it's the last question, navigate to the result screen
         // Reset selected answers before navigating to the result screen
-
 
         Navigator.push(
           context,
@@ -134,7 +139,8 @@ class _QuizAppState extends State<QuizApp> {
       context: context,
       builder: (context) => AlertDialog(
         title: const Text('Confirm Exit'),
-        content: const Text('Are you sure you want to exit the quiz? Your progress will be lost.'),
+        content: const Text(
+            'Are you sure you want to exit the quiz? Your progress will be lost.'),
         actions: <Widget>[
           TextButton(
             onPressed: () => Navigator.of(context).pop(false),
@@ -167,13 +173,13 @@ class _QuizAppState extends State<QuizApp> {
       child: Scaffold(
         appBar: AppBar(
           title: Text('Quiz: ${widget.category} - ${widget.expertiseLevel}'),
-          backgroundColor: const Color(0xFF164863),
+          backgroundColor: Color(0xFF279EFF),
         ),
         body: Container(
           padding: const EdgeInsets.all(16),
           decoration: const BoxDecoration(
             gradient: LinearGradient(
-              colors: [Color(0xFF3D84A8), Color(0xFF27496D)],
+              colors: [Color(0xFFE0F4FF), Color(0xFF87C4FF)], //background color
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
@@ -185,27 +191,36 @@ class _QuizAppState extends State<QuizApp> {
               Container(
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: const Color(0xFF263238),
-                  borderRadius: BorderRadius.circular(15.0),
+                  color: const Color(0xFF0C356A),
+                  borderRadius: BorderRadius.circular(5.0),
                 ),
-                child: Text(
-                  questions[currentQuestionIndex].questionText,
-                  style: const TextStyle(fontSize: 18, color: Colors.white),
+                child: Align(
+                  alignment: Alignment.center,
+                  child: Text(
+                    questions[currentQuestionIndex].questionText,
+                    style: const TextStyle(fontSize: 18, color: Color(0xFFFFCC70)),
+                  ),
                 ),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 30),
               // Answer Choices
-              ...List.generate(questions[currentQuestionIndex].answerChoices.length, (index) {
-                final choice = questions[currentQuestionIndex].answerChoices[index];
+              ...List.generate(
+                  questions[currentQuestionIndex].answerChoices.length,
+                  (index) {
+                final choice =
+                    questions[currentQuestionIndex].answerChoices[index];
                 return GestureDetector(
                   onTap: () {
                     handleAnswer(index);
                   },
                   child: Container(
-                    margin: const EdgeInsets.symmetric(vertical: 5),
+                    //SELECTED ANSWER UI
+                    margin: const EdgeInsets.symmetric(vertical: 9),
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
-                      color: choice.isSelected ? Colors.pink[900] : const Color(0xFF263238),
+                      color: choice.isSelected
+                          ? Color(0xFF279EFF)
+                          : const Color(0xFF0C356A),
                       borderRadius: BorderRadius.circular(15.0),
                     ),
                     child: Text(
@@ -219,7 +234,8 @@ class _QuizAppState extends State<QuizApp> {
               // Next Question / Submit Button
               if (showNextQuestionButton)
                 ElevatedButton(
-                  onPressed: isLastQuestion ? goToNextQuestion : goToNextQuestion,
+                  onPressed:
+                      isLastQuestion ? goToNextQuestion : goToNextQuestion,
                   child: Text(isLastQuestion ? 'Submit' : 'Next Question'),
                 ),
             ],
@@ -230,7 +246,8 @@ class _QuizAppState extends State<QuizApp> {
   }
 }
 
-List<QuizQuestion> getQuestionsForCategoryAndLevel(String category, String expertiseLevel) {
+List<QuizQuestion> getQuestionsForCategoryAndLevel(
+    String category, String expertiseLevel) {
   final key = '$category' + '_' + '$expertiseLevel';
   if (questionsMap.containsKey(key)) {
     return questionsMap[key]!;

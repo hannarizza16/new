@@ -182,12 +182,19 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Aether'),
-        backgroundColor: Color(0xFF164863),
+        backgroundColor: Color(0xFF279EFF),
       ),
       body: Column(children: <Widget>[
         Expanded(
-          child: // Inside the ChatScreen build method
-              ListView.builder(
+          child:Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Color(0xFFE0F4FF), Color(0xFF87C4FF)],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+            ),
+              child: ListView.builder(
             reverse: true,
             itemCount: messages.length,
             itemBuilder: (BuildContext context, int index) {
@@ -217,8 +224,8 @@ class _ChatScreenState extends State<ChatScreen> {
                   // BOX DECORATION MESSAGE DECORATION
                   decoration: BoxDecoration(
                     color: messages[index].messageType == ChatMessageType.User
-                        ? Colors.lightBlue
-                        : Color(0xFF164863),
+                        ? Color(0xFF279EFF)
+                        : Color(0xFF0C356A),
                     borderRadius: BorderRadius.circular(8.0),
                   ),
 
@@ -242,6 +249,7 @@ class _ChatScreenState extends State<ChatScreen> {
             },
           ),
         ),
+        ),
 
         //  Loading message,  error nung una is nilagay mo siya sa loob ng build text composer
         if (isBotResponding)
@@ -249,11 +257,13 @@ class _ChatScreenState extends State<ChatScreen> {
             padding: const EdgeInsets.all(8.0),
             child: Row(
               children: [
+
                 // ANIMATED TEXT HERE AND FONT
                 const SizedBox(
                   width: 10,
                 ),
                 AnimatedTextKit(repeatForever: true, animatedTexts: [
+
                   TypewriterAnimatedText('AI is typing...',
                       speed: const Duration(milliseconds: 50),
                       textStyle: (const TextStyle(
@@ -266,8 +276,8 @@ class _ChatScreenState extends State<ChatScreen> {
             ),
           ),
 
-        const Divider(height: 20.0),
-        Container(color: Colors.white, child: _buildTextComposer()),
+        const Divider(height: 0.0),
+        Container(color: Color(0xFFE0F4FF), child: _buildTextComposer()),
       ]),
     );
   }

@@ -12,12 +12,12 @@ class ExpertiseLevelSelection extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Select an Expertise Level for $category'),
-        backgroundColor: Color(0xFF164863),
+        backgroundColor: Color(0xFF279EFF),
       ),
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [Color(0xFF3D84A8), Color(0xFF27496D)],
+            colors: [Color(0xFFE0F4FF), Color(0xFF87C4FF)], //background color
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
@@ -49,7 +49,7 @@ class ExpertiseLevelSelection extends StatelessWidget {
 
             return Card(
               elevation: 5,
-              color: Color(0xFF263238),
+              color: Color(0xFF0C356A),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15.0),
               ),
@@ -77,7 +77,7 @@ class ExpertiseLevelSelection extends StatelessWidget {
                           child: ListTile(
                             title: Text(
                               expertiseLevel,
-                              style: TextStyle(fontSize: 18, color: Colors.orange),
+                              style: TextStyle(fontSize: 18, color: Color(0xFFFFCC70)),
                             ),
                           ),
                         ),
@@ -98,7 +98,7 @@ class ExpertiseLevelSelection extends StatelessWidget {
     return Container(
       width: 20,
       decoration: BoxDecoration(
-        color: Colors.pink[900],
+        color: Color(0xFFFFCC70),
         borderRadius: BorderRadius.only(
           topRight: Radius.circular(15.0),
           bottomRight: Radius.circular(15.0),

@@ -85,14 +85,14 @@ class _AllLanguagesState extends State<AllLanguages> {
                 side: MaterialStateProperty.all(
                   BorderSide(
                     color: selectedScreen == index
-                        ? Colors.lightBlue[400]!
-                        : Color(0xFF164863),
-                    width: 1.5,
+                        ? Color(0xFF0C356A)!
+                        : Color(0xFF0C356A)!,
+                    width: 2,
                   ),
                 ),
                 backgroundColor: MaterialStateProperty.all(
                     selectedScreen == index
-                        ? Colors.lightBlue[400]
+                        ? Color(0xFF0C356A)!
                         : Colors.transparent),
               ),
 
@@ -100,7 +100,7 @@ class _AllLanguagesState extends State<AllLanguages> {
               child: Text(
                 Languages.values[index].value, //TEXT SCREEN COLOR LANGUAGE
                 style: TextStyle(
-                  color: selectedScreen == index ? Colors.white : Colors.white,
+                  color: selectedScreen == index ?  Color(0xFFFFCC70) : Colors.black,
                 ),
               ),
             ),
@@ -114,7 +114,7 @@ class _AllLanguagesState extends State<AllLanguages> {
               ? Container(
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
-                      colors: [Color(0xFF3D84A8), Color(0xFF27496D)],
+                      colors: [Color(0xFFE0F4FF), Color(0xFF87C4FF)],
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                     ),
@@ -128,7 +128,7 @@ class _AllLanguagesState extends State<AllLanguages> {
                             Text(
                               'Courses',
                               style: TextStyle(
-                                color: Colors.white,
+                                color: Colors.black,
                                 fontSize: 18,
                                 fontWeight: FontWeight.normal,
                               ),
@@ -136,7 +136,7 @@ class _AllLanguagesState extends State<AllLanguages> {
                             Container(
                               width: MediaQuery.of(context).size.width - 80, // Adjust the width of the line
                               height: 1, // Adjust the height of the line to make it long
-                              color: Colors.white, // Adjust the color of the line
+                              color: Colors.black, // Adjust the color of the line
                             ),
                           ],
                         ),

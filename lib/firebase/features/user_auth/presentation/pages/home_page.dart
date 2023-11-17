@@ -103,14 +103,14 @@ class _MainHomePageState extends State<MainHomePage> {
         drawer: const SideBar(),
         appBar: AppBar(
           title: const Text('CodeX'),
-          backgroundColor: Color(0xFF164863), // app bar color only
+          backgroundColor: Color(0xFF279EFF), // app bar color only
         ),
         backgroundColor:
         Colors.transparent, // BACKGROUND OF top app and other pages
         body: Container(
-          decoration: BoxDecoration(
+          decoration: BoxDecoration( //LANGUAGES NA SLIDING
             gradient: LinearGradient(
-              colors: [Color(0xFF3D84A8), Color(0xFF27496D)],
+              colors: [Color(0xFFE0F4FF), Color(0xFF87C4FF)],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
@@ -118,9 +118,9 @@ class _MainHomePageState extends State<MainHomePage> {
           child: _bottomScreens[selectedCurrentIndex],
         ),
 
-        bottomNavigationBar: Theme(
+        bottomNavigationBar: Theme( //BOTTOM NAVIGATION BAR
           data: Theme.of(context).copyWith(
-            canvasColor: Color(0xFF164863), // Updated canvasColor
+            canvasColor: Color(0xFF279EFF), // Updated canvasColor
             primaryColor: Colors.blue, // ICON in bottom navigation
             textTheme: Theme.of(context)
                 .textTheme

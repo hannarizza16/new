@@ -21,7 +21,7 @@ class CategorySelection extends StatelessWidget {
         body: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [Color(0xFF3D84A8), Color(0xFF27496D)],
+              colors: [Color(0xFFE0F4FF), Color(0xFF87C4FF)], //background color
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
@@ -41,7 +41,8 @@ class CategorySelection extends StatelessWidget {
                       return Padding(
                         padding: EdgeInsets.only(bottom: 18),
                         child: Card(
-                          color: Color(0xFF263238),
+                          elevation: 10,
+                          color: Color(0xFF0C356A), //cards color
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20.0),
                           ),
@@ -70,7 +71,7 @@ class CategorySelection extends StatelessWidget {
                                               category.name,
                                               style: TextStyle(
                                                 fontSize: 30,
-                                                color: Colors.orange,
+                                                color: Color(0xFFFFCC70), //FONT COLOR FOR HEADING LANGUAGES
                                                 letterSpacing: 1.0,
                                               ),
                                             ),
@@ -112,12 +113,12 @@ class CategorySelection extends StatelessWidget {
     );
   }
 
-  Widget _buildDesignElement() {
+  Widget _buildDesignElement() { //line pink on the buttons
     return Container(
       width: 20, // Set the width of the design element here
       height: 130, // Set the height of the design element to match the card height
       decoration: BoxDecoration(
-        color: Colors.pink[900], // Set the color of the design element here
+        color: Color(0xFFFFCC70), // Set the color of the design element here
         borderRadius: BorderRadius.only(
           topRight: Radius.circular(20.0),
           bottomRight: Radius.circular(20.0),
