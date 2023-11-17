@@ -36,24 +36,39 @@ class SideBar extends StatelessWidget {
   }
   @override
   Widget build(BuildContext context) {
+    TextStyle profileTextStyle = TextStyle(
+      color: Colors.black,
+      fontWeight: FontWeight.bold,
+    );
+
     return Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
             UserAccountsDrawerHeader(
-              accountName: const Text("Hanna Rizza Malana"),
-              accountEmail: const Text("hmalana@rtu.edu.ph"),
+              accountName:  Text("Hanna Rizza Malana", style: profileTextStyle,),
+              accountEmail:  Text("hmalana@rtu.edu.ph", style: profileTextStyle,),
               currentAccountPicture: const CircleAvatar(
                 radius: 100,
-                backgroundColor: Color(0xffFDCF09),
-                backgroundImage: AssetImage('assets/jrizal.jpg')
-                ,
+                backgroundImage: AssetImage('assets/jrizal.jpg'),
               ),
-              decoration: BoxDecoration(
-                color: Colors.lightBlue[300],
-                //image: DecorationImage(image: AssetImage("assets/EafbSjcXgAEv71t_edge.png"), fit: BoxFit.cover) //BACKGROUND IMAGE IN SIDEBAR
+
+                decoration: BoxDecoration(
+                  color: Colors.transparent,
+                  image: DecorationImage(
+                    image: AssetImage('assets/logorizal_4.png'),
+                    fit: BoxFit.cover,
+
+                    colorFilter: ColorFilter.mode(
+                      Colors.white.withOpacity(0.3), // Adjust the opacity (0.0 to 1.0)
+                      BlendMode.dstATop,
+                    ),
+
+                ),
               ),
             ),
+
+
 
             ...SideBarSection.values
                 .map(
