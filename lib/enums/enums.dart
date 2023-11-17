@@ -25,12 +25,13 @@ enum BottomNavs {
 }
 
 enum Languages {
-  java('Java'),
   c('C'),
   cplusplus('C++'),
+  java('Java'),
   dart ('Dart'),
   ruby('Ruby'),
-  arduino('Arduino');
+  arduino('Arduino'),
+  pearl('Pearl');
 
 final String value;
 const Languages(this.value);

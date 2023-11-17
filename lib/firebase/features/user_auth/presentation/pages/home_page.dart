@@ -106,7 +106,7 @@ class _MainHomePageState extends State<MainHomePage> {
           backgroundColor: Color(0xFF164863), // app bar color only
         ),
         backgroundColor:
-            Colors.transparent, // BACKGROUND OF top app and other pages
+        Colors.transparent, // BACKGROUND OF top app and other pages
         body: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
@@ -118,26 +118,31 @@ class _MainHomePageState extends State<MainHomePage> {
           child: _bottomScreens[selectedCurrentIndex],
         ),
 
-        bottomNavigationBar: BottomNavigationBar(
+        bottomNavigationBar: Theme(
+          data: Theme.of(context).copyWith(
+            canvasColor: Color(0xFF164863), // Updated canvasColor
+            primaryColor: Colors.blue, // ICON in bottom navigation
+            textTheme: Theme.of(context)
+                .textTheme
+                .copyWith(caption: TextStyle(color: Colors.black26)),
+          ),
 
-          backgroundColor: Colors.red, //Color(0xFF30CBF8),
-          selectedItemColor: Colors.black, // ICON in bottom navigation
-          unselectedItemColor: Colors.black26,
-          currentIndex: selectedCurrentIndex,
 
-          onTap: (index) => setState(() => selectedCurrentIndex = index),
-          items: BottomNavs
-              .values // BottomNavs contains the list items located in enums.
-              .map((nav) => BottomNavigationBarItem(
-                    // then ipinasok sa .map para mairelocate sa (nav)
-                    icon: Icon(nav.icon),
-                    label: nav.text,
-                  ))
-              .toList(), //
-          selectedIconTheme: const IconThemeData(
-              size: 30), // Size ng selected icon sa bott navbar
-          unselectedIconTheme:
-              const IconThemeData(size: 25), // size naman kapag di selected
+          ///////////////////////////////////////
+
+          child: BottomNavigationBar(
+            currentIndex: selectedCurrentIndex,
+            onTap: (index) => setState(() => selectedCurrentIndex = index),
+            items: BottomNavs
+                .values // BottomNavs contains the list items located in enums.
+                .map((nav) => BottomNavigationBarItem(
+              icon: Icon(nav.icon),
+              label: nav.text,
+            ))
+                .toList(), //
+            selectedFontSize: 13, // Size ng selected icon sa bott navbar
+            unselectedFontSize: 10, // ICON in bottom navigation// size naman kapag di selected
+          ),
         ),
         floatingActionButton: const PersonalHelper(),
       ),

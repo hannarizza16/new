@@ -1,11 +1,6 @@
 import 'package:first_project/enums/enums.dart';
 
 const codex = {
-  Languages.arduino: {
-    Categories.beginner: {},
-    Categories.intermediate: {},
-    Categories.advanced: {},
-  },
   Languages.c: {
     Categories.beginner: {},
     Categories.intermediate: {},
@@ -16,15 +11,10 @@ const codex = {
     Categories.intermediate: {},
     Categories.advanced: {},
   },
-  Languages.dart: {
-    Categories.beginner: {},
-    Categories.intermediate: {},
-    Categories.advanced: {},
-  },
   Languages.java: {
     Categories.beginner: {
       0: {
-        'topic': 'Introduction to Java',
+        'topic': '1.    Introduction to Java',
         'subTopic': [
           {
             'heading': 'What is Java?',
@@ -1160,9 +1150,25 @@ const codex = {
     Categories.intermediate: {},
     Categories.advanced: {},
   },
+  Languages.dart: {
+    Categories.beginner: {},
+    Categories.intermediate: {},
+    Categories.advanced: {},
+  },
   Languages.ruby: {
     Categories.beginner: {},
     Categories.intermediate: {},
     Categories.advanced: {},
   },
+  Languages.arduino: {
+    Categories.beginner: {},
+    Categories.intermediate: {},
+    Categories.advanced: {},
+  },
+  Languages.pearl: {
+    Categories.beginner: {},
+    Categories.intermediate: {},
+    Categories.advanced: {},
+  },
 };
+
