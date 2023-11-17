@@ -113,20 +113,11 @@ class _MainHomePageState extends State<MainHomePage> {
               colors: [Color(0xFF3D84A8), Color(0xFF27496D)],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
-          // decoration: const BoxDecoration(
-          //   image: DecorationImage(
-          //     image: AssetImage(
-          //         'assets/white_and_lightblue.jpg',), // BG IMAGE IN CATEGORY SCREEN
-          //     fit: BoxFit.cover,
-              // colorFilter: ColorFilter.mode( // SET OPACITY
-              //   Colors.white.withOpacity(0.5), // Set the opacity level here
-              //   BlendMode.srcOver,
-              // ), // You can adjust the fit as needed
-              // You can adjust the fit as needed
             ),
           ),
           child: _bottomScreens[selectedCurrentIndex],
         ),
+
         bottomNavigationBar: BottomNavigationBar(
 
           backgroundColor: Colors.red, //Color(0xFF30CBF8),

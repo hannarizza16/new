@@ -141,17 +141,14 @@ class _AllLanguagesState extends State<AllLanguages> {
 
                       // color of button
                       child: Padding(
-                          padding: const EdgeInsets.only(top: 30, left: 10, right: 10),
-                          child: GridView.builder(
-                            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2,
-                              mainAxisSpacing: 20,
-                              crossAxisSpacing: 15,
+                          padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
+                          child: ListView.separated(
+    separatorBuilder: (_, __) => const SizedBox(width: 10.0),
+    scrollDirection: Axis.horizontal,
 
-                            ),
 
-                            // then tsaka gagawa ng elevated button
-                            itemBuilder: (context, index) => ElevatedButton( // SUBBJECT CARD
+
+                            itemBuilder: (context, index) =>ElevatedButton( // SUBBJECT CARD
                               // has a callback function ito yung ginagamit para ibuild o mag generate
                               // ulit ng sinelect mo na index
                               style: ElevatedButton.styleFrom(
@@ -166,16 +163,18 @@ class _AllLanguagesState extends State<AllLanguages> {
                                     : Colors.cyan[600],
                                 // padding: EdgeInsets.all(1),
 
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(100),
+                                shape: CircleBorder(side: BorderSide(width: 2, color: Colors.black!)
                                 ),
+                                fixedSize: Size(100,100),
+
                               ),
                               //CALLING THE IMAGE IN SUBJECT BUTTON
                               onPressed: isButtonEnabled ? () => _onViewSubject(index) : () {}, // : null,
                               child: Image.asset(
                                   SubjectSection.values[index].imagePath,
                                   // width: 100,
-                                  height: 150 ),
+                                  height: 100,
+                              width: 100,),
                             ),
 
 
