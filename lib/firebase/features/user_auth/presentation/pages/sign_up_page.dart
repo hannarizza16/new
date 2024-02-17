@@ -27,6 +27,7 @@ class _SignUpPageState extends State<SignUpPage> {
   final TextEditingController _firstNameController = TextEditingController();
   final TextEditingController _lastNameController = TextEditingController();
   final TextEditingController _middleIntController = TextEditingController();
+  final TextEditingController _confirmPasswordController = TextEditingController();
 
   bool isSigningUp = false;
 
@@ -35,6 +36,10 @@ class _SignUpPageState extends State<SignUpPage> {
     _studentIDController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
+    _confirmPasswordController.dispose();
+    _middleIntController.dispose();
+    _lastNameController.dispose();
+    _firstNameController.dispose();
     super.dispose();
   }
 
@@ -134,7 +139,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   height: 15,
                 ),
                 FormContainerWidget(  //make a separate controller
-                  controller: _emailController,
+                  controller: _confirmPasswordController,
                   labelText: "Confirm Password",
                   hintText: "Re-enter Password ",
                   isPasswordField: true,
@@ -179,6 +184,18 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                     GestureDetector(
                       onTap: () {
+                        CollectionReference collRef = FirebaseFirestore.instance.collection('students');
+                        collRef.add({
+                          'email' : _emailController.text,
+                          'password' : _passwordController.text,
+                          'student_number ' : _studentIDController.text,
+                          'first_name' : _firstNameController.text,
+                          'last_name' : _lastNameController.text,
+                          'middle_initial' : _middleIntController.text,
+                          'confirm_password' : _confirmPasswordController.text,
+
+                        });
+
                         // Navigate to the login page
                         Navigator.push(
                             context,
@@ -209,7 +226,12 @@ class _SignUpPageState extends State<SignUpPage> {
     collRef.add({
       'email' : _emailController.text,
       'password' : _passwordController.text,
-      'studentID ' : _studentIDController.text,
+      'student_number' : _studentIDController.text,
+      'first_name' : _firstNameController.text,
+      'last_name' : _lastNameController.text,
+      'middle_initial' : _middleIntController.text,
+      'confirm_password' : _confirmPasswordController.text,
+
     });
     String studentID = _studentIDController.text;
     String email = _emailController.text;
@@ -233,7 +255,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
       if (user != null) {
         showToast(message: "User is successfully created");
-        // Navigate to the login page after signing up
+        // Navigate to the login page afte signing up
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => LoginPage()));
       }
