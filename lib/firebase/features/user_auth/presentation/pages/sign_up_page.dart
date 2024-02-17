@@ -131,6 +131,16 @@ class _SignUpPageState extends State<SignUpPage> {
                       ))
                 ]),
                 const SizedBox(
+                  height: 15,
+                ),
+                FormContainerWidget(  //make a separate controller
+                  controller: _emailController,
+                  labelText: "Confirm Password",
+                  hintText: "Re-enter Password ",
+                  isPasswordField: true,
+                ),
+
+                const SizedBox(
                   height: 30,
                 ),
                 GestureDetector(
