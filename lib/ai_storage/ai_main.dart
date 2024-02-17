@@ -41,7 +41,7 @@ class _ChatPageState extends State<ChatPage> {
           1,
         ),
         title: const Text(
-          'GPT Chat',
+          'Jr. AI',
           style: TextStyle(
             color: Colors.white,
           ),
