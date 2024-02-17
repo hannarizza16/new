@@ -12,7 +12,7 @@ class PersonalHelper extends StatelessWidget {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const ChatBotApp()), // Replace AI_Main() with your AI screen
+            MaterialPageRoute(builder: (context) => const ChatPage()), // Replace AI_Main() with your AI screen
           );
         },
         child: ClipOval(
