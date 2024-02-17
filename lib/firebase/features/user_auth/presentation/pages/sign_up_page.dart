@@ -57,7 +57,7 @@ class _SignUpPageState extends State<SignUpPage> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
           child: Padding(
-            padding: const EdgeInsets.only(top: 275),
+            padding: const EdgeInsets.only(top: 110),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -70,6 +70,33 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
                 const SizedBox(
                   height: 30,
+                ),
+                FormContainerWidget(
+                  controller: _lastNameController,
+                  labelText: "Last Name",
+                  hintText: "Rizal",
+                  isPasswordField: false,
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                FormContainerWidget(
+                  controller: _firstNameController,
+                  labelText: "First Name",
+                  hintText: "Jose",
+                  isPasswordField: false,
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                FormContainerWidget(
+                  controller: _middleIntController,
+                  labelText: "Middle Initial",
+                  hintText: "P.",
+                  isPasswordField: false,
+                ),
+                const SizedBox(
+                  height: 10,
                 ),
                 FormContainerWidget(
                   controller: _studentIDController,
