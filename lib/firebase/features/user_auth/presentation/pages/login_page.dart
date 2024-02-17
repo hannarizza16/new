@@ -20,8 +20,8 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   bool _isSigning = false;
   final FirebaseAuthService _auth = FirebaseAuthService();
-  final TextEditingController _emailController = TextEditingController();//text: 'master@rtu.edu.ph');
-  final TextEditingController _passwordController = TextEditingController();//(text: 'master');
+  final TextEditingController _emailController = TextEditingController( text: 'master@rtu.edu.ph');
+  final TextEditingController _passwordController = TextEditingController(text: 'master');
 
 
 

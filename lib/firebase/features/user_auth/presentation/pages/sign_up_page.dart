@@ -1,5 +1,6 @@
 library particles_fly;
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:first_project/main_profile/particles_fly.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +8,8 @@ import 'package:first_project/firebase/features/user_auth/firebase_auth_implemen
 import 'package:first_project/firebase/features/user_auth/presentation/pages/login_page.dart';
 import 'package:first_project/firebase/features/user_auth/presentation/widgets/form_container_widget.dart';
 import 'package:first_project/firebase/global/common/toast.dart';
+
+import 'otp_screen.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);
@@ -21,6 +24,9 @@ class _SignUpPageState extends State<SignUpPage> {
   final TextEditingController _studentIDController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _firstNameController = TextEditingController();
+  final TextEditingController _lastNameController = TextEditingController();
+  final TextEditingController _middleIntController = TextEditingController();
 
   bool isSigningUp = false;
 
@@ -34,7 +40,8 @@ class _SignUpPageState extends State<SignUpPage> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size; // PARA TO SA PAG DEFINE NG size.height AND size.width
+    Size size = MediaQuery.of(context)
+        .size; // PARA TO SA PAG DEFINE NG size.height AND size.width
     return Scaffold(
         body: SingleChildScrollView(
             child: Stack(children: [
@@ -46,115 +53,114 @@ class _SignUpPageState extends State<SignUpPage> {
         lineColor: Colors.black26,
         particleColor: Colors.blue,
       ),
-
-
       Column(children: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
-         child:   Padding( padding: const EdgeInsets.only(top: 275 ),
-
-         child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text(
-                "Let's create your account",
-                style: TextStyle(
-                    fontSize: 25,
-                    fontWeight: FontWeight.w600,
-                    letterSpacing: 2.50),
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              FormContainerWidget(
-                controller: _studentIDController,
-                labelText: "Student Number",
-                hintText: "2023-102724",
-                isPasswordField: false,
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              FormContainerWidget(
-                controller: _emailController,
-                labelText: "School Email",
-                hintText: "Jrizal@rtu.edu.ph",
-                isPasswordField: false,
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              FormContainerWidget(
-                controller: _passwordController,
-                labelText: "Password",
-                hintText: "Enter Secure Password ",
-                isPasswordField: true,
-              ),
-              const Row(children: [
-                Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      'Password must contain special character',
-                      style: TextStyle(color: Colors.green),
-                    ))
-              ]),
-              const SizedBox(
-                height: 30,
-              ),
-              GestureDetector(
-                onTap: () {
-                  _signUp();
-                },
-                child: Container(
-                  width: double.infinity,
-                  height: 45,
-                  decoration: BoxDecoration(
-                    color: const Color(0xFF30CBF8),
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                  child: Center(
-                    child: isSigningUp
-                        ? const CircularProgressIndicator(color: Colors.white)
-                        : const Text(
-                            "Sign Up",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                letterSpacing: 2.0),
-                          ),
+          child: Padding(
+            padding: const EdgeInsets.only(top: 275),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  "Let's create your account",
+                  style: TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.w600,
+                      letterSpacing: 2.50),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                FormContainerWidget(
+                  controller: _studentIDController,
+                  labelText: "Student Number",
+                  hintText: "2023-102724",
+                  isPasswordField: false,
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                FormContainerWidget(
+                  controller: _emailController,
+                  labelText: "School Email",
+                  hintText: "Jrizal@rtu.edu.ph",
+                  isPasswordField: false,
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                FormContainerWidget(
+                  controller: _passwordController,
+                  labelText: "Password",
+                  hintText: "Enter Secure Password ",
+                  isPasswordField: true,
+                ),
+                const Row(children: [
+                  Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Password must contain special character',
+                        style: TextStyle(color: Colors.green),
+                      ))
+                ]),
+                const SizedBox(
+                  height: 30,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    _signUp();
+                  },
+                  child: Container(
+                    width: double.infinity,
+                    height: 45,
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF30CBF8),
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    child: Center(
+                      child: isSigningUp
+                          ? const CircularProgressIndicator(color: Colors.white)
+                          : const Text(
+                              "Sign Up",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  letterSpacing: 2.0),
+                            ),
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text("Already have an account?"),
-                  const SizedBox(
-                    width: 5,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      // Navigate to the login page
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const LoginPage()));
-                    },
-                    child: const Text(
-                      "Login",
-                      style: TextStyle(
-                          color: Colors.blue, fontWeight: FontWeight.bold),
+                const SizedBox(
+                  height: 20,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text("Already have an account?"),
+                    const SizedBox(
+                      width: 5,
                     ),
-                  )
-                ],
-              )
-            ],
+                    GestureDetector(
+                      onTap: () {
+                        // Navigate to the login page
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const LoginPage()));
+                      },
+                      child: const Text(
+                        "Login",
+                        style: TextStyle(
+                            color: Colors.blue, fontWeight: FontWeight.bold),
+                      ),
+                    )
+                  ],
+                )
+              ],
+            ),
           ),
-        ),
-        )]),
+        )
+      ]),
     ])));
   }
 
@@ -162,7 +168,12 @@ class _SignUpPageState extends State<SignUpPage> {
     setState(() {
       isSigningUp = true;
     });
-
+    CollectionReference collRef = FirebaseFirestore.instance.collection('students');
+    collRef.add({
+      'email' : _emailController.text,
+      'password' : _passwordController.text,
+      'studentID ' : _studentIDController.text,
+    });
     String studentID = _studentIDController.text;
     String email = _emailController.text;
     String password = _passwordController.text;
@@ -186,8 +197,8 @@ class _SignUpPageState extends State<SignUpPage> {
       if (user != null) {
         showToast(message: "User is successfully created");
         // Navigate to the login page after signing up
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const LoginPage()));
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => LoginPage()));
       }
     } else {
       setState(() {
