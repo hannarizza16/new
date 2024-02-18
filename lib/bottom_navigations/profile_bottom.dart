@@ -3,68 +3,189 @@ import 'package:flutter/material.dart';
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key});
 
+  final double coverHeight = 100;
+  final double profileHeight = 100;
+
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Align(
-        alignment: Alignment.topCenter, // Align the ProfilePicture widget to the top center
-        child: ProfilePicture(
-          name: 'Aditya Dharmawan Saputra',
-          radius: 40,
-          fontsize: 21,
-          img: 'https://avatars.githubusercontent.com/u/37553901?v=4',
-          backgroundColor: Colors.white60, // Specify the background color
-          nameColor: Colors.black,
-        ),
-      ),
+    final top = coverHeight - profileHeight / 2;
+    return Scaffold(
+      body: ListView(
+        padding: EdgeInsets.zero,
+          children: <Widget>[
+            buildTop(),
+            buildContent(),
+            buildColumn(),
+
+      ],
+      )
     );
   }
-}
 
-class ProfilePicture extends StatelessWidget {
-  final String name;
-  final double radius;
-  final double fontsize;
-  final String img;
-  final Color backgroundColor; // Added backgroundColor property
-  final Color nameColor;
+  Widget buildTop() {
+    final bottom = profileHeight / 2;
+    final top = coverHeight - profileHeight / 2;
 
-  const ProfilePicture({
-    required this.name,
-    required this.radius,
-    required this.fontsize,
-    required this.img,
-    required this.backgroundColor,
-    required this.nameColor, // Updated constructor
-// Updated constructor
-  });
+    return Stack(
+      clipBehavior: Clip.none,
+      alignment: Alignment.center,
+      children: [
+        Container(
+          margin: EdgeInsets.only(bottom: bottom),
+          child: buildCoverImage(),
+        ),
+        Positioned(
+          top: top,
+          child: buildProfileImage(),
+        ),
+      ],
+    );
+  }
 
-  @override
-  Widget build(BuildContext context) {
-    return Container( // Wrap the content with a Container
-      width: MediaQuery.of(context).size.width, // adjusting depending on the
-      decoration: BoxDecoration(
-
-        image: DecorationImage(image: NetworkImage(img),
-          fit: BoxFit.cover,
-        )// Apply the specified background color
-        // Apply border radius to match CircleAvatar
+  Widget buildContent() => Column(
+    children: [
+      const SizedBox(height:8),
+      Text('Jaesy Evardome',
+      style: TextStyle(fontSize: 20, color: Colors.black),
       ),
-      // Add padding to the container
-      child: Column(
-        mainAxisSize: MainAxisSize.min, // Ensure the container only takes the space required by its children
+    ],
+  );
+
+  Widget buildCoverImage() => Container(
+    width: double.infinity,
+    height: coverHeight,
+    decoration: BoxDecoration(
+      color: Colors.grey.withOpacity(0.5), // Adjust the opacity of the container
+      image: DecorationImage(
+        image: NetworkImage('https://picsum.photos/seed/496/600'),
+        fit: BoxFit.cover,
+        colorFilter: ColorFilter.mode(
+          Colors.white.withOpacity(0.3), // Adjust the opacity of the image itself
+          BlendMode.srcOver,
+        ),
+      ),
+    ),
+  );
+
+  Widget buildProfileImage() => Container(
+    width: profileHeight,
+    height: profileHeight,
+    decoration: BoxDecoration(
+      shape: BoxShape.circle,
+      color: Colors.white,
+      border: Border.all(color: Colors.white, width: 3
+      ),
+    ),
+
+
+     child: CircleAvatar(
+    radius: profileHeight / 2,
+    backgroundColor: Colors.grey.shade800,
+    backgroundImage: NetworkImage('https://picsum.photos/seed/532/600'
+      ),
+    ),
+  );
+
+  Widget buildColumn() => SingleChildScrollView(
+    scrollDirection: Axis.horizontal,
+      child: Container(
+    decoration: BoxDecoration(
+      image: DecorationImage(
+        image: NetworkImage('https://as1.ftcdn.net/v2/jpg/02/76/75/90/1000_F_276759092_EyErFXfz1qwnnyJFqkKUnggQwoDKMYSR.jpg'),
+        fit: BoxFit.cover,
+      )
+    ),
+
+    child: Row(
+    children: [
+
+    Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Padding(
+          padding: EdgeInsets.only(top:9.0, bottom: 9.0, left: 9.0 ),
+        child: CircleAvatar(
+          radius: 30,
+          backgroundImage: NetworkImage(''), // Replace with your image URL
+            ),
+           ),
+          ],
+        ),
+
+      Row(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          CircleAvatar(
-            radius: radius,
-            backgroundImage: NetworkImage(img),
-          ),
-          SizedBox(height: 10),
-          Text(
-            name,
-            style: TextStyle(fontSize: fontsize, color: nameColor),
+          Padding(
+            padding: EdgeInsets.only(top:9.0, bottom: 9.0, left: 5.0 ),
+            child: CircleAvatar(
+              radius: 30,
+              backgroundImage: NetworkImage(''), // Replace with your image URL
+            ),
           ),
         ],
       ),
-    );
-  }
+
+      Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Padding(
+            padding: EdgeInsets.only(top:9.0, bottom: 9.0, left: 5.0 ),
+            child: CircleAvatar(
+              radius: 30,
+              backgroundImage: NetworkImage(''), // Replace with your image URL
+            ),
+          ),
+        ],
+      ),
+
+      Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Padding(
+            padding: EdgeInsets.only(top:9.0, bottom: 9.0, left: 5.0 ),
+            child: CircleAvatar(
+              radius: 30,
+              backgroundImage: NetworkImage(''), // Replace with your image URL
+            ),
+          ),
+        ],
+      ),
+
+      Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Padding(
+            padding: EdgeInsets.only(top:9.0, bottom: 9.0, left: 5.0 ),
+            child: CircleAvatar(
+              radius: 30,
+              backgroundImage: NetworkImage(''), // Replace with your image URL
+            ),
+          ),
+        ],
+      ),
+
+      Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Padding(
+            padding: EdgeInsets.only(top:9.0, bottom: 9.0, left: 5.0 ),
+            child: CircleAvatar(
+              radius: 30,
+              backgroundImage: NetworkImage(''), // Replace with your image URL
+            ),
+          ),
+        ],
+      ),
+
+          ],
+        ),
+      ),
+  );
+
+}
+
+void main() {
+  runApp(MaterialApp(
+    home: ProfilePage(),
+  ));
 }
