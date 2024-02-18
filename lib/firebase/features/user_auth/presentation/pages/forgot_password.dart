@@ -42,9 +42,9 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             Column(
               children: [
                 const Padding(
-                  padding: EdgeInsets.only(top: 75),
+                  padding: EdgeInsets.only(top: 300, bottom: 20),
                   child: Text(
-                    'Receive an email to reset your password',
+                    'Enter your email to reset your password',
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -53,7 +53,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                 ),
 
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                  padding: const EdgeInsets.only(
+                      left: 15.0, right: 15.0, top: 15, bottom: 20),
                   child: FormContainerWidget(
                     controller: _emailController,
                     labelText: "Email",
@@ -107,7 +108,33 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
   }
 
  Future resetPassword () async {
-    await FirebaseAuth.instance.sendPasswordResetEmail(email: _emailController.text.trim());
-
+    // await FirebaseAuth.instance.sendPasswordResetEmail(email: _emailController.text.trim());
+   setState(() {
+     _isResettingPassword = true;
+   });
+   try {
+     await FirebaseAuth.instance.sendPasswordResetEmail(
+       email: _emailController.text.trim(),
+     );
+     ScaffoldMessenger.of(context).showSnackBar(
+       SnackBar(
+         content: const Text('Password reset email has been sent'),
+         duration: const Duration(seconds: 3),
+       ),
+     );
+   } catch (error) {
+     print('Error sending password reset email: $error');
+     ScaffoldMessenger.of(context).showSnackBar(
+       SnackBar(
+         content: const Text('Failed to send password reset email'),
+         duration: const Duration(seconds: 3),
+       ),
+     );
+   } finally {
+     setState(() {
+       _isResettingPassword = false;
+     });
+   }
  }
 }
+
