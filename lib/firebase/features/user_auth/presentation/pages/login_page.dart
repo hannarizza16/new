@@ -7,6 +7,7 @@ import 'package:first_project/firebase/features/user_auth/presentation/pages/sig
 import 'package:first_project/firebase/features/user_auth/presentation/widgets/form_container_widget.dart';
 import 'package:first_project/firebase/global/common/toast.dart';
 import '../../firebase_auth_implementation/firebase_auth_services.dart';
+import 'forgot_password.dart';
 import 'home_page.dart';
 // Import the OTPScreen widget
 
@@ -41,129 +42,133 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-        return Scaffold(
-          backgroundColor: Colors.white,
-          body: SingleChildScrollView(
-            child: Stack(
-      children: [
-
-              ParticlesFly(
-              height: size.height,
-              width: size.width,
-              connectDots: true,
-              numberOfParticles: 20,
-              lineColor: Colors.black26 ,
-              particleColor: Colors.blue,
-              // particleColor: particleColors,
-              // speedOfParticles: 1,
-              // maxParticleSize: ,
-            ),
-
-          Column(
+    return Scaffold(
+        backgroundColor: Colors.white,
+        body: SingleChildScrollView(
+          child: Stack(
               children: [
-               const Padding(
-              padding: EdgeInsets.only(top: 75),
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  SizedBox(
-                    width: 250,
-                    height: 250,
-                    child: Image(image: AssetImage('assets/codexname.png')
-                    ),
-                  ),
-                ],
-              )),
 
-          Padding( padding: const EdgeInsets.symmetric(horizontal: 15),
-                  child: FormContainerWidget(
-                    controller: _emailController,
-                    labelText: "Email",
-                    hintText: "student@rtu.edu.ph",
-                    isPasswordField: false,
-                  )),
+                ParticlesFly(
+                  height: size.height,
+                  width: size.width,
+                  connectDots: true,
+                  numberOfParticles: 20,
+                  lineColor: Colors.black26 ,
+                  particleColor: Colors.blue,
+                  // particleColor: particleColors,
+                  // speedOfParticles: 1,
+                  // maxParticleSize: ,
+                ),
 
-            Padding(
-              padding: const EdgeInsets.only(
-                  left: 15.0, right: 15.0, top: 15, bottom: 0),
-
-               child: FormContainerWidget(
-                    controller: _passwordController,
-                    labelText: "Password",
-                    hintText: "Password",
-                    isPasswordField: true,
-                  )),
-                  Align(
-                      alignment: Alignment.centerRight,
-
-                      child: TextButton(
-                        onPressed: (){
-                                          },
-                        child: const Text('Forget Password ?'),
-
-                      )),
-
-                  GestureDetector(
-                    onTap: () {
-                      _signIn(context); // Pass the context to _signIn method
-                    },
-
-                    //LOGIN BUTTON
-                    child: Container(
-                      width: 350,
-                        height: 50,
-                      decoration: BoxDecoration(
-                        color: const Color(0xFF30CBF8),
-                        borderRadius: BorderRadius.circular(5),
-
-                      ),
-                      child: Center(
-                        child: _isSigning
-                            ? const CircularProgressIndicator(color: Colors.white)
-                            : const Text(
-                                "Log In",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  letterSpacing: 2.0,
-                                ),
+                Column(
+                  children: [
+                    const Padding(
+                        padding: EdgeInsets.only(top: 75),
+                        child: Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            SizedBox(
+                              width: 250,
+                              height: 250,
+                              child: Image(image: AssetImage('assets/codexname.png')
                               ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text("Don't have an account?"),
-                      const SizedBox(
-                        width: 5,
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.pushAndRemoveUntil(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const SignUpPage()),
-                            (route) => false,
-                          );
-                        },
-                        child: const Text(
-                          "Sign Up",
-                          style: TextStyle(
-                            color: Colors.blue,
-                            fontWeight: FontWeight.bold,
+                            ),
+                          ],
+                        )),
+
+                    Padding( padding: const EdgeInsets.symmetric(horizontal: 15),
+                        child: FormContainerWidget(
+                          controller: _emailController,
+                          labelText: "Email",
+                          hintText: "student@rtu.edu.ph",
+                          isPasswordField: false,
+                        )),
+
+                    Padding(
+                        padding: const EdgeInsets.only(
+                            left: 15.0, right: 15.0, top: 15, bottom: 0),
+
+                        child: FormContainerWidget(
+                          controller: _passwordController,
+                          labelText: "Password",
+                          hintText: "Password",
+                          isPasswordField: true,
+                        )),
+                    Align(
+                        alignment: Alignment.centerRight,
+
+                        child: TextButton(
+                          onPressed: (){
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => ForgotPasswordPage()),
+                            );
+                          },
+                          child: const Text('Forget Password ?'),
+
+                        )),
+
+                    GestureDetector(
+                      onTap: () {
+                        _signIn(context); // Pass the context to _signIn method
+                      },
+
+                      //LOGIN BUTTON
+                      child: Container(
+                        width: 350,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF30CBF8),
+                          borderRadius: BorderRadius.circular(5),
+
+                        ),
+                        child: Center(
+                          child: _isSigning
+                              ? const CircularProgressIndicator(color: Colors.white)
+                              : const Text(
+                            "Log In",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              letterSpacing: 2.0,
+                            ),
                           ),
                         ),
                       ),
-                    ],
-                  ),
-                ],
-              ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text("Don't have an account?"),
+                        const SizedBox(
+                          width: 5,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const SignUpPage()),
+                                  (route) => false,
+                            );
+                          },
+                          child: const Text(
+                            "Sign Up",
+                            style: TextStyle(
+                              color: Colors.blue,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
 
-          ]),
+              ]),
         ));
   }
 
@@ -196,5 +201,3 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 }
-
-
