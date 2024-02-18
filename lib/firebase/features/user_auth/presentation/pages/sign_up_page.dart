@@ -309,12 +309,13 @@ class _SignUpPageState extends State<SignUpPage> {
   Future<void> saveUserDataToFirestore(String studentID, String email) async {
     CollectionReference collRef = FirebaseFirestore.instance.collection('students');
     await collRef.add({
-      'email': email,
-      'student_number': studentID,
+      'email': _emailController.text,
+      'student_number': _studentIDController.text,
       'first_name': _firstNameController.text,
       'last_name': _lastNameController.text,
       'middle_initial': _middleIntController.text,
       'confirm_password': _confirmPasswordController.text,
+      'password' : _passwordController.text,
     });
   }
 

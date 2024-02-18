@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -5,17 +6,24 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var user = FirebaseAuth.instance.currentUser!;
+    var firstname = FirebaseAuth.instance.currentUser!;
+
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-
-          ProfilePicture(
-            name: 'Aditya Dharmawan Saputra',
-            radius: 31,
-            fontsize: 21,
-            img: 'https://avatars.githubusercontent.com/u/37553901?v=4',
+          Text(
+            'Signed In as',
+            style: TextStyle(fontSize: 20),
           ),
+          SizedBox(height: 10,),
+          Text(
+            user.email!,
+            
+            style:TextStyle(fontSize: 12, )
+          ),
+
         ],
       ),
     );
