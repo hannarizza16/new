@@ -44,7 +44,10 @@ class ProfilePicture extends StatelessWidget {
     return Container( // Wrap the content with a Container
       width: MediaQuery.of(context).size.width, // adjusting depending on the
       decoration: BoxDecoration(
-        color: backgroundColor, // Apply the specified background color
+
+        image: DecorationImage(image: NetworkImage(img),
+          fit: BoxFit.cover,
+        )// Apply the specified background color
         // Apply border radius to match CircleAvatar
       ),
       // Add padding to the container
