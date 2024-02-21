@@ -1,6 +1,11 @@
+
+library particles_fly;
 import 'dart:async';
 
+
+
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:first_project/main_profile/particles_fly.dart';
 import 'package:first_project/firebase/features/user_auth/presentation/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +23,7 @@ class _ThreeDotLoaderState extends State<ThreeDotLoader>
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(seconds:5), // Adjust duration for slower animation
+      duration: Duration(seconds:2), // Adjust duration for slower animation
     )..repeat();
   }
 
@@ -109,7 +114,7 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
     final auth = FirebaseAuth.instance.currentUser!;
     await auth.sendEmailVerification();
     setState(() {
-      verificationMessage = 'Your account is being verified';
+      verificationMessage = 'Your account is being verifie';
     });
   }
 
@@ -139,11 +144,27 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
     return Scaffold(
-      body: Center(
+      body: SingleChildScrollView(
+        child: Stack(
+          children: [
+            ParticlesFly(
+              height: size.height,
+              width: size.width,
+              connectDots: true,
+              numberOfParticles: 20,
+              lineColor: Colors.black26,
+              particleColor: Colors.blue,
+            ),
+
+
+      Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            SizedBox(height: size.height * 0.5),
             ThreeDotLoader(), // Use custom loading animation here
             SizedBox(height: 20),
             Text(
@@ -161,6 +182,9 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
           ],
         ),
       ),
+          ],
+        )
+      )
     );
   }
 }
