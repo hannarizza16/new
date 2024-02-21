@@ -24,7 +24,7 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController _emailController = TextEditingController(
       text: 'cjevardome@rtu.edu.ph');
   final TextEditingController _passwordController = TextEditingController(
-      text: 'master@');
+      text: 'ggggg@');
 
 
   @override

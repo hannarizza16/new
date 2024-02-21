@@ -25,8 +25,6 @@ class SideBar extends StatelessWidget {
 
   void _onItemTapped(BuildContext context, SideBarSection section) {
     switch (section) {
-      case SideBarSection.leaderboards:
-        return Navigator.of(context).pop();
       case SideBarSection.settings:
         return Navigator.of(context).pop();
       case SideBarSection.logout:
@@ -44,6 +42,8 @@ class SideBar extends StatelessWidget {
           context,
           MaterialPageRoute(builder: (context) => const LoginPage()),
         );
+      default:
+        return; // Handle default case, or add more cases if needed
     }
   }
 
@@ -92,7 +92,7 @@ class SideBar extends StatelessWidget {
                     ),
                   ),
                 ),
-                ...SideBarSection.values
+                ...SideBarSection.values.where((section) => section != SideBarSection.leaderboards && section != SideBarSection.settings)
                     .map(
                       (section) => InkWell(
                     onTap: () => _onItemTapped(context, section),
