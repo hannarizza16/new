@@ -10,6 +10,8 @@ import '../pages/login_page.dart';
 class SideBar extends StatelessWidget {
   const SideBar({Key? key});
 
+
+
   Future<String?> _getUserEmail() async {
     // Get the current user
     User? user = FirebaseAuth.instance.currentUser;
@@ -63,7 +65,8 @@ class SideBar extends StatelessWidget {
             return CircularProgressIndicator();
           } else {
             // If future completes, show the drawer with the user's email
-            String userEmail = snapshot.data ?? "No email"; // Default to "No email" if email is null
+            String userEmail = snapshot.data ??
+                "No email"; // Default to "No email" if email is null
             return ListView(
               padding: EdgeInsets.zero,
               children: [
@@ -86,22 +89,26 @@ class SideBar extends StatelessWidget {
                       image: AssetImage('assets/logorizal_4.png'),
                       fit: BoxFit.cover,
                       colorFilter: ColorFilter.mode(
-                        Colors.white.withOpacity(0.3), // Adjust the opacity (0.0 to 1.0)
+                        Colors.white.withOpacity(
+                            0.3), // Adjust the opacity (0.0 to 1.0)
                         BlendMode.dstATop,
                       ),
                     ),
                   ),
                 ),
-                ...SideBarSection.values.where((section) => section != SideBarSection.leaderboards && section != SideBarSection.settings)
+                ...SideBarSection.values
+                    .where((section) =>
+                        section != SideBarSection.leaderboards &&
+                        section != SideBarSection.settings)
                     .map(
                       (section) => InkWell(
-                    onTap: () => _onItemTapped(context, section),
-                    child: ListTile(
-                      leading: Icon(section.icon),
-                      title: Text(section.text),
-                    ),
-                  ),
-                )
+                        onTap: () => _onItemTapped(context, section),
+                        child: ListTile(
+                          leading: Icon(section.icon),
+                          title: Text(section.text),
+                        ),
+                      ),
+                    )
                     .toList(),
               ],
             );

@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -26,36 +29,67 @@ class _ProfilePageState extends State<ProfilePage> {
   void initState() {
     super.initState();
     _nameController.text = '$_firstName $_middleInitial $_lastName';
-    // Ito ang pagkuha ng pangalan mula sa Firestore dito sa initState
     _fetchNameFromFirestore();
   }
 
-  // I-update ang pangalan ng gumagamit mula sa Firestore
   void _fetchNameFromFirestore() async {
-    // Kunin ang kasalukuyang email address ng gumagamit mula sa Firebase Auth
     String? currentUserEmail = FirebaseAuth.instance.currentUser?.email;
 
-    // Siguraduhing may kasalukuyang user at may email address ito
     if (currentUserEmail != null) {
-      // Reference sa collection na may mga user profiles
-      CollectionReference users = FirebaseFirestore.instance.collection('students');
+      CollectionReference users =
+          FirebaseFirestore.instance.collection('students');
 
       try {
-        // Query para kunin ang pangalan batay sa email address
-        QuerySnapshot querySnapshot = await users.where('email', isEqualTo: currentUserEmail).get();
+        QuerySnapshot querySnapshot =
+            await users.where('email', isEqualTo: currentUserEmail).get();
 
-        // Kung may natagpuang resulta, i-update ang pangalan
         if (querySnapshot.docs.isNotEmpty) {
           setState(() {
-            _firstName = querySnapshot.docs.first['first_name']; // Kunin ang first name mula sa Firestore
-            _middleInitial = querySnapshot.docs.first['middle_initial']; // Kunin ang middle initial mula sa Firestore
-            _lastName = querySnapshot.docs.first['last_name']; // Kunin ang last name mula sa Firestore
-            _studentNumber = querySnapshot.docs.first['student_number']; // Kunin ang student number mula sa Firestore
-            _nameController.text = '$_firstName $_middleInitial. $_lastName'; // I-set ang pangalan sa text field
+            _firstName = querySnapshot.docs.first['first_name'];
+            _middleInitial = querySnapshot.docs.first['middle_initial'];
+            _lastName = querySnapshot.docs.first['last_name'];
+            _studentNumber = querySnapshot.docs.first['student_number'];
+            _nameController.text = '$_firstName $_middleInitial. $_lastName';
           });
+          // Load ng profile image URL galing sa Firestore
+          loadProfileImage();
         }
       } catch (e) {
         print('Error fetching name: $e');
+      }
+    } else {
+      print('No current user or user email found.');
+    }
+  }
+
+  // Function para mag-load ng profile image mula sa Firebase Storage
+  void loadProfileImage() async {
+    String? currentUserEmail = FirebaseAuth.instance.currentUser?.email;
+
+    if (currentUserEmail != null) {
+      String cacheKey = 'profile_image_url_$currentUserEmail';
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String? cachedImageURL = prefs.getString(cacheKey);
+
+      if (cachedImageURL != null) {
+        setState(() async {
+          _image = await DefaultCacheManager().getSingleFile(cachedImageURL);
+        });
+      } else {
+        try {
+          String fileName = currentUserEmail + '_profile_image';
+          firebase_storage.Reference storageReference = firebase_storage
+              .FirebaseStorage.instance
+              .ref()
+              .child('profile_images/$fileName');
+          String downloadURL = await storageReference.getDownloadURL();
+          setState(() {
+            _image = File.fromUri(Uri.parse(downloadURL));
+          });
+          prefs.setString(cacheKey, downloadURL);
+        } catch (e) {
+          print('Error loading profile image: $e');
+        }
       }
     } else {
       print('No current user or user email found.');
@@ -69,10 +103,49 @@ class _ProfilePageState extends State<ProfilePage> {
     setState(() {
       if (pickedFile != null) {
         _image = File(pickedFile.path);
+        // Upload ng larawan sa Firebase Storage pagkatapos pumili ng larawan
+        uploadImageToFirebaseStorage(); // Dito dapat walang argumento
       } else {
         print('No image selected.');
       }
     });
+  }
+
+  Future<void> uploadImageToFirebaseStorage() async {
+    String? currentUserEmail = FirebaseAuth.instance.currentUser?.email;
+
+    if (currentUserEmail != null && _image != null) {
+      String fileName = currentUserEmail + '_profile_image';
+      firebase_storage.Reference storageReference = firebase_storage
+          .FirebaseStorage.instance
+          .ref()
+          .child('profile_images/$fileName');
+      firebase_storage.UploadTask uploadTask =
+          storageReference.putFile(_image!);
+
+      await uploadTask.whenComplete(() => null);
+
+      // Kapag natapos na ang pag-upload, tawagin ang function para i-update ang profile image URL sa Firestore
+      String downloadURL = await storageReference.getDownloadURL();
+
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String cacheKey = 'profile_image_url_$currentUserEmail';
+      prefs.setString(cacheKey, downloadURL);
+
+      updateProfileImageURL(downloadURL);
+
+      // Hindi na natin kailangan i-set ang _image variable dito dahil hindi naman ito ginagamit
+    }
+  }
+
+  Future<void> updateProfileImageURL(String imageURL) async {
+    String? userId = FirebaseAuth.instance.currentUser!.uid;
+    DocumentReference userRef =
+        FirebaseFirestore.instance.collection('students').doc(userId);
+
+    await userRef.update({'profile_image_url': imageURL});
+
+    print('Profile image URL updated in Firestore');
   }
 
   @override
@@ -112,71 +185,80 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   Widget buildContent() => Column(
-    children: [
-      const SizedBox(height: 2),
-      Row(
-        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
-            _firstName,
-            style: TextStyle(fontSize: 20, color: Colors.black),
+          const SizedBox(height: 2),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                _firstName,
+                style: TextStyle(fontSize: 20, color: Colors.black),
+              ),
+              SizedBox(width: 5),
+              Text(
+                _middleInitial + '.',
+                style: TextStyle(fontSize: 20, color: Colors.black),
+              ),
+              SizedBox(width: 5),
+              Text(
+                _lastName,
+                style: TextStyle(fontSize: 20, color: Colors.black),
+              ),
+            ],
           ),
-          SizedBox(width: 5),
+          SizedBox(height: 5),
           Text(
-            _middleInitial + '.',
-            style: TextStyle(fontSize: 20, color: Colors.black),
-          ),
-          SizedBox(width: 5),
-          Text(
-            _lastName,
-            style: TextStyle(fontSize: 20, color: Colors.black),
+            '$_studentNumber',
+            style: TextStyle(fontSize: 16, color: Colors.black),
           ),
         ],
-      ),
-      SizedBox(height: 5),
-      Text(
-        '$_studentNumber',
-        style: TextStyle(fontSize: 16, color: Colors.black),
-      ),
-    ],
-  );
+      );
 
   Widget buildCoverImage() => Container(
-    width: double.infinity,
-    height: coverHeight,
-    decoration: BoxDecoration(
-      color: Colors.grey.withOpacity(0.5),
-      image: DecorationImage(
-        image: NetworkImage('https://picsum.photos/seed/496/600'),
-        fit: BoxFit.cover,
-        colorFilter: ColorFilter.mode(
-          Colors.white.withOpacity(0.3),
-          BlendMode.srcOver,
+        width: double.infinity,
+        height: coverHeight,
+        decoration: BoxDecoration(
+          color: Colors.grey.withOpacity(0.5),
+          image: DecorationImage(
+            image: NetworkImage('https://picsum.photos/seed/496/600'),
+            fit: BoxFit.cover,
+            colorFilter: ColorFilter.mode(
+              Colors.white.withOpacity(0.3),
+              BlendMode.srcOver,
+            ),
+          ),
         ),
-      ),
-    ),
-  );
+      );
 
-  Widget buildProfileImage() => Container(
-    width: profileHeight,
-    height: profileHeight,
-    decoration: BoxDecoration(
-      shape: BoxShape.circle,
-      color: Colors.white,
-      border: Border.all(color: Colors.white, width: 3),
-    ),
-    child: _image != null
-        ? CircleAvatar(
-      radius: profileHeight / 2,
-      backgroundColor: Colors.grey.shade800,
-      backgroundImage: FileImage(_image!),
-    )
-        : CircleAvatar(
-      radius: profileHeight / 2,
-      backgroundColor: Colors.grey.shade800,
-      backgroundImage: NetworkImage('https://picsum.photos/seed/532/600'),
-    ),
-  );
+  Widget buildProfileImage() => Stack(
+        children: [
+          Container(
+            width: profileHeight,
+            height: profileHeight,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: Colors.white,
+              border: Border.all(color: Colors.white, width: 2),
+            ),
+            child: _image != null
+                ? CircleAvatar(
+                    radius: profileHeight / 2,
+                    backgroundImage: FileImage(_image!),
+                  )
+                : CircleAvatar(
+                    radius: profileHeight / 2,
+                  ),
+          ),
+          if (_image == null)
+            Positioned.fill(
+              child: Center(
+                child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
+                ),
+              ),
+            ),
+        ],
+      );
 
   @override
   void dispose() {
