@@ -14,8 +14,8 @@ enum SideBarSection {
 }
 
 enum BottomNavs {
-  news('News'),// button names
-  code('Code'),
+  // news('News'),// button names
+  // code('Code'),
   home('Home'),
   challenges('Challenges'),
   profile('Profile'); // inside the () is the name of button assigned in nav bar

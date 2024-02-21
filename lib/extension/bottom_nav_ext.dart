@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 extension BottomNavsExt on BottomNavs {
   IconData get icon {
     switch (this) {
-      case BottomNavs.news:
-        return Icons.newspaper;
-      case BottomNavs.code:
-        return Icons.code;
+      // case BottomNavs.news:
+      //   return Icons.newspaper;
+      // case BottomNavs.code:
+      //   return Icons.code;
       case BottomNavs.home:
         return Icons.home;
       case BottomNavs.challenges:

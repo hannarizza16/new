@@ -19,8 +19,8 @@ class MainHomePage extends StatefulWidget {
 
 class _MainHomePageState extends State<MainHomePage> {
   final _bottomScreens = [
-    const NewsFeedPage(),
-    const CodePage(),
+    // const NewsFeedPage(),
+    // const CodePage(),
     const AllLanguages(),
     const CategorySelection(),
     const ProfilePage(),
