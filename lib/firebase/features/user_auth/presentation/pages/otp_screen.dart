@@ -1,68 +1,163 @@
+import 'dart:async';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:first_project/firebase/features/user_auth/presentation/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
-class OTPScreen extends StatelessWidget {
-  OTPScreen({Key? key}) : super(key: key);
+class ThreeDotLoader extends StatefulWidget {
+  @override
+  _ThreeDotLoaderState createState() => _ThreeDotLoaderState();
+}
 
-  static const String tOtpTitle = "Enter OTP";
-  static const String tOtpSubTitle = "Please enter the verification code";
-  static const String tOtpMessage =
-      "For support, email us at rtucodecultivator@gmail.com";
-  static const String tNext = "NEXT";
+class _ThreeDotLoaderState extends State<ThreeDotLoader>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
 
-  TextEditingController otpController = TextEditingController();
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: Duration(seconds:5), // Adjust duration for slower animation
+    )..repeat();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        for (int i = 0; i < 3; i++)
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: FadeTransition(
+              opacity: Tween<double>(begin: 0.0, end: 1.0).animate(
+                CurvedAnimation(
+                  parent: _controller,
+                  curve: Interval(
+                    (0.1 * i),
+                    (0.1 * (i + 1)),
+                    curve: Curves.easeInOut,
+                  ),
+                ),
+              ),
+              child: Icon(Icons.circle, size: 20, color: Colors.blue),
+            ),
+          ),
+      ],
+    );
+  }
+}
+
+class VerifyEmailPage extends StatefulWidget {
+  @override
+  _VerifyEmailPageState createState() => _VerifyEmailPageState();
+}
+
+class _VerifyEmailPageState extends State<VerifyEmailPage> {
+  bool isEmailVerified = false;
+  Timer? timer;
+  String verificationMessage = '';
+
+  int countdown = 5;
+
+  @override
+  void initState() {
+    super.initState();
+
+    isEmailVerified = FirebaseAuth.instance.currentUser!.emailVerified;
+
+    if (!isEmailVerified) {
+      sendVerificationEmail();
+
+      timer = Timer.periodic(
+        Duration(seconds: 3),
+            (_) => checkEmailVerified(),
+      );
+    }
+  }
+
+  @override
+  void dispose() {
+    timer?.cancel();
+
+    super.dispose();
+  }
+
+  Future<void> checkEmailVerified() async {
+    await FirebaseAuth.instance.currentUser!.reload();
+    setState(() {
+      isEmailVerified = FirebaseAuth.instance.currentUser!.emailVerified;
+      verificationMessage = isEmailVerified
+          ? 'Congratulations! Your account is verified'
+          : 'Your account is being verified';
+    });
+
+    if (isEmailVerified) {
+      timer?.cancel();
+      startCountdown();
+    }
+  }
+
+  Future<void> sendVerificationEmail() async {
+    final auth = FirebaseAuth.instance.currentUser!;
+    await auth.sendEmailVerification();
+    setState(() {
+      verificationMessage = 'Your account is being verified';
+    });
+  }
+
+  void navigateToHomePage() {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => MainHomePage()),
+    );
+  }
+
+  void startCountdown() {
+    const oneSec = Duration(seconds: 1);
+    timer = Timer.periodic(
+      oneSec,
+          (Timer timer) {
+        if (countdown == 1) {
+          timer.cancel();
+          navigateToHomePage();
+        } else {
+          setState(() {
+            countdown--;
+          });
+        }
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        padding: EdgeInsets.all(20.0),
+      body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            ThreeDotLoader(), // Use custom loading animation here
+            SizedBox(height: 20),
             Text(
-              tOtpTitle,
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 80.0),
+              verificationMessage,
+              textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
-            Text(
-              tOtpSubTitle.toUpperCase(),
-              style: Theme.of(context).textTheme.headline6,
-            ),
-            SizedBox(height: 40.0),
-            Text(tOtpMessage, textAlign: TextAlign.center),
-            SizedBox(height: 20.0),
-            TextField(
-              controller: otpController,
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                hintText: 'Enter OTP',
+            SizedBox(height: 20),
+            if (isEmailVerified)
+              Text(
+                'Directing to Home screen in $countdown',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 15),
               ),
-              onSubmitted: (code) => print("OTP is => $code"),
-            ),
-            SizedBox(height: 20.0),
-            SizedBox(
-              width: 350,
-              height: 50,
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => MainHomePage()),
-                  );
-                  print("OTP is => ${otpController.text}");
-                },
-                style: ElevatedButton.styleFrom(
-                  primary: Color(0xFF30CBF8),
-                ),
-                child: Text(
-                  tNext,
-                  style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    letterSpacing: 2.0,
-                  ),
-                ),
-              ),
-            ),
           ],
         ),
       ),

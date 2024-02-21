@@ -21,14 +21,13 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   bool _isSigning = false;
   final FirebaseAuthService _auth = FirebaseAuthService();
-  final TextEditingController _emailController = TextEditingController( text: 'cjevardome@rtu.edu.ph');
-  final TextEditingController _passwordController = TextEditingController(text: 'PitchBlack19@');
-
+  final TextEditingController _emailController = TextEditingController(
+      text: 'cjevardome@rtu.edu.ph');
+  final TextEditingController _passwordController = TextEditingController(
+      text: 'master@');
 
 
   @override
-
-
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
@@ -39,9 +38,12 @@ class _LoginPageState extends State<LoginPage> {
     _emailController.clear();
     _passwordController.clear();
   }
+
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
+    final Size size = MediaQuery
+        .of(context)
+        .size;
     return Scaffold(
         backgroundColor: Colors.white,
         body: SingleChildScrollView(
@@ -53,7 +55,7 @@ class _LoginPageState extends State<LoginPage> {
                   width: size.width,
                   connectDots: true,
                   numberOfParticles: 20,
-                  lineColor: Colors.black26 ,
+                  lineColor: Colors.black26,
                   particleColor: Colors.blue,
                   // particleColor: particleColors,
                   // speedOfParticles: 1,
@@ -70,13 +72,14 @@ class _LoginPageState extends State<LoginPage> {
                             SizedBox(
                               width: 250,
                               height: 250,
-                              child: Image(image: AssetImage('assets/codexname.png')
+                              child: Image(
+                                  image: AssetImage('assets/codexname.png')
                               ),
                             ),
                           ],
                         )),
 
-                    Padding( padding: const EdgeInsets.symmetric(horizontal: 15),
+                    Padding(padding: const EdgeInsets.symmetric(horizontal: 15),
                         child: FormContainerWidget(
                           controller: _emailController,
                           labelText: "Email",
@@ -98,10 +101,11 @@ class _LoginPageState extends State<LoginPage> {
                         alignment: Alignment.centerRight,
 
                         child: TextButton(
-                          onPressed: (){
+                          onPressed: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => ForgotPasswordPage()),
+                              MaterialPageRoute(
+                                  builder: (context) => ForgotPasswordPage()),
                             );
                           },
                           child: const Text('Forget Password ?'),
@@ -124,7 +128,8 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         child: Center(
                           child: _isSigning
-                              ? const CircularProgressIndicator(color: Colors.white)
+                              ? const CircularProgressIndicator(
+                              color: Colors.white)
                               : const Text(
                             "Log In",
                             style: TextStyle(
@@ -186,6 +191,7 @@ class _LoginPageState extends State<LoginPage> {
       setState(() {
         _isSigning = false;
       });
+      return; // Return to exit the method
     }
 
     User? user = await _auth.signInWithEmailAndPassword(email, password);
@@ -195,9 +201,17 @@ class _LoginPageState extends State<LoginPage> {
     });
 
     if (user != null) {
-      showToast(message: "User is successfully signed in");
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => const MainHomePage()));
+      if (user.emailVerified) {
+        showToast(message: "User is successfully signed in");
+        Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const MainHomePage()));
+      } else {
+        // Email not verified
+        showToast(message: "Email is not verified");
+      }
+    } else {
+      showToast(message: "Failed to sign in. Please check your credentials.");
     }
   }
 }

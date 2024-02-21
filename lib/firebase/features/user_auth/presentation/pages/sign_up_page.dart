@@ -22,8 +22,10 @@ class _SignUpPageState extends State<SignUpPage> {
   final FirebaseAuthService _auth = FirebaseAuthService();
 
   final TextEditingController _studentIDController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _emailController =
+      TextEditingController();
+  final TextEditingController _passwordController =
+      TextEditingController();
   final TextEditingController _firstNameController = TextEditingController();
   final TextEditingController _lastNameController = TextEditingController();
   final TextEditingController _middleIntController = TextEditingController();
@@ -98,7 +100,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 FormContainerWidget(
                   controller: _middleIntController,
                   labelText: "Middle Initial",
-                  hintText: "P.",
+                  hintText: "P",
                   isPasswordField: false,
                 ),
                 const SizedBox(
@@ -107,7 +109,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 FormContainerWidget(
                   controller: _studentIDController,
                   labelText: "Student Number",
-                  hintText: "2023-102724",
+                  hintText: "2023-102345",
                   isPasswordField: false,
                 ),
                 const SizedBox(
@@ -116,7 +118,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 FormContainerWidget(
                   controller: _emailController,
                   labelText: "School Email",
-                  hintText: "Jrizal@rtu.edu.ph",
+                  hintText: "jrizal@rtu.edu.ph",
                   isPasswordField: false,
                 ),
                 const SizedBox(
@@ -188,7 +190,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         // Navigate to the login page
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => const LoginPage()),
+                          MaterialPageRoute(builder: (context) => LoginPage()),
                         );
                       },
                       child: const Text(
@@ -265,21 +267,37 @@ class _SignUpPageState extends State<SignUpPage> {
         return;
       }
 
+      // Query Firestore to check if the email already exists
+      QuerySnapshot emailSnapshot = await FirebaseFirestore.instance
+          .collection('students')
+          .where('email', isEqualTo: email)
+          .get();
+
+      if (emailSnapshot.docs.isNotEmpty) {
+        setState(() {
+          isSigningUp = false;
+        });
+        showToast(message: "Email already exists");
+        return;
+      }
+
+      // Sign up the user with email and password
       User? user = await _auth.signUpWithEmailAndPassword(email, password);
 
-      setState(() {
-        isSigningUp = false;
-      });
-
       if (user != null) {
-        showToast(message: "User is successfully created");
+        // Send verification email
+        await user.sendEmailVerification();
+        showToast(
+            message: "Verification email sent. Please verify your email.");
 
         // Save user data to Firestore database
         await saveUserDataToFirestore(studentID, email);
 
-        // Navigate to the login page after signing up
+        // Navigate to the verification page after signing up
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => LoginPage()));
+          context,
+          MaterialPageRoute(builder: (context) => VerifyEmailPage()),
+        );
       }
     } else {
       setState(() {

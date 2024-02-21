@@ -107,34 +107,33 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
     );
   }
 
- Future resetPassword () async {
+  Future resetPassword () async {
     // await FirebaseAuth.instance.sendPasswordResetEmail(email: _emailController.text.trim());
-   setState(() {
-     _isResettingPassword = true;
-   });
-   try {
-     await FirebaseAuth.instance.sendPasswordResetEmail(
-       email: _emailController.text.trim(),
-     );
-     ScaffoldMessenger.of(context).showSnackBar(
-       SnackBar(
-         content: const Text('Password reset email has been sent'),
-         duration: const Duration(seconds: 3),
-       ),
-     );
-   } catch (error) {
-     print('Error sending password reset email: $error');
-     ScaffoldMessenger.of(context).showSnackBar(
-       SnackBar(
-         content: const Text('Failed to send password reset email'),
-         duration: const Duration(seconds: 3),
-       ),
-     );
-   } finally {
-     setState(() {
-       _isResettingPassword = false;
-     });
-   }
- }
+    setState(() {
+      _isResettingPassword = true;
+    });
+    try {
+      await FirebaseAuth.instance.sendPasswordResetEmail(
+        email: _emailController.text.trim(),
+      );
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: const Text('Password reset email has been sent'),
+          duration: const Duration(seconds: 3),
+        ),
+      );
+    } catch (error) {
+      print('Error sending password reset email: $error');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: const Text('Failed to send password reset email'),
+          duration: const Duration(seconds: 3),
+        ),
+      );
+    } finally {
+      setState(() {
+        _isResettingPassword = false;
+      });
+    }
+  }
 }
-
