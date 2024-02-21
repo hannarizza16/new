@@ -23,7 +23,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
   final TextEditingController _studentIDController = TextEditingController();
   final TextEditingController _emailController =
-      TextEditingController();
+      TextEditingController (text: '@rtu.edu.ph');
   final TextEditingController _passwordController =
       TextEditingController();
   final TextEditingController _firstNameController = TextEditingController();
