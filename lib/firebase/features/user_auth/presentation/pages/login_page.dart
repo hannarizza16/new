@@ -22,9 +22,9 @@ class _LoginPageState extends State<LoginPage> {
   bool _isSigning = false;
   final FirebaseAuthService _auth = FirebaseAuthService();
   final TextEditingController _emailController = TextEditingController(
-      text: 'cjevardome@rtu.edu.ph');
+      text: 'hrmalana@rtu.edu.ph');
   final TextEditingController _passwordController = TextEditingController(
-      text: 'ggggg@');
+      text: 'hannacute@');
 
 
   @override
