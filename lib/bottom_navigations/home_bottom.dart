@@ -125,7 +125,9 @@ class _AllLanguagesState extends State<AllLanguages> {
                         SizedBox(height: 15),
                         Row(
                           children: [
-                            Text(
+                            Padding(
+                              padding: const EdgeInsets.only(left: 10.0),
+                            child: Text(
                               'Courses',
                               style: TextStyle(
                                 color: Colors.black,
@@ -133,21 +135,21 @@ class _AllLanguagesState extends State<AllLanguages> {
                                 fontWeight: FontWeight.normal,
                               ),
                             ),
+                            ),
                             Container(
                               width: MediaQuery.of(context).size.width - 80, // Adjust the width of the line
                               height: 1, // Adjust the height of the line to make it long
                               color: Colors.black, // Adjust the color of the line
                             ),
+
                           ],
                         ),
-                       Container(
-                         height:110,
-                          child: Padding(
-                              padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
+
+                       Expanded(
                               child: ListView.separated(
                                 separatorBuilder: (_, __) =>
-                                    const SizedBox(width: 8.0),
-                                scrollDirection: Axis.horizontal,
+                                    const SizedBox(width: 8.0, height: 15,),
+                                scrollDirection: Axis.vertical,
 
                                 itemBuilder: (context, index) => ElevatedButton( // SUBBJECT CARD// has a callback function ito yung ginagamit para ibuild o mag generate // ulit ng sinelect mo na index
 
@@ -180,7 +182,6 @@ class _AllLanguagesState extends State<AllLanguages> {
                                 itemCount: SubjectSection.values
                                     .length, // ilalabas lahat ng values or list ni Languages na nakaindicate sa enums
                               )),
-                        )
                       ]))
               : _viewLanguageScreen[
                   selectedScreen!], //"!" is an indication na hindi siya pwede maging null.
