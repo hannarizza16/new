@@ -101,7 +101,7 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
       isEmailVerified = FirebaseAuth.instance.currentUser!.emailVerified;
       verificationMessage = isEmailVerified
           ? 'Congratulations! Your account is verified'
-          : 'Your account is being verified';
+          : 'Your account is being verified, \n Please check you email';
     });
 
     if (isEmailVerified) {
@@ -164,9 +164,9 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(height: size.height * 0.5),
+            SizedBox(height: size.height * 0.4),
             ThreeDotLoader(), // Use custom loading animation here
-            SizedBox(height: 20),
+            SizedBox(height: 10),
             Text(
               verificationMessage,
               textAlign: TextAlign.center,
