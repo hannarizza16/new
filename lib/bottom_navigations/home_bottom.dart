@@ -100,7 +100,9 @@ class _AllLanguagesState extends State<AllLanguages> {
               child: Text(
                 Languages.values[index].value, //TEXT SCREEN COLOR LANGUAGE
                 style: TextStyle(
-                  color: selectedScreen == index ?  Color(0xFFFFCC70) : Colors.black,
+                  color: selectedScreen == index
+                      ? Color(0xFFFFCC70)
+                      : Colors.black,
                 ),
               ),
             ),
@@ -127,61 +129,71 @@ class _AllLanguagesState extends State<AllLanguages> {
                           children: [
                             Padding(
                               padding: const EdgeInsets.only(left: 10.0),
-                            child: Text(
-                              'Courses',
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 18,
-                                fontWeight: FontWeight.normal,
+                              child: Text(
+                                'Courses',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.normal,
+                                ),
                               ),
                             ),
-                            ),
                             Container(
-                              width: MediaQuery.of(context).size.width - 80, // Adjust the width of the line
-                              height: 1, // Adjust the height of the line to make it long
-                              color: Colors.black, // Adjust the color of the line
+                              width: MediaQuery.of(context).size.width -
+                                  80, // Adjust the width of the line
+                              height:
+                                  1, // Adjust the height of the line to make it long
+                              color:
+                                  Colors.black, // Adjust the color of the line
                             ),
-
                           ],
                         ),
+                        Expanded(
+                            child: ListView.separated(
+                          separatorBuilder: (_, __) =>
+                              const SizedBox(width: 8.0, height: 15),
+                          // scrollDirection: Axis.horizontal,
 
-                       Expanded(
-                              child: ListView.separated(
-                                separatorBuilder: (_, __) =>
-                                    const SizedBox(width: 8.0, height: 15,),
-                                scrollDirection: Axis.vertical,
+                          itemCount: SubjectSection.values.length,
+                          itemBuilder: (context, index) => Container(
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage('assets/colorfulmosaic.jpg'),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
 
-                                itemBuilder: (context, index) => ElevatedButton( // SUBBJECT CARD// has a callback function ito yung ginagamit para ibuild o mag generate // ulit ng sinelect mo na index
+                            child: ElevatedButton(
+                              // SUBBJECT CARD// has a callback function ito yung ginagamit para ibuild o mag generate // ulit ng sinelect mo na index
 
-                                  style: ElevatedButton.styleFrom(
-                                    elevation: 8,
+                              style: ElevatedButton.styleFrom(
+                                elevation: 8,
 
-                                    //selectedScreen == null
-                                    // if index is not equal to selected screen ang kulay niya is deep purple  but if == ang color niya is deepPurple[300]
-                                    backgroundColor: index != selectedSubject
-                                        ? Colors.white
-                                        : Colors.cyan[600],
-                                    // padding: EdgeInsets.all(1),
+                                //selectedScreen == null
+                                // if index is not equal to selected screen ang kulay niya is deep purple  but if == ang color niya is deepPurple[300]
+                                backgroundColor: index != selectedSubject
+                                    ? Colors.white
+                                    : Colors.cyan[600],
+                                // padding: EdgeInsets.all(1),
 
-                                    shape: CircleBorder(
-                                        side: BorderSide(
-                                            width: 2, color: Colors.black!)),
-                                    fixedSize: Size(100, 100),
-                                  ),
-                                  //CALLING THE IMAGE IN SUBJECT BUTTON
-                                  onPressed: isButtonEnabled
-                                      ? () => _onViewSubject(index)
-                                      : () {}, // : null,
-                                  child: Image.asset(
-                                    SubjectSection.values[index].imagePath,
-                                    height: 100,
-                                    width: 100,
-                                  ),
-                                ),
+                                shape: CircleBorder(
+                                    side: BorderSide(
+                                        width: 2, color: Colors.black!)),
+                                fixedSize: Size(100, 100),
+                              ),
+                              //CALLING THE IMAGE IN SUBJECT BUTTON
+                              onPressed: isButtonEnabled
+                                  ? () => _onViewSubject(index)
+                                  : () {}, // : null,
+                              child: Image.asset(
+                                SubjectSection.values[index].imagePath,
+                                height: 100,
+                                width: 100,
+                              ),
+                            ),
 
-                                itemCount: SubjectSection.values
-                                    .length, // ilalabas lahat ng values or list ni Languages na nakaindicate sa enums
-                              )),
+                          ),
+                        )),
                       ]))
               : _viewLanguageScreen[
                   selectedScreen!], //"!" is an indication na hindi siya pwede maging null.
