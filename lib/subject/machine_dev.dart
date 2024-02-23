@@ -1,14 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:first_project/gradient_background.dart';
 
 class MachineDevPage extends StatelessWidget {
   const MachineDevPage({super.key});
 
+
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text(
-        'MACHINE DEVELOPMENT',
-        style: TextStyle(fontSize: 60),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Mobile Development'),
+        backgroundColor: Color(0xFF279EFF),
+      ),
+      body: GradientContainer( // Use GradientContainer instead of Container
+        child: Center(
+          child: Text(
+            '',
+            style: TextStyle(fontSize: 20, color: Colors.white),
+          ),
+        ),
       ),
     );
   }

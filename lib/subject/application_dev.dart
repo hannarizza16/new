@@ -1,21 +1,26 @@
 
 import 'package:flutter/material.dart';
+import 'package:first_project/gradient_background.dart';
+
 
 class AppDevPage extends StatelessWidget {
   const AppDevPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-
-    return Container(
-      color: Colors.blue, // Change this to the color you want
-      child: const Center(
-        child: Text(
-          'MOBILE APPLICATION DEVELOPMENT',
-          style: TextStyle(fontSize: 20, color: Colors.white), // Adjust text style
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Mobile Development'),
+        backgroundColor: Color(0xFF279EFF),
+      ),
+      body: GradientContainer( // Use GradientContainer instead of Container
+        child: Center(
+          child: Text(
+            '',
+            style: TextStyle(fontSize: 20, color: Colors.white),
+          ),
         ),
       ),
     );
   }
 }
-
