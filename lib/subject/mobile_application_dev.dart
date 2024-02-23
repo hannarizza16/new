@@ -18,8 +18,8 @@ class _AppDevPageState extends State<AppDevPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Mobile Application Development'),
-        backgroundColor: Color(0xFF279EFF),
-        leading: IconButton(
+        backgroundColor: Colors.black,
+        actions:[ IconButton(
           icon: Icon(Icons.menu),
           onPressed: () {
             setState(() {
@@ -27,10 +27,13 @@ class _AppDevPageState extends State<AppDevPage> {
             });
           },
         ),
+    ],
       ),
       body: Stack(
         children: [
-          GradientContainer(),
+          // GradientContainer(),
+          Container(),
+
           Center(
             child: Text(
               _selectedLessonIndex != -1 ? 'Lesson ${_selectedLessonIndex + 1}' : '', // Display selected lesson
@@ -42,16 +45,16 @@ class _AppDevPageState extends State<AppDevPage> {
               duration: Duration(milliseconds: 300),
               top: 0,
               bottom: 0,
-              left: 0,
+              right: 0,
               child: GestureDetector(
                 onTap: () {
                   setState(() {
                     _isSidebarOpen = false;
                   });
                 },
-                child: Container(
+                child: GradientContainer(
                   width: 200,
-                  color: Colors.grey[200],
+
                   child: ListView.builder(
                     itemCount: 10, // Number of lessons
                     itemBuilder: (context, index) {
@@ -76,6 +79,7 @@ class _AppDevPageState extends State<AppDevPage> {
               ),
             ),
         ],
+
       ),
     );
   }
