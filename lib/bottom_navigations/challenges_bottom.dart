@@ -16,11 +16,7 @@ class ChallengesPage extends StatelessWidget {
             MaterialPageRoute(builder: (context) => CategorySelection()),
           );
         },
-        child: Text(
-          'Challenges',
-          style: TextStyle(
-            fontSize: 60,
-            color: Colors.blue, // Optional: Change the color for visual indication
+        // Optional: Change the color for visual indication
           ),
         ),
       ),

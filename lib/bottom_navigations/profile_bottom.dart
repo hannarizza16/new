@@ -316,7 +316,7 @@ Widget buildColumn(BuildContext context) => Column(
                   ),
                   fit: BoxFit.cover,
                 ),
-                borderRadius: BorderRadius.circular(30),
+                // borderRadius: BorderRadius.circular(30),
               ),
               child: Center(
                 child: Row(
@@ -414,7 +414,7 @@ Widget secondColumn(BuildContext context) =>
                             'https://cdn.vectorstock.com/i/1000x1000/58/09/cosmic-space-black-sky-background-with-blue-stars-vector-11805809.webp'),
                         fit: BoxFit.cover,
                       ),
-                      borderRadius: BorderRadius.circular(30),
+                      // borderRadius: BorderRadius.circular(30),
                     ),
                     child: Center(
                       child: Row(
@@ -466,7 +466,7 @@ Widget thirdColumn(BuildContext context) =>
       Padding(
         padding: const EdgeInsets.only(top: 30, left: 8.0),
         child: Text(
-          'Intermediate',
+          'Advance',
           style: TextStyle(
               fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black),
         ),
@@ -490,7 +490,7 @@ Widget thirdColumn(BuildContext context) =>
                             'https://cdn.vectorstock.com/i/1000x1000/58/09/cosmic-space-black-sky-background-with-blue-stars-vector-11805809.webp'),
                         fit: BoxFit.cover,
                       ),
-                      borderRadius: BorderRadius.circular(30),
+                      // borderRadius: BorderRadius.circular(30),
                     ),
                     child: Center(
                       child: Row(

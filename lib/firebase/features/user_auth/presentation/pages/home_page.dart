@@ -1,4 +1,4 @@
-import 'package:first_project/bottom_navigations/code_bottom.dart';
+import 'package:first_project/bottom_navigations/statistics_bottom.dart';
 import 'package:first_project/bottom_navigations/home_bottom.dart';
 import 'package:first_project/bottom_navigations/newsfeed_bottom.dart';
 import 'package:first_project/bottom_navigations/profile_bottom.dart';
@@ -20,13 +20,13 @@ class MainHomePage extends StatefulWidget {
 class _MainHomePageState extends State<MainHomePage> {
   final _bottomScreens = [
     // const NewsFeedPage(),
-    // const CodePage(),
-    const AllLanguages(),
+    const StatisticsPage(),
+    const AllLanguages(), // state name
     const CategorySelection(),
     const ProfilePage(),
   ]; // kung anong pinindot mo na button sa bottom nav //this is home
 
-  int selectedCurrentIndex = 2;
+  int selectedCurrentIndex = 1; // kung anong unang mag pop up pag log in bottom nav bar to.
 
   Future<bool> _onWillPop() async {
     if (selectedCurrentIndex == 0) {

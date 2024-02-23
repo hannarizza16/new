@@ -14,7 +14,6 @@ class CategoryScreen extends StatelessWidget {
     return ListView.builder(
       itemBuilder: (context, index) {
         final category = Categories.values[index];
-        SizedBox:
 
         return Column ( children: [ const SizedBox(height: 70),
         Padding(

@@ -15,7 +15,7 @@ enum SideBarSection {
 
 enum BottomNavs {
   // news('News'),// button names
-  // code('Code'),
+  statistics('Statistics'),
   home('Home'),
   challenges('Challenges'),
   profile('Profile'); // inside the () is the name of button assigned in nav bar
@@ -56,4 +56,13 @@ enum SubjectSection {
 
   final String text;
   const SubjectSection (this.text);
+}
+
+enum SubjectCategories{
+  lessonone('Lesson One'),
+  lessontwo('Lesson Two'),
+  lessonthree('Lesson Three');
+
+  final String text;
+  const SubjectCategories(this.text);
 }

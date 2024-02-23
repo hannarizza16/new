@@ -6,12 +6,12 @@ extension BottomNavsExt on BottomNavs {
     switch (this) {
       // case BottomNavs.news:
       //   return Icons.newspaper;
-      // case BottomNavs.code:
-      //   return Icons.code;
+      case BottomNavs.statistics:
+        return Icons.bar_chart;
       case BottomNavs.home:
         return Icons.home;
       case BottomNavs.challenges:
-        return Icons.bar_chart;
+        return Icons.gamepad;
       case BottomNavs.profile:
         return Icons.account_circle;
     }

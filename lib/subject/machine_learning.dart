@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:first_project/gradient_background.dart';
 
-class WebDevPage extends StatelessWidget {
-  const WebDevPage({super.key});
+class MachineDevPage extends StatelessWidget {
+  const MachineDevPage({super.key});
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Web Development'),
+        title: Text('Machine Learning'),
         backgroundColor: Color(0xFF279EFF),
       ),
       body: GradientContainer( // Use GradientContainer instead of Container
