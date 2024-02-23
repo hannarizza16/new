@@ -22,7 +22,7 @@ class CategoryScreen extends StatelessWidget {
             //SUBJECT CATEGORY STYLE
             style: ButtonStyle(
               side: MaterialStateProperty.all(const BorderSide(
-                color: Colors.black,
+                color: Colors.black, // BORDER OF BEGINNER, INT, ADV
                 width: 2.0,
               )),
               foregroundColor: MaterialStateProperty.all(
