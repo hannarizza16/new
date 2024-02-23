@@ -6,7 +6,7 @@ import 'package:first_project/main_profile/languages/languages_dart.dart';
 import 'package:first_project/main_profile/languages/languages_java.dart';
 import 'package:first_project/main_profile/languages/languages_ruby.dart';
 import 'package:first_project/main_profile/languages/languages_pearl.dart';
-import 'package:first_project/subject/application_dev.dart';
+import 'package:first_project/subject/mobile_application_dev.dart';
 import 'package:first_project/subject/game_dev.dart';
 import 'package:first_project/subject/machine_dev.dart';
 import 'package:first_project/subject/web_dev.dart';

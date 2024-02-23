@@ -10,7 +10,7 @@ class AppDevPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Mobile Development'),
+        title: Text('Mobile Application Development'),
         backgroundColor: Color(0xFF279EFF),
       ),
       body: GradientContainer( // Use GradientContainer instead of Container
