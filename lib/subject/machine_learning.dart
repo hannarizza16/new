@@ -9,7 +9,7 @@ class MachineDevPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Mobile Development'),
+        title: Text('Machine Learning'),
         backgroundColor: Color(0xFF279EFF),
       ),
       body: GradientContainer( // Use GradientContainer instead of Container
