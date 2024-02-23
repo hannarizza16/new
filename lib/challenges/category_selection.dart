@@ -3,7 +3,7 @@ import '../firebase/features/user_auth/presentation/pages/home_page.dart';
 import 'categories.dart';
 import 'expertise_level_selection.dart';
 
-class CategorySelection extends StatelessWidget {
+class CategorySelection extends StatelessWidget { // supposedly challenges_bottom.dart to
   const CategorySelection ({Key? key});
   @override
   Widget build(BuildContext context) {
@@ -113,7 +113,7 @@ class CategorySelection extends StatelessWidget {
     );
   }
 
-  Widget _buildDesignElement() { //line pink on the buttons
+  Widget _buildDesignElement() { //YELLOW LINE AT THE SIDE OF COLUMN
     return Container(
       width: 20, // Set the width of the design element here
       height: 130, // Set the height of the design element to match the card height

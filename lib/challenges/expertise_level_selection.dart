@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'categories.dart';
 import 'quiz_app.dart';
+import 'package:first_project/gradient_background.dart';
+
 
 class ExpertiseLevelSelection extends StatelessWidget {
   final String category;
@@ -14,14 +16,8 @@ class ExpertiseLevelSelection extends StatelessWidget {
         title: Text('Select an Expertise Level for $category'),
         backgroundColor: Color(0xFF279EFF),
       ),
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [Color(0xFFE0F4FF), Color(0xFF87C4FF)], //background color
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
-        ),
+      body: GradientContainer(
+
         child: ListView.builder(
           itemCount: getQuizCategories()
               .firstWhere((element) => element.name == category)

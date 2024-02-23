@@ -20,13 +20,13 @@ class MainHomePage extends StatefulWidget {
 class _MainHomePageState extends State<MainHomePage> {
   final _bottomScreens = [
     // const NewsFeedPage(),
-    // const CodePage(),
-    const AllLanguages(),
+    const StatisticsPage(),
+    const AllLanguages(), // state name
     const CategorySelection(),
     const ProfilePage(),
   ]; // kung anong pinindot mo na button sa bottom nav //this is home
 
-  int selectedCurrentIndex = 2;
+  int selectedCurrentIndex = 0; // kung anong unang mag pop up pag log in bottom nav bar to.
 
   Future<bool> _onWillPop() async {
     if (selectedCurrentIndex == 0) {
