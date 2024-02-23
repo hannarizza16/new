@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:first_project/gradient_background.dart';
+// import 'package:first_project/gradient_background.dart';
 
 class AppDevPage extends StatefulWidget {
   const AppDevPage({Key? key}) : super(key: key);
@@ -34,7 +34,8 @@ class _AppDevPageState extends State<AppDevPage> {
           // GradientContainer(),
           Container(),
 
-          Center(
+          Align(
+            alignment: Alignment.topCenter,
             child: Text(
               _selectedLessonIndex != -1 ? 'Lesson ${_selectedLessonIndex + 1}' : '', // Display selected lesson
               style: TextStyle(fontSize: 20, color: Colors.black),
@@ -52,14 +53,23 @@ class _AppDevPageState extends State<AppDevPage> {
                     _isSidebarOpen = false;
                   });
                 },
-                child: GradientContainer(
+                child: Container(
                   width: 200,
+                  color: Colors.black,
 
                   child: ListView.builder(
+
                     itemCount: 10, // Number of lessons
                     itemBuilder: (context, index) {
                       return ListTile(
-                        title: Text('Lesson ${index + 1}'),
+                        title: Text('Lesson ${index + 1}',  style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: _selectedLessonIndex == index
+                              ? Colors.yellow
+                              : Colors.white,
+                        ),
+                        ),
                         onTap: () {
                           // Handle tap event for each lesson
                           setState(() {

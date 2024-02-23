@@ -59,9 +59,17 @@ enum SubjectSection {
 }
 
 enum SubjectCategories{
-  lessonone('Lesson One'),
-  lessontwo('Lesson Two'),
-  lessonthree('Lesson Three');
+  lesson_one('Lesson One'),
+  lesson_two('Lesson Two'),
+  lesson_three('Lesson Three'),
+  lesson_four('Lesson Four'),
+  lesson_five('Lesson Five'),
+  lesson_six('Lesson Six'),
+  lesson_seven('Lesson Seven'),
+  lessone_ight('Lesson Eight'),
+  lesson_nine('Lesson Nine'),
+  lesson_ten('Lesson Ten');
+
 
   final String text;
   const SubjectCategories(this.text);
