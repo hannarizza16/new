@@ -20,7 +20,7 @@ class MainHomePage extends StatefulWidget {
 class _MainHomePageState extends State<MainHomePage> {
   final _bottomScreens = [
     // const NewsFeedPage(),
-    const StatisticsPage(),
+    StatisticsWidget(),
     const AllLanguages(), // state name
     const CategorySelection(),
     const ProfilePage(),
