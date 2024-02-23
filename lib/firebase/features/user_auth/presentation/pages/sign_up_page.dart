@@ -247,7 +247,7 @@ class _SignUpPageState extends State<SignUpPage> {
       return;
     }
 
-    if (email.endsWith('@rtu.edu.ph')) {
+    if (email.endsWith('@rtu.edu.ph') || email.endsWith('@gmail.com')) {
       // Check if password and confirm password match
       if (password != confirmPassword) {
         setState(() {

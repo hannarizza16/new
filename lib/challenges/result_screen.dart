@@ -2,12 +2,21 @@ import 'package:first_project/firebase/features/user_auth/presentation/pages/hom
 import 'package:flutter/material.dart';
 import 'category_selection.dart';
 import 'questions.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class ResultScreen extends StatelessWidget {
   final List<QuizQuestion> questions;
   final List<int> userAnswers;
+  final String category;
+  final String expertiseLevel;
 
-  ResultScreen({required this.questions, required this.userAnswers});
+  ResultScreen({
+    required this.questions,
+    required this.userAnswers,
+    required this.category,
+    required this.expertiseLevel,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -24,17 +33,27 @@ class ResultScreen extends StatelessWidget {
     }
     print(userAnswers);
 
+    // Get the currently logged-in user's email
+    String? userEmail = FirebaseAuth.instance.currentUser?.email;
+
+    // Save the score to Firebase
+    if (userEmail != null) {
+      _saveScoreToFirebase(
+          correctAnswers, questions.length, userEmail, category, expertiseLevel);
+    }
+
     // Determine the motivating quote based on the score
     String motivatingQuote = '';
     if (correctAnswers == questions.length) {
-      motivatingQuote = "Congratulations! Achieving a perfect score is a testament to your dedication and knowledge. It's not just a victory; it's a milestone in your journey of continuous learning.";
+      motivatingQuote =
+      "Congratulations! Achieving a perfect score is a testament to your dedication and knowledge. It's not just a victory; it's a milestone in your journey of continuous learning.";
     } else if (correctAnswers >= questions.length - 1) {
-      motivatingQuote = "You did great! Success is not just about the destination; it's about the journey. Your commitment and effort are evident in your performance.";
+      motivatingQuote =
+      "You did great! Success is not just about the destination; it's about the journey. Your commitment and effort are evident in your performance.";
     } else {
       motivatingQuote =
       "Don't be discouraged by a low score. Every mistake is a step towards learning and improvement. Keep pushing yourself, and success will follow!";
     }
-
 
     return WillPopScope(
       onWillPop: () async {
@@ -72,8 +91,8 @@ class ResultScreen extends StatelessWidget {
                       children: [
                         Text(
                           'Your Score: $correctAnswers / ${questions.length}',
-                          style:
-                              TextStyle(fontSize: 30, color: Color(0xFF0C356A)),
+                          style: TextStyle(
+                              fontSize: 30, color: Color(0xFF0C356A)),
                           textAlign: TextAlign.center,
                         ),
                         SizedBox(height: 20),
@@ -88,7 +107,8 @@ class ResultScreen extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 20,
                             color: Color(0xFF0C356A),
-                            fontStyle: FontStyle.italic, // Italicize the quote
+                            fontStyle: FontStyle
+                                .italic, // Italicize the quote
                             fontWeight: FontWeight.bold,
                           ),
                           textAlign: TextAlign.center,
@@ -103,6 +123,44 @@ class ResultScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _saveScoreToFirebase(int score, int totalQuestions, String userEmail,
+      String category, String expertise) async {
+    // Get a reference to the Firestore database
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+    try {
+      // Fetch user details from the 'students' collection based on email
+      QuerySnapshot userQuery = await firestore
+          .collection('students')
+          .where('email', isEqualTo: userEmail)
+          .get();
+
+      if (userQuery.docs.isNotEmpty) {
+        String firstName = userQuery.docs.first['first_name'];
+        String lastName = userQuery.docs.first['last_name'];
+
+        // Add a new document with a generated ID
+        await firestore.collection('scores').add({
+          'score': score,
+          'totalQuestions': totalQuestions,
+          'userEmail': userEmail,
+          'firstName': firstName,
+          'lastName': lastName,
+          'category': category,
+          'expertise': expertise,
+          'timestamp': DateTime.now(),
+        });
+        print("Score added to Firebase: $score");
+      } else {
+        print(
+            "User with email $userEmail not found in the 'students' collection.");
+      }
+    } catch (error) {
+      print(
+          "Failed to retrieve user information or add score to Firebase: $error");
+    }
   }
 
   void _showExitConfirmationDialog(BuildContext context) {
@@ -128,7 +186,7 @@ class ResultScreen extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (context) => MainHomePage(),
                   ),
-                  (route) => false, // This line clears the navigation stack
+                      (route) => false, // This line clears the navigation stack
                 );
               },
               child: Text('Exit'),

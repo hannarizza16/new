@@ -4,7 +4,8 @@ import 'categories.dart';
 import 'expertise_level_selection.dart';
 
 class CategorySelection extends StatelessWidget {
-  const CategorySelection ({Key? key});
+  const CategorySelection({Key? key});
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -14,14 +15,10 @@ class CategorySelection extends StatelessWidget {
         return false;
       },
       child: Scaffold(
-        // appBar: AppBar(
-        //   title: Text('Select a Category'),
-        //   backgroundColor: Color(0xFF164863), // Custom AppBar color
-        // ),
         body: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [Color(0xFFE0F4FF), Color(0xFF87C4FF)], //background color
+              colors: [Color(0xFFE0F4FF), Color(0xFF87C4FF)],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
@@ -29,11 +26,7 @@ class CategorySelection extends StatelessWidget {
           child: CustomScrollView(
             slivers: [
               SliverPadding(
-                padding: EdgeInsets.only(
-                  top: 18,
-                  left: 16,
-                  right: 16,
-                ),
+                padding: EdgeInsets.only(top: 18, left: 16, right: 16),
                 sliver: SliverList(
                   delegate: SliverChildBuilderDelegate(
                         (context, index) {
@@ -42,7 +35,7 @@ class CategorySelection extends StatelessWidget {
                         padding: EdgeInsets.only(bottom: 18),
                         child: Card(
                           elevation: 10,
-                          color: Color(0xFF0C356A), //cards color
+                          color: Color(0xFF0C356A),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20.0),
                           ),
@@ -64,23 +57,19 @@ class CategorySelection extends StatelessWidget {
                                         mainAxisAlignment: MainAxisAlignment.center,
                                         children: [
                                           Padding(
-                                            padding: EdgeInsets.only(
-                                              left: 20.0,
-                                            ),
+                                            padding: EdgeInsets.only(left: 20.0),
                                             child: Text(
                                               category.name,
                                               style: TextStyle(
                                                 fontSize: 30,
-                                                color: Color(0xFFFFCC70), //FONT COLOR FOR HEADING LANGUAGES
+                                                color: Color(0xFFFFCC70),
                                                 letterSpacing: 1.0,
                                               ),
                                             ),
                                           ),
                                           SizedBox(height: 8),
                                           Padding(
-                                            padding: EdgeInsets.only(
-                                              left: 20.0,
-                                            ),
+                                            padding: EdgeInsets.only(left: 20.0),
                                             child: Text(
                                               '${category.subtext.join(', ')}',
                                               style: TextStyle(
@@ -92,7 +81,7 @@ class CategorySelection extends StatelessWidget {
                                           ),
                                         ],
                                       ),
-                                      _buildDesignElement(), // Design element
+                                      _buildDesignElement(),
                                     ],
                                   ),
                                 ),
@@ -113,12 +102,12 @@ class CategorySelection extends StatelessWidget {
     );
   }
 
-  Widget _buildDesignElement() { //line pink on the buttons
+  Widget _buildDesignElement() {
     return Container(
-      width: 20, // Set the width of the design element here
-      height: 130, // Set the height of the design element to match the card height
+      width: 20,
+      height: 130,
       decoration: BoxDecoration(
-        color: Color(0xFFFFCC70), // Set the color of the design element here
+        color: Color(0xFFFFCC70),
         borderRadius: BorderRadius.only(
           topRight: Radius.circular(20.0),
           bottomRight: Radius.circular(20.0),
@@ -142,7 +131,7 @@ class CategorySelection extends StatelessWidget {
       MaterialPageRoute(
         builder: (context) => MainHomePage(),
       ),
-          (route) => false, // This line clears the navigation stack
+          (route) => false,
     );
   }
 }

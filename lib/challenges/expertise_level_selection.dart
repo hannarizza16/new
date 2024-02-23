@@ -1,3 +1,4 @@
+// expertise_level_selection.dart
 import 'package:flutter/material.dart';
 import 'categories.dart';
 import 'quiz_app.dart';
@@ -17,7 +18,7 @@ class ExpertiseLevelSelection extends StatelessWidget {
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [Color(0xFFE0F4FF), Color(0xFF87C4FF)], //background color
+            colors: [Color(0xFFE0F4FF), Color(0xFF87C4FF)],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
@@ -32,19 +33,18 @@ class ExpertiseLevelSelection extends StatelessWidget {
                 .firstWhere((element) => element.name == category)
                 .expertiseLevels[index];
 
-            // Calculate top margin
             EdgeInsetsGeometry margin = EdgeInsets.symmetric(horizontal: 16);
             if (index == 0) {
-              margin = EdgeInsets.fromLTRB(16, 16, 16, 8); // Larger top margin for the first item
+              margin = EdgeInsets.fromLTRB(16, 16, 16, 8);
             } else if (index ==
                 getQuizCategories()
                     .firstWhere((element) => element.name == category)
                     .expertiseLevels
                     .length -
                     1) {
-              margin = EdgeInsets.fromLTRB(16, 8, 16, 16); // Larger bottom margin for the last item
+              margin = EdgeInsets.fromLTRB(16, 8, 16, 16);
             } else {
-              margin = EdgeInsets.symmetric(horizontal: 16, vertical: 8); // Equal vertical margins for other items
+              margin = EdgeInsets.symmetric(horizontal: 16, vertical: 8);
             }
 
             return Card(
@@ -56,16 +56,7 @@ class ExpertiseLevelSelection extends StatelessWidget {
               margin: margin,
               child: GestureDetector(
                 onTap: () {
-                  // Navigate to QuizScreen and pass selected category and expertise level
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => QuizApp(
-                        category: category,
-                        expertiseLevel: expertiseLevel,
-                      ),
-                    ),
-                  );
+                  _navigateToQuizApp(context, category, expertiseLevel);
                 },
                 child: Container(
                   height: 80,
@@ -103,6 +94,15 @@ class ExpertiseLevelSelection extends StatelessWidget {
           topRight: Radius.circular(15.0),
           bottomRight: Radius.circular(15.0),
         ),
+      ),
+    );
+  }
+
+  void _navigateToQuizApp(BuildContext context, String category, String expertiseLevel) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => QuizApp(category: category, expertiseLevel: expertiseLevel),
       ),
     );
   }

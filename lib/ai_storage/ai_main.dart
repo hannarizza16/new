@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:first_project/ai_storage/consts.dart';
 
 class ChatPage extends StatefulWidget {
-  const ChatPage({super.key});
+  const ChatPage({Key? key}) : super(key: key);
 
   @override
   State<ChatPage> createState() => _ChatPageState();
@@ -22,10 +22,9 @@ class _ChatPageState extends State<ChatPage> {
   );
 
   final ChatUser _currentUser =
-  ChatUser(id: '1', firstName: 'Hussain', lastName: 'Mustafa');
+  ChatUser(id: '1', firstName: 'Code', lastName: 'Cultivator');
 
-  final ChatUser _gptChatUser =
-  ChatUser(id: '2', firstName: 'Chat', lastName: 'GPT');
+  final ChatUser _gptChatUser = ChatUser(id: '2', firstName: 'Jr.', lastName: 'AI');
 
   List<ChatMessage> _messages = <ChatMessage>[];
   List<ChatUser> _typingUsers = <ChatUser>[];
@@ -72,6 +71,8 @@ class _ChatPageState extends State<ChatPage> {
       _messages.insert(0, m);
       _typingUsers.add(_gptChatUser);
     });
+
+    // Prepare conversation history
     List<Messages> _messagesHistory = _messages.reversed.map((m) {
       if (m.user == _currentUser) {
         return Messages(role: Role.user, content: m.text);
@@ -79,27 +80,64 @@ class _ChatPageState extends State<ChatPage> {
         return Messages(role: Role.assistant, content: m.text);
       }
     }).toList();
-    final request = ChatCompleteText(
-      model: GptTurbo0301ChatModel(),
-      messages: _messagesHistory,
-      maxToken: 200,
-    );
-    final response = await _openAI.onChatCompletion(request: request);
-    for (var element in response!.choices) {
-      if (element.message != null) {
+
+    try {
+      // Request AI response
+      final request = ChatCompleteText(
+        model: GptTurbo0301ChatModel(),
+        messages: _messagesHistory,
+        maxToken: 200,
+      );
+
+      final response = await _openAI.onChatCompletion(request: request);
+
+      // Handle AI response
+      if (response != null && response.choices.isNotEmpty) {
+        for (var element in response.choices) {
+          if (element.message != null) {
+            setState(() {
+              _messages.insert(
+                0,
+                ChatMessage(
+                  user: _gptChatUser,
+                  createdAt: DateTime.now(),
+                  text: element.message!.content,
+                ),
+              );
+            });
+          }
+        }
+      } else {
+        // Handle empty or invalid response
         setState(() {
           _messages.insert(
             0,
             ChatMessage(
-                user: _gptChatUser,
-                createdAt: DateTime.now(),
-                text: element.message!.content),
+              user: _gptChatUser,
+              createdAt: DateTime.now(),
+              text: "Sorry, I couldn't generate a response.",
+            ),
           );
         });
       }
+    } catch (e) {
+      // Handle errors
+      setState(() {
+        _messages.insert(
+          0,
+          ChatMessage(
+            user: _gptChatUser,
+            createdAt: DateTime.now(),
+            // text: "An error occurred: $e",
+            text: "Sorry, I'm currently experiencing server downtime. Please try again in 20 seconds.",
+          ),
+        );
+      });
+    } finally {
+      // Remove typing indicator
+      setState(() {
+        _typingUsers.remove(_gptChatUser);
+      });
     }
-    setState(() {
-      _typingUsers.remove(_gptChatUser);
-    });
   }
 }

@@ -12,17 +12,17 @@ List<QuizCategory> getQuizCategories() {
     QuizCategory(
       name: 'C',
       expertiseLevels: ['Beginner', 'Intermediate', 'Advanced'],
-      subtext: ['Navigate the fundamentals of C, from syntax \nto memory management'],
+      subtext: ['Navigate the fundamentals of C \nfrom syntax to memory management'],
     ),
     QuizCategory(
       name: 'C++',
       expertiseLevels: ['Beginner', 'Intermediate', 'Advanced'],
-      subtext: ['Level up with classes, inheritance, polymorphism, \nand advanced C++ features'],
+      subtext: ['Level up with classes, inheritance, \nand advanced C++ features'],
     ),
     QuizCategory(
       name: 'Java',
       expertiseLevels: ['Beginner', 'Intermediate', 'Advanced'],
-      subtext: ['Showcase your skills in Java`s rich class library \nand multithreading'],
+      subtext: ['Showcase your skills in Java`s  \nrich class library and multithreading'],
     ),
     QuizCategory(
       name: 'Dart',
@@ -30,14 +30,9 @@ List<QuizCategory> getQuizCategories() {
       subtext: ['Demonstrate proficiency in Dart, Flutter, \nand UI responsiveness'],
     ),
     QuizCategory(
-      name: 'Ruby',
+      name: 'C#',
       expertiseLevels: ['Beginner', 'Intermediate', 'Advanced'],
-      subtext: ['Explore Ruby`s beauty, from metaprogramming \nto concise syntax'],
-    ),
-    QuizCategory(
-      name: 'Arduino',
-      expertiseLevels: ['Beginner', 'Intermediate', 'Advanced'],
-      subtext: ['Master embedded systems, coding for \nmicrocontrollers and creating real-world projects'],
+      subtext: ['Explore C# beauty, from programming \nto concise syntax'],
     ),
     // Add more categories as needed
   ];

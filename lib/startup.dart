@@ -35,8 +35,8 @@ class _GetStarted extends State<GetStarted> {
   ];
 
   List<String> descriptions = [
-    "CodeX, your one-stop solution for all your coding needs."
-        "\nDesigned to help you master coding skills from your device.",
+    "CodeX, your trusted solution for all your coding needs."
+        "\nDesigned to master your coding skills from your device.",
     "Learn programming through hands-on"
         "\nand interactive tutorials on various languages.",
     "Test and enhance your skills "
@@ -100,11 +100,11 @@ class _GetStarted extends State<GetStarted> {
                   ),
                   const SizedBox(height: 5),
                   Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 5),
+                    margin: const EdgeInsets.symmetric(horizontal: 30),
                     padding: const EdgeInsets.all(12),
                     child: Text(
                       descriptions[index],
-                      style: const TextStyle(fontSize: 15.5),
+                      style: const TextStyle(fontSize: 15),
                       textAlign: TextAlign.center,
                     ),
                   ),

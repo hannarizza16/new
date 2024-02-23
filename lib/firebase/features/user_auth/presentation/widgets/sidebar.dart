@@ -1,16 +1,161 @@
+import 'dart:io';
+
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:first_project/extension/sidebar_section_ext.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../../../enums/enums.dart';
 import '../pages/login_page.dart';
 
-class SideBar extends StatelessWidget {
-  const SideBar({Key? key});
+class SideBar extends StatefulWidget {
+  const SideBar({Key? key}) : super(key: key);
 
+  @override
+  _SideBarState createState() => _SideBarState();
+}
 
+class _SideBarState extends State<SideBar> {
+  late TextEditingController _nameController;
+  late String _firstName;
+  late String _middleInitial;
+  late String _lastName;
+  File? _image;
+
+  @override
+  void initState() {
+    super.initState();
+    _nameController = TextEditingController();
+    _firstName = '';
+    _middleInitial = '';
+    _lastName = '';
+    _fetchNameFromFirestore();
+  }
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    super.dispose();
+  }
+
+  void _fetchNameFromFirestore() async {
+    String? currentUserEmail = FirebaseAuth.instance.currentUser?.email;
+
+    if (currentUserEmail != null) {
+      CollectionReference users =
+          FirebaseFirestore.instance.collection('students');
+
+      try {
+        QuerySnapshot querySnapshot =
+            await users.where('email', isEqualTo: currentUserEmail).get();
+
+        if (querySnapshot.docs.isNotEmpty) {
+          setState(() {
+            _firstName = querySnapshot.docs.first['first_name'];
+            _middleInitial = querySnapshot.docs.first['middle_initial'];
+            _lastName = querySnapshot.docs.first['last_name'];
+            _nameController.text = '$_firstName $_middleInitial. $_lastName';
+          });
+          // Load ng profile image URL galing sa Firestore
+          loadProfileImage();
+        }
+      } catch (e) {
+        print('Error fetching name: $e');
+      }
+    } else {
+      print('No current user or user email found.');
+    }
+  }
+
+  void loadProfileImage() async {
+    String? currentUserEmail = FirebaseAuth.instance.currentUser?.email;
+
+    if (currentUserEmail != null) {
+      String cacheKey = 'profile_image_url_$currentUserEmail';
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String? cachedImageURL = prefs.getString(cacheKey);
+
+      if (cachedImageURL != null) {
+        setState(() async {
+          _image = await DefaultCacheManager().getSingleFile(cachedImageURL);
+        });
+      } else {
+        try {
+          String fileName = currentUserEmail + '_profile_image';
+          firebase_storage.Reference storageReference = firebase_storage
+              .FirebaseStorage.instance
+              .ref()
+              .child('profile_images/$fileName');
+          String downloadURL = await storageReference.getDownloadURL();
+          setState(() {
+            _image = File.fromUri(Uri.parse(downloadURL));
+          });
+          prefs.setString(cacheKey, downloadURL);
+        } catch (e) {
+          print('Error loading profile image: $e');
+        }
+      }
+    } else {
+      print('No current user or user email found.');
+    }
+  }
+
+  Future<void> getImage() async {
+    final picker = ImagePicker();
+    final pickedFile = await picker.getImage(source: ImageSource.gallery);
+
+    setState(() {
+      if (pickedFile != null) {
+        _image = File(pickedFile.path);
+        // Upload ng larawan sa Firebase Storage pagkatapos pumili ng larawan
+        uploadImageToFirebaseStorage(); // Dito dapat walang argumento
+      } else {
+        print('No image selected.');
+      }
+    });
+  }
+
+  Future<void> uploadImageToFirebaseStorage() async {
+    String? currentUserEmail = FirebaseAuth.instance.currentUser?.email;
+
+    if (currentUserEmail != null && _image != null) {
+      String fileName = currentUserEmail + '_profile_image';
+      firebase_storage.Reference storageReference = firebase_storage
+          .FirebaseStorage.instance
+          .ref()
+          .child('profile_images/$fileName');
+      firebase_storage.UploadTask uploadTask =
+          storageReference.putFile(_image!);
+
+      await uploadTask.whenComplete(() => null);
+
+      // Kapag natapos na ang pag-upload, tawagin ang function para i-update ang profile image URL sa Firestore
+      String downloadURL = await storageReference.getDownloadURL();
+
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String cacheKey = 'profile_image_url_$currentUserEmail';
+      prefs.setString(cacheKey, downloadURL);
+
+      updateProfileImageURL(downloadURL);
+
+      // Hindi na natin kailangan i-set ang _image variable dito dahil hindi naman ito ginagamit
+    }
+  }
+
+  Future<void> updateProfileImageURL(String imageURL) async {
+    String? userId = FirebaseAuth.instance.currentUser!.uid;
+    DocumentReference userRef =
+        FirebaseFirestore.instance.collection('students').doc(userId);
+
+    await userRef.update({'profile_image_url': imageURL});
+
+    print('Profile image URL updated in Firestore');
+  }
 
   Future<String?> _getUserEmail() async {
     // Get the current user
@@ -32,7 +177,8 @@ class SideBar extends StatelessWidget {
       case SideBarSection.logout:
         FirebaseAuth.instance.signOut(); // Sign out the user
         Fluttertoast.showToast(
-          msg: "Logged out", // Toast message when the user logs out
+          msg: "Logged out",
+          // Toast message when the user logs out
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.BOTTOM,
           timeInSecForIosWeb: 1,
@@ -44,14 +190,20 @@ class SideBar extends StatelessWidget {
           context,
           MaterialPageRoute(builder: (context) => const LoginPage()),
         );
+        break;
       default:
         return; // Handle default case, or add more cases if needed
     }
   }
 
+  TextStyle profileTextStyle = TextStyle(
+    color: Colors.black,
+    fontWeight: FontWeight.bold,
+  );
+
   @override
   Widget build(BuildContext context) {
-    TextStyle profileTextStyle = TextStyle(
+    final TextStyle profileTextStyle = TextStyle(
       color: Colors.black,
       fontWeight: FontWeight.bold,
     );
@@ -61,27 +213,32 @@ class SideBar extends StatelessWidget {
         future: _getUserEmail(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            // While waiting for the future to complete, display a loading indicator
-            return CircularProgressIndicator();
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          } else if (snapshot.hasError) {
+            return Center(
+              child: Text('Error: ${snapshot.error}'),
+            );
           } else {
-            // If future completes, show the drawer with the user's email
-            String userEmail = snapshot.data ??
-                "No email"; // Default to "No email" if email is null
+            String userEmail = snapshot.data ?? "No email";
             return ListView(
               padding: EdgeInsets.zero,
               children: [
                 UserAccountsDrawerHeader(
                   accountName: Text(
-                    "Welcome",
+                    _nameController.text,
                     style: profileTextStyle,
                   ),
                   accountEmail: Text(
                     userEmail,
                     style: profileTextStyle,
                   ),
-                  currentAccountPicture: const CircleAvatar(
-                    radius: 100,
-                    backgroundImage: AssetImage('assets/jrizal.jpg'),
+                  currentAccountPicture: _image != null
+                      ? CircleAvatar(
+                    backgroundImage: FileImage(_image!),
+                  )
+                      : CircleAvatar(
                   ),
                   decoration: BoxDecoration(
                     color: Colors.transparent,
@@ -89,8 +246,7 @@ class SideBar extends StatelessWidget {
                       image: AssetImage('assets/logorizal_4.png'),
                       fit: BoxFit.cover,
                       colorFilter: ColorFilter.mode(
-                        Colors.white.withOpacity(
-                            0.3), // Adjust the opacity (0.0 to 1.0)
+                        Colors.white.withOpacity(0.3),
                         BlendMode.dstATop,
                       ),
                     ),

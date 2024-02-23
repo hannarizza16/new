@@ -31,6 +31,7 @@ class _ProfilePageState extends State<ProfilePage> {
     super.initState();
     _nameController.text = '$_firstName $_middleInitial $_lastName';
     _fetchNameFromFirestore();
+    loadProfileImage();
   }
 
   void _fetchNameFromFirestore() async {
@@ -96,6 +97,7 @@ class _ProfilePageState extends State<ProfilePage> {
       print('No current user or user email found.');
     }
   }
+
 
   Future getImage() async {
     final picker = ImagePicker();
