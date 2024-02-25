@@ -21,6 +21,11 @@ class AllLanguages extends StatefulWidget {
 }
 
 class _AllLanguagesState extends State<AllLanguages> {
+  static final Color selectedButtonColor = Color(0xFF0C356A); // dark blue
+  static final Color defaultSelectedButtonColor = Colors.transparent;
+  static final Color selectedButtonTextColor = Color(0xFFFFCC70); //yellow
+  static final Color selectedDefaultButtonTextColor = Colors.black;
+
   static final _viewLanguageScreen = [
     // arranged dapat to bawal magkapalit. since naka index tayo.
     // -ito yung kung saan nakapaloob yung mga topics
@@ -85,15 +90,15 @@ class _AllLanguagesState extends State<AllLanguages> {
                 side: MaterialStateProperty.all(
                   BorderSide(
                     color: selectedScreen == index
-                        ? Color(0xFF0C356A)!
-                        : Color(0xFF0C356A)!,
+                        ? selectedButtonColor! // borderside color language
+                        : selectedButtonColor!, // borderside color language
                     width: 2,
                   ),
                 ),
                 backgroundColor: MaterialStateProperty.all(
                     selectedScreen == index
-                        ? Color(0xFF0C356A)!
-                        : Colors.transparent),
+                        ? selectedButtonColor!
+                        : defaultSelectedButtonColor),
               ),
 
               onPressed: () => _onViewScreen(index),
@@ -101,8 +106,8 @@ class _AllLanguagesState extends State<AllLanguages> {
                 Languages.values[index].value, //TEXT SCREEN COLOR LANGUAGE
                 style: TextStyle(
                   color: selectedScreen == index
-                      ? Color(0xFFFFCC70)
-                      : Colors.black,
+                      ? selectedButtonTextColor // text color ng language when selected
+                      : selectedDefaultButtonTextColor,
                 ),
               ),
             ),

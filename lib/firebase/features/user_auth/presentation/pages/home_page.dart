@@ -110,7 +110,7 @@ class _MainHomePageState extends State<MainHomePage> {
         body: Container(
           decoration: BoxDecoration( //LANGUAGES NA SLIDING
             gradient: LinearGradient(
-              colors: [Color(0xFFE0F4FF), Color(0xFF87C4FF)],
+              colors: [Color(0xFFE0F4FF), Color(0xFF87C4FF)], // Background Color
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
@@ -120,8 +120,8 @@ class _MainHomePageState extends State<MainHomePage> {
 
         bottomNavigationBar: Theme( //BOTTOM NAVIGATION BAR
           data: Theme.of(context).copyWith(
-            canvasColor: Color(0xFF279EFF), // Updated canvasColor
-            primaryColor: Colors.blue, // ICON in bottom navigation
+            canvasColor: Color(0xFF279EFF), // bottom nav bg color
+            primaryColor: Colors.white, // ICON in bottom navigation
             textTheme: Theme.of(context)
                 .textTheme
                 .copyWith(caption: TextStyle(color: Colors.black26)),

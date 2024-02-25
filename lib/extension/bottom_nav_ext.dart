@@ -13,7 +13,7 @@ extension BottomNavsExt on BottomNavs {
       case BottomNavs.home:
         return Icons.home;
       case BottomNavs.challenges:
-        return Icons.gamepad;
+        return CupertinoIcons.gamecontroller_alt_fill;
       case BottomNavs.profile:
         return Icons.account_circle;
     }
