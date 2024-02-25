@@ -44,7 +44,7 @@ class _StatisticsWidgetState extends State<StatisticsWidget> {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.only(left: 10,  top: 8.0  ),
             child: Row(
               children: [
                 Text("Language: "),
@@ -63,7 +63,7 @@ class _StatisticsWidgetState extends State<StatisticsWidget> {
                     );
                   }).toList(),
                 ),
-                SizedBox(width: 70),
+                SizedBox(width: 30),
                 Text("Expertise: "),
                 DropdownButton<String>(
                   value: selectedExpertise,
