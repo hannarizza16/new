@@ -1,4 +1,6 @@
+import 'package:first_project/firebase/features/user_auth/presentation/pages/login_page.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'firebase/features/user_auth/presentation/pages/sign_up_page.dart';
 
 void main() {
@@ -6,7 +8,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,16 +17,17 @@ class MyApp extends StatelessWidget {
 }
 
 class GetStarted extends StatefulWidget {
-  const GetStarted({super.key});
+  const GetStarted({Key? key}) : super(key: key);
 
   @override
-  _GetStarted createState() => _GetStarted();
+  _GetStartedState createState() => _GetStartedState();
 }
 
-class _GetStarted extends State<GetStarted> {
+class _GetStartedState extends State<GetStarted> {
   final PageController _pageController = PageController(initialPage: 0);
   int currentPage = 0;
   int totalPages = 5;
+  late SharedPreferences _prefs;
 
   List<String> headings = [
     "Welcome",
@@ -58,11 +61,25 @@ class _GetStarted extends State<GetStarted> {
   @override
   void initState() {
     super.initState();
+    _initPrefs();
     _pageController.addListener(() {
       setState(() {
         currentPage = _pageController.page?.round() ?? 0;
       });
     });
+  }
+
+  void _initPrefs() async {
+    _prefs = await SharedPreferences.getInstance();
+    bool? isFirstTime = _prefs.getBool('isFirstTime') ?? true;
+    if (!isFirstTime) {
+      // If not first time, navigate to next page or perform necessary action.
+      // For example:
+      Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LoginPage()));
+    } else {
+      // If first time, set isFirstTime to false.
+      _prefs.setBool('isFirstTime', false);
+    }
   }
 
   @override
