@@ -29,6 +29,8 @@ class _TopicDrawerState extends State<TopicDrawer> {
     final Color selectedTextTopic =  Color(0xFFFFCC70);
     final Color unselectedTextTopic =  Color(0xFFFFFFFF);
     final Color sideBarColor =  Color(0xFF0C356A);
+    const Color yellow =  Color(0xFFFFCC70);
+
 
 
 
@@ -62,7 +64,7 @@ class _TopicDrawerState extends State<TopicDrawer> {
         },
         itemCount: widget.topics.length,
       )
-          : const Center(child: Text('No topics available.')),
+          : const Center(child: Text('No topics available.', style: TextStyle( color: yellow),)),
     ));
   }
 }
