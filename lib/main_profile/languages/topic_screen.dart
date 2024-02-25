@@ -24,6 +24,10 @@ class TopicScreen extends StatefulWidget {
 }
 
 class _TopicScreenState extends State<TopicScreen> {
+  static const Color darkBlue = Color(0xFF0C356A); // dark blue
+  static const Color headerTopic = Color(0xFF000000); // black
+  static const Color topicInfo = Color(0xFF000000); // black
+
   late List<Topic> topics;
   late int selectedTopicIndex;
   bool _isSidebarOpen = true;
@@ -58,7 +62,7 @@ class _TopicScreenState extends State<TopicScreen> {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: darkBlue,
         title: Text(widget.language.value),
         actions: [
           IconButton(
@@ -98,7 +102,7 @@ class _TopicScreenState extends State<TopicScreen> {
                                   style: const TextStyle(
                                     fontSize: 30,
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.black,
+                                    color: headerTopic,
                                   ),
                                   textAlign: TextAlign.center,
                                 ),
@@ -113,7 +117,7 @@ class _TopicScreenState extends State<TopicScreen> {
                                 subTopic.body,
                                 style: const TextStyle(
                                   fontSize: 18,
-                                  color: Colors.black,
+                                  color: topicInfo,
                                 ),
                               ),
                             ),
@@ -154,9 +158,9 @@ class _TopicScreenState extends State<TopicScreen> {
             duration: Duration(milliseconds: 300),
             top: 0,
             bottom: 0,
-            right: _isSidebarOpen ? 0 : -200,
+            right: _isSidebarOpen ? 0 : -315,
             child: Container(
-              width: 200,
+              width: 315,
               color: Colors.green,
 
               child: TopicDrawer(

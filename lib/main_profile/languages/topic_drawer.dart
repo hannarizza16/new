@@ -26,9 +26,15 @@ class _TopicDrawerState extends State<TopicDrawer> {
 
   @override
   Widget build(BuildContext context) {
+    final Color selectedTextTopic =  Color(0xFFFFCC70);
+    final Color unselectedTextTopic =  Color(0xFFFFFFFF);
+    final Color sideBarColor =  Color(0xFF0C356A);
+
+
+
     return Drawer(
       child: Container(
-        color: Colors.black,
+        color: sideBarColor,
       child: widget.topics.isNotEmpty
           ? ListView.builder(
         itemBuilder: (context, index) {
@@ -47,7 +53,7 @@ class _TopicDrawerState extends State<TopicDrawer> {
               title: Text(
                 topic.topic,
                 style: TextStyle(
-                  color: isSelected ? Colors.yellow : Colors.white,
+                  color: isSelected ? selectedTextTopic : unselectedTextTopic,
                   fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
                 ),
               ),
