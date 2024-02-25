@@ -645,7 +645,7 @@ const codex = {
         ]
       },
 
-      19: {'topic': '          8.1   Java String Concatenation',
+      19: {'topic': '     8.1   Java String Concatenation',
       'subTopic': [{
         'heading':'String Concatenation',
         'attachment': 'assets/java_lessons_image/scon_1.jpg',
@@ -663,7 +663,7 @@ const codex = {
 
       },
 
-      20: {'topic': '          8.2   Java Numbers and Strings',
+      20: {'topic': '     8.2   Java Numbers and Strings',
         'subTopic': [{
         'heading':'Adding Numbers and Strings',
           'attachment': 'assets/java_lessons_image/numstring_1.jpg',
@@ -687,7 +687,7 @@ const codex = {
 
 
       },
-      21:{'topic':'             9.    Java Math',
+      21:{'topic':'9.    Java Math',
         'subTopic': [{
         'heading': 'Java Math',
           'body': "The Java Math class has many methods that allows you to perform mathematical tasks on numbers."
@@ -731,7 +731,7 @@ const codex = {
         ]
 
       },
-      22: {'topic': '         10  Java Booleans',
+      22: {'topic': '10  Java Booleans',
         'subTopic': [{
           'heading':'Java Booleans',
           'body': "Very often, in programming, you will need a data type that can only have one of two values, like:"
@@ -792,7 +792,7 @@ const codex = {
         ]
 
       },
-      23:{'topic': '            11.     Java If ... Else',
+      23:{'topic': '11.     Java If ... Else',
         'subTopic': [{
         'heading': 'Java Conditions and If Statements',
           'body': "You already know that Java supports the usual logical conditions from mathematics:"
@@ -866,7 +866,7 @@ const codex = {
 
 
       },
-      24: {'topic': '          11.1   Java Short Hand If...Else',
+      24: {'topic': '     11.1   Java Short Hand If...Else',
         'subTopic': [{
         'heading' : 'Short Hand If...Else',
           'attachment': 'assets/java_lessons_image/shorthand_1.jpg',
@@ -889,7 +889,7 @@ const codex = {
 
 
       },
-      25: {'topic': '          12      Java Switch',
+      25: {'topic': '12      Java Switch',
         'subTopic': [{
         'heading': 'Java Switch Statements',
           'attachment': 'assets/java_lessons_image/switch_1.jpg',
@@ -929,7 +929,7 @@ const codex = {
 
 
       },
-      26:{'topic': '                 13    Java While Loop',
+      26:{'topic': '13    Java While Loop',
         'subTopic': [{
         'heading': 'Loops',
           'body': "Loops can execute a block of code as long as a specified condition is reached."
@@ -961,7 +961,7 @@ const codex = {
 
 
       },
-      27:{'topic': '          17.   Java For Loop',
+      27:{'topic': '14.   Java For Loop',
       'subTopic': [{
         'heading': 'Java For Loop',
         'attachment': 'assets/java_lessons_image/for_1.jpg',
@@ -1000,7 +1000,7 @@ const codex = {
       ]
 
       },
-      28:{'topic': '      17.1 Java For Each Loop',
+      28:{'topic': '     14.1 Java For Each Loop',
         'subTopic': [{
         'heading': 'For-Each Loop',
           'attachment': 'assets/java_lessons_image/each_1.jpg',
@@ -1018,7 +1018,7 @@ const codex = {
 
       },
 
-      29:{'topic': '            18. Java Break and Continue',
+      29:{'topic': '15. Java Break and Continue',
       'subTopic': [{
         'heading': 'Java Break',
         'attachment': 'assets/java_lessons_image/break_1.jpg',
@@ -1041,7 +1041,7 @@ const codex = {
 ]
 },
 
-      30:{'topic': '     19.  Java Arrays',
+      30:{'topic': '16.  Java Arrays',
       'subtopic': [{
         'heading': "Java Arrays",
           'attachment': 'assets/java_lessons_image/array_1.jpg',
@@ -1079,7 +1079,7 @@ const codex = {
       ]
       },
 
-      31:{'topic': '     19.1Loop Through an Array',
+      31:{'topic': '     16.1 Loop Through an Array',
         'subTopic': [{
         'heading': 'Loop Through an Array',
           'attachment': 'assets/java_lessons_image/allop_1.jpg',
@@ -1109,7 +1109,7 @@ const codex = {
         ]
 
       },
-      32:{'topic': '    19.2  Java Multi-Dimensional Arrays',
+      32:{'topic': '     16.2  Java Multi-Dimensional Arrays',
         'subTopic': [{
         'heading': 'Multidimensional Arrays',
           'attachment': 'assets/java_lessons_image/multi_1.jpg',

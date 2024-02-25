@@ -26,7 +26,7 @@ class _MainHomePageState extends State<MainHomePage> {
     const ProfilePage(),
   ]; // kung anong pinindot mo na button sa bottom nav //this is home
 
-  int selectedCurrentIndex = 1; // kung anong unang mag pop up pag log in bottom nav bar to.
+  int selectedCurrentIndex = 2; // kung anong unang mag pop up pag log in bottom nav bar to.
 
   Future<bool> _onWillPop() async {
     if (selectedCurrentIndex == 0) {
