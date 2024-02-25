@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class StatisticsWidget extends StatefulWidget {
   @override
@@ -11,40 +12,50 @@ class _StatisticsWidgetState extends State<StatisticsWidget> {
   List<Map<String, dynamic>> userScores = [];
   String selectedLanguage = "All"; // Initially set to "All"
   String selectedExpertise = "All"; // Initially set to "All"
+  late String currentUserEmail;
 
   @override
   void initState() {
     super.initState();
-    // Fetch user scores from Firebase Firestore
+    fetchCurrentUser();
     fetchUserScores();
   }
 
+  Future<void> fetchCurrentUser() async {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    User? user = auth.currentUser;
+    if (user != null) {
+      setState(() {
+        currentUserEmail = user.email!;
+      });
+    }
+  }
+
   Future<void> fetchUserScores() async {
-    // Query Firebase Firestore to fetch user scores
     QuerySnapshot<Map<String, dynamic>> querySnapshot =
-    await FirebaseFirestore.instance.collection('scores').get();
-    // Extract user scores from query
+    await FirebaseFirestore.instance
+        .collection('scores')
+        .where('userEmail', isEqualTo: currentUserEmail)
+        .get();
     setState(() {
       userScores = querySnapshot.docs.map((doc) => doc.data()).toList();
-      // Sort user scores by timestamp from recent to oldest
       userScores.sort((a, b) => b['timestamp'].compareTo(a['timestamp']));
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    // Filter out entries where category or expertise is missing
     List<Map<String, dynamic>> filteredScores = userScores
-        .where(
-            (score) => (selectedLanguage == "All" || score['category'] == selectedLanguage) &&
-            (selectedExpertise == "All" || score['expertise'] == selectedExpertise))
+        .where((score) =>
+    (selectedLanguage == "All" || score['category'] == selectedLanguage) &&
+        (selectedExpertise == "All" || score['expertise'] == selectedExpertise))
         .toList();
 
     return Scaffold(
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only(left: 10,  top: 8.0  ),
+            padding: const EdgeInsets.only(left: 50.0, top: 10.0, bottom: 10.0),
             child: Row(
               children: [
                 Text("Language: "),
@@ -55,7 +66,7 @@ class _StatisticsWidgetState extends State<StatisticsWidget> {
                       selectedLanguage = value!;
                     });
                   },
-                  items: <String>['All', 'C', 'C++', 'Java', 'German']
+                  items: <String>['All', 'C', 'C++', 'C#', 'Java','Dart']
                       .map<DropdownMenuItem<String>>((String value) {
                     return DropdownMenuItem<String>(
                       value: value,
