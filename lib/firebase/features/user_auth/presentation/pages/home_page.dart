@@ -1,6 +1,6 @@
 import 'package:first_project/bottom_navigations/statistics_bottom.dart';
 import 'package:first_project/bottom_navigations/home_bottom.dart';
-import 'package:first_project/bottom_navigations/newsfeed_bottom.dart';
+import 'package:first_project/bottom_navigations/leaderboards_bottom.dart';
 import 'package:first_project/bottom_navigations/profile_bottom.dart';
 import 'package:first_project/challenges/category_selection.dart';
 import 'package:first_project/firebase/features/user_auth/presentation/widgets/draggable_fab.dart';
@@ -19,7 +19,7 @@ class MainHomePage extends StatefulWidget {
 
 class _MainHomePageState extends State<MainHomePage> {
   final _bottomScreens = [
-    // const NewsFeedPage(),
+    const LeaderBoardsPage(),
     StatisticsWidget(),
     const AllLanguages(), // state name
     const CategorySelection(),

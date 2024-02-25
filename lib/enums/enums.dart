@@ -14,7 +14,7 @@ enum SideBarSection {
 }
 
 enum BottomNavs {
-  // news('News'),// button names
+  leaderboards('Leaderboards'),// button names
   statistics('Statistics'),
   home('Home'),
   challenges('Challenges'),
@@ -58,19 +58,21 @@ enum SubjectSection {
   const SubjectSection (this.text);
 }
 
-enum SubjectCategories{
-  lesson_one('Lesson One'),
-  lesson_two('Lesson Two'),
-  lesson_three('Lesson Three'),
-  lesson_four('Lesson Four'),
-  lesson_five('Lesson Five'),
-  lesson_six('Lesson Six'),
-  lesson_seven('Lesson Seven'),
-  lessone_ight('Lesson Eight'),
-  lesson_nine('Lesson Nine'),
-  lesson_ten('Lesson Ten');
 
-
-  final String text;
-  const SubjectCategories(this.text);
-}
+//
+// enum SubjectCategories{
+//   lesson_one('Lesson One'),
+//   lesson_two('Lesson Two'),
+//   lesson_three('Lesson Three'),
+//   lesson_four('Lesson Four'),
+//   lesson_five('Lesson Five'),
+//   lesson_six('Lesson Six'),
+//   lesson_seven('Lesson Seven'),
+//   lessone_ight('Lesson Eight'),
+//   lesson_nine('Lesson Nine'),
+//   lesson_ten('Lesson Ten');
+//
+//
+//   final String text;
+//   const SubjectCategories(this.text);
+// }

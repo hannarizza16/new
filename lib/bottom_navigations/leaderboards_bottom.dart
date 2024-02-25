@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class NewsFeedPage extends StatelessWidget {
-  const NewsFeedPage({super.key});
+class LeaderBoardsPage extends StatelessWidget {
+  const LeaderBoardsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const Center(
       child: Text(
-        'Newsfeed',
+        'LeaderBoards Mothafaccka',
         style: TextStyle(
           fontSize: 60,
         ),
