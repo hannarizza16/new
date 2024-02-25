@@ -619,7 +619,7 @@ const codex = {
         ]
 
       },
-      18: {'topic': '     8.    Java Strings',
+      18: {'topic': '8.    Java Strings',
         'subTopic': [{
         'heading': 'String',
           'attachment' : 'assets/java_lessons_image/string_1.jpg',
