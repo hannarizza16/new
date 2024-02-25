@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:first_project/enums/enums.dart';
+
 import 'package:first_project/gradient_background.dart';
+import 'package:first_project/subject/lessons_screen_design.dart';
+
 
 class MachineDevPage extends StatelessWidget {
   const MachineDevPage({super.key});
