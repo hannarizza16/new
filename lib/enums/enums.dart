@@ -54,8 +54,8 @@ enum SubjectSection {
   webdev('Web Development'),
   machinedev('Machine Learning');
 
-  final String text;
-  const SubjectSection (this.text);
+  final String value;
+  const SubjectSection (this.value);
 }
 
 
