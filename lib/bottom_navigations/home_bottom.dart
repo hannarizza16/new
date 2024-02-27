@@ -21,10 +21,14 @@ class AllLanguages extends StatefulWidget {
 }
 
 class _AllLanguagesState extends State<AllLanguages> {
-  static final Color selectedButtonColor = Color(0xFF0C356A); // dark blue
-  static final Color defaultSelectedButtonColor = Colors.transparent;
-  static final Color selectedButtonTextColor = Color(0xFFFFCC70); //yellow
-  static final Color selectedDefaultButtonTextColor = Colors.black;
+  static const Color selectedButtonColor = Color(0xFF0C356A); // dark blue
+  static const Color defaultSelectedButtonColor = Colors.transparent;
+  static const Color selectedDefaultButtonTextColor = Colors.black;
+  static const Color selectedButtonTextColor = Color(0xFFFFCC70); //yellow
+  static const Color black = Colors.black;
+  static const Color yellow = Color(0xFFFFCC70);
+  static const Color darkBlue = Color(0xFF0C356A);
+
 
   static final _viewLanguageScreen = [
     // arranged dapat to bawal magkapalit. since naka index tayo.
@@ -71,7 +75,7 @@ class _AllLanguagesState extends State<AllLanguages> {
 
   @override
   Widget build(BuildContext context) {
-    bool isButtonEnabled = true;
+    // bool isButtonEnabled = true;
     return Column(
       children: [
         Expanded(
@@ -90,14 +94,14 @@ class _AllLanguagesState extends State<AllLanguages> {
                 side: MaterialStateProperty.all(
                   BorderSide(
                     color: selectedScreen == index
-                        ? selectedButtonColor! // borderside color language
-                        : selectedButtonColor!, // borderside color language
+                        ? selectedButtonColor // borderside color language
+                        : selectedButtonColor, // borderside color language
                     width: 2,
                   ),
                 ),
                 backgroundColor: MaterialStateProperty.all(
                     selectedScreen == index
-                        ? selectedButtonColor!
+                        ? selectedButtonColor
                         : defaultSelectedButtonColor),
               ),
 
@@ -119,91 +123,125 @@ class _AllLanguagesState extends State<AllLanguages> {
           flex: 10,
           child: selectedScreen == null
               ? Container(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [Color(0xFFE0F4FF), Color(0xFF87C4FF)],
+                  decoration: const BoxDecoration(
+                    gradient:  LinearGradient(
+                      colors:  [ Color(0xFFE0F4FF), Color(0xFF87C4FF)],
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                     ),
                   ),
                   child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(height: 15),
-                        Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(left: 10.0),
-                              child: Text(
-                                'Courses',
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.normal,
-                                ),
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SizedBox(height: 15),
+                      Row(
+                        children: [
+                          const Padding(
+                            padding:  EdgeInsets.only(left: 10.0),
+                            child:  Text(
+                              'Courses',
+                              style: TextStyle(
+                                color: black,
+                                fontSize: 18,
+                                fontWeight: FontWeight.normal,
                               ),
                             ),
-                            Container(
-                              width: MediaQuery.of(context).size.width -
-                                  80, // Adjust the width of the line
-                              height:
-                                  1, // Adjust the height of the line to make it long
-                              color:
-                                  Colors.black, // Adjust the color of the line
+                          ),
+                          Container(
+                            width: MediaQuery.of(context).size.width - 80,
+                            height: 1,
+                            color: black,
+                          ),
+                        ],
+                      ),
+                      Expanded(
+                        child: ListView(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 18, horizontal: 16),
+                          children: [
+                            GridView.count(
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              crossAxisCount: 1,
+                              crossAxisSpacing: 16,
+                              mainAxisSpacing: 16,
+                              childAspectRatio: 3,
+                              children: List.generate(
+                                SubjectSection.values.length,
+                                (index) {
+                                  final nameOfCourses =
+                                      SubjectSection.values[index].value;
+                                  return Card(
+                                    elevation: 10,
+                                    color:  darkBlue,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20),
+                                      side: const BorderSide(
+                                          color: Colors.yellow, width: 2),
+                                    ),
+                                    child: InkWell(
+                                      onTap:
+                                          () => _onViewSubject(index),
+
+                                      // onTap: isButtonEnabled
+                                      //? () => _onViewSubject(index)
+                                      //: null,
+
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 5, top: 10, right: 10),
+                                        child: Row(
+                                          children: [
+                                            Column(
+                                              children: [
+                                                Image.asset(
+                                                  SubjectSection
+                                                      .values[index].imagePath,
+                                                  height: 100,
+                                                  width: 100,
+                                                ),
+                                              ],
+                                            ),
+                                            const SizedBox(width: 20), // spacing between the image and the text
+                                            Expanded(
+                                              child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  nameOfCourses, // Replace with your text
+                                                  style: const TextStyle(
+                                                      color: yellow,
+                                                      fontSize: 16,
+                                                      fontFamily: 'Roboto',
+                                                      fontWeight: FontWeight.bold,
+                                                  ),
+                                                overflow: TextOverflow.ellipsis, // Handle overflow by displaying ellipsis
+                                                maxLines: 2, // Limit to 2 lines before showing ellipsis
+
+                                                  ) // Adjust text style as needed
+
+                                              ],
+                                            ),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ),
                             ),
                           ],
                         ),
-                        Expanded(
-                            child: ListView.separated(
-                          separatorBuilder: (_, __) =>
-                              const SizedBox(width: 8.0, height: 15),
-                          // scrollDirection: Axis.horizontal,
-
-                          itemCount: SubjectSection.values.length,
-                          itemBuilder: (context, index) => Container(
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: AssetImage('assets/colorfulmosaic.jpg'),
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-
-                            child: ElevatedButton(
-                              // SUBBJECT CARD// has a callback function ito yung ginagamit para ibuild o mag generate // ulit ng sinelect mo na index
-
-                              style: ElevatedButton.styleFrom(
-                                elevation: 8,
-
-                                //selectedScreen == null
-                                // if index is not equal to selected screen ang kulay niya is deep purple  but if == ang color niya is deepPurple[300]
-                                backgroundColor: index != selectedSubject
-                                    ? Colors.white
-                                    : Colors.cyan[600],
-                                // padding: EdgeInsets.all(1),
-
-                                shape: CircleBorder(
-                                    side: BorderSide(
-                                        width: 2, color: Colors.black!)),
-                                fixedSize: Size(100, 100),
-                              ),
-                              //CALLING THE IMAGE IN SUBJECT BUTTON
-                              onPressed: isButtonEnabled
-                                  ? () => _onViewSubject(index)
-                                  : () {}, // : null,
-                              child: Image.asset(
-                                SubjectSection.values[index].imagePath,
-                                height: 100,
-                                width: 100,
-                              ),
-                            ),
-
-                          ),
-                        )),
-                      ]))
-              : _viewLanguageScreen[
-                  selectedScreen!], //"!" is an indication na hindi siya pwede maging null.
-          //   pag nag click siya sa mga languages ang lalabas is ito pero kapag hindi naman siya nag click yung sa ? ang ilalabas.
-        )
+                      ),
+                    ],
+                  ),
+                )
+              : _viewLanguageScreen[selectedScreen!],
+        ),
       ],
     );
   }

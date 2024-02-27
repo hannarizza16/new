@@ -35,7 +35,7 @@ class CategorySelection extends StatelessWidget {
                         padding: EdgeInsets.only(bottom: 18),
                         child: Card(
                           elevation: 10,
-                          color: Color(0xFF0C356A),
+                          color: Color(0xFF0C356A), // color of the cards
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20.0),
                           ),
