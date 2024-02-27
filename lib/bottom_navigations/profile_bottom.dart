@@ -20,6 +20,7 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   final double coverHeight = 100;
   final double profileHeight = 100;
+  bool showFireworks = true;
 
   TextEditingController _nameController = TextEditingController();
   String _firstName = '';
@@ -227,6 +228,18 @@ class _ProfilePageState extends State<ProfilePage> {
             child: buildProfileImage(),
           ),
         ),
+        if (showFireworks)
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: Image.asset(
+              'assets/petals.gif', // Adjust the path as per your project structure
+              width: MediaQuery.of(context).size.width, // Set width to screen width
+              height: 150, // Adjust the height as needed
+              fit: BoxFit.cover,
+            ),
+          ),
       ],
     );
   }
