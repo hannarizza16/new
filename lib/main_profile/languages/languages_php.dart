@@ -1,17 +1,18 @@
-import 'package:first_project/main_profile/languages/category_screen.dart';
-import 'package:first_project/main_profile/languages/topic_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:first_project/enums/enums.dart';
+import 'package:first_project/main_profile/languages/topic_screen.dart';
+import 'package:first_project/main_profile/languages/category_screen.dart';
 
-class RubyLanguage extends StatefulWidget {
-  const RubyLanguage({super.key});
+
+class PhpLanguage extends StatefulWidget {
+  const PhpLanguage({super.key});
 
   @override
-  State<RubyLanguage> createState() => _RubyLanguageState();
+  State<PhpLanguage> createState() => _PhpLanguageState();
 }
 
-class _RubyLanguageState extends State<RubyLanguage> {
-  static const language = Languages.ruby;
+class _PhpLanguageState extends State<PhpLanguage> {
+  static const language = Languages.php;
 
   Categories? selectedCategory;
 

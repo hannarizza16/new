@@ -29,9 +29,9 @@ enum Languages {
   cplusplus('C++'),
   java('Java'),
   dart ('Dart'),
-  ruby('Ruby'),
-  arduino('Arduino'),
-  pearl('Pearl');
+  csharp('C#'),
+  php('Php');
+  // pearl('Pearl');
 
 final String value;
 const Languages(this.value);

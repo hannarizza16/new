@@ -1155,20 +1155,20 @@ const codex = {
     Categories.intermediate: {},
     Categories.advanced: {},
   },
-  Languages.ruby: {
+  Languages.csharp: {
     Categories.beginner: {},
     Categories.intermediate: {},
     Categories.advanced: {},
   },
-  Languages.arduino: {
+  Languages.php: {
     Categories.beginner: {},
     Categories.intermediate: {},
     Categories.advanced: {},
   },
-  Languages.pearl: {
-    Categories.beginner: {},
-    Categories.intermediate: {},
-    Categories.advanced: {},
-  },
+//   Languages.pearl: {
+//     Categories.beginner: {},
+//     Categories.intermediate: {},
+//     Categories.advanced: {},
+//   },
 };
 

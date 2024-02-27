@@ -1,10 +1,10 @@
 import 'package:first_project/extension/subject_ext.dart';
-import 'package:first_project/main_profile/languages/languages_arduino.dart';
+import 'package:first_project/main_profile/languages/languages_php.dart';
 import 'package:first_project/main_profile/languages/languages_c++.dart';
 import 'package:first_project/main_profile/languages/languages_c.dart';
 import 'package:first_project/main_profile/languages/languages_dart.dart';
 import 'package:first_project/main_profile/languages/languages_java.dart';
-import 'package:first_project/main_profile/languages/languages_ruby.dart';
+import 'package:first_project/main_profile/languages/languages_csharp.dart';
 import 'package:first_project/main_profile/languages/languages_pearl.dart';
 import 'package:first_project/subject/mobile_application_dev.dart';
 import 'package:first_project/subject/game_dev.dart';
@@ -37,9 +37,9 @@ class _AllLanguagesState extends State<AllLanguages> {
     const CPlusPlusLanguage(),
     const JavaLanguage(),
     const DartLanguage(),
-    const RubyLanguage(),
-    const ArduinoLanguage(),
-    const PearlLanguage(),
+    const CSharpLanguage(),
+    const PhpLanguage(),
+    // const PearlLanguage(),
   ];
 
   int?
