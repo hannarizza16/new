@@ -8,6 +8,8 @@ import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../gradient_background.dart';
+
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
 
@@ -191,15 +193,17 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        padding: EdgeInsets.zero,
-        children: <Widget>[
-          buildTop(),
-          buildContent(),
-          buildColumn(context, _totalScore), // Pass _totalScore to buildColumn
-          secondColumn(context, _totalScore), // Pass _totalScore to secondColumn
-          thirdColumn(context, _totalScore), // Pass _totalScore to thirdColumn
-        ],
+      body: GradientContainer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            buildTop(),
+            buildContent(),
+            buildColumn(context, _totalScore), // Pass _totalScore to buildColumn
+            secondColumn(context, _totalScore), // Pass _totalScore to secondColumn
+            thirdColumn(context, _totalScore), // Pass _totalScore to thirdColumn
+          ],
+        ),
       ),
     );
   }

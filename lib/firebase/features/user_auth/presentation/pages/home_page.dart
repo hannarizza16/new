@@ -19,7 +19,7 @@ class MainHomePage extends StatefulWidget {
 
 class _MainHomePageState extends State<MainHomePage> {
   final _bottomScreens = [
-    LeaderboardScreen(),
+     LeaderboardScreen(),
     StatisticsWidget(),
     const AllLanguages(), // state name
     const CategorySelection(),
@@ -103,14 +103,14 @@ class _MainHomePageState extends State<MainHomePage> {
         drawer: const SideBar(),
         appBar: AppBar(
           title: const Text('CodeX'),
-          backgroundColor: Color(0xFF00A9FF), // app bar color only
+          backgroundColor: Color(0xFF279EFF), // app bar color only
         ),
         backgroundColor:
         Colors.transparent, // BACKGROUND OF top app and other pages
         body: Container(
           decoration: BoxDecoration( //LANGUAGES NA SLIDING
             gradient: LinearGradient(
-              colors: [Color(0xFFE0F4FF), Color(0xFF87C4FF)],
+              colors: [Color(0xFF00A9FF), Color(0xFF71DFE7)],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
@@ -120,7 +120,7 @@ class _MainHomePageState extends State<MainHomePage> {
 
         bottomNavigationBar: Theme( //BOTTOM NAVIGATION BAR
           data: Theme.of(context).copyWith(
-            canvasColor: Color(0xFF00A9FF), // Updated canvasColor
+            canvasColor: Color(0xFF279EFF), // Updated canvasColor
             primaryColor: Colors.blue, // ICON in bottom navigation
             textTheme: Theme.of(context)
                 .textTheme
@@ -149,4 +149,3 @@ class _MainHomePageState extends State<MainHomePage> {
     );
   }
 }
-
