@@ -17,14 +17,29 @@ class QuizApp extends StatefulWidget {
   _QuizAppState createState() => _QuizAppState();
 }
 
-class _QuizAppState extends State<QuizApp> {
+class _QuizAppState extends State<QuizApp> with SingleTickerProviderStateMixin {
   int currentQuestionIndex = 0;
   List<QuizQuestion> questions = [];
   bool showNextQuestionButton = false;
+  late AnimationController _controller;
+  late Animation<Color?> _animation;
 
   @override
   void initState() {
     super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 5),
+    )..repeat(reverse: true);
+    _animation = ColorTween(
+      begin: Color(0xFF00A9FF),
+      end: Color(0xFF71DFE7),
+    ).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: Curves.easeInOut,
+      ),
+    );
     // Get questions for the specified category and expertise level
     questions = getQuestionsForCategoryAndLevel(widget.category, widget.expertiseLevel);
   }
@@ -32,6 +47,7 @@ class _QuizAppState extends State<QuizApp> {
   @override
   void dispose() {
     resetSelectedAnswers();
+    _controller.dispose();
     super.dispose();
   }
 
@@ -126,67 +142,79 @@ class _QuizAppState extends State<QuizApp> {
       onWillPop: _onWillPop,
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Quiz: ${widget.category} - ${widget.expertiseLevel}'),
+          title: Text(
+            'Quiz: ${widget.category} - ${widget.expertiseLevel}',
+            style: TextStyle(color: Color(0xFF06283D)), // Changing font color
+          ),
           backgroundColor: Color(0xFF279EFF),
         ),
-        body: Container(
-          padding: EdgeInsets.all(16),
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [Color(0xFFE0F4FF), Color(0xFF87C4FF)],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            ),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Container(
-                padding: EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color: Color(0xFF0C356A),
-                  borderRadius: BorderRadius.circular(5.0),
-                ),
-                child: Align(
-                  alignment: Alignment.center,
-                  child: Text(
-                    questions[currentQuestionIndex].questionText,
-                    style: TextStyle(fontSize: 18, color: Color(0xFFFFCC70)),
-                  ),
+        body: AnimatedBuilder(
+          animation: _controller,
+          builder: (context, child) {
+            return Container(
+              padding: EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    _animation.value ?? Color(0xFF71DFE7),
+                    Color(0xFF94DAFF),
+                    _animation.value ?? Color(0xFF9ED5C5),
+                  ],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
                 ),
               ),
-              SizedBox(height: 30),
-              ...List.generate(
-                  questions[currentQuestionIndex].answerChoices.length,
-                      (index) {
-                    final choice = questions[currentQuestionIndex].answerChoices[index];
-                    return GestureDetector(
-                      onTap: () {
-                        handleAnswer(index);
-                      },
-                      child: Container(
-                        margin: EdgeInsets.symmetric(vertical: 9),
-                        padding: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          color: choice.isSelected ? Color(0xFF279EFF) : Color(0xFF0C356A),
-                          borderRadius: BorderRadius.circular(15.0),
-                        ),
-                        child: Text(
-                          choice.text,
-                          style: TextStyle(fontSize: 16, color: Colors.white),
-                        ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Container(
+                    padding: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: Color(0xFF0C356A),
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        questions[currentQuestionIndex].questionText,
+                        style: TextStyle(fontSize: 18, color: Color(0xFFFFCC70)),
                       ),
-                    );
-                  }
+                    ),
+                  ),
+                  SizedBox(height: 30),
+                  ...List.generate(
+                    questions[currentQuestionIndex].answerChoices.length,
+                        (index) {
+                      final choice = questions[currentQuestionIndex].answerChoices[index];
+                      return GestureDetector(
+                        onTap: () {
+                          handleAnswer(index);
+                        },
+                        child: Container(
+                          margin: EdgeInsets.symmetric(vertical: 9),
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            color: choice.isSelected ? Color(0xFF279EFF) : Color(0xFF0C356A),
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                          child: Text(
+                            choice.text,
+                            style: TextStyle(fontSize: 16, color: Colors.white),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                  SizedBox(height: 20),
+                  if (showNextQuestionButton)
+                    ElevatedButton(
+                      onPressed: isLastQuestion ? goToNextQuestion : goToNextQuestion,
+                      child: Text(isLastQuestion ? 'Submit' : 'Next Question'),
+                    ),
+                ],
               ),
-              SizedBox(height: 20),
-              if (showNextQuestionButton)
-                ElevatedButton(
-                  onPressed: isLastQuestion ? goToNextQuestion : goToNextQuestion,
-                  child: Text(isLastQuestion ? 'Submit' : 'Next Question'),
-                ),
-            ],
-          ),
+            );
+          },
         ),
       ),
     );

@@ -56,6 +56,8 @@ dependencies:
   permission_handler: ^10.0.0
   charts_flutter: ^0.12.0
   intl: ^0.17.0
+  flare_flutter: ^3.0.2
+
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
@@ -115,7 +117,8 @@ flutter:
     - assets/blueshade.jpg
     - assets/white_and_lightblue.jpg
     - assets/logorizal_4.png
-
+    - assets/fireworks.gif
+    - assets/confetti.gif
 
     - assets/stamp/stamp.png
     - assets/java_lessons_image/get_started1.png
