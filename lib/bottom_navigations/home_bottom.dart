@@ -121,8 +121,10 @@ class _AllLanguagesState extends State<AllLanguages> {
         ),
         Expanded(
           flex: 10,
+
           child: selectedScreen == null
               ? Container(
+
                   decoration: const BoxDecoration(
                     gradient:  LinearGradient(
                       colors:  [ Color(0xFFE0F4FF), Color(0xFF87C4FF)],
@@ -242,6 +244,7 @@ class _AllLanguagesState extends State<AllLanguages> {
                 )
               : _viewLanguageScreen[selectedScreen!],
         ),
+
       ],
     );
   }
