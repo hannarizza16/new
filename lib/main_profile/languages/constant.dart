@@ -1150,7 +1150,7 @@ const codex = {
     },
     Categories.intermediate: {
       0: {
-        'topic': '1.    JAVA OOP',
+        'topic': '1.     Java OOP',
         'subTopic':[
           {
             'heading': "Java - What is OOP?",
@@ -1192,7 +1192,7 @@ const codex = {
         ]
       },
       1:{
-        'topic': '2.   Java Classes and objects',
+        'topic': '2.     Java Classes and objects',
         'subTopic': [
           {
             'heading': 'Java Classes/Objects',
@@ -1270,7 +1270,7 @@ const codex = {
 
       },
       2:{
-        'topic': '3.   Java Class Attributes',
+        'topic': '3.     Java Class Attributes',
         'subTopic': [
           {
             'heading': "Java Class Attributes",
@@ -1382,7 +1382,7 @@ const codex = {
         ]
       },
       4:{
-        'topic': '5.   Java Constructors',
+        'topic': '5.     Java Constructors',
         'subTopic': [
           {
             'heading': "Java Constructors",
@@ -1409,7 +1409,7 @@ const codex = {
         ]
       },
       5: {
-        'topic': '6.  Java Methods ',
+        'topic': '6.     Java Methods ',
         'subTopic': [
           {
             'heading': "Create a method",
@@ -1434,7 +1434,7 @@ const codex = {
         ]
       },
       6: {
-        'topic': '7. Java Method Parameters ',
+        'topic': '7.     Java Method Parameters ',
         'subTopic': [
           {
             'heading': "Parameters and Arguments",
@@ -1478,7 +1478,7 @@ const codex = {
         ]
       },
       7:{
-        'topic': '8.  Java Method Overloading',
+        'topic': '8.     Java Method Overloading',
         'subTopic': [
           {
             'heading': "Method Overloading",
@@ -1500,7 +1500,7 @@ const codex = {
         ]
       },
       8:{
-        'topic': '9.   Java Scope',
+        'topic': '9.     Java Scope',
         'subTopic': [
           {
             'heading': "Java Scope",
@@ -1568,7 +1568,7 @@ const codex = {
 
     Categories.advanced: {
       0:{
-      'topic': '1.   Java Modifiers',
+      'topic': '1.     Java Modifiers',
       'subTopic': [
         {
           'heading': "Modifiers",
@@ -1620,7 +1620,7 @@ const codex = {
       ]
     },
       1:{
-        'topic': '2.  Java Encapsulation',
+        'topic': '2.    Java Encapsulation',
         'subTopic': [
           {
             'heading': "Encapsulation",
@@ -1656,7 +1656,7 @@ const codex = {
         ]
       },
       2:{
-        'topic': '3. Java Packages',
+        'topic': '3.     Java Packages',
         'subTopic': [
           {
             'heading': "Java Packages & API",
@@ -1741,7 +1741,7 @@ const codex = {
         ]
       },
       3:{
-        'topic': '4. Java Inheritance',
+        'topic': '4.     Java Inheritance',
         'subTopic': [
           {
             'heading': "Java Inheritance (Subclass and Superclass)",
@@ -1759,7 +1759,7 @@ const codex = {
         ]
       },
       4:{
-        'topic': '5.   Java Polymorphism',
+        'topic': '5.     Java Polymorphism',
         'subTopic': [
           {
             'heading': "  Java Polymorphism",
@@ -1781,8 +1781,8 @@ const codex = {
         ]
       },
       5:{
-        'topic': '6.   Java Inner Classes',
-        'subtopic': [
+        'topic': '6.    Java Inner Classes',
+        'subTopic': [
           {
             'heading': "Java Inner Classes",
             'attachment': "assets/java_advance/inn_1.png",
