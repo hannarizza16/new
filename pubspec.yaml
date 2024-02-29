@@ -247,6 +247,122 @@ flutter:
     - assets/java_lessons_image/multi_3.jpg
     - assets/java_lessons_image/multi_4.jpg
 
+    #Java Interm
+    - assets/java_intermediate/oop_1.png
+    - assets/java_intermediate/oop_2.png
+    #Java Classes and Objects
+    - assets/java_intermediate/cla_1.png
+    - assets/java_intermediate/cla_2.png
+    - assets/java_intermediate/cla_3.png
+    - assets/java_intermediate/cla_4.png
+    - assets/java_intermediate/cla_5.png
+    - assets/java_intermediate/cla_6.png
+    - assets/java_intermediate/cla_7.png
+    - assets/java_intermediate/cla_8.png
+     #JAVA ATTRIBUTES
+    - assets/java_intermediate/att_1.png
+    - assets/java_intermediate/att_2.png
+    - assets/java_intermediate/att_3.png
+    - assets/java_intermediate/att_4.png
+    - assets/java_intermediate/att_5.png
+    - assets/java_intermediate/att_6.png
+    - assets/java_intermediate/att_7.png
+    # Java Class Methods
+    - assets/java_intermediate/cmet_1.png
+    - assets/java_intermediate/cmet_2.png
+    - assets/java_intermediate/cmet_3.png
+    - assets/java_intermediate/cmet_4.png
+    - assets/java_intermediate/cmet_5.png
+    - assets/java_intermediate/cmet_6.png
+    - assets/java_intermediate/cmet_7.png
+    - assets/java_intermediate/cmet_8.png
+    - assets/java_intermediate/cmet_9.png
+    #Java Constructors
+    - assets/java_intermediate/cons_1.png
+    - assets/java_intermediate/cons_2.png
+    - assets/java_intermediate/cons_3.png
+    # Java Methods
+    - assets/java_intermediate/met_1.png
+    - assets/java_intermediate/met_2.png
+    - assets/java_intermediate/met_3.png
+    #Java Method Parameters
+    - assets/java_intermediate/mpar_1.png
+    - assets/java_intermediate/mpar_2.png
+    - assets/java_intermediate/mpar_2.png
+    - assets/java_intermediate/mpar_3.png
+    - assets/java_intermediate/mpar_4.png
+    - assets/java_intermediate/mpar_5.png
+    - assets/java_intermediate/mpar_6.png
+    #Java Method Overloading
+    - assets/java_intermediate/over_1.png
+    - assets/java_intermediate/over_2.png
+    - assets/java_intermediate/over_3.png
+    #Java Scope
+    - assets/java_intermediate/scope_1.png
+    - assets/java_intermediate/scope_2.png
+    #Java Recursion
+    - assets/java_intermediate/rec_1.png
+    - assets/java_intermediate/rec_2.png
+    - assets/java_intermediate/rec_3.png
+    #Java Modifiers
+    - assets/java_advance/mod_1.png
+    - assets/java_advance/mod_2.png
+    - assets/java_advance/mod_3.png
+    - assets/java_advance/mod_4.png
+    - assets/java_advance/mod_5.png
+    - assets/java_advance/mod_6.png
+    - assets/java_advance/mod_7.png
+    - assets/java_advance/mod_8.png
+    # Java Encapsulation
+    - assets/java_advance/encap_1.png
+    - assets/java_advance/encap_2.png
+    - assets/java_advance/encap_3.png
+    - assets/java_advance/encap_4.png
+    #Java Packages
+    - assets/java_advance/pack_1.png
+    - assets/java_advance/pack_2.png
+    - assets/java_advance/pack_3.png
+    - assets/java_advance/pack_4.png
+    - assets/java_advance/pack_5.png
+    - assets/java_advance/pack_6.png
+    - assets/java_advance/pack_7.png
+    - assets/java_advance/pack_8.png
+    - assets/java_advance/pack_9.png
+    - assets/java_advance/pack_10.png
+    #Java Inheritance
+    - assets/java_advance/inhe_1.png
+    #Java Polymorphism
+    - assets/java_advance/poly_1.png
+    - assets/java_advance/poly_2.png
+    #Java Inner Classes
+    - assets/java_advance/inn_1.png
+    - assets/java_advance/inn_2.png
+    - assets/java_advance/inn_3.png
+    - assets/java_advance/inn_4.png
+    - assets/java_advance/inn_5.png
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
