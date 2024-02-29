@@ -20,7 +20,6 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   final double coverHeight = 100;
   final double profileHeight = 100;
-  bool showFireworks = true;
 
   TextEditingController _nameController = TextEditingController();
   String _firstName = '';
@@ -228,18 +227,6 @@ class _ProfilePageState extends State<ProfilePage> {
             child: buildProfileImage(),
           ),
         ),
-        if (showFireworks)
-          Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            child: Image.asset(
-              'assets/petals.gif', // Adjust the path as per your project structure
-              width: MediaQuery.of(context).size.width, // Set width to screen width
-              height: 150, // Adjust the height as needed
-              fit: BoxFit.cover,
-            ),
-          ),
       ],
     );
   }
@@ -547,57 +534,57 @@ class _ProfilePageState extends State<ProfilePage> {
                     constraints: BoxConstraints(
                         minWidth: MediaQuery.of(context).size.width),
                     child: Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: NetworkImage(
-                              'https://cdn.vectorstock.com/i/1000x1000/58/09/cosmic-space-black-sky-background-with-blue-stars-vector-11805809.webp'),
-                          fit: BoxFit.cover,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: NetworkImage(
+                                'https://cdn.vectorstock.com/i/1000x1000/58/09/cosmic-space-black-sky-background-with-blue-stars-vector-11805809.webp'),
+                            fit: BoxFit.cover,
+                          ),
+                          // borderRadius: BorderRadius.circular(30),
                         ),
-                        // borderRadius: BorderRadius.circular(30),
-                      ),
-                      child: Center(
-                        child: Row(
-                          children: [
-                            SizedBox(height: 11),
-                            Row(
-                              children: [
-                                BorderedCircleAvatar(
-                                  imageUrl: 'https://picsum.photos/seed/592/600',
-                                  onTap: () {
-                                    // Handle the tap event here
-                                    print('Sample');
-                                  },
-                                  userScore: _totalScore, // Pass total score to determine unlock status
-                                  requiredScore: 5, // Set the required score for unlocking this image
-                                ),
-                            Row(
-                              children: [BorderedCircleAvatar(
-                                imageUrl: 'https://picsum.photos/seed/592/600',
-                                onTap: () {
-                                  // Handle the tap event here
-                                  print('Sample');
-                                },
-                                userScore: _totalScore, // Pass total score to determine unlock status
-                                requiredScore: 5, // Set the required score for unlocking this image
-                              ),
-                            Row(
-                              children: [
-                                BorderedCircleAvatar(
-                                  imageUrl: 'https://picsum.photos/seed/592/600',
-                                  onTap: () {
-                                    // Handle the tap event here
-                                    print('Sample');
-                                  },
-                                  userScore: _totalScore, // Pass total score to determine unlock status
-                                  requiredScore: 5, // Set the required score for unlocking this image
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ]),
-                    ])))
-  ))],
+                        child: Center(
+                            child: Row(
+                                children: [
+                                  SizedBox(height: 11),
+                                  Row(
+                                      children: [
+                                        BorderedCircleAvatar(
+                                          imageUrl: 'https://picsum.photos/seed/592/600',
+                                          onTap: () {
+                                            // Handle the tap event here
+                                            print('Sample');
+                                          },
+                                          userScore: _totalScore, // Pass total score to determine unlock status
+                                          requiredScore: 5, // Set the required score for unlocking this image
+                                        ),
+                                        Row(
+                                          children: [BorderedCircleAvatar(
+                                            imageUrl: 'https://picsum.photos/seed/592/600',
+                                            onTap: () {
+                                              // Handle the tap event here
+                                              print('Sample');
+                                            },
+                                            userScore: _totalScore, // Pass total score to determine unlock status
+                                            requiredScore: 5, // Set the required score for unlocking this image
+                                          ),
+                                            Row(
+                                              children: [
+                                                BorderedCircleAvatar(
+                                                  imageUrl: 'https://picsum.photos/seed/592/600',
+                                                  onTap: () {
+                                                    // Handle the tap event here
+                                                    print('Sample');
+                                                  },
+                                                  userScore: _totalScore, // Pass total score to determine unlock status
+                                                  requiredScore: 5, // Set the required score for unlocking this image
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ]),
+                                ])))
+                ))],
         )
       ]);
 

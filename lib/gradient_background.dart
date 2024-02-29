@@ -63,28 +63,3 @@ class _GradientContainerState extends State<GradientContainer>
     super.dispose();
   }
 }
-
-class YourPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: GradientContainer(
-        child: Center(
-          child: Text(
-            'Your Content Here',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 24,
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-void main() {
-  runApp(MaterialApp(
-    home: YourPage(),
-  ));
-}
