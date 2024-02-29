@@ -1762,7 +1762,7 @@ const codex = {
         'topic': '5.   Java Polymorphism',
         'subTopic': [
           {
-            'heading': "5.   Java Polymorphism",
+            'heading': "  Java Polymorphism",
             'attachment': "assets/java_advance/poly_1.png",
             'body': "\nPolymorphism means many forms, and it occurs when we have many "
                 "classes that are related to each other by inheritance."
@@ -1785,7 +1785,7 @@ const codex = {
         'subtopic': [
           {
             'heading': "Java Inner Classes",
-            // 'attachment': "assets/java_advance/inn_1.png",
+            'attachment': "assets/java_advance/inn_1.png",
             'body': "In Java, it is also possible to nest classes (a class within a class). The purpose of nested classes is"
             "to group classes that belong together, which makes your code more readable and maintainable."
             "\nTo access the inner class, create an object of the outer class, and then create an object of the inner class:"
@@ -1815,7 +1815,7 @@ const codex = {
 
 
         ]
-      }
+      },
 
     }
   },
