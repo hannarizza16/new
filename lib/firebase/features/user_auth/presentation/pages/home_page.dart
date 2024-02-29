@@ -110,7 +110,7 @@ class _MainHomePageState extends State<MainHomePage> {
         body: Container(
           decoration: BoxDecoration( //LANGUAGES NA SLIDING
             gradient: LinearGradient(
-              colors: [Color(0xFFE0F4FF), Color(0xFF87C4FF)],
+              colors: [Color(0xFF00A9FF), Color(0xFF71DFE7)],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),

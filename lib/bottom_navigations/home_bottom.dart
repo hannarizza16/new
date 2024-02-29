@@ -127,7 +127,7 @@ class _AllLanguagesState extends State<AllLanguages> {
 
                   decoration: const BoxDecoration(
                     gradient:  LinearGradient(
-                      colors:  [ Color(0xFFE0F4FF), Color(0xFF87C4FF)],
+                      colors: [Color(0xFF00A9FF), Color(0xFF71DFE7)],
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                     ),
@@ -139,20 +139,17 @@ class _AllLanguagesState extends State<AllLanguages> {
                       Row(
                         children: [
                           const Padding(
-                            padding:  EdgeInsets.only(left: 10.0),
+                            padding:  EdgeInsets.only(left: 20.5),
                             child:  Text(
                               'Courses',
                               style: TextStyle(
                                 color: black,
-                                fontSize: 18,
+                                fontSize: 20,
                                 fontWeight: FontWeight.normal,
                               ),
                             ),
                           ),
                           Container(
-                            width: MediaQuery.of(context).size.width - 80,
-                            height: 1,
-                            color: black,
                           ),
                         ],
                       ),
@@ -179,7 +176,7 @@ class _AllLanguagesState extends State<AllLanguages> {
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(20),
                                       side: const BorderSide(
-                                          color: Colors.yellow, width: 2),
+                                          color: Colors.white, width: 2),
                                     ),
                                     child: InkWell(
                                       onTap:

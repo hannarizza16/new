@@ -8,6 +8,8 @@ import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../gradient_background.dart';
+
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
 
@@ -191,15 +193,17 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        padding: EdgeInsets.zero,
-        children: <Widget>[
-          buildTop(),
-          buildContent(),
-          buildColumn(context, _totalScore), // Pass _totalScore to buildColumn
-          secondColumn(context, _totalScore), // Pass _totalScore to secondColumn
-          thirdColumn(context, _totalScore), // Pass _totalScore to thirdColumn
-        ],
+      body: GradientContainer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            buildTop(),
+            buildContent(),
+            buildColumn(context, _totalScore), // Pass _totalScore to buildColumn
+            secondColumn(context, _totalScore), // Pass _totalScore to secondColumn
+            thirdColumn(context, _totalScore), // Pass _totalScore to thirdColumn
+          ],
+        ),
       ),
     );
   }
@@ -530,57 +534,57 @@ class _ProfilePageState extends State<ProfilePage> {
                     constraints: BoxConstraints(
                         minWidth: MediaQuery.of(context).size.width),
                     child: Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: NetworkImage(
-                              'https://cdn.vectorstock.com/i/1000x1000/58/09/cosmic-space-black-sky-background-with-blue-stars-vector-11805809.webp'),
-                          fit: BoxFit.cover,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: NetworkImage(
+                                'https://cdn.vectorstock.com/i/1000x1000/58/09/cosmic-space-black-sky-background-with-blue-stars-vector-11805809.webp'),
+                            fit: BoxFit.cover,
+                          ),
+                          // borderRadius: BorderRadius.circular(30),
                         ),
-                        // borderRadius: BorderRadius.circular(30),
-                      ),
-                      child: Center(
-                        child: Row(
-                          children: [
-                            SizedBox(height: 11),
-                            Row(
-                              children: [
-                                BorderedCircleAvatar(
-                                  imageUrl: 'https://picsum.photos/seed/592/600',
-                                  onTap: () {
-                                    // Handle the tap event here
-                                    print('Sample');
-                                  },
-                                  userScore: _totalScore, // Pass total score to determine unlock status
-                                  requiredScore: 5, // Set the required score for unlocking this image
-                                ),
-                            Row(
-                              children: [BorderedCircleAvatar(
-                                imageUrl: 'https://picsum.photos/seed/592/600',
-                                onTap: () {
-                                  // Handle the tap event here
-                                  print('Sample');
-                                },
-                                userScore: _totalScore, // Pass total score to determine unlock status
-                                requiredScore: 5, // Set the required score for unlocking this image
-                              ),
-                            Row(
-                              children: [
-                                BorderedCircleAvatar(
-                                  imageUrl: 'https://picsum.photos/seed/592/600',
-                                  onTap: () {
-                                    // Handle the tap event here
-                                    print('Sample');
-                                  },
-                                  userScore: _totalScore, // Pass total score to determine unlock status
-                                  requiredScore: 5, // Set the required score for unlocking this image
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ]),
-                    ])))
-  ))],
+                        child: Center(
+                            child: Row(
+                                children: [
+                                  SizedBox(height: 11),
+                                  Row(
+                                      children: [
+                                        BorderedCircleAvatar(
+                                          imageUrl: 'https://picsum.photos/seed/592/600',
+                                          onTap: () {
+                                            // Handle the tap event here
+                                            print('Sample');
+                                          },
+                                          userScore: _totalScore, // Pass total score to determine unlock status
+                                          requiredScore: 5, // Set the required score for unlocking this image
+                                        ),
+                                        Row(
+                                          children: [BorderedCircleAvatar(
+                                            imageUrl: 'https://picsum.photos/seed/592/600',
+                                            onTap: () {
+                                              // Handle the tap event here
+                                              print('Sample');
+                                            },
+                                            userScore: _totalScore, // Pass total score to determine unlock status
+                                            requiredScore: 5, // Set the required score for unlocking this image
+                                          ),
+                                            Row(
+                                              children: [
+                                                BorderedCircleAvatar(
+                                                  imageUrl: 'https://picsum.photos/seed/592/600',
+                                                  onTap: () {
+                                                    // Handle the tap event here
+                                                    print('Sample');
+                                                  },
+                                                  userScore: _totalScore, // Pass total score to determine unlock status
+                                                  requiredScore: 5, // Set the required score for unlocking this image
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ]),
+                                ])))
+                ))],
         )
       ]);
 

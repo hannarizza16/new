@@ -1,3 +1,4 @@
+import 'package:charts_flutter/flutter.dart';
 import 'package:first_project/enums/enums.dart';
 
 const codex = {
@@ -1597,8 +1598,676 @@ const codex = {
         ]
       },
     },
-    Categories.intermediate: {},
-    Categories.advanced: {},
+    Categories.intermediate: {
+      0: {
+        'topic': '1.    JAVA OOP',
+        'subTopic':[
+          {
+            'heading': "Java - What is OOP?",
+            'body': "OOP stands for Object-Oriented Programming.  "
+            "\n\n Procedural programming is about writing procedures or methods that perform operations on "
+                "\n the data, while object-oriented programming is about creating objects that contain both data "
+            "\n and methods."
+            "\n\n\n"
+            "\nObject-oriented programming has several advantages over procedural programming:"
+            "\n • OOP is faster and easier to execute"
+            "\n • OOP provides a clear structure for the programs"
+            "\n • OOP helps to keep the Java code DRY 'Don't Repeat Yourself', and makes the code"
+            "\n  easier to maintain, modify and debug"
+            "\n • OOP makes it possible to create full reusable applications with less code and shorter "
+            "\n development time "
+
+          },
+          {
+            'heading': "TIP",
+            'body': "\n\nThe 'Don't Repeat Yourself' (DRY) principle is about reducing the repetition of code. You"
+            "\nshould extract out the codes that are common for the application, and place them at a single"
+            "\nplace and reuse them instead of repeating it. "
+
+          },
+          {
+            'heading': "Java - What are Classes and Objects?",
+            'attachment': 'assets/java_intermediate/oop_1.png',
+
+            'body': "\n\n Classes and objects are the two main aspects of object-oriented programming."
+            "\n Look at the following illustration to see the difference between class and objects:",
+          },
+          {
+            'heading': "",
+            'attachment': "assets/java_intermediate/oop_2.png",
+            'body': "\nAnother example:"
+            "\n\n\nSo, a class is a template for objects, and an object is an instance of a class. "
+            "\n When the individual objects are created, they inherit all the variables and methods from the class."
+          },
+        ]
+      },
+      1:{
+        'topic': '2.   Java Classes and objects',
+        'subTopic': [
+          {
+            'heading': 'Java Classes/Objects',
+            'body': "\nJava is an object-oriented programming language."
+            "\n\n Everything in Java is associated with classes and objects, along with its attributes and"
+            "methods. \n\n For example: in real life, a car is an object. The car has attributes, such as weight and "
+            " color,and methods,such as drive and brake."
+            " A Class is like an object constructor, or a 'blueprint' for creating objects. "
+          },
+          {
+            'heading': 'Create a class',
+            'attachment': "assets/java_intermediate/cla_1.png",
+            'body': "To create a class, use the keyword class:"
+            "\n\n\n Remember from the Java Syntax chapter that"
+            "a class should always start with an "
+            " uppercase first letter, and that"
+            "he name of the java file should match the class name."
+          },
+          {
+            'heading': 'Remember',
+            'body': "\nfrom the Java Syntax chapter that a class "
+            " should always start with an uppercase"
+            "first letter, and that the name of the java file should match the class name."
+          },
+          {
+            'heading': 'Create an object',
+            'attachment': "assets/java_intermediate/cla_2.png",
+            'body': "In Java, an object is created from a class. "
+             "We have already created the class named Main, so now we can use this to create objects."
+            "\nTo create an object of Main, specify the class "
+            "name, followed by the object name, and use the keyword new: "
+          },
+          {
+            'heading': 'Multiple Objects',
+            'attachment': "assets/java_intermediate/cla_3.png",
+            'body': "You can create multiple objects of one class:"
+          },
+          {
+            'heading': 'Using Multiple Classes',
+            'body': "You can also create an object of a class and access it in another class."
+            "This is often used for better organization of classes"
+            "(one class has all the attributes and methods, "
+            "while the other class holds the main() method (code to be executed))."
+            "\n\nRemember that the name of the java file should match the class name. "
+            "\nIn this example, we have created two files in the same directory/folder: "
+            "\n •Main.java"
+            "\n •Second.java"
+          },
+          {
+            'heading': 'Main.java',
+            'attachment': "assets/java_intermediate/cla_4.png",
+          },
+          {
+            'heading': 'Second.java',
+            'attachment': "assets/java_intermediate/cla_5.png",
+          },
+          {
+            'heading': '',
+            'attachment': "assets/java_intermediate/cla_6.png",
+            'body': "When both files have been compiled:"
+          },
+          {
+            'heading': '',
+            'attachment': "assets/java_intermediate/cla_7.png",
+            'body': "Run the Second.java file:"
+          },
+          {
+            'heading': '',
+            'attachment': "assets/java_intermediate/cla_8.png",
+            'body': "And the output will be:"
+          },
+
+
+        ]
+
+      },
+      2:{
+        'topic': '3.   Java Class Attributes',
+        'subTopic': [
+          {
+            'heading': "Java Class Attributes",
+            'attachment': "assets/java_intermediate/att_1.png",
+            'body': "In the previous chapter, we used the term 'variable' for x in the example"
+            "(as shown below). It is actually an attribute of the class."
+            "Or you could say that class attributes are variables within a class:"
+          },
+          {
+            'heading': "Accessing attributes",
+            'attachment': "assets/java_intermediate/att_2.png",
+            'body': "You can access attributes by creating an object of "
+                "the class, and by using the dot syntax (.):"
+            "The following example will create an object of the Main class,"
+            "with the name myObj. We use the x attribute on the object to print its value:"
+          },
+          {
+            'heading': "Modify Attributes",
+            'attachment': "assets/java_intermediate/att_3.png",
+            'body': "You can also modify attribute values:"
+          },
+
+          {
+            'heading': "",
+            'attachment': "assets/java_intermediate/att_4.png",
+            'body': "Or override existing values:"
+          },
+
+          {
+            'heading': "",
+            'attachment': "assets/java_intermediate/att_5.png",
+            'body': "If you don't want the ability to override existing values, "
+                "declare the attribute as final:"
+
+          },
+          {
+            'heading': "Multiple Objects",
+            'attachment': "assets/java_intermediate/att_6.png",
+            'body': "If you create multiple objects of one class, you can "
+            "change the attribute values in one object, without"
+            "affecting the attribute values in the other"
+          },
+          {
+            'heading': "Multiple Objects",
+            'attachment': "assets/java_intermediate/att_7.png",
+            'body': "You can specify as many attributes as you want: "
+          },
+
+        ]
+      },
+      3:{
+        'topic': '4.     Java Class Methods',
+        'subTopic': [
+          {
+            'heading': "Java Class Methods ",
+            'attachment': "assets/java_intermediate/cmet_1.png",
+            'body': "You learned from the Java Methods chapter that methods are"
+            "declared within a class, and that they are used to perform certain actions:"
+          },
+          {
+            'heading': "",
+            'attachment': "assets/java_intermediate/cmet_2.png",
+            'body': "myMethod() prints a text (the action), when it is called."
+            "  To call a method, write the method's name followed"
+            "by two parentheses () and a semicolon;"
+          },
+          {
+            'heading': "Static vs Public",
+            'attachment': "assets/java_intermediate/cmet_3.png",
+            'body': "You will often see Java programs that have either static or"
+            " public attributes and methods."
+            "\n\nIn the example above, we created a static"
+            "method, which means that it can be accessed without"
+            "creating an object of the class, unlike public, which can only be accessed by objects:"
+          },
+          {
+            'heading': "Access Methods With an Object",
+            'attachment': "assets/java_intermediate/cmet_4.png",
+          },
+          {
+            'heading': 'Using Multiple Classes',
+            'attachment': "assets/java_intermediate/cmet_5.png",
+            'body': "Like we specified in the Classes chapter, it is a good practice "
+            "to create an object of a class and access it in another class."
+            " Remember that the name of the java file should match"
+            "the class name. In this example, we have created"
+                "two files in the same directory:"
+          },
+          {
+            'heading':"",
+            'attachment': "assets/java_intermediate/cmet_6.png",
+          },
+          {
+            'heading': "",
+            'attachment': "assets/java_intermediate/cmet_7.png",
+            'body': "When both files have been compiled:"
+          },
+          {
+            'heading': "",
+            'attachment': "assets/java_intermediate/cmet_8.png",
+            'body': "Run the Second.java file:"
+          },
+          {
+            'heading': "",
+            'attachment': "assets/java_intermediate/cmet_9.png",
+            'body': "And the output will be:"
+          },
+
+        ]
+      },
+      4:{
+        'topic': '5.   Java Constructors',
+        'subTopic': [
+          {
+            'heading': "Java Constructors",
+            'attachment': "assets/java_intermediate/cons_1.png",
+            'body': "A constructor in Java is a special method that is used"
+            "to initialize objects. \nThe constructor is called when "
+            "an object of a class is created. It can be"
+            "used to set initial values for object attributes:"
+          },
+          {
+            'heading': "Constructor Parameters",
+            'attachment': "assets/java_intermediate/cons_2.png",
+            'body': "Constructors can also take parameters, which is used to initialize attributes."
+            "\n\nThe following example adds an int y parameter to the constructor."
+            "Inside the constructor we set x to y (x=y). When we call"
+            "the constructor, we pass a parameter to"
+            "the constructor (5), which will set the value of x to 5:"
+          },
+          {
+            'heading': "",
+            'attachment': "assets/java_intermediate/cons_3.png",
+            'body': "You can have as many parameters as you want:"
+          },
+        ]
+      },
+      5: {
+        'topic': '6.  Java Methods ',
+        'subTopic': [
+          {
+            'heading': "Create a method",
+            'attachment': "assets/java_intermediate/met_1.png",
+            'body': "A method must be declared within a class. It is defined with"
+            "the name of the method, followed by parentheses (). Java provides"
+            "some pre-defined methods, such as System.out.println()"
+            "but you can also create your own methods to perform certain actions:"
+          },
+          {
+            'heading': "Call a Method",
+            'attachment': "assets/java_intermediate/met_2.png",
+            'body': "To call a method in Java, write the method's name"
+            "followed by two parentheses () and a semicolon;"
+            "\n\nIn the following example, myMethod() is used to print a text (the action), when it is called:"
+          },
+          {
+            'heading': "",
+            'attachment': "assets/java_intermediate/met_3.png",
+            'body': "A method can also be called multiple times:"
+          },
+        ]
+      },
+      6: {
+        'topic': '7. Java Method Parameters ',
+        'subTopic': [
+          {
+            'heading': "Parameters and Arguments",
+            'attachment': "assets/java_intermediate/mpar_1.png",
+            'body': "Information can be passed to methods as parameter. Parameters act as variables inside the method."
+            "\n\n Parameters are specified after the method name, inside the parentheses. "
+                "You can add as many parameters as you want, just separate them with a comma."
+            "\n\nThe following example has a method that takes a String called fname as parameter. When the"
+            "method is called, we pass along a first name, which is used inside the method to print the full name:"
+
+          },
+          {
+            'heading': "Multiple Parameters",
+            'attachment': "assets/java_intermediate/mpar_2.png",
+            'body': "You can have as many parameters as you like:"
+          },
+          {
+            'heading': "Return Values",
+            'attachment': "assets/java_intermediate/mpar_3.png",
+            'body': "The void keyword, used in the examples above, indicates that the method"
+            "should not return a value. If you want the method to return a value,"
+            "you can use a primitive data type (such as int, char, etc.) instead of void,"
+            "and use the return keyword inside the method:"
+          },
+          {
+            'heading': "",
+            'attachment': "assets/java_intermediate/mpar_4.png",
+            'body': "This example returns the sum of a method's two parameters:"
+          },
+          {
+            'heading': "",
+            'attachment': "assets/java_intermediate/mpar_5.png",
+            'body': "You can also store the result in a variable (recommended, as it is easier to read and maintain):"
+          },
+          {
+            'heading': "A Method with If...Else",
+            'attachment': "assets/java_intermediate/mpar_6.png",
+            'body': "It is common to use if...else statements inside methods:"
+          },
+
+        ]
+      },
+      7:{
+        'topic': '8.  Java Method Overloading',
+        'subTopic': [
+          {
+            'heading': "Method Overloading",
+            'attachment': "assets/java_intermediate/over_1.png",
+            'body': "With method overloading, multiple methods can have the same name with different parameters:"
+          },
+          {
+            'heading': "",
+            'attachment': "assets/java_intermediate/over_2.png",
+            'body': "Consider the following example, which has two methods that add numbers of different type:"
+
+          },
+          {
+            'heading': "",
+            'attachment': "assets/java_intermediate/over_3.png",
+            'body': "Instead of defining two methods that should do the same thing, it is better to overload one."
+            "\n\nIn the example below, we overload the plusMethod method to work for both int and double:"
+          },
+        ]
+      },
+      8:{
+        'topic': '9.   Java Scope',
+        'subTopic': [
+          {
+            'heading': "Java Scope",
+            'body': "In Java, variables are only accessible inside the region they are created. This is called scope."
+          },
+          {
+            'heading': "Method Scope",
+            'attachment': "assets/java_intermediate/scope_1.png",
+            'body': "Variables declared directly inside a method are available anywhere "
+                "in the method following the line of code in which they were declared:"
+          },
+          {
+            'heading': "Block Scope",
+            'attachment': "assets/java_intermediate/scope_2.png",
+            'body': "A block of code refers to all of the code between curly braces"
+            "Variables declared inside blocks of code are only accessible by the code between the curly braces,"
+            "which follows the line in which the variable was declared:"
+          },
+        ]
+      },
+      9:{
+        'topic': '10.   Java Recursion',
+        'subTopic': [
+          {
+            'heading': " Java Recursion",
+            'body': "Recursion is the technique of making a function call itself. This technique provides"
+            "a way to break complicated problems down into simple problems which are easier to solve."
+            "\n\nRecursion may be a bit difficult to understand. The best way to figure out how it works is to experiment with it."
+
+          },
+          {
+            'heading': "Recursion Example",
+            'attachment': "assets/java_intermediate/rec_1.png",
+            'body': "Adding two numbers together is easy to do, but adding a range"
+            "of numbers is more complicated. In the following example, recursion is used"
+            "to add a range of numbers together by breaking it down into the simple task of adding two numbers:"
+
+          },
+          {
+            'heading': "Example Explained",
+            'attachment': "assets/java_intermediate/rec_2.png",
+            'body': "When the sum() function is called, it adds parameter k"
+            "to the sum of all numbers smaller than k and returns the result. When k becomes 0,"
+            "the function just returns 0. When running, the program follows these steps:"
+            "\n\nSince the function does not call itself when k is 0, the program stops there and returns the result."
+
+          },
+          {
+            'heading': "Halting Condition",
+            'attachment': "assets/java_intermediate/rec_3.png",
+            'body': "Just as loops can run into the problem of infinite looping, recursive functions"
+            "can run into the problem of infinite recursion. Infinite recursion is"
+            "when the function never stops calling itself. Every recursive function should have a halting condition,"
+            "which is the condition where the function stops calling itself. In the previous example,"
+            "the halting condition is when the parameter k becomes 0."
+            "\n\nIt is helpful to see a variety of different examples to better understand the concept. In this example,"
+            "the function adds a range of numbers between a start and an end. The halting condition"
+            "for this recursive function is when end is not greater than start:"
+          },
+        ]
+      },
+
+
+    },
+
+    Categories.advanced: {
+      0:{
+      'topic': '1.   Java Modifiers',
+      'subTopic': [
+        {
+          'heading': "Modifiers",
+          'attachment': "assets/java_advance/mod_1.png",
+          'body': "The public keyword is an access modifier, meaning that it is used to set "
+              "the access level for classes, attributes, methods and constructors."
+              "\n\nWe divide modifiers into two groups:"
+              "\n\n•Access Modifiers - controls the access level"
+              "\n\n•Non-Access Modifiers - do not control access level, but provides other functionality"
+        },
+        {
+          'heading': "Access Modifiers",
+          'attachment': "assets/java_advance/mod_2.png",
+          'body': "For classes, you can use either public or default:"
+        },
+        {
+          'heading':"",
+          'attachment': "assets/java_advance/mod_3.png",
+          'body': "For attributes, methods and constructors, you can use the one of the following:"
+        },
+        {
+          'heading': "Non-Access Modifiers",
+          'attachment': "assets/java_advance/mod_4.png",
+          'body': "For classes, you can use either final or abstract:"
+        },
+        {
+          'heading': "",
+          'attachment': "assets/java_advance/mod_5.png",
+          'body': "For attributes and methods, you can use the one of the following:",
+
+        },
+        {
+          'heading': "Final",
+          'attachment': "assets/java_advance/mod_6.png",
+          'body': "If you don't want the ability to override existing attribute values, declare attributes as final:"
+        },
+        {
+          'heading': "Static",
+          'attachment': "assets/java_advance/mod_7.png",
+          'body': "A static method means that it can be accessed without creating an object of the class, unlike public:"
+
+        },
+        {
+          'heading': "Abstract",
+          'attachment': "assets/java_advance/mod_8.png",
+          'body': "An abstract method belongs to an abstract class, and it does not have a body. The body is provided by the subclass:"
+
+        },
+      ]
+    },
+      1:{
+        'topic': '2.  Java Encapsulation',
+        'subTopic': [
+          {
+            'heading': "Encapsulation",
+            'body': "The meaning of Encapsulation, is to make sure that sensitive data is hidden from users. To achieve this, you must:"
+            "\n\n •declare class variables/attributes as private"
+            "\n\n •provide public get and set methods to access and update the value of a private variable"
+          },
+          {
+            'heading': "Get and Set",
+            'attachment': "assets/java_advance/encap_1.png",
+            'body': "You learned from the previous chapter that private variables can only be accessed"
+            "within the same class (an outside class has no access to it). However, it is possible to access "
+            "them if we provide public get and set methods."
+            "\n\nThe get method returns the variable value, and the set method sets the value."
+            "\n\nSyntax for both is that they start with either get or set, "
+                "followed by the name of the variable, with the first letter in upper case:"
+          },
+          {
+            'heading': "",
+            'attachment': "assets/java_advance/encap_2.png",
+            'body': "If the variable was declared as public, we would expect the following output:"
+          },
+          {
+            'heading': "",
+            'attachment': "assets/java_advance/encap_3.png",
+            'body': "However, as we try to access a private variable, we get an error:"
+          },
+          {
+            'heading': "",
+            'attachment': "assets/java_advance/encap_4.png",
+            'body': "Instead, we use the getName() and setName() methods to access and update the variable:"
+          },
+        ]
+      },
+      2:{
+        'topic': '3. Java Packages',
+        'subTopic': [
+          {
+            'heading': "Java Packages & API",
+            'body': "A package in Java is used to group related classes. Think of it as a folder in a file directory."
+            "We use packages to avoid name conflicts, and to write a better maintainable code. "
+            "Packages are divided into two categories:"
+            "\n\n•Built-in Packages (packages from the Java API)"
+                "\n\n•User-defined Packages (create your own packages)"
+          },
+          {
+            'heading': "Built-in Packages",
+            'attachment': "assets/java_advance/pack_1.png",
+            'body': "The Java API is a library of prewritten classes, "
+                "that are free to use, included in the Java Development Environment."
+            "\n\n\nThe library contains components for managing input, database programming, and much much more."
+            "The complete list can be found at Oracles website: https://docs.oracle.com/javase/8/docs/api/."
+            "\n\n\nThe library is divided into packages and classes. Meaning you can either import a single class"
+            "(along with its methods and attributes), or a whole package that contain all the classes that belong to the specified package."
+            "\n\nTo use a class or a package from the library, you need to use the import keyword:"
+
+          },
+          {
+            'heading': "Import a Class",
+            'attachment': "assets/java_advance/pack_2.png",
+            'body': "If you find a class you want to use, for example, the Scanner class, "
+                "which is used to get user input, write the following code:"
+          },
+          {
+            'heading': "",
+            'attachment': "assets/java_advance/pack_3.png",
+            'body': "In the example above, java.util is a package, while Scanner is a class of the java.util package."
+            "To use the Scanner class, create an object of the class and use any of the available methods found in the Scanner"
+            "class documentation. In our example, we will use the nextLine() method, which is used to read a complete line:"
+
+          },
+          {
+            'heading': "Import a Package",
+            'attachment': "assets/java_advance/pack_4.png",
+            'body': "There are many packages to choose from. In the previous example, we used the Scanner"
+            "class from the java.util package. This package also contains date and time facilities, "
+                "random-number generator and other utility classes."
+            "\n\nTo import a whole package, end the sentence with an asterisk sign (*). "
+                "The following example will import ALL the classes in the java.util package:"
+          },
+          {
+            'heading': "User-defined Packages",
+            'attachment': "assets/java_advance/pack_5.png",
+            'body': "To create your own package, you need to understand that Java uses a file "
+                "system directory to store them. Just like folders on your computer:"
+          },
+          {
+            'heading': "",
+            'attachment': "assets/java_advance/pack_6.png",
+            'body': "To create a package, use the package keyword:"
+          },
+          {
+            'heading': "",
+            'attachment': "assets/java_advance/pack_7.png",
+            'body': "Save the file as MyPackageClass.java, and compile it:"
+
+          },
+          {
+            'heading': "",
+            'attachment': "assets/java_advance/pack_8.png",
+            'body': "Then compile the package:"
+
+          },
+          {
+            'heading': "",
+            'attachment': "assets/java_advance/pack_9.png",
+            'body': "When we compiled the package in the example above, a new folder was created, called 'mypack'."
+            "\nTo run the MyPackageClass.java file, write the following:"
+
+          },
+          {
+            'heading': "",
+            'attachment': "assets/java_advance/pack_10.png",
+            'body': "The output will be:"
+          },
+
+
+        ]
+      },
+      3:{
+        'topic': '4. Java Inheritance',
+        'subTopic': [
+          {
+            'heading': "Java Inheritance (Subclass and Superclass)",
+            'attachment': "assets/java_advance/inhe_1.png",
+            'body': "In Java, it is possible to inherit attributes and methods from "
+                "one class to another. We group the inheritance concept into two categories:"
+            "\n\n•subclass (child) - the class that inherits from another class"
+                "\n•superclass (parent) - the class being inherited from"
+            "\n\nTo inherit from a class, use the extends keyword."
+            "\n\n In the example below, the Car class (subclass) inherits the "
+                "attributes and methods from the Vehicle class (superclass):"
+
+          },
+
+        ]
+      },
+      4:{
+        'topic': '5.   Java Polymorphism',
+        'subTopic': [
+          {
+            'heading': "  Java Polymorphism",
+            'attachment': "assets/java_advance/poly_1.png",
+            'body': "\nPolymorphism means many forms, and it occurs when we have many "
+                "classes that are related to each other by inheritance."
+            "\nLike we specified in the previous chapter; Inheritance lets us inherit attributes"
+            "and methods from another class. Polymorphism uses those methods to perform different tasks."
+            "This allows us to perform a single action in different ways."
+            "\n\nFor example, think of a superclass called Animal that has a method called animalSound()."
+            "Subclasses of Animals could be Pigs, Cats, Dogs, Birds - And they also have their "
+            "own implementation of an animal sound (the pig oinks, and the cat meows, etc.):"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/java_advance/poly_2.png",
+            'body': "Now we can create Pig and Dog objects and call the animalSound() method on both of them: "
+          }
+        ]
+      },
+      5:{
+        'topic': '6.   Java Inner Classes',
+        'subtopic': [
+          {
+            'heading': "Java Inner Classes",
+            'attachment': "assets/java_advance/inn_1.png",
+            'body': "In Java, it is also possible to nest classes (a class within a class). The purpose of nested classes is"
+            "to group classes that belong together, which makes your code more readable and maintainable."
+            "\nTo access the inner class, create an object of the outer class, and then create an object of the inner class:"
+          },
+          {
+            'heading': "Private Inner Class",
+            'attachment': "assets/java_advance/inn_2.png",
+            'body': "Unlike a regular class, an inner class can be private or protected. If you don't want outside"
+            "objects to access the inner class, declare the class as private:"
+          },
+          {
+            'heading': "",
+            'attachment': "assets/java_advance/inn_3.png",
+            'body': "If you try to access a private inner class from an outside class, an error occurs:"
+          },
+          {
+            'heading': "Static Inner Class",
+            'attachment': "assets/java_advance/inn_4.png",
+            'body': "An inner class can also be static, which means that you "
+                "can access it without creating an object of the outer class:"
+          },
+          {
+            'heading': "Access Outer Class From Inner Class",
+            'attachment': "assets/java_advance/inn_5.png",
+            'body': "One advantage of inner classes, is that they can access attributes and methods of the outer class:"
+          },
+
+
+        ]
+      },
+
+    }
   },
   Languages.dart: {
     Categories.beginner: {},

@@ -1,7 +1,7 @@
 import 'package:first_project/firebase/features/user_auth/presentation/pages/login_page.dart';
+import 'package:first_project/firebase/features/user_auth/presentation/pages/sign_up_page.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'firebase/features/user_auth/presentation/pages/sign_up_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,11 +23,12 @@ class GetStarted extends StatefulWidget {
   _GetStartedState createState() => _GetStartedState();
 }
 
-class _GetStartedState extends State<GetStarted> {
+class _GetStartedState extends State<GetStarted> with SingleTickerProviderStateMixin {
   final PageController _pageController = PageController(initialPage: 0);
   int currentPage = 0;
   int totalPages = 5;
   late SharedPreferences _prefs;
+  late AnimationController _animationController;
 
   List<String> headings = [
     "Welcome",
@@ -67,6 +68,11 @@ class _GetStartedState extends State<GetStarted> {
         currentPage = _pageController.page?.round() ?? 0;
       });
     });
+    _animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 500),
+    );
+    _animationController.forward();
   }
 
   void _initPrefs() async {
@@ -85,95 +91,131 @@ class _GetStartedState extends State<GetStarted> {
   @override
   void dispose() {
     _pageController.dispose();
+    _animationController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          PageView.builder(
-            controller: _pageController,
-            itemCount: totalPages,
-            itemBuilder: (context, index) {
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset( // image loc
-                    imageLocation[index],
-                    width: 500,
-                    height: 300,
-                    fit: BoxFit.contain,
-                  ),
-                  const SizedBox(height: 10),
-                  Text(
-                    headings[index], //heading loc
-                    style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.lightBlue[700],
+      body: AnimatedOpacity(
+        opacity: 1.0,
+        duration: const Duration(milliseconds: 500),
+        child: Stack(
+          children: [
+            PageView.builder(
+              controller: _pageController,
+              itemCount: totalPages,
+              itemBuilder: (context, index) {
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      imageLocation[index],
+                      width: 500,
+                      height: 300,
+                      fit: BoxFit.contain,
                     ),
-                  ),
-                  const SizedBox(height: 5),
-                  Container(
-                    margin: const EdgeInsets.symmetric(horizontal: 30),
-                    padding: const EdgeInsets.all(12),
-                    child: Text(
-                      descriptions[index],
-                      style: const TextStyle(fontSize: 15),
-                      textAlign: TextAlign.center,
+                    const SizedBox(height: 10),
+                    Text(
+                      headings[index],
+                      style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.lightBlue[700],
+                      ),
                     ),
-                  ),
-                ],
-              );
-            },
-          ),
-          Positioned( //NAVIGATION DOTS
-            bottom: 181.0,
-            left: 0,
-            right: 0,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: List.generate(totalPages, (index) {
-                return Container(
-                  width: 15,
-                  height: 10,
-                  margin: const EdgeInsets.symmetric(horizontal: 5),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: currentPage == index ? Colors.lightBlue[700] : Colors.grey,
-                  ),
+                    const SizedBox(height: 5),
+                    Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 30),
+                      padding: const EdgeInsets.all(12),
+                      child: Text(
+                        descriptions[index],
+                        style: const TextStyle(fontSize: 15),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ],
                 );
-              }),
+              },
             ),
-          ),
-          Positioned( // BUTTON POSITION
-            bottom: 80,
-            left: 0,
-            right: 0,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                if (currentPage == 4)
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => const SignUpPage()));
-                    },
-                    style: ElevatedButton.styleFrom(
-                      minimumSize: const Size(250, 50),
-                      backgroundColor: const Color(0xFF30CBF8),
+            Positioned(
+              bottom: 181.0,
+              left: 0,
+              right: 0,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: List.generate(totalPages, (index) {
+                  return Container(
+                    width: 15,
+                    height: 10,
+                    margin: const EdgeInsets.symmetric(horizontal: 5),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: currentPage == index ? Colors.lightBlue[700] : Colors.grey,
                     ),
-                    child: const Text(
-                      "Get Started",
-                      style: TextStyle(fontSize: 15.0, letterSpacing: 1.5),
-                    ),
-                  ),
-              ],
+                  );
+                }),
+              ),
             ),
-          ),
-        ],
+            Positioned(
+              bottom: 80,
+              left: 0,
+              right: 0,
+              child: AnimatedOpacity(
+                opacity: currentPage == 4 ? 1.0 : 0.0,
+                duration: const Duration(milliseconds: 500),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    if (currentPage == 4)
+                      ElevatedButton(
+                        onPressed: () {
+                          _animationController.reverse().then((value) {
+                            // Navigate to the sign-up page with fade animation
+                            Navigator.of(context).push(FadePageRoute(builder: (context) => const SignUpPage()));
+                          });
+                        },
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: const Size(250, 50),
+                          backgroundColor: const Color(0xFF30CBF8),
+                        ),
+                        child: const Text(
+                          "Get Started",
+                          style: TextStyle(fontSize: 15.0, letterSpacing: 1.5),
+                        ),
+                      ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
+}
+
+class FadePageRoute<T> extends PageRouteBuilder<T> {
+  final WidgetBuilder builder;
+
+  FadePageRoute({required this.builder})
+      : super(
+    pageBuilder: (
+        BuildContext context,
+        Animation<double> animation,
+        Animation<double> secondaryAnimation,
+        ) =>
+        builder(context),
+    transitionsBuilder: (
+        BuildContext context,
+        Animation<double> animation,
+        Animation<double> secondaryAnimation,
+        Widget child,
+        ) =>
+        FadeTransition(
+          opacity: animation,
+          child: child,
+        ),
+  );
 }

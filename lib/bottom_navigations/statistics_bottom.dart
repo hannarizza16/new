@@ -1,3 +1,4 @@
+import 'package:first_project/gradient_background.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
@@ -50,9 +51,8 @@ class _StatisticsWidgetState extends State<StatisticsWidget> {
     (selectedLanguage == "All" || score['category'] == selectedLanguage) &&
         (selectedExpertise == "All" || score['expertise'] == selectedExpertise))
         .toList();
-
-    return Scaffold(
-      body: Column(
+    return GradientContainer( // Use GradientContainer as the parent widget
+      child: Column( // Wrap your StatisticsWidget content inside a Column
         children: [
           Padding(
             padding: const EdgeInsets.only(left: 50.0, top: 10.0, bottom: 10.0),
@@ -192,23 +192,23 @@ class _StatisticsWidgetState extends State<StatisticsWidget> {
                               ],
                             ),
                           ),
-                          Positioned(
-                            // yellow bottom
-                            bottom: 0,
-                            left: 0,
-                            right: 0,
-                            child: Container(
-                              height: 0,
-                              decoration: BoxDecoration(
-                                color: Color(
-                                    0xFFFFCC70), // Yellow color
-                                borderRadius: BorderRadius.only(
-                                  bottomLeft: Radius.circular(20.0),
-                                  bottomRight: Radius.circular(20.0),
-                                ),
-                              ),
-                            ),
-                          ),
+                          // Positioned(
+                          //   // yellow bottom
+                          //   bottom: 0,
+                          //   left: 0,
+                          //   right: 0,
+                          //   // child: Container(
+                          //   //   height: 0,
+                          //   //   decoration: BoxDecoration(
+                          //   //     color: Color(
+                          //   //         0xFFFFCC70), // Yellow color
+                          //   //     borderRadius: BorderRadius.only(
+                          //   //       bottomLeft: Radius.circular(20.0),
+                          //   //       bottomRight: Radius.circular(20.0),
+                          //   //     ),
+                          //   //   ),
+                          //   ),
+                          // // ),
                         ],
                       ),
                     ),

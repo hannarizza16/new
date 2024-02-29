@@ -3,6 +3,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 
+import '../gradient_background.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -15,7 +17,9 @@ class LeaderboardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Leaderboard(),
+      body: GradientContainer( // Wrap with GradientContainer
+        child: Leaderboard(), // Your Leaderboard widget
+      ),
     );
   }
 }
@@ -169,8 +173,7 @@ class _LeaderboardState extends State<Leaderboard> {
         data: topPlayers,
         domainFn: (dynamic data, _) => '${data['lastName']}, ${data['firstName']}',
         measureFn: (dynamic data, _) => data['score'],
-        colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
-      )
+        colorFn: (_, __) => charts.ColorUtil.fromDartColor(Color(0xFF0C356A)),      )
     ];
 
     return charts.BarChart(
