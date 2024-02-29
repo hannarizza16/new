@@ -48,12 +48,20 @@ dependencies:
   shared_preferences: ^2.0.7
   draggable_fab: ^0.1.4
   animated_text_kit: ^4.2.1     #for_animated_typing_in_ai
-
-
+  dash_chat_2: ^0.0.15
+  chat_gpt_sdk: ^2.2.5
+  image_picker: ^0.8.4+4
+  cached_network_image: ^3.0.0
+  flutter_cache_manager: ^3.3.1
+  permission_handler: ^10.0.0
+  charts_flutter: ^0.12.0
+  intl: ^0.17.0
+  flare_flutter: ^3.0.2
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+
 
 dev_dependencies:
   flutter_test:
@@ -108,7 +116,94 @@ flutter:
     - assets/colorfulmosaic.jpg
     - assets/blueshade.jpg
     - assets/white_and_lightblue.jpg
+    - assets/logorizal_4.png
+    - assets/fireworks.gif
+    - assets/confetti.gif
 
+      #C
+    - assets/C/ss1.png
+    - assets/C/ss2.png
+    - assets/C/ss3.png
+    - assets/C/ss4.png
+    - assets/C/ss6.png
+    - assets/C/ss7.png
+    - assets/C/ss8.png
+    - assets/C/ss9.png
+    - assets/C/ss10.png
+    - assets/C/ss11.png
+    - assets/C/ss12.png
+    - assets/C/ss13.png
+    - assets/C/ss14.png
+    - assets/C/ss15.png
+    - assets/C/ss16.png
+    - assets/C/ss17.png
+    - assets/C/ss18.png
+    - assets/C/ss19.png
+    - assets/C/ss20.png
+    - assets/C/ss21.png
+    - assets/C/ss22.png
+    - assets/C/ss23.png
+    - assets/C/ss24.png
+    - assets/C/ss25.png
+    - assets/C/ss26.png
+    - assets/C/ss27.png
+    - assets/C/s28.png
+    - assets/C/s29.png
+    - assets/C/s30.png
+    - assets/C/s31.png
+    - assets/C/s32.png
+    - assets/C/s33.png
+    - assets/C/s34.png
+    - assets/C/s35.png
+    - assets/C/s36.png
+    - assets/C/s37.png
+    - assets/C/s38.png
+    - assets/C/s39.png
+    - assets/C/s40.png
+    - assets/C/s41.png
+    - assets/C/s42.png
+    - assets/C/s43.png
+    - assets/C/s44.png
+    - assets/C/s45.png
+    - assets/C/s46.png
+    - assets/C/s47.png
+    - assets/C/s48.png
+    - assets/C/s49.png
+    - assets/C/s50.png
+    - assets/C/s51.png
+    - assets/C/s52.png
+    - assets/C/s53.png
+    - assets/C/s54.png
+    - assets/C/s55.png
+    - assets/C/s56.png
+    - assets/C/s56.png
+    - assets/C/s57.png
+    - assets/C/s58.png
+    - assets/C/s59.png
+    - assets/C/s60.png
+    - assets/C/s61.png
+    - assets/C/s62.png
+    - assets/C/s63.png
+    - assets/C/s64.png
+    - assets/C/s65.png
+    - assets/C/s66.png
+    - assets/C/s67.png
+    - assets/C/s68.png
+    - assets/C/s69.png
+    - assets/C/s70.png
+    - assets/C/s71.png
+    - assets/C/s72.png
+    - assets/C/s73.png
+    - assets/C/s74.png
+
+
+
+
+
+
+
+
+    - assets/stamp/stamp.png
     - assets/java_lessons_image/get_started1.png
     - assets/java_lessons_image/get_started2.jpg
     - assets/java_lessons_image/step1_get_started.jpg
@@ -233,6 +328,122 @@ flutter:
     - assets/java_lessons_image/multi_2.jpg
     - assets/java_lessons_image/multi_3.jpg
     - assets/java_lessons_image/multi_4.jpg
+
+    #Java Interm
+    - assets/java_intermediate/oop_1.png
+    - assets/java_intermediate/oop_2.png
+    #Java Classes and Objects
+    - assets/java_intermediate/cla_1.png
+    - assets/java_intermediate/cla_2.png
+    - assets/java_intermediate/cla_3.png
+    - assets/java_intermediate/cla_4.png
+    - assets/java_intermediate/cla_5.png
+    - assets/java_intermediate/cla_6.png
+    - assets/java_intermediate/cla_7.png
+    - assets/java_intermediate/cla_8.png
+     #JAVA ATTRIBUTES
+    - assets/java_intermediate/att_1.png
+    - assets/java_intermediate/att_2.png
+    - assets/java_intermediate/att_3.png
+    - assets/java_intermediate/att_4.png
+    - assets/java_intermediate/att_5.png
+    - assets/java_intermediate/att_6.png
+    - assets/java_intermediate/att_7.png
+    # Java Class Methods
+    - assets/java_intermediate/cmet_1.png
+    - assets/java_intermediate/cmet_2.png
+    - assets/java_intermediate/cmet_3.png
+    - assets/java_intermediate/cmet_4.png
+    - assets/java_intermediate/cmet_5.png
+    - assets/java_intermediate/cmet_6.png
+    - assets/java_intermediate/cmet_7.png
+    - assets/java_intermediate/cmet_8.png
+    - assets/java_intermediate/cmet_9.png
+    #Java Constructors
+    - assets/java_intermediate/cons_1.png
+    - assets/java_intermediate/cons_2.png
+    - assets/java_intermediate/cons_3.png
+    # Java Methods
+    - assets/java_intermediate/met_1.png
+    - assets/java_intermediate/met_2.png
+    - assets/java_intermediate/met_3.png
+    #Java Method Parameters
+    - assets/java_intermediate/mpar_1.png
+    - assets/java_intermediate/mpar_2.png
+    - assets/java_intermediate/mpar_2.png
+    - assets/java_intermediate/mpar_3.png
+    - assets/java_intermediate/mpar_4.png
+    - assets/java_intermediate/mpar_5.png
+    - assets/java_intermediate/mpar_6.png
+    #Java Method Overloading
+    - assets/java_intermediate/over_1.png
+    - assets/java_intermediate/over_2.png
+    - assets/java_intermediate/over_3.png
+    #Java Scope
+    - assets/java_intermediate/scope_1.png
+    - assets/java_intermediate/scope_2.png
+    #Java Recursion
+    - assets/java_intermediate/rec_1.png
+    - assets/java_intermediate/rec_2.png
+    - assets/java_intermediate/rec_3.png
+    #Java Modifiers
+    - assets/java_advance/mod_1.png
+    - assets/java_advance/mod_2.png
+    - assets/java_advance/mod_3.png
+    - assets/java_advance/mod_4.png
+    - assets/java_advance/mod_5.png
+    - assets/java_advance/mod_6.png
+    - assets/java_advance/mod_7.png
+    - assets/java_advance/mod_8.png
+    # Java Encapsulation
+    - assets/java_advance/encap_1.png
+    - assets/java_advance/encap_2.png
+    - assets/java_advance/encap_3.png
+    - assets/java_advance/encap_4.png
+    #Java Packages
+    - assets/java_advance/pack_1.png
+    - assets/java_advance/pack_2.png
+    - assets/java_advance/pack_3.png
+    - assets/java_advance/pack_4.png
+    - assets/java_advance/pack_5.png
+    - assets/java_advance/pack_6.png
+    - assets/java_advance/pack_7.png
+    - assets/java_advance/pack_8.png
+    - assets/java_advance/pack_9.png
+    - assets/java_advance/pack_10.png
+    #Java Inheritance
+    - assets/java_advance/inhe_1.png
+    #Java Polymorphism
+    - assets/java_advance/poly_1.png
+    - assets/java_advance/poly_2.png
+    #Java Inner Classes
+    - assets/java_advance/inn_1.png
+    - assets/java_advance/inn_2.png
+    - assets/java_advance/inn_3.png
+    - assets/java_advance/inn_4.png
+    - assets/java_advance/inn_5.png
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   #   - images/a_dot_burr.jpeg

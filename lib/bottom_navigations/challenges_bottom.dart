@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import '../challenges/category_selection.dart';
 
-
 class ChallengesPage extends StatelessWidget {
-  const ChallengesPage({Key? key});
+  const ChallengesPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,11 +15,16 @@ class ChallengesPage extends StatelessWidget {
             MaterialPageRoute(builder: (context) => CategorySelection()),
           );
         },
-        child: Text(
-          'Challenges',
-          style: TextStyle(
-            fontSize: 60,
-            color: Colors.blue, // Optional: Change the color for visual indication
+        child: Container(
+          // Optional: Change the color for visual indication
+          color: Colors.blue,
+          child: Text(
+            'Challenges Page',
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
           ),
         ),
       ),

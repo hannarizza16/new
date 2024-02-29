@@ -1,14 +1,14 @@
 import 'package:first_project/extension/subject_ext.dart';
-import 'package:first_project/main_profile/languages/languages_arduino.dart';
+import 'package:first_project/main_profile/languages/languages_php.dart';
 import 'package:first_project/main_profile/languages/languages_c++.dart';
 import 'package:first_project/main_profile/languages/languages_c.dart';
 import 'package:first_project/main_profile/languages/languages_dart.dart';
 import 'package:first_project/main_profile/languages/languages_java.dart';
-import 'package:first_project/main_profile/languages/languages_ruby.dart';
+import 'package:first_project/main_profile/languages/languages_csharp.dart';
 import 'package:first_project/main_profile/languages/languages_pearl.dart';
-import 'package:first_project/subject/application_dev.dart';
+import 'package:first_project/subject/mobile_application_dev.dart';
 import 'package:first_project/subject/game_dev.dart';
-import 'package:first_project/subject/machine_dev.dart';
+import 'package:first_project/subject/machine_learning.dart';
 import 'package:first_project/subject/web_dev.dart';
 import 'package:flutter/material.dart';
 import 'package:first_project/enums/enums.dart';
@@ -21,6 +21,15 @@ class AllLanguages extends StatefulWidget {
 }
 
 class _AllLanguagesState extends State<AllLanguages> {
+  static const Color selectedButtonColor = Color(0xFF0C356A); // dark blue
+  static const Color defaultSelectedButtonColor = Colors.transparent;
+  static const Color selectedDefaultButtonTextColor = Colors.black;
+  static const Color selectedButtonTextColor = Color(0xFFFFCC70); //yellow
+  static const Color black = Colors.black;
+  static const Color yellow = Color(0xFFFFCC70);
+  static const Color darkBlue = Color(0xFF0C356A);
+
+
   static final _viewLanguageScreen = [
     // arranged dapat to bawal magkapalit. since naka index tayo.
     // -ito yung kung saan nakapaloob yung mga topics
@@ -28,9 +37,9 @@ class _AllLanguagesState extends State<AllLanguages> {
     const CPlusPlusLanguage(),
     const JavaLanguage(),
     const DartLanguage(),
-    const RubyLanguage(),
-    const ArduinoLanguage(),
-    const PearlLanguage(),
+    const CSharpLanguage(),
+    const PhpLanguage(),
+    // const PearlLanguage(),
   ];
 
   int?
@@ -66,7 +75,7 @@ class _AllLanguagesState extends State<AllLanguages> {
 
   @override
   Widget build(BuildContext context) {
-    bool isButtonEnabled = true;
+    // bool isButtonEnabled = true;
     return Column(
       children: [
         Expanded(
@@ -85,22 +94,24 @@ class _AllLanguagesState extends State<AllLanguages> {
                 side: MaterialStateProperty.all(
                   BorderSide(
                     color: selectedScreen == index
-                        ? Colors.lightBlue[400]!
-                        : Color(0xFF164863),
-                    width: 1.5,
+                        ? selectedButtonColor // borderside color language
+                        : selectedButtonColor, // borderside color language
+                    width: 2,
                   ),
                 ),
                 backgroundColor: MaterialStateProperty.all(
                     selectedScreen == index
-                        ? Colors.lightBlue[400]
-                        : Colors.transparent),
+                        ? selectedButtonColor
+                        : defaultSelectedButtonColor),
               ),
 
               onPressed: () => _onViewScreen(index),
               child: Text(
                 Languages.values[index].value, //TEXT SCREEN COLOR LANGUAGE
                 style: TextStyle(
-                  color: selectedScreen == index ? Colors.white : Colors.white,
+                  color: selectedScreen == index
+                      ? selectedButtonTextColor // text color ng language when selected
+                      : selectedDefaultButtonTextColor,
                 ),
               ),
             ),
@@ -110,82 +121,127 @@ class _AllLanguagesState extends State<AllLanguages> {
         ),
         Expanded(
           flex: 10,
+
           child: selectedScreen == null
               ? Container(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [Color(0xFF3D84A8), Color(0xFF27496D)],
+
+                  decoration: const BoxDecoration(
+                    gradient:  LinearGradient(
+                      colors: [Color(0xFF00A9FF), Color(0xFF71DFE7)],
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                     ),
                   ),
                   child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(height: 15),
-                        Row(
-                          children: [
-                            Text(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SizedBox(height: 15),
+                      Row(
+                        children: [
+                          const Padding(
+                            padding:  EdgeInsets.only(left: 20.5),
+                            child:  Text(
                               'Courses',
                               style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 18,
+                                color: black,
+                                fontSize: 20,
                                 fontWeight: FontWeight.normal,
                               ),
                             ),
-                            Container(
-                              width: MediaQuery.of(context).size.width - 80, // Adjust the width of the line
-                              height: 1, // Adjust the height of the line to make it long
-                              color: Colors.white, // Adjust the color of the line
+                          ),
+                          Container(
+                          ),
+                        ],
+                      ),
+                      Expanded(
+                        child: ListView(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 18, horizontal: 16),
+                          children: [
+                            GridView.count(
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              crossAxisCount: 1,
+                              crossAxisSpacing: 16,
+                              mainAxisSpacing: 16,
+                              childAspectRatio: 3,
+                              children: List.generate(
+                                SubjectSection.values.length,
+                                (index) {
+                                  final nameOfCourses =
+                                      SubjectSection.values[index].value;
+                                  return Card(
+                                    elevation: 10,
+                                    color:  darkBlue,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20),
+                                      side: const BorderSide(
+                                          color: Colors.white, width: 2),
+                                    ),
+                                    child: InkWell(
+                                      onTap:
+                                          () => _onViewSubject(index),
+
+                                      // onTap: isButtonEnabled
+                                      //? () => _onViewSubject(index)
+                                      //: null,
+
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 5, top: 10, right: 10),
+                                        child: Row(
+                                          children: [
+                                            Column(
+                                              children: [
+                                                Image.asset(
+                                                  SubjectSection
+                                                      .values[index].imagePath,
+                                                  height: 100,
+                                                  width: 100,
+                                                ),
+                                              ],
+                                            ),
+                                            const SizedBox(width: 20), // spacing between the image and the text
+                                            Expanded(
+                                              child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  nameOfCourses, // Replace with your text
+                                                  style: const TextStyle(
+                                                      color: yellow,
+                                                      fontSize: 16,
+                                                      fontFamily: 'Roboto',
+                                                      fontWeight: FontWeight.bold,
+                                                  ),
+                                                overflow: TextOverflow.ellipsis, // Handle overflow by displaying ellipsis
+                                                maxLines: 2, // Limit to 2 lines before showing ellipsis
+
+                                                  ) // Adjust text style as needed
+
+                                              ],
+                                            ),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ),
                             ),
                           ],
                         ),
-                       Container(
-                         height:110,
-                          child: Padding(
-                              padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
-                              child: ListView.separated(
-                                separatorBuilder: (_, __) =>
-                                    const SizedBox(width: 8.0),
-                                scrollDirection: Axis.horizontal,
+                      ),
+                    ],
+                  ),
+                )
+              : _viewLanguageScreen[selectedScreen!],
+        ),
 
-                                itemBuilder: (context, index) => ElevatedButton( // SUBBJECT CARD// has a callback function ito yung ginagamit para ibuild o mag generate // ulit ng sinelect mo na index
-
-                                  style: ElevatedButton.styleFrom(
-                                    elevation: 8,
-
-                                    //selectedScreen == null
-                                    // if index is not equal to selected screen ang kulay niya is deep purple  but if == ang color niya is deepPurple[300]
-                                    backgroundColor: index != selectedSubject
-                                        ? Colors.white
-                                        : Colors.cyan[600],
-                                    // padding: EdgeInsets.all(1),
-
-                                    shape: CircleBorder(
-                                        side: BorderSide(
-                                            width: 2, color: Colors.black!)),
-                                    fixedSize: Size(100, 100),
-                                  ),
-                                  //CALLING THE IMAGE IN SUBJECT BUTTON
-                                  onPressed: isButtonEnabled
-                                      ? () => _onViewSubject(index)
-                                      : () {}, // : null,
-                                  child: Image.asset(
-                                    SubjectSection.values[index].imagePath,
-                                    height: 100,
-                                    width: 100,
-                                  ),
-                                ),
-
-                                itemCount: SubjectSection.values
-                                    .length, // ilalabas lahat ng values or list ni Languages na nakaindicate sa enums
-                              )),
-                        )
-                      ]))
-              : _viewLanguageScreen[
-                  selectedScreen!], //"!" is an indication na hindi siya pwede maging null.
-          //   pag nag click siya sa mga languages ang lalabas is ito pero kapag hindi naman siya nag click yung sa ? ang ilalabas.
-        )
       ],
     );
   }

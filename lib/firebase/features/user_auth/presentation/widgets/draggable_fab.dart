@@ -8,18 +8,19 @@ class PersonalHelper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DraggableFab(
-      child: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const ChatBotApp()), // Replace AI_Main() with your AI screen
-          );
-        },
-        child: ClipOval(
+      child: ClipOval(
+        child: FloatingActionButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const ChatPage()), // Replace AI_Main() with your AI screen
+            );
+          },
+          backgroundColor: Colors.green, // Set your desired background color
           child: Image.asset(
             'assets/jrizal.jpg',
-            width: 60,
-            height: 60,
+            width: 60, // Adjust size as needed
+            height: 60, // Adjust size as needed
             fit: BoxFit.cover,
           ),
         ),

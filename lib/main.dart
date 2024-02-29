@@ -5,8 +5,16 @@ import 'package:flutter/material.dart';
 import 'package:first_project/firebase/features/user_auth/presentation/pages/login_page.dart';
 import 'package:first_project/firebase/features/user_auth/presentation/pages/sign_up_page.dart';
 import 'firebase/features/app/splash_screen/splash_screen.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 
+void requestPermissions() async {
+  if (await Permission.storage.request().isGranted) {
+    // Permission Granted
+  } else {
+    // Permission Denied
+  }
+}
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   if (kIsWeb) {

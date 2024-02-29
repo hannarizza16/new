@@ -1,39 +1,70 @@
 import 'package:first_project/main_profile/languages/topic.dart'; // Correct the path to the Topic class
 import 'package:flutter/material.dart';
 
-class TopicDrawer extends StatelessWidget {
+class TopicDrawer extends StatefulWidget {
   const TopicDrawer({
     required this.topics,
     required this.onUpdateSelectedTopic,
-    super.key,
-  });
+    Key? key,
+  }) : super(key: key);
 
   final List<Topic> topics;
   final ValueChanged<int> onUpdateSelectedTopic;
 
   @override
+  _TopicDrawerState createState() => _TopicDrawerState();
+}
+
+class _TopicDrawerState extends State<TopicDrawer> {
+  late int _selectedIndex; // Track the selected index
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedIndex = 0; // Initialize with the first topic selected
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final Color selectedTextTopic =  Color(0xFFFFCC70);
+    final Color unselectedTextTopic =  Color(0xFFFFFFFF);
+    final Color sideBarColor =  Color(0xFF0C356A);
+    const Color yellow =  Color(0xFFFFCC70);
+
+
+
+
     return Drawer(
-
-
-
-
-      child: topics.isNotEmpty
+      child: Container(
+        color: sideBarColor,
+      child: widget.topics.isNotEmpty
           ? ListView.builder(
         itemBuilder: (context, index) {
-          final topic = topics[index];
+          final topic = widget.topics[index];
+          bool isSelected = _selectedIndex == index;
 
           return GestureDetector(
-            child: ListTile(title: Text(topic.topic)),
             onTap: () {
               Scaffold.of(context).closeDrawer();
-              onUpdateSelectedTopic(index);
+              setState(() {
+                _selectedIndex = index; // Update the selected index
+              });
+              widget.onUpdateSelectedTopic(index);
             },
+            child: ListTile(
+              title: Text(
+                topic.topic,
+                style: TextStyle(
+                  color: isSelected ? selectedTextTopic : unselectedTextTopic,
+                  fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                ),
+              ),
+            ),
           );
         },
-        itemCount: topics.length,
+        itemCount: widget.topics.length,
       )
-          : const Center(child: Text('No topics available.')), // Sa loob ng topic kapag pinindot
-    );
+          : const Center(child: Text('No topics available.', style: TextStyle( color: yellow),)),
+    ));
   }
 }

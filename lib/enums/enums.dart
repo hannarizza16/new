@@ -14,8 +14,8 @@ enum SideBarSection {
 }
 
 enum BottomNavs {
-  news('News'),// button names
-  code('Code'),
+  leaderboards('Leaderboards'),// button names
+  statistics('Statistics'),
   home('Home'),
   challenges('Challenges'),
   profile('Profile'); // inside the () is the name of button assigned in nav bar
@@ -29,9 +29,9 @@ enum Languages {
   cplusplus('C++'),
   java('Java'),
   dart ('Dart'),
-  ruby('Ruby'),
-  arduino('Arduino'),
-  pearl('Pearl');
+  csharp('C#'),
+  php('Php');
+  // pearl('Pearl');
 
 final String value;
 const Languages(this.value);
@@ -54,6 +54,25 @@ enum SubjectSection {
   webdev('Web Development'),
   machinedev('Machine Learning');
 
-  final String text;
-  const SubjectSection (this.text);
+  final String value;
+  const SubjectSection (this.value);
 }
+
+
+//
+// enum SubjectCategories{
+//   lesson_one('Lesson One'),
+//   lesson_two('Lesson Two'),
+//   lesson_three('Lesson Three'),
+//   lesson_four('Lesson Four'),
+//   lesson_five('Lesson Five'),
+//   lesson_six('Lesson Six'),
+//   lesson_seven('Lesson Seven'),
+//   lessone_ight('Lesson Eight'),
+//   lesson_nine('Lesson Nine'),
+//   lesson_ten('Lesson Ten');
+//
+//
+//   final String text;
+//   const SubjectCategories(this.text);
+// }

@@ -1,6 +1,6 @@
-import 'package:first_project/bottom_navigations/code_bottom.dart';
+import 'package:first_project/bottom_navigations/statistics_bottom.dart';
 import 'package:first_project/bottom_navigations/home_bottom.dart';
-import 'package:first_project/bottom_navigations/newsfeed_bottom.dart';
+import 'package:first_project/bottom_navigations/leaderboards_bottom.dart';
 import 'package:first_project/bottom_navigations/profile_bottom.dart';
 import 'package:first_project/challenges/category_selection.dart';
 import 'package:first_project/firebase/features/user_auth/presentation/widgets/draggable_fab.dart';
@@ -19,14 +19,14 @@ class MainHomePage extends StatefulWidget {
 
 class _MainHomePageState extends State<MainHomePage> {
   final _bottomScreens = [
-    const NewsFeedPage(),
-    const CodePage(),
-    const AllLanguages(),
+     LeaderboardScreen(),
+    StatisticsWidget(),
+    const AllLanguages(), // state name
     const CategorySelection(),
     const ProfilePage(),
   ]; // kung anong pinindot mo na button sa bottom nav //this is home
 
-  int selectedCurrentIndex = 2;
+  int selectedCurrentIndex = 2; // kung anong unang mag pop up pag log in bottom nav bar to.
 
   Future<bool> _onWillPop() async {
     if (selectedCurrentIndex == 0) {
@@ -103,38 +103,33 @@ class _MainHomePageState extends State<MainHomePage> {
         drawer: const SideBar(),
         appBar: AppBar(
           title: const Text('CodeX'),
-          backgroundColor: Color(0xFF164863), // app bar color only
+          backgroundColor: Color(0xFF279EFF), // app bar color only
         ),
         backgroundColor:
-            Colors.transparent, // BACKGROUND OF top app and other pages
+        Colors.transparent, // BACKGROUND OF top app and other pages
         body: Container(
-          decoration: BoxDecoration(
+          decoration: BoxDecoration( //LANGUAGES NA SLIDING
             gradient: LinearGradient(
-              colors: [Color(0xFF3D84A8), Color(0xFF27496D)],
+              colors: [Color(0xFF00A9FF), Color(0xFF71DFE7)],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
-          // decoration: const BoxDecoration(
-          //   image: DecorationImage(
-          //     image: AssetImage(
-          //         'assets/white_and_lightblue.jpg',), // BG IMAGE IN CATEGORY SCREEN
-          //     fit: BoxFit.cover,
-              // colorFilter: ColorFilter.mode( // SET OPACITY
-              //   Colors.white.withOpacity(0.5), // Set the opacity level here
-              //   BlendMode.srcOver,
-              // ), // You can adjust the fit as needed
-              // You can adjust the fit as needed
             ),
           ),
           child: _bottomScreens[selectedCurrentIndex],
         ),
-        bottomNavigationBar: Theme(
+
+        bottomNavigationBar: Theme( //BOTTOM NAVIGATION BAR
           data: Theme.of(context).copyWith(
-            canvasColor: Color(0xFF164863), // Updated canvasColor
+            canvasColor: Color(0xFF279EFF), // Updated canvasColor
             primaryColor: Colors.blue, // ICON in bottom navigation
             textTheme: Theme.of(context)
                 .textTheme
                 .copyWith(caption: TextStyle(color: Colors.black26)),
           ),
+
+
+          ///////////////////////////////////////
+
           child: BottomNavigationBar(
             currentIndex: selectedCurrentIndex,
             onTap: (index) => setState(() => selectedCurrentIndex = index),

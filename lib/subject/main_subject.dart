@@ -1,6 +1,6 @@
-// import 'package:first_project/subject/application_dev.dart';
+// import 'package:first_project/subject/mobile_application_dev.dart';
 // import 'package:first_project/subject/game_dev.dart';
-// import 'package:first_project/subject/machine_dev.dart';
+// import 'package:first_project/subject/machine_learning.dart';
 // import 'package:first_project/subject/web_dev.dart';
 // import 'package:flutter/material.dart';
 // import 'package:first_project/bottom_navigations/home_bottom.dart';

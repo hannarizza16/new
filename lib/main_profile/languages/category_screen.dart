@@ -14,7 +14,6 @@ class CategoryScreen extends StatelessWidget {
     return ListView.builder(
       itemBuilder: (context, index) {
         final category = Categories.values[index];
-        SizedBox:
 
         return Column ( children: [ const SizedBox(height: 70),
         Padding(
@@ -23,7 +22,7 @@ class CategoryScreen extends StatelessWidget {
             //SUBJECT CATEGORY STYLE
             style: ButtonStyle(
               side: MaterialStateProperty.all(const BorderSide(
-                color: Colors.black,
+                color: Colors.black, // BORDER OF BEGINNER, INT, ADV
                 width: 2.0,
               )),
               foregroundColor: MaterialStateProperty.all(

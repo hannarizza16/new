@@ -8,23 +8,38 @@ class QuizApp extends StatefulWidget {
   final String expertiseLevel;
 
   const QuizApp({
-    super.key,
+    Key? key,
     required this.category,
     required this.expertiseLevel,
-  });
+  }) : super(key: key);
 
   @override
   _QuizAppState createState() => _QuizAppState();
 }
 
-class _QuizAppState extends State<QuizApp> {
+class _QuizAppState extends State<QuizApp> with SingleTickerProviderStateMixin {
   int currentQuestionIndex = 0;
   List<QuizQuestion> questions = [];
   bool showNextQuestionButton = false;
+  late AnimationController _controller;
+  late Animation<Color?> _animation;
 
   @override
   void initState() {
     super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 5),
+    )..repeat(reverse: true);
+    _animation = ColorTween(
+      begin: Color(0xFF00A9FF),
+      end: Color(0xFF71DFE7),
+    ).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: Curves.easeInOut,
+      ),
+    );
     // Get questions for the specified category and expertise level
     questions = getQuestionsForCategoryAndLevel(widget.category, widget.expertiseLevel);
   }
@@ -32,18 +47,16 @@ class _QuizAppState extends State<QuizApp> {
   @override
   void dispose() {
     resetSelectedAnswers();
+    _controller.dispose();
     super.dispose();
   }
 
   void handleAnswer(int answerIndex) {
     setState(() {
       for (int i = 0; i < questions[currentQuestionIndex].answerChoices.length; i++) {
-        // print(questions[currentQuestionIndex].answerChoices[i].isSelected);
-
         questions[currentQuestionIndex].answerChoices[i].isSelected = i == answerIndex;
 
         final answerChoice = questions[currentQuestionIndex].answerChoices[i].copyWith(isSelected: i == answerIndex);
-
         questions[currentQuestionIndex].answerChoices[i] = answerChoice;
       }
       showNextQuestionButton = true;
@@ -57,43 +70,8 @@ class _QuizAppState extends State<QuizApp> {
           choice.isSelected = false;
         }
       }
-      showNextQuestionButton = false; // Reset the next question button state
+      showNextQuestionButton = false;
     });
-  }
-
-  void _showExitConfirmationDialog(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text('Confirm Exit'),
-          content: const Text('Are you sure you want to exit?'),
-          actions: <Widget>[
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: const Text('Cancel'),
-            ),
-            TextButton(
-              onPressed: () {
-                // Reset selected answers before exiting
-                resetSelectedAnswers();
-                // Exit the app or navigate to another screen if needed
-                Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const CategorySelection(),
-                  ),
-                      (route) => false, // This line clears the navigation stack
-                );
-              },
-              child: const Text('Exit'),
-            ),
-          ],
-        );
-      },
-    );
   }
 
   void goToNextQuestion() {
@@ -104,15 +82,14 @@ class _QuizAppState extends State<QuizApp> {
         currentQuestionIndex++;
       } else {
         // If it's the last question, navigate to the result screen
-        // Reset selected answers before navigating to the result screen
-
-
         Navigator.push(
           context,
           MaterialPageRoute(
             builder: (context) => ResultScreen(
               questions: questions,
               userAnswers: getUserAnswer(),
+              category: widget.category,
+              expertiseLevel: widget.expertiseLevel,
             ),
           ),
         );
@@ -151,7 +128,6 @@ class _QuizAppState extends State<QuizApp> {
     );
 
     if (exitConfirmed ?? true) {
-      // Reset selected answers before exiting
       resetSelectedAnswers();
     }
 
@@ -166,75 +142,81 @@ class _QuizAppState extends State<QuizApp> {
       onWillPop: _onWillPop,
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Quiz: ${widget.category} - ${widget.expertiseLevel}'),
-          backgroundColor: const Color(0xFF164863),
-        ),
-        body: Container(
-          padding: const EdgeInsets.all(16),
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [Color(0xFF3D84A8), Color(0xFF27496D)],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            ),
+          title: Text(
+            'Quiz: ${widget.category} - ${widget.expertiseLevel}',
+            style: TextStyle(color: Color(0xFF06283D)), // Changing font color
           ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              // Question
-              Container(
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color: const Color(0xFF263238),
-                  borderRadius: BorderRadius.circular(15.0),
-                ),
-                child: Text(
-                  questions[currentQuestionIndex].questionText,
-                  style: const TextStyle(fontSize: 18, color: Colors.white),
+          backgroundColor: Color(0xFF279EFF),
+        ),
+        body: AnimatedBuilder(
+          animation: _controller,
+          builder: (context, child) {
+            return Container(
+              padding: EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    _animation.value ?? Color(0xFF71DFE7),
+                    Color(0xFF94DAFF),
+                    _animation.value ?? Color(0xFF9ED5C5),
+                  ],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
                 ),
               ),
-              const SizedBox(height: 20),
-              // Answer Choices
-              ...List.generate(questions[currentQuestionIndex].answerChoices.length, (index) {
-                final choice = questions[currentQuestionIndex].answerChoices[index];
-                return GestureDetector(
-                  onTap: () {
-                    handleAnswer(index);
-                  },
-                  child: Container(
-                    margin: const EdgeInsets.symmetric(vertical: 5),
-                    padding: const EdgeInsets.all(10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Container(
+                    padding: EdgeInsets.all(10),
                     decoration: BoxDecoration(
-                      color: choice.isSelected ? Colors.pink[900] : const Color(0xFF263238),
-                      borderRadius: BorderRadius.circular(15.0),
+                      color: Color(0xFF0C356A),
+                      borderRadius: BorderRadius.circular(5.0),
                     ),
-                    child: Text(
-                      choice.text,
-                      style: const TextStyle(fontSize: 16, color: Colors.white),
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        questions[currentQuestionIndex].questionText,
+                        style: TextStyle(fontSize: 18, color: Color(0xFFFFCC70)),
+                      ),
                     ),
                   ),
-                );
-              }),
-              const SizedBox(height: 20),
-              // Next Question / Submit Button
-              if (showNextQuestionButton)
-                ElevatedButton(
-                  onPressed: isLastQuestion ? goToNextQuestion : goToNextQuestion,
-                  child: Text(isLastQuestion ? 'Submit' : 'Next Question'),
-                ),
-            ],
-          ),
+                  SizedBox(height: 30),
+                  ...List.generate(
+                    questions[currentQuestionIndex].answerChoices.length,
+                        (index) {
+                      final choice = questions[currentQuestionIndex].answerChoices[index];
+                      return GestureDetector(
+                        onTap: () {
+                          handleAnswer(index);
+                        },
+                        child: Container(
+                          margin: EdgeInsets.symmetric(vertical: 9),
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            color: choice.isSelected ? Color(0xFF279EFF) : Color(0xFF0C356A),
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
+                          child: Text(
+                            choice.text,
+                            style: TextStyle(fontSize: 16, color: Colors.white),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                  SizedBox(height: 20),
+                  if (showNextQuestionButton)
+                    ElevatedButton(
+                      onPressed: isLastQuestion ? goToNextQuestion : goToNextQuestion,
+                      child: Text(isLastQuestion ? 'Submit' : 'Next Question'),
+                    ),
+                ],
+              ),
+            );
+          },
         ),
       ),
     );
-  }
-}
-
-List<QuizQuestion> getQuestionsForCategoryAndLevel(String category, String expertiseLevel) {
-  final key = '$category' + '_' + '$expertiseLevel';
-  if (questionsMap.containsKey(key)) {
-    return questionsMap[key]!;
-  } else {
-    throw ArgumentError('Invalid category or expertise level');
   }
 }
