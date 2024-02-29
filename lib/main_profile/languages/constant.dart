@@ -15,32 +15,32 @@ const codex = {
           {
             'heading': 'Why Learn C?',
             'body': "• It is one of the most popular programming languages in the world"
-                "\n • If you know C, you will have no problem learning other popular programming languages such as Java, Python, C++, C#, etc, as the syntax is similar"
-                "\n • C is very fast, compared to other programming languages, like Java and Python"
-                "\n • C is very versatile; it can be used in both applications and technologies"
+                "\n\n • If you know C, you will have no problem learning other popular programming languages such as Java, Python, C++, C#, etc, as the syntax is similar"
+                "\n\n • C is very fast, compared to other programming languages, like Java and Python"
+                "\n\n • C is very versatile; it can be used in both applications and technologies"
           },
           {
             'heading': 'Difference between C and C++',
             'body': "• C++ was developed as an extension of C, and both languages have almost the same syntax"
-                "\n • The main difference between C and C++ is that C++ support classes and objects, while C does not"
+                "\n\n • The main difference between C and C++ is that C++ support classes and objects, while C does not"
           }
         ]
       },
       1: {
-        'topic': '2.     Get Started',
+        'topic': '2.    Get Started',
         'subTopic': [
           {
             'heading': 'Get Started With C',
             'body': "To start using C, you need two things: "
                 "\n\n •A text editor, like Notepad, to write C code"
-                "\n •A compiler, like GCC, to translate the C code into a language that the computer will understand"
+                "\n\n •A compiler, like GCC, to translate the C code into a language that the computer will understand"
           },
           {
             'heading': 'C Install IDE',
             'body': " An IDE (Integrated Development Environment) is used to edit AND compile the code."
-                "\n Popular IDE's include Code::Blocks, Eclipse, and Visual Studio. These are all free, and they can be used to both edit and debug C code."
-                "\n Note: Web-based IDE's can work as well, but functionality is limited."
-                "\n We will use Code::Blocks in our tutorial, which we believe is a good place to start."
+                "\n\n Popular IDE's include Code::Blocks, Eclipse, and Visual Studio. These are all free, and they can be used to both edit and debug C code."
+                "\n\n Note: Web-based IDE's can work as well, but functionality is limited."
+                "\n\n We will use Code::Blocks in our tutorial, which we believe is a good place to start."
           },
           {
             'heading': 'C Quickstart',
@@ -105,8 +105,8 @@ const codex = {
           {
             'heading': 'Example explained',
             'body': "From the example above, we have three statements:"
-                "\n\n The first statement is executed first (print Hello World! to the screen)."
-                "\n\n Then the second statement is executed (print Have a good day! to the screen)."
+                "\n\nThe first statement is executed first (print Hello World! to the screen)."
+                "\n\nThen the second statement is executed (print Have a good day! to the screen)."
                 "\n\nAnd at last, the third statement is executed (end the C program successfully)."
           }
         ]
@@ -194,7 +194,7 @@ const codex = {
           },
           {
             'attachment': 'assets/C/ss16.png',
-            'body': " Where type is one of C types (such as int), and variableName is the name of the variable (such as x or myName). The equal sign is used to assign a value to the variable."
+            'body': "Where type is one of C types (such as int), and variableName is the name of the variable (such as x or myName). The equal sign is used to assign a value to the variable."
           "\n\nSo, to create a variable that should store a number, look at the following example:"
           },
           {
@@ -299,7 +299,7 @@ const codex = {
           "\n\nHowever, if you want a real-life example of how variables can be used, take a look at the following, where we have made a program that stores different data of a college student:"
           },
           {
-            'heading': 'Calculate the Area of a Rectangle',
+            'heading': '\n\nCalculate the Area of a Rectangle',
             'attachment': 'assets/C/s31.png',
             'body': "In this real-life example, we create a program to calculate the area of a rectangle (by multiplying the length and width):"
           }
@@ -338,7 +338,7 @@ const codex = {
             'body': "Alternatively, if you are familiar with ASCII, you can use ASCII values to display certain characters. Note that these values are not surrounded by quotes (''), as they are numbers:"
           },
           {
-            'heading': 'Notes on Characters',
+            'heading': '\n\nNotes on Characters',
             'attachment': 'assets/C/s37.png',
             'body': "If you try to store more than a single character, it will only print the last character:"
             "\n\nNote: Don't use the char type for storing multiple characters, as it may produce errors."
@@ -358,7 +358,7 @@ const codex = {
             'body': "Use int when you need to store a whole number without decimals, like 35 or 1000, and float or double when you need a floating point number (with decimals), like 9.99 or 3.14515."
           },
           {
-            'heading': 'Scientific Numbers',
+            'heading': '\n\nScientific Numbers',
             'attachment': 'assets/C/s40.png',
             'body': "A floating point number can also be a scientific number with an 'e' to indicate the power of 10:"
 
@@ -398,7 +398,7 @@ const codex = {
         'topic': '    7.5     Data Types Examples',
         'subTopic': [
           {
-            'heading': 'Real-Life Example',
+            'heading': '\n\nReal-Life Example',
             'attachment': 'assets/C/s45.png',
             'body': "Here's a real-life example of using different data types, to calculate and output the total cost of a number of items:"
 
@@ -470,12 +470,12 @@ const codex = {
             'body': "You should always declare the variable as constant when you have values that are unlikely to change:"
           },
           {
-            'heading': 'Notes On Constants',
+            'heading': '\n\nNotes On Constants',
             'attachment': 'assets/C/s56.png',
             'body': "When you declare a constant variable, it must be assigned with a value:"
           },
           {
-            'heading': 'Good Practice',
+            'heading': '\n\nGood Practice',
             'body': "Another thing about constant variables, is that it is considered good practice to declare them with uppercase.\n\nIt is not required, but useful for code readability and common for C programmers:\n\n   const int BIRTHYEAR = 1980;"
           }
         ]
@@ -506,7 +506,7 @@ const codex = {
             'body': "Arithmetic operators are used to perform common mathematical operations."
           },
           {
-            'heading': 'Assignment Operators',
+            'heading': '\n\nAssignment Operators',
             'attachment': 'assets/C/s60.png',
             'body': "Assignment operators are used to assign values to variables.\n\nIn the example below, we use the assignment operator (=) to assign the value 10 to a variable called x:"
           },
@@ -515,11 +515,22 @@ const codex = {
             'body': "The addition assignment operator (+=) adds a value to a variable:"
           },
           {
-            'attachment': 'assets/C/s62',
+            'attachment': 'assets/C/s62.png',
             'body': "A list of all assignment operators:"
           },
           {
-
+            'heading': '\n\nComparison Operators',
+            'attachment': 'assets/C/s63.png',
+            'body': "Comparison operators are used to compare two values (or variables). This is important in programming, because it helps us to find answers and make decisions.\n\nThe return value of a comparison is either 1 or 0, which means true (1) or false (0). These values are known as Boolean values, and you will learn more about them in the Booleans and If..Else chapter.\n\nIn the following example, we use the greater than operator (>) to find out if 5 is greater than 3:"
+          },
+          {
+            'attachment': 'assets/C/s64.png',
+            'body': "A list of all comparison operators:"
+          },
+          {
+            'heading': '\n\nLogical Operators',
+            'attachment': 'assets/C/s65.png',
+            'body': "You can also test for true or false values with logical operators.\n\nLogical operators are used to determine the logic between variables or values:"
           }
         ]
       }
