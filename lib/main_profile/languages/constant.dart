@@ -1,4 +1,4 @@
-import 'package:charts_flutter/flutter.dart';
+// import 'package:charts_flutter/flutter.dart';
 import 'package:first_project/enums/enums.dart';
 
 const codex = {
@@ -640,11 +640,23 @@ const codex = {
     Categories.intermediate: {},
     Categories.advanced: {},
   },
+
+
+  //            // // //            //                //                  ******
+  //          //                   //                //                   ******
+  //         //             // // // // //    // // // // //              ******
+  //        //                   //                //                     ******
+  //       //                   //                //                      ******
+  //         // // //          //                //                       ******
+
+
   Languages.cplusplus: {
     Categories.beginner: {},
     Categories.intermediate: {},
     Categories.advanced: {},
   },
+
+
   Languages.java: {
     Categories.beginner: {
       0: {
@@ -2374,11 +2386,14 @@ const codex = {
 
     }
   },
+
+
   Languages.dart: {
     Categories.beginner: {},
     Categories.intermediate: {},
     Categories.advanced: {},
   },
+
   Languages.csharp: {
     Categories.beginner: {},
     Categories.intermediate: {},
