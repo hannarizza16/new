@@ -52,17 +52,17 @@ const codex = {
           {
             'attachment': 'assets/C/ss2.png',
             'body':
-            "\n\nDon't worry if you don't understand the code above - we will discuss it in detail in later chapters.\n\nFor now, focus on how to run the code."
-                "\n\nIn Codeblocks, it should look like this:"
+                "\n\nDon't worry if you don't understand the code above - we will discuss it in detail in later chapters.\n\nFor now, focus on how to run the code."
+                    "\n\nIn Codeblocks, it should look like this:"
           },
           {
             'attachment': 'assets/C/ss3.png',
             'body':
-            "Then, go to Build > Build and Run to run (execute) the program. The result will look something to this:"
+                "Then, go to Build > Build and Run to run (execute) the program. The result will look something to this:"
           },
           {
             'body':
-            "Congratulations! You have now written and executed your first C program."
+                "Congratulations! You have now written and executed your first C program."
           },
         ],
       },
@@ -73,7 +73,7 @@ const codex = {
             'heading': 'Syntax',
             'attachment': 'assets/C/ss4.png',
             'body':
-            "You have already seen the following code a couple of times in the first chapters. Let's break it down to understand it better:"
+                "You have already seen the following code a couple of times in the first chapters. Let's break it down to understand it better:"
           },
           {
             'body': "Line 1: #include <stdio.h> is a header file library that lets us work with input and output functions, such as printf() (used in line 4). Header files add functionality to C programs."
@@ -118,19 +118,19 @@ const codex = {
             'heading': '(Print Text)',
             'attachment': 'assets/C/ss4.png',
             'body':
-            "To output values or print text in C, you can use the printf() function:"
+                "To output values or print text in C, you can use the printf() function:"
           },
           {
             'heading': 'Double Quotes',
             'attachment': 'assets/C/ss7.png',
             'body':
-            "To output values or print text in C, you can use the printf() function:"
+                "To output values or print text in C, you can use the printf() function:"
           },
           {
             'heading': 'Many printf Functions',
             'attachment': 'assets/C/ss8.png',
             'body':
-            "You can use as many printf() functions as you want. However, note that it does not insert a new line at the end of the output:"
+                "You can use as many printf() functions as you want. However, note that it does not insert a new line at the end of the output:"
           }
         ]
       },
@@ -144,11 +144,13 @@ const codex = {
           },
           {
             'attachment': 'assets/C/ss10.png',
-            'body': "You can also output multiple lines with a single printf() function. However, this could make the code harder to read:"
+            'body':
+                "You can also output multiple lines with a single printf() function. However, this could make the code harder to read:"
           },
           {
             'attachment': 'assets/C/ss11.png',
-            'body': "Tip: Two '\\n' characters after each other will create a blank line:"
+            'body':
+                "Tip: Two '\\n' characters after each other will create a blank line:"
           }
         ]
       },
@@ -157,69 +159,76 @@ const codex = {
         'subTopic': [
           {
             'heading': 'Comments in C',
-            'body': "Comments can be used to explain code, and to make it more readable. It can also be used to prevent execution when testing alternative code."
-            "\n\nComments can be singled-lined or multi-lined."
+            'body':
+                "Comments can be used to explain code, and to make it more readable. It can also be used to prevent execution when testing alternative code."
+                    "\n\nComments can be singled-lined or multi-lined."
           },
           {
             'heading': 'Single-line Comments',
             'attachment': 'assets/C/ss12.png',
             'body': "Single-line comments start with two forward slashes (//)."
-            "\n\nAny text between // and the end of the line is ignored by the compiler (will not be executed)."
+                "\n\nAny text between // and the end of the line is ignored by the compiler (will not be executed)."
           },
           {
             'attachment': 'assets/C/ss13.png',
           },
-{
-  'heading': 'C Multi-line Comments',
-  'attachment': 'assets/C/ss13.png',
-  'body': "Multi-line comments start with /* and ends with */."
-"\n\nAny text between /* and */ will be ignored by the compiler:"
-}
+          {
+            'heading': 'C Multi-line Comments',
+            'attachment': 'assets/C/ss13.png',
+            'body': "Multi-line comments start with /* and ends with */."
+                "\n\nAny text between /* and */ will be ignored by the compiler:"
+          }
         ]
       },
       7: {
         'topic': '6.     Variables',
         'subTopic': [
-          {'heading': 'Create Variables',
+          {
+            'heading': 'Create Variables',
             'body': "Variables are containers for storing data values, like numbers and characters."
-            "\n\nIn C, there are different types of variables (defined with different keywords), for example:"
-            "\n\n • int - stores integers (whole numbers), without decimals, such as 123 or -123"
-            "\n\n • float - stores floating point numbers, with decimals, such as 19.99 or -19.99"
-            "\n\n • char - stores single characters, such as 'a' or 'B'. Characters are surrounded by single quote"
+                "\n\nIn C, there are different types of variables (defined with different keywords), for example:"
+                "\n\n • int - stores integers (whole numbers), without decimals, such as 123 or -123"
+                "\n\n • float - stores floating point numbers, with decimals, such as 19.99 or -19.99"
+                "\n\n • char - stores single characters, such as 'a' or 'B'. Characters are surrounded by single quote"
           },
           {
             'heading': 'Declaring (Creating) Variables',
             'attachment': 'assets/C/ss15.png',
-            'body': "To create a variable, specify the type and assign it a value:"
+            'body':
+                "To create a variable, specify the type and assign it a value:"
           },
           {
             'attachment': 'assets/C/ss16.png',
             'body': "Where type is one of C types (such as int), and variableName is the name of the variable (such as x or myName). The equal sign is used to assign a value to the variable."
-          "\n\nSo, to create a variable that should store a number, look at the following example:"
+                "\n\nSo, to create a variable that should store a number, look at the following example:"
           },
           {
             'attachment': 'assets/C/ss16.png',
-            'body': "You can also declare a variable without assigning the value, and assign the value later:"
+            'body':
+                "You can also declare a variable without assigning the value, and assign the value later:"
           },
           {
             'heading': 'Output Variables',
             'attachment': 'assets/C/ss1.png',
-'body': "You learned from the output chapter that you can output values/print text with the printf() function:"
+            'body':
+                "You learned from the output chapter that you can output values/print text with the printf() function:"
           },
-{
-  'body': "In many other programming languages (like Python, Java, and C++), you would normally use a print function to display the value of a variable. However, this is not possible in C:"
-
-}
+          {
+            'body':
+                "In many other programming languages (like Python, Java, and C++), you would normally use a print function to display the value of a variable. However, this is not possible in C:"
+          }
         ]
       },
       8: {
         'topic': '    6.1     Format Specifiers',
         'subTopic': [
-          {'heading': 'Format Specifiers',
+          {
+            'heading': 'Format Specifiers',
             'attachment': 'assets/C/ss19.png',
             'body': "Format specifiers are used together with the printf() function to tell the compiler what type of data the variable is storing. It is basically a placeholder for the variable value."
                 "\n\nA format specifier starts with a percentage sign %, followed by a character."
-                "\n\nFor example, to output the value of an int variable, use the format specifier %d surrounded by double quotes (""), inside the printf() function:"
+                "\n\nFor example, to output the value of an int variable, use the format specifier %d surrounded by double quotes ("
+                "), inside the printf() function:"
           },
           {
             'attachment': 'assets/C/ss20.png',
@@ -227,20 +236,24 @@ const codex = {
           },
           {
             'attachment': 'assets/C/ss21.png',
-            'body': "To combine both text and a variable, separate them with a comma inside the printf() function:"
+            'body':
+                "To combine both text and a variable, separate them with a comma inside the printf() function:"
           },
           {
             'attachment': 'assets/C/ss22.png',
-            'body': "To print different types in a single printf() function, you can use the following: "
+            'body':
+                "To print different types in a single printf() function, you can use the following: "
           }
         ]
       },
       9: {
         'topic': '    6.2     Change Value',
         'subTopic': [
-          {'heading': 'Change Variable Values',
+          {
+            'heading': 'Change Variable Values',
             'attachment': 'assets/C/ss23.png',
-            'body': "If you assign a new value to an existing variable, it will overwrite the previous value:"
+            'body':
+                "If you assign a new value to an existing variable, it will overwrite the previous value:"
           },
           {
             'attachment': 'assets/C/ss24.png',
@@ -253,27 +266,32 @@ const codex = {
           {
             'heading': 'Add Variables Together',
             'attachment': 'assets/C/ss26.png',
-            'body': "To add a variable to another variable, you can use the + operator:"
+            'body':
+                "To add a variable to another variable, you can use the + operator:"
           }
         ]
       },
       10: {
         'topic': '    6.3     Multiple Variables',
         'subTopic': [
-          {'heading': 'Declare Multiple Variables',
+          {
+            'heading': 'Declare Multiple Variables',
             'attachment': 'assets/C/ss27.png',
-            'body': "To declare more than one variable of the same type, use a comma-separated list:"
+            'body':
+                "To declare more than one variable of the same type, use a comma-separated list:"
           },
           {
             'attachment': 'assets/C/s28.png',
-            'body': "You can also assign the same value to multiple variables of the same type:"
+            'body':
+                "You can also assign the same value to multiple variables of the same type:"
           }
         ]
       },
       11: {
         'topic': '    6.4     Variable Names (Identifiers)',
         'subTopic': [
-          {'heading': 'Variable Names',
+          {
+            'heading': 'Variable Names',
             'attachment': 'assets/C/s29.png',
             'body': "All C variables must be identified with unique names."
                 "\n\nThese unique names are called identifiers."
@@ -282,86 +300,96 @@ const codex = {
           },
           {
             'body': "The general rules for naming variables are: "
-            "\n\n• Names can contain letters, digits and underscores"
-            "\n\n• Names must begin with a letter or an underscore (_)"
-            "\n\n• Names are case-sensitive (myVar and myvar are different variables)"
-            "\n\n• Names cannot contain whitespaces or special characters like !, #, %, etc."
-            "\n\n• Reserved words (such as int) cannot be used as names"
+                "\n\n• Names can contain letters, digits and underscores"
+                "\n\n• Names must begin with a letter or an underscore (_)"
+                "\n\n• Names are case-sensitive (myVar and myvar are different variables)"
+                "\n\n• Names cannot contain whitespaces or special characters like !, #, %, etc."
+                "\n\n• Reserved words (such as int) cannot be used as names"
           }
         ]
       },
       12: {
         'topic': '    6.5     Real-Life Example',
         'subTopic': [
-          {'heading': 'Real-Life Example',
+          {
+            'heading': 'Real-Life Example',
             'attachment': 'assets/C/s30.png',
             'body': "Often in our examples, we simplify variable names to match their data type (myInt or myNum for int types, myChar for char types, and so on). This is done to avoid confusion."
-          "\n\nHowever, if you want a real-life example of how variables can be used, take a look at the following, where we have made a program that stores different data of a college student:"
+                "\n\nHowever, if you want a real-life example of how variables can be used, take a look at the following, where we have made a program that stores different data of a college student:"
           },
           {
             'heading': '\n\nCalculate the Area of a Rectangle',
             'attachment': 'assets/C/s31.png',
-            'body': "In this real-life example, we create a program to calculate the area of a rectangle (by multiplying the length and width):"
+            'body':
+                "In this real-life example, we create a program to calculate the area of a rectangle (by multiplying the length and width):"
           }
         ]
       },
       13: {
         'topic': '7.     Data Types',
         'subTopic': [
-          {'heading': 'Data Types',
+          {
+            'heading': 'Data Types',
             'attachment': 'assets/C/s32.png',
-            'body': "As explained in the Variables chapter, a variable in C must be a specified data type, and you must use a format specifier inside the printf() function to display it:"
+            'body':
+                "As explained in the Variables chapter, a variable in C must be a specified data type, and you must use a format specifier inside the printf() function to display it:"
           },
           {
             'heading': 'Basic Data Types',
             'attachment': 'assets/C/s33.png',
-            'body': "The data type specifies the size and type of information the variable will store."
+            'body':
+                "The data type specifies the size and type of information the variable will store."
                     "In this tutorial, we will focus on the most basic ones:"
           },
           {
             'heading': 'Basic Format Specifiers',
             'attachment': 'assets/C/s34.png',
-            'body': "There are different format specifiers for each data type. Here are some of them:"
+            'body':
+                "There are different format specifiers for each data type. Here are some of them:"
           }
         ]
       },
       14: {
         'topic': '    7.1     Character',
         'subTopic': [
-          {'heading': 'The char Type',
+          {
+            'heading': 'The char Type',
             'attachment': 'assets/C/s35.png',
             'body': "The char data type is used to store a single character."
-            "\n\nThe character must be surrounded by single quotes, like 'A' or 'c', and we use the %c format specifier to print it:"
+                "\n\nThe character must be surrounded by single quotes, like 'A' or 'c', and we use the %c format specifier to print it:"
           },
           {
             'attachment': 'assets/C/s36.png',
-            'body': "Alternatively, if you are familiar with ASCII, you can use ASCII values to display certain characters. Note that these values are not surrounded by quotes (''), as they are numbers:"
+            'body':
+                "Alternatively, if you are familiar with ASCII, you can use ASCII values to display certain characters. Note that these values are not surrounded by quotes (''), as they are numbers:"
           },
           {
             'heading': '\n\nNotes on Characters',
             'attachment': 'assets/C/s37.png',
             'body': "If you try to store more than a single character, it will only print the last character:"
-            "\n\nNote: Don't use the char type for storing multiple characters, as it may produce errors."
-
+                "\n\nNote: Don't use the char type for storing multiple characters, as it may produce errors."
           },
           {
             'attachment': 'assets/C/s38.png',
-            'body': "To store multiple characters (or whole words), use strings (which you will learn more about in a later chapter):"
+            'body':
+                "To store multiple characters (or whole words), use strings (which you will learn more about in a later chapter):"
           }
-          ]
+        ]
       },
       15: {
         'topic': '    7.2     Numbers',
         'subTopic': [
-          {'heading': 'Numeric Data Types',
+          {
+            'heading': 'Numeric Data Types',
             'attachment': 'assets/C/s39.png',
-            'body': "Use int when you need to store a whole number without decimals, like 35 or 1000, and float or double when you need a floating point number (with decimals), like 9.99 or 3.14515."
+            'body':
+                "Use int when you need to store a whole number without decimals, like 35 or 1000, and float or double when you need a floating point number (with decimals), like 9.99 or 3.14515."
           },
           {
             'heading': '\n\nScientific Numbers',
             'attachment': 'assets/C/s40.png',
-            'body': "A floating point number can also be a scientific number with an 'e' to indicate the power of 10:"
-
+            'body':
+                "A floating point number can also be a scientific number with an 'e' to indicate the power of 10:"
           }
         ]
       },
@@ -371,11 +399,13 @@ const codex = {
           {
             'heading': 'Set Decimal Precision',
             'attachment': 'assets/C/s41.png',
-            'body': "You have probably already noticed that if you print a floating point number, the output will show many digits after the decimal point:"
+            'body':
+                "You have probably already noticed that if you print a floating point number, the output will show many digits after the decimal point:"
           },
           {
             'attachment': 'assets/C/s42.png',
-            'body': "If you want to remove the extra zeros (set decimal precision), you can use a dot (.) followed by a number that specifies how many digits that should be shown after the decimal point:"
+            'body':
+                "If you want to remove the extra zeros (set decimal precision), you can use a dot (.) followed by a number that specifies how many digits that should be shown after the decimal point:"
           }
         ]
       },
@@ -385,12 +415,13 @@ const codex = {
           {
             'heading': 'Get the Memory Size',
             'attachment': 'assets/C/s43.png',
-            'body': "We introduced in the data types chapter that the memory size of a variable varies depending on the type:"
+            'body':
+                "We introduced in the data types chapter that the memory size of a variable varies depending on the type:"
           },
           {
             'attachment': 'assets/C/s44.png',
             'body': "The memory size refers to how much space a type occupies in the computer's memory."
-            "\n\nTo actually get the size (in bytes) of a data type or variable, use the sizeof operator:"
+                "\n\nTo actually get the size (in bytes) of a data type or variable, use the sizeof operator:"
           }
         ]
       },
@@ -400,8 +431,8 @@ const codex = {
           {
             'heading': '\n\nReal-Life Example',
             'attachment': 'assets/C/s45.png',
-            'body': "Here's a real-life example of using different data types, to calculate and output the total cost of a number of items:"
-
+            'body':
+                "Here's a real-life example of using different data types, to calculate and output the total cost of a number of items:"
           },
         ]
       },
@@ -412,35 +443,41 @@ const codex = {
             'heading': 'Type Conversion',
             'attachment': 'assets/C/s46.png',
             'body': "Sometimes, you have to convert the value of one data type to another type. This is known as type conversion."
-          "\n\nFor example, if you try to divide two integers, 5 by 2, you would expect the result to be 2.5. But since we are working with integers (and not floating-point values), the following example will just output 2:"
+                "\n\nFor example, if you try to divide two integers, 5 by 2, you would expect the result to be 2.5. But since we are working with integers (and not floating-point values), the following example will just output 2:"
           },
           {
-          'body': "To get the right result, you need to know how type conversion works."
-            "\n\nThere are two types of conversion in C:"
-            "\n\n: Implicit Conversion (automatically)"
-            "\n\n: Explicit Conversion (manually)"
+            'body':
+                "To get the right result, you need to know how type conversion works."
+                    "\n\nThere are two types of conversion in C:"
+                    "\n\n: Implicit Conversion (automatically)"
+                    "\n\n: Explicit Conversion (manually)"
           },
           {
             'heading': 'Implicit Conversion',
             'attachment': 'assets/C/s47.png',
-            'body': "Implicit conversion is done automatically by the compiler when you assign a value of one type to another."
-            "\n\nFor example, if you assign an int value to a float type:"
+            'body':
+                "Implicit conversion is done automatically by the compiler when you assign a value of one type to another."
+                    "\n\nFor example, if you assign an int value to a float type:"
           },
           {
             'attachment': 'assets/C/s48.png',
-            'body': "As you can see, the compiler automatically converts the int value 9 to a float value of 9.000000.\n\n This can be risky, as you might lose control over specific values in certain situations.\n\n Especially if it was the other way around - the following example automatically converts the float value 9.99 to an int value of 9:"
+            'body':
+                "As you can see, the compiler automatically converts the int value 9 to a float value of 9.000000.\n\n This can be risky, as you might lose control over specific values in certain situations.\n\n Especially if it was the other way around - the following example automatically converts the float value 9.99 to an int value of 9:"
           },
           {
             'attachment': 'assets/C/s49.png',
-            'body': "What happened to .99? We might want that data in our program! So be careful. It is important that you know how the compiler work in these situations, to avoid unexpected results.\n\nAs another example, if you divide two integers: 5 by 2, you know that the sum is 2.5. And as you know from the beginning of this page, if you store the sum as an integer, the result will only display the number 2. Therefore, it would be better to store the sum as a float or a double, right?"
+            'body':
+                "What happened to .99? We might want that data in our program! So be careful. It is important that you know how the compiler work in these situations, to avoid unexpected results.\n\nAs another example, if you divide two integers: 5 by 2, you know that the sum is 2.5. And as you know from the beginning of this page, if you store the sum as an integer, the result will only display the number 2. Therefore, it would be better to store the sum as a float or a double, right?"
           },
           {
-            'body': "Why is the result 2.00000 and not 2.5? Well, it is because 5 and 2 are still integers in the division. In this case, you need to manually convert the integer values to floating-point values. (see below)."
+            'body':
+                "Why is the result 2.00000 and not 2.5? Well, it is because 5 and 2 are still integers in the division. In this case, you need to manually convert the integer values to floating-point values. (see below)."
           },
           {
             'heading': 'Explicit Conversion',
             'attachment': 'assets/C/s50.png',
-            'body': "Explicit conversion is done manually by placing the type in parentheses () in front of the value.\n\nConsidering our problem from the example above, we can now get the right result:"
+            'body':
+                "Explicit conversion is done manually by placing the type in parentheses () in front of the value.\n\nConsidering our problem from the example above, we can now get the right result:"
           },
           {
             'attachment': 'assets/C/s51.png',
@@ -448,12 +485,14 @@ const codex = {
           },
           {
             'attachment': 'assets/C/s52.png',
-            'body': "And since you learned about 'decimal precision' in the previous chapter, you could make the output even cleaner by removing the extra zeros (if you like):"
+            'body':
+                "And since you learned about 'decimal precision' in the previous chapter, you could make the output even cleaner by removing the extra zeros (if you like):"
           },
           {
             'heading': 'Real-Life Example',
             'attachment': 'assets/C/s53.png',
-            'body': "Here's a real-life example of data types and type conversion where we create a program to calculate the percentage of a user's score in relation to the maximum score in a game:"
+            'body':
+                "Here's a real-life example of data types and type conversion where we create a program to calculate the percentage of a user's score in relation to the maximum score in a game:"
           }
         ]
       },
@@ -463,20 +502,24 @@ const codex = {
           {
             'heading': 'Constants',
             'attachment': 'assets/C/s54.png',
-            'body': "If you don't want others (or yourself) to change existing variable values, you can use the const keyword.\n\nThis will declare the variable as 'constant', which means unchangeable and read-only:"
+            'body':
+                "If you don't want others (or yourself) to change existing variable values, you can use the const keyword.\n\nThis will declare the variable as 'constant', which means unchangeable and read-only:"
           },
           {
             'attachment': 'assets/C/s55.png',
-            'body': "You should always declare the variable as constant when you have values that are unlikely to change:"
+            'body':
+                "You should always declare the variable as constant when you have values that are unlikely to change:"
           },
           {
             'heading': '\n\nNotes On Constants',
             'attachment': 'assets/C/s56.png',
-            'body': "When you declare a constant variable, it must be assigned with a value:"
+            'body':
+                "When you declare a constant variable, it must be assigned with a value:"
           },
           {
             'heading': '\n\nGood Practice',
-            'body': "Another thing about constant variables, is that it is considered good practice to declare them with uppercase.\n\nIt is not required, but useful for code readability and common for C programmers:\n\n   const int BIRTHYEAR = 1980;"
+            'body':
+                "Another thing about constant variables, is that it is considered good practice to declare them with uppercase.\n\nIt is not required, but useful for code readability and common for C programmers:\n\n   const int BIRTHYEAR = 1980;"
           }
         ]
       },
@@ -486,33 +529,38 @@ const codex = {
           {
             'heading': 'Operators',
             'attachment': 'assets/C/s57.png',
-            'body': "Operators are used to perform operations on variables and values.\n\n In the example below, we use the + operator to add together two values:"
+            'body':
+                "Operators are used to perform operations on variables and values.\n\n In the example below, we use the + operator to add together two values:"
           },
           {
             'attachment': 'assets/C/s58.png',
-            'body': "Although the + operator is often used to add together two values, like in the example above, it can also be used to add together a variable and a value, or a variable and another variable:"
+            'body':
+                "Although the + operator is often used to add together two values, like in the example above, it can also be used to add together a variable and a value, or a variable and another variable:"
           },
           {
-    'body': "C divides the operators into the following groups:"
-          "\n\n: Arithmetic operators"
-            "\n\n: Assignment operators"
-            "\n\n: Comparison operators"
-            "\n\n: Logical operators"
-            "\n\n: Bitwise operators"
+            'body': "C divides the operators into the following groups:"
+                "\n\n: Arithmetic operators"
+                "\n\n: Assignment operators"
+                "\n\n: Comparison operators"
+                "\n\n: Logical operators"
+                "\n\n: Bitwise operators"
           },
           {
             'heading': 'Arithmetic Operators',
             'attachment': 'assets/C/s59.png',
-            'body': "Arithmetic operators are used to perform common mathematical operations."
+            'body':
+                "Arithmetic operators are used to perform common mathematical operations."
           },
           {
             'heading': '\n\nAssignment Operators',
             'attachment': 'assets/C/s60.png',
-            'body': "Assignment operators are used to assign values to variables.\n\nIn the example below, we use the assignment operator (=) to assign the value 10 to a variable called x:"
+            'body':
+                "Assignment operators are used to assign values to variables.\n\nIn the example below, we use the assignment operator (=) to assign the value 10 to a variable called x:"
           },
           {
             'attachment': 'assets/C/s61.png',
-            'body': "The addition assignment operator (+=) adds a value to a variable:"
+            'body':
+                "The addition assignment operator (+=) adds a value to a variable:"
           },
           {
             'attachment': 'assets/C/s62.png',
@@ -521,7 +569,8 @@ const codex = {
           {
             'heading': '\n\nComparison Operators',
             'attachment': 'assets/C/s63.png',
-            'body': "Comparison operators are used to compare two values (or variables). This is important in programming, because it helps us to find answers and make decisions.\n\nThe return value of a comparison is either 1 or 0, which means true (1) or false (0). These values are known as Boolean values, and you will learn more about them in the Booleans and If..Else chapter.\n\nIn the following example, we use the greater than operator (>) to find out if 5 is greater than 3:"
+            'body':
+                "Comparison operators are used to compare two values (or variables). This is important in programming, because it helps us to find answers and make decisions.\n\nThe return value of a comparison is either 1 or 0, which means true (1) or false (0). These values are known as Boolean values, and you will learn more about them in the Booleans and If..Else chapter.\n\nIn the following example, we use the greater than operator (>) to find out if 5 is greater than 3:"
           },
           {
             'attachment': 'assets/C/s64.png',
@@ -530,7 +579,8 @@ const codex = {
           {
             'heading': '\n\nLogical Operators',
             'attachment': 'assets/C/s65.png',
-            'body': "You can also test for true or false values with logical operators.\n\nLogical operators are used to determine the logic between variables or values:"
+            'body':
+                "You can also test for true or false values with logical operators.\n\nLogical operators are used to determine the logic between variables or values:"
           }
         ]
       },
@@ -541,30 +591,32 @@ const codex = {
             'heading': 'Booleans',
             'body': "Very often, in programming, you will need a data type that can only have one of two values, like:"
                 "\n\n         •YES / NO"
-            "\n\n         •ON / OFF"
-            "\n\n         •TRUE / FALSE"
-"\n\nFor this, C has a bool data type, which is known as booleans."
-            "\n\nBooleans represent values that are either true or false."
+                "\n\n         •ON / OFF"
+                "\n\n         •TRUE / FALSE"
+                "\n\nFor this, C has a bool data type, which is known as booleans."
+                "\n\nBooleans represent values that are either true or false."
           },
           {
             'heading': 'Boolean Variables',
             'attachment': 'assets/C/s66.png',
             'body': "In C, the bool type is not a built-in data type, like int or char."
-            "\n\nIt was introduced in C99, and you must import the following header file to use it:"
+                "\n\nIt was introduced in C99, and you must import the following header file to use it:"
           },
           {
             'attachment': 'assets/C/s67.png',
-            'body': "A boolean variable is declared with the bool keyword and can only take the values true or false:"
+            'body':
+                "A boolean variable is declared with the bool keyword and can only take the values true or false:"
           },
           {
             'attachment': 'assets/C/s68.png',
             'body': "Before trying to print the boolean variables, you should know that boolean values are returned as integers:"
-          "\n\n•1 (or any other number that is not 0) represents true"
-            "\n\n•0 represents false"
-            "\n\nTherefore, you must use the %d format specifier to print a boolean value:"
+                "\n\n•1 (or any other number that is not 0) represents true"
+                "\n\n•0 represents false"
+                "\n\nTherefore, you must use the %d format specifier to print a boolean value:"
           },
           {
-            'body': "However, it is more common to return a boolean value by comparing values and variables."
+            'body':
+                "However, it is more common to return a boolean value by comparing values and variables."
           },
           {
             'heading': 'Comparing Values and Variables',
@@ -574,16 +626,19 @@ const codex = {
           },
           {
             'attachment': 'assets/C/s70.png',
-            'body': "From the example above, you can see that the return value is a boolean value (1)."
-                "\n\nYou can also compare two variables:"
+            'body':
+                "From the example above, you can see that the return value is a boolean value (1)."
+                    "\n\nYou can also compare two variables:"
           },
           {
             'attachment': 'assets/C/s71.png',
-            'body': "In the example below, we use the equal to (==) operator to compare different values:"
+            'body':
+                "In the example below, we use the equal to (==) operator to compare different values:"
           },
           {
             'attachment': 'assets/C/s72.png',
-            'body': "You are not limited to only compare numbers. You can also compare boolean variables, or even special structures, like arrays (which you will learn more about in a later chapter):"
+            'body':
+                "You are not limited to only compare numbers. You can also compare boolean variables, or even special structures, like arrays (which you will learn more about in a later chapter):"
           }
         ]
       },
@@ -593,12 +648,13 @@ const codex = {
           {
             'heading': 'Real Life Example',
             'attachment': 'assets/C/s73.png',
-            'body': "Let's think of a 'real life example' where we need to find out if a person is old enough to vote.\n\nIn the example below, we use the >= comparison operator to find out if the age (25) is greater than OR equal to the voting age limit, which is set to 18:"
-
+            'body':
+                "Let's think of a 'real life example' where we need to find out if a person is old enough to vote.\n\nIn the example below, we use the >= comparison operator to find out if the age (25) is greater than OR equal to the voting age limit, which is set to 18:"
           },
           {
             'attachment': 'assets/C/s74.png',
-            'body': "Cool, right? An even better approach (since we are on a roll now), would be to wrap the code above in an if...else statement, so we can perform different actions depending on the result:"
+            'body':
+                "Cool, right? An even better approach (since we are on a roll now), would be to wrap the code above in an if...else statement, so we can perform different actions depending on the result:"
           }
         ]
       },
@@ -615,32 +671,19 @@ const codex = {
                 "\n•Greater than or equal to: a >= b"
                 "\n•Less than: a < b"
                 "\n•Not Equal to: a != b"
-            "\n\nYou can use these conditions to perform different actions for different decisions."
-            "\n\nC has the following conditional statements:"
+                "\n\nYou can use these conditions to perform different actions for different decisions."
+                "\n\nC has the following conditional statements:"
                 "\n•Use if to specify a block of code to be executed, if a specified condition is true"
                 "\n•Use else to specify a block of code to be executed, if the same condition is false"
                 "\n•Use else if to specify a new condition to test, if the first condition is false"
                 "\n•Use switch to specify many alternative blocks of code to be executed"
-
-
-
-
           },
         ]
       }
-
-
-
-
-
-
-
-
     },
     Categories.intermediate: {},
     Categories.advanced: {},
   },
-
 
   //            // // //            //                //                  ******
   //          //                   //                //                   ******
@@ -649,13 +692,28 @@ const codex = {
   //       //                   //                //                      ******
   //         // // //          //                //                       ******
 
-
   Languages.cplusplus: {
-    Categories.beginner: {},
+    Categories.beginner: {
+      0: {
+        'topic': '1.    Introduction to C++',
+        'subTopic': [
+          {
+            'heading': 'What is C++?',
+            'body': "C++ is a cross-platform language that can be used to create high-performance \n applications."
+                "C++ was developed by Bjarne Stroustrup, as an extension to the C language."
+                "\n\nIt is used for:"
+                "\n\n   • Mobile applications (specially Android apps)"
+                "\n   • Desktop applications"
+                "\n   • Web applications"
+                "\n   • Web servers and application servers"
+                "\n   • GamesDatabase connection"
+          }
+        ]
+      },
+    },
     Categories.intermediate: {},
     Categories.advanced: {},
   },
-
 
   Languages.java: {
     Categories.beginner: {
@@ -702,7 +760,7 @@ const codex = {
           {
             'attachment': 'assets/java_lessons_image/get_started2.jpg',
             'body':
-            "If Java is installed, you will see something like this (depending on version):"
+                "If Java is installed, you will see something like this (depending on version):"
           },
           {
             'body': "If you do not have Java installed on your computer, you can download it for free at oracle.com"
@@ -719,28 +777,28 @@ const codex = {
           {
             'attachment': 'assets/java_lessons_image/step2_get_started.jpg',
             'body':
-            "\n2. Click on the Environment variables button under the Advanced tab."
+                "\n2. Click on the Environment variables button under the Advanced tab."
           },
           {
             'attachment': 'assets/java_lessons_image/step3_get_started.jpg',
             'body':
-            "\n3. Then, select the Path variable in System variables and click on the Edit button."
+                "\n3. Then, select the Path variable in System variables and click on the Edit button."
           },
           {
             'attachment': 'assets/java_lessons_image/step4_get_started.jpg',
             'body':
-            "\n4. Click on the New button and add the path where Java is installed, followed by -bin By default, Java is installed in C:-Program Files-Java-jdk-11.0.1 \n(If nothing else was specified when you installed it).\nIn that case, You will have to add a new path with: C:-Program Files-Java-jdk-11.0.1-bin"
-                " then, click OK, and save the settings."
+                "\n4. Click on the New button and add the path where Java is installed, followed by -bin By default, Java is installed in C:-Program Files-Java-jdk-11.0.1 \n(If nothing else was specified when you installed it).\nIn that case, You will have to add a new path with: C:-Program Files-Java-jdk-11.0.1-bin"
+                    " then, click OK, and save the settings."
           },
           {
             'attachment': 'assets/java_lessons_image/step5_get_started.jpg',
             'body':
-            "\n5. At last, open Command Prompt (cmd.exe) and type java -version to see if Java is running on your machine."
+                "\n5. At last, open Command Prompt (cmd.exe) and type java -version to see if Java is running on your machine."
           },
           {
             'attachment': 'assets/java_lessons_image/step6_get_started.jpg',
             'body':
-            "If Java was successfully installed, you will see something like this (depending on version):"
+                "If Java was successfully installed, you will see something like this (depending on version):"
           },
           {
             'heading': '\n\nJava Quickstart',
@@ -757,7 +815,7 @@ const codex = {
           {
             'attachment': 'assets/java_lessons_image/step9_get_started.jpg',
             'body':
-            "This will compile your code. If there are no errors in the code, the command prompt will take you to the next line. Now, type `java Main` to run the file:"
+                "This will compile your code. If there are no errors in the code, the command prompt will take you to the next line. Now, type `java Main` to run the file:"
           },
           {
             'attachment': 'assets/java_lessons_image/step10_get_started.jpg',
@@ -772,7 +830,7 @@ const codex = {
             'heading': 'Java Syntax',
             'attachment': 'assets/java_lessons_image/step7_get_started.jpg',
             'body':
-            "In the previous chapter, we created a Java file called Main.java, and we used the following code to print `Hello World` to the screen: "
+                "In the previous chapter, we created a Java file called Main.java, and we used the following code to print `Hello World` to the screen: "
           },
           {
             'heading': '\n\nExample Explained',
@@ -786,7 +844,7 @@ const codex = {
             'heading': '\n\nThe main Method',
             'attachment': 'assets/java_lessons_image/syntax_1.jpg',
             'body':
-            "The main() method is required and you will see it in every Java program:"
+                "The main() method is required and you will see it in every Java program:"
           },
           {
             'body': "Any code inside the main() method will be executed. Don't worry about the keywords before and after main. You will get to know them bit by bit while reading this tutorial."
@@ -796,7 +854,7 @@ const codex = {
             'heading': 'System.out.println()',
             'attachment': 'assets/java_lessons_image/syntax_2.jpg',
             'body':
-            "Inside the main() method, we can use the println() method to print a line of text to the screen:"
+                "Inside the main() method, we can use the println() method to print a line of text to the screen:"
           },
           {
             'heading': 'Note',
@@ -815,20 +873,20 @@ const codex = {
             'heading': 'Print Text',
             'attachment': 'assets/java_lessons_image/output_text_1.jpg',
             'body':
-            "You learned from the previous chapter that you can use the println() method to output values or print text in Java: "
+                "You learned from the previous chapter that you can use the println() method to output values or print text in Java: "
           },
           {
             'attachment': 'assets/java_lessons_image/output_text_2.jpg',
             'body':
-            " You can add as many println() methods as you want. Note that it will add a new line for each method"
+                " You can add as many println() methods as you want. Note that it will add a new line for each method"
           },
           {
             'heading': 'Double Quotes',
             'attachment': 'assets/java_lessons_image/output_text_3.jpg',
             'body':
-            "When you are working with text, it must be wrapped inside double quotations marks "
-                "."
-                "If you forget the double quotes, an error occurs:"
+                "When you are working with text, it must be wrapped inside double quotations marks "
+                    "."
+                    "If you forget the double quotes, an error occurs:"
           },
           {
             'heading': 'The Print() Method',
@@ -838,7 +896,7 @@ const codex = {
           },
           {
             'body':
-            "Note that we add an extra space (after `Hello World`! in the example above), for better readability."
+                "Note that we add an extra space (after `Hello World`! in the example above), for better readability."
           }
         ]
       },
@@ -854,7 +912,7 @@ const codex = {
           {
             'attachment': 'assets/java_lessons_image/output_number_2.jpg',
             'body':
-            "You can also perform mathematical calculations inside the println() method:"
+                "You can also perform mathematical calculations inside the println() method:"
           },
           {
             'attachment': 'assets/java_lessons_image/output_number_3.jpg',
@@ -867,7 +925,7 @@ const codex = {
           {
             'heading': "Java Comments",
             'body':
-            "Comments can be used to explain Java code, and to make it more readable. It can also be used to prevent execution when testing alternative code.",
+                "Comments can be used to explain Java code, and to make it more readable. It can also be used to prevent execution when testing alternative code.",
           },
           {
             'heading': "Single-line comments",
@@ -879,7 +937,7 @@ const codex = {
           {
             'attachment': 'assets/java_lessons_image/comments_2.jpg',
             'body':
-            "This example uses a single-line comment at the end of a line of code:"
+                "This example uses a single-line comment at the end of a line of code:"
           },
           {
             'heading': 'Java Multi-line Comments',
@@ -907,7 +965,7 @@ const codex = {
             'heading': 'Declaring (Creating) Variables',
             'attachment': 'assets/java_lessons_image/variables_1.jpg',
             'body':
-            "To create a variable, you must specify the type and assign it a value:"
+                "To create a variable, you must specify the type and assign it a value:"
           },
           {
             'attachment': 'assets/java_lessons_image/variables_2.jpg',
@@ -923,25 +981,25 @@ const codex = {
           {
             'attachment': 'assets/java_lessons_image/variables_4.jpg',
             'body':
-            "You can also declare a variable without assigning the value, and assign the value later:"
+                "You can also declare a variable without assigning the value, and assign the value later:"
           },
           {
             'attachment': 'assets/java_lessons_image/variables_5.jpg',
             'body':
-            "Note that if you assign a new value to an existing variable, it will overwrite the previous value:"
-                "\n\nChange the value of myNum from 15 to 20:"
+                "Note that if you assign a new value to an existing variable, it will overwrite the previous value:"
+                    "\n\nChange the value of myNum from 15 to 20:"
           },
           {
             'heading': 'Final Variables',
             'attachment': 'assets/java_lessons_image/variables_6.jpg',
             'body':
-            "If you don't want others (or yourself) to overwrite existing values, use the final keyword (this will declare the variable as final or `constant`, which means unchangeable and read-only):"
+                "If you don't want others (or yourself) to overwrite existing values, use the final keyword (this will declare the variable as final or `constant`, which means unchangeable and read-only):"
           },
           {
             'heading': 'Other Types',
             'attachment': 'assets/java_lessons_image/variables_7.jpg',
             'body':
-            "A demonstration of how to declare variables of other types:"
+                "A demonstration of how to declare variables of other types:"
           },
         ]
       },
@@ -957,12 +1015,12 @@ const codex = {
           {
             'attachment': 'assets/java_lessons_image/variables_9.jpg',
             'body':
-            "You can also use the + character to add a variable to another variable:"
+                "You can also use the + character to add a variable to another variable:"
           },
           {
             'attachment': 'assets/java_lessons_image/variables_10.jpg',
             'body':
-            "For numeric values, the + character works as a mathematical operator (notice that we use int (integer) variables here):"
+                "For numeric values, the + character works as a mathematical operator (notice that we use int (integer) variables here):"
           },
         ]
       },
@@ -973,8 +1031,8 @@ const codex = {
             'heading': 'Declare Many Variables',
             'attachment': 'assets/java_lessons_image/variables_11.jpg',
             'body':
-            "To declare more than one variable of the same type, you can use a comma-separated list:"
-                "\n\nInstead of writing:"
+                "To declare more than one variable of the same type, you can use a comma-separated list:"
+                    "\n\nInstead of writing:"
           },
           {
             'attachment': 'assets/java_lessons_image/variables_12.jpg',
@@ -984,7 +1042,7 @@ const codex = {
             'heading': 'One Value to Multiple Variables',
             'attachment': 'assets/java_lessons_image/variables_13.jpg',
             'body':
-            "You can also assign the same value to multiple variables in one line:"
+                "You can also assign the same value to multiple variables in one line:"
           },
         ]
       },
@@ -1017,7 +1075,7 @@ const codex = {
             'heading': 'Java Data types',
             'attachment': 'assets/java_lessons_image/dtypes_1.jpg',
             'body':
-            "As explained in the previous chapter, a variable in Java must be a specified data type:"
+                "As explained in the previous chapter, a variable in Java must be a specified data type:"
           },
           {
             'body': "Data types are divided into two groups"
@@ -1028,8 +1086,8 @@ const codex = {
             'heading': 'Primitive Data Types',
             'attachment': 'assets/java_lessons_image/dtypes_2.jpg',
             'body':
-            "A primitive data type specifies the size and type of variable values, and it has no additional methods."
-                "\n\nThere are eight primitive data types in Java:"
+                "A primitive data type specifies the size and type of variable values, and it has no additional methods."
+                    "\n\nThere are eight primitive data types in Java:"
           },
         ]
       },
@@ -1053,19 +1111,19 @@ const codex = {
             'heading': 'Short',
             'attachment': 'assets/java_lessons_image/number_2.jpg',
             'body':
-            "The short data type can store whole numbers from -32768 to 32767:"
+                "The short data type can store whole numbers from -32768 to 32767:"
           },
           {
             'heading': 'Int',
             'attachment': 'assets/java_lessons_image/number_3.jpg',
             'body':
-            "The int data type can store whole numbers from -2147483648 to 2147483647. In general, and in our tutorial, the int data type is the preferred data type when we create variables with a numeric value."
+                "The int data type can store whole numbers from -2147483648 to 2147483647. In general, and in our tutorial, the int data type is the preferred data type when we create variables with a numeric value."
           },
           {
             'heading': 'Long',
             'attachment': 'assets/java_lessons_image/number_4.jpg',
             'body':
-            "The long data type can store whole numbers from -9223372036854775808 to 9223372036854775807. This is used when int is not large enough to store the value. Note that you should end the value with an `L`:"
+                "The long data type can store whole numbers from -9223372036854775808 to 9223372036854775807. This is used when int is not large enough to store the value. Note that you should end the value with an `L`:"
           },
           {
             'heading': 'Floating Point Types',
@@ -1089,7 +1147,7 @@ const codex = {
             'heading': 'Scientific Numbers',
             'attachment': 'assets/java_lessons_image/number_7.jpg',
             'body':
-            "A floating point number can also be a scientific number with an `e` to indicate the power of 10:"
+                "A floating point number can also be a scientific number with an `e` to indicate the power of 10:"
           },
         ]
       },
@@ -1100,10 +1158,10 @@ const codex = {
             'heading': 'Booleans Types',
             'attachment': 'assets/java_lessons_image/boo_1.jpg',
             'body':
-            "Very often in programming, you will need a data type that can only have one of two values, like:"
-                "\n\nYES / NO"
-                "\n\nON / OFF"
-                "\n\nTRUE / FALSE"
+                "Very often in programming, you will need a data type that can only have one of two values, like:"
+                    "\n\nYES / NO"
+                    "\n\nON / OFF"
+                    "\n\nTRUE / FALSE"
           },
         ]
       },
@@ -1114,18 +1172,18 @@ const codex = {
             'heading': 'Characters',
             'attachment': 'assets/java_lessons_image/char_1.jpg',
             'body':
-            "The char data type is used to store a single character. The character must be surrounded by single quotes, like 'A' or 'c':"
+                "The char data type is used to store a single character. The character must be surrounded by single quotes, like 'A' or 'c':"
           },
           {
             'attachment': 'assets/java_lessons_image/char_2.jpg',
             'body':
-            "Alternatively, if you are familiar with ASCII values, you can use those to display certain characters:"
+                "Alternatively, if you are familiar with ASCII values, you can use those to display certain characters:"
           },
           {
             'heading': 'Strings',
             'attachment': 'assets/java_lessons_image/char_3.jpg',
             'body':
-            "The String data type is used to store a sequence of characters (text). String values must be surrounded by double quotes:"
+                "The String data type is used to store a sequence of characters (text). String values must be surrounded by double quotes:"
           },
           {
             'body': "The String type is so much used and integrated in Java, that some call it the special ninth type"
@@ -1157,8 +1215,8 @@ const codex = {
             'heading': 'Java Type Casting',
             'attachment': 'assets/java_lessons_image/cast_1.jpg',
             'body':
-            "Type casting is when you assign a value of one primitive data type to another type."
-                "\n\nIn Java, there are two types of casting:"
+                "Type casting is when you assign a value of one primitive data type to another type."
+                    "\n\nIn Java, there are two types of casting:"
           },
         ]
       },
@@ -1169,12 +1227,12 @@ const codex = {
             'heading': 'Java Operators',
             'attachment': 'assets/java_lessons_image/op_1.jpg',
             'body':
-            "Operators are used to perform operations on variables and values.In the example below, we use the + operator to add together two values:"
+                "Operators are used to perform operations on variables and values.In the example below, we use the + operator to add together two values:"
           },
           {
             'attachment': 'assets/java_lessons_image/op_2.jpg',
             'body':
-            "Although the + operator is often used to add together two values, like in the example above, it can also be used to add together a variable and a value, or a variable and another variable:"
+                "Although the + operator is often used to add together two values, like in the example above, it can also be used to add together a variable and a value, or a variable and another variable:"
           },
           {
             'body': "Java divides the operators into the following groups:"
@@ -1188,24 +1246,24 @@ const codex = {
             'heading': 'Arithmetic Operators',
             'attachment': 'assets/java_lessons_image/op_3.jpg',
             'body':
-            "Arithmetic operators are used to perform common mathematical operations."
+                "Arithmetic operators are used to perform common mathematical operations."
           },
           {
             'heading': 'Java Assignment Operators',
             'attachment': 'assets/java_lessons_image/op_4.jpg',
             'body':
-            "Assignment operators are used to assign values to variables.In the example below, we use the assignment operator (=) to assign the value 10 to a variable called x:"
+                "Assignment operators are used to assign values to variables.In the example below, we use the assignment operator (=) to assign the value 10 to a variable called x:"
           },
           {
             'attachment': 'assets/java_lessons_image/op_5.jpg',
             'body':
-            " The addition assignment operator (+=) adds a value to a variable:"
+                " The addition assignment operator (+=) adds a value to a variable:"
           },
           {
             'heading': 'Java Comparison Operators',
             'attachment': 'assets/java_lessons_image/op_6.jpg',
             'body':
-            " Comparison operators are used to compare two values (or variables). This is important in programming, because it helps us to find answers and make decisions.The return value of a comparison is either true or false. These values are known as Boolean values, and you will learn more about them in the Booleans and If..Else chapter.In the following example, we use the greater than operator (>) to find out if 5 is greater than 3:"
+                " Comparison operators are used to compare two values (or variables). This is important in programming, because it helps us to find answers and make decisions.The return value of a comparison is either true or false. These values are known as Boolean values, and you will learn more about them in the Booleans and If..Else chapter.In the following example, we use the greater than operator (>) to find out if 5 is greater than 3:"
           },
           {
             'attachment': 'assets/java_lessons_image/op_7.jpg',
@@ -1227,25 +1285,25 @@ const codex = {
             'heading': 'String',
             'attachment': 'assets/java_lessons_image/string_1.jpg',
             'body':
-            "Strings are used for storing text. A String variable contains a collection of characters surrounded by double quotes:"
+                "Strings are used for storing text. A String variable contains a collection of characters surrounded by double quotes:"
           },
           {
             'heading': 'String Length',
             'attachment': 'assets/java_lessons_image/string_2.jpg',
             'body':
-            "A String in Java is actually an object, which contain methods that can perform certain operations on strings. For example, the length of a string can be found with the length() method:"
+                "A String in Java is actually an object, which contain methods that can perform certain operations on strings. For example, the length of a string can be found with the length() method:"
           },
           {
             'heading': 'More String Methods',
             'attachment': 'assets/java_lessons_image/string_3.jpg',
             'body':
-            "There are many string methods available, for example toUpperCase() and toLowerCase():",
+                "There are many string methods available, for example toUpperCase() and toLowerCase():",
           },
           {
             'heading': 'Finding a Character in a String',
             'attachment': 'assets/java_lessons_image/string_4.jpg',
             'body':
-            "The indexOf() method returns the index (the position) of the first occurrence of a specified text in a string (including whitespace):",
+                "The indexOf() method returns the index (the position) of the first occurrence of a specified text in a string (including whitespace):",
           },
         ]
       },
@@ -1256,14 +1314,14 @@ const codex = {
             'heading': 'String Concatenation',
             'attachment': 'assets/java_lessons_image/scon_1.jpg',
             'body':
-            "The + operator can be used between strings to combine them. This is called concatenation:"
-                "\n\nNote that we have added an empty text ("
-                ") to create a space between firstName and lastName on print."
+                "The + operator can be used between strings to combine them. This is called concatenation:"
+                    "\n\nNote that we have added an empty text ("
+                    ") to create a space between firstName and lastName on print."
           },
           {
             'attachment': 'assets/java_lessons_image/scon_2.jpg',
             'body':
-            "\n\nYou can also use the concat() method to concatenate two strings:"
+                "\n\nYou can also use the concat() method to concatenate two strings:"
           },
         ]
       },
@@ -1274,18 +1332,18 @@ const codex = {
             'heading': 'Adding Numbers and Strings',
             'attachment': 'assets/java_lessons_image/numstring_1.jpg',
             'body':
-            "WARNING!Java uses the + operator for both addition and concatenation. Numbers are added. Strings are concatenated."
-                "\n\nIf you add two numbers, the result will be a number:"
+                "WARNING!Java uses the + operator for both addition and concatenation. Numbers are added. Strings are concatenated."
+                    "\n\nIf you add two numbers, the result will be a number:"
           },
           {
             'attachment': 'assets/java_lessons_image/numstring_2.jpg',
             'body':
-            "If you add two strings, the result will be a string concatenation:"
+                "If you add two strings, the result will be a string concatenation:"
           },
           {
             'attachment': 'assets/java_lessons_image/numstring_3.jpg',
             'body':
-            "If you add a number and a string, the result will be a string concatenation:"
+                "If you add a number and a string, the result will be a string concatenation:"
           },
         ]
       },
@@ -1295,19 +1353,19 @@ const codex = {
           {
             'heading': 'Java Math',
             'body':
-            "The Java Math class has many methods that allows you to perform mathematical tasks on numbers."
+                "The Java Math class has many methods that allows you to perform mathematical tasks on numbers."
           },
           {
             'heading': 'Math.max(x,y)',
             'attachment': 'assets/java_lessons_image/javamath_1.jpg',
             'body':
-            "The Math.max(x,y) method can be used to find the highest value of x and y:"
+                "The Math.max(x,y) method can be used to find the highest value of x and y:"
           },
           {
             'heading': 'Math.min(x,y)',
             'attachment': 'assets/java_lessons_image/javamath_2.jpg',
             'body':
-            "The Math.min(x,y) method can be used to find the lowest value of x and y:"
+                "The Math.min(x,y) method can be used to find the lowest value of x and y:"
           },
           {
             'heading': 'Math.sqrt(x)',
@@ -1318,18 +1376,18 @@ const codex = {
             'heading': 'Math.abs(x)',
             'attachment': 'assets/java_lessons_image/javamath_4.jpg',
             'body':
-            "The Math.abs(x) method returns the absolute (positive) value of x:"
+                "The Math.abs(x) method returns the absolute (positive) value of x:"
           },
           {
             'heading': 'Random Numbers',
             'attachment': 'assets/java_lessons_image/javamath_5.jpg',
             'body':
-            "Math.random() returns a random number between 0.0 (inclusive), and 1.0 (exclusive):"
+                "Math.random() returns a random number between 0.0 (inclusive), and 1.0 (exclusive):"
           },
           {
             'attachment': 'assets/java_lessons_image/javamath_6.jpg',
             'body':
-            "To get more control over the random number, for example, if you only want a random number between 0 and 100, you can use the following formula:"
+                "To get more control over the random number, for example, if you only want a random number between 0 and 100, you can use the following formula:"
           },
         ]
       },
@@ -1348,7 +1406,7 @@ const codex = {
             'heading': 'Boolean Values',
             'attachment': 'assets/java_lessons_image/bool_1.jpg',
             'body':
-            "A boolean type is declared with the boolean keyword and can only take the values true or false:",
+                "A boolean type is declared with the boolean keyword and can only take the values true or false:",
           },
           {
             'heading': 'Boolean Expression',
@@ -1364,7 +1422,7 @@ const codex = {
           {
             'attachment': 'assets/java_lessons_image/bool_4.jpg',
             'body':
-            "In the examples below, we use the equal to (==) operator to evaluate an expression:",
+                "In the examples below, we use the equal to (==) operator to evaluate an expression:",
           },
           {'attachment': 'assets/java_lessons_image/bool_5.jpg'},
           {
@@ -1376,7 +1434,7 @@ const codex = {
           {
             'attachment': 'assets/java_lessons_image/bool_7.jpg',
             'body':
-            "Output Old enough to vote! if myAge is greater than or equal to 18. Otherwise output Not old enough to vote.:"
+                "Output Old enough to vote! if myAge is greater than or equal to 18. Otherwise output Not old enough to vote.:"
           },
         ]
       },
@@ -1402,12 +1460,12 @@ const codex = {
             'heading': 'The if Statement',
             'attachment': 'assets/java_lessons_image/javaelse_1.jpg',
             'body':
-            "Use the if statement to specify a block of Java code to be executed if a condition is true."
+                "Use the if statement to specify a block of Java code to be executed if a condition is true."
           },
           {
             'attachment': 'assets/java_lessons_image/javaelse_2.jpg',
             'body':
-            "Note that if is in lowercase letters. Uppercase letters (If or IF) will generate an error.In the example below, we test two values to find out if 20 is greater than 18. If the condition is true, print some text:"
+                "Note that if is in lowercase letters. Uppercase letters (If or IF) will generate an error.In the example below, we test two values to find out if 20 is greater than 18. If the condition is true, print some text:"
           },
           {
             'attachment': 'assets/java_lessons_image/javaelse_3.jpg',
@@ -1422,7 +1480,7 @@ const codex = {
             'heading': 'The else Statement',
             'attachment': 'assets/java_lessons_image/javaelse_4.jpg',
             'body':
-            "Use the else statement to specify a block of code to be executed if the condition is false."
+                "Use the else statement to specify a block of code to be executed if the condition is false."
           },
           {
             'attachment': 'assets/java_lessons_image/javaelse_5.jpg',
@@ -1431,13 +1489,13 @@ const codex = {
           {
             'heading': 'Example explained,',
             'body':
-            "In the example above, time (20) is greater than 18, so the condition is false. Because of this, we move on to the else condition and print to the screen `Good evening`. If the time was less than 18, the program would print Good day."
+                "In the example above, time (20) is greater than 18, so the condition is false. Because of this, we move on to the else condition and print to the screen `Good evening`. If the time was less than 18, the program would print Good day."
           },
           {
             'heading': 'The else if Statement',
             'attachment': 'assets/java_lessons_image/javaelse_6.jpg',
             'body':
-            "Use the else if statement to specify a new condition if the first condition is false."
+                "Use the else if statement to specify a new condition if the first condition is false."
           },
           {
             'attachment': 'assets/java_lessons_image/javaelse_7.jpg',
@@ -1496,7 +1554,7 @@ const codex = {
             'heading': 'The default Keyword',
             'attachment': 'assets/java_lessons_image/switch_3.jpg',
             'body':
-            "The default keyword specifies some code to run if there is no case match:"
+                "The default keyword specifies some code to run if there is no case match:"
           },
         ]
       },
@@ -1512,23 +1570,23 @@ const codex = {
             'heading': 'Java While Loop',
             'attachment': 'assets/java_lessons_image/while_1.jpg',
             'body':
-            "The while loop loops through a block of code as long as a specified condition is true:"
+                "The while loop loops through a block of code as long as a specified condition is true:"
           },
           {
             'attachment': 'assets/java_lessons_image/while_2.jpg',
             'body':
-            "In the example below, the code in the loop will run, over and over again, as long as a variable (i) is less than 5:"
+                "In the example below, the code in the loop will run, over and over again, as long as a variable (i) is less than 5:"
           },
           {
             'heading': 'The Do/While Loop',
             'attachment': 'assets/java_lessons_image/while_3.jpg',
             'body':
-            'The do/while loop is a variant of the while loop. This loop will execute the code block once, before checking if the condition is true, then it will repeat the loop as long as the condition is true.'
+                'The do/while loop is a variant of the while loop. This loop will execute the code block once, before checking if the condition is true, then it will repeat the loop as long as the condition is true.'
           },
           {
             'attachment': 'assets/java_lessons_image/while_4.jpg',
             'body':
-            "The example below uses a do/while loop. The loop will always be executed at least once, even if the condition is false, because the code block is executed before the condition is tested:"
+                "The example below uses a do/while loop. The loop will always be executed at least once, even if the condition is false, because the code block is executed before the condition is tested:"
           }
         ]
       },
@@ -1539,7 +1597,7 @@ const codex = {
             'heading': 'Java For Loop',
             'attachment': 'assets/java_lessons_image/for_1.jpg',
             'body':
-            "When you know exactly how many times you want to loop through a block of code, use the for loop instead of a while loop:"
+                "When you know exactly how many times you want to loop through a block of code, use the for loop instead of a while loop:"
           },
           {
             'body': "Statement 1 is executed (one time) before the execution of the code block."
@@ -1566,7 +1624,7 @@ const codex = {
             'heading': 'Nested Loops',
             'attachment': 'assets/java_lessons_image/for_4.jpg',
             'body':
-            "It is also possible to place a loop inside another loop. This is called a nested loop.The `inner loop` will be executed one time for each iteration of the outer loop:"
+                "It is also possible to place a loop inside another loop. This is called a nested loop.The `inner loop` will be executed one time for each iteration of the outer loop:"
           }
         ]
       },
@@ -1577,13 +1635,13 @@ const codex = {
             'heading': 'For-Each Loop',
             'attachment': 'assets/java_lessons_image/each_1.jpg',
             'body':
-            "There is also a for-each loop, which is used exclusively to loop through elements in an array:"
+                "There is also a for-each loop, which is used exclusively to loop through elements in an array:"
           },
           {
             'heading': 'Example',
             'attachment': 'assets/java_lessons_image/each_2.jpg',
             'body':
-            "The following example outputs all elements in the cars array, using a for-each loop:"
+                "The following example outputs all elements in the cars array, using a for-each loop:"
           },
         ]
       },
@@ -1594,13 +1652,13 @@ const codex = {
             'heading': 'Java Break',
             'attachment': 'assets/java_lessons_image/break_1.jpg',
             'body':
-            'You have already seen the break statement used in an earlier chapter of this tutorial. It was used to "jump out" of a switch statement.The break statement can also be used to jump out of a loop.This example stops the loop when i is equal to 4:'
+                'You have already seen the break statement used in an earlier chapter of this tutorial. It was used to "jump out" of a switch statement.The break statement can also be used to jump out of a loop.This example stops the loop when i is equal to 4:'
           },
           {
             'heading': 'Java Continue',
             'attachment': 'assets/java_lessons_image/break_2.jpg',
             'body':
-            "The continue statement breaks one iteration (in the loop), if a specified condition occurs, and continues with the next iteration in the loop This example skips the value of 4:"
+                "The continue statement breaks one iteration (in the loop), if a specified condition occurs, and continues with the next iteration in the loop This example skips the value of 4:"
           },
           {
             'heading': 'Break and Continue in While Loop',
@@ -1625,7 +1683,7 @@ const codex = {
           {
             'attachment': 'assets/java_lessons_image/array_2.jpg',
             'body':
-            'We have now declared a variable that holds an array of strings. To insert values to it, you can place the values in a comma-separated list, inside curly braces:'
+                'We have now declared a variable that holds an array of strings. To insert values to it, you can place the values in a comma-separated list, inside curly braces:'
           },
           {
             'attachment': 'assets/java_lessons_image/array_3.jpg',
@@ -1641,7 +1699,7 @@ const codex = {
             'heading': "Change an Array Element",
             'attachment': 'assets/java_lessons_image/array_5.jpg',
             'body':
-            "To change the value of a specific element, refer to the index number:"
+                "To change the value of a specific element, refer to the index number:"
           },
           {
             'attachment': 'assets/java_lessons_image/array_6  .jpg',
@@ -1651,7 +1709,7 @@ const codex = {
             'heading': "Array Length",
             'attachment': 'assets/java_lessons_image/array_7.jpg',
             'body':
-            "To find out how many elements an array has, use the length property:"
+                "To find out how many elements an array has, use the length property:"
           },
         ]
       },
@@ -1668,12 +1726,12 @@ const codex = {
             'heading': 'Loop Through an Array with For-Each',
             'attachment': 'assets/java_lessons_image/allop_2.jpg',
             'body':
-            "There is also a for-each loop, which is used exclusively to loop through elements in arrays:"
+                "There is also a for-each loop, which is used exclusively to loop through elements in arrays:"
           },
           {
             'attachment': 'assets/java_lessons_image/allop_3.jpg',
             'body':
-            "The following example outputs all elements in the cars array, using a for-each loop:"
+                "The following example outputs all elements in the cars array, using a for-each loop:"
           },
           {
             'body': "The example above can be read like this: for each String element (called i - as in index) in cars, print out the value of i."
@@ -1709,8 +1767,8 @@ const codex = {
             'heading': 'Loop Through a Multi-Dimensional Array',
             'attachment': 'assets/java_lessons_image/multi_4.jpg',
             'body':
-            "We can also use a for loop inside another for loop to get the elements of a two-dimensional array (we still have to point to the two indexes):"
-                "Example"
+                "We can also use a for loop inside another for loop to get the elements of a two-dimensional array (we still have to point to the two indexes):"
+                    "Example"
           },
         ]
       },
@@ -1718,79 +1776,76 @@ const codex = {
     Categories.intermediate: {
       0: {
         'topic': '1.     Java OOP',
-        'subTopic':[
+        'subTopic': [
           {
             'heading': "Java - What is OOP?",
             'body': "OOP stands for Object-Oriented Programming.  "
-            "\n\n Procedural programming is about writing procedures or methods that perform operations on "
+                "\n\n Procedural programming is about writing procedures or methods that perform operations on "
                 "\n the data, while object-oriented programming is about creating objects that contain both data "
-            "\n and methods."
-            "\n\n\n"
-            "\nObject-oriented programming has several advantages over procedural programming:"
-            "\n • OOP is faster and easier to execute"
-            "\n • OOP provides a clear structure for the programs"
-            "\n • OOP helps to keep the Java code DRY 'Don't Repeat Yourself', and makes the code"
-            "\n  easier to maintain, modify and debug"
-            "\n • OOP makes it possible to create full reusable applications with less code and shorter "
-            "\n development time "
-
+                "\n and methods."
+                "\n\n\n"
+                "\nObject-oriented programming has several advantages over procedural programming:"
+                "\n • OOP is faster and easier to execute"
+                "\n • OOP provides a clear structure for the programs"
+                "\n • OOP helps to keep the Java code DRY 'Don't Repeat Yourself', and makes the code"
+                "\n  easier to maintain, modify and debug"
+                "\n • OOP makes it possible to create full reusable applications with less code and shorter "
+                "\n development time "
           },
           {
             'heading': "TIP",
             'body': "\n\nThe 'Don't Repeat Yourself' (DRY) principle is about reducing the repetition of code. You"
-            "\nshould extract out the codes that are common for the application, and place them at a single"
-            "\nplace and reuse them instead of repeating it. "
-
+                "\nshould extract out the codes that are common for the application, and place them at a single"
+                "\nplace and reuse them instead of repeating it. "
           },
           {
             'heading': "Java - What are Classes and Objects?",
             'attachment': 'assets/java_intermediate/oop_1.png',
-
             'body': "\n\n Classes and objects are the two main aspects of object-oriented programming."
-            "\n Look at the following illustration to see the difference between class and objects:",
+                "\n Look at the following illustration to see the difference between class and objects:",
           },
           {
             'heading': "",
             'attachment': "assets/java_intermediate/oop_2.png",
             'body': "\nAnother example:"
-            "\n\n\nSo, a class is a template for objects, and an object is an instance of a class. "
-            "\n When the individual objects are created, they inherit all the variables and methods from the class."
+                "\n\n\nSo, a class is a template for objects, and an object is an instance of a class. "
+                "\n When the individual objects are created, they inherit all the variables and methods from the class."
           },
         ]
       },
-      1:{
+      1: {
         'topic': '2.     Java Classes and objects',
         'subTopic': [
           {
             'heading': 'Java Classes/Objects',
             'body': "\nJava is an object-oriented programming language."
-            "\n\n Everything in Java is associated with classes and objects, along with its attributes and"
-            "methods. \n\n For example: in real life, a car is an object. The car has attributes, such as weight and "
-            " color,and methods,such as drive and brake."
-            " A Class is like an object constructor, or a 'blueprint' for creating objects. "
+                "\n\n Everything in Java is associated with classes and objects, along with its attributes and"
+                "methods. \n\n For example: in real life, a car is an object. The car has attributes, such as weight and "
+                " color,and methods,such as drive and brake."
+                " A Class is like an object constructor, or a 'blueprint' for creating objects. "
           },
           {
             'heading': 'Create a class',
             'attachment': "assets/java_intermediate/cla_1.png",
             'body': "To create a class, use the keyword class:"
-            "\n\n\n Remember from the Java Syntax chapter that"
-            "a class should always start with an "
-            " uppercase first letter, and that"
-            "he name of the java file should match the class name."
+                "\n\n\n Remember from the Java Syntax chapter that"
+                "a class should always start with an "
+                " uppercase first letter, and that"
+                "he name of the java file should match the class name."
           },
           {
             'heading': 'Remember',
             'body': "\nfrom the Java Syntax chapter that a class "
-            " should always start with an uppercase"
-            "first letter, and that the name of the java file should match the class name."
+                " should always start with an uppercase"
+                "first letter, and that the name of the java file should match the class name."
           },
           {
             'heading': 'Create an object',
             'attachment': "assets/java_intermediate/cla_2.png",
             'body': "In Java, an object is created from a class. "
-             "We have already created the class named Main, so now we can use this to create objects."
-            "\nTo create an object of Main, specify the class "
-            "name, followed by the object name, and use the keyword new: "
+                "We have already created the class named Main, so now we can use this to create objects."
+                "\nTo create an object of Main, specify the class "
+                "name, followed by the object name, and use the keyword new: "
           },
           {
             'heading': 'Multiple Objects',
@@ -1800,13 +1855,13 @@ const codex = {
           {
             'heading': 'Using Multiple Classes',
             'body': "You can also create an object of a class and access it in another class."
-            "This is often used for better organization of classes"
-            "(one class has all the attributes and methods, "
-            "while the other class holds the main() method (code to be executed))."
-            "\n\nRemember that the name of the java file should match the class name. "
-            "\nIn this example, we have created two files in the same directory/folder: "
-            "\n •Main.java"
-            "\n •Second.java"
+                "This is often used for better organization of classes"
+                "(one class has all the attributes and methods, "
+                "while the other class holds the main() method (code to be executed))."
+                "\n\nRemember that the name of the java file should match the class name. "
+                "\nIn this example, we have created two files in the same directory/folder: "
+                "\n •Main.java"
+                "\n •Second.java"
           },
           {
             'heading': 'Main.java',
@@ -1831,87 +1886,81 @@ const codex = {
             'attachment': "assets/java_intermediate/cla_8.png",
             'body': "And the output will be:"
           },
-
-
         ]
-
       },
-      2:{
+      2: {
         'topic': '3.     Java Class Attributes',
         'subTopic': [
           {
             'heading': "Java Class Attributes",
             'attachment': "assets/java_intermediate/att_1.png",
             'body': "In the previous chapter, we used the term 'variable' for x in the example"
-            "(as shown below). It is actually an attribute of the class."
-            "Or you could say that class attributes are variables within a class:"
+                "(as shown below). It is actually an attribute of the class."
+                "Or you could say that class attributes are variables within a class:"
           },
           {
             'heading': "Accessing attributes",
             'attachment': "assets/java_intermediate/att_2.png",
             'body': "You can access attributes by creating an object of "
                 "the class, and by using the dot syntax (.):"
-            "The following example will create an object of the Main class,"
-            "with the name myObj. We use the x attribute on the object to print its value:"
+                "The following example will create an object of the Main class,"
+                "with the name myObj. We use the x attribute on the object to print its value:"
           },
           {
             'heading': "Modify Attributes",
             'attachment': "assets/java_intermediate/att_3.png",
             'body': "You can also modify attribute values:"
           },
-
           {
             'heading': "",
             'attachment': "assets/java_intermediate/att_4.png",
             'body': "Or override existing values:"
           },
-
           {
             'heading': "",
             'attachment': "assets/java_intermediate/att_5.png",
-            'body': "If you don't want the ability to override existing values, "
-                "declare the attribute as final:"
-
+            'body':
+                "If you don't want the ability to override existing values, "
+                    "declare the attribute as final:"
           },
           {
             'heading': "Multiple Objects",
             'attachment': "assets/java_intermediate/att_6.png",
             'body': "If you create multiple objects of one class, you can "
-            "change the attribute values in one object, without"
-            "affecting the attribute values in the other"
+                "change the attribute values in one object, without"
+                "affecting the attribute values in the other"
           },
           {
             'heading': "Multiple Objects",
             'attachment': "assets/java_intermediate/att_7.png",
             'body': "You can specify as many attributes as you want: "
           },
-
         ]
       },
-      3:{
+      3: {
         'topic': '4.     Java Class Methods',
         'subTopic': [
           {
             'heading': "Java Class Methods ",
             'attachment': "assets/java_intermediate/cmet_1.png",
             'body': "You learned from the Java Methods chapter that methods are"
-            "declared within a class, and that they are used to perform certain actions:"
+                "declared within a class, and that they are used to perform certain actions:"
           },
           {
             'heading': "",
             'attachment': "assets/java_intermediate/cmet_2.png",
             'body': "myMethod() prints a text (the action), when it is called."
-            "  To call a method, write the method's name followed"
-            "by two parentheses () and a semicolon;"
+                "  To call a method, write the method's name followed"
+                "by two parentheses () and a semicolon;"
           },
           {
             'heading': "Static vs Public",
             'attachment': "assets/java_intermediate/cmet_3.png",
             'body': "You will often see Java programs that have either static or"
-            " public attributes and methods."
-            "\n\nIn the example above, we created a static"
-            "method, which means that it can be accessed without"
-            "creating an object of the class, unlike public, which can only be accessed by objects:"
+                " public attributes and methods."
+                "\n\nIn the example above, we created a static"
+                "method, which means that it can be accessed without"
+                "creating an object of the class, unlike public, which can only be accessed by objects:"
           },
           {
             'heading': "Access Methods With an Object",
@@ -1921,13 +1970,13 @@ const codex = {
             'heading': 'Using Multiple Classes',
             'attachment': "assets/java_intermediate/cmet_5.png",
             'body': "Like we specified in the Classes chapter, it is a good practice "
-            "to create an object of a class and access it in another class."
-            " Remember that the name of the java file should match"
-            "the class name. In this example, we have created"
+                "to create an object of a class and access it in another class."
+                " Remember that the name of the java file should match"
+                "the class name. In this example, we have created"
                 "two files in the same directory:"
           },
           {
-            'heading':"",
+            'heading': "",
             'attachment': "assets/java_intermediate/cmet_6.png",
           },
           {
@@ -1945,28 +1994,27 @@ const codex = {
             'attachment': "assets/java_intermediate/cmet_9.png",
             'body': "And the output will be:"
           },
-
         ]
       },
-      4:{
+      4: {
         'topic': '5.     Java Constructors',
         'subTopic': [
           {
             'heading': "Java Constructors",
             'attachment': "assets/java_intermediate/cons_1.png",
             'body': "A constructor in Java is a special method that is used"
-            "to initialize objects. \nThe constructor is called when "
-            "an object of a class is created. It can be"
-            "used to set initial values for object attributes:"
+                "to initialize objects. \nThe constructor is called when "
+                "an object of a class is created. It can be"
+                "used to set initial values for object attributes:"
           },
           {
             'heading': "Constructor Parameters",
             'attachment': "assets/java_intermediate/cons_2.png",
             'body': "Constructors can also take parameters, which is used to initialize attributes."
-            "\n\nThe following example adds an int y parameter to the constructor."
-            "Inside the constructor we set x to y (x=y). When we call"
-            "the constructor, we pass a parameter to"
-            "the constructor (5), which will set the value of x to 5:"
+                "\n\nThe following example adds an int y parameter to the constructor."
+                "Inside the constructor we set x to y (x=y). When we call"
+                "the constructor, we pass a parameter to"
+                "the constructor (5), which will set the value of x to 5:"
           },
           {
             'heading': "",
@@ -1982,16 +2030,16 @@ const codex = {
             'heading': "Create a method",
             'attachment': "assets/java_intermediate/met_1.png",
             'body': "A method must be declared within a class. It is defined with"
-            "the name of the method, followed by parentheses (). Java provides"
-            "some pre-defined methods, such as System.out.println()"
-            "but you can also create your own methods to perform certain actions:"
+                "the name of the method, followed by parentheses (). Java provides"
+                "some pre-defined methods, such as System.out.println()"
+                "but you can also create your own methods to perform certain actions:"
           },
           {
             'heading': "Call a Method",
             'attachment': "assets/java_intermediate/met_2.png",
             'body': "To call a method in Java, write the method's name"
-            "followed by two parentheses () and a semicolon;"
-            "\n\nIn the following example, myMethod() is used to print a text (the action), when it is called:"
+                "followed by two parentheses () and a semicolon;"
+                "\n\nIn the following example, myMethod() is used to print a text (the action), when it is called:"
           },
           {
             'heading': "",
@@ -2007,11 +2055,10 @@ const codex = {
             'heading': "Parameters and Arguments",
             'attachment': "assets/java_intermediate/mpar_1.png",
             'body': "Information can be passed to methods as parameter. Parameters act as variables inside the method."
-            "\n\n Parameters are specified after the method name, inside the parentheses. "
+                "\n\n Parameters are specified after the method name, inside the parentheses. "
                 "You can add as many parameters as you want, just separate them with a comma."
-            "\n\nThe following example has a method that takes a String called fname as parameter. When the"
-            "method is called, we pass along a first name, which is used inside the method to print the full name:"
-
+                "\n\nThe following example has a method that takes a String called fname as parameter. When the"
+                "method is called, we pass along a first name, which is used inside the method to print the full name:"
           },
           {
             'heading': "Multiple Parameters",
@@ -2022,9 +2069,9 @@ const codex = {
             'heading': "Return Values",
             'attachment': "assets/java_intermediate/mpar_3.png",
             'body': "The void keyword, used in the examples above, indicates that the method"
-            "should not return a value. If you want the method to return a value,"
-            "you can use a primitive data type (such as int, char, etc.) instead of void,"
-            "and use the return keyword inside the method:"
+                "should not return a value. If you want the method to return a value,"
+                "you can use a primitive data type (such as int, char, etc.) instead of void,"
+                "and use the return keyword inside the method:"
           },
           {
             'heading': "",
@@ -2034,44 +2081,46 @@ const codex = {
           {
             'heading': "",
             'attachment': "assets/java_intermediate/mpar_5.png",
-            'body': "You can also store the result in a variable (recommended, as it is easier to read and maintain):"
+            'body':
+                "You can also store the result in a variable (recommended, as it is easier to read and maintain):"
           },
           {
             'heading': "A Method with If...Else",
             'attachment': "assets/java_intermediate/mpar_6.png",
             'body': "It is common to use if...else statements inside methods:"
           },
-
         ]
       },
-      7:{
+      7: {
         'topic': '8.     Java Method Overloading',
         'subTopic': [
           {
             'heading': "Method Overloading",
             'attachment': "assets/java_intermediate/over_1.png",
-            'body': "With method overloading, multiple methods can have the same name with different parameters:"
+            'body':
+                "With method overloading, multiple methods can have the same name with different parameters:"
           },
           {
             'heading': "",
             'attachment': "assets/java_intermediate/over_2.png",
-            'body': "Consider the following example, which has two methods that add numbers of different type:"
-
+            'body':
+                "Consider the following example, which has two methods that add numbers of different type:"
           },
           {
             'heading': "",
             'attachment': "assets/java_intermediate/over_3.png",
             'body': "Instead of defining two methods that should do the same thing, it is better to overload one."
-            "\n\nIn the example below, we overload the plusMethod method to work for both int and double:"
+                "\n\nIn the example below, we overload the plusMethod method to work for both int and double:"
           },
         ]
       },
-      8:{
+      8: {
         'topic': '9.     Java Scope',
         'subTopic': [
           {
             'heading': "Java Scope",
-            'body': "In Java, variables are only accessible inside the region they are created. This is called scope."
+            'body':
+                "In Java, variables are only accessible inside the region they are created. This is called scope."
           },
           {
             'heading': "Method Scope",
@@ -2083,154 +2132,153 @@ const codex = {
             'heading': "Block Scope",
             'attachment': "assets/java_intermediate/scope_2.png",
             'body': "A block of code refers to all of the code between curly braces"
-            "Variables declared inside blocks of code are only accessible by the code between the curly braces,"
-            "which follows the line in which the variable was declared:"
+                "Variables declared inside blocks of code are only accessible by the code between the curly braces,"
+                "which follows the line in which the variable was declared:"
           },
         ]
       },
-      9:{
+      9: {
         'topic': '10.   Java Recursion',
         'subTopic': [
           {
             'heading': " Java Recursion",
             'body': "Recursion is the technique of making a function call itself. This technique provides"
-            "a way to break complicated problems down into simple problems which are easier to solve."
-            "\n\nRecursion may be a bit difficult to understand. The best way to figure out how it works is to experiment with it."
-
+                "a way to break complicated problems down into simple problems which are easier to solve."
+                "\n\nRecursion may be a bit difficult to understand. The best way to figure out how it works is to experiment with it."
           },
           {
             'heading': "Recursion Example",
             'attachment': "assets/java_intermediate/rec_1.png",
             'body': "Adding two numbers together is easy to do, but adding a range"
-            "of numbers is more complicated. In the following example, recursion is used"
-            "to add a range of numbers together by breaking it down into the simple task of adding two numbers:"
-
+                "of numbers is more complicated. In the following example, recursion is used"
+                "to add a range of numbers together by breaking it down into the simple task of adding two numbers:"
           },
           {
             'heading': "Example Explained",
             'attachment': "assets/java_intermediate/rec_2.png",
             'body': "When the sum() function is called, it adds parameter k"
-            "to the sum of all numbers smaller than k and returns the result. When k becomes 0,"
-            "the function just returns 0. When running, the program follows these steps:"
-            "\n\nSince the function does not call itself when k is 0, the program stops there and returns the result."
-
+                "to the sum of all numbers smaller than k and returns the result. When k becomes 0,"
+                "the function just returns 0. When running, the program follows these steps:"
+                "\n\nSince the function does not call itself when k is 0, the program stops there and returns the result."
           },
           {
             'heading': "Halting Condition",
             'attachment': "assets/java_intermediate/rec_3.png",
             'body': "Just as loops can run into the problem of infinite looping, recursive functions"
-            "can run into the problem of infinite recursion. Infinite recursion is"
-            "when the function never stops calling itself. Every recursive function should have a halting condition,"
-            "which is the condition where the function stops calling itself. In the previous example,"
-            "the halting condition is when the parameter k becomes 0."
-            "\n\nIt is helpful to see a variety of different examples to better understand the concept. In this example,"
-            "the function adds a range of numbers between a start and an end. The halting condition"
-            "for this recursive function is when end is not greater than start:"
+                "can run into the problem of infinite recursion. Infinite recursion is"
+                "when the function never stops calling itself. Every recursive function should have a halting condition,"
+                "which is the condition where the function stops calling itself. In the previous example,"
+                "the halting condition is when the parameter k becomes 0."
+                "\n\nIt is helpful to see a variety of different examples to better understand the concept. In this example,"
+                "the function adds a range of numbers between a start and an end. The halting condition"
+                "for this recursive function is when end is not greater than start:"
           },
         ]
       },
-
-
     },
-
     Categories.advanced: {
-      0:{
-      'topic': '1.     Java Modifiers',
-      'subTopic': [
-        {
-          'heading': "Modifiers",
-          'attachment': "assets/java_advance/mod_1.png",
-          'body': "The public keyword is an access modifier, meaning that it is used to set "
-              "the access level for classes, attributes, methods and constructors."
-              "\n\nWe divide modifiers into two groups:"
-              "\n\n•Access Modifiers - controls the access level"
-              "\n\n•Non-Access Modifiers - do not control access level, but provides other functionality"
-        },
-        {
-          'heading': "Access Modifiers",
-          'attachment': "assets/java_advance/mod_2.png",
-          'body': "For classes, you can use either public or default:"
-        },
-        {
-          'heading':"",
-          'attachment': "assets/java_advance/mod_3.png",
-          'body': "For attributes, methods and constructors, you can use the one of the following:"
-        },
-        {
-          'heading': "Non-Access Modifiers",
-          'attachment': "assets/java_advance/mod_4.png",
-          'body': "For classes, you can use either final or abstract:"
-        },
-        {
-          'heading': "",
-          'attachment': "assets/java_advance/mod_5.png",
-          'body': "For attributes and methods, you can use the one of the following:",
-
-        },
-        {
-          'heading': "Final",
-          'attachment': "assets/java_advance/mod_6.png",
-          'body': "If you don't want the ability to override existing attribute values, declare attributes as final:"
-        },
-        {
-          'heading': "Static",
-          'attachment': "assets/java_advance/mod_7.png",
-          'body': "A static method means that it can be accessed without creating an object of the class, unlike public:"
-
-        },
-        {
-          'heading': "Abstract",
-          'attachment': "assets/java_advance/mod_8.png",
-          'body': "An abstract method belongs to an abstract class, and it does not have a body. The body is provided by the subclass:"
-
-        },
-      ]
-    },
-      1:{
+      0: {
+        'topic': '1.     Java Modifiers',
+        'subTopic': [
+          {
+            'heading': "Modifiers",
+            'attachment': "assets/java_advance/mod_1.png",
+            'body': "The public keyword is an access modifier, meaning that it is used to set "
+                "the access level for classes, attributes, methods and constructors."
+                "\n\nWe divide modifiers into two groups:"
+                "\n\n•Access Modifiers - controls the access level"
+                "\n\n•Non-Access Modifiers - do not control access level, but provides other functionality"
+          },
+          {
+            'heading': "Access Modifiers",
+            'attachment': "assets/java_advance/mod_2.png",
+            'body': "For classes, you can use either public or default:"
+          },
+          {
+            'heading': "",
+            'attachment': "assets/java_advance/mod_3.png",
+            'body':
+                "For attributes, methods and constructors, you can use the one of the following:"
+          },
+          {
+            'heading': "Non-Access Modifiers",
+            'attachment': "assets/java_advance/mod_4.png",
+            'body': "For classes, you can use either final or abstract:"
+          },
+          {
+            'heading': "",
+            'attachment': "assets/java_advance/mod_5.png",
+            'body':
+                "For attributes and methods, you can use the one of the following:",
+          },
+          {
+            'heading': "Final",
+            'attachment': "assets/java_advance/mod_6.png",
+            'body':
+                "If you don't want the ability to override existing attribute values, declare attributes as final:"
+          },
+          {
+            'heading': "Static",
+            'attachment': "assets/java_advance/mod_7.png",
+            'body':
+                "A static method means that it can be accessed without creating an object of the class, unlike public:"
+          },
+          {
+            'heading': "Abstract",
+            'attachment': "assets/java_advance/mod_8.png",
+            'body':
+                "An abstract method belongs to an abstract class, and it does not have a body. The body is provided by the subclass:"
+          },
+        ]
+      },
+      1: {
         'topic': '2.    Java Encapsulation',
         'subTopic': [
           {
             'heading': "Encapsulation",
             'body': "The meaning of Encapsulation, is to make sure that sensitive data is hidden from users. To achieve this, you must:"
-            "\n\n •declare class variables/attributes as private"
-            "\n\n •provide public get and set methods to access and update the value of a private variable"
+                "\n\n •declare class variables/attributes as private"
+                "\n\n •provide public get and set methods to access and update the value of a private variable"
           },
           {
             'heading': "Get and Set",
             'attachment': "assets/java_advance/encap_1.png",
             'body': "You learned from the previous chapter that private variables can only be accessed"
-            "within the same class (an outside class has no access to it). However, it is possible to access "
-            "them if we provide public get and set methods."
-            "\n\nThe get method returns the variable value, and the set method sets the value."
-            "\n\nSyntax for both is that they start with either get or set, "
+                "within the same class (an outside class has no access to it). However, it is possible to access "
+                "them if we provide public get and set methods."
+                "\n\nThe get method returns the variable value, and the set method sets the value."
+                "\n\nSyntax for both is that they start with either get or set, "
                 "followed by the name of the variable, with the first letter in upper case:"
           },
           {
             'heading': "",
             'attachment': "assets/java_advance/encap_2.png",
-            'body': "If the variable was declared as public, we would expect the following output:"
+            'body':
+                "If the variable was declared as public, we would expect the following output:"
           },
           {
             'heading': "",
             'attachment': "assets/java_advance/encap_3.png",
-            'body': "However, as we try to access a private variable, we get an error:"
+            'body':
+                "However, as we try to access a private variable, we get an error:"
           },
           {
             'heading': "",
             'attachment': "assets/java_advance/encap_4.png",
-            'body': "Instead, we use the getName() and setName() methods to access and update the variable:"
+            'body':
+                "Instead, we use the getName() and setName() methods to access and update the variable:"
           },
         ]
       },
-      2:{
+      2: {
         'topic': '3.     Java Packages',
         'subTopic': [
           {
             'heading': "Java Packages & API",
             'body': "A package in Java is used to group related classes. Think of it as a folder in a file directory."
-            "We use packages to avoid name conflicts, and to write a better maintainable code. "
-            "Packages are divided into two categories:"
-            "\n\n•Built-in Packages (packages from the Java API)"
+                "We use packages to avoid name conflicts, and to write a better maintainable code. "
+                "Packages are divided into two categories:"
+                "\n\n•Built-in Packages (packages from the Java API)"
                 "\n\n•User-defined Packages (create your own packages)"
           },
           {
@@ -2238,34 +2286,33 @@ const codex = {
             'attachment': "assets/java_advance/pack_1.png",
             'body': "The Java API is a library of prewritten classes, "
                 "that are free to use, included in the Java Development Environment."
-            "\n\n\nThe library contains components for managing input, database programming, and much much more."
-            "The complete list can be found at Oracles website: https://docs.oracle.com/javase/8/docs/api/."
-            "\n\n\nThe library is divided into packages and classes. Meaning you can either import a single class"
-            "(along with its methods and attributes), or a whole package that contain all the classes that belong to the specified package."
-            "\n\nTo use a class or a package from the library, you need to use the import keyword:"
-
+                "\n\n\nThe library contains components for managing input, database programming, and much much more."
+                "The complete list can be found at Oracles website: https://docs.oracle.com/javase/8/docs/api/."
+                "\n\n\nThe library is divided into packages and classes. Meaning you can either import a single class"
+                "(along with its methods and attributes), or a whole package that contain all the classes that belong to the specified package."
+                "\n\nTo use a class or a package from the library, you need to use the import keyword:"
           },
           {
             'heading': "Import a Class",
             'attachment': "assets/java_advance/pack_2.png",
-            'body': "If you find a class you want to use, for example, the Scanner class, "
-                "which is used to get user input, write the following code:"
+            'body':
+                "If you find a class you want to use, for example, the Scanner class, "
+                    "which is used to get user input, write the following code:"
           },
           {
             'heading': "",
             'attachment': "assets/java_advance/pack_3.png",
             'body': "In the example above, java.util is a package, while Scanner is a class of the java.util package."
-            "To use the Scanner class, create an object of the class and use any of the available methods found in the Scanner"
-            "class documentation. In our example, we will use the nextLine() method, which is used to read a complete line:"
-
+                "To use the Scanner class, create an object of the class and use any of the available methods found in the Scanner"
+                "class documentation. In our example, we will use the nextLine() method, which is used to read a complete line:"
           },
           {
             'heading': "Import a Package",
             'attachment': "assets/java_advance/pack_4.png",
             'body': "There are many packages to choose from. In the previous example, we used the Scanner"
-            "class from the java.util package. This package also contains date and time facilities, "
+                "class from the java.util package. This package also contains date and time facilities, "
                 "random-number generator and other utility classes."
-            "\n\nTo import a whole package, end the sentence with an asterisk sign (*). "
+                "\n\nTo import a whole package, end the sentence with an asterisk sign (*). "
                 "The following example will import ALL the classes in the java.util package:"
           },
           {
@@ -2283,31 +2330,27 @@ const codex = {
             'heading': "",
             'attachment': "assets/java_advance/pack_7.png",
             'body': "Save the file as MyPackageClass.java, and compile it:"
-
           },
           {
             'heading': "",
             'attachment': "assets/java_advance/pack_8.png",
             'body': "Then compile the package:"
-
           },
           {
             'heading': "",
             'attachment': "assets/java_advance/pack_9.png",
-            'body': "When we compiled the package in the example above, a new folder was created, called 'mypack'."
-            "\nTo run the MyPackageClass.java file, write the following:"
-
+            'body':
+                "When we compiled the package in the example above, a new folder was created, called 'mypack'."
+                    "\nTo run the MyPackageClass.java file, write the following:"
           },
           {
             'heading': "",
             'attachment': "assets/java_advance/pack_10.png",
             'body': "The output will be:"
           },
-
-
         ]
       },
-      3:{
+      3: {
         'topic': '4.     Java Inheritance',
         'subTopic': [
           {
@@ -2315,17 +2358,15 @@ const codex = {
             'attachment': "assets/java_advance/inhe_1.png",
             'body': "In Java, it is possible to inherit attributes and methods from "
                 "one class to another. We group the inheritance concept into two categories:"
-            "\n\n•subclass (child) - the class that inherits from another class"
+                "\n\n•subclass (child) - the class that inherits from another class"
                 "\n•superclass (parent) - the class being inherited from"
-            "\n\nTo inherit from a class, use the extends keyword."
-            "\n\n In the example below, the Car class (subclass) inherits the "
+                "\n\nTo inherit from a class, use the extends keyword."
+                "\n\n In the example below, the Car class (subclass) inherits the "
                 "attributes and methods from the Vehicle class (superclass):"
-
           },
-
         ]
       },
-      4:{
+      4: {
         'topic': '5.     Java Polymorphism',
         'subTopic': [
           {
@@ -2333,40 +2374,42 @@ const codex = {
             'attachment': "assets/java_advance/poly_1.png",
             'body': "\nPolymorphism means many forms, and it occurs when we have many "
                 "classes that are related to each other by inheritance."
-            "\nLike we specified in the previous chapter; Inheritance lets us inherit attributes"
-            "and methods from another class. Polymorphism uses those methods to perform different tasks."
-            "This allows us to perform a single action in different ways."
-            "\n\nFor example, think of a superclass called Animal that has a method called animalSound()."
-            "Subclasses of Animals could be Pigs, Cats, Dogs, Birds - And they also have their "
-            "own implementation of an animal sound (the pig oinks, and the cat meows, etc.):"
+                "\nLike we specified in the previous chapter; Inheritance lets us inherit attributes"
+                "and methods from another class. Polymorphism uses those methods to perform different tasks."
+                "This allows us to perform a single action in different ways."
+                "\n\nFor example, think of a superclass called Animal that has a method called animalSound()."
+                "Subclasses of Animals could be Pigs, Cats, Dogs, Birds - And they also have their "
+                "own implementation of an animal sound (the pig oinks, and the cat meows, etc.):"
           },
           {
             'heading': " ",
             'attachment': "assets/java_advance/poly_2.png",
-            'body': "Now we can create Pig and Dog objects and call the animalSound() method on both of them: "
+            'body':
+                "Now we can create Pig and Dog objects and call the animalSound() method on both of them: "
           }
         ]
       },
-      5:{
+      5: {
         'topic': '6.    Java Inner Classes',
         'subTopic': [
           {
             'heading': "Java Inner Classes",
             'attachment': "assets/java_advance/inn_1.png",
             'body': "In Java, it is also possible to nest classes (a class within a class). The purpose of nested classes is"
-            "to group classes that belong together, which makes your code more readable and maintainable."
-            "\nTo access the inner class, create an object of the outer class, and then create an object of the inner class:"
+                "to group classes that belong together, which makes your code more readable and maintainable."
+                "\nTo access the inner class, create an object of the outer class, and then create an object of the inner class:"
           },
           {
             'heading': "Private Inner Class",
             'attachment': "assets/java_advance/inn_2.png",
             'body': "Unlike a regular class, an inner class can be private or protected. If you don't want outside"
-            "objects to access the inner class, declare the class as private:"
+                "objects to access the inner class, declare the class as private:"
           },
           {
             'heading': "",
             'attachment': "assets/java_advance/inn_3.png",
-            'body': "If you try to access a private inner class from an outside class, an error occurs:"
+            'body':
+                "If you try to access a private inner class from an outside class, an error occurs:"
           },
           {
             'heading': "Static Inner Class",
@@ -2377,16 +2420,13 @@ const codex = {
           {
             'heading': "Access Outer Class From Inner Class",
             'attachment': "assets/java_advance/inn_5.png",
-            'body': "One advantage of inner classes, is that they can access attributes and methods of the outer class:"
+            'body':
+                "One advantage of inner classes, is that they can access attributes and methods of the outer class:"
           },
-
-
         ]
       },
-
     }
   },
-
 
   Languages.dart: {
     Categories.beginner: {},
