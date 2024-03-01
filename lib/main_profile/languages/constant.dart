@@ -533,6 +533,100 @@ const codex = {
             'body': "You can also test for true or false values with logical operators.\n\nLogical operators are used to determine the logic between variables or values:"
           }
         ]
+      },
+      22: {
+        'topic': '10.     Booleans',
+        'subTopic': [
+          {
+            'heading': 'Booleans',
+            'body': "Very often, in programming, you will need a data type that can only have one of two values, like:"
+                "\n\n         •YES / NO"
+            "\n\n         •ON / OFF"
+            "\n\n         •TRUE / FALSE"
+"\n\nFor this, C has a bool data type, which is known as booleans."
+            "\n\nBooleans represent values that are either true or false."
+          },
+          {
+            'heading': 'Boolean Variables',
+            'attachment': 'assets/C/s66.png',
+            'body': "In C, the bool type is not a built-in data type, like int or char."
+            "\n\nIt was introduced in C99, and you must import the following header file to use it:"
+          },
+          {
+            'attachment': 'assets/C/s67.png',
+            'body': "A boolean variable is declared with the bool keyword and can only take the values true or false:"
+          },
+          {
+            'attachment': 'assets/C/s68.png',
+            'body': "Before trying to print the boolean variables, you should know that boolean values are returned as integers:"
+          "\n\n•1 (or any other number that is not 0) represents true"
+            "\n\n•0 represents false"
+            "\n\nTherefore, you must use the %d format specifier to print a boolean value:"
+          },
+          {
+            'body': "However, it is more common to return a boolean value by comparing values and variables."
+          },
+          {
+            'heading': 'Comparing Values and Variables',
+            'attachment': 'assets/C/s69.png',
+            'body': "Comparing values are useful in programming, because it helps us to find answers and make decisions."
+                "\n\nFor example, you can use a comparison operator, such as the greater than (>) operator, to compare two values:"
+          },
+          {
+            'attachment': 'assets/C/s70.png',
+            'body': "From the example above, you can see that the return value is a boolean value (1)."
+                "\n\nYou can also compare two variables:"
+          },
+          {
+            'attachment': 'assets/C/s71.png',
+            'body': "In the example below, we use the equal to (==) operator to compare different values:"
+          },
+          {
+            'attachment': 'assets/C/s72.png',
+            'body': "You are not limited to only compare numbers. You can also compare boolean variables, or even special structures, like arrays (which you will learn more about in a later chapter):"
+          }
+        ]
+      },
+      23: {
+        'topic': '    10.1     Boolean Examples ',
+        'subTopic': [
+          {
+            'heading': 'Real Life Example',
+            'attachment': 'assets/C/s73.png',
+            'body': "Let's think of a 'real life example' where we need to find out if a person is old enough to vote.\n\nIn the example below, we use the >= comparison operator to find out if the age (25) is greater than OR equal to the voting age limit, which is set to 18:"
+
+          },
+          {
+            'attachment': 'assets/C/s74.png',
+            'body': "Cool, right? An even better approach (since we are on a roll now), would be to wrap the code above in an if...else statement, so we can perform different actions depending on the result:"
+          }
+        ]
+      },
+      24: {
+        'topic': '11.     If ... Else',
+        'subTopic': [
+          {
+            'heading': 'Conditions and If Statements',
+            'attachment': 'assets/C/',
+            'body': "You have already learned that C supports the usual logical conditions from mathematics:"
+                "\nYou have already learned that C supports the usual logical conditions from mathematics:"
+                "\n•Less than: a < b"
+                "\n•Less than or equal to: a <= b"
+                "\n•Greater than or equal to: a >= b"
+                "\n•Less than: a < b"
+                "\n•Not Equal to: a != b"
+            "\n\nYou can use these conditions to perform different actions for different decisions."
+            "\n\nC has the following conditional statements:"
+                "\n•Use if to specify a block of code to be executed, if a specified condition is true"
+                "\n•Use else to specify a block of code to be executed, if the same condition is false"
+                "\n•Use else if to specify a new condition to test, if the first condition is false"
+                "\n•Use switch to specify many alternative blocks of code to be executed"
+
+
+
+
+          },
+        ]
       }
 
 
