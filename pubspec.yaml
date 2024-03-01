@@ -563,7 +563,113 @@ flutter:
     - assets/java_advance/inn_3.png
     - assets/java_advance/inn_4.png
     - assets/java_advance/inn_5.png
-
+    #Java Abstraction
+    - assets/java_advance/abs_1.png
+    - assets/java_advance/abs_2.png
+    #Java Interface
+    - assets/java_advance/inter_1.png
+    - assets/java_advance/inter_2.png
+    - assets/java_advance/inter_3.png
+    #Java Enums
+    - assets/java_advance/enums_1.png
+    - assets/java_advance/enums_2.png
+    - assets/java_advance/enums_3.png
+    - assets/java_advance/enums_4.png
+    - assets/java_advance/enums_5.png
+    - assets/java_advance/enums_6.png
+    - assets/java_advance/enums_7.png
+    - assets/java_advance/enums_8.png
+    #Java User Input (Scanner)
+    - assets/java_advance/user_1.png
+    - assets/java_advance/user_2.png
+    - assets/java_advance/user_3.png
+    #Java Date and Time
+    - assets/java_advance/date_1.png
+    - assets/java_advance/date_2.png
+    - assets/java_advance/date_3.png
+    - assets/java_advance/date_4.png
+    - assets/java_advance/date_5.png
+    - assets/java_advance/date_6.png
+    - assets/java_advance/date_7.png
+    - assets/java_advance/date_8.png
+    - assets/java_advance/date_9.png
+    #Java ArrayList
+    - assets/java_advance/array_1.png
+    - assets/java_advance/array_2.png
+    - assets/java_advance/array_3.png
+    - assets/java_advance/array_4.png
+    - assets/java_advance/array_5.png
+    - assets/java_advance/array_6.png
+    - assets/java_advance/array_7.png
+    - assets/java_advance/array_8.png
+    - assets/java_advance/array_9.png
+    - assets/java_advance/array_10.png
+    - assets/java_advance/array_11.png
+    - assets/java_advance/array_12.png
+    #Java LinkedList
+    - assets/java_advance/linked_1.png
+    - assets/java_advance/linked_2.png
+    #Java HashMap
+    - assets/java_advance/hash_1.png
+    - assets/java_advance/hash_2.png
+    - assets/java_advance/hash_3.png
+    - assets/java_advance/hash_4.png
+    - assets/java_advance/hash_5.png
+    - assets/java_advance/hash_6.png
+    - assets/java_advance/hash_7.png
+    - assets/java_advance/hash_8.png
+    - assets/java_advance/hash_9.png
+    - assets/java_advance/hash_10.png
+    #Java HashSet
+    - assets/java_advance/set_1.png
+    - assets/java_advance/set_2.png
+    - assets/java_advance/set_3.png
+    - assets/java_advance/set_4.png
+    - assets/java_advance/set_5.png
+    - assets/java_advance/set_6.png
+    - assets/java_advance/set_7.png
+    - assets/java_advance/set_8.png
+    #Java Iterator
+    - assets/java_advance/ite_1.png
+    - assets/java_advance/ite_2.png
+    - assets/java_advance/ite_3.png
+    #Java Wrapper Classes
+    - assets/java_advance/wrap_1.png
+    - assets/java_advance/wrap_2.png
+    - assets/java_advance/wrap_3.png
+    - assets/java_advance/wrap_4.png
+    - assets/java_advance/wrap_5.png
+    #Java Exceptions
+    - assets/java_advance/ex_1.png
+    - assets/java_advance/ex_2.png
+    - assets/java_advance/ex_3.png
+    - assets/java_advance/ex_4.png
+    - assets/java_advance/ex_5.png
+    - assets/java_advance/ex_6.png
+    - assets/java_advance/ex_7.png
+    - assets/java_advance/ex_8.png
+    - assets/java_advance/ex_9.png
+    - assets/java_advance/ex_10.png
+    - assets/java_advance/ex_11.png
+    #Java Regular Expressions
+    - assets/java_advance/reg_1.png
+    - assets/java_advance/reg_2.png
+    - assets/java_advance/reg_3.png
+    - assets/java_advance/reg_4.png
+    #Java Threads
+    - assets/java_advance/thread_1.png
+    - assets/java_advance/thread_2.png
+    - assets/java_advance/thread_3.png
+    - assets/java_advance/thread_4.png
+    - assets/java_advance/thread_5.png
+    - assets/java_advance/thread_6.png
+    #Java Lambda Expressions
+    - assets/java_advance/lamb_1.png
+    - assets/java_advance/lamb_2.png
+    - assets/java_advance/lamb_3.png
+    - assets/java_advance/lamb_4.png
+    - assets/java_advance/lamb_5.png
+    - assets/java_advance/lamb_6.png
 
 
 
