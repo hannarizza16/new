@@ -1901,7 +1901,7 @@ const codex = {
             'heading': "Parameters and Arguments",
             'attachment': "assets/java_intermediate/mpar_1.png",
             'body': "Information can be passed to methods as parameter. Parameters act as variables inside the method."
-            "\n\n Parameters are specified after the method name, inside the parentheses. "
+            "\n\nParameters are specified after the method name, inside the parentheses. "
                 "You can add as many parameters as you want, just separate them with a comma."
             "\n\nThe following example has a method that takes a String called fname as parameter. When the"
             "method is called, we pass along a first name, which is used inside the method to print the full name:"
@@ -2029,7 +2029,7 @@ const codex = {
 
     Categories.advanced: {
       0:{
-      'topic': '1.     Java Modifiers',
+      'topic': '1.      Java Modifiers',
       'subTopic': [
         {
           'heading': "Modifiers",
@@ -2081,7 +2081,7 @@ const codex = {
       ]
     },
       1:{
-        'topic': '2.    Java Encapsulation',
+        'topic': '2.     Java Encapsulation',
         'subTopic': [
           {
             'heading': "Encapsulation",
@@ -2242,7 +2242,7 @@ const codex = {
         ]
       },
       5:{
-        'topic': '6.    Java Inner Classes',
+        'topic': '6.     Java Inner Classes',
         'subTopic': [
           {
             'heading': "Java Inner Classes",
@@ -2277,6 +2277,709 @@ const codex = {
 
         ]
       },
+      6:{
+        'topic': '7.     Java Abstraction',
+        'subTopic': [
+          {
+            'heading': "Abstract Classes and Methods ",
+            'attachment': "assets/java_advance/abs_1.png",
+            'body': "Data abstraction is the process of hiding certain details and showing"
+            "only essential information to the user. Abstraction can be achieved with either"
+            "abstract classes or interfaces"
+            "\n\nThe abstract keyword is a non-access modifier, used for classes and methods:"
+            "\n\n•Abstract class: is a restricted class that cannot be used to create objects "
+                "(to access it, it must be inherited from another class)."
+            "\n\n•Abstract method: can only be used in an abstract class, and it does "
+                "not have a body. The body is provided by the subclass (inherited from)."
+          },
+          {
+            'heading': "",
+            'attachment': "assets/java_advance/abs_2.png",
+            'body': "To access the abstract class, it must be inherited from another class. "
+            "\nLet's convert the Animal class we used in the Polymorphism chapter to an abstract class:"
+          },
+        ]
+      },
+      7:{
+        'topic': '8.     Java Interface',
+        'subTopic': [
+          {
+            'heading': "Interfaces",
+            'attachment': "assets/java_advance/inter_1.png",
+            'body': "Another way to achieve abstraction in Java, is with interfaces. An "
+            "interface is a completely abstract class that is used to group related methods with empty bodies:"
+          },
+          {
+            'heading': "",
+            'attachment': "assets/java_advance/inter_2.png",
+            'body': "To access the interface methods, the interface must be implemented"
+            "by another class with the implements keyword The body of the interface method is "
+            "provided by the implement class:"
+          },
+          {
+            'heading': "Multiple Interfaces",
+            'attachment': "assets/java_advance/inter_3.png",
+            'body': "To implement multiple interfaces, separate them with a comma:"
+          }
+        ]
+      },
+      8:{
+        'topic': '9.     Java Enums',
+        'subTopic': [
+          {
+            'heading': "Enums",
+            'attachment': "assets/java_advance/enums_1.png",
+            'body': "An enum is a special class that represents a group of constants "
+            "To create an enum, use the enum keyword and separate the constants with a comma. Note that they "
+            "should be in uppercase letters:"
+          },
+          {
+            'heading': "",
+            'attachment': "assets/java_advance/enums_2.png",
+            'body': "You can access enum constants with the dot syntax:"
+          },
+          {
+            'heading': "Enum inside a Class",
+            'attachment': "assets/java_advance/enums_3.png",
+            'body': "You can also have an enum inside a class:"
+          },
+          {
+            'heading': "",
+            'attachment': "assets/java_advance/enums_4.png",
+            'body': "The output will be:"
+          },
+          {
+            'heading': "Enum in a Switch Statement",
+            'attachment': "assets/java_advance/enums_5.png",
+            'body': "Enums are often used in switch statements to check for corresponding values:"
+          },
+          {
+            'heading': "",
+            'attachment': "assets/java_advance/enums_6.png",
+            'body': "The output will be:"
+          },
+          {
+            'heading': "Loop Through an Enum",
+            'attachment': "assets/java_advance/enums_7.png",
+            'body': "The enum type has a values() method, which returns an array of all enum constants."
+            "This method is useful when you want to loop through the constants of an enum:"
+          },
+          {
+            'heading': "",
+            'attachment': "assets/java_advance/enums_8.png",
+            'body': "The output will be:"
+
+          },
+        ]
+      },
+      9:{
+        'topic': "10.     Java User Input (Scanner)",
+        'subTopic': [
+          {
+            'heading': "Java User Input",
+            'attachment': "assets/java_advance/user_1.png",
+            'body': "The Scanner class is used to get user input, and it is found in the java.util package."
+            "To use the Scanner class, create an object of the class and use any of the available "
+            "methods found in the Scanner class documentation. In our example,"
+            "we will use the nextLine() method, which is used to read Strings:"
+          },
+          {
+            'heading': "Input types",
+            'attachment': "assets/java_advance/user_2.png",
+            'body': "In the example above, we used the nextLine() method, which is used to"
+            "read Strings. To read other types, look at the table below:"
+          },
+          {
+            'heading': "",
+            'attachment': "assets/java_advance/user_3.png",
+            'body': "In the example below, we use different methods to read data of various types:"
+          },
+          {
+            'heading': "Java Date and Time",
+
+          }
+        ]
+
+      },
+      10:{
+        'topic': "11.     Java Date and Time",
+        'subTopic': [
+          {
+            'heading': "Java Dates",
+            'attachment': "assets/java_advance/date_1.png",
+            'body': "Java does not have a built-in Date class, but we can import the java.time"
+            "package to work with the date and time API. The package includes many date and time classes. For example:"
+
+          },
+          {
+            'heading': "Display Current Date",
+            'attachment': "assets/java_advance/date_2.png",
+            'body': "To display the current date, import the java.time.LocalDate class, and use its now() method:"
+          },
+          {
+            'heading': "",
+            'attachment': "assets/java_advance/date_3.png",
+            'body': "The output will be:"
+          },
+          {
+            'heading': "Display Current Time",
+            'attachment': "assets/java_advance/date_4.png",
+            'body': "To display the current time (hour, minute, second, and nanoseconds), "
+                "import the java.time.LocalTime class, and use its now() method:"
+          },
+          {
+            'heading': "",
+            'attachment': "assets/java_advance/date_5.png",
+            'body': "The output will be:"
+          },
+          {
+            'heading': "Display Current Date and Time",
+            'attachment': "assets/java_advance/date_6.png",
+            'body': "To display the current date and time, import the java.time.LocalDateTime class, "
+                "and use its now() method:"
+          },
+          {
+            'heading': "",
+            'attachment': "assets/java_advance/date_7.png",
+            'body': "The output will be:"
+          },
+          {
+            'heading': "Formatting Date and Time",
+            'attachment': "assets/java_advance/date_8.png",
+            'body': "The T in the example above is used to separate the date from the time."
+            "You can use the DateTimeFormatter class with the ofPattern()"
+            "method in the same package to format or parse date-time objects."
+            "The following example will remove both the T and nanoseconds from the date-time:"
+          },
+          {
+            'heading': "",
+            'attachment': "assets/java_advance/date_9.png",
+            'body': "The ofPattern() method accepts all sorts of values, "
+                "if you want to display the date and time in a different format. For example:"
+          },
+        ]
+      },
+      11: {
+        'topic': "12.     Java ArrayList",
+        'subTopic':[
+          {
+            'heading': "Java ArrayList",
+            'attachment': "assets/java_advance/array_1.png",
+            'body': "The ArrayList class is a resizable array, which can be found in the java.util package."
+            "The difference between a built-in array and an ArrayList in Java, is that the size of an array"
+            "cannot be modified (if you want to add or remove elements to/from an array,"
+            "you have to create a new one). While elements can be added"
+            "and removed from an ArrayList whenever you want. The syntax is also slightly different:"
+          },
+          {
+            'heading': "Add Items",
+            'attachment': "assets/java_advance/array_2.png",
+            'body': "The ArrayList class has many useful methods. For example, "
+                "to add elements to the ArrayList, use the add() method:"
+          },
+          {
+            'heading': "Access an Item",
+            'attachment': "assets/java_advance/array_3.png",
+            'body': "To access an element in the ArrayList, use the get() method and refer to the index number:"
+          },
+          {
+            'heading': "Change an Item",
+            'attachment': "assets/java_advance/array_4.png",
+            'body': "To modify an element, use the set() method and refer to the index number:"
+          },
+          {
+            'heading': "Remove an Item",
+            'attachment': "assets/java_advance/array_5.png",
+            'body': "To remove an element, use the remove() method and refer to the index number:"
+          },
+          {
+            'heading': "",
+            'attachment': "assets/java_advance/array_6.png",
+            'body': "To remove all the elements in the ArrayList, use the clear() method:"
+          },
+          {
+            'heading': "ArrayList Size",
+            'attachment': "assets/java_advance/array_7.png",
+            'body': "To find out how many elements an ArrayList have, use the size method:"
+          },
+          {
+            'heading': "Loop Through an ArrayList",
+            'attachment': "assets/java_advance/array_8.png",
+            'body': "Loop through the elements of an ArrayList with a for loop, and use the size() "
+                "method to specify how many times the loop should run:"
+          },
+          {
+            'heading': "",
+            'attachment': "assets/java_advance/array_9.png",
+            'body': "You can also loop through an ArrayList with the for-each loop:"
+          },
+          {
+            'heading': "Other Types",
+            'attachment': "assets/java_advance/array_10.png",
+            'body': "Elements in an ArrayList are actually objects. In the examples above, we created elements"
+            "(objects) of type String. Remember that a String in Java is an object (not a primitive type)."
+            "To use other types, such as int, you must specify an equivalent wrapper class: Integer."
+            "For other primitive types, use: Boolean for boolean, Character for char, Double for double, etc:"
+
+          },
+          {
+            'heading': "Sort an ArrayList",
+            'attachment': "assets/java_advance/array_11.png",
+            'body': "Another useful class in the java.util package is the Collections class, "
+                "which include the sort() method for sorting lists alphabetically or numerically:"
+
+          },
+          {
+            'heading': "",
+            'attachment': "assets/java_advance/array_12.png",
+            'body': "Sort an ArrayList of Integers:"
+
+          },
+        ]
+      },
+      12:{
+        'topic': '13.     Java Linkedlist',
+        'subTopic':[
+          {
+            'heading': "Java LinkedList",
+            'attachment': "assets/java_advance/linked_1.png",
+            'body': "In the previous chapter, you learned about the ArrayList class. "
+                "The LinkedList class is almost identical to the ArrayList:"
+          },
+          {
+            'heading': "ArrayList vs. LinkedList",
+            'body': "The LinkedList class is a collection which can contain many objects of the same type, just like the ArrayList."
+                "\nThe LinkedList class has all of the same methods as the ArrayList class because they"
+            "both implement the List interface. This means that you can add items, change items,"
+            "remove items and clear the list in the same way."
+            "However, while the ArrayList class and the LinkedList class can be used in the same way, "
+                "they are built very differently."
+          },
+          {
+            'heading': "How the ArrayList works",
+            'body': "The ArrayList class has a regular array inside it. When an element is added,"
+            "it is placed into the array. If the array is not big enough, a new,"
+                "larger array is created to replace the old one and the old one is removed."
+          },
+          {
+            'heading': "How the LinkedList works",
+            'body': "The LinkedList stores its items in containers. The list has a link to the "
+            "first container and each container has a link to the next container in"
+            "the list. To add an element to the list, the element is placed"
+            "into a new container and that container is linked to one of the other containers in the list."
+
+          },
+          {
+            'heading': "LinkedList Methods",
+            'attachment': "assets/java_advance/linked_2.png",
+            'body': "For many cases, the ArrayList is more efficient as it is common to need access to"
+            "random items in the list, but the LinkedList provides several methods to do certain operations more efficiently:"
+          },
+        ]
+      },
+      13:{
+        'topic': '14.     Java HashMap',
+        'subTopic': [
+          {
+            'heading': "Java HashMap",
+            'attachment': "assets/java_advance/hash_1.png",
+            'body': "In the ArrayList chapter, you learned that Arrays store items as an ordered collection,"
+            "and you have to access them with an index number (int type). A HashMap however, "
+            "store items in key/value pairs, and you can access them by an index of another type "
+            "One object is used as a key (index) to another object (value). It can store different types:"
+            "String keys and Integer values, or the same type, like: String keys and String values:"
+          },
+          {
+            'heading': "add items",
+            'attachment': "assets/java_advance/hash_2.png",
+            'body': "The HashMap class has many useful methods. For example, to add items to it, use the put() method:"
+          },
+          {
+            'heading': "Access an Item",
+            'attachment': "assets/java_advance/hash_3.png",
+            'body': "To access a value in the HashMap, use the get() method and refer to its key:"
+          },
+          {
+            'heading': "Remove an Item",
+            'attachment': "assets/java_advance/hash_4.png",
+            'body': "To access a value in the HashMap, use the get() method and refer to its key:"
+          },
+          {
+            'heading': "",
+            'attachment': "assets/java_advance/hash_5.png",
+            'body': "To remove all items, use the clear() method:"
+          },
+          {
+            'heading': "HashMap Size",
+            'attachment': "assets/java_advance/hash_6.png",
+            'body': "To find out how many items there are, use the size() method:"
+          },
+          {
+            'heading': "Loop Through a HashMap",
+            'attachment': "assets/java_advance/hash_7.png",
+            'body': "Loop through the items of a HashMap with a for-each loop."
+            "\n\nNote: Use the keySet() method if you only want the keys, and use the values() "
+                "method if you only want the values:"
+          },
+          {
+            'heading': "",
+            'attachment': "assets/java_advance/hash_8.png",
+            'body': "example"
+          },
+          {
+            'heading': "",
+            'attachment': "assets/java_advance/hash_9.png",
+            'body': "example"
+          },
+          {
+            'heading': "Other Types",
+            'attachment': "assets/java_advance/hash_10.png",
+            'body': "Keys and values in a HashMap are actually objects. In the examples above,"
+            "we used objects of type String. Remember that a String in Java"
+            "is an object (not a primitive type). To use other types, such as int, you must specify"
+            "an equivalent wrapper class: Integer. For other primitive types, use:"
+            "Boolean for boolean, Character for char, Double for double, etc:"
+          },
+        ]
+      },
+      14:{
+        'topic': '15.     Java HashSet',
+        'subTopic': [
+          {
+            'heading': "Java Hashset",
+            'attachment': "assets/java_advance/set_1.png",
+            'body': "A HashSet is a collection of items where every item is unique, and it is found in the java.util package:"
+          },
+          {
+            'heading': "Add Items",
+            'attachment': "assets/java_advance/set_2.png",
+            'body': "The HashSet class has many useful methods. For example, to add items to it, use the add() method:"
+          },
+          {
+            'heading': "Check If an Item Exists",
+            'attachment': "assets/java_advance/set_3.png",
+            'body': "To check whether an item exists in a HashSet, use the contains() method:"
+          },
+          {
+            'heading': "Remove an Item",
+            'attachment': "assets/java_advance/set_4.png",
+            'body': "To remove an item, use the remove() method:"
+          },
+          {
+            'heading': "",
+            'attachment': "assets/java_advance/set_5.png",
+            'body': "To remove an item, use the remove() method:"
+          },
+          {
+            'heading': "HashSet Size",
+            'attachment': "assets/java_advance/set_6.png",
+            'body': "To find out how many items there are, use the size method:"
+          },
+          {
+            'heading': "Loop Through a HashSet",
+            'attachment': "assets/java_advance/set_7.png",
+            'body': "Loop through the items of an HashSet with a for-each loop:"
+          },
+          {
+            'heading': "Other Types",
+            'attachment': "assets/java_advance/set_8.png",
+            'body': "Items in an HashSet are actually objects. In the examples above, we created items (objects) of type String."
+            "Remember that a String in Java is an object (not a primitive type). To use other types,"
+            "such as int, you must specify an equivalent wrapper class: Integer. For other primitive"
+            "types, use: Boolean for boolean, Character for char, Double for double, etc:"
+          },
+        ]
+      },
+      15:{
+        'topic': '16.     Java Iterator',
+        'subTopic': [
+          {
+            'heading': "Java Iterator",
+            'body': "An Iterator is an object that can be used to loop through collections, "
+            "like ArrayList and HashSet. It is called an iterator because iterating"
+            "is the technical term for looping."
+            "\n\nTo use an Iterator, you must import it from the java.util package."
+          },
+          {
+            'heading': "Getting an Iterator ",
+            'attachment': "assets/java_advance/ite_1.png",
+            'body': "The iterator() method can be used to get an Iterator for any collection:"
+          },
+          {
+            'heading': "Looping Through a Collection ",
+            'attachment': "assets/java_advance/ite_2.png",
+            'body': "To loop through a collection, use the hasNext() and next() methods of the Iterator:"
+          },
+          {
+            'heading': "Removing Items from a Collection ",
+            'attachment': "assets/java_advance/ite_3.png",
+            'body': "Iterators are designed to easily change the collections that they loop through."
+            "The remove() method can remove items from a collection while looping."
+          },
+        ]
+      },
+      16:{
+        'topic': '17.     Java Wrapper Classes',
+        'subTopic':[
+          {
+            'heading': "Java Wrapper Classes ",
+            'attachment': "assets/java_advance/wrap_1.png",
+            'body': "Wrapper classes provide a way to use primitive data types (int, boolean, etc..) as objects."
+            "The table below shows the primitive type and the equivalent wrapper class:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/java_advance/wrap_2.png",
+            'body': "Sometimes you must use wrapper classes, for example when working with Collection objects,"
+            "such as ArrayList, where primitive types cannot be used (the list can only store objects):"
+          },
+          {
+            'heading': "Creating Wrapper Objects ",
+            'attachment': "assets/java_advance/wrap_3.png",
+            'body': "To create a wrapper object, use the wrapper class instead of the primitive type. "
+                "To get the value, you can just print the object:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/java_advance/wrap_4.png",
+            'body': "Since you're now working with objects, you can use certain methods to get information"
+                "about the specific object."
+            "For example, the following methods are used to get the value associated with"
+            "the corresponding wrapper object: intValue(), byteValue(), shortValue(), longValue(), floatValue(),"
+            "doubleValue(), charValue(), booleanValue()."
+                "This example will output the same result as the example above:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/java_advance/wrap_5.png",
+            'body': "Another useful method is the toString() method, which is used to convert wrapper objects to strings."
+            "In the following example, we convert an Integer to a String,"
+            "and use the length() method of the String class to output the length of the string:"
+          },
+
+        ]
+      },
+      17:{
+        'topic': '18.     Java Exceptions - Try...Catch',
+        'subTopic': [
+          {
+            'heading': "Java Exceptions",
+            'body': "When executing Java code, different errors can occur: coding errors made by the programmer, "
+                "errors due to wrong input, or other unforeseeable things."
+            "When an error occurs, Java will normally stop and generate an error message. "
+            "The technical term for this is: Java will throw an exception (throw an error)."
+          },
+          {
+            'heading': "Java try and catch ",
+            'attachment': "assets/java_advance/ex_1.png",
+            'body': "The try statement allows you to define a block of code to be tested for errors while it is being executed."
+            "\nThe catch statement allows you to define a block of code to be executed, if an error occurs in the try block."
+            "\nThe try and catch keywords come in pairs:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/java_advance/ex_2.png",
+            'body': "\n\nConsider the following example:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/java_advance/ex_3.png",
+            'body': "The output will be something like this:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/java_advance/ex_4.png",
+            'body': "Example"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/java_advance/ex_5.png",
+            'body': "The output will be:"
+          },
+          {
+            'heading': "Finally ",
+            'attachment': "assets/java_advance/ex_6.png",
+            'body': "The finally statement lets you execute code, after try...catch, regardless of the result:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/java_advance/ex_7.png",
+            'body': "The output will be:"
+          },
+          {
+            'heading': "The throw keyword ",
+            'attachment': "assets/java_advance/ex_8.png",
+            'body': "The throw statement allows you to create a custom error."
+            "The throw statement is used together with an exception type. "
+            "There are many exception types available in Java: ArithmeticException,"
+            "FileNotFoundException, ArrayIndexOutOfBoundsException, SecurityException, etc:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/java_advance/ex_9.png",
+            'body': "The output will be:"
+          },
+          {
+            'heading': "",
+            'attachment': "assets/java_advance/ex_10.png",
+            'body': "If age was 20, you would not get an exception: "
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/java_advance/ex_11.png",
+            'body': "The output will be"
+          },
+        ]
+      },
+      18:{
+        'topic': '19.     Java Regular Expressions',
+        'subTopic': [
+          {
+            'heading': "What is a Regular Expression?",
+            'attachment': "assets/java_advance/reg_1.png",
+            'body': "A regular expression is a sequence of characters that forms a search pattern. "
+                "When you search for data in a text, you can use this search pattern to describe what you are searching for."
+            "\nA regular expression can be a single character, or a more complicated pattern."
+            "\nRegular expressions can be used to perform all types of text search and text replace operations."
+            "\nJava does not have a built-in Regular Expression class, but we can import the "
+                "java.util.regex package to work with regular expressions. The package includes the following classes:"
+          },
+          {
+            'heading': " ",
+            'attachment': "",
+            'body': "•Pattern Class - Defines a pattern (to be used in a search)"
+            "\n•Matcher Class - Used to search for the pattern"
+            "\n•PatternSyntaxException Class - Indicates syntax error in a regular expression pattern"
+          },
+          {
+            'heading': "Flags ",
+            'attachment': "",
+            'body': "Flags in the compile() method change how the search is performed. Here are a few of them:"
+            "\n\n•Pattern.CASE_INSENSITIVE - The case of letters will be ignored when performing a search."
+            "\n\n•Pattern.LITERAL - Special characters in the pattern will not have any special meaning "
+                "and will be treated as ordinary characters when performing a search."
+            "\n\n•Pattern.UNICODE_CASE - Use it together with the CASE_INSENSITIVE flag to also ignore the "
+                "case of letters outside of the English alphabet"
+          },
+          {
+            'heading': "Regular Expression Patterns ",
+            'attachment': "assets/java_advance/reg_2.png",
+            'body': "The first parameter of the Pattern.compile() method is the pattern. "
+                "It describes what is being searched for."
+            "\n\nBrackets are used to find a range of characters:"
+          },
+          {
+            'heading': "Metacharacters ",
+            'attachment': "assets/java_advance/reg_3.png",
+            'body': "Metacharacters are characters with a special meaning:"
+          },
+          {
+            'heading': "Quantifiers ",
+            'attachment': "assets/java_advance/reg_4.png",
+            'body': "Quantifiers define quantities:"
+          },
+        ]
+      },
+      19:{
+        'topic': "20.     Java Threads",
+        'subTopic':[
+          {
+            'heading': "Java Threads ",
+            'body': "Threads allows a program to operate more efficiently by doing multiple things at the same time."
+            "\n\nThreads can be used to perform complicated tasks in the background without interrupting the main program."
+          },
+          {
+            'heading': "Creating a Thread ",
+            'attachment': "assets/java_advance/thread_1.png",
+            'body': "There are two ways to create a thread."
+            "\n\nIt can be created by extending the Thread class and overriding its run() method:"
+          },
+          {
+            'heading': "Implement Syntax ",
+            'attachment': "assets/java_advance/thread_2.png",
+            'body': "Another way to create a thread is to implement the Runnable interface:"
+          },
+          {
+            'heading': "Running Threads",
+            'attachment': "assets/java_advance/thread_3.png",
+            'body': "If the class extends the Thread class, the thread can be run by "
+                "creating an instance of the class and call its start() method:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/java_advance/thread_4.png",
+            'body': "If the class implements the Runnable interface, the thread can be run "
+                "by passing an instance of the class to a Thread object's constructor and then "
+                "calling the thread's start() method:"
+          },
+          {
+            'heading': "Concurrency Problems",
+            'attachment': "assets/java_advance/thread_5.png",
+            'body': "Because threads run at the same time as other parts of the program, "
+                "there is no way to know in which order the code will run. When the"
+            "threads and main program are reading and writing the same variables, the values are unpredictable. "
+                "The problems that result from this are"
+            "called concurrency problems."
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/java_advance/thread_6.png",
+            'body': "To avoid concurrency problems, it is best to share as few attributes between threads as possible."
+            "If attributes need to be shared, one possible solution is to use the isAlive()"
+            "method of the thread to check whether the thread has finished running before using any attributes that the thread can change."
+          },
+]
+      },
+      20:{
+        'topic': '21.     Java Lambda Expressions',
+        'subTopic': [
+          {
+            'heading': "Java Lambda Expressions ",
+            'attachment': "",
+            'body': "Lambda Expressions were added in Java 8."
+            "\n\nA lambda expression is a short block of code which takes in parameters and returns a value. "
+                "Lambda expressions are similar to methods, but they do not need a name and they can be"
+                " implemented right in the body of a method."
+          },
+          {
+            'heading': "Syntax ",
+            'attachment': "assets/java_advance/lamb_1.png",
+            'body': "The simplest lambda expression contains a single parameter and an expression:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/java_advance/lamb_2.png",
+            'body': "To use more than one parameter, wrap them in parentheses:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/java_advance/lamb_3.png",
+            'body': "Expressions are limited. They have to immediately return a value, and they cannot contain variables,"
+            "assignments or statements such as if or for. In order to do more complex operations,"
+            "a code block can be used with curly braces. If the lambda expression needs to return a value,"
+            "then the code block should have a return statement."
+          },
+          {
+            'heading': "Using Lambda Expressions ",
+            'attachment': "assets/java_advance/lamb_4.png",
+            'body': "Lambda expressions are usually passed as parameters to a function:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/java_advance/lamb_5.png",
+            'body': "Lambda expressions can be stored in variables if the variable's type is an interface which has only one method."
+            "The lambda expression should have the same number of parameters and the same return type as"
+                "that method. Java has many of these kinds of interfaces built in, such as the Consumer"
+            " interface (found in the java.util package) used by lists."
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/java_advance/lamb_6.png",
+            'body': "Create a method which takes a lambda expression as a parameter:"
+          },
+        ]
+      }
+
 
     }
   },
