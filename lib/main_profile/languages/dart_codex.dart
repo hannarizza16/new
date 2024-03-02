@@ -2059,22 +2059,1214 @@ const dartCodex = {
                 "A guard clause can follow if case, and both switch statements and expressions."
           },
 
+        ]
+      },
+    },
+    Categories.intermediate: {
+      0: {
+        'topic': "1.     Error Handling",
+        'subTopic': [
+          {
+            'heading': "Exceptions ",
+            'attachment': "",
+            'body': "Your Dart code can throw and catch exceptions. Exceptions are errors indicating that something unexpected happened."
+            "If the exception isn't caught, the isolate that raised the exception is suspended, and typically the isolate and its program are terminated."
+            "\n\nDart provides Exception and Error types, as well as numerous predefined subtypes. You can, of course, define your own exceptions. However, "
+                "Dart programs can throw any non-null object—not just Exception and Error objects—as an exception."
+          },
+          {
+            'heading': "Throw ",
+            'attachment': "assets/dart_intermediate/ex_1.png",
+            'body': "Here's an example of throwing, or raising, an exception:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_intermediate/ex_2.png",
+            'body': "You can also throw arbitrary objects:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_intermediate/ex_3.png",
+            'body': "Because throwing an exception is an expression, you can throw exceptions in => statements, as well as anywhere else that allows expressions:"
+          },
+          {
+            'heading': "Catch ",
+            'attachment': "assets/dart_intermediate/ex_4.png",
+            'body': "Catching, or capturing, an exception stops the exception from propagating (unless you rethrow the exception). "
+                "Catching an exception gives you a chance to handle it:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_intermediate/ex_5.png",
+            'body': "To handle code that can throw more than one type of exception, you can specify multiple catch clauses. The first catch clause that matches the "
+                "thrown object's type handles the exception. If the catch clause does not specify a type, that clause can handle any type of thrown object:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_intermediate/ex_6.png",
+            'body': "As the preceding code shows, you can use either on or catch or both. Use on when you need to specify the exception type. "
+                "Use catch when your exception handler needs the exception object."
+            "\n\nYou can specify one or two parameters to catch(). The first is the exception that was thrown, and the second is the stack trace (a StackTrace object)."
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_intermediate/ex_7.png",
+            'body': "To partially handle an exception, while allowing it to propagate, use the rethrow keyword."
+          },
+          {
+            'heading': "Finally ",
+            'attachment': "assets/dart_intermediate/ex_8.png",
+            'body': "To ensure that some code runs whether or not an exception is thrown, use a finally clause. "
+                "\n\nIf no catch clause matches the exception, the exception is propagated after the finally clause runs:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_intermediate/ex_9.png",
+            'body': "The finally clause runs after any matching catch clauses:"
+          },
+          {
+            'heading': "Assert ",
+            'attachment': "assets/dart_intermediate/ex_10.png",
+            'body': "During development, use an assert statement— assert(<condition>, <optionalMessage>); "
+                "—to disrupt normal execution if a boolean condition is false."
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_intermediate/ex_11.png",
+            'body': "To attach a message to an assertion, add a string as the second argument to assert (optionally with a trailing comma):"
+          },
+          {
+            'heading': " ",
+            'attachment': "",
+            'body': "The first argument to assert can be any expression that resolves to a boolean value. If the expression's value is true, the"
+            "\n\nassertion succeeds and execution continues. If it's false, the assertion fails and an exception (an AssertionError) is thrown"
+            "\n\nWhen exactly do assertions work? That depends on the tools and framework you're using:"
+            "\n\n•Flutter enables assertions in debug mode."
+                "\n\n•Development-only tools such as webdev serve typically enable assertions by default."
+                "\n\n•Some tools, such as dart run and dart compile js support assertions through a command-line flag: --enable-asserts."
+
+          },
 
 
 
+        ]
+      },
+      1: {
+        'topic': "2.     Classes",
+        'subTopic': [
+          {
+            'heading': "Classes ",
+            'attachment': "",
+            'body': "Dart is an object-oriented language with classes and mixin-based inheritance. Every object is an instance of a class, and"
+            "all classes except Null descend from Object. Mixin-based inheritance means that although every class (except for the"
+                "top class, Object?) has exactly one superclass, a class body can be reused in multiple class hierarchies. Extension"
+            "methods are a way to add functionality to a class without changing the class or creating a subclass. Class modifiers "
+                "allow you to control how libraries can subtype a class."
+          },
+          {
+            'heading': "Using class members ",
+            'attachment': "assets/dart_intermediate/c_1.png",
+            'body': "Objects have members consisting of functions and data (methods and instance variables, respectively). "
+                "When you call a method, you invoke it on an object: the method has access to that object's functions and data."
+            "\n\nUse a dot (.) to refer to an instance variable or method:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_intermediate/c_2.png",
+            'body': "Use ?. instead of . to avoid an exception when the leftmost operand is null:"
+          },
+          {
+            'heading': "Using constructors ",
+            'attachment': "assets/dart_intermediate/c_3.png",
+            'body': "You can create an object using a constructor. Constructor names can be either ClassName or ClassName.identifier. "
+                "For example, the following code creates Point objects using the Point() and Point.fromJson() constructors:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_intermediate/c_4.png",
+            'body': "The following code has the same effect, but uses the optional new keyword before the constructor name:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_intermediate/c_5.png",
+            'body': "Some classes provide constant constructors. "
+                "To create a compile-time constant using a constant constructor, put the const keyword before the constructor name:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_intermediate/c_6.png",
+            'body': "Constructing two identical compile-time constants results in a single, canonical instance"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_intermediate/c_7.png",
+            'body': "Within a constant context, you can omit the const before a constructor or literal. "
+                "\n\nFor example, look at this code, which creates a const map"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_intermediate/c_8.png",
+            'body': "You can omit all but the first use of the const keyword:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_intermediate/c_9.png",
+            'body': "If a constant constructor is outside of a constant context and is invoked without const, it creates a non-constant object:"
+          },
+          {
+            'heading': "Getting an object's type",
+            'attachment': "assets/dart_intermediate/c_10.png",
+            'body': "To get an object's type at runtime, you can use the Object property runtimeType, which returns a Type object."
+          },
+          {
+            'heading': "Instance variables",
+            'attachment': "assets/dart_intermediate/c_11.png",
+            'body': "Here's how you declare instance variables:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_intermediate/c_12.png",
+            'body': "An uninitialized instance variable declared with a nullable type has the value null. "
+                "Non-nullable instance variables must be initialized at declaration."
+            "\n\nAll instance variables generate an implicit getter method. Non-final instance variables and late "
+                "final instance variables without initializers also generate an implicit setter method. For details, check out Getters and setters."
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_intermediate/c_13.png",
+            'body': "Initializing a non-late instance variable where it's declared sets the value when the instance is created, before the constructor "
+                "and its initializer list execute. As a result, the initializing expression (after the =) of a non-late instance variable can't access this."
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_intermediate/c_14.png",
+            'body': "Instance variables can be final, in which case they must be set exactly once. "
+                "Initialize final, non-late instance variables at declaration, using a constructor parameter, or using a constructor's initializer list:"
+          },
+          {
+            'heading': "Implicit interfaces ",
+            'attachment': "assets/dart_intermediate/c_15.png",
+            'body': "Every class implicitly defines an interface containing all the instance members of the class and of any interfaces it implements. "
+                "If you want to create a class A that supports class B's API without inheriting B's implementation, class A should implement the B interface."
+            "A class implements one or more interfaces by declaring them in an implements clause and then providing the APIs required by the interfaces. "
+                "\n\nFor example:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_intermediate/c_16.png",
+            'body': "Here's an example of specifying that a class implements multiple interfaces:"
+          },
+          {
+            'heading': "Class variables and methods ",
+            'attachment': "",
+            'body': "Use the static keyword to implement class-wide variables and methods."
+          },
+          {
+            'heading': "Static variables ",
+            'attachment': "assets/dart_intermediate/c_17.png",
+            'body': "Static variables (class variables) are useful for class-wide state and constants:"
+          },
+          {
+            'heading': "Static methods ",
+            'attachment': "assets/dart_intermediate/c_18.png",
+            'body': "Static methods (class methods) don't operate on an instance, and thus don't have access to this. "
+                "They do, however, have access to static variables. As the following example shows, you invoke static methods directly on a class:"
+          },
+
+        ]
+      },
+      2: {
+        'topic': "3.     Constructors",
+        'subTopic': [
+          {
+            'heading': "Constructors ",
+            'attachment': "assets/dart_intermediate/con_1.png",
+            'body': "Declare a constructor by creating a function with the same name as its class "
+                "(plus, optionally, an additional identifier as described in Named constructors)."
+            "\n\nUse the most common constructor, the generative constructor, to create a new instance of a class, "
+                "and initializing formal parameters to instantiate any instance variables, if necessary:"
+          },
+          {
+            'heading': "Initializing formal parameters ",
+            'attachment': "assets/dart_intermediate/con_2.png",
+            'body': "Dart has initializing formal parameters to simplify the common pattern "
+                "of assigning a constructor argument to an instance variable. Use this.propertyName directly in the constructor declaration, and omit the body."
+            "\n\nInitializing parameters also allow you to initialize non-nullable or final instance variables, which both must be initialized or provided a default value:"
+          },
+          {
+            'heading': "Default constructors ",
+            'attachment': "",
+            'body': "If you don't declare a constructor, a default constructor is provided for you. The default constructor has no arguments and invokes the no-argument constructor in the superclass."
+          },
+          {
+            'heading': "Constructors aren't inherited ",
+            'attachment': "",
+            'body': "Subclasses don't inherit constructors from their superclass. A subclass that declares no constructors has only the default (no argument, no name) constructor."
+          },
+          {
+            'heading': "Named constructors ",
+            'attachment': "assets/dart_intermediate/con_3.png",
+            'body': "Use a named constructor to implement multiple constructors for a class or to provide extra clarity"
+          },
+          {
+            'heading': "Invoking a non-default superclass constructor ",
+            'attachment': "",
+            'body': "By default, a constructor in a subclass calls the superclass's unnamed, no-argument constructor. The superclass's"
+            "constructor is called at the beginning of the constructor body. If an initializer list is also being used, it executes before the"
+            "superclass is called. In summary, the order of execution is as follows:"
+            "\n\n1.initializer list"
+            "\n\n2.superclass's no-arg constructor"
+            "\n\n3.main class's no-arg constructor"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_intermediate/con_4.png",
+            'body': "If the superclass doesn't have an unnamed, no-argument constructor, then you must manually call one of the constructors in the superclass. "
+                "Specify the superclass constructor after a colon (:), just before the constructor body (if any)."
+            "In the following example, the constructor for the Employee class calls the named constructor for its superclass, Person. Click Run to execute the code."
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_intermediate/con_5.png",
+            'body': "Because the arguments to the superclass constructor are evaluated before invoking the constructor, an argument can be an expression such as a function call:"
+          },
+          {
+            'heading': "Super parameters ",
+            'attachment': "assets/dart_intermediate/con_6.png",
+            'body': "To avoid having to manually pass each parameter into the super invocation of a constructor, you can use super-initializer parameters to forward parameters to the specified or default superclass constructor. "
+                "This feature can't be used with redirecting constructors. Super-initializer parameters have similar syntax and semantics to initializing formal parameters:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_intermediate/con_7.png",
+            'body': "Super-initializer parameters cannot be positional if the super-constructor invocation already has positional arguments, but they can always be named:"
+          },
+          {
+            'heading': "Initializer list ",
+            'attachment': "assets/dart_intermediate/con_8.png",
+            'body': "Besides invoking a superclass constructor, you can also initialize instance variables before the constructor body runs. Separate initializers with commas."
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_intermediate/con_9.png",
+            'body': "During development, you can validate inputs by using assert in the initializer list."
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_intermediate/con_10.png",
+            'body': "Initializer lists are handy when setting up final fields. The following example initializes three final fields in an initializer list. Click Run to execute the code."
+          },
+          {
+            'heading': "Redirecting constructors ",
+            'attachment': "assets/dart_intermediate/con_11.png",
+            'body': "Sometimes a constructor's only purpose is to redirect to another constructor in the same class. "
+                "A redirecting constructor's body is empty, with the constructor call (using this instead of the class name) appearing after a colon (:)."
+          },
+          {
+            'heading': "Constant constructors ",
+            'attachment': "assets/dart_intermediate/con_12.png",
+            'body': "If your class produces objects that never change, you can make these objects compile-time constants. "
+                "To do this, define a const constructor and make sure that all instance variables are final."
+          },
+          {
+            'heading': "Factory constructors ",
+            'attachment': "assets/dart_intermediate/con_13.png",
+            'body': "Use the factory keyword when implementing a constructor that doesn't always create a new instance of its class. For example, a factory constructor might return an instance from a cache, or it might return an instance of a subtype. "
+                "Another use case for factory constructors is initializing a final variable using logic that can't be handled in the initializer list."
+            "\n\n\n\n\nIn the following example, the Logger factory constructor returns objects from a cache, "
+                "and the Logger.fromJson factory constructor initializes a final variable from a JSON object."
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_intermediate/con_14.png",
+            'body': "Invoke a factory constructor just like you would any other constructor:"
+          },
 
 
+        ]
+      }, 3: {
+        'topic': "4.     Methods",
+        'subTopic': [
+          {
+            'heading': "Methods ",
+            'attachment': "",
+            'body': "Methods are functions that provide behavior for an object."
+          },
+          {
+            'heading': "Instance methods ",
+            'attachment': "assets/dart_intermediate/met_1.png",
+            'body': "Instance methods on objects can access instance variables and this. The distanceTo() method in the following sample is an example of an instance method:"
+          },
+          {
+            'heading': "Operators ",
+            'attachment': "assets/dart_intermediate/met_2.png",
+            'body': "Operators are instance methods with special names. Dart allows you to define operators with the following names:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_intermediate/met_3.png",
+            'body': "An operator declaration is identified using the built-in identifier operator. The following example defines vector addition (+), subtraction (-), and equality (==):"
+          },
+          {
+            'heading': "Getters and setters ",
+            'attachment': "assets/dart_intermediate/met_4.png",
+            'body': "Getters and setters are special methods that provide read and write access to an object's properties. Recall that each instance variable "
+                "has an implicit getter, plus a setter if appropriate. You can create additional properties by implementing getters and setters, using the get and set keywords:"
+          },
+          {
+            'heading': "Abstract methods ",
+            'attachment': "assets/dart_intermediate/met_5.png",
+            'body': "Instance, getter, and setter methods can be abstract, defining an interface "
+                "but leaving its implementation up to other classes. Abstract methods can only exist in abstract classes or mixins."
+            "\n\nTo make a method abstract, use a semicolon (;) instead of a method body:"
+          },
+
+        ]
+      }, 4: {
+        'topic': "5.     Extend a class",
+        'subTopic': [
+          {
+            'heading': "Extend a class ",
+            'attachment': "assets/dart_intermediate/ec_1.png",
+            'body': "Use extends to create a subclass, and super to refer to the superclass:"
+          },
+          {
+            'heading': "Overriding members ",
+            'attachment': "assets/dart_intermediate/ec_2.png",
+            'body': "Subclasses can override instance methods (including operators), "
+                "getters, and setters. You can use the @override annotation to indicate that you are intentionally overriding a member:"
+          },
+          {
+            'heading': " ",
+            'attachment': "",
+            'body': "An overriding method declaration must match the method (or methods) that it overrides in several ways:"
+            "\n\n•The return type must be the same type as (or a subtype of) the overridden method's return type."
+            "\n\n•Parameter types must be the same type as (or a supertype of) the overridden method's parameter types. "
+                "In the preceding example, the contrast setter of SmartTelevision changes the parameter type from int to a supertype, num."
+            "\n\n•If the overridden method accepts n positional parameters, then the overriding method must also accept n positional parameters."
+            "\n\n•A generic method can't override a non-generic one, and a non-generic method can't override a generic one."
+          },
+          {
+            'heading': "noSuchMethod() ",
+            'attachment': "assets/dart_intermediate/ec_3.png",
+            'body': "To detect or react whenever code attempts to use a non-existent method or instance variable, you can override noSuchMethod():"
+          },
+          {
+            'heading': " ",
+            'attachment': "",
+            'body': "You can't invoke an unimplemented method unless one of the following is true:"
+            "\n\n•The receiver has the static type dynamic."
+            "\n\n•The receiver has a static type that defines the unimplemented method (abstract is OK), "
+                "and the dynamic type of the receiver has an implementation of noSuchMethod() that's different from the one in class Object."
+          },
 
 
-
+        ]
+      }, 5: {
+        'topic': "6.     Mixins",
+        'subTopic': [
+          {
+            'heading': "Mixins ",
+            'attachment': "assets/dart_intermediate/mix_1.png",
+            'body': "Mixins are a way of defining code that can be reused in multiple class hierarchies. They are intended to provide member implementations en masse."
+            "\n\nTo use a mixin, use the with keyword followed by one or more mixin names. The following example shows two classes that use mixins:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_intermediate/mix_2.png",
+            'body': "To define a mixin, use the mixin declaration. In the rare case where you need to define both a mixin and a class, you can use the mixin class declaration."
+            "\n\nMixins and mixin classes cannot have an extends clause, and must not declare any generative constructors."
+            "\n\nFor example:"
+          },
+          {
+            'heading': " ",
+            'attachment': "",
+            'body': "Sometimes you might want to restrict the types that can use a mixin. "
+                "\n\nFor example, the mixin might depend on being able to invoke a method that the mixin doesn't define. "
+                "As the following example shows, you can restrict a mixin's use by using the on keyword to specify the required superclass:"
+          },
+          {
+            'heading': " ",
+            'attachment': "",
+            'body': "In the preceding code, only classes that extend or implement "
+                "the Musician class can use the mixin MusicalPerformer. Because SingerDancer extends Musician, SingerDancer can mix in MusicalPerformer."
+          },
+          {
+            'heading': " ",
+            'attachment': "",
+            'body': "A mixin declaration defines a mixin. A class declaration defines a class. "
+                "\n\nA mixin class declaration defines a class that is usable as both a regular class and a mixin, with the same name and the same type."
+            "\n\nAny restrictions that apply to classes or mixins also apply to mixin classes:"
+            "\n\n•Mixins can't have extends or with clauses, so neither can a mixin class."
+            "\n\n•Classes can't have an on clause, so neither can a mixin class."
+          },
+          {
+            'heading': "abstract mixin class ",
+            'attachment': "assets/dart_intermediate/mix_3.png",
+            'body': "You can achieve similar behavior to the on directive for a mixin class. Make the mixin class abstract and define the abstract methods its behavior depends on:"
+          },
 
 
 
 
         ]
-      }
+      }, 6: {
+        'topic': "7.     Enumerated types",
+        'subTopic': [
+          {
+            'heading': "Enumerated types ",
+            'attachment': "",
+            'body': "Enumerated types, often called enumerations or enums, are a special kind of class used to represent a fixed number of constant values."
+          },
+          {
+            'heading': "Declaring simple enums ",
+            'attachment': "assets/dart_intermediate/enum_1.png",
+            'body': "To declare a simple enumerated type, use the enum keyword and list the values you want to be enumerated:"
+          },
+          {
+            'heading': "Declaring enhanced enums ",
+            'attachment': "assets/dart_intermediate/enum_2.png",
+            'body': "Dart also allows enum declarations to declare classes with fields, methods, "
+                "and const constructors which are limited to a fixed number of known constant instances."
+            "\n\nTo declare an enhanced enum, follow a syntax similar to normal classes, but with a few extra requirements:"
+            "\n\n•Instance variables must be final, including those added by mixins."
+            "\n\n•All generative constructors must be constant."
+            "\n\n•Factory constructors can only return one of the fixed, known enum instances."
+            "\n\n•No other class can be extended as Enum is automatically extended."
+            "\n\n•There cannot be overrides for index, hashCode, the equality operator ==."
+            "\n\n•A member named values cannot be declared in an enum, as it would conflict with the automatically generated static values getter."
+            "\n\n•All instances of the enum must be declared in the beginning of the declaration, and there must be at least one instance declared."
+            "\n\nInstance methods in an enhanced enum can use this to reference the current enum value."
+            "\n\nHere is an example that declares an enhanced enum with multiple instances, instance variables, getters, and an implemented interface:"
+          },
+          {
+            'heading': "Using enums ",
+            'attachment': "assets/dart_intermediate/enum_3.png",
+            'body': "Access the enumerated values like any other static variable:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_intermediate/enum_4.png",
+            'body': "Each value in an enum has an index getter, which returns "
+                "the zero-based position of the value in the enum declaration. For example, the first value has index 0, and the second value has index 1."
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_intermediate/enum_5.png",
+            'body': "To get a list of all the enumerated values, use the enum's values constant."
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_intermediate/enum_6.png",
+            'body': "You can use enums in switch statements, and you'll get a warning if you don't handle all of the enum's values:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_intermediate/enum_7.png",
+            'body': "If you need to access the name of an enumerated value, such as 'blue' from Color.blue, use the .name property:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_intermediate/enum_8.png",
+            'body': "You can access a member of an enum value like you would on a normal object:"
+          },
+
+        ]
+      }, 7: {
+        'topic': "8.     Extension methods",
+        'subTopic': [
+          {
+            'heading': "Extension methods ",
+            'attachment': "",
+            'body': "Extension methods add functionality to existing libraries. "
+                "You might use extension methods without even knowing it. For example, when you use code completion in an IDE, it suggests extension methods alongside regular methods."
+          },
+          {
+            'heading': "Overview ",
+            'attachment': "assets/dart_intermediate/ext_1.png",
+            'body': "When you're using someone else's API or when you implement a library that's widely used, "
+                "it's often impractical or impossible to change the API. But you might still want to add some functionality."
+            "\n\nFor example, consider the following code that parses a string into an integer:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_intermediate/ext_2.png",
+            'body': "It might be nice—shorter and easier to use with tools—to have that functionality be on String instead:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_intermediate/ext_3.png",
+            'body': "To enable that code, you can import a library that contains an extension of the String class:"
+          },
+          {
+            'heading': " ",
+            'attachment': "",
+            'body': "Extensions can define not just methods, but also other members such as getter, "
+                "setters, and operators. Also, extensions can have names, which can be helpful if an API conflict arises. "
+                "Here's how you might implement the extension method parseInt(), using an extension (named NumberParsing) that operates on strings:"
+          },
+          {
+            'heading': "Using extension methods ",
+            'attachment': "assets/dart_intermediate/ext_4.png",
+            'body': "Like all Dart code, extension methods are in libraries. You've already seen how to use an extension method—just import the library it's in, and use it like an ordinary method:"
+          },
+          {
+            'heading': "Static types and dynamic ",
+            'attachment': "assets/dart_intermediate/ext_5.png",
+            'body': "You can't invoke extension methods on variables of type dynamic. "
+                "\n\nFor example, the following code results in a runtime exception:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_intermediate/ext_6.png",
+            'body': "Extension methods do work with Dart's type inference. The following code is fine because the variable v is inferred to have type String:"
+          },
+          {
+            'heading': " ",
+            'attachment': "",
+            'body': "The reason that dynamic doesn't work is that extension methods are resolved against the static type of the receiver. "
+                "Because extension methods are resolved statically, they're as fast as calling a static function."
+            "\n\nFor more information about static types and dynamic, see The Dart type system."
+          },
+          {
+            'heading': "API conflicts ",
+            'attachment': "assets/dart_intermediate/ext_7.png",
+            'body': "If an extension member conflicts with an interface or with another extension member, then you have a few options."
+            "\n\nOne option is changing how you import the conflicting extension, using show or hide to limit the exposed API:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_intermediate/ext_8.png",
+            'body': "Another option is applying the extension explicitly, which results in code that looks as if the extension is a wrapper class:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_intermediate/ext_9.png",
+            'body': "If both extensions have the same name, then you might need to import using a prefix:"
+          },
+          {
+            'heading': " ",
+            'attachment': "",
+            'body': "As the example shows, you can invoke extension methods implicitly even if you import using a prefix. "
+                "The only time you need to use the prefix is to avoid a name conflict when invoking an extension explicitly."
+          },
+          {
+            'heading': "Implementing extension methods ",
+            'attachment': "assets/dart_intermediate/ext_10.png",
+            'body': "Use the following syntax to create an extension:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_intermediate/ext_11.png",
+            'body': "For example, here's how you might implement an extension on the String class:"
+          },
+          {
+            'heading': " ",
+            'attachment': "",
+            'body': "The members of an extension can be methods, getters, setters, or operators. "
+                "Extensions can also have static fields and static helper methods. To access static members outside the extension declaration, "
+                "invoke them through the declaration name like class variables and methods."
+          },
+          {
+            'heading': "Unnamed extensions ",
+            'attachment': "assets/dart_intermediate/ext_12.png",
+            'body': "When declaring an extension, you can omit the name. Unnamed extensions are visible only in the library where they're declared. Since they don't have a name, they can't be explicitly applied to resolve API conflicts."
+          },
+          {
+            'heading': "Implementing generic extensions ",
+            'attachment': "assets/dart_intermediate/ext_13.png",
+            'body': "Extensions can have generic type parameters. For example, here's some code that extends the built-in List<T> type with a getter, an operator, and a method:"
+          },
+          {
+            'heading': " ",
+            'attachment': "",
+            'body': "The type T is bound based on the static type of the list that the methods are called on."
+          },
+
+
+
+        ]
+      }, 8: {
+        'topic': "9.     Extension types",
+        'subTopic': [
+          {
+            'heading': "Extension types ",
+            'attachment': "assets/dart_intermediate/t_1.png",
+            'body': "An extension type is a compile-time abstraction that wraps an existing type with a different, static-only interface. "
+                "They are a major component of static JS interop because they can easily modify an existing type's interface (crucial "
+                "for any kind of interop) without incurring the cost of an actual wrapper."
+            "\n\nExtension types enforce discipline on the set of operations (or interface) available to objects of an underlying type, "
+                "called the representation type. When defining the interface of an extension type, you can choose to reuse some members of "
+                "the representation type, omit others, replace others, and add new functionality."
+            "\n\nThe following example wraps the int type to create an extension type that only allows operations that make sense for ID numbers:"
+          },
+          {
+            'heading': "Syntax ",
+            'attachment': "assets/dart_intermediate/t_2.png",
+            'body': ""
+          },
+          {
+            'heading': "Declaration ",
+            'attachment': "",
+            'body': "Define a new extension type with the extension type declaration and a name, "
+                "followed by the representation type declaration in parenthesis:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_intermediate/t_3.png",
+            'body': "The representation type declaration (int i) specifies that the underlying type of extension "
+                "type E is int, and that the reference to the representation object is named i. The declaration also introduces:"
+            "\n\n•An implicit getter for the representation object with the representation type as the return type: int get i."
+            "\n\n•An implicit constructor: E(int i) : i = i."
+            "\n\nThe representation object gives the extension type access to an object at the underlying type. "
+                "The object is in scope in the extension type body, and you can access it using its name as a getter:"
+            "\n\n•Within the extension type body using i (or this.i in a constructor)."
+            "\n\n•Outside with a property extraction using e.i (where e has the extension type as its static type)."
+            "\n\nExtension type declarations can also include type parameters just like classes or extensions:"
+          },
+          {
+            'heading': "Constructors ",
+            'attachment': "assets/dart_intermediate/t_4.png",
+            'body': "You can optionally declare constructors in an extension type's body. "
+                "The representation declaration itself is an implicit constructor, so by default takes the place of an unnamed constructor for the extension type. "
+                "Any additional non-redirecting generative constructors must initialize the representation object's "
+                "instance variable using this.i in its initializer list or formal parameters."
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_intermediate/t_5.png",
+            'body': "Or, you can name the representation declaration constructor, "
+                "in which case there is room for an unnamed constructor in the body:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_intermediate/t_6.png",
+            'body': "You can also completely hide the constructor, instead of just defining a new one, using the same private constructor syntax for classes, _. "
+                "\n\nFor example, if you only want clients constructing E with a String, even though the underlying type is int:"
+          },
+          {
+            'heading': "Members ",
+            'attachment': "assets/dart_intermediate/t_7.png",
+            'body': "Declare members in the body of an extension type to define its interface the same way you would for class members. "
+                "Extension type members can be methods, getters, setters, or operators (non-external instance variables and abstract members are not allowed):"
+          },
+          {
+            'heading': " ",
+            'attachment': "",
+            'body': "Interface members of the representation type are not interface members of the extension type by default. "
+                "To make a single member of the representation type available on the extension type, you must write a declaration for it in the extension type definition, "
+                "like the operator + in NumberE. You also can define new members unrelated to the representation type, like the i getter and isValid method."
+          },
+          {
+            'heading': "Implements ",
+            'attachment': "",
+            'body': "You can optionally use the implements clause to:"
+            "\n\n•Introduce a subtype relationship on an extension type, AND"
+            "\n\n•Add the members of the representation object to the extension type interface."
+            "\n\nThe implements clause introduces an applicability relationship like the one between an extension method and its on type. "
+                "Members that are applicable to the supertype are applicable to the subtype as well, unless the "
+                "subtype has a declaration with the same member name."
+          },
+          {
+            'heading': " ",
+            'attachment': "",
+            'body': "An extension type can only implement:"
+          },
+          {
+            'heading': "•Its representation type. This makes all members of the "
+                "representation type implicitly available to the extension type. ",
+            'attachment': "assets/dart_intermediate/t_8.png",
+            'body': ""
+          },
+          {
+            'heading': "•A supertype of its representation type. This makes the members of the "
+                "supertype available, while not necessarily all the members of representation type. ",
+            'attachment': "assets/dart_intermediate/t_9.png",
+            'body': ""
+          },
+          {
+            'heading': "•Another extension type that is valid on the same representation type. "
+                "This allows you to reuse operations across multiple extension types (similar to multiple inheritance). ",
+            'attachment': "assets/dart_intermediate/t_10.png",
+            'body': ""
+          },
+          {
+            'heading': "@redeclare ",
+            'attachment': "assets/dart_intermediate/t_11.png",
+            'body': "Declaring an extension type member that shares a name with a member of a supertype is not an override relationship like it is between classes, "
+                "but rather a redeclaration. An extension type member declaration completely replaces any supertype member with the same name. "
+                "It's not possible to provide an alternative implementation for the same function."
+            "\n\nYou can use the @redeclare annotation to tell the compiler you are knowingly choosing to use the same name as a supertype's member. The analyzer will then warn you if that's not actually true, for example if one of the names are mistyped."
+          },
+          {
+            'heading': " ",
+            'attachment': "",
+            'body': "You can also enable the lint annotate_redeclares to get a warning "
+                "if you declare an extension type method that hides a superinterface member and isn't annotated with @redeclare."
+          },
+          {
+            'heading': "Usage ",
+            'attachment': "assets/dart_intermediate/t_12.png",
+            'body': "To use an extension type, create an instance the same as you would with a class: by calling a constructor:"
+          },
+          {
+            'heading': " ",
+            'attachment': "",
+            'body': "Then, you can invoke members on the object as you would with a class object."
+            "\n\nThere are two equally valid, but substantially different core use cases for extension types:"
+            "\n\n1.Providing an extended interface to an existing type."
+            "\n\n2.Providing a different interface to an existing type."
+          },
+          {
+            'heading': "1. Provide an extended interface to an existing type ",
+            'attachment': "assets/dart_intermediate/t_13.png",
+            'body': "When an extension type implements its representation type, "
+                "you can consider it transparent, because it allows the extension type to see the underlying type."
+            "\n\nThis means you can invoke members of the representation type (unlike a non-transparent extension type), like so:"
+          },
+          {
+            'heading': " ",
+            'attachment': "",
+            'body': "You can also have a mostly-transparent extension type that adds new members and adapts others by redeclaring a given member name from the supertype. "
+              "This would allow you to use stricter types on some parameters of a method, or different default values, for example."
+            "\n\nAnother mostly-transparent extension type approach is to implement a type that is a supertype of the representation type. For example, "
+                "if the representation type is private but its supertype defines the part of the interface that matters for clients."
+          },
+          {
+            'heading': "2. Provide a different interface to an existing type ",
+            'attachment': "assets/dart_intermediate/t_14.png",
+            'body': "An extension type that is not transparent (that does not implement its representation type) is statically treated as a completely new type, "
+                "distinct from its representation type. You can't assign it to its representation type, and it doesn't expose its representation type's members."
+            "\n\nFor example, take the NumberE extension type we declared under Usage:"
+          },
+          {
+            'heading': "Type considerations ",
+            'attachment': "assets/dart_intermediate/t_15.png",
+            'body': "Extension types are a compile-time wrapping construct. At run time, "
+                "there is absolutely no trace of the extension type. Any type query or similar run-time operations work on the representation type."
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_intermediate/t_16.png",
+            'body': "Similarly, the static type of the matched value is that of the extension type in this example:"
+          },
+          {
+            'heading': " ",
+            'attachment': "",
+            'body': "It's important to be aware of this quality when using extension types. "
+                "Always keep in mind that an extension type exists and matters at compile time, but gets erased during compilation."
+          },
+          {
+            'heading': " ",
+            'attachment': "",
+            'body': "An expression with the extension type E and the representation type R as its static type will be an "
+                "object with type R at run time. Even the type itself is erased; List<E> is exactly the same thing as List<R> at run time."
+          },
+          {
+            'heading': " ",
+            'attachment': "",
+            'body': "In other words, a real wrapper class can encapsulate a wrapped object, "
+                "whereas an extension type is just a compile-time view on the wrapped object. While a real wrapper is safer, "
+                "the trade-off is extension types give you the option to avoid wrapper objects, which can greatly improve performance in some scenarios."
+          },
+
+        ]
+      }, 9: {
+        'topic': "10.     Callable objects",
+        'subTopic': [
+          {
+            'heading': "Callable objects ",
+            'attachment': "assets/dart_intermediate/col_1.png",
+            'body': "To allow an instance of your Dart class to be called like a function, implement the call() method."
+            "\n\nThe call() method allows an instance of any class that defines it to emulate a function. "
+                "This method supports the same functionality as normal functions such as parameters and return types."
+            "\n\nIn the following example, the WannabeFunction class defines a call() function that takes three strings and concatenates them, "
+                "separating each with a space, and appending an exclamation. Click Run to execute the cod"
+          },
+
+        ]
+      }, 10: {
+        'topic': "11.     Class modifiers",
+        'subTopic': [
+          {
+            'heading': "Class modifiers ",
+            'attachment': "",
+            'body': "Class modifiers control how a class or mixin can be used, "
+                "both from within its own library, and from outside the library where it's defined."
+            "\n\nModifier keywords come before a class or mixin declaration. "
+                "For example, writing abstract class defines an abstract class. The full set of modifiers that can appear before a class declaration include:"
+            "\n\n•abstract"
+            "\n\n•base"
+            "\n\n•final"
+            "\n\n•interface"
+            "\n\n•sealed"
+            "\n\n•mixin"
+          },
+          {
+            'heading': "No modifier ",
+            'attachment': "",
+            'body': "To allow unrestricted permission to construct or subtype from any library, "
+                "use a class or mixin declaration without a modifier. By default, you can:"
+          },
+          {
+            'heading': " ",
+            'attachment': "",
+            'body': "•Construct new instances of a class."
+            "\n\n•Extend a class to create a new subtype."
+            "\n\n•Implement a class or mixin's interface."
+            "\n\n•Mix in a mixin or mixin class."
+          },
+          {
+            'heading': "abstract ",
+            'attachment': "assets/dart_intermediate/class_1.png",
+            'body': "To define a class that doesn't require a full, concrete implementation of its entire interface, use the abstract modifier."
+            "\n\nAbstract classes cannot be constructed from any library, whether its own or an outside library. Abstract classes often have abstract methods."
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_intermediate/class_2.png",
+            'body': ""
+          },
+          {
+            'heading': " ",
+            'attachment': "",
+            'body': "If you want your abstract class to appear to be instantiable, define a factory constructor."
+          },
+          {
+            'heading': "base ",
+            'attachment': "assets/dart_intermediate/class_3.png",
+            'body': "To enforce inheritance of a class or mixin's implementation, "
+                "use the base modifier. A base class disallows implementation outside of its own library. This guarantees:"
+            "\n\n•The base class constructor is called whenever an instance of a subtype of the class is created."
+            "\n\n•All implemented private members exist in subtypes."
+            "\n\n•A new implemented member in a base class does not break subtypes, since all subtypes inherit the new member."
+            "\n\nThis is true unless the subtype already declares a member with the same name and an incompatible signature."
+            "\n\nYou must mark any class which implements or extends a base class as base, final, or sealed. This prevents outside libraries from breaking the base class guarantees."
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_intermediate/class_4.png",
+            'body': ""
+          },
+          {
+            'heading': "interface ",
+            'attachment': "assets/dart_intermediate/class_5.png",
+            'body': "To define an interface, use the interface modifier. "
+                "Libraries outside of the interface's own defining library can implement the interface, but not extend it. This guarantees:"
+            "\n\n•When one of the class's instance methods calls another instance method on this, "
+                "it will always invoke a known implementation of the method from the same library."
+            "\n\n•Other libraries can't override methods that the interface class's own methods might later call in unexpected ways. This reduces the fragile base class problem."
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_intermediate/class_6.png",
+            'body': ""
+          },
+          {
+            'heading': "abstract interface ",
+            'attachment': "",
+            'body': "The most common use for the interface modifier is to define a pure interface. "
+                "Combine the interface and abstract modifiers for an abstract interface class."
+            "\n\nLike an interface class, other libraries can implement, but can't inherit, a pure interface. "
+                "Like an abstract class, a pure interface can have abstract members."
+          },
+          {
+            'heading': "final ",
+            'attachment': "assets/dart_intermediate/class_7.png",
+            'body': "To close the type hierarchy, use the final modifier. "
+                "This prevents subtyping from a class outside of the current library. Disallowing both inheritance and implementation prevents subtyping entirely. This guarantees:"
+            "\n\n•You can safely add incremental changes to the API."
+            "\n\n•You can call instance methods knowing that they haven't been overwritten in a third-party subclass."
+            "\n\nFinal classes can be extended or implemented within the same library. "
+                "The final modifier encompasses the effects of base, and therefore any subclasses must also be marked base, final, or sealed."
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_intermediate/class_8.png",
+            'body': ""
+          },
+          {
+            'heading': "sealed ",
+            'attachment': "assets/dart_intermediate/class_9.png",
+            'body': "To create a known, enumerable set of subtypes, use the sealed modifier. "
+                "This allows you to create a switch over those subtypes that is statically ensured to be exhaustive."
+            "\n\nThe sealed modifier prevents a class from being extended or implemented outside its own library. Sealed classes are implicitly abstract."
+            "\n\n•They cannot be constructed themselves."
+            "\n\n•They can have factory constructors."
+            "\n\n•They can define constructors for their subclasses to use."
+            "\n\nSubclasses of sealed classes are, however, not implicitly abstract."
+            "\n\nThe compiler is aware of any possible direct subtypes because they can only exist in the same library. "
+                "This allows the compiler to alert you when a switch does not exhaustively handle all possible subtypes in its cases:"
+          },
+          {
+            'heading': " ",
+            'attachment': "",
+            'body': "If you don't want exhaustive switching, or want to be able to "
+                "add subtypes later without breaking the API, use the final modifier. For a more in depth comparison, read sealed versus final."
+          },
+          {
+            'heading': "Combining modifiers ",
+            'attachment': "",
+            'body': "You can combine some modifiers for layered restrictions. A class declaration can be, in order:"
+            "\n\n1.(Optional) abstract, describing whether the class can contain abstract members and prevents instantiation."
+            "\n\n2.(Optional) One of base, interface, final or sealed, describing restrictions on other libraries subtyping the class."
+            "\n\n3.(Optional) mixin, describing whether the declaration can be mixed in."
+            "\n\n4.The class keyword itself."
+          },
+          {
+            'heading': " ",
+            'attachment': "",
+            'body': "You can't combine some modifiers because they are contradictory, redundant, or otherwise mutually exclusive:"
+            "\n\n•abstract with sealed. A sealed class is implicitlyabstract."
+            "\n\n•interface, final or sealed with mixin. These access modifiers prevent mixing in."
+          },
+
+
+        ]
+      }, 11: {
+        'topic': "12.     Class modifiers for API maintainers",
+        'subTopic': [
+          {
+            'heading': "Class modifiers for API maintainers ",
+            'attachment': "",
+            'body': "Dart 3.0 adds a few new modifiers that you can place on class and mixin declarations. "
+                "If you are the author of a library package, these modifiers give you more control over what users are allowed to do with the types that your package exports. "
+                "This can make it easier to evolve your package, and easier to know if a change to your code may break users."
+            "\n\nDart 3.0 also includes a breaking change around using classes as mixins. This change might not break your class, but it could break users of your class."
+          },
+          {
+            'heading': "The mixin modifier on classes ",
+            'attachment': "assets/dart_intermediate/mod_1.png  ",
+            'body': "The most important modifier to be aware of is mixin. "
+                "Language versions prior to Dart 3.0 allow any class to be used as a mixin in another class's with clause, UNLESS the class:"
+            "\n\n•Declares any non-factory constructors."
+            "\n\n•Extends any class other than Object."
+            "\n\nThis makes it easy to accidentally break someone else's code, "
+                "by adding a constructor or extends clause to a class without realizing that others are using it in a with clause."
+            "\n\nDart 3.0 no longer allows classes to be used as mixins by default. Instead, you must explicitly opt-in to that behavior by declaring a mixin class:"
+          },
+          {
+            'heading': " ",
+            'attachment': "",
+            'body': "If you update your package to Dart 3.0 and don't change any of your code, "
+                "you may not see any errors. But you may inadvertently break users of your package if they were using your classes as mixins."
+          },
+          {
+            'heading': "Migrating classes as mixins ",
+            'attachment': "",
+            'body': "If the class has a non-factory constructor, an extends clause, or a with clause, "
+                "then it already can't be used as a mixin. Behavior won't change with Dart 3.0; there's nothing to worry about and nothing you need to do."
+            "\n\nIn practice, this describes about 90% of existing classes. For the remaining classes that can be used as mixins, you have to decide what you want to support."
+          },
+          {
+            'heading': "Other opt-in modifiers ",
+            'attachment': "",
+            'body': "Handling classes as mixins is the only critical change in Dart 3.0 "
+                "that affects the API of your package. Once you've gotten this far, "
+                "you can stop if you don't want to make other changes to what your package allows users to do."
+            "\n\n\nNote that if you do continue and use any of the modifiers described below, "
+                "it is potentially a breaking change to your package's API which necessitates a major version increment."
+          },
+          {
+            'heading': "The interface modifier ",
+            'attachment': "",
+            'body': "Dart doesn't have a separate syntax for declaring pure interfaces. "
+                "Instead, you declare an abstract class that happens to contain only abstract methods. When a user sees that class in your package's API, "
+                "they may not know if it contains code they can reuse by extending the class, or whether it is instead meant to be used as an interface."
+            "\n\nYou can clarify that by putting the interface modifier on the class. "
+                "That allows the class to be used in an implements clause, but prevents it from being used in extends."
+            "\n\nEven when the class does have non-abstract methods, you may want to prevent users from extending it. "
+                "Inheritance is one of the most powerful kinds of coupling in software, because it enables code reuse. "
+                "But that coupling is also dangerous and fragile. When inheritance crosses package boundaries, it can be hard to evolve the superclass without breaking subclasses."
+            "\n\nMarking the class interface lets users construct it (unless it's also marked abstract) "
+                "and implement the class's interface, but prevents them from reusing any of its code."
+            "\n\nWhen a class is marked interface, the restriction can be ignored within the "
+                "library where the class is declared. Inside the library, you're free to extend "
+                "it since it's all your code and presumably you know what you're doing. "
+                "The restriction applies to other packages, and even other libraries within your own package."
+          },
+          {
+            'heading': "The base modifier ",
+            'attachment': "assets/dart_intermediate/mod_2.png",
+            'body': "The base modifier is somewhat the opposite of interface. "
+                "It allows you to use the class in an extends clause, or use a mixin "
+                "or mixin class in a with clause. But, it disallows code outside "
+                "of the class's library from using the class or mixin in an implements clause."
+            "\n\nThis ensures that every object that is an instance of your class "
+                "or mixin's interface inherits your actual implementation. "
+                "In particular, this means that every instance will include all of "
+                "the private members your class or mixin declares. This can help "
+                "prevent runtime errors that might otherwise occur."
+            "\n\nConsider this library:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_intermediate/mod_3.png",
+            'body': "This code seems fine on its own, but there's nothing preventing a user from creating another library like this:"
+          },
+          {
+            'heading': " ",
+            'attachment': "",
+            'body': "Adding the base modifier to the class can help prevent these "
+                "runtime errors. As with interface, you can ignore this restriction "
+                "in the same library where the base class or mixin is declared. "
+                "Then subclasses in the same library will be reminded to implement "
+                "the private methods. But note that the next section does apply:"
+          },
+          {
+            'heading': "Base transitivity ",
+            'attachment': "",
+            'body': "The goal of marking a class base is to ensure that every "
+                "instance of that type concretely inherits from it. To maintain "
+                "this, the base restriction is contagious. Every subtype of a "
+                "type marked base -- direct or indirect -- must also prevent "
+                "being implemented. That means it must be marked base "
+                "(or final or sealed, which we'll get to next)."
+            "\n\nApplying base to a type requires some care, then. It affects "
+                "not just what users can do with your class or mixin, but also "
+                "the affordances their subclasses can offer. Once you've put "
+                "base on a type, the whole hierarchy under it is prohibited "
+                "from being implemented."
+            "\n\nThat sounds intense, but it's how most other programming languages "
+                "have always worked. Most don't have implicit interfaces at all, "
+                "so when you declare a class in Java, C#, or other languages, "
+                "you effectively have the same constraint."
+          },
+          {
+            'heading': "The final modifier ",
+            'attachment': "",
+            'body': "If you want all of the restrictions of both interface and base, "
+                "you can mark a class or mixin class final. This prevents anyone "
+                "outside of your library from creating any kind of subtype of it:"
+                " no using it in implements, extends, with, or on clauses."
+          },
+          {
+            'heading': " ",
+            'attachment': "",
+            'body': "This is the most restrictive for users of the class. "
+                "All they can do is construct it (unless it's marked abstract). "
+                "In return, you have the fewest restrictions as the class maintainer. "
+                "You can add new methods, turn constructors into factory constructors, "
+                "etc. without worrying about breaking any downstream users."
+          },
+          {
+            'heading': "The sealed modifier ",
+            'attachment': "assets/dart_intermediate/mod_4.png",
+            'body': "The last modifier, sealed, is special. It exists primarily to "
+                "enable exhaustiveness checking in pattern matching. If a switch "
+                "has cases for every direct subtype of a type marked sealed, then "
+                "the compiler knows the switch is exhaustive."
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_intermediate/mod_5.png",
+            'body': "This switch has a case for each of the subtypes of Amigo. "
+                "The compiler knows that every instance of Amigo must be an instance "
+                "of one of those subtypes, so it knows the switch is safely exhaustive "
+                "and doesn't require any final default case."
+            "\n\nFor this to be sound, the compiler enforces two restrictions:"
+            "\n\n1.The sealed class can't itself be directly constructible. Otherwise, "
+                "you could have an instance of Amigo that isn't an instance of any of the subtypes. "
+                "So every sealed class is implicitly abstract too."
+            "\n\n2.Every direct subtype of the sealed type must be in the same "
+                "library where the sealed type is declared. This way, the compiler "
+                "can find them all. It knows that there aren't other hidden subtypes "
+                "floating around that would not match any of the cases."
+            "\n\nThe second restriction is similar to final. Like final, "
+                "it means that a class marked sealed can't be directly extended, "
+                "implemented, or mixed in outside of the library where it's declared. "
+                "But, unlike base and final, there is no transitive restriction:"
+
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_intermediate/mod_6.png",
+            'body': ""
+          },
+          {
+            'heading': " ",
+            'attachment': "",
+            'body': "Of course, if you want the subtypes of your sealed type to be "
+                "restricted as well, you can get that by marking them using interface, base, final, or sealed."
+          },
+          {
+            'heading': "sealed versus final ",
+            'attachment': "",
+            'body': "If you have a class that you don't want users to be able to directly subtype, "
+                "when should you use sealed versus final? A couple of simple rules:"
+            "\n\n•If you want users to be able to directly construct instances of the class, then it can't use sealed since sealed types are implicitly abstract."
+            "\n\n•If the class has no subtypes in your library, then there's no point in using sealed since you get no exhaustiveness checking benefits."
+            "\n\nOtherwise, if the class does have some subtypes that you define, then sealed is likely what you want. "
+                "If users see that the class has a few subtypes, it's handy to be able to "
+                "handle each of them separately as switch cases and have the compiler know that the entire type is covered."
+            "\n\nUsing sealed does mean that if you later add another subtype to the library, it's a breaking API change. "
+                "When a new subtype appears, all of those existing switches become "
+                "non-exhaustive since they don't handle the new type. It's exactly "
+                "like adding a new value to an enum."
+            "\n\nThose non-exhaustive switch compile errors are useful to users "
+                "because they draw the user's attention to places in their code where they'll need to handle the new type."
+            "\n\nBut it does mean that whenever you add a new subtype, it's a breaking change. "
+                "If you want the freedom to add new subtypes in a non-breaking way, then it's better "
+                "to mark the supertype using final instead of sealed. That means that when a "
+                "user switches on a value of that supertype, even if they have cases for all "
+                "of the subtypes, the compiler will force them to add another default case. "
+                "That default case will then be what is executed if you add more subtypes later."
+          },
+
+
+
+
+        ]
+      },
+
+
     },
-    Categories.intermediate: {},
-    Categories.advanced: {},
+    Categories.advanced: {
+      0: {
+        'topic': "1.     ",
+        'subTopic': [
+          {
+            'heading': " ",
+            'attachment': "",
+            'body': ""
+          },
+
+        ]
+      },
+      1: {
+        'topic': "2.     ",
+        'subTopic': [
+          {
+            'heading': " ",
+            'attachment': "",
+            'body': ""
+          },
+
+        ]
+      },
+      2: {
+        'topic': "3.     ",
+        'subTopic': [
+          {
+            'heading': " ",
+            'attachment': "",
+            'body': ""
+          },
+
+        ]
+      },
+      3: {
+        'topic': "4.     ",
+        'subTopic': [
+          {
+            'heading': " ",
+            'attachment': "",
+            'body': ""
+          },
+
+        ]
+      },
+
+    },
   },
 };

@@ -954,8 +954,125 @@ flutter:
     - assets/dart_beginner/b_9.png
     - assets/dart_beginner/b_10.png
     - assets/dart_beginner/b_11.png
-
-
+    #Error handling
+    - assets/dart_intermediate/ex_1.png
+    - assets/dart_intermediate/ex_2.png
+    - assets/dart_intermediate/ex_3.png
+    - assets/dart_intermediate/ex_4.png
+    - assets/dart_intermediate/ex_5.png
+    - assets/dart_intermediate/ex_6.png
+    - assets/dart_intermediate/ex_7.png
+    - assets/dart_intermediate/ex_8.png
+    - assets/dart_intermediate/ex_9.png
+    - assets/dart_intermediate/ex_10.png
+    - assets/dart_intermediate/ex_11.png
+    #Classes
+    - assets/dart_intermediate/c_1.png
+    - assets/dart_intermediate/c_2.png
+    - assets/dart_intermediate/c_3.png
+    - assets/dart_intermediate/c_4.png
+    - assets/dart_intermediate/c_5.png
+    - assets/dart_intermediate/c_6.png
+    - assets/dart_intermediate/c_7.png
+    - assets/dart_intermediate/c_8.png
+    - assets/dart_intermediate/c_9.png
+    - assets/dart_intermediate/c_10.png
+    - assets/dart_intermediate/c_11.png
+    - assets/dart_intermediate/c_12.png
+    - assets/dart_intermediate/c_13.png
+    - assets/dart_intermediate/c_14.png
+    - assets/dart_intermediate/c_15.png
+    - assets/dart_intermediate/c_16.png
+    - assets/dart_intermediate/c_17.png
+    - assets/dart_intermediate/c_18.png
+    #Dart Constructors
+    - assets/dart_intermediate/con_1.png
+    - assets/dart_intermediate/con_2.png
+    - assets/dart_intermediate/con_3.png
+    - assets/dart_intermediate/con_4.png
+    - assets/dart_intermediate/con_5.png
+    - assets/dart_intermediate/con_6.png
+    - assets/dart_intermediate/con_7.png
+    - assets/dart_intermediate/con_8.png
+    - assets/dart_intermediate/con_9.png
+    - assets/dart_intermediate/con_10.png
+    - assets/dart_intermediate/con_11.png
+    - assets/dart_intermediate/con_12.png
+    - assets/dart_intermediate/con_13.png
+    - assets/dart_intermediate/con_14.png
+    #Dart Method
+    - assets/dart_intermediate/met_1.png
+    - assets/dart_intermediate/met_2.png
+    - assets/dart_intermediate/met_3.png
+    - assets/dart_intermediate/met_4.png
+    - assets/dart_intermediate/met_5.png
+    #Extend a class
+    - assets/dart_intermediate/ec_1.png
+    - assets/dart_intermediate/ec_2.png
+    - assets/dart_intermediate/ec_3.png
+    #Dart Mixins
+    - assets/dart_intermediate/mix_1.png
+    - assets/dart_intermediate/mix_2.png
+    - assets/dart_intermediate/mix_3.png
+    #Enumerated types
+    - assets/dart_intermediate/enum_1.png
+    - assets/dart_intermediate/enum_2.png
+    - assets/dart_intermediate/enum_3.png
+    - assets/dart_intermediate/enum_4.png
+    - assets/dart_intermediate/enum_5.png
+    - assets/dart_intermediate/enum_6.png
+    - assets/dart_intermediate/enum_7.png
+    - assets/dart_intermediate/enum_8.png
+    #Extension methods
+    - assets/dart_intermediate/ext_1.png
+    - assets/dart_intermediate/ext_2.png
+    - assets/dart_intermediate/ext_3.png
+    - assets/dart_intermediate/ext_4.png
+    - assets/dart_intermediate/ext_5.png
+    - assets/dart_intermediate/ext_6.png
+    - assets/dart_intermediate/ext_7.png
+    - assets/dart_intermediate/ext_8.png
+    - assets/dart_intermediate/ext_9.png
+    - assets/dart_intermediate/ext_10.png
+    - assets/dart_intermediate/ext_11.png
+    - assets/dart_intermediate/ext_12.png
+    - assets/dart_intermediate/ext_13.png
+    #Extension types
+    - assets/dart_intermediate/t_1.png
+    - assets/dart_intermediate/t_2.png
+    - assets/dart_intermediate/t_3.png
+    - assets/dart_intermediate/t_4.png
+    - assets/dart_intermediate/t_5.png
+    - assets/dart_intermediate/t_6.png
+    - assets/dart_intermediate/t_7.png
+    - assets/dart_intermediate/t_8.png
+    - assets/dart_intermediate/t_9.png
+    - assets/dart_intermediate/t_10.png
+    - assets/dart_intermediate/t_11.png
+    - assets/dart_intermediate/t_12.png
+    - assets/dart_intermediate/t_13.png
+    - assets/dart_intermediate/t_14.png
+    - assets/dart_intermediate/t_15.png
+    - assets/dart_intermediate/t_16.png
+    #Callable objects
+    - assets/dart_intermediate/col_1.png
+    #Class modifiers
+    - assets/dart_intermediate/class_1.png
+    - assets/dart_intermediate/class_2.png
+    - assets/dart_intermediate/class_3.png
+    - assets/dart_intermediate/class_4.png
+    - assets/dart_intermediate/class_5.png
+    - assets/dart_intermediate/class_6.png
+    - assets/dart_intermediate/class_7.png
+    - assets/dart_intermediate/class_8.png
+    - assets/dart_intermediate/class_9.png
+    #Class modifiers for API maintainers
+    - assets/dart_intermediate/mod_1.png
+    - assets/dart_intermediate/mod_2.png
+    - assets/dart_intermediate/mod_3.png
+    - assets/dart_intermediate/mod_4.png
+    - assets/dart_intermediate/mod_5.png
+    - assets/dart_intermediate/mod_6.png
 
 
 
