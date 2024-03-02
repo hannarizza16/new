@@ -5114,7 +5114,35 @@ const codex = {
             'body': "123, null, 'string', math.pi, SomeClass.constant, const Thing(1, 2), const (1 + 2)"
 
             "Constant patterns match when the value is equal to the constant:"
+            "You can use simple literals and references to named constants directly as constant patterns:"
+            "\n\nYou can use simple literals and references to named constants directly as constant patterns:"
+                "\n\n•Number literals (123, 45.56)"
+                "\n\n•Boolean literals (true)"
+                "\n\n•String literals ('string')"
+                "\n\n•Named constants (someConstant, math.pi, double.infinity)"
+                "\n\n•Constant constructors (const Point(0, 0))"
+                "\n\n•Constant collection literals (const [], const {1, 2})"
           },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_beginner/p_9.png",
+            'body': "More complex constant expressions must be parenthesized and prefixed with const (const (1 + 2)):"
+          },
+          {
+            'heading': "Variable ",
+            'attachment': "assets/dart_beginner/p_10.png",
+            'body': "Variable patterns bind new variables to values that have been matched or destructured. "
+                "They usually occur as part of a destructuring pattern to capture a destructured value."
+            "\n\nThe variables are in scope in a region of code that is only reachable when the pattern has matched."
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_beginner/p_11.png",
+            'body': "A typed variable pattern only matches if the matched value has the declared type, and fails otherwise:"
+          },
+
+
+
 
 
 
