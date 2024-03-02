@@ -1649,6 +1649,428 @@ const dartCodex = {
             'body':
                 "A typed variable pattern only matches if the matched value has the declared type, and fails otherwise:"
           },
+          {
+            'heading': "Identifier ",
+            'attachment': "assets/dart_beginner/p_12.png",
+            'body': "Identifier patterns may behave like a constant pattern or like a variable pattern, depending on the context where they appear:"
+            "\n\n•Declaration context: declares a new variable with identifier name: var (a, b) = (1, 2);"
+            "\n\n•Assignment context: assigns to existing variable with identifier name: (a, b) = (3, 4);"
+            "\n\n•Matching context: treated as a named constant pattern (unless its name is _):"
+            "\n\n•Wildcard identifier in any context: matches any value and discards it: case [_, var y, _]: print('The middle element is Sy');"
+          },
+          {
+            'heading': "Parenthesized ",
+            'attachment': "assets/dart_beginner/p_13.png",
+            'body': "Like parenthesized expressions, parentheses in a pattern let you control pattern precedence and "
+                "insert a lower-precedence pattern where a higher precedence one is expected."
+            "\n\nFor example, imagine the boolean constants x, y, and z are equal to true, true, and false, respectively:"
+            "\n\nIn the first case, the logical-and pattern y && z evaluates first because logical-and patterns have higher precedence than logical-or. In the next case, "
+                "the logical-or pattern is parenthesized. It evaluates first, which results in a different match."
+          },
+          {
+            'heading': "List ",
+            'attachment': "assets/dart_beginner/p_14.png",
+            'body': "A list pattern matches values that implement List, and then recursively matches its subpatterns against the list's elements to destructure them by position:"
+          },
+          {
+            'heading': "Rest element ",
+            'attachment': "assets/dart_beginner/p_15.png",
+            'body': "List patterns can contain one rest element (...) which allows matching lists of arbitrary lengths."
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_beginner/p_16.png",
+            'body': "A rest element can also have a subpattern that collects elements that don't match the other subpatterns in the list, into a new list:"
+          },
+          {
+            'heading': "Map ",
+            'attachment': "",
+            'body': "Map patterns match values that implement Map, and then recursively match its subpatterns against the map's keys to destructure them."
+            "\n\nMap patterns don't require the pattern to match the entire map. A map pattern ignores any keys that the map contains that aren't matched by the pattern."
+          },
+          {
+            'heading': "Record ",
+            'attachment': "assets/dart_beginner/p_17.png",
+            'body': "Record patterns match a record object and destructure its fields. If the value isn't a record with the same shape as the pattern, the match fails. Otherwise, "
+                "the field subpatterns are matched against the corresponding fields in the record."
+            "\nRecord patterns require that the pattern match the entire record. "
+                "To destructure a record with named fields using a pattern, include the field names in the pattern:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_beginner/p_18.png",
+            'body': "The getter name can be omitted and inferred from the "
+                "variable pattern or identifier pattern in the field subpattern. These pairs of patterns are each equivalent:"
+          },
+          {
+            'heading': "Object ",
+            'attachment': "assets/dart_beginner/p_19.png",
+            'body': "Object patterns check the matched value against a given named type to "
+                "destructure data using getters on the object's properties. They are refuted if the value doesn't have the same type."
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_beginner/p_20.png",
+            'body': "The getter name can be omitted and inferred from the variable pattern or identifier pattern in the field subpattern:"
+          },
+          {
+            'heading': "Wildcard ",
+            'attachment': "assets/dart_beginner/p_21.png",
+            'body': "A pattern named _ is a wildcard, either a variable pattern or identifier pattern, that doesn't bind or assign to any variable."
+            "\n\nIt's useful as a placeholder in places where you need a subpattern in order to destructure later positional values"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_beginner/p_22.png",
+            'body': "A wildcard name with a type annotation is useful when you want to test a value's type but not bind the value to a name:"
+          },
+
+        ]
+      },
+      15: {
+        'topic': '16.     Functions',
+        'subTopic':[
+          {
+            'heading': "Functions ",
+            'attachment': "assets/dart_beginner/fun_1.png",
+            'body': "Dart is a true object-oriented language, so even functions are objects and have a type, Function"
+            "\n\nHere's an example of implementing a function:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_beginner/fun_2.png",
+            'body': "Although Effective Dart recommends type annotations for public APIs, the function still works if you omit the types:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_beginner/fun_3.png",
+            'body': "For functions that contain just one expression, you can use a shorthand syntax:"
+          },
+          {
+            'heading': "Named parameters ",
+            'attachment': "assets/dart_beginner/fun_4.png",
+            'body': "Named parameters are optional unless they're explicitly marked as required."
+            "When defining a function, use {param1, param2, …} to specify named parameters. "
+                "If you don't provide a default value or mark a named parameter as required, their types must be nullable as their default value will be null:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_beginner/fun_5.png",
+            'body': "When calling a function, you can specify named arguments using paramName: value. "
+                "\n\nFor example:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_beginner/fun_6.png",
+            'body': "To define a default value for a named parameter besides null, use = to specify a default value. The specified value must be a compile-time constant. "
+                "\n\nFor example:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_beginner/fun_7.png",
+            'body': "If you instead want a named parameter to be mandatory, requiring callers to provide a value for the parameter, annotate them with required:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_beginner/fun_8.png",
+            'body': "You might want to place positional arguments first, but Dart doesn't require it. "
+                "Dart allows named arguments to be placed anywhere in the argument list when it suits your API:"
+          },
+          {
+            'heading': "Optional positional parameters ",
+            'attachment': "assets/dart_beginner/fun_9.png",
+            'body': "Wrapping a set of function parameters in [] marks them as optional positional parameters. "
+                "If you don't provide a default value, their types must be nullable as their default value will be null:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_beginner/fun_10.png",
+            'body': "Here's an example of calling this function without the optional parameter:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_beginner/fun_11.png",
+            'body': "And here's an example of calling this function with the third parameter:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_beginner/fun_12.png",
+            'body': "To define a default value for an optional positional parameter besides null, use = to specify a default value. "
+                "The specified value must be a compile-time constant. For example:"
+          },
+          {
+            'heading': "The main() function ",
+            'attachment': "assets/dart_beginner/fun_13.png",
+            'body': "Every app must have a top-level main() function, which serves as the entrypoint to the app. "
+                "The main() function returns void and has an optional List<String> parameter for arguments."
+            "\n\nHere's a simple main() function:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_beginner/fun_14.png",
+            'body': "Here's an example of the main() function for a command-line app that takes arguments:"
+          },
+          {
+            'heading': "Functions as first-class objects ",
+            'attachment': "assets/dart_beginner/fun_15.png",
+            'body': "You can pass a function as a parameter to another function. "
+                "\n\nFor example:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_beginner/fun_16.png",
+            'body': "You can also assign a function to a variable, such as:"
+          },
+          {
+            'heading': "Anonymous functions",
+            'attachment': "assets/dart_beginner/fun_17.png",
+            'body': "An anonymous function looks similar to a named function—zero or more parameters, "
+                "separated by commas and optional type annotations, between parentheses."
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_beginner/fun_18.png",
+            'body': "Click Run to execute the code"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_beginner/fun_19.png",
+            'body': "If the function contains only a single expression or return statement, "
+                "you can shorten it using arrow notation. Paste the following line into DartPad and click Run to verify that it is functionally equivalent."
+          },
+          {
+            'heading': "Lexical scope ",
+            'attachment': "assets/dart_beginner/fun_20.png",
+            'body': "Dart is a lexically scoped language, which means that the scope of variables is determined statically, simply by the layout of the code. "
+                "You can follow the curly braces outwards to see if a variable is in scope."
+            "\n\nHere is an example of nested functions with variables at each scope level:"
+          },
+          {
+            'heading': "Lexical closures ",
+            'attachment': "assets/dart_beginner/fun_21.png",
+            'body': "A closure is a function object that has access to variables in its lexical scope, even when the function is used outside of its original scope."
+            "\n\nFunctions can close over variables defined in surrounding scopes. In the following example, "
+                "makeAdder() captures the variable addBy. Wherever the returned function goes, it remembers addBy."
+          },
+          {
+            'heading': "Testing functions for equality ",
+            'attachment': "assets/dart_beginner/fun_22.png",
+            'body': "Here's an example of testing top-level functions, static methods, and instance methods for equality:"
+          },
+          {
+            'heading': "Return values ",
+            'attachment': "assets/dart_beginner/fun_23.png",
+            'body': "All functions return a value. If no return value is specified, the statement return null; is implicitly appended to the function body."
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_beginner/fun_24.png",
+            'body': "To return multiple values in a function, aggregate the values in a record."
+          },
+          {
+            'heading': "Generators ",
+            'attachment': "assets/dart_beginner/fun_25.png",
+            'body': "When you need to lazily produce a sequence of values, consider using a generator function. Dart has built-in support for two kinds of generator functions:"
+            "\n\n•Synchronous generator: Returns an Iterable object."
+            "\n\n•Asynchronous generator: Returns a Stream object."
+            "\n\n\nTo implement a synchronous generator function, mark the function body as sync*, and use yield statements to deliver values:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_beginner/fun_26.png",
+            'body': "To implement an asynchronous generator function, mark the function body as async*, and use yield statements to deliver values:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_beginner/fun_27.png",
+            'body': "If your generator is recursive, you can improve its performance by using yield*:"
+          },
+          {
+            'heading': "External functions ",
+            'attachment': "assets/dart_beginner/fun_28.png",
+            'body': "An external function is a function whose body is implemented separately from its declaration. "
+                "Include the external keyword before a function declaration, like so:"
+          },
+
+
+        ]
+      },
+      16: {
+        'topic': '17.     Loops',
+        'subTopic': [
+          {
+            'heading': "Loops ",
+            'attachment': "",
+            'body': "This page shows how you can control the flow of your Dart code using loops and supporting statements:"
+            "\n\n•for loops"
+            "\n\n•while and do while loops"
+            "\n\n•break and continue"
+            "\n\nYou can also manipulate control flow in Dart using"
+            "\n\n•Branching, like if and switch"
+            "\n\n•Exceptions, like try, catch, and throw"
+          },
+          {
+            'heading': "For loops ",
+            'attachment': "assets/dart_beginner/l_1.png",
+            'body': "You can iterate with the standard for loop. For example:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_beginner/l_2.png",
+            'body': "Closures inside of Dart's for loops capture the value of the index. "
+                "This avoids a common pitfall found in JavaScript. For example, consider:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_beginner/l_3.png",
+            'body': "The output is 0 and then 1, as expected. In contrast, the example would print 2 and then 2 in JavaScript."
+            "\n\nSometimes you might not need to know the current iteration counter when iterating over an Iterable type, "
+                "like List or Set. In that case, use the for-in loop for cleaner code:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_beginner/l_4.png",
+            'body': "To process the values obtained from the iterable, you can also use a pattern in a for-in loop"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_beginner/l_5.png",
+            'body': "Iterable classes also have a forEach() method as another option:"
+          },
+          {
+            'heading': "While and do-while ",
+            'attachment': "assets/dart_beginner/l_6.png",
+            'body': "A while loop evaluates the condition before the loop:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_beginner/l_7.png",
+            'body': "A do-while loop evaluates the condition after the loop:"
+          },
+          {
+            'heading': "Break and continue ",
+            'attachment': "assets/dart_beginner/l_8.png",
+            'body': "Use break to stop looping:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_beginner/l_9.png",
+            'body': "Use continue to skip to the next loop iteration:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_beginner/l_10.png",
+            'body': "If you're using an Iterable such as a list or set, how you write the previous example might differ:"
+          },
+        ]
+      },
+      17: {
+        'topic': '18.     Branches',
+        'subTopic': [
+          {
+            'heading': "Branches ",
+            'attachment': "",
+            'body': "This page shows how you can control the flow of your Dart code using branches:"
+            "\n\n•if statements and elements"
+            "\n\n•if-case statements and elements"
+            "\n\n•switch statements and expressions"
+            "\n\n\nYou can also manipulate control flow in Dart using:"
+            "\n\n•Loops, like for and while"
+            "\n\n•Exceptions, like try, catch, and throw"
+          },
+          {
+            'heading': "If ",
+            'attachment': "assets/dart_beginner/b_1.png",
+            'body': "Dart supports if statements with optional else clauses. "
+                "The condition in parentheses after if must be an expression that evaluates to a boolean:"
+          },
+          {
+            'heading': "If-case ",
+            'attachment': "assets/dart_beginner/b_2.png",
+            'body': "Dart if statements support case clauses followed by a pattern:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_beginner/b_3.png",
+            'body': "If the pattern matches the value, then the branch executes with any variables the pattern defines in scope."
+            "\n\nIn the previous example, the list pattern [int x, int y] matches the value pair, so the branch return Point(x, y) executes with the variables that the pattern defined, x and y."
+            "\n\nOtherwise, control flow progresses to the else branch to execute, if there is one:"
+          },
+          {
+            'heading': "Switch statements ",
+            'attachment': "assets/dart_beginner/b_4.png",
+            'body': "A switch statement evaluates a value expression against a series of cases. "
+                "Each case clause is a pattern for the value to match against. You can use any kind of pattern for a case."
+            "\n\nWhen the value matches a case's pattern, the case body executes. Non-empty case clauses jump to the end of the switch after completion. "
+                "They do not require a break statement. Other valid ways to end a non-empty case clause are a continue, throw, or return statement."
+            "\n\nUse a default or wildcard _ clause to execute code when no case clause matches:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_beginner/b_5.png",
+            'body': "Empty cases fall through to the next case, allowing cases to share a body. For an empty case that does not fall through, "
+                "use break for its body. For non-sequential fall-through, you can use a continue statement and a label:"
+          },
+          {
+            'heading': "Switch expressions",
+            'attachment': "assets/dart_beginner/b_6.png",
+            'body': "A switch expression produces a value based on the expression body of whichever case matches. "
+                "You can use a switch expression wherever Dart allows expressions, except at the start of an expression statement. "
+                "\n\nFor example:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_beginner/b_7.png",
+            'body': "Switch expressions allow you to rewrite a switch statement like this:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_beginner/b_8.png",
+            'body': "Into an expression, like this:"
+          },
+          {
+            'heading': " ",
+            'attachment': "",
+            'body': "The syntax of a switch expression differs from switch statement syntax:"
+            "\n\n•Cases do not start with the case keyword."
+            "\n\n•A case body is a single expression instead of a series of statements"
+            "\n\n•Each case must have a body; there is no implicit fallthrough for empty cases."
+            "\n\n•Case patterns are separated from their bodies using => instead of :."
+            "\n\n•Cases are separated by , (and an optional trailing , is allowed)."
+            "\n\n•Default cases can only use _, instead of allowing both default and _."
+          },
+          {
+            'heading': "Exhaustiveness checking",
+            'attachment': "assets/dart_beginner/b_9.png",
+            'body': "Exhaustiveness checking is a feature that reports a compile-time error "
+                "if it's possible for a value to enter a switch but not match any of the cases."
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_beginner/b_10.png",
+            'body': "Enums and sealed types are particularly useful for switches "
+                "because, even without a default case, their possible values are known and fully enumerable. "
+                "Use the sealed modifier on a class to enable exhaustiveness checking when switching over subtypes of that class:"
+          },
+          {
+            'heading': "Guard clause",
+            'attachment': "assets/dart_beginner/b_11.png",
+            'body': "To set an optional guard clause after a case clause, use the keyword when. "
+                "A guard clause can follow if case, and both switch statements and expressions."
+          },
+
+
+
+
+
+
+
+
+
+
+
+
+
         ]
       }
     },
