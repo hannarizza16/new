@@ -14,7 +14,7 @@ const codex = {
   ...javaCodex,
   ...dartCodex,
   ...cSharpCodex,
-  ...phpCodex
+  ...phpCodex,
 
 //   Languages.pearl: {
 //     Categories.beginner: {},
@@ -22,4 +22,3 @@ const codex = {
 //     Categories.advanced: {},
 //   },
 };
-
