@@ -57,6 +57,7 @@ dependencies:
   charts_flutter: ^0.12.0
   intl: ^0.17.0
   flare_flutter: ^3.0.2
+  markdown: ^4.0.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -337,6 +338,21 @@ flutter:
     - assets/C/s216.png
     - assets/C/s217.png
 
+
+
+    - assets/cPlus_beginner/2.png
+    - assets/cPlus_beginner/2.1.png
+    - assets/cPlus_beginner/2.2.png
+    - assets/cPlus_beginner/3.png
+    - assets/cPlus_beginner/3.1.png
+    - assets/cPlus_beginner/3.2.png
+    - assets/cPlus_beginner/4.png
+    - assets/cPlus_beginner/4.1.png
+    - assets/cPlus_beginner/4.2.png
+    - assets/cPlus_beginner/4.3.png
+    - assets/cPlus_beginner/4.4.png
+    - assets/cPlus_beginner/4.5.png
+    - assets/cPlus_beginner/4.6.png
 
 
 
