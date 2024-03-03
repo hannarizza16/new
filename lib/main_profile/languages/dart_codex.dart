@@ -3223,49 +3223,348 @@ const dartCodex = {
     },
     Categories.advanced: {
       0: {
-        'topic': "1.     ",
+        'topic': "1.     Sound null safety",
         'subTopic': [
+          {
+            'heading': "Sound null safety ",
+            'attachment': "",
+            'body': "The Dart language enforces sound null safety."
+            "\n\nNull safety prevents errors that result from unintentional "
+                "access of variables set to null."
+            "\n\nFor example, if a method expects an integer but receives null, "
+                "your app causes a runtime error. This type of error, a null dereference error, can be difficult to debug."
+            "\n\nWith sound null safety, all variables require a value. This means "
+                "Dart considers all variables non-nullable. You can assign values "
+                "of the declared type only, like int i=42. You can never assign a "
+                "value of null to default variable types. To specify that a variable"
+                " type can have a null value, add a ? after the type annotation: "
+                "int? i. These specific types can contain either a null or a value "
+                "of the defined type."
+            "\n\nSound null safety changes potential runtime errors into edit-time "
+                "analysis errors. With null safety, the Dart analyzer and compilers "
+                "flag if a non-nullable variable has either:"
+            "\n\n•Not been initialized with a non-null value"
+            "\n\n•Been assigned a null value."
+          },
+          {
+            'heading': "Introduction through examples ",
+            'attachment': "assets/dart_advance/s_1.png",
+            'body': "With null safety, none of the variables in the following code can be null:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_advance/s_2.png",
+            'body': "To indicate that a variable might have the value null, just add ? to its type declaration:"
+          },
           {
             'heading': " ",
             'attachment': "",
-            'body': ""
+            'body': "•To try some interactive examples, try out some of the null-safety orientated examples in the Dart cheatsheet."
+            "\n\n•To learn more about null safety, check out Understanding null safety."
+          },
+          {
+            'heading': "Null safety principles ",
+            'attachment': "",
+            'body': "Dart supports null safety using the following two core design principles:"
+            "\n\n•Non-nullable by default. Unless you explicitly tell Dart that a variable "
+                "can be null, it's considered non-nullable. This default was chosen "
+                "after research found that non-null was by far the most common choice "
+                "in APIs."
+            "\n\n•Fully sound. Dart's null safety is sound, which enables compiler optimizations. "
+                "If the type system determines that something isn't null, then that thing "
+                "can never be null. Once you migrate your whole project and its dependencies "
+                "to null safety, you reap the full benefits of soundness—not only fewer bugs, "
+                "but smaller binaries and faster execution."
+          },
+          {
+            'heading': "Dart 3 and null safety ",
+            'attachment': "assets/dart_advance/s_3.png",
+            'body': "Dart 3 has built-in sound null safety. Dart 3 prevents code without it from running."
+            "\n\nTo learn how to migrate to Dart 3, check out the Dart 3 migration "
+                "guide. Packages developed without null safety support cause issues "
+                "when resolving dependencies:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_advance/s_4.png",
+            'body': "Libraries incompatible with Dart 3 cause analysis or compilation errors."
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_advance/s_5.png",
+            'body': "To resolve these issues:"
+            "\n\n1.Check for null safe versions of any packages you installed from pub.dev"
+            "\n\n2.migrate all of your source code to use sound null safety."
+            "\n\n\nDart 3 can be found in the stable channels for Dart and Flutter. "
+                "To learn more, check out the download page for details. To test "
+                "your code for Dart 3 compatibility, use Dart 3 or later."
+          },  {
+            'heading': " ",
+            'attachment': "assets/dart_advance/s_6.png",
+            'body': "If the pub get step fails, check the status of the dependencies."
+            "\n\nIf the analyze step fails, update your code to resolve the issues listed by the analyzer."
+            "\n\n"
+          },
+          {
+            'heading': "Dart 2.x and null safety ",
+            'attachment': "assets/dart_advance/s_7.png",
+            'body': "From Dart 2.12 to 2.19, you need to enable null safety. "
+                "You cannot use null safety in SDK versions earlier than Dart 2.12."
+            "\n\nTo enable sound null safety, set the SDK constraint lower-bound "
+                "to a language version of 2.12 or later. For example, your pubspec.yaml "
+                "file might have the following constraints:"
+          },
+          {
+            'heading': "Migrating existing code ",
+            'attachment': "assets/dart_advance/s_8.png",
+            'body': "Dart code written without null safety support can be migrated "
+                "to use null safety. We recommend using the dart migrate tool, "
+                "included in the Dart SDK versions 2.12 to 2.19."
           },
 
         ]
       },
       1: {
-        'topic': "2.     ",
+        'topic': "2.     Migrating to null safety",
         'subTopic': [
+          {
+            'heading': "Migrating to null safety ",
+            'attachment': "",
+            'body': "This page describes how and when to migrate your code to null safety. "
+          },
+          {
+            'heading': "1. Wait to migrate ",
+            'attachment': "assets/dart_advance/1.png",
+            'body': "We strongly recommend migrating code in order, with the leaves "
+                "of the dependency graph being migrated first. For example, if package "
+                "C depends on package B, which depends on package A, then A should "
+                "be migrated to null safety first, then B, then C."
+            "\n\nAlthough you can migrate before your dependencies support null "
+                "safety, you might have to change your code when your dependencies "
+                "migrate. For example, if you predict that a function will take a "
+                "nullable parameter but the package migrates it to be non-nullable, "
+                "then passing a nullable argument becomes a compile error."
+          },
+          {
+            'heading': "Switch to the Dart 2.19.6 release ",
+            'attachment': "assets/dart_advance/2.png",
+            'body': "Switch to the 2.19.6 release of the Dart SDK. This is included in the Flutter 3.7.12 SDK."
+            "\n\nCheck that you have Dart 2.19.6:"
+          },
+          {
+            'heading': "Check dependency status ",
+            'attachment': "assets/dart_advance/3.png",
+            'body': "Get the migration state of your package's dependencies, using the following command:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_advance/4.png",
+            'body': "Here's an example of the output for a simple package. "
+                "The green checkmarked version for each package supports null safety:"
+          },
           {
             'heading': " ",
             'attachment': "",
-            'body': ""
+            'body': "The output shows that all of the package's dependencies have resolvable prereleases that support null safety."
+            "\n\nIf any of your package's dependencies don't yet support null safety, "
+                "we encourage you to reach out to the package owner. You can find contact details on the package page on pub.dev."
           },
-
-        ]
-      },
-      2: {
-        'topic': "3.     ",
-        'subTopic': [
+          {
+            'heading': "Update dependencies ",
+            'attachment': "",
+            'body': "Before migrating your package's code, update its dependencies to null-safe versions:"
+            "\n\n1.Run dart pub upgrade --null-safety to upgrade to the latest versions "
+                "supporting null safety. Note: This command changes your pubspec.yaml file."
+            "\n\n2.Run dart pub get."
+          },
+          {
+            'heading': "2. Migrate",
+            'attachment': "",
+            'body': "Most of the changes that your code needs to be null safe are "
+                "easily predictable. For example, if a variable can be null, its "
+                "type needs a ? suffix. If a named parameter shouldn't be nullable, "
+                "mark it required or give it a default value."
+          },
+          {
+            'heading': "You have two options for migrating: ",
+            'attachment': "",
+            'body': "\n\n•Use the migration tool, which can make most of the easily predictable changes for you."
+            "\n\n•Migrate your code by hand."
+          },
+          {
+            'heading': "Using the migration tool ",
+            'attachment': "assets/dart_advance/5.png",
+            'body': "The migration tool takes a package of null-unsafe Dart code "
+                "and converts it to null safety. You can guide the tool's conversion "
+                "by adding hint markers to your Dart code."
+            "\n\nBefore starting the tool, make sure you're ready:"
+            "\n\n•Use the 2.19.6 release of the Dart SDK."
+            "\n\n•Use dart pub outdated --mode=null-safety to make sure that all dependencies are null safe and up-to-date."
+            "\n\n\nStart the migration tool by running the dart migrate command in the directory that contains the package's pubspec.yaml file:"
+          },
           {
             'heading': " ",
             'attachment': "",
+            'body': "If your package is ready to migrate, then the tool produces a line like the following:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_advance/6.png",
             'body': ""
           },
-
-        ]
-      },
-      3: {
-        'topic': "4.     ",
-        'subTopic': [
+          {
+            'heading': " ",
+            'attachment': "assets/dart_advance/7.png",
+            'body': "Visit that URL in a Chrome browser to see an interactive UI where you can guide the migration process:"
+          },{
+            'heading': " ",
+            'attachment': "",
+            'body': "For every variable and type annotation, you can see what nullability "
+                "the tool infers. For example, in the preceding screenshot, the tool infers "
+                "that the ints list (previously a list of int) in line 1 is nullable, "
+                "and thus should be a list of int?."
+          },
+          {
+            'heading': "Understanding migration results ",
+            'attachment': "assets/dart_advance/8.png",
+            'body': "To see the reasons for each change (or non-change), click its line "
+                "number in the Proposed Edits pane. The reasons appear in the Edit Details pane."
+            "\n\nFor example, consider the following code, from before null safety:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_advance/9.png",
+            'body': "The default migration when this code is outside a function (it's different within a function) is backward compatible but not ideal:"
+          },
           {
             'heading': " ",
             'attachment': "",
-            'body': ""
+            'body': "By clicking the line 3 link, you can see the migration tool's reasons for adding the !. Because you know that zero can't be null, you can improve the migration result."
           },
+          {
+            'heading': "Improving migration results ",
+            'attachment': "assets/dart_advance/10.png",
+            'body': "When analysis infers the wrong nullability, you can override its proposed edits by inserting temporary hint markers:"
+            "\n\n•In the Edit Details pane of the migration tool, you can insert hint markers using the Add /*?*/ hint and Add /*!*/ hint buttons."
+            "\n\nThese buttons add comments to your file immediately, and there's no Undo. If you don't want a hint that the tool inserted, you can use your usual code editor to remove it."
+            "\n\n\n•You can use an editor to add hint markers, even while the tool is "
+                "still running. Because your code hasn't opted into null safety yet, "
+                "you can't use new null-safety features. You can, however, make changes "
+                "like refactoring that don't depend on null-safety features."
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_advance/11.png",
+            'body': "A single hint can have ripple effects elsewhere in the code. "
+                "In the example from before, manually adding a /*!*/ marker where "
+                "zero is assigned its value (on line 2) makes the migration tool "
+                "infer the type of zero as int instead of int?. This type change "
+                "can affect code that directly or indirectly uses zero."
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_advance/12.png",
+            'body': "With the above hint, the migration tool changes its proposed "
+                "edits, as the following code snippets show. Line 3 no longer has a "
+                "! after zero, and in line 4 zeroOne is inferred to be a list of int,"
+                " not int?."
+          },
+          {
+            'heading': "Opting out files ",
+            'attachment': "",
+            'body': "Although we recommend migrating all at once, sometimes that isn't practical, "
+                "especially in a large app or package. To opt out a file or directory, "
+                "click its green checkbox. Later, when you apply changes, each opted out "
+                "file will be unchanged except for a 2.9 version comment."
+            "\n\nFor more information about incremental migration, see Unsound null safety."
+            "\n\nNote that only fully migrated apps and packages are compatible with Dart 3."
+          },
+          {
+            'heading': "Applying changes ",
+            'attachment': "",
+            'body': "When you like all of the changes that the migration tool proposes, "
+                "click Apply migration. The migration tool deletes the hint markers and saves "
+                "the migrated code. The tool also updates the minimum SDK constraint in the "
+                "pubspec, which opts the package into null safety."
+            "\n\nThe next step is to statically analyze your code. If it's valid, "
+                "then test your code. Then, if you've published your code on pub.dev, "
+                "publish a null-safe prerelease."
+          },
+          {
+            'heading': "Migrating by hand",
+            'attachment': "",
+            'body': "If you prefer not to use the migration tool, you can migrate manually."
+            "\n\nWe recommend that you first migrate leaf libraries—libraries that don't "
+                "import other files from the package. Then migrate libraries that directly "
+                "depend on the leaf libraries. End by migrating the libraries that have "
+                "the most intra-package dependencies."
+            "\n\nFor example, say you have a lib/src/util.dart file that imports other "
+                "(null-safe) packages and core libraries, but that doesn't have any import "
+                "'<local_path>' directives. Consider migrating util.dart first, and "
+                "then migrating simple files that depend only on util.dart. If any "
+                "libraries have cyclic imports (for example, A imports B which imports "
+                "C, and C imports A), consider migrating those libraries together."
+          },
+          {
+            'heading': "To migrate a package by hand, follow these steps: ",
+            'attachment': "assets/dart_advance/13.png",
+            'body': "1.Edit the package's pubspec.yaml file, setting the minimum SDK constraint to at least 2.12.0:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/dart_advance/14.png",
+            'body': "Regenerate the package configuration file:"
+          },
+          {
+            'heading': " ",
+            'attachment': "",
+            'body': "Running dart pub get with a lower SDK constraint of at least "
+                "2.12.0 sets the default language version of every library in the "
+                "package to a minimum of 2.12, opting them all in to null safety."
+            "\n\n3.Open the package in your IDE.You're likely to see a lot of analysis errors. That's OK."
+            "\n\n4.Migrate the code of each Dart file, using the analyzer to identify static errors."
+                "Eliminate static errors by adding ?, !, required, and late, as needed."
+          },
+          {
+            'heading': "3. Analyze ",
+            'attachment': "assets/dart_advance/15.png",
+            'body': "Update your packages (using dart pub get in your IDE or on "
+                "the command line). Then use your IDE or the command line to perform static analysis on your code:"
+          },
+          {
+            'heading': "4. Test ",
+            'attachment': "assets/dart_advance/16.png",
+            'body': "If your code passes analysis, run tests:"
+          },
+          {
+            'heading': " ",
+            'attachment': "",
+            'body': "You might need to update tests that expect null values."
+            "\n\nIf you need to make large changes to your code, then you might need "
+                "to remigrate it. If so, revert your code changes before using the migration tool again."
+          },
+          {
+            'heading': "5. Publish ",
+            'attachment': "",
+            'body': "We encourage you to publish packages—possibly as prereleases—as soon as you migrate:"
+            "\n\n•Set the package version to indicate a breaking change."
+            "\n\n•Update the SDK constraints and package dependencies."
+            "\n\n•Publish the package. If you don't consider this version to be a stable release, then publish the package as a prerelease."
+          },
+          {
+            'heading': "Welcome to null safety ",
+            'attachment': "assets/dart_advance/17.png",
+            'body': "If you made it this far, you should have a fully migrated, null-safe Dart package."
+            "\n\nIf all of the packages you depend on are migrated too, then your "
+                "program is sound with respect to null-reference errors. You should see "
+                "output like this when running or compiling your code:"
+          },
+
+
 
         ]
       },
+
 
     },
   },

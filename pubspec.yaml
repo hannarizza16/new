@@ -1226,6 +1226,33 @@ flutter:
     - assets/dart_intermediate/mod_4.png
     - assets/dart_intermediate/mod_5.png
     - assets/dart_intermediate/mod_6.png
+    #Dart Advance Sound null safety
+    - assets/dart_advance/s_1.png
+    - assets/dart_advance/s_2.png
+    - assets/dart_advance/s_3.png
+    - assets/dart_advance/s_4.png
+    - assets/dart_advance/s_5.png
+    - assets/dart_advance/s_6.png
+    - assets/dart_advance/s_7.png
+    - assets/dart_advance/s_8.png
+    #Migrating to null safety
+    - assets/dart_advance/1.png
+    - assets/dart_advance/2.png
+    - assets/dart_advance/3.png
+    - assets/dart_advance/4.png
+    - assets/dart_advance/5.png
+    - assets/dart_advance/6.png
+    - assets/dart_advance/7.png
+    - assets/dart_advance/8.png
+    - assets/dart_advance/9.png
+    - assets/dart_advance/10.png
+    - assets/dart_advance/11.png
+    - assets/dart_advance/12.png
+    - assets/dart_advance/13.png
+    - assets/dart_advance/14.png
+    - assets/dart_advance/15.png
+    - assets/dart_advance/16.png
+    - assets/dart_advance/17.png
 
 
 
