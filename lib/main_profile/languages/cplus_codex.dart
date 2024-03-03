@@ -549,23 +549,24 @@ const cPlusCodex = {
           },
         ]
       },
-
       18: {
         'topic': '9.     Operators',
-        'subTopic': [{
-          'heading': "C++ Operators",
-          'body': "Operators are used to perform operations on variables and values."
-              "\n\nIn the example below, we use the '+' operator to add together two values:"
-              "\n\nExample",
-          'attachment': "assets/cPlus_beginner/9.1.png",
-        },
+        'subTopic': [
+          {
+            'heading': "C++ Operators",
+            'body': "Operators are used to perform operations on variables and values."
+                "\n\nIn the example below, we use the '+' operator to add together two values:"
+                "\n\nExample",
+            'attachment': "assets/cPlus_beginner/9.1.png",
+          },
           {
             'body': "Output:",
             'attachment': "assets/cPlus_beginner/9.2.png",
           },
           {
-            'body': "Although the '+' operator is often used to add together two values, like in the example above, it can also be used to add together a variable and a value, or a variable and another variable:"
-                "\n\nExample",
+            'body':
+                "Although the '+' operator is often used to add together two values, like in the example above, it can also be used to add together a variable and a value, or a variable and another variable:"
+                    "\n\nExample",
             'attachment': "assets/cPlus_beginner/9.3.png",
           },
           {
@@ -580,58 +581,61 @@ const cPlusCodex = {
                 "   • Logical operators"
                 "   • Bitwise operators",
           },
-
         ]
       },
       19: {
         'topic': '     9.1     Arithmetic',
-        'subTopic': [{
-          'heading': "Arithmetic Operators",
-          'body': "Arithmetic operators are used to perform common mathematical operations.",
-          'attachment': "assets/cPlus_beginner/9.5.png",
-        },
+        'subTopic': [
           {
-            'body': "+  -  Addition",
+            'heading': "Arithmetic Operators",
+            'body':
+                "Arithmetic operators are used to perform common mathematical operations.",
+            'attachment': "assets/cPlus_beginner/9.5.png",
+          },
+          {
+            'body': "'+'  -  Addition",
             'attachment': "assets/cPlus_beginner/9.6.png",
           },
           {
-            'body': "-  -  Subtraction",
+            'body': "'-'  -  Subtraction",
             'attachment': "assets/cPlus_beginner/9.7.png",
           },
           {
-            'body': "*  -  Multiplication",
+            'body': "'*'  -  Multiplication",
             'attachment': "assets/cPlus_beginner/9.8.png",
           },
           {
-            'body': "/  -  Division",
+            'body': "'/'  -  Division",
             'attachment': "assets/cPlus_beginner/9.9.png",
           },
           {
-            'body': "%  -  Modulus",
+            'body': "'%'  -  Modulus",
             'attachment': "assets/cPlus_beginner/9.10.png",
           },
           {
-            'body': "++  -  Increment",
+            'body': "'++'  -  Increment",
             'attachment': "assets/cPlus_beginner/9.11.png",
           },
           {
-            'body': "--  -  Decrement",
+            'body': "'--'  -  Decrement",
             'attachment': "assets/cPlus_beginner/9.12.png",
           },
         ]
       },
       20: {
         'topic': '     9.2     Assignment',
-        'subTopic': [{
-          'heading': "Assignment Operators",
-          'body': "Assignment operators are used to assign values to variables."
-              "\n\nIn the example below, we use the assignment operator (=) to assign the value 10 to a variable called x:"
-              "\n\nExample",
-          'attachment': "assets/cPlus_beginner/9.13.png",
-        },
+        'subTopic': [
           {
-            'body': "The addition assignment operator (+=) adds a value to a variable:"
+            'heading': "Assignment Operators",
+            'body': "Assignment operators are used to assign values to variables."
+                "\n\nIn the example below, we use the assignment operator (=) to assign the value 10 to a variable called x:"
                 "\n\nExample",
+            'attachment': "assets/cPlus_beginner/9.13.png",
+          },
+          {
+            'body':
+                "The addition assignment operator (+=) adds a value to a variable:"
+                    "\n\nExample",
             'attachment': "assets/cPlus_beginner/9.14.png",
           },
           {
@@ -684,16 +688,387 @@ const cPlusCodex = {
           },
         ]
       },
-      // 21: {
-      //   'topic': '     9.3     Comparison',
-      //   'subTopic': [{}]
-      // },
-      // 22: {
-      //   'topic': '     9.4     Logical',
-      //   'subTopic': [{}]
-      // },
+      21: {
+        'topic': '     9.3     Comparison',
+        'subTopic': [
+          {
+            'heading': "Comparison Operators",
+            'body': "Comparison operators are used to compare two values (or variables). This is important in programming, because it helps us to find answers and make decisions."
+                "\n\nThe return value of a comparison is either 1 or 0, which means true (1) or false (0). These values are known as Boolean values, and you will learn more about them in the Booleans and If..Else chapter."
+                "\n\nIn the following example, we use the greater than operator (>) to find out if 5 is greater than 3:"
+                "\n\nExample",
+            'attachment': "assets/cPlus_beginner/9.27.png",
+          },
+          {
+            'heading': "\nA list of all comparison operators:",
+            'attachment': "assets/cPlus_beginner/9.28.png",
+          },
+          {
+            'body': "'=='    Equal to",
+            'attachment': "assets/cPlus_beginner/9.29.png",
+          },
+          {
+            'body': "'!='    Not equal",
+            'attachment': "assets/cPlus_beginner/9.30.png",
+          },
+          {
+            'body': "'>	'    Greater than	",
+            'attachment': "assets/cPlus_beginner/9.31.png",
+          },
+          {
+            'body': "'<'    Less than",
+            'attachment': "assets/cPlus_beginner/9.32.png",
+          },
+          {
+            'body': "'>='    Greater than or equal to",
+            'attachment': "assets/cPlus_beginner/9.33.png",
+          },
+          {
+            'body': "'<='    Less than or equal to",
+            'attachment': "assets/cPlus_beginner/9.34.png",
+          },
+        ]
+      },
+      22: {
+        'topic': '     9.4     Logical',
+        'subTopic': [
+          {
+            'heading': "Logical Operators",
+            'body': "As with comparison operators, you can also test for true (1) or false (0) values with logical operators."
+                "\n\nLogical operators are used to determine the logic between variables or values:",
+            'attachment': "assets/cPlus_beginner/9.35.png",
+          },
+          {
+            'body': "'&&'    Logical and",
+            'attachment': "assets/cPlus_beginner/9.36.png",
+          },
+          {
+            'body': "'||'    Logical or",
+            'attachment': "assets/cPlus_beginner/9.37.png",
+          },
+          {
+            'body': "'!'    Logical not",
+            'attachment': "assets/cPlus_beginner/9.38.png",
+          },
+        ]
+      },
     },
-    Categories.intermediate: {},
+    Categories.intermediate: {
+      0: {
+        'topic': '10.     Strings',
+        'subTopic': [
+          {
+            'heading': "C++ Strings",
+            'body': "Strings are used for storing text."
+                "\n\nA string variable contains a collection of characters surrounded by double quotes:"
+                "\n\nExample - Create a variable of type string and assign it a value:",
+            'attachment': "assets/cPlus_intermediate/10.1.png",
+          },
+          {
+            'body':
+                "To use strings, you must include an additional header file in the source code, the <string> library:"
+                    "\n\nExample",
+            'attachment': "assets/cPlus_intermediate/10.2.png",
+          }
+        ]
+      },
+      1: {
+        'topic': '     10.1     Concatenation',
+        'subTopic': [
+          {
+            'heading': 'String Concatenation',
+            'body':
+                "The '+' operator can be used between strings to add them together to make a new string. This is called concatenation:"
+                    "\n\nExample",
+            'attachment': "assets/cPlus_intermediate/10.3.png",
+          },
+          {
+            'body':
+                "In the example above, we added a space after firstName to create a space between John and Doe on output. However, you could also add a space with quotes ("
+                    " or ' '):"
+                    "\n\nExample",
+            'attachment': "assets/cPlus_intermediate/10.4.png",
+          },
+          {
+            'heading': "\nAppend",
+            'body':
+                "A string in C++ is actually an object, which contain functions that can perform certain operations on strings. For example, you can also concatenate strings with the append() function:"
+                    "\n\nExample",
+            'attachment': "assets/cPlus_intermediate/10.5.png",
+          }
+        ]
+      },
+      2: {
+        'topic': '     10.2     Numbers and Strings',
+        'subTopic': [
+          {
+            'heading': 'Adding Numbers and Strings',
+            'attachment': "assets/cPlus_intermediate/10.6.png",
+          },
+          {
+            'body':
+                "Example: If you add two numbers, the result will be a number",
+            'attachment': "assets/cPlus_intermediate/10.7.png",
+          },
+          {
+            'body':
+                "Example: If you add two strings, the result will be a string concatenation:",
+            'attachment': "assets/cPlus_intermediate/10.8.png",
+          },
+          {
+            'body':
+                "Example: If you try to add a number to a string, an error occurs",
+            'attachment': "assets/cPlus_intermediate/10.9.png",
+          }
+        ]
+      },
+      3: {
+        'topic': '     10.3     String Length',
+        'subTopic': [
+          {
+            'heading': 'String Length',
+            'body': "To get the length of a string, use the length() function:"
+                "\n\nExample",
+            'attachment': "assets/cPlus_intermediate/10.10.png",
+          },
+          {
+            'body': "*Tip: You might see some C++ programs that use the size() function to get the length of a string. "
+                "\n\nThis is just an alias of length(). It is completely up to you if you want to use length() or size():"
+                "\n\nExample",
+            'attachment': "assets/cPlus_intermediate/10.11.png",
+          },
+        ]
+      },
+      4: {
+        'topic': '     10.4     Access Strings',
+        'subTopic': [
+          {
+            'heading': 'Access Strings',
+            'body':
+                "You can access the characters in a string by referring to its index number inside square brackets []."
+                    "\n\nThis example prints the first character in myString:"
+                    "\n\nExample",
+            'attachment': "assets/cPlus_intermediate/10.12.png",
+          },
+          {
+            'body':
+                "*Note: String indexes start with 0: [0] is the first character. [1] is the second character, etc."
+          },
+          {
+            'body': "This example prints the second character in myString:"
+                "\n\nExample",
+            'attachment': "assets/cPlus_intermediate/10.14.png",
+          },
+          {
+            'heading': "\nChange String Characters,",
+            'body':
+                "To change the value of a specific character in a string, refer to the index number, and use single quotes:"
+                    "\n\nExample",
+            'attachment': "assets/cPlus_intermediate/10.15.png",
+          },
+        ]
+      },
+      5: {
+        'topic': '     10.5     Special Characters',
+        'subTopic': [
+          {
+            'heading': 'Special Characters',
+            'body':
+                'Because strings must be written within quotes, C++ will misunderstand this string, and generate an error:',
+            'attachment': "assets/cPlus_intermediate/10.16.png",
+          },
+          {
+            'body': 'The solution to avoid this problem, is to use the backslash escape character.'
+                '\n\nThe backslash (\\\) escape character turns special characters into string characters:',
+            'attachment': "assets/cPlus_intermediate/10.17.png",
+          },
+          {
+            'body': "The sequence \\\"  inserts a double quote in a string:"
+                "\n\nExample",
+            'attachment': "assets/cPlus_intermediate/10.18.png",
+          },
+          {
+            'body': "The sequence \\\'  inserts a single quote in a string:"
+                "\n\nExample",
+            'attachment': "assets/cPlus_intermediate/10.19.png",
+          },
+          {
+            'body': "The sequence \\\\  inserts a single backslash in a string:"
+                "\n\nExample",
+            'attachment': "assets/cPlus_intermediate/10.20.png",
+          },
+          {
+            'body': "Other popular escape characters in C++ are:",
+            'attachment': "assets/cPlus_intermediate/10.21.png",
+          },
+          {
+            'body': "'\\n'   	New Line",
+            'attachment': "assets/cPlus_intermediate/10.22.png",
+          },
+          {
+            'body': "'\\t'    Tab",
+            'attachment': "assets/cPlus_intermediate/10.23.png",
+          },
+        ]
+      },
+      6: {
+        'topic': '     10.6     User Input Strings',
+        'subTopic': [
+          {
+            'heading': 'User Input Strings',
+            'body':
+                "It is possible to use the extraction operator >> on cin to store a string entered by a user:"
+                    "\n\nExample",
+            'attachment': "assets/cPlus_intermediate/10.24.png",
+          },
+          {
+            'body':
+                "However, (cin) considers a space (whitespace, tabs, etc) as a terminating character, which means that it can only store a single word (even if you type many words):"
+                    "\n\nExample",
+            'attachment': "assets/cPlus_intermediate/10.25.png",
+          },
+          {
+            'body': 'From the example above, you would expect the program to print "John Mark", but it only prints "John".'
+                '\n\nThat\'s why, when working with strings, we often use the getline() function to read a line of text. It takes cin as the first parameter, and the string variable as second:'
+                '\n\nExample',
+            'attachment': "assets/cPlus_intermediate/10.26.png",
+          },
+        ]
+      },
+      7: {
+        'topic': '     10.7     Omitting Namespace',
+        'subTopic': [
+          {
+            'heading': 'Omitting Namespace',
+            'body': "You might see some C++ programs that runs without the standard namespace library. The using namespace std line can be omitted and replaced with the std keyword, followed by the :: operator for string (and cout) objects:"
+                "\n\nIt is up to you if you want to include the standard namespace library or not"
+                "\n\nExample",
+            'attachment': "assets/cPlus_intermediate/10.27.png"
+          },
+        ]
+      },
+      23: {
+        'topic': '11.     Math',
+        'subTopic': [
+          {
+            'heading': "C++ Math",
+            'body':
+                "C++ has many functions that allows you to perform mathematical tasks on numbers."
+          },
+          {
+            'heading': "Max and Min",
+            'body':
+                "The max(x,y) function can be used to find the highest value of x and y:"
+                    "\n\nExample",
+            'attachment': "assets/cPlus_intermediate/10.28.png"
+          },
+          {
+            'body':
+                "And the min(x,y) function can be used to find the lowest value of x and y:"
+                    "\n\nExample",
+            'attachment': "assets/cPlus_intermediate/10.29.png"
+          },
+          {
+            'heading': "\nC++ <cmath> Header",
+            'body':
+                "Other functions, such as sqrt (square root), round (rounds a number) and log (natural logarithm), can be found in the <cmath> header file:"
+                    "\n\nExample",
+            'attachment': "assets/cPlus_intermediate/10.30.png"
+          },
+          {
+            'heading': "\nOther Math Functions",
+            'body': "A list of other popular Math functions (from the <cmath> library) can be found in the table below:"
+                "\n\nabs(x)  -  Returns the absolute value of x"
+                "\n\nacos(x)  -  Returns the arccosine of x"
+                "\n\nasin(x)  -  Returns the arcsine of x"
+                "\n\natan(x)  -  Returns the arctangent of x"
+                "\n\ncbrt(x)  -  Returns the cube root of x"
+                "\n\nceil(x)  -  Returns the value of x rounded up to its nearest integer"
+                "\n\ncos(x)  -  Returns the cosine of x"
+                "\n\ncosh(x)  -  Returns the hyperbolic cosine of x"
+                "\n\nexp(x)  -  Returns the value of Ex"
+                "\n\nexpm1(x)  -  Returns ex -1"
+                "\n\nfabs(x)  -  Returns the absolute value of a floating x"
+                "\n\nfdim(x, y)  -  Returns the positive difference between x and y"
+                "\n\nfloor(x)  -  Returns the value of x rounded down to its nearest integer"
+                "\n\nhypot(x, y)  -  Returns sqrt(x2 +y2) without intermediate overflow or underflow"
+                "\n\nfma(x, y, z)  -  Returns x*y+z without losing precision"
+                "\n\nfmax(x, y)  -  Returns the highest value of a floating x and y"
+                "\n\nfmin(x, y)  -  Returns the lowest value of a floating x and y"
+                "\n\nfmod(x, y)  -  Returns the floating point remainder of x/y"
+                "\n\npow(x, y)  -  Returns the value of x to the power of y"
+                "\n\nsin(x)  -  Returns the sine of x (x is in radians)"
+                "\n\nsinh(x)  -  Returns the hyperbolic sine of a double value"
+                "\n\ntan(x)  -  Returns the tangent of an angle"
+                "\n\ntanh(x)  -  Returns the hyperbolic tangent of a double value",
+          },
+        ]
+      },
+      24: {
+        'topic': '11.     Booleans',
+        'subTopic': [
+          {
+            'heading': "C++ Booleans",
+            'body': "Very often, in programming, you will need a data type that can only have one of two values, like:"
+                "\n\n   • YES / NO"
+                "\n\n   • ON / OFF"
+                "\n\n   • TRUE / FALSE"
+                "\n\nFor this, C++ has a bool data type, which can take the values true (1) or false (0)."
+          },
+        ]
+      },
+      25: {
+        'topic': '     11.1     Boolean Values',
+        'subTopic': [
+          {
+            'heading': "Boolean Values",
+            'body':
+                "A boolean variable is declared with the bool keyword and can only take the values true or false:"
+                    "\n\nExample",
+            'attachment': "assets/cPlus_intermediate/10.31.png"
+          },
+          {
+            'body': "From the example above, you can read that a true value returns 1, and false returns 0."
+                "\n\nHowever, it is more common to return a boolean value by comparing values and variables (see next page)."
+          }
+        ]
+      },
+      26: {
+        'topic': '     11.2     Boolean Expressions',
+        'subTopic': [
+          {
+            'heading': "Boolean Expression",
+            'body': "A Boolean expression returns a boolean value that is either 1 (true) or 0 (false)."
+                "\n\nThis is useful to build logic, and find answers."
+                "\n\nYou can use a comparison operator, such as the greater than (>) operator, to find out if an expression (or variable) is true or false:"
+                "\n\nExample",
+            'attachment': "assets/cPlus_intermediate/10.32.png"
+          },
+          {
+            'body': "Or even easier:"
+                "\n\nExample",
+            'attachment': "assets/cPlus_intermediate/10.33.png"
+          },
+          {
+            'body':
+                "In the examples below, we use the equal to (==) operator to evaluate an expression:"
+                    "\n\nExample",
+            'attachment': "assets/cPlus_intermediate/10.34.png"
+          },
+          {
+            'body': "Example",
+            'attachment': "assets/cPlus_intermediate/10.35.png"
+          },
+          {
+            'heading': "\nReal Life Example",
+            'body': 'Let\'s think of a "real life example" where we need to find out if a person is old enough to vote.'
+                '\n\nIn the example below, we use the >= comparison operator to find out if the age (25) is greater than OR equal to the voting age limit, which is set to 18:'
+                '\n\nExample',
+            'attachment': "assets/cPlus_intermediate/10.36.png"
+          },
+        ]
+      }
+    },
     Categories.advanced: {},
   },
 };
