@@ -465,7 +465,8 @@ const cPlusCodex = {
           },
           {
             'heading': "\n\nfloat vs. double",
-            'body': "The precision of a floating point value indicates how many digits the value can have after the decimal point. The precision of float is only six or seven decimal digits, while double variables have a precision of about 15 digits. Therefore it is safer to use double for most calculations.",
+            'body':
+                "The precision of a floating point value indicates how many digits the value can have after the decimal point. The precision of float is only six or seven decimal digits, while double variables have a precision of about 15 digits. Therefore it is safer to use double for most calculations.",
           },
           {
             'body': "Scientific Numbers"
@@ -481,22 +482,93 @@ const cPlusCodex = {
       },
       15: {
         'topic': '     8.3     Booleans',
-        'subTopic': [{
-          'heading': "Boolean Data Types",
-        }]
+        'subTopic': [
+          {
+            'heading': "Boolean Data Types",
+            'body':
+                "A boolean data type is declared with the bool keyword and can only take the values true or false."
+                    "When the value is returned, true = 1 and false = 0."
+                    "\n\nExample",
+            'attachment': "assets/cPlus_beginner/8.12.png"
+          },
+          {
+            'body': "Output:",
+            'attachment': "assets/cPlus_beginner/8.13.png",
+          },
+          {
+            'body':
+                "Boolean values are mostly used for conditional testing, which you will learn more about in a later chapter.",
+          },
+        ]
       },
       16: {
         'topic': '     8.4     Characters',
-        'subTopic': [{
-          'heading': "Character Data Types",
-
-        }]
+        'subTopic': [
+          {
+            'heading': "Character Data Types",
+            'body':
+                "The char data type is used to store a single character. The character must be surrounded by single quotes, like 'A' or 'c':"
+                    "\n\nExample",
+            'attachment': "assets/cPlus_beginner/8.14.png",
+          },
+          {
+            'body': "Output:",
+            'attachment': "assets/cPlus_beginner/8.15.png",
+          },
+          {
+            'body':
+                "Alternatively, if you are familiar with ASCII, you can use ASCII values to display certain characters:"
+                    "\n\nExample",
+            'attachment': "assets/cPlus_beginner/8.16.png",
+          },
+          {
+            'body': "Output:",
+            'attachment': "assets/cPlus_beginner/8.17.png",
+          },
+        ]
       },
       17: {
         'topic': '     8.5     Strings',
-        'subTopic': [{
-          'heading': "String Data Types",
-        }]
+        'subTopic': [
+          {
+            'heading': "String Data Types",
+            'bodoy':
+                "The string type is used to store a sequence of characters (text). This is not a built-in type, but it behaves like one in its most basic usage. String values must be surrounded by double quotes:"
+                    "\n\nExample",
+            'attachment': "assets/cPlus_beginner/8.18.png",
+          },
+          {
+            'body':
+                "To use strings, you must include an additional header file in the source code, the <string> library:"
+                    "\n\nExample",
+            'attachment': "assets/cPlus_beginner/8.19.png",
+          },
+          {
+            'body': "Output:",
+            'attachment': "assets/cPlus_beginner/8.20.png",
+          },
+        ]
+      },
+
+      18: {
+        'topic': '9.     Operators',
+        'subTopic': [{}]
+      },
+      19: {
+        'topic': '     9.1     Arithmetic',
+        'subTopic': [{}]
+      },
+      20: {
+        'topic': '     9.2     Assignment',
+        'subTopic': [{}]
+      },
+      21: {
+        'topic': '     9.3     Comparison',
+        'subTopic': [{}]
+      },
+      22: {
+        'topic': '     9.4     Logical',
+        'subTopic': [{}]
       },
     },
     Categories.intermediate: {},
