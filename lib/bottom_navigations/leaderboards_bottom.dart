@@ -17,8 +17,8 @@ class LeaderboardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: GradientContainer( // Wrap with GradientContainer
-        child: Leaderboard(), // Your Leaderboard widget
+      body: GradientContainer(
+        child: Leaderboard(),
       ),
     );
   }
@@ -30,136 +30,188 @@ class Leaderboard extends StatefulWidget {
 }
 
 class _LeaderboardState extends State<Leaderboard> {
-  String selectedLanguage = "All";
+  String selectedCategory = "All";
   String selectedExpertise = "All";
 
   @override
   Widget build(BuildContext context) {
+
     return StreamBuilder<QuerySnapshot>(
       stream: FirebaseFirestore.instance.collection('scores').snapshots(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         }
         final List<DocumentSnapshot> documents = snapshot.data!.docs;
         final List<Map<String, dynamic>> leaderboardData =
         documents.map((doc) => doc.data() as Map<String, dynamic>).toList();
 
-        // Group scores by userEmail and get the highest score for each userEmail
+        // Group scores by userEmail and expertise, and get the highest score for each combination
         final Map<String, Map<String, dynamic>> userScores = {};
         leaderboardData.forEach((player) {
           final userEmail = player['userEmail'];
-          if (userEmail != null) { // Check if userEmail is not null
-            if (!userScores.containsKey(userEmail) ||
-                player['score'] > userScores[userEmail]!['score']) {
-              userScores[userEmail] = player;
+          final expertise = player['expertise'];
+          final category = player['category'];
+          final key = '$expertise-$category';
+          if (userEmail != null) {
+            if (!userScores.containsKey(key) ||
+                player['score'] > userScores[key]!['score']) {
+              userScores[key] = player;
             }
           }
         });
 
+
         // Apply filters
-        List<Map<String, dynamic>> filteredLeaderboard = userScores.values.where((player) {
-          return (selectedLanguage == "All" || player['category'] == selectedLanguage) &&
-              (selectedExpertise == "All" || player['expertise'] == selectedExpertise);
-        }).toList();
+        List<Map<String, dynamic>> filteredLeaderboard =
+        userScores.values.where((score) {
+          print(" Language: $selectedCategory, Selected Expertise: $selectedExpertise");
+          return (selectedCategory == "All" || score['category'] == selectedCategory) &&
+              (selectedExpertise == "All" || score['expertise'] == selectedExpertise);
+        })
+            .toList();
 
         final sortedLeaderboard = filteredLeaderboard.toList()
-          ..sort((a, b) => b['score'].compareTo(a['score'])); // Sort by score descending
+          ..sort((a, b) =>
+              b['score'].compareTo(a['score'])); // Sort by score descending
 
-        final topPlayers = sortedLeaderboard.length >= 3 ? sortedLeaderboard.sublist(0, 3) : sortedLeaderboard;
-        final otherPlayers = sortedLeaderboard.length >= 3 ? sortedLeaderboard.sublist(3) : [];
+        final topPlayers = sortedLeaderboard.length >= 3
+            ? sortedLeaderboard.sublist(0, 3)
+            : sortedLeaderboard;
+        final otherPlayers =
+        sortedLeaderboard.length >= 3 ? sortedLeaderboard.sublist(3) : [];
 
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
+        return Stack(
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 20.0),
-              child: Padding(
-                padding: const EdgeInsets.only(left: 50.0, top: 10.0, bottom: 10.0),
-                child: Row(
-                  children: [
-                    Text("Language: "),
-                    DropdownButton<String>(
-                      value: selectedLanguage,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedLanguage = value!;
-                        });
-                      },
-                      items: <String>['All', 'C', 'C++', 'Java', 'German']
-                          .map<DropdownMenuItem<String>>((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      }).toList(),
-                    ),
-                    SizedBox(width: 30),
-                    Text("Expertise: "),
-                    DropdownButton<String>(
-                      value: selectedExpertise,
-                      onChanged: (value) {
-                        setState(() {
-                          selectedExpertise = value!;
-                        });
-                      },
-                      items: <String>['All', 'Beginner', 'Intermediate', 'Advanced']
-                          .map<DropdownMenuItem<String>>((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      }).toList(),
-                    ),
-                  ],
+            // Layer 1: Gradient Container
+            const GradientContainer(
+              child: SizedBox.expand(), // Expand to fill the whole screen
+            ),
+            // Layer 2: Image
+
+            Positioned(
+              left: 0, // Align left
+              top: 0, // Align top
+              right: 0, // Align right
+              bottom: 0, // Align bottom
+              child: Opacity(
+                opacity: 0.2, // Specify the opacity value here (0.0 - 1.0)
+                child: Image.asset(
+                  'assets/overlay/2.jpg', // Replace with your image path
+                  fit: BoxFit.cover,
                 ),
               ),
             ),
-            filteredLeaderboard.isEmpty
-                ? Expanded(
-              child: Center(
-                child: Text(
-                  'No data detected',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
+            // Layer 2: Image
+            // Layer 3: Other Widgets
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 20.0),
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                        left: 50.0, top: 10.0, bottom: 10.0),
+                    child: Row(
+                      children: [
+                        const Text("Language: "),
+                        DropdownButton<String>(
+                          value: selectedCategory,
+                          onChanged: (value) {
+                            setState(() {
+                              selectedCategory = value!;
+                            });
+                          },
+                          items: <String>[
+                            'All',
+                            'C',
+                            'C++',
+                            'Java',
+                            'Dart',
+                            'C#',
+                            'PHP'
+                          ].map<DropdownMenuItem<String>>((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value),
+                            );
+                          }).toList(),
+                        ),
+                        const SizedBox(width: 30),
+                        const Text("Expertise: "),
+                        DropdownButton<String>(
+                          value: selectedExpertise,
+                          onChanged: (value) {
+                            setState(() {
+                              selectedExpertise = value!;
+                            });
+                          },
+                          items: <String>[
+                            'All',
+                            'Beginner',
+                            'Intermediate',
+                            'Advanced'
+                          ].map<DropdownMenuItem<String>>((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value),
+                            );
+                          }).toList(),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            )
-                : SizedBox(
-              height: 200,
-              child: _buildBarChart(topPlayers),
-            ),
-            SizedBox(height: 20),
-            filteredLeaderboard.isNotEmpty
-                ? Expanded(
-              child: ListView.builder(
-                itemCount: otherPlayers.length,
-                itemBuilder: (context, index) {
-                  final player = otherPlayers[index];
-                  final scoreTextStyle = TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: index < 3 ? 16 : 14, // Decrease font size for other players
-                  );
-                  return ListTile(
-                    leading: Text(
-                      '${index + 4}.',
+                filteredLeaderboard.isEmpty
+                    ? const Expanded(
+                  child: Center(
+                    child: Text(
+                      'No data detected',
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    title: Text('${player['lastName']}, ${player['firstName']}'),
-                    trailing: Text(
-                      '${player['score']}',
-                      style: scoreTextStyle,
-                    ),
-                  );
-                },
-              ),
-            )
-                : SizedBox(),
+                  ),
+                )
+                    : SizedBox(
+                  height: 200,
+                  child: _buildBarChart(topPlayers),
+                ),
+                const SizedBox(height: 20),
+                filteredLeaderboard.isNotEmpty
+                    ? Expanded(
+                  child: ListView.builder(
+                    itemCount: otherPlayers.length,
+                    itemBuilder: (context, index) {
+                      final player = otherPlayers[index];
+                      final scoreTextStyle = TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: index < 3
+                            ? 16
+                            : 14, // Decrease font size for other players
+                      );
+                      return ListTile(
+                        leading: Text(
+                          '${index + 4}.',
+                          style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        title: Text(
+                            '${player['lastName']}, ${player['firstName']}'),
+                        trailing: Text(
+                          '${player['score']}',
+                          style: scoreTextStyle,
+                        ),
+                      );
+                    },
+                  ),
+                )
+                    : const SizedBox(),
+              ],
+            ),
           ],
         );
       },
@@ -169,11 +221,13 @@ class _LeaderboardState extends State<Leaderboard> {
   Widget _buildBarChart(List<Map<String, dynamic>> topPlayers) {
     List<charts.Series<dynamic, String>> series = [
       charts.Series(
-        id: "Scores",
+        id: "scores",
         data: topPlayers,
-        domainFn: (dynamic data, _) => '${data['lastName']}, ${data['firstName']}',
+        domainFn: (dynamic data, _) =>
+        '${data['lastName']}, ${data['firstName']}',
         measureFn: (dynamic data, _) => data['score'],
-        colorFn: (_, __) => charts.ColorUtil.fromDartColor(Color(0xFF0C356A)),      )
+        colorFn: (_, __) => charts.ColorUtil.fromDartColor(const Color(0xFF0C356A)),
+      )
     ];
 
     return charts.BarChart(
@@ -184,12 +238,12 @@ class _LeaderboardState extends State<Leaderboard> {
         labelPosition: charts.BarLabelPosition.inside,
         labelAnchor: charts.BarLabelAnchor.end,
         labelPadding: 10,
-        insideLabelStyleSpec: charts.TextStyleSpec(
+        insideLabelStyleSpec: const charts.TextStyleSpec(
           color: charts.MaterialPalette.white,
           fontSize: 15,
         ),
       ),
-      domainAxis: charts.OrdinalAxisSpec(renderSpec: charts.NoneRenderSpec()),
+      domainAxis: const charts.OrdinalAxisSpec(renderSpec: charts.NoneRenderSpec()),
     );
   }
 }

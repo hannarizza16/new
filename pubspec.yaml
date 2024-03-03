@@ -51,13 +51,14 @@ dependencies:
   dash_chat_2: ^0.0.15
   chat_gpt_sdk: ^2.2.5
   image_picker: ^0.8.4+4
-  cached_network_image: ^3.0.0
+  cached_network_image: ^3.3.1
   flutter_cache_manager: ^3.3.1
   permission_handler: ^10.0.0
   charts_flutter: ^0.12.0
   intl: ^0.17.0
   flare_flutter: ^3.0.2
   markdown: ^4.0.0
+
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -92,6 +93,39 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   # assets:
   assets:
+
+      #wall overlay
+    - assets/overlay/1.png
+    - assets/overlay/dots.gif
+    - assets/overlay/transparent.gif
+    - assets/overlay/back.png
+    - assets/overlay/back2.png
+    - assets/overlay/line.png
+    - assets/overlay/minimalist.jpg
+    - assets/overlay/minimalist.png
+    - assets/overlay/1.jpg
+    - assets/overlay/2.jpg
+    - assets/overlay/transition.gif
+    - assets/overlay/transition2.gif
+    - assets/overlay/loading.gif
+    - assets/overlay/rtuista.png
+    - assets/overlay/rtuistatrans.png
+    - assets/overlay/rtu.png
+    - assets/overlay/advanced1.png
+    - assets/overlay/advanced2.png
+    - assets/overlay/advanced3.png
+    - assets/overlay/advanced4.png
+    - assets/overlay/interm1.png
+    - assets/overlay/interm2.png
+    - assets/overlay/interm3.png
+    - assets/overlay/beg1.png
+    - assets/overlay/beg2.png
+    - assets/overlay/beg3.png
+    - assets/overlay/beg4.png
+    - assets/overlay/beg5.png
+    - assets/overlay/loading2.gif
+
+
     - assets/logo.gif
     - assets/logo2.gif
     - assets/codex.png

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'category_selection.dart';
+
 import 'questions.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -9,13 +9,13 @@ class ResultScreen extends StatefulWidget {
   final List<QuizQuestion> questions;
   final List<int> userAnswers;
   final String category;
-  final String expertiseLevel;
+  final String expertise;
 
   ResultScreen({
     required this.questions,
     required this.userAnswers,
     required this.category,
-    required this.expertiseLevel,
+    required this.expertise,
   });
 
   @override
@@ -35,8 +35,8 @@ class _ResultScreenState extends State<ResultScreen>
       duration: const Duration(seconds: 5),
     )..repeat(reverse: true);
     _animation = ColorTween(
-      begin: Color(0xFF00A9FF),
-      end: Color(0xFF71DFE7),
+      begin: Color(0xFFDCF2F1),
+      end: Color(0xFFDCF2F1),
     ).animate(
       CurvedAnimation(
         parent: _controller,
@@ -72,7 +72,7 @@ class _ResultScreenState extends State<ResultScreen>
     // Save the score to Firebase
     if (userEmail != null) {
       _saveScoreToFirebase(correctAnswers, widget.questions.length, userEmail,
-          widget.category, widget.expertiseLevel);
+          widget.category, widget.expertise);
     }
 
     // Determine the motivating quote based on the score
@@ -98,7 +98,7 @@ class _ResultScreenState extends State<ResultScreen>
             appBar: AppBar(
               title: Text('Quiz Result',
                   style: TextStyle(color: Color(0xFF06283D))),
-              backgroundColor: Color(0xFF279EFF),
+              backgroundColor: Color(0xFFDCF2F1),
             ),
             body: Stack(children: [
               AnimatedBuilder(
@@ -108,9 +108,9 @@ class _ResultScreenState extends State<ResultScreen>
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
-                          _animation.value ?? Color(0xFF71DFE7),
-                          Color(0xFF94DAFF),
-                          _animation.value ?? Color(0xFF9ED5C5),
+                          _animation.value ?? Color(0xFF85F4FF),
+                          Color(0xFFC5FFF8),
+                          _animation.value ?? Color(0xFF85F4FF),
                         ],
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
@@ -136,10 +136,15 @@ class _ResultScreenState extends State<ResultScreen>
                                   ),
                                   SizedBox(height: 20),
                                   if (wrongQuestions.isNotEmpty)
-                                    Text(
-                                      'Incorrect Answers in Question: ${wrongQuestions.join(', ')}',
-                                      style: TextStyle(
-                                          fontSize: 18, color: Colors.red),
+                                    Center(
+                                      child: Text(
+                                        'Incorrect Answers in Question: \n${wrongQuestions.join(', ')}',
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          color: Colors.red,
+                                        ),
+                                        textAlign: TextAlign.center,
+                                      ),
                                     ),
                                   SizedBox(height: 20),
                                   Text(
@@ -232,7 +237,7 @@ class _ResultScreenState extends State<ResultScreen>
         return AlertDialog(
           title: Text('Confirm Exit'),
           content: Text(
-              'Are you sure you want to exit to expertise level selection?'),
+              'Are you sure you want to exit?'),
           actions: <Widget>[
             TextButton(
               onPressed: () {

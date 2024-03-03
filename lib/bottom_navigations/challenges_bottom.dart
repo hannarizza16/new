@@ -12,13 +12,13 @@ class ChallengesPage extends StatelessWidget {
           // Navigate to the QuizApp when Challenges is clicked
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => CategorySelection()),
+            MaterialPageRoute(builder: (context) => const CategorySelection()),
           );
         },
         child: Container(
           // Optional: Change the color for visual indication
           color: Colors.blue,
-          child: Text(
+          child: const Text(
             'Challenges Page',
             style: TextStyle(
               fontSize: 20,

@@ -17,7 +17,7 @@ class _WebDevPageState extends State<WebDevPage> {
   void initState() {
     super.initState();
     // Automatically navigate to the lesson screen
-    WidgetsBinding.instance!.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       Navigator.of(context).pushReplacement(MaterialPageRoute(
         builder: (context) =>
             LessonScreen(
