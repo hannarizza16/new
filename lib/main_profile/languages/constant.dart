@@ -1,4 +1,3 @@
-import 'package:charts_flutter/flutter.dart';
 import 'package:first_project/enums/enums.dart';
 
 const codex = {
@@ -518,9 +517,6 @@ const codex = {
             'attachment': 'assets/C/s62',
             'body': "A list of all assignment operators:"
           },
-          {
-
-          }
         ]
       }
 

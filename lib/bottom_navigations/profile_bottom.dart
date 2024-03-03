@@ -8,7 +8,7 @@ import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../gradient_background.dart';
+
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -36,8 +36,6 @@ class _ProfilePageState extends State<ProfilePage> {
     _fetchNameFromFirestore();
     _fetchUserTotalScore(); // Call the function to fetch user's total score
     loadProfileImage();
-    print('Current email login: ${FirebaseAuth.instance.currentUser?.email}');
-
   }
 
   void _fetchNameFromFirestore() async {
@@ -63,12 +61,11 @@ class _ProfilePageState extends State<ProfilePage> {
           loadProfileImage();
         }
       } catch (e) {
-        print('Error fetching name: $e');
       }
     } else {
-      print('No current user or user email found.');
     }
   }
+
   void _fetchUserTotalScore() {
     String? currentUserEmail = FirebaseAuth.instance.currentUser?.email;
 
@@ -76,31 +73,21 @@ class _ProfilePageState extends State<ProfilePage> {
       CollectionReference scores =
       FirebaseFirestore.instance.collection('scores');
 
-      scores
-          .where('userEmail', isEqualTo: currentUserEmail)
-          .snapshots()
-          .listen((snapshot) {
-        int totalScore = 0;
-        snapshot.docs.forEach((doc) {
-          int score = (doc['score'] ?? 0).toInt(); // Cast to int
-          totalScore += score;
-        });
-        setState(() {
-          _totalScore = totalScore;
-          print('User total score fetched: $_totalScore');
-        });
-      }, onError: (error) {
-        print('Error fetching total score: $error');
+      scores.where('userEmail', isEqualTo: currentUserEmail).snapshots().listen(
+              (snapshot) {
+            int totalScore = 0;
+            for (var doc in snapshot.docs) {
+              int score = (doc['score'] ?? 0).toInt(); // Cast to int
+              totalScore += score;
+            }
+            setState(() {
+              _totalScore = totalScore;
+            });
+          }, onError: (error) {
       });
     } else {
-      print('No current user or user email found.');
     }
   }
-
-
-
-
-
 
   // Function para mag-load ng profile image mula sa Firebase Storage
   void loadProfileImage() async {
@@ -112,12 +99,13 @@ class _ProfilePageState extends State<ProfilePage> {
       String? cachedImageURL = prefs.getString(cacheKey);
 
       if (cachedImageURL != null) {
-        setState(() {
-          _image = File.fromUri(Uri.parse(cachedImageURL));
+        setState(() async {
+          _image = await DefaultCacheManager().getSingleFile(cachedImageURL);
+
         });
       } else {
         try {
-          String fileName = currentUserEmail + '_profile_image';
+          String fileName = currentUserEmail;
           firebase_storage.Reference storageReference = firebase_storage
               .FirebaseStorage.instance
               .ref()
@@ -128,15 +116,11 @@ class _ProfilePageState extends State<ProfilePage> {
           });
           prefs.setString(cacheKey, downloadURL);
         } catch (e) {
-          print('Error loading profile image: $e');
         }
       }
     } else {
-      print('No current user or user email found.');
     }
   }
-
-
 
   Future getImage() async {
     final picker = ImagePicker();
@@ -148,7 +132,6 @@ class _ProfilePageState extends State<ProfilePage> {
         // Upload ng larawan sa Firebase Storage pagkatapos pumili ng larawan
         uploadImageToFirebaseStorage(); // Dito dapat walang argumento
       } else {
-        print('No image selected.');
       }
     });
   }
@@ -157,7 +140,7 @@ class _ProfilePageState extends State<ProfilePage> {
     String? currentUserEmail = FirebaseAuth.instance.currentUser?.email;
 
     if (currentUserEmail != null && _image != null) {
-      String fileName = currentUserEmail + '_profile_image';
+      String fileName = currentUserEmail;
       firebase_storage.Reference storageReference = firebase_storage
           .FirebaseStorage.instance
           .ref()
@@ -187,21 +170,33 @@ class _ProfilePageState extends State<ProfilePage> {
 
     await userRef.update({'profile_image_url': imageURL});
 
-    print('Profile image URL updated in Firestore');
   }
 
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: GradientContainer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            buildTop(),
-            buildContent(),
-            buildColumn(context, _totalScore), // Pass _totalScore to buildColumn
-            secondColumn(context, _totalScore), // Pass _totalScore to secondColumn
-            thirdColumn(context, _totalScore), // Pass _totalScore to thirdColumn
+      body: Container(
+        decoration: BoxDecoration(),
+        child: Stack(
+          children: [
+            Positioned.fill(
+              child: Opacity(
+                opacity: 0.2, // Specify the opacity value here (0.0 - 1.0)
+                child: Image.asset(
+                  'assets/overlay/2.jpg', // Replace with your image path
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            ListView(
+              padding: EdgeInsets.zero,
+              children: <Widget>[
+                buildTop(),
+                buildContent(),
+                buildColumn(context, _totalScore),
+                secondColumn(context, _totalScore),
+                thirdColumn(context, _totalScore),
+              ],
+            ),
           ],
         ),
       ),
@@ -263,12 +258,14 @@ class _ProfilePageState extends State<ProfilePage> {
 
   Widget buildCoverImage() => Container(
     width: double.infinity,
-    height: coverHeight,
+    height: 150,
     decoration: BoxDecoration(
       color: Colors.grey.withOpacity(0.5),
       image: DecorationImage(
-        image: NetworkImage('https://picsum.photos/seed/496/600'),
+        image: AssetImage(
+            'assets/banner.png'), // Replace 'your_image_asset.png' with your actual image asset path
         fit: BoxFit.cover,
+        alignment: FractionalOffset(0.2, 0.6),
         colorFilter: ColorFilter.mode(
           Colors.white.withOpacity(0.3),
           BlendMode.srcOver,
@@ -281,11 +278,11 @@ class _ProfilePageState extends State<ProfilePage> {
     children: [
       Container(
         width: profileHeight,
-        height: profileHeight,
+        height: 190,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           color: Colors.white,
-          border: Border.all(color: Colors.white, width: 2),
+          border: Border.all(color: Colors.blue, width: 2),
         ),
         child: _image != null
             ? CircleAvatar(
@@ -296,17 +293,25 @@ class _ProfilePageState extends State<ProfilePage> {
           radius: profileHeight / 2,
         ),
       ),
-      if (_image == null)
-        Positioned.fill(
-          child: Center(
-            child: CircularProgressIndicator(
-              valueColor: AlwaysStoppedAnimation<Color>(Colors.blue),
-            ),
+      Positioned(
+        top: 70,
+        bottom: 0,
+        right: 0,
+        child: Container(
+          padding: EdgeInsets.all(4),
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: Colors.blue,
+          ),
+          child: Icon(
+            Icons.edit,
+            color: Colors.white,
+            size: 15,
           ),
         ),
+      ),
     ],
   );
-
 
   Widget buildColumn(BuildContext context, int _score) => Column(
     crossAxisAlignment: CrossAxisAlignment.start,
@@ -341,89 +346,177 @@ class _ProfilePageState extends State<ProfilePage> {
                     .size
                     .width, // Set minimum width to screen width
               ),
-              child: Container(
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: NetworkImage(
-                      'https://cdn.vectorstock.com/i/1000x1000/58/09/cosmic-space-black-sky-background-with-blue-stars-vector-11805809.webp',
+              // child: Container(
+              //   decoration: BoxDecoration(
+              //     image: DecorationImage(
+              //       image: NetworkImage(
+              //         'https://cdn.vectorstock.com/i/1000x1000/58/09/cosmic-space-black-sky-background-with-blue-stars-vector-11805809.webp',
+              //       ),
+              //       fit: BoxFit.cover,
+              //     ),
+              //     borderRadius: BorderRadius.circular(100),
+              //   ),
+              child: Center(
+                child: Row(
+                  children: [
+                    SizedBox(height: 100),
+                    BorderedCircleAvatar(
+                      imageasset: 'assets/overlay/beg1.png',
+                      onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: Text(
+                                  'Initiate Explorer: Curiosity Awakens'),
+                              content: Text(
+                                  'Unlock this badge by achieving a score of 20 or higher on a beginner quiz. Begin your journey of exploration and discovery by answering fundamental questions across various topics.'),
+                              actions: <Widget>[
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: Text('Close'),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      },
+                      userScore: _score, // Condition for changing color
+                      requiredScore:
+                      20, // Set the required score for returning to natural color
                     ),
-                    fit: BoxFit.cover,
-                  ),
-                  // borderRadius: BorderRadius.circular(30),
-                ),
-                child: Center(
-                  child: Row(
-                    children: [
-                      SizedBox(height: 100),
-                      BorderedCircleAvatar(
-                        imageUrl: 'https://picsum.photos/seed/592/600',
-                        onTap: () {
-                          // Handle the tap event here
-                          print('sampol');
-                        },
-                        userScore: _score, // Condition for changing color
-                        requiredScore:  0, // Set the required score for returning to natural color
-
-                      ),
-                      Row(
-                        children: [
-                          BorderedCircleAvatar(
-                            imageUrl: 'https://picsum.photos/seed/496/600',
-                            onTap: () {
-                              // Handle the tap event here
-                              print('Image tapped!');
-                              // Navigator.of(context).pop();
-                            },
-                            userScore: _score, // Condition for changing color
-                            requiredScore: 1, // Set the required score for returning to natural color
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          BorderedCircleAvatar(
-                            imageUrl: 'https://picsum.photos/seed/496/600',
-                            onTap: () {
-                              // Handle the tap event here
-                              print('Image tapped!');
-                            },
-                            userScore: _score, // Condition for changing color
-                            requiredScore: 1, // Set the required score for returning to natural color
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          BorderedCircleAvatar(
-                            imageUrl: 'https://picsum.photos/seed/496/600',
-                            onTap: () {
-                              // Handle the tap event here
-                              print('Image tapped!');
-                            },
-                            userScore: _score, // Condition for changing color
-                            requiredScore: 1, // Set the required score for returning to natural color
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          BorderedCircleAvatar(
-                            imageUrl: 'https://picsum.photos/seed/496/600',
-                            onTap: () {
-                              // Handle the tap event here
-                              print('Image tapped!');
-                            },
-                            userScore: _score, // Condition for changing color
-                            requiredScore: 4, // Set the required score for returning to natural color
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
+                    Row(
+                      children: [
+                        BorderedCircleAvatar(
+                          imageasset: 'assets/overlay/beg2.png',
+                          onTap: () {
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: Text(
+                                      'Novice Navigator: Seeker of Knowledge'),
+                                  content: Text(
+                                      'Earn this badge by scoring 50 or above on a beginner quiz. Demonstrate your commitment to learning and expanding your horizons by delving deeper into fundamental concepts and principles.'),
+                                  actions: <Widget>[
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: Text('Close'),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          },
+                          userScore: _score, // Condition for changing color
+                          requiredScore:
+                          50, // Set the required score for returning to natural color
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        BorderedCircleAvatar(
+                          imageasset: 'assets/overlay/beg3.png',
+                          onTap: () {
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: Text(
+                                      'Apprentice Scholar: Learner`s Ascent'),
+                                  content: Text(
+                                      'Unlock this badge by achieving a score of 70 or more on a beginner quiz. Show your dedication to knowledge acquisition and understanding as you progress through foundational topics with confidence.' ),
+                                  actions: <Widget>[
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: Text('Close'),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          },
+                          userScore: _score, // Condition for changing color
+                          requiredScore:
+                          70, // Set the required score for returning to natural color
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        BorderedCircleAvatar(
+                          imageasset: 'assets/overlay/beg2.png',
+                          onTap: () {
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: Text(
+                                      'Emerging Enthusiast: Knowledge Blossoms'),
+                                  content: Text(
+                                      'Earn this badge by scoring 80 or above on a beginner quiz. Showcase your growing enthusiasm and proficiency in fundamental areas as you tackle more challenging questions with ease.'),
+                                  actions: <Widget>[
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: Text('Close'),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          },
+                          userScore: _score, // Condition for changing color
+                          requiredScore:
+                          80, // Set the required score for returning to natural color
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        BorderedCircleAvatar(
+                          imageasset: 'assets/overlay/beg3.png',
+                          onTap: () {
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return AlertDialog(
+                                  title: Text(
+                                      'Aspiring Adept: Path to Proficiency'),
+                                  content: Text(
+                                      'Unlock this prestigious badge by achieving a score of 100 or higher on a beginner quiz. Demonstrate your commitment to mastering fundamental concepts and laying the groundwork for future learning and growth.'),
+                                  actions: <Widget>[
+                                    TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: Text('Close'),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          },
+                          userScore: _score, // Condition for changing color
+                          requiredScore:
+                          100, // Set the required score for returning to natural color
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
             ),
-          )
+          ),
+          // )
         ],
       ),
     ],
@@ -449,64 +542,121 @@ class _ProfilePageState extends State<ProfilePage> {
             SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: ConstrainedBox(
-                    constraints: BoxConstraints(
-                        minWidth: MediaQuery.of(context).size.width),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: NetworkImage(
-                              'https://cdn.vectorstock.com/i/1000x1000/58/09/cosmic-space-black-sky-background-with-blue-stars-vector-11805809.webp'),
-                          fit: BoxFit.cover,
-                        ),
-                        // borderRadius: BorderRadius.circular(30),
-                      ),
-                      child: Center(
-                        child: Row(
+                  constraints: BoxConstraints(
+                      minWidth: MediaQuery.of(context).size.width),
+                  // child: Container(
+                  //   decoration: BoxDecoration(
+                  //     image: DecorationImage(
+                  //       image: NetworkImage(
+                  //           'https://cdn.vectorstock.com/i/1000x1000/58/09/cosmic-space-black-sky-background-with-blue-stars-vector-11805809.webp'),
+                  //       fit: BoxFit.cover,
+                  //     ),
+                  //     // borderRadius: BorderRadius.circular(30),
+                  //   ),
+                  child: Center(
+                    child: Row(
+                      children: [
+                        SizedBox(height: 100),
+                        Row(
                           children: [
-                            SizedBox(height: 100),
-                            Row(
-                              children: [
-                                BorderedCircleAvatar(
-                                  imageUrl: 'https://picsum.photos/seed/592/600',
-                                  onTap: () {
-                                    // Handle the tap event here
-                                    print('Sample');
+                            BorderedCircleAvatar(
+                              imageasset: 'assets/overlay/interm1.png',
+                              onTap: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      title: Text(
+                                          'Versatile Vanguard: Intermediate Explorer'),
+                                      content: Text(
+                                          'Unlock this badge by achieving a score of 120 or higher on an intermediate quiz that covers a broad range of topics. Demonstrate your versatility by answering questions across different domains and showcasing a solid foundation of knowledge in various subjects.'),
+                                      actions: <Widget>[
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                          child: Text('Close'),
+                                        ),
+                                      ],
+                                    );
                                   },
-                                  userScore: _totalScore, // Pass total score to determine unlock status
-                                  requiredScore:10, // Set the required score for unlocking this image
-                                ),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                BorderedCircleAvatar(
-                                  imageUrl: 'https://picsum.photos/seed/592/600',
-                                  onTap: () {
-                                    // Handle the tap event here
-                                    print('Sample');
-                                  },
-                                  userScore: _totalScore, // Pass total score to determine unlock status
-                                  requiredScore: 5, // Set the required score for unlocking this image
-                                ),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                BorderedCircleAvatar(
-                                  imageUrl: 'https://picsum.photos/seed/592/600',
-                                  onTap: () {
-                                    // Handle the tap event here
-                                    print('Sample');
-                                  },
-                                  userScore: _totalScore, // Pass total score to determine unlock status
-                                  requiredScore: 5, // Set the required score for unlocking this image
-                                ),
-                              ],
+                                );
+                              },
+                              userScore:
+                              _totalScore, // Pass total score to determine unlock status
+                              requiredScore:
+                              120, // Set the required score for unlocking this image
                             ),
                           ],
                         ),
-                      ),
-                    )))
+                        Row(
+                          children: [
+                            BorderedCircleAvatar(
+                              imageasset: 'assets/overlay/interm2.png',
+                              onTap: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      title: Text(
+                                          'Inquisitive Intellect: Intermediate Scholar'),
+                                      content: Text(
+                                          'Earn this badge by scoring 150 or above on an intermediate quiz that delves deeper into specific subjects. Show your inquisitive nature by answering questions that require a deeper understanding of concepts within your chosen field or fields.'),
+                                      actions: <Widget>[
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                          child: Text('Close'),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              },
+                              userScore:
+                              _totalScore, // Pass total score to determine unlock status
+                              requiredScore:
+                              150, // Set the required score for unlocking this image
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            BorderedCircleAvatar(
+                              imageasset: 'assets/overlay/interm3.png',
+                              onTap: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      title: Text(
+                                          'Adaptive Achiever: Intermediate Specialist'),
+                                      content: Text(
+                                          'Unlock this badge by achieving a score of 180 or more on an intermediate quiz that focuses on specialized topics. Showcase your expertise in a particular subject area by answering advanced questions with precision and demonstrating a thorough understanding of the subject matter.'),
+                                      actions: <Widget>[
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                          child: Text('Close'),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              },
+                              userScore:
+                              _totalScore, // Pass total score to determine unlock status
+                              requiredScore:
+                              180, // Set the required score for unlocking this image
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ))
           ],
         )
       ]);
@@ -533,61 +683,116 @@ class _ProfilePageState extends State<ProfilePage> {
                 child: ConstrainedBox(
                     constraints: BoxConstraints(
                         minWidth: MediaQuery.of(context).size.width),
-                    child: Container(
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: NetworkImage(
-                                'https://cdn.vectorstock.com/i/1000x1000/58/09/cosmic-space-black-sky-background-with-blue-stars-vector-11805809.webp'),
-                            fit: BoxFit.cover,
-                          ),
-                          // borderRadius: BorderRadius.circular(30),
-                        ),
-                        child: Center(
-                            child: Row(
-                                children: [
-                                  SizedBox(height: 11),
-                                  Row(
-                                      children: [
-                                        BorderedCircleAvatar(
-                                          imageUrl: 'https://picsum.photos/seed/592/600',
-                                          onTap: () {
-                                            // Handle the tap event here
-                                            print('Sample');
+                    // child: Container(
+                    //     decoration: BoxDecoration(
+                    //       image: DecorationImage(
+                    //         image: NetworkImage(
+                    //             'https://cdn.vectorstock.com/i/1000x1000/58/09/cosmic-space-black-sky-background-with-blue-stars-vector-11805809.webp'),
+                    //         fit: BoxFit.cover,
+                    //       ),
+                    //       // borderRadius: BorderRadius.circular(30),
+                    //     ),
+                    child: Center(
+                        child: Row(children: [
+                          SizedBox(height: 11),
+                          Row(children: [
+                            BorderedCircleAvatar(
+                              imageasset: 'assets/overlay/advanced1.png',
+                              onTap: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      title: Text(
+                                          'Master of Multifaceted Mastery'),
+                                      content: Text(
+                                          'Unlock this badge by achieving a score of 200 or higher on an advanced quiz that tests proficiency across multiple disciplines. Show your versatility by answering questions from various fields, demonstrating your ability to apply knowledge across diverse subjects.'),
+                                      actions: <Widget>[
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
                                           },
-                                          userScore: _totalScore, // Pass total score to determine unlock status
-                                          requiredScore: 5, // Set the required score for unlocking this image
+                                          child: Text('Close'),
                                         ),
-                                        Row(
-                                          children: [BorderedCircleAvatar(
-                                            imageUrl: 'https://picsum.photos/seed/592/600',
-                                            onTap: () {
-                                              // Handle the tap event here
-                                              print('Sample');
-                                            },
-                                            userScore: _totalScore, // Pass total score to determine unlock status
-                                            requiredScore: 5, // Set the required score for unlocking this image
-                                          ),
-                                            Row(
-                                              children: [
-                                                BorderedCircleAvatar(
-                                                  imageUrl: 'https://picsum.photos/seed/592/600',
-                                                  onTap: () {
-                                                    // Handle the tap event here
-                                                    print('Sample');
-                                                  },
-                                                  userScore: _totalScore, // Pass total score to determine unlock status
-                                                  requiredScore: 5, // Set the required score for unlocking this image
-                                                ),
-                                              ],
+                                      ],
+                                    );
+                                  },
+                                );
+                              },
+                              userScore:
+                              _totalScore, // Pass total score to determine unlock status
+                              requiredScore:
+                              200, // Set the required score for unlocking this image
+                            ),
+                            Row(
+                              children: [
+                                BorderedCircleAvatar(
+                                  imageasset: 'assets/overlay/advanced2.png',
+                                  onTap: () {
+                                    showDialog(
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return AlertDialog(
+                                          title: Text(
+                                              'Elite Innovator: Pinnacle Proficiency'),
+                                          content: Text(
+                                              'Earn this badge by excelling on an advanced quiz with a score of 250 or above. Showcase your innovative thinking and problem-solving skills by tackling challenging questions that require creative solutions and demonstrating mastery in your chosen field.'),
+                                          actions: <Widget>[
+                                            TextButton(
+                                              onPressed: () {
+                                                Navigator.of(context).pop();
+                                              },
+                                              child: Text('Close'),
                                             ),
                                           ],
-                                        ),
-                                      ]),
-                                ])))
-                ))],
+                                        );
+                                      },
+                                    );
+                                  },
+                                  userScore:
+                                  _totalScore, // Pass total score to determine unlock status
+                                  requiredScore:
+                                  250, // Set the required score for unlocking this image
+                                ),
+                                Row(
+                                  children: [
+                                    BorderedCircleAvatar(
+                                      imageasset: 'assets/overlay/advanced3.png',
+                                      onTap: () {
+                                        showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) {
+                                            return AlertDialog(
+                                              title: Text(
+                                                  'Trailblazer Titan: Boundless Expertise'),
+                                              content: Text(
+                                                  'Unlock this prestigious badge by achieving a score of 300 or more on an advanced quiz that delves deep into your expertise. Display comprehensive knowledge and leadership by answering complex questions with authority and demonstrating your ability to push the boundaries of your field.'),
+                                              actions: <Widget>[
+                                                TextButton(
+                                                  onPressed: () {
+                                                    Navigator.of(context).pop();
+                                                  },
+                                                  child: Text('Close'),
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        );
+                                      },
+                                      userScore:
+                                      _totalScore, // Condition for changing color
+                                      requiredScore:
+                                      300, // Set the required score for returning to natural color
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ]),
+                        ]))))
+          ],
         )
       ]);
-
 
   @override
   void dispose() {
@@ -595,21 +800,25 @@ class _ProfilePageState extends State<ProfilePage> {
     super.dispose();
   }
 
-
+  void showMessage(BuildContext context, String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text(message)),
+    );
+  }
 }
 
-
 class BorderedCircleAvatar extends StatelessWidget {
-  final String imageUrl;
+  final String imageasset;
   final double radius;
   final Color borderColor;
   final int userScore;
-  final int requiredScore; // Add a variable to hold the required score for the avatar to return to original color
+  final int
+  requiredScore; // Add a variable to hold the required score for the avatar to return to original color
   final double borderWidth;
   final VoidCallback onTap;
 
   const BorderedCircleAvatar({
-    required this.imageUrl,
+    required this.imageasset,
     this.radius = 30,
     this.borderColor = Colors.white,
     this.borderWidth = 3.0,
@@ -622,7 +831,7 @@ class BorderedCircleAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool returnToNaturalColor = userScore >= requiredScore;
-    print('User score: $userScore, Required score: $requiredScore, Return to natural color: $returnToNaturalColor'); // Debugging
+    // Debugging
     return Padding(
       padding: EdgeInsets.only(top: 9.0, bottom: 9.0, left: 15, right: 15),
       child: GestureDetector(
@@ -635,16 +844,19 @@ class BorderedCircleAvatar extends StatelessWidget {
           child: ClipOval(
             child: ColorFiltered(
               colorFilter: returnToNaturalColor
-                  ? ColorFilter.mode(Colors.transparent, BlendMode.multiply) // Return to natural color
+                  ? ColorFilter.mode(Colors.transparent,
+                  BlendMode.multiply) // Return to natural color
                   : ColorFilter.mode(
                 Colors.grey, // Grayscale filter
                 BlendMode.saturation,
               ),
-              child: Image.network(
-                imageUrl,
+              child: Image.asset(
+                imageasset,
                 fit: BoxFit.cover,
-                width: radius * 2, // Set the width to twice the radius to maintain circular shape
-                height: radius * 2, // Set the height to twice the radius to maintain circular shape
+                width: radius *
+                    2, // Set the width to twice the radius to maintain circular shape
+                height: radius *
+                    2, // Set the height to twice the radius to maintain circular shape
               ),
             ),
           ),
@@ -653,9 +865,6 @@ class BorderedCircleAvatar extends StatelessWidget {
     );
   }
 }
-
-
-
 
 void main() {
   runApp(MaterialApp(

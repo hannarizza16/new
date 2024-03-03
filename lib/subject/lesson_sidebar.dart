@@ -31,9 +31,6 @@ class _LessonSidebarState extends State<LessonSidebar> {
     final Color sideBarColor =  Color(0xFF0C356A);
     const Color yellow =  Color(0xFFFFCC70);
 
-
-
-
     return Drawer(
       child: Container(
         color: sideBarColor,
