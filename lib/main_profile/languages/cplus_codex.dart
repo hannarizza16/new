@@ -552,24 +552,146 @@ const cPlusCodex = {
 
       18: {
         'topic': '9.     Operators',
-        'subTopic': [{}]
+        'subTopic': [{
+          'heading': "C++ Operators",
+          'body': "Operators are used to perform operations on variables and values."
+              "\n\nIn the example below, we use the '+' operator to add together two values:"
+              "\n\nExample",
+          'attachment': "assets/cPlus_beginner/9.1.png",
+        },
+          {
+            'body': "Output:",
+            'attachment': "assets/cPlus_beginner/9.2.png",
+          },
+          {
+            'body': "Although the '+' operator is often used to add together two values, like in the example above, it can also be used to add together a variable and a value, or a variable and another variable:"
+                "\n\nExample",
+            'attachment': "assets/cPlus_beginner/9.3.png",
+          },
+          {
+            'body': "Output:",
+            'attachment': "assets/cPlus_beginner/9.4.png",
+          },
+          {
+            'body': "C++ divides the operators into the following groups:"
+                "   • Arithmetic operators"
+                "   • Assignment operators"
+                "   • Comparison operators"
+                "   • Logical operators"
+                "   • Bitwise operators",
+          },
+
+        ]
       },
       19: {
         'topic': '     9.1     Arithmetic',
-        'subTopic': [{}]
+        'subTopic': [{
+          'heading': "Arithmetic Operators",
+          'body': "Arithmetic operators are used to perform common mathematical operations.",
+          'attachment': "assets/cPlus_beginner/9.5.png",
+        },
+          {
+            'body': "+  -  Addition",
+            'attachment': "assets/cPlus_beginner/9.6.png",
+          },
+          {
+            'body': "-  -  Subtraction",
+            'attachment': "assets/cPlus_beginner/9.7.png",
+          },
+          {
+            'body': "*  -  Multiplication",
+            'attachment': "assets/cPlus_beginner/9.8.png",
+          },
+          {
+            'body': "/  -  Division",
+            'attachment': "assets/cPlus_beginner/9.9.png",
+          },
+          {
+            'body': "%  -  Modulus",
+            'attachment': "assets/cPlus_beginner/9.10.png",
+          },
+          {
+            'body': "++  -  Increment",
+            'attachment': "assets/cPlus_beginner/9.11.png",
+          },
+          {
+            'body': "--  -  Decrement",
+            'attachment': "assets/cPlus_beginner/9.12.png",
+          },
+        ]
       },
       20: {
         'topic': '     9.2     Assignment',
-        'subTopic': [{}]
+        'subTopic': [{
+          'heading': "Assignment Operators",
+          'body': "Assignment operators are used to assign values to variables."
+              "\n\nIn the example below, we use the assignment operator (=) to assign the value 10 to a variable called x:"
+              "\n\nExample",
+          'attachment': "assets/cPlus_beginner/9.13.png",
+        },
+          {
+            'body': "The addition assignment operator (+=) adds a value to a variable:"
+                "\n\nExample",
+            'attachment': "assets/cPlus_beginner/9.14.png",
+          },
+          {
+            'heading': "\nA list of all assignment operators:",
+            'attachment': "assets/cPlus_beginner/9.15.png",
+          },
+          {
+            'body': "'='    operator",
+            'attachment': "assets/cPlus_beginner/9.16.png",
+          },
+          {
+            'body': "'+='    operator",
+            'attachment': "assets/cPlus_beginner/9.17.png",
+          },
+          {
+            'body': "'-='    operator",
+            'attachment': "assets/cPlus_beginner/9.18.png",
+          },
+          {
+            'body': "'*='    operator",
+            'attachment': "assets/cPlus_beginner/9.19.png",
+          },
+          {
+            'body': "'/='    operator",
+            'attachment': "assets/cPlus_beginner/9.20.png",
+          },
+          {
+            'body': "'%='    operator",
+            'attachment': "assets/cPlus_beginner/9.21.png",
+          },
+          {
+            'body': "'&='    operator",
+            'attachment': "assets/cPlus_beginner/9.22.png",
+          },
+          {
+            'body': "'|='    operator",
+            'attachment': "assets/cPlus_beginner/9.23.png",
+          },
+          {
+            'body': "'^='    operator",
+            'attachment': "assets/cPlus_beginner/9.24.png",
+          },
+          {
+            'body': "'>>='    operator",
+            'attachment': "assets/cPlus_beginner/9.25.png",
+          },
+          {
+            'body': "'<<='    operator",
+            'attachment': "assets/cPlus_beginner/9.26.png",
+          },
+        ]
       },
-      21: {
-        'topic': '     9.3     Comparison',
-        'subTopic': [{}]
-      },
-      22: {
-        'topic': '     9.4     Logical',
-        'subTopic': [{}]
-      },
+      // 21: {
+      //   'topic': '     9.3     Comparison',
+      //   'subTopic': [{}]
+      // },
+      // 22: {
+      //   'topic': '     9.4     Logical',
+      //   'subTopic': [{}]
+      // },
     },
     Categories.intermediate: {},
     Categories.advanced: {},
