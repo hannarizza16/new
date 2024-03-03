@@ -360,9 +360,10 @@ const cPlusCodex = {
           },
           {
             'heading': "\n\nNotes On Constants",
-            'body': "When you declare a constant variable, it must be assigned with a value:"
-                "\n\nExample"
-                " Like this:",
+            'body':
+                "When you declare a constant variable, it must be assigned with a value:"
+                    "\n\nExample"
+                    " Like this:",
             'attachment': 'assets/cPlus_beginner/5.24.png'
           },
           {
@@ -386,10 +387,7 @@ const cPlusCodex = {
                 "\n\nExample",
             'attachment': "assets/cPlus_beginner/7.1.png"
           },
-          {
-            'body': "Output: ",
-            'attachment': 'assets/cPlus_beginner/7.2.png'
-          },
+          {'body': "Output: ", 'attachment': 'assets/cPlus_beginner/7.2.png'},
           {
             'heading': "\n*Good To Know*",
             'body': "cout is pronounced 'see-out'. Used for output, and uses the insertion operator (<<)"
@@ -397,21 +395,109 @@ const cPlusCodex = {
           },
           {
             'heading': "Creating a Simple Calculator",
-            'body': "In this example, the user must input two numbers. Then we print the sum by calculating (adding) the two numbers:"
-                "\n\nExample",
-            'attachment':"assets/cPlus_beginner/7.3.png"
+            'body':
+                "In this example, the user must input two numbers. Then we print the sum by calculating (adding) the two numbers:"
+                    "\n\nExample",
+            'attachment': "assets/cPlus_beginner/7.3.png"
           },
-          {
-            'body': "Output: ",
-            'attachment': 'assets/cPlus_beginner/7.4.png'
-          },
+          {'body': "Output: ", 'attachment': 'assets/cPlus_beginner/7.4.png'},
           {
             'body': "There you go! You just built a basic calculator!",
-
           },
-
         ]
-      }
+      },
+      12: {
+        'topic': '8.     Data Types',
+        'subTopic': [
+          {
+            'heading': "Data Types",
+            'body':
+                "As explained in the Variables chapter, a variable in C++ must be a specified data type:"
+                    "\n\nExample",
+            'attachment': "assets/cPlus_beginner/8.1.png",
+          },
+          {
+            'body': "Output:",
+            'attachment': "assets/cPlus_beginner/8.2.png",
+          },
+        ]
+      },
+      13: {
+        'topic': '     8.1     Basic Data Types',
+        'subTopic': [
+          {
+            'heading': "Basic Data Types",
+            'body':
+                "The data type specifies the size and type of information the variable will store:",
+            'attachment': "assets/cPlus_beginner/8.3.png",
+          }
+        ]
+      },
+      14: {
+        'topic': '     8.2     Numbers',
+        'subTopic': [
+          {
+            'heading': "Numeric Data Types",
+            'body':
+                "Use int when you need to store a whole number without decimals, like 35 or 1000, and float or double when you need a floating point number (with decimals), like 9.99 or 3.14515."
+                    "*int",
+            'attachment': "assets/cPlus_beginner/8.4.png",
+          },
+          {
+            'body': "Output:",
+            'attachment': "assets/cPlus_beginner/8.5.png",
+          },
+          {
+            'body': "*float",
+            'attachment': "assets/cPlus_beginner/8.6.png",
+          },
+          {
+            'body': "Output:",
+            'attachment': "assets/cPlus_beginner/8.7.png",
+          },
+          {
+            'body': "*double",
+            'attachment': "assets/cPlus_beginner/8.8.png",
+          },
+          {
+            'body': "Output:",
+            'attachment': "assets/cPlus_beginner/8.9.png",
+          },
+          {
+            'heading': "\n\nfloat vs. double",
+            'body': "The precision of a floating point value indicates how many digits the value can have after the decimal point. The precision of float is only six or seven decimal digits, while double variables have a precision of about 15 digits. Therefore it is safer to use double for most calculations.",
+          },
+          {
+            'body': "Scientific Numbers"
+                '\n\nA floating point number can also be a scientific number with an "e" to indicate the power of 10:'
+                '\n\nExample',
+            'attachment': "assets/cPlus_beginner/8.10.png",
+          },
+          {
+            'body': "Output:",
+            'attachment': "assets/cPlus_beginner/8.11.png",
+          },
+        ]
+      },
+      15: {
+        'topic': '     8.3     Booleans',
+        'subTopic': [{
+          'heading': "Boolean Data Types",
+        }]
+      },
+      16: {
+        'topic': '     8.4     Characters',
+        'subTopic': [{
+          'heading': "Character Data Types",
+
+        }]
+      },
+      17: {
+        'topic': '     8.5     Strings',
+        'subTopic': [{
+          'heading': "String Data Types",
+        }]
+      },
     },
     Categories.intermediate: {},
     Categories.advanced: {},
