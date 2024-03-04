@@ -7,6 +7,7 @@ import 'package:first_project/main_profile/languages/subtopic.dart'; // contains
 import 'dart:ui';
 
 
+
 class LessonScreen extends StatefulWidget {
 
   const LessonScreen({
@@ -41,7 +42,7 @@ class _LessonScreenState extends State<LessonScreen>{
 
   List<Topic> get getTopics {
     if (courselesson.containsKey(widget.lesson))
-        {
+    {
       final topics = [...courselesson[widget.lesson]!.values];
       return topics.map((topic) => Topic.fromJson(topic)).toList();
     }
@@ -61,11 +62,11 @@ class _LessonScreenState extends State<LessonScreen>{
     return Scaffold(
         key: _scaffoldKey,
         appBar: AppBar(
-        backgroundColor: darkBlue,
-        title: Text(widget.lesson.value, style: Theme.of(context).textTheme.headline6!.copyWith(
-      color: yellow,
-    ),
-    ),
+          backgroundColor: darkBlue,
+          title: Text(widget.lesson.value, style: Theme.of(context).textTheme.headline6!.copyWith(
+            color: yellow,
+          ),
+          ),
           actions: [
             IconButton(
               icon: Icon(Icons.menu),
@@ -187,5 +188,5 @@ class _LessonScreenState extends State<LessonScreen>{
             ],
           ),
         ));
-}
+  }
 }

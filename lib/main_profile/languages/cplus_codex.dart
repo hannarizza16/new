@@ -1478,18 +1478,650 @@ const cPlusCodex = {
             'body':
                 'Note that, in C++ version 11 (2011), you can also use the "for-each" loop:'
                     "\n\nExample",
-            'attachment': "assets/cPlus_intermediate/18.18.png"
+            'attachment': "assets/cPlus_intermediate/18.19.png"
           },
           {
-            'body': "It is good to know the different ways to loop through an array, since you may encounter them all in different programs."
+            'body':
+                "It is good to know the different ways to loop through an array, since you may encounter them all in different programs."
           }
         ]
       },
-      // 40: {
-      //   'topic': '     18.4     Multidimensional Arrays',
-      //   'subTopic': [{}]
-      // },
+      40: {
+        'topic': '     18.4     Multidimensional Arrays',
+        'subTopic': [
+          {
+            'heading': "Multi-Dimensional Arrays",
+            'body': "A multi-dimensional array is an array of arrays."
+                "\n\nTo declare a multi-dimensional array, define the variable type, specify the name of the array followed by square brackets which specify how many elements the main array has, followed by another set of square brackets which indicates how many elements the sub-arrays have:",
+            'attachment': "assets/cPlus_intermediate/18.20.png"
+          },
+          {
+            'body':
+                "As with ordinary arrays, you can insert values with an array literal - a comma-separated list inside curly braces. In a multi-dimensional array, each element in an array literal is another array literal.",
+            'attachment': "assets/cPlus_intermediate/18.21.png"
+          },
+          {
+            'body': "Each set of square brackets in an array declaration adds another dimension to an array. An array like the one above is said to have two dimensions."
+                "\n\nArrays can have any number of dimensions. The more dimensions an array has, the more complex the code becomes. The following array has three dimensions:",
+            'attachment': "assets/cPlus_intermediate/18.22.png"
+          },
+          {
+            'heading': "\nAccess the Elements of a Multi-Dimensional Array",
+            'body': "To access an element of a multi-dimensional array, specify an index number in each of the array's dimensions."
+                "\n\nThis statement accesses the value of the element in the first row (0) and third column (2) of the letters array."
+                "\n\n\nExample",
+            'attachment': "assets/cPlus_intermediate/18.23.png"
+          },
+          {
+            'body':
+                "*Remember that: Array indexes start with 0: [0] is the first element. [1] is the second element, etc."
+          },
+          {
+            'heading': "Change Elements in a Multi-Dimensional Array",
+            'body':
+                "To change the value of an element, refer to the index number of the element in each of the dimensions:"
+                    "\n\nExample",
+            'attachment': "assets/cPlus_intermediate/18.24.png"
+          },
+          {
+            'heading': "\nLoop Through a Multi-Dimensional Array",
+            'body': "To loop through a multi-dimensional array, you need one loop for each of the array's dimensions."
+                "\n\nThe following example outputs all elements in the letters array:"
+                "\n\nExample",
+            'attachment': "assets/cPlus_intermediate/18.25.png"
+          },
+          {
+            'body':
+                "This example shows how to loop through a three-dimensional array:"
+                    "\n\nExample",
+            'attachment': "assets/cPlus_intermediate/18.26.png"
+          },
+          {
+            'heading': "\nWhy Multi-Dimensional Arrays?",
+            'body':
+                "Multi-dimensional arrays are great at representing grids. This example shows a practical use for them. In the following example we use a multi-dimensional array to represent a small game of Battleship:"
+                    "\n\nExample",
+            'attachment': "assets/cPlus_intermediate/18.27.png"
+          },
+          {
+            'body': "Output:",
+            'attachment': "assets/cPlus_intermediate/18.28.png"
+          },
+        ]
+      },
+      41: {
+        'topic': '19.     Structures',
+        'subTopic': [
+          {
+            'heading': "C++ Structures",
+            'body': "Structures (also called structs) are a way to group several related variables into one place. Each variable in the structure is known as a member of the structure."
+                "\n\nUnlike an array, a structure can contain many different data types (int, string, bool, etc.)."
+          },
+          {
+            'heading': "\nCreate a Structure",
+            'body': "To create a structure, use the struct keyword and declare each of its members inside curly braces."
+                "\n\nAfter the declaration, specify the name of the structure variable (myStructure in the example below):"
+                "\n\nSyntax",
+            'attachment': "assets/cPlus_intermediate/19.1.png"
+          },
+          {
+            'heading': "Access Structure Members",
+            'body': "To access members of a structure, use the dot syntax (.):"
+                "\n\nExample: Assign data to members of a structure and print it:",
+            'attachment': "assets/cPlus_intermediate/19.2.png"
+          },
+          {
+            'heading': "One Structure in Multiple Variables",
+            'body':
+                "You can use a comma (,) to use one structure in many variables:",
+            'attachment': "assets/cPlus_intermediate/19.3.png"
+          },
+          {
+            'body':
+                "This example shows how to use a structure in two different variables:"
+                    "\n\nExample: Use one structure to represent two cars:",
+            'attachment': "assets/cPlus_intermediate/19.4.png"
+          },
+          {
+            'heading': "Named Structures",
+            'body': "By giving a name to the structure, you can treat it as a data type. This means that you can create variables with this structure anywhere in the program at any time."
+                "\n\nTo create a named structure, put the name of the structure right after the struct keyword:",
+            'attachment': "assets/cPlus_intermediate/19.5.png"
+          },
+          {
+            'body':
+                "To declare a variable that uses the structure, use the name of the structure as the data type of the variable:",
+            'attachment': "assets/cPlus_intermediate/19.6.png"
+          },
+          {
+            'body': "Example: Use one structure to represent two cars:",
+            'attachment': "assets/cPlus_intermediate/19.7.png"
+          },
+        ]
+      },
+      42: {
+        'topic': '20.     References',
+        'subTopic': [
+          {
+            'headimg': "Creating References",
+            'body':
+                'A reference variable is a "reference" to an existing variable, and it is created with the & operator:',
+            'attachment': "assets/cPlus_intermediate/19.8.png"
+          },
+          {
+            'body':
+                "Now, we can use either the variable name food or the reference name meal to refer to the food variable:"
+                    "\n\nExample",
+            'attachment': "assets/cPlus_intermediate/19.9.png"
+          },
+        ]
+      },
+      43: {
+        'topic': '     20.1     Memory Address',
+        'subTopic': [
+          {
+            'heading': "Memory Address",
+            'body': "In the example from the previous page, the '&' operator was used to create a reference variable. But it can also be used to get the memory address of a variable; which is the location of where the variable is stored on the computer."
+                "\n\nWhen a variable is created in C++, a memory address is assigned to the variable. And when we assign a value to the variable, it is stored in this memory address."
+                "\n\nTo access it, use the '&' operator, and the result will represent where the variable is stored:"
+                "\n\n\nExample",
+            'attachment': "assets/cPlus_intermediate/19.10.png"
+          },
+          {
+            'body':
+                "^Note: The memory address is in hexadecimal form (0x..). Note that you may not get the same result in your program."
+          },
+          {
+            'heading': "And why is it useful to know the memory address?",
+            'body': "References and Pointers (which you will learn about in the next chapter) are important in C++, because they give you the ability to manipulate the data in the computer\'s memory - which can reduce the code and improve the performance."
+                "\n\nThese two features are one of the things that make C++ stand out from other programming languages, like Python and Java."
+          }
+        ]
+      },
+      44: {
+        'topic': '21.     Creating Pointers',
+        'subTopic': [
+          {
+            'heading': "Creating Pointers",
+            'body':
+                "You learned from the previous chapter, that we can get the memory address of a variable by using the '&' operator:"
+                    "\n\nExample",
+            'attachment': "assets/cPlus_intermediate/20.1.png"
+          },
+          {
+            'body': "A pointer however, is a variable that stores the memory address as its value."
+                "\n\nA pointer variable points to a data type (like int or string) of the same type, and is created with the '*' operator. The address of the variable you\'re working with is assigned to the pointer:"
+                "\n\n\nExample",
+            'attachment': "assets/cPlus_intermediate/20.2.png"
+          },
+          {
+            'body': "Example explained"
+                "\n\nCreate a pointer variable with the name 'ptr', that points to a 'string' variable, by using the asterisk sign '*' (string* ptr). Note that the type of the pointer has to match the type of the variable you\'re working with."
+                "\n\nUse the & operator to store the memory address of the variable called food, and assign it to the pointer."
+                "\n\nNow, ptr holds the value of food\'s memory address."
+                "\n\n*Tip: There are three ways to declare pointer variables, but the first way is preferred:",
+            'attachment': "assets/cPlus_intermediate/20.3.png"
+          },
+        ]
+      },
+      45: {
+        'topic': '     21.1     Dereferencing',
+        'subTopic': [
+          {
+            'heading': "Get Memory Address and Value",
+            'body':
+                "In the example from the previous page, we used the pointer variable to get the memory address of a variable (used together with the '&' reference operator). However, you can also use the pointer to get the value of the variable, by using the '*' operator (the dereference operator):"
+                    "\n\nExample",
+            'attachment': "assets/cPlus_intermediate/21.1.png"
+          },
+          {
+            'body': "*Note that the '*' sign can be confusing here, as it does two different things in our code:"
+                "\n\n   • When used in declaration (string* ptr), it creates a pointer variable."
+                "\n\n   • When not used in declaration, it act as a dereference operator."
+          },
+        ]
+      },
+      46: {
+        'topic': '     21.2     Modify Pointers',
+        'subTopic': [
+          {
+            'heading': "Modify the Pointer Value",
+            'body':
+                "You can also change the pointer's value. But note that this will also change the value of the original variable:"
+                    "\n\nExample",
+            'attachment': "assets/cPlus_intermediate/21.2.png"
+          }
+        ]
+      },
     },
-    Categories.advanced: {},
+    Categories.advanced: {
+      0: {
+        'topic': '1.    Functions',
+        'subTopic': [
+          {
+            'heading': "C++ Functions",
+            'body': "A function is a block of code which only runs when it is called."
+                "\n\nYou can pass data, known as parameters, into a function."
+                "\n\nFunctions are used to perform certain actions, and they are important for reusing code: Define the code once, and use it many times."
+          },
+          {
+            'heading': "\nCreate a Function",
+            'body': "C++ provides some pre-defined functions, such as main(), which is used to execute code. But you can also create your own functions to perform certain actions."
+                "\n\nTo create (often referred to as declare) a function, specify the name of the function, followed by parentheses ():"
+                "\n\nSyntax",
+            'attachment': "assets/cPlus_intermediate/22.1.png"
+          },
+          {
+            'body': "Example Explained"
+                "\n\n   • myFunction() is the name of the function"
+                "\n\n   • void means that the function does not have a return value. You will learn more about return values later in the next chapter"
+                "\n\n   • inside the function (the body), add code that defines what the function should do"
+          },
+          {
+            'heading': "\nCall a Function",
+            'body': 'Declared functions are not executed immediately. They are "saved for later use", and will be executed later, when they are called.'
+                '\n\nTo call a function, write the function\'s name followed by two parentheses \'()\' and a semicolon \';\''
+                '\n\nIn the following example, myFunction() is used to print a text (the action), when it is called:'
+                '\n\nExample'
+                '\n\nInside main, call myFunction():',
+            'attachment': "assets/cPlus_advanced/1.1.png"
+          },
+          {
+            'body': "A function can be called multiple times:"
+                "\n\nExample",
+            'attachment': "assets/cPlus_advanced/1.2.png"
+          },
+          {
+            'heading': "\nFunction Declaration and Definition",
+            'body': "   • Declaration: the return type, the name of the function, and parameters (if any)"
+                "\n\n   • Definition: the body of the function (code to be executed)",
+            'attachment': "assets/cPlus_advanced/1.3.png"
+          },
+          {
+            'body':
+                "Note: If a user-defined function, such as myFunction() is declared after the main() function, an error will occur:"
+                    "\n\nExample",
+            'attachment': "assets/cPlus_advanced/1.4.png"
+          },
+          {
+            'body': "However, it is possible to separate the declaration and the definition of the function - for code optimization."
+                "\n\nYou will often see C++ programs that have function declaration above main(), and function definition below main(). This will make the code better organized and easier to read:"
+                "\n\n\nExample",
+            'attachment': "assets/cPlus_advanced/1.5.png"
+          },
+        ]
+      },
+      1: {
+        'topic': '2.     Function Parameters',
+        'subTopic': [
+          {
+            'heading': "Parameters and Arguments",
+            'body': "Information can be passed to functions as a parameter. Parameters act as variables inside the function."
+                "\n\nParameters are specified after the function name, inside the parentheses. You can add as many parameters as you want, just separate them with a comma:"
+                "\n\nSyntax",
+            'attachment': "assets/cPlus_advanced/1.6.png"
+          },
+          {
+            'body':
+                "The following example has a function that takes a string called fname as parameter. When the function is called, we pass along a first name, which is used inside the function to print the full name:"
+                    "\n\nExample",
+            'attachment': "assets/cPlus_advanced/1.7.png"
+          },
+          {
+            'body':
+                "*When a parameter is passed to the function, it is called an argument. So, from the example above: fname is a parameter, while Hanna, Jaesy and Mark are arguments."
+          },
+        ]
+      },
+      2: {
+        'topic': '     2.1     Default Parameters',
+        'subTopic': [
+          {
+            'heading': "Default Parameter Value",
+            'body': "You can also use a default parameter value, by using the equals sign (=)."
+                '\n\nIf we call the function without an argument, it uses the default value ("Norway"):'
+                "\n\nExample",
+            'attachment': "assets/cPlus_advanced/1.8.png"
+          },
+          {
+            'body':
+                'A parameter with a default value, is often known as an "optional parameter". From the example above, country is an optional parameter and "Norway" is the default value.'
+          },
+        ]
+      },
+      3: {
+        'topic': '     2.2     Multiple Parameters',
+        'subTopic': [
+          {
+            'heading': "Multiple Parameters",
+            'body':
+                "Inside the function, you can add as many parameters as you want:"
+                    "\n\nExample",
+            'attachment': "assets/cPlus_advanced/1.9.png"
+          },
+          {
+            'body':
+                "*Note that when you are working with multiple parameters, the function call must have the same number of arguments as there are parameters, and the arguments must be passed in the same order."
+          }
+        ]
+      },
+      4: {
+        'topic': '     2.3     Return Values',
+        'subTopic': [
+          {
+            'heading': "Return Values",
+            'body':
+                "The void keyword, used in the previous examples, indicates that the function should not return a value. If you want the function to return a value, you can use a data type (such as int, string, etc.) instead of void, and use the return keyword inside the function:"
+                    "\n\nExample",
+            'attachment': "assets/cPlus_advanced/1.10.png"
+          },
+          {
+            'body':
+                "This example returns the sum of a function with two parameters:"
+                    "\n\nExample",
+            'attachment': "assets/cPlus_advanced/1.11.png"
+          },
+          {
+            'body': "You can also store the result in a variable:"
+                "\n\nExample",
+            'attachment': "assets/cPlus_advanced/1.12.png"
+          },
+        ]
+      },
+      5: {
+        'topic': '     2.4     Pass By Reference',
+        'subTopic': [
+          {
+            'heading': "Pass By Reference",
+            'body':
+                "In the examples from the previous page, we used normal variables when we passed parameters to a function. You can also pass a reference to the function. This can be useful when you need to change the value of the arguments:"
+                    "\n\nExample",
+            'attachment': "assets/cPlus_advanced/1.13.png"
+          },
+        ]
+      },
+      6: {
+        'topic': '     2.5     Pass Array to a Function',
+        'subTopic': [
+          {
+            'heading': "Pass Arrays as Function Parameters",
+            'body': "You can also pass arrays to a function:"
+                "\n\nExample",
+            'attachment': "assets/cPlus_advanced/1.14.png"
+          },
+          {
+            'body': "Example Explained"
+                "\n\nThe function (myFunction) takes an array as its parameter (int myNumbers[5]), and loops through the array elements with the for loop."
+                "\n\nWhen the function is called inside main(), we pass along the myNumbers array, which outputs the array elements."
+                "\n\n*Note that when you call the function, you only need to use the name of the array when passing it as an argument myFunction(myNumbers). However, the full declaration of the array is needed in the function parameter (int myNumbers[5])."
+          }
+        ]
+      },
+      7: {
+        'topic': '3.     Function Overloading',
+        'subTopic': [
+          {
+            'heading': "Function Overloading",
+            'body':
+                "With function overloading, multiple functions can have the same name with different parameters:"
+                    "\n\nExample",
+            'attachment': "assets/cPlus_advanced/1.15.png"
+          },
+          {
+            'body':
+                "Consider the following example, which have two functions that add numbers of different type:"
+                    "\n\nExample",
+            'attachment': "assets/cPlus_advanced/1.16.png"
+          },
+          {
+            'body': "Instead of defining two functions that should do the same thing, it is better to overload one."
+                "\n\nIn the example below, we overload the plusFunc function to work for both int and double:"
+                "\n\nExample",
+            'attachment': "assets/cPlus_advanced/1.17.png"
+          },
+          {
+            'body':
+                "*Note: Multiple functions can have the same name as long as the number and/or type of parameters are different."
+          },
+        ]
+      },
+      8: {
+        'topic': '4.     Recursion',
+        'subTopic': [
+          {
+            'heading': "Recursion",
+            'body': "Recursion is the technique of making a function call itself. This technique provides a way to break complicated problems down into simple problems which are easier to solve."
+                "\n\nRecursion may be a bit difficult to understand. The best way to figure out how it works is to experiment with it.",
+          },
+          {
+            'heading': "Recursion Example",
+            'body':
+                "Adding two numbers together is easy to do, but adding a range of numbers is more complicated. In the following example, recursion is used to add a range of numbers together by breaking it down into the simple task of adding two numbers:"
+                    "\n\nExample",
+            'attachment': "assets/cPlus_advanced/1.18.png"
+          },
+          {
+            'body': "Example Explained"
+                "\n\nWhen the sum() function is called, it adds parameter k to the sum of all numbers smaller than k and returns the result. When k becomes 0, the function just returns 0. When running, the program follows these steps:",
+            'attachment': "assets/cPlus_advanced/1.19.png"
+          },
+          {
+            'body': "Since the function does not call itself when k is 0, the program stops there and returns the result."
+                "\n\n*The developer should be very careful with recursion as it can be quite easy to slip into writing a function which never terminates, or one that uses excess amounts of memory or processor power. However, when written correctly recursion can be a very efficient and mathematically-elegant approach to programming."
+          }
+        ]
+      },
+      9: {
+        'topic': '5.     OOP',
+        'subTopic': [
+          {
+            'heading': "What is OOP?",
+            'body': "OOP stands for Object-Oriented Programming."
+                "\n\nProcedural programming is about writing procedures or functions that perform operations on the data, while object-oriented programming is about creating objects that contain both data and functions."
+                "\n\nObject-oriented programming has several advantages over procedural programming:"
+                "\n\n   • OOP is faster and easier to execute"
+                "\n\n   • OOP provides a clear structure for the programs"
+                '\n\n   • OOP helps to keep the C++ code DRY "Don\'t Repeat Yourself", and makes the code easier to maintain, modify and debug'
+                "\n\n   • OOP makes it possible to create full reusable applications with less code and shorter development time"
+                '\n\nTip: The "Don\'t Repeat Yourself" (DRY) principle is about reducing the repetition of code. You should extract out the codes that are common for the application, and place them at a single place and reuse them instead of repeating it.',
+          },
+          {
+            'heading': "C++ What are Classes and Objects?",
+            'body': "Classes and objects are the two main aspects of object-oriented programming."
+                "\n\nLook at the following illustration to see the difference between class and objects:",
+            'attachment': "assets/cPlus_advanced/1.20.png"
+          },
+          {
+            'body': "Another example:",
+            'attachment': "assets/cPlus_advanced/1.21.png"
+          },
+          {
+            'body': "So, a class is a template for objects, and an object is an instance of a class."
+                "\n\nWhen the individual objects are created, they inherit all the variables and functions from the class."
+                "\n\nYou will learn much more about classes and objects in the next chapter."
+          }
+        ]
+      },
+      10: {
+        'topic': '6.     Classes and Objects',
+        'subTopic': [
+          {
+            'heading': "C++ Classes/Objects",
+            'body': 'C++ is an object-oriented programming language.'
+                '\n\nEverything in C++ is associated with classes and objects, along with its attributes and methods. For example: in real life, a car is an object. The car has attributes, such as weight and color, and methods, such as drive and brake.'
+                '\n\nAttributes and methods are basically variables and functions that belongs to the class. These are often referred to as "class members".'
+                '\n\nA class is a user-defined data type that we can use in our program, and it works as an object constructor, or a "blueprint" for creating objects.',
+          },
+          {
+            'heading': "Create a Class",
+            'body': "To create a class, use the class keyword:"
+                "\n\nExample"
+                '\n\nCreate a class called "MyClass":',
+            'attachment': "assets/cPlus_advanced/1.22.png"
+          },
+          {
+            'body': "Example explained"
+                "\n\n   • The class keyword is used to create a class called MyClass."
+                "\n\n   • The public keyword is an access specifier, which specifies that members (attributes and methods) of the class are accessible from outside the class. You will learn more about access specifiers later."
+                "\n\n   • Inside the class, there is an integer variable myNum and a string variable myString. When variables are declared within a class, they are called attributes."
+                "\n\n   • At last, end the class definition with a semicolon ;."
+          },
+          {
+            'heading': "Create an Object",
+            'body': "In C++, an object is created from a class. We have already created the class named MyClass, so now we can use this to create objects."
+                "\n\nTo create an object of MyClass, specify the class name, followed by the object name."
+                "\n\nTo access the class attributes (myNum and myString), use the dot syntax (.) on the object:"
+                "\n\n\nExample"
+                '\n\nCreate an object called "myObj" and access the attributes:',
+            'attachment': "assets/cPlus_advanced/1.23.png"
+          },
+          {
+            'heading': "Multiple Objects",
+            'body': "You can create multiple objects of one class:"
+                "\n\nExample",
+            'attachment': "assets/cPlus_advanced/1.24.png"
+          },
+        ]
+      },
+      11: {
+        'topic': '7.     Class Methods',
+        'subTopic': [
+          {
+            'heading': "Class Methods",
+            'body': "Methods are functions that belongs to the class."
+                "\n\nThere are two ways to define functions that belongs to a class:"
+                "\n\n   • Inside class definition"
+                "\n\n   • Outside class definition"
+                '\n\nIn the following example, we define a function inside the class, and we name it "myMethod".'
+                "\n\n*Note: You access methods just like you access attributes; by creating an object of the class and using the dot syntax (.):"
+                "\n\n\nInside Example",
+            'attachment': "assets/cPlus_advanced/1.25.png"
+          },
+          {
+            'body':
+                "To define a function outside the class definition, you have to declare it inside the class and then define it outside of the class. This is done by specifiying the name of the class, followed the scope resolution :: operator, followed by the name of the function:"
+                    "\n\nOutside Example",
+            'attachment': "assets/cPlus_advanced/1.26.png"
+          },
+          {
+            'heading': "Parameters",
+            'body': "You can also add parameters:"
+                "\n\nExample",
+            'attachment': "assets/cPlus_advanced/1.27.png"
+          },
+        ]
+      },
+      12: {
+        'topic': '8.     Constructors',
+        'subTopic': [
+          {
+            'heading': "Constructors",
+            'body': "A constructor in C++ is a special method that is automatically called when an object of a class is created."
+                "\n\nTo create a constructor, use the same name as the class, followed by parentheses ():"
+                "\n\n\nExample",
+            'attachment': "assets/cPlus_advanced/1.28.png"
+          },
+          {
+            'body':
+                "*Note: The constructor has the same name as the class, it is always public, and it does not have any return value."
+          },
+          {
+            'heading': "Constructor Parameters",
+            'body': "Constructors can also take parameters (just like regular functions), which can be useful for setting initial values for attributes."
+                "\n\nThe following class have brand, model and year attributes, and a constructor with different parameters. Inside the constructor we set the attributes equal to the constructor parameters (brand=x, etc). When we call the constructor (by creating an object of the class), we pass parameters to the constructor, which will set the value of the corresponding attributes to the same:"
+                "\n\n\nExample",
+            'attachment': "assets/cPlus_advanced/1.29.png"
+          },
+          {
+            'body':
+                "Just like functions, constructors can also be defined outside the class. First, declare the constructor inside the class, and then define it outside of the class by specifying the name of the class, followed by the scope resolution :: operator, followed by the name of the constructor (which is the same as the class):"
+                    "\n\nExample",
+            'attachment': "assets/cPlus_advanced/1.30.png"
+          }
+        ]
+      },
+      13: {
+        'topic': '9.     Access Specifiers',
+        'subTopic': [
+          {
+            'heading': "Access Specifiers",
+            'body':
+                "By now, you are quite familiar with the public keyword that appears in all of our class examples:"
+                    "\n\nExample",
+            'attachment': "assets/cPlus_advanced/1.31.png"
+          },
+          {
+            'body': "The public keyword is an access specifier. Access specifiers define how the members (attributes and methods) of a class can be accessed. In the example above, the members are public - which means that they can be accessed and modified from outside the code."
+                "\n\nHowever, what if we want members to be private and hidden from the outside world?"
+                "\n\nIn C++, there are three access specifiers:"
+                "\n\n   • public - members are accessible from outside the class"
+                "\n\n   • private - members cannot be accessed (or viewed) from outside the class"
+                "\n\n   • protected - members cannot be accessed from outside the class, however, they can be accessed in inherited classes. You will learn more about Inheritance later."
+                "\n\n\nIn the following example, we demonstrate the differences between public and private members:"
+                "\n\n\nExample",
+            'attachment': "assets/cPlus_advanced/1.32.png"
+          },
+          {
+            'body': "If you try to access a private member, an error occurs:",
+            'attachment': "assets/cPlus_advanced/1.33.png"
+          },
+          {
+            'body': "*Note: It is possible to access private members of a class using a public method inside the same class. See the next chapter (Encapsulation) on how to do this."
+                "\n\n*Tip: It is considered good practice to declare your class attributes as private (as often as you can). This will reduce the possibility of yourself (or others) to mess up the code. This is also the main ingredient of the Encapsulation concept, which you will learn more about in the next chapter."
+                "\n\n\n*Note: By default, all members of a class are private if you don't specify an access specifier:"
+                "\n\n\nExample",
+            'attachment': "assets/cPlus_advanced/1.34.png"
+          },
+        ]
+      },
+      14: {
+        'topic': '10.     Encapsulation',
+        'subTopic': [
+          {
+            'heading': "Encapsulation",
+            'body':
+                'The meaning of Encapsulation, is to make sure that "sensitive" data is hidden from users. To achieve this, you must declare class variables/attributes as private (cannot be accessed from outside the class). If you want others to read or modify the value of a private member, you can provide public get and set methods.',
+          },
+          {
+            'heading': "Access Private Members",
+            'body':
+                'To access a private attribute, use public "get" and "set" methods:'
+                    "\n\nExample",
+            'attachment': "assets/cPlus_advanced/1.35.png"
+          },
+          {
+            'body': "Example explained"
+                "\n\nThe salary attribute is private, which have restricted access."
+                "\n\nThe public setSalary() method takes a parameter (s) and assigns it to the salary attribute (salary = s)."
+                "\n\nThe public getSalary() method returns the value of the private salary attribute."
+                "\n\nInside main(), we create an object of the Employee class. Now we can use the setSalary() method to set the value of the private attribute to 50000. Then we call the getSalary() method on the object to return the value."
+          },
+          {
+            'heading': "Why Encapsulation?",
+            'body':
+                "   • It is considered good practice to declare your class attributes as private (as often as you can). Encapsulation ensures better control of your data, because you (or others) can change one part of the code without affecting other parts"
+                    "   • Increased security of data",
+          },
+        ]
+      },
+      15: {
+        'topic': '11.     Inheritance',
+        'subTopic': [
+          {
+            'heading': "Inheritance",
+            'body': 'In C++, it is possible to inherit attributes and methods from one class to another. We group the "inheritance concept" into two categories:'
+                "\n\n   • derived class (child) - the class that inherits from another class"
+                "\n\n   • base class (parent) - the class being inherited from"
+                "\n\nTo inherit from a class, use the : symbol."
+                "\n\nIn the example below, the Car class (child) inherits the attributes and methods from the Vehicle class (parent):"
+                "\n\n\nExample",
+            'attachment': "assets/cPlus_advanced/1.36.png"
+          },
+          {
+
+          }
+        ]
+      },
+    },
   },
 };
