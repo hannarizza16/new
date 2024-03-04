@@ -1444,6 +1444,7 @@ flutter:
     - assets/php_beginner/s_2.png
     - assets/php_beginner/s_3.png
     - assets/php_beginner/s_4.png
+    -
     #PHP Comments
     - assets/php_beginner/c_1.png
     - assets/php_beginner/c_2.png
@@ -1828,7 +1829,27 @@ flutter:
     - assets/php_advance/call_1.png
     - assets/php_advance/call_2.png
     - assets/php_advance/call_3.png
-
+    #PHP and JSON
+    - assets/php_advance/js_1.png
+    - assets/php_advance/js_2.png
+    - assets/php_advance/js_3.png
+    - assets/php_advance/js_4.png
+    - assets/php_advance/js_5.png
+    - assets/php_advance/js_6.png
+    - assets/php_advance/js_7.png
+    - assets/php_advance/js_8.png
+    #PHP Exceptions
+    - assets/php_advance/ex_1.png
+    - assets/php_advance/ex_2.png
+    - assets/php_advance/ex_3.png
+    - assets/php_advance/ex_4.png
+    - assets/php_advance/ex_5.png
+    - assets/php_advance/ex_6.png
+    - assets/php_advance/ex_7.png
+    - assets/php_advance/ex_8.png
+    - assets/php_advance/ex_9.png
+    - assets/php_advance/ex_10.png
+    - assets/php_advance/ex_11.png
 
 
 
