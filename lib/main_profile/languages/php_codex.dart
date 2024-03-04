@@ -2253,17 +2253,607 @@ const phpCodex = {
             'attachment': "assets/php_intermediate/complete_2.png",
             'body': "Here is the complete code for the PHP Form Validation Example:"
           },
+        ]
+      },
+    },
+    Categories.advanced: {
+      0: {
+        'topic': "1.     PHP Date and Time",
+        'subTopic': [
+          {
+            'heading': "PHP Date and Time ",
+            'attachment': "assets/php_advance/dt_1.png",
+            'body': "The PHP date() function is used to format a date and/or a time."
+          },
+          {
+            'heading': "Get a Date ",
+            'attachment': "assets/php_advance/dt_2.png",
+            'body': "The required format parameter of the date() function specifies how to format the date (or time)."
+            "\n\nHere are some characters that are commonly used for dates:"
+            "\n\n•d - Represents the day of the month (01 to 31)"
+            "\n\n•m - Represents a month (01 to 12)"
+            "\n\n•Y - Represents a year (in four digits)"
+            "\n\n•l (lowercase 'L') - Represents the day of the week"
+            "\n\nThe example below formats today's date in three different ways:"
+          },
+          {
+            'heading': "PHP Tip - Automatic Copyright Year ",
+            'attachment': "assets/php_advance/dt_3.png",
+            'body': "Use the date() function to automatically update the copyright year on your website:"
+          },
+          {
+            'heading': "Get a Time ",
+            'attachment': "assets/php_advance/dt_4.png",
+            'body': "Here are some characters that are commonly used for times:"
+            "\n\n•H - 24-hour format of an hour (00 to 23)"
+            "\n\n•h - 12-hour format of an hour with leading zeros (01 to 12)"
+            "\n\n•i - Minutes with leading zeros (00 to 59)"
+            "\n\n•s - Seconds with leading zeros (00 to 59)"
+            "\n\n•a - Lowercase Ante meridiem and Post meridiem (am or pm)"
+          },
+          {
+            'heading': "Get Your Time Zone ",
+            'attachment': "assets/php_advance/dt_5.png",
+            'body': "If the time you got back from the code is not correct, it's "
+                "probably because your server is in another country or set up for a different timezone."
+            "\n\nSo, if you need the time to be correct according to a specific location, you can set the timezone you want to use."
+            "\n\nThe example below sets the timezone to America/New_York, then outputs the current time in the specified format:"
+          },
+          {
+            'heading': "Create a Date With mktime() ",
+            'attachment': "assets/php_advance/dt_6.png",
+            'body': "The optional timestamp parameter in the date() function "
+                "specifies a timestamp. If omitted, the current date and time will be used."
+          },
 
+          {
+            'heading': "Create a Date From a String With strtotime() ",
+            'attachment': "assets/php_advance/dt_7.png",
+            'body': "The PHP strtotime() function is used to convert a human "
+                "readable date string into a Unix timestamp (the number of seconds since January 1 1970 00:00:00 GMT)."
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/php_advance/dt_8.png",
+            'body': "PHP is quite clever about converting a string to a date, so you can put in various values:"
+          },
+          {
+            'heading': "More Date Examples ",
+            'attachment': "assets/php_advance/dt_9.png",
+            'body': "The example below outputs the dates for the next six Saturdays:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/php_advance/dt_10.png",
+            'body': "The example below outputs the number of days until 4th of July:"
+          },
+        ]
+      },
+      1: {
+        'topic': "2.     PHP Include Files",
+        'subTopic': [
+          {
+            'heading': " ",
+            'attachment': "",
+            'body': "The include (or require) statement takes all the "
+                "text/code/markup that exists in the specified file and copies "
+                "it into the file that uses the include statement."
+          },
+          {
+            'heading': "PHP include and require Statements ",
+            'attachment': "",
+            'body': "It is possible to insert the content of one PHP file into "
+                "another PHP file (before the server executes it), with the include or require statement."
+            "\n\nThe include and require statements are identical, except upon failure:"
+            "\n\n•require will produce a fatal error (E_COMPILE_ERROR) and stop the script"
+            "\n\n•include will only produce a warning (E_WARNING) and the script will continue"
+            "\n\nSo, if you want the execution to go on and show users the output, "
+                "even if the include file is missing, use the include statement. "
+                "Otherwise, in case of FrameWork, CMS, or a complex PHP application "
+                "coding, always use the require statement to include a key file to "
+                "the flow of execution. This will help avoid compromising your "
+                "application's security and integrity, just in-case one key file "
+                "is accidentally missing."
+            "\n\nIncluding files saves a lot of work. This means that you can "
+                "create a standard header, footer, or menu file for all your "
+                "web pages. Then, when the header needs to be updated, you can "
+                "only update the header include file."
+          },
+          {
+            'heading': "PHP include Examples ",
+            'attachment': "assets/php_advance/if_1.png",
+            'body': "Assume we have a standard footer file called footer.php, that looks like this:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/php_advance/if_2.png",
+            'body': ""
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/php_advance/if_3.png",
+            'body': "Then, if we include the vars.php file, the variables can be used in the calling file:"
+          },
+          {
+            'heading': "The require statement is also used to include a file into the PHP code. ",
+            'attachment': "assets/php_advance/if_4.png",
+            'body': "However, there is one big difference between include and "
+                "require; when a file is included with the include statement and "
+                "PHP cannot find it, the script will continue to execute:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/php_advance/if_5.png",
+            'body': "If we do the same example using the require statement, "
+                "the echo statement will not be executed because the script "
+                "execution dies after the require statement returned a fatal error:"
+          },
+
+
+
+        ]
+      },
+      2: {
+        'topic': "3.     PHP File Handling",
+        'subTopic': [
+          {
+            'heading': " ",
+            'attachment': "",
+            'body': "File handling is an important part of any web application. You often need to open and process a file for different tasks."
+          },
+          {
+            'heading': "PHP Manipulating Files ",
+            'attachment': "",
+            'body': "PHP has several functions for creating, reading, uploading, and editing files."
+          },
+
+          {
+            'heading': "PHP readfile() Function ",
+            'attachment': "assets/php_advance/fh_1.png",
+            'body': "The readfile() function reads a file and writes it to the output buffer."
+            "\n\nAssume we have a text file called webdictionary.txt, stored on the server, that looks like this:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/php_advance/fh_2.png",
+            'body': "The PHP code to read the file and write it to the output "
+                "buffer is as follows (the readfile() function returns the number "
+                "of bytes read on success):"
+          },
+
+
+        ]
+      },
+      3: {
+        'topic': "4.     PHP File Open/Read/Close",
+        'subTopic': [
+          {
+            'heading': " ",
+            'attachment': "",
+            'body': "In this chapter we will teach you how to open, read, and close a file on the server."
+          },
+          {
+            'heading': "PHP Open File - fopen() ",
+            'attachment': "assets/php_advance/fo_1.png",
+            'body': "A better method to open files is with the fopen() function. "
+                "This function gives you more options than the readfile() function."
+            "\n\nWe will use the text file, webdictionary.txt, during the lessons:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/php_advance/fo_2.png",
+            'body': "The first parameter of fopen() contains the name of the file "
+                "to be opened and the second parameter specifies in which mode the "
+                "file should be opened. The following example also generates a "
+                "message if the fopen() function is unable to open the specified file:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/php_advance/fo_3.png",
+            'body': "Tip: The fread() and the fclose() functions will be explained below."
+            "\n\nThe file may be opened in one of the following modes:"
+          },
+          {
+            'heading': "PHP Read File - fread() ",
+            'attachment': "assets/php_advance/fo_4.png",
+            'body': "The first parameter of fread() contains the name of the "
+                "file to read from and the second parameter specifies the maximum number of bytes to read."
+            "\n\nThe following PHP code reads the webdictionary.txt file to the end:"
+          },
+          {
+            'heading': "PHP Close File - fclose() ",
+            'attachment': "assets/php_advance/fo_5.png",
+            'body': "The fclose() function is used to close an open file."
+            "\n\nThe fclose() requires the name of the file (or a variable that holds the filename) we want to close:"
+          },
+          {
+            'heading': "PHP Read Single Line - fgets() ",
+            'attachment': "assets/php_advance/fo_6.png",
+            'body': "The fgets() function is used to read a single line from a file."
+            "\n\nThe example below outputs the first line of the webdictionary.txt file:"
+          },
+          {
+            'heading': "PHP Check End-Of-File - feof() ",
+            'attachment': "assets/php_advance/fo_7.png",
+            'body': "The feof() function checks if the end-of-file (EOF) has been reached."
+            "\n\nThe feof() function is useful for looping through data of unknown length."
+            "\n\nThe example below reads the webdictionary.txt file line by line, until end-of-file is reached:"
+          },
+          {
+            'heading': "PHP Read Single Character - fgetc() ",
+            'attachment': "assets/php_advance/fo_8.png",
+            'body': "The fgetc() function is used to read a single character from a file."
+            "\n\nThe example below reads the webdictionary.txt file character by character, until end-of-file is reached:"
+          },
+        ]
+      },
+      4: {
+        'topic': "5.     PHP File Create/Write",
+        'subTopic': [
+          {
+            'heading': "PHP File Create/Write ",
+            'attachment': "",
+            'body': "In this chapter we will teach you how to create and write to a file on the server."
+          },
+          {
+            'heading': "PHP Create File - fopen() ",
+            'attachment': "assets/php_advance/fc_1.png",
+            'body': "The fopen() function is also used to create a file. Maybe a little confusing, but in PHP, a file is created using the same function used to open files."
+            "\n\nThe fopen() function is also used to create a file. Maybe a little confusing, but in PHP, a file is created using the same function used to open files."
+            "\n\nIf you use fopen() on a file that does not exist, it will create it, given that the file is opened for writing (w) or appending (a)."
+            "\n\nThe example below creates a new file called testfile.txt. The file will be created in the same directory where the PHP code resides:"
+          },
+          {
+            'heading': "PHP File Permissions ",
+            'attachment': "",
+            'body': "If you are having errors when trying to get this code to run, "
+                "check that you have granted your PHP file access to write information to the hard drive."
+          },
+          {
+            'heading': "PHP Write to File - fwrite() ",
+            'attachment': "assets/php_advance/fc_2.png",
+            'body': "The fwrite() function is used to write to a file."
+            "\n\nThe first parameter of fwrite() contains the name of the file to "
+                "write to and the second parameter is the string to be written."
+            "\n\nThe example below writes a couple of names into a new file called newfile.txt:"
+          },
+          {
+            'heading': "PHP Overwriting ",
+            'attachment': "assets/php_advance/fc_3.png",
+            'body': "Now that newfile.txt contains some data we can show what "
+                "happens when we open an existing file for writing. All the "
+                "existing data will be ERASED and we start with an empty file."
+            "\n\nIn the example below we open our existing file newfile.txt, and write some new data into it:"
+          },
+          {
+            'heading': "PHP Append Text ",
+            'attachment': "assets/php_advance/fc_5.png",
+            'body': "You can append data to a file by using the a mode. The a "
+                "mode appends text to the end of the file, while the w mode "
+                "overrides (and erases) the old content of the file."
+            "\n\n\nIn the example below we open our existing file newfile.txt, and append some text to it:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/php_advance/fc_6.png",
+            'body': ""
+          },
+        ]
+      },
+      5: {
+        'topic': "6.     PHP File Upload",
+        'subTopic': [
+          {
+            'heading': " ",
+            'attachment': "",
+            'body': "With PHP, it is easy to upload files to the server."
+            "\n\nHowever, with ease comes danger, so always be careful when allowing file uploads!"
+          },
+          {
+            'heading': "Configure The php.ini File ",
+            'attachment': "assets/php_advance/fu_1.png",
+            'body': "First, ensure that PHP is configured to allow file uploads."
+            "\n\nIn your php.ini file, search for the file_uploads directive, and set it to On:"
+          },
+          {
+            'heading': "Create The HTML Form ",
+            'attachment': "assets/php_advance/fu_2.png",
+            'body': "Next, create an HTML form that allow users to choose the image file they want to upload:"
+          },
+          {
+            'heading': "Create The Upload File PHP Script ",
+            'attachment': "assets/php_advance/fu_3.png",
+            'body': "The upload.php file contains the code for uploading a file:"
+          },
+          {
+            'heading': "Check if File Already Exists ",
+            'attachment': "assets/php_advance/fu_4.png",
+            'body': "Now we can add some restrictions."
+            "\n\nFirst, we will check if the file already exists in the uploads "
+                "folder. If it does, an error message is displayed, and uploadOk is set to 0:"
+          },
+          {
+            'heading': "Limit File Size ",
+            'attachment': "assets/php_advance/fu_5.png",
+            'body': "The file input field in our HTML form above is named fileToUpload."
+            "\n\nNow, we want to check the size of the file. If the file is larger than 500KB, an error message is displayed, and uploadOk is set to 0:"
+          },
+          {
+            'heading': "Limit File Type ",
+            'attachment': "assets/php_advance/fu_6.png",
+            'body': "The code below only allows users to upload JPG, JPEG, PNG, "
+                "and GIF files. All other file types gives an error message before setting uploadOk to 0:"
+          },
+          {
+            'heading': "Complete Upload File PHP Script ",
+            'attachment': "assets/php_advance/fu_7.png",
+            'body': "The complete upload.php file now looks like this:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/php_advance/fu_8.png",
+            'body': ""
+          },
+
+        ]
+      },
+      6: {
+        'topic': "7.     PHP Cookies",
+        'subTopic': [
+          {
+            'heading': "What is a Cookie? ",
+            'attachment': "",
+            'body': "A cookie is often used to identify a user. A cookie is a "
+                "small file that the server embeds on the user's computer. "
+                "Each time the same computer requests a page with a browser, "
+                "it will send the cookie too. With PHP, you can both create and "
+                "retrieve cookie values."
+          },
+          {
+            'heading': "Create Cookies With PHP ",
+            'attachment': "assets/php_advance/coo_1.png",
+            'body': "A cookie is created with the setcookie() function."
+          },
+          {
+            'heading': "PHP Create/Retrieve a Cookie ",
+            'attachment': "assets/php_advance/coo_2.png",
+            'body': "The following example creates a cookie named user with the "
+                "value John Doe. The cookie will expire after 30 days (86400 * 30). "
+                "The / means that the cookie is available in entire website (otherwise, "
+                "select the directory you prefer)."
+            "\n\nWe then retrieve the value of the cookie user (using the global variable _COOKIE). We also use the isset() function to find out if the cookie is set:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/php_advance/coo_3.png",
+            'body': "To modify a cookie, just set (again) the cookie using the setcookie() function:"
+          },
+          {
+            'heading': "Delete a Cookie ",
+            'attachment': "assets/php_advance/coo_4.png",
+            'body': "To delete a cookie, use the setcookie() function with an expiration date in the past:"
+          },
+          {
+            'heading': "Check if Cookies are Enabled",
+            'attachment': "assets/php_advance/coo_5.png",
+            'body': "The following example creates a small script that checks "
+                "whether cookies are enabled. First, try to create a test cookie with the setcookie() function, then count the COOKIE array variable:"
+          },
+
+
+        ]
+      },
+      7: {
+        'topic': "8.     PHP Sessions",
+        'subTopic': [
+          {
+            'heading': "What is a PHP Session? ",
+            'attachment': "",
+            'body': "When you work with an application, you open it, "
+                "do some changes, and then you close it. This is much like a Session. "
+                "The computer knows who you are. It knows when you start the application "
+                "and when you end. But on the internet there is one problem: the "
+                "web server does not know who you are or what you do, because the "
+                "HTTP address doesn't maintain state."
+          },
+          {
+            'heading': "Start a PHP Session ",
+            'attachment': "assets/php_advance/ses_1.png",
+            'body': "A session is started with the session_start() function."
+          },
+          {
+            'heading': "Get PHP Session Variable Values ",
+            'attachment': "assets/php_advance/ses_2.png",
+            'body': "Next, we create another page called demo_session2.php. "
+                "From this page, we will access the session information we set on the first page (demo_session1.php)."
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/php_advance/ses_3.png",
+            'body': "Another way to show all the session variable values for a user session is to run the following code:"
+          },
+          {
+            'heading': "Modify a PHP Session Variable ",
+            'attachment': "assets/php_advance/ses_4.png",
+            'body': "To change a session variable, just overwrite it:"
+          },
+          {
+            'heading': "Destroy a PHP Session ",
+            'attachment': "assets/php_advance/ses_5.png",
+            'body': "To remove all global session variables and destroy the session, use session_unset() and session_destroy():"
+          },
+
+        ]
+      },
+      8: {
+        'topic': "9.     PHP Filters",
+        'subTopic': [
+          {
+            'heading': "The PHP Filter Extension ",
+            'attachment': "assets/php_advance/fil_1.png",
+            'body': "PHP filters are used to validate and sanitize external input."
+            "\n\nThe PHP filter extension has many of the functions needed for checking user input, and is designed to make data validation easier and quicker."
+            "\n\nThe filter_list() function can be used to list what the PHP filter extension offers:"
+          },
+          {
+            'heading': "Why Use Filters? ",
+            'attachment': "",
+            'body': "Many web applications receive external input. External input/data can be:"
+            "\n\n•User input from a form"
+            "\n\n•Cookies"
+            "\n\n•Web services data"
+            "\n\n•Server variables"
+            "\n\n•Database query results"
+          },
+          {
+            'heading': "PHP filter_var() Function ",
+            'attachment': "",
+            'body': "The filter_var() function both validate and sanitize data."
+            "\n\nThe filter_var() function filters a single variable with a specified filter. It takes two pieces of data:"
+            "\n\nThe variable you want to check"
+            "\n\nThe type of check to use"
+          },
+          {
+            'heading': "Sanitize a String ",
+            'attachment': "assets/php_advance/fil_2.png",
+            'body': "The following example uses the filter_var() function to remove all HTML tags from a string:"
+          },
+          {
+            'heading': "Validate an Integer ",
+            'attachment': "assets/php_advance/fil_3.png",
+            'body': "The following example uses the filter_var() function to "
+                "check if the variable int is an integer. If int is an integer, "
+                "the output of the code below will be: Integer is valid. If int is "
+                "not an integer, the output will be: Integer is not valid:"
+          },
+          {
+            'heading': "Tip: filter_var() and Problem With 0 ",
+            'attachment': "assets/php_advance/fil_4.png",
+            'body': "In the example above, if int was set to 0, the function above will return Integer is not valid. To solve this problem, use the code below:"
+          },
+          {
+            'heading': "Validate an IP Address ",
+            'attachment': "assets/php_advance/fil_5.png",
+            'body': "The following example uses the filter_var() function to check if the variable ip is a valid IP address:"
+          },{
+            'heading': "Sanitize and Validate an Email Address ",
+            'attachment': "assets/php_advance/fil_6.png",
+            'body': "The following example uses the filter_var() function to "
+                "first remove all illegal characters from the email variable, "
+                "then check if it is a valid email address:"
+          },
+          {
+            'heading': "Sanitize and Validate a URL ",
+            'attachment': "assets/php_advance/fil_7.png",
+            'body': "The following example uses the filter_var() function to "
+                "first remove all illegal characters from a URL, then check if url is a valid URL:"
+          },
+
+
+        ]
+      },
+      9: {
+        'topic': "10.     PHP Filters Advanced",
+        'subTopic': [
+          {
+            'heading': "Validate an Integer Within a Range ",
+            'attachment': "assets/php_advance/ip_1.png",
+            'body': "The following example uses the filter_var() function to check if a variable is both of type INT, and between 1 and 200:"
+          },
+          {
+            'heading': "Validate IPv6 Address ",
+            'attachment': "assets/php_advance/ip_2.png",
+            'body': "The following example uses the filter_var() function to check if the variable ip is a valid IPv6 address:"
+          },
+          {
+            'heading': "Validate URL - Must Contain QueryString ",
+            'attachment': "assets/php_advance/ip_3.png",
+            'body': "The following example uses the filter_var() function to check if the variable url is a URL with a querystring:"
+          },
+          {
+            'heading': "Remove Characters With ASCII Value > 127 ",
+            'attachment': "assets/php_advance/ip_4.png",
+            'body': "The following example uses the filter_var() function to "
+                "sanitize a string. It will both remove all HTML tags, and all "
+                "characters with ASCII value > 127, from the string:"
+          },
+
+        ]
+      },
+      10: {
+        'topic': "11.     PHP Callback Functions",
+        'subTopic': [
+          {
+            'heading': "Callback Functions ",
+            'attachment': "",
+            'body': "A callback function (often referred to as just callback) "
+                "is a function which is passed as an argument into another function."
+            "\n\nAny existing function can be used as a callback function. "
+                "To use a function as a callback function, pass a string containing "
+                "the name of the function as the argument of another function:"
+          },
+          {
+            'heading': " ",
+            'attachment': "assets/php_advance/call_2.png",
+            'body': "Starting with version 7, PHP can pass anonymous functions as callback functions:"
+          },
+          {
+            'heading': "Callbacks in User Defined Functions ",
+            'attachment': "assets/php_advance/call_3.png",
+            'body': "User-defined functions and methods can also take callback "
+                "functions as arguments. To use callback functions inside a user-defined "
+                "function or method, call it by adding parentheses to the variable "
+                "and pass arguments as with normal functions:"
+          },
+          {
+            'heading': " ",
+            'attachment': "",
+            'body': ""
+          },
+          {
+            'heading': " ",
+            'attachment': "",
+            'body': ""
+          },
+
+        ]
+      },
+      11: {
+        'topic': ".     ",
+        'subTopic': [
+          {
+            'heading': " ",
+            'attachment': "",
+            'body': ""
+          },
+
+        ]
+      },
+      12: {
+        'topic': ".     ",
+        'subTopic': [
+          {
+            'heading': " ",
+            'attachment': "",
+            'body': ""
+          },
+
+        ]
+      },
+      13: {
+        'topic': ".     ",
+        'subTopic': [
+          {
+            'heading': " ",
+            'attachment': "",
+            'body': ""
+          },
 
         ]
       },
 
 
-
-
-
     },
-    Categories.advanced: {},
   },
 
 };

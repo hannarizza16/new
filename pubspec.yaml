@@ -1755,8 +1755,79 @@ flutter:
     #PHP Complete Form Example
     - assets/php_intermediate/complete.png
     - assets/php_intermediate/complete_2.png
-
-
+    #PHP Date and Time
+    - assets/php_advance/dt_1.png
+    - assets/php_advance/dt_2.png
+    - assets/php_advance/dt_3.png
+    - assets/php_advance/dt_4.png
+    - assets/php_advance/dt_5.png
+    - assets/php_advance/dt_6.png
+    - assets/php_advance/dt_7.png
+    - assets/php_advance/dt_8.png
+    - assets/php_advance/dt_9.png
+    - assets/php_advance/dt_10.png
+    #PHP Include Files
+    - assets/php_advance/if_1.png
+    - assets/php_advance/if_2.png
+    - assets/php_advance/if_3.png
+    - assets/php_advance/if_4.png
+    - assets/php_advance/if_5.png
+    #PHP File Handling
+    - assets/php_advance/fh_1.png
+    - assets/php_advance/fh_2.png
+    #PHP File Open/Read/Close
+    - assets/php_advance/fo_1.png
+    - assets/php_advance/fo_2.png
+    - assets/php_advance/fo_3.png
+    - assets/php_advance/fo_4.png
+    - assets/php_advance/fo_5.png
+    - assets/php_advance/fo_6.png
+    - assets/php_advance/fo_7.png
+    - assets/php_advance/fo_8.png
+    #PHP File Create/Write
+    - assets/php_advance/fc_1.png
+    - assets/php_advance/fc_2.png
+    - assets/php_advance/fc_3.png
+    - assets/php_advance/fc_5.png
+    - assets/php_advance/fc_6.png
+    #PHP File Upload
+    - assets/php_advance/fu_1.png
+    - assets/php_advance/fu_2.png
+    - assets/php_advance/fu_3.png
+    - assets/php_advance/fu_4.png
+    - assets/php_advance/fu_5.png
+    - assets/php_advance/fu_6.png
+    - assets/php_advance/fu_7.png
+    - assets/php_advance/fu_8.png
+    #PHP Cookies
+    - assets/php_advance/coo_1.png
+    - assets/php_advance/coo_2.png
+    - assets/php_advance/coo_3.png
+    - assets/php_advance/coo_4.png
+    - assets/php_advance/coo_5.png
+    #PHP Sessions
+    - assets/php_advance/ses_1.png
+    - assets/php_advance/ses_2.png
+    - assets/php_advance/ses_3.png
+    - assets/php_advance/ses_4.png
+    - assets/php_advance/ses_5.png
+    #PHP Filters
+    - assets/php_advance/fil_1.png
+    - assets/php_advance/fil_2.png
+    - assets/php_advance/fil_3.png
+    - assets/php_advance/fil_4.png
+    - assets/php_advance/fil_5.png
+    - assets/php_advance/fil_6.png
+    - assets/php_advance/fil_7.png
+    #PHP Filters Advanced
+    - assets/php_advance/ip_1.png
+    - assets/php_advance/ip_2.png
+    - assets/php_advance/ip_3.png
+    - assets/php_advance/ip_4.png
+    #PHP Callback Functions
+    - assets/php_advance/call_1.png
+    - assets/php_advance/call_2.png
+    - assets/php_advance/call_3.png
 
 
 
