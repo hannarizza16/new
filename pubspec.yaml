@@ -58,6 +58,7 @@ dependencies:
   intl: ^0.17.0
   flare_flutter: ^3.0.2
   markdown: ^4.0.0
+  flutter_animate: ^4.5.0
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -124,6 +125,10 @@ flutter:
     - assets/overlay/beg4.png
     - assets/overlay/beg5.png
     - assets/overlay/loading2.gif
+    - assets/overlay/shine.gif
+    - assets/overlay/shine2.gif
+    - assets/overlay/shine3.gif
+    - assets/overlay/shine4.gif
 
 
     - assets/logo.gif
@@ -1434,10 +1439,322 @@ flutter:
     - assets/dart_advance/15.png
     - assets/dart_advance/16.png
     - assets/dart_advance/17.png
-
-
-
-
+    #PHP
+    - assets/php_beginner/s_1.png
+    - assets/php_beginner/s_2.png
+    - assets/php_beginner/s_3.png
+    - assets/php_beginner/s_4.png
+    #PHP Comments
+    - assets/php_beginner/c_1.png
+    - assets/php_beginner/c_2.png
+    - assets/php_beginner/c_3.png
+    - assets/php_beginner/c_4.png
+    #PHP Multiline Comments
+    - assets/php_beginner/p_1.png
+    - assets/php_beginner/p_2.png
+    - assets/php_beginner/p_3.png
+    #PHP Variables
+    - assets/php_beginner/v_1.png
+    - assets/php_beginner/v_2.png
+    - assets/php_beginner/v_3.png
+    - assets/php_beginner/v_4.png
+    - assets/php_beginner/v_5.png
+    - assets/php_beginner/v_6.png
+    - assets/php_beginner/v_7.png
+    - assets/php_beginner/v_8.png
+    - assets/php_beginner/v_9.png
+    #PHP Variables Scope
+    - assets/php_beginner/vs_1.png
+    - assets/php_beginner/vs_2.png
+    - assets/php_beginner/vs_3.png
+    - assets/php_beginner/vs_4.png
+    - assets/php_beginner/vs_5.png
+    #PHP echo and print Statements
+    - assets/php_beginner/e_1.png
+    - assets/php_beginner/e_2.png
+    - assets/php_beginner/e_3.png
+    - assets/php_beginner/e_4.png
+    #PHP Data Types
+    - assets/php_beginner/d_1.png
+    - assets/php_beginner/d_2.png
+    - assets/php_beginner/d_3.png
+    - assets/php_beginner/d_4.png
+    - assets/php_beginner/d_5.png
+    - assets/php_beginner/d_6.png
+    - assets/php_beginner/d_7.png
+    - assets/php_beginner/d_8.png
+    - assets/php_beginner/d_9.png
+    - assets/php_beginner/d_10.png
+    #PHP Strings
+    - assets/php_beginner/st_1.png
+    - assets/php_beginner/st_2.png
+    - assets/php_beginner/st_3.png
+    - assets/php_beginner/st_4.png
+    - assets/php_beginner/s_5.png
+    - assets/php_beginner/s_6.png
+    #PHP - Modify Strings
+    - assets/php_beginner/mod_1.png
+    - assets/php_beginner/mod_2.png
+    - assets/php_beginner/mod_3.png
+    - assets/php_beginner/mod_4.png
+    - assets/php_beginner/mod_5.png
+    - assets/php_beginner/mod_6.png
+    #PHP - Concatenate Strings
+    - assets/php_beginner/con_1.png
+    - assets/php_beginner/con_2.png
+    - assets/php_beginner/con_3.png
+    #PHP - Slicing Strings
+    - assets/php_beginner/ss_1.png
+    - assets/php_beginner/ss_2.png
+    - assets/php_beginner/ss_3.png
+    - assets/php_beginner/ss_4.png
+    #PHP - Escape Characters
+    - assets/php_beginner/es_1.png
+    - assets/php_beginner/es_2.png
+    - assets/php_beginner/es_3.png
+    #PHP Numbers
+    - assets/php_beginner/num_1.png
+    - assets/php_beginner/num_2.png
+    - assets/php_beginner/num_3.png
+    - assets/php_beginner/num_4.png
+    - assets/php_beginner/num_5.png
+    - assets/php_beginner/num_6.png
+    - assets/php_beginner/num_7.png
+    - assets/php_beginner/num_8.png
+    #PHP Casting
+    - assets/php_beginner/cas_1.png
+    - assets/php_beginner/cas_2.png
+    - assets/php_beginner/cas_3.png
+    - assets/php_beginner/cas_4.png
+    - assets/php_beginner/cas_5.png
+    - assets/php_beginner/cas_6.png
+    - assets/php_beginner/cas_7.png
+    - assets/php_beginner/cas_8.png
+    - assets/php_beginner/cas_9.png
+    #PHP Math
+    - assets/php_beginner/math_1.png
+    - assets/php_beginner/math_2.png
+    - assets/php_beginner/math_3.png
+    - assets/php_beginner/math_4.png
+    - assets/php_beginner/math_5.png
+    - assets/php_beginner/math_6.png
+    - assets/php_beginner/math_7.png
+    #PHP Constants
+    - assets/php_beginner/cons_1.png
+    - assets/php_beginner/cons_2.png
+    - assets/php_beginner/cons_3.png
+    - assets/php_beginner/cons_4.png
+    - assets/php_beginner/cons_5.png
+    - assets/php_beginner/cons_6.png
+    #PHP Magic Constants
+    - assets/php_beginner/magic.png
+    #PHP Operators
+    - assets/php_beginner/op_1.png
+    - assets/php_beginner/op_2.png
+    - assets/php_beginner/op_3.png
+    - assets/php_beginner/op_4.png
+    - assets/php_beginner/op_5.png
+    - assets/php_beginner/op_6.png
+    - assets/php_beginner/op_7.png
+    - assets/php_beginner/op_8.png
+    #PHP if Statements
+    - assets/php_beginner/if_1.png
+    - assets/php_beginner/if_2.png
+    #PHP if Operators
+    - assets/php_beginner/ifop_1.png
+    - assets/php_beginner/ifop_2.png
+    - assets/php_beginner/ifop_3.png
+    - assets/php_beginner/ifop_4.png
+    - assets/php_beginner/ifop_5.png
+    #HP if...else Statements
+    - assets/php_beginner/ifel_1.png
+    - assets/php_beginner/ifel_2.png
+    #PHP Shorthand if Statements
+    - assets/php_beginner/sh_1.png
+    - assets/php_beginner/sh_2.png
+    #PHP Nested if Statement
+    - assets/php_beginner/nest.png
+    #switch
+    - assets/php_beginner/sw.png
+    #PHP Loops
+    - assets/php_intermediate/w_1.png
+    - assets/php_intermediate/w_2.png
+    - assets/php_intermediate/w_3.png
+    - assets/php_intermediate/w_4.png
+    - assets/php_intermediate/w_5.png
+    #PHP do while Loop
+    - assets/php_intermediate/dwl_1.png
+    - assets/php_intermediate/dwl_2.png
+    - assets/php_intermediate/dwl_3.png
+    - assets/php_intermediate/dwl_4.png
+    #PHP for Loop
+    - assets/php_intermediate/fl_1.png
+    - assets/php_intermediate/fl_2.png
+    - assets/php_intermediate/fl_3.png
+    - assets/php_intermediate/fl_4.png
+    #PHP foreach Loop
+    - assets/php_intermediate/fe_1.png
+    - assets/php_intermediate/fe_2.png
+    - assets/php_intermediate/fe_3.png
+    - assets/php_intermediate/fe_4.png
+    - assets/php_intermediate/fe_5.png
+    - assets/php_intermediate/fe_6.png
+    - assets/php_intermediate/fe_7.png
+    - assets/php_intermediate/fe_8.png
+    #PHP Break
+    - assets/php_intermediate/b_1.png
+    - assets/php_intermediate/b_2.png
+    - assets/php_intermediate/b_3.png
+    - assets/php_intermediate/b_4.png
+    #PHP Functions
+    - assets/php_intermediate/f_1.png
+    - assets/php_intermediate/f_2.png
+    - assets/php_intermediate/f_3.png
+    - assets/php_intermediate/f_4.png
+    - assets/php_intermediate/f_5.png
+    - assets/php_intermediate/f_6.png
+    - assets/php_intermediate/f_7.png
+    - assets/php_intermediate/f_8.png
+    - assets/php_intermediate/f_9.png
+    - assets/php_intermediate/f_10.png
+    - assets/php_intermediate/f_11.png
+    - assets/php_intermediate/f_12.png
+    - assets/php_intermediate/f_13.png
+    - assets/php_intermediate/f_14.png
+    #PHP Arrays
+    - assets/php_intermediate/a_1.png
+    - assets/php_intermediate/a_2.png
+    - assets/php_intermediate/a_3.png
+    #PHP Indexed Arrays
+    - assets/php_intermediate/ina.png
+    - assets/php_intermediate/l_2.png
+    - assets/php_intermediate/l_3.png
+    - assets/php_intermediate/l_4.png
+    - assets/php_intermediate/l_5.png
+    - assets/php_intermediate/l_6.png
+    - assets/php_intermediate/l_7.png
+    - assets/php_intermediate/l_8.png
+    #PHP Associative Arrays
+    - assets/php_intermediate/ass_1.png
+    - assets/php_intermediate/ass_2.png
+    - assets/php_intermediate/ass_3.png
+    - assets/php_intermediate/ass_4.png
+    #PHP Create Arrays
+    - assets/php_intermediate/ca_1.png
+    - assets/php_intermediate/ca_2.png
+    - assets/php_intermediate/ca_3.png
+    - assets/php_intermediate/ca_4.png
+    - assets/php_intermediate/ca_5.png
+    - assets/php_intermediate/ca_6.png
+    - assets/php_intermediate/ca_7.png
+    - assets/php_intermediate/ca_8.png
+    - assets/php_intermediate/ca_9.png
+    #PHP Access Arrays
+    - assets/php_intermediate/acc_1.png
+    - assets/php_intermediate/acc_2.png
+    - assets/php_intermediate/acc_3.png
+    - assets/php_intermediate/acc_4.png
+    - assets/php_intermediate/acc_5.png
+    - assets/php_intermediate/acc_6.png
+    - assets/php_intermediate/acc_7.png
+    #PHP Update Array Items
+    - assets/php_intermediate/up_1.png
+    - assets/php_intermediate/up_2.png
+    - assets/php_intermediate/up_3.png
+    #PHP Add Array Items
+    - assets/php_intermediate/add_1.png
+    - assets/php_intermediate/add_2.png
+    - assets/php_intermediate/add_3.png
+    - assets/php_intermediate/add_4.png
+    #PHP Delete Array Items
+    - assets/php_intermediate/re_1.png
+    - assets/php_intermediate/re_2.png
+    - assets/php_intermediate/re_3.png
+    - assets/php_intermediate/re_4.png
+    - assets/php_intermediate/re_5.png
+    - assets/php_intermediate/re_6.png
+    - assets/php_intermediate/re_7.png
+    - assets/php_intermediate/re_8.png
+    #PHP Multidimensional Arrays
+    - assets/php_intermediate/mul_1.png
+    - assets/php_intermediate/mul_2.png
+    - assets/php_intermediate/mul_3.png
+    - assets/php_intermediate/mul_4.png
+    #PHP Array Functions
+    - assets/php_intermediate/arr_1.png
+    - assets/php_intermediate/arr_2.png
+    - assets/php_intermediate/arr_3.png
+    - assets/php_intermediate/arr_4.png
+    - assets/php_intermediate/arr_5.png
+    - assets/php_intermediate/arr_6.png
+    - assets/php_intermediate/arr_7.png
+    #PHP $GLOBALS
+    - assets/php_intermediate/glo_1.png
+    - assets/php_intermediate/glo_2.png
+    - assets/php_intermediate/glo_3.png
+    - assets/php_intermediate/glo_4.png
+    - assets/php_intermediate/glo_5.png
+    #PHP - $_SERVER
+    - assets/php_intermediate/ser_1.png
+    - assets/php_intermediate/ser_2.png
+    - assets/php_intermediate/ser_3.png
+    #PHP - $_REQUEST
+    - assets/php_intermediate/req_1.png
+    - assets/php_intermediate/req_2.png
+    - assets/php_intermediate/req_3.png
+    - assets/php_intermediate/req_4.png
+    - assets/php_intermediate/req_5.png
+    - assets/php_intermediate/req_6.png
+    #PHP - $_POST
+    - assets/php_intermediate/pos_1.png
+    - assets/php_intermediate/pos_2.png
+    - assets/php_intermediate/pos_3.png
+    - assets/php_intermediate/pos_4.png
+    - assets/php_intermediate/pos_5.png
+    #PHP Superglobal - $_GET
+    - assets/php_intermediate/get_1.png
+    - assets/php_intermediate/get_2.png
+    - assets/php_intermediate/get_3.png
+    #PHP Regular Expressions
+    - assets/php_intermediate/reg_1.png
+    - assets/php_intermediate/reg_2.png
+    - assets/php_intermediate/reg_3.png
+    - assets/php_intermediate/reg_4.png
+    - assets/php_intermediate/reg_5.png
+    - assets/php_intermediate/reg_6.png
+    - assets/php_intermediate/reg_7.png
+    - assets/php_intermediate/reg_8.png
+    - assets/php_intermediate/reg_9.png
+    #PHP Form Handling
+    - assets/php_intermediate/fh_1.png
+    - assets/php_intermediate/fh_2.png
+    - assets/php_intermediate/fh_3.png
+    - assets/php_intermediate/fh_4.png
+    - assets/php_intermediate/fh_5.png
+    #PHP Form Validation
+    - assets/php_intermediate/for_1.png
+    - assets/php_intermediate/for_2.png
+    - assets/php_intermediate/for_3.png
+    - assets/php_intermediate/for_4.png
+    - assets/php_intermediate/for_5.png
+    - assets/php_intermediate/fh_6.png
+    - assets/php_intermediate/fh_7.png
+    - assets/php_intermediate/fh_8.png
+    - assets/php_intermediate/fh_9.png
+    - assets/php_intermediate/fh_10.png
+    - assets/php_intermediate/fh_11.png
+    #PHP Forms - Required Fields
+    - assets/php_intermediate/form_1.png
+    - assets/php_intermediate/form_2.png
+    - assets/php_intermediate/form_3.png
+    #PHP Forms - Validate E-mail and URL
+    - assets/php_intermediate/url_1.png
+    - assets/php_intermediate/url_2.png
+    - assets/php_intermediate/url_3.png
+    - assets/php_intermediate/url_4.png
+    #PHP Complete Form Example
+    - assets/php_intermediate/complete.png
+    - assets/php_intermediate/complete_2.png
 
 
 
