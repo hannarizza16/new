@@ -26,8 +26,8 @@ class _ChatPageState extends State<ChatPage> {
 
   final ChatUser _gptChatUser = ChatUser(id: '2', firstName: 'Jr.', lastName: 'AI');
 
-  List<ChatMessage> _messages = <ChatMessage>[];
-  List<ChatUser> _typingUsers = <ChatUser>[];
+  final List<ChatMessage> _messages = <ChatMessage>[];
+  final List<ChatUser> _typingUsers = <ChatUser>[];
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +73,7 @@ class _ChatPageState extends State<ChatPage> {
     });
 
     // Prepare conversation history
-    List<Messages> _messagesHistory = _messages.reversed.map((m) {
+    List<Messages> messagesHistory = _messages.reversed.map((m) {
       if (m.user == _currentUser) {
         return Messages(role: Role.user, content: m.text);
       } else {
@@ -85,7 +85,7 @@ class _ChatPageState extends State<ChatPage> {
       // Request AI response
       final request = ChatCompleteText(
         model: GptTurbo0301ChatModel(),
-        messages: _messagesHistory,
+        messages: messagesHistory,
         maxToken: 200,
       );
 

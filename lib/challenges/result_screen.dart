@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'category_selection.dart';
+
 import 'questions.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -9,13 +9,13 @@ class ResultScreen extends StatefulWidget {
   final List<QuizQuestion> questions;
   final List<int> userAnswers;
   final String category;
-  final String expertiseLevel;
+  final String expertise;
 
   ResultScreen({
     required this.questions,
     required this.userAnswers,
     required this.category,
-    required this.expertiseLevel,
+    required this.expertise,
   });
 
   @override
@@ -35,8 +35,8 @@ class _ResultScreenState extends State<ResultScreen>
       duration: const Duration(seconds: 5),
     )..repeat(reverse: true);
     _animation = ColorTween(
-      begin: Color(0xFF00A9FF),
-      end: Color(0xFF71DFE7),
+      begin: Color(0xFFDCF2F1),
+      end: Color(0xFFDCF2F1),
     ).animate(
       CurvedAnimation(
         parent: _controller,
@@ -72,7 +72,7 @@ class _ResultScreenState extends State<ResultScreen>
     // Save the score to Firebase
     if (userEmail != null) {
       _saveScoreToFirebase(correctAnswers, widget.questions.length, userEmail,
-          widget.category, widget.expertiseLevel);
+          widget.category, widget.expertise);
     }
 
     // Determine the motivating quote based on the score
@@ -80,9 +80,12 @@ class _ResultScreenState extends State<ResultScreen>
     if (correctAnswers == widget.questions.length) {
       motivatingQuote =
           "Congratulations! Achieving a perfect score is a testament to your dedication and knowledge. It's not just a victory; it's a milestone in your journey of continuous learning.";
-    } else if (correctAnswers >= widget.questions.length - 1) {
+    } else if (correctAnswers >= widget.questions.length - 10) {
       motivatingQuote =
           "You did great! Success is not just about the destination; it's about the journey. Your commitment and effort are evident in your performance.";
+    } else if (correctAnswers >= widget.questions.length - 15) {
+      motivatingQuote =
+          "You are doing exceptionally well! Your dedication to learning shines through your remarkable performance. Keep up the excellent work!";
     } else {
       motivatingQuote =
           "Don't be discouraged by a low score. Every mistake is a step towards learning and improvement. Keep pushing yourself, and success will follow!";
@@ -98,7 +101,7 @@ class _ResultScreenState extends State<ResultScreen>
             appBar: AppBar(
               title: Text('Quiz Result',
                   style: TextStyle(color: Color(0xFF06283D))),
-              backgroundColor: Color(0xFF279EFF),
+              backgroundColor: Color(0xFFDCF2F1),
             ),
             body: Stack(children: [
               AnimatedBuilder(
@@ -108,9 +111,9 @@ class _ResultScreenState extends State<ResultScreen>
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
-                          _animation.value ?? Color(0xFF71DFE7),
-                          Color(0xFF94DAFF),
-                          _animation.value ?? Color(0xFF9ED5C5),
+                          _animation.value ?? Color(0xFF85F4FF),
+                          Color(0xFFC5FFF8),
+                          _animation.value ?? Color(0xFF85F4FF),
                         ],
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
@@ -136,10 +139,15 @@ class _ResultScreenState extends State<ResultScreen>
                                   ),
                                   SizedBox(height: 20),
                                   if (wrongQuestions.isNotEmpty)
-                                    Text(
-                                      'Incorrect Answers in Question: ${wrongQuestions.join(', ')}',
-                                      style: TextStyle(
-                                          fontSize: 18, color: Colors.red),
+                                    Center(
+                                      child: Text(
+                                        'Incorrect Answers in Question: \n${wrongQuestions.join(', ')}',
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          color: Colors.red,
+                                        ),
+                                        textAlign: TextAlign.center,
+                                      ),
                                     ),
                                   SizedBox(height: 20),
                                   Text(
@@ -231,8 +239,7 @@ class _ResultScreenState extends State<ResultScreen>
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text('Confirm Exit'),
-          content: Text(
-              'Are you sure you want to exit to expertise level selection?'),
+          content: Text('Are you sure you want to exit?'),
           actions: <Widget>[
             TextButton(
               onPressed: () {

@@ -1,3 +1,4 @@
+import 'package:first_project/gradient_background.dart';
 import 'package:flutter/material.dart';
 import '../firebase/features/user_auth/presentation/pages/home_page.dart';
 import 'categories.dart';
@@ -11,33 +12,6 @@ class CategorySelection extends StatefulWidget {
 }
 
 class _CategorySelectionState extends State<CategorySelection> with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  late Animation<Color?> _animation;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 10),
-    )..repeat(reverse: true);
-    _animation = ColorTween(
-      begin: Color(0xFF00A9FF),
-      end: Color(0xFF71DFE7),
-    ).animate(
-      CurvedAnimation(
-        parent: _controller,
-        curve: Curves.easeInOut,
-      ),
-    );
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -46,108 +20,115 @@ class _CategorySelectionState extends State<CategorySelection> with SingleTicker
         return false;
       },
       child: Scaffold(
-        body: AnimatedBuilder(
-          animation: _controller,
-          builder: (context, child) {
-            return Container(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [
-                    _animation.value ?? Color(0xFF71DFE7),
-                    Color(0xFF94DAFF),
-                    _animation.value ?? Color(0xFF9ED5C5),
-                  ],
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
+        body: Stack(
+          children: [
+            // Layer 1: Gradient Container
+            GradientContainer(
+              child: Container(),
+            ),
+            Positioned(
+              left: 0, // Align left
+              top: 0, // Align top
+              right: 0, // Align right
+              bottom: 0, // Align bottom
+              child: Opacity(
+                opacity: 0.2, // Specify the opacity value here (0.0 - 1.0)
+                child: Image.asset(
+                  'assets/overlay/2.jpg', // Replace with your image path
+                  fit: BoxFit.cover,
                 ),
               ),
-              child: CustomScrollView(
-                slivers: [
-                  SliverPadding(
-                    padding: EdgeInsets.only(top: 18, left: 16, right: 16),
-                    sliver: SliverList(
-                      delegate: SliverChildBuilderDelegate(
-                            (context, index) {
-                          final category = getQuizCategories()[index];
-                          return Padding(
-                            padding: EdgeInsets.only(bottom: 18),
-                            child: Card(
-                              elevation: 10,
-                              color: Color(0xFF0C356A),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20.0),
-                              ),
-                              child: InkWell(
-                                onTap: () {
-                                  _navigateToExpertiseLevels(context, category.name);
-                                },
-                                child: Container(
-                                  height: 130,
-                                  child: Hero(
-                                    tag: 'category-$index',
-                                    child: Material(
-                                      color: Colors.transparent,
-                                      child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsets.only(left: 20.0),
-                                                child: Text(
-                                                  category.name,
-                                                  style: TextStyle(
-                                                    fontSize: 30,
-                                                    color: Color(0xFFFFCC70),
-                                                    letterSpacing: 1.0,
-                                                  ),
+            ),
+            // Layer 3: Cards and other widgets
+            CustomScrollView(
+              slivers: [
+                SliverPadding(
+                  padding: EdgeInsets.only(top: 18, left: 16, right: 16),
+                  sliver: SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                          (context, index) {
+                        final category = getQuizCategories()[index];
+                        return Padding(
+                          padding: EdgeInsets.only(bottom: 18),
+                          child: Card(
+                            elevation: 10,
+                            color: Color(0xFF0C356A),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
+                            child: InkWell(
+                              onTap: () {
+                                _navigateToExpertiseLevels(context, category.category);
+                              },
+                              child: Container(
+                                height: 130,
+                                child: Hero(
+                                  tag: 'category-$index',
+                                  child: Material(
+                                    color: Colors.transparent,
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsets.only(left: 20.0),
+                                              child: Text(
+                                                category.category,
+                                                style: TextStyle(
+                                                  fontSize: 30,
+                                                  color: Color(0xFFFFCC70),
+                                                  letterSpacing: 1.0,
+
                                                 ),
                                               ),
-                                              SizedBox(height: 8),
-                                              Padding(
-                                                padding: EdgeInsets.only(left: 20.0),
-                                                child: Text(
-                                                  '${category.subtext.join(', ')}',
-                                                  style: TextStyle(
-                                                    fontSize: 14,
-                                                    fontStyle: FontStyle.italic,
-                                                    color: Colors.white,
-                                                  ),
+                                            ),
+                                            SizedBox(height: 8),
+                                            Padding(
+                                              padding: EdgeInsets.only(left: 20.0),
+                                              child: Text(
+                                                '${category.subtext.join(', ')}',
+                                                style: TextStyle(
+                                                  fontSize: 14,
+                                                  fontStyle: FontStyle.italic,
+                                                  color: Colors.white,
                                                 ),
                                               ),
-                                            ],
-                                          ),
-                                          _buildDesignElement(),
-                                        ],
-                                      ),
+                                            ),
+                                          ],
+                                        ),
+                                        _buildDesignElement(),
+                                      ],
                                     ),
                                   ),
                                 ),
                               ),
                             ),
-                          );
-                        },
-                        childCount: getQuizCategories().length,
-                      ),
+                          ),
+                        );
+                      },
+                      childCount: getQuizCategories().length,
                     ),
                   ),
-                ],
-              ),
-            );
-          },
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
   }
+}
+
 
   Widget _buildDesignElement() {
     return Container(
-      width: 20,
+      width: 25,
       height: 130,
       decoration: BoxDecoration(
-        color: Color(0xFFFFCC70),
+        color: Color(0xFF096E9C6),
         borderRadius: BorderRadius.only(
           topRight: Radius.circular(20.0),
           bottomRight: Radius.circular(20.0),
@@ -155,6 +136,7 @@ class _CategorySelectionState extends State<CategorySelection> with SingleTicker
       ),
     );
   }
+
 
   void _navigateToExpertiseLevels(BuildContext context, String category) {
     Navigator.push(
@@ -174,4 +156,4 @@ class _CategorySelectionState extends State<CategorySelection> with SingleTicker
           (route) => false,
     );
   }
-}
+

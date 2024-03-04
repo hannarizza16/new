@@ -9,7 +9,6 @@ import 'package:first_project/extension/bottom_nav_ext.dart';
 import 'package:first_project/enums/enums.dart';
 import 'package:flutter/material.dart';
 
-
 class MainHomePage extends StatefulWidget {
   const MainHomePage({Key? key}) : super(key: key);
 
@@ -19,7 +18,7 @@ class MainHomePage extends StatefulWidget {
 
 class _MainHomePageState extends State<MainHomePage> {
   final _bottomScreens = [
-     LeaderboardScreen(),
+    LeaderboardScreen(),
     StatisticsWidget(),
     const AllLanguages(), // state name
     const CategorySelection(),
@@ -103,14 +102,20 @@ class _MainHomePageState extends State<MainHomePage> {
         drawer: const SideBar(),
         appBar: AppBar(
           title: const Text('CodeX'),
-          backgroundColor: Color(0xFF279EFF), // app bar color only
+          titleTextStyle: TextStyle(
+            color: Color(0xFF0C356A),
+            fontSize: 21, // Change the font size as needed
+            fontWeight: FontWeight.bold, // Make the font bold
+          ),
+          backgroundColor: Color(0xFFDCF2F1), // app bar color only
         ),
         backgroundColor:
         Colors.transparent, // BACKGROUND OF top app and other pages
         body: Container(
-          decoration: BoxDecoration( //LANGUAGES NA SLIDING
+          decoration: BoxDecoration(
+            //LANGUAGES NA SLIDING
             gradient: LinearGradient(
-              colors: [Color(0xFF00A9FF), Color(0xFF71DFE7)],
+              colors: [Color(0xFFDCF2F1), Color(0xFFDCF2F1)],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
@@ -118,31 +123,50 @@ class _MainHomePageState extends State<MainHomePage> {
           child: _bottomScreens[selectedCurrentIndex],
         ),
 
-        bottomNavigationBar: Theme( //BOTTOM NAVIGATION BAR
-          data: Theme.of(context).copyWith(
-            canvasColor: Color(0xFF279EFF), // Updated canvasColor
-            primaryColor: Colors.blue, // ICON in bottom navigation
-            textTheme: Theme.of(context)
-                .textTheme
-                .copyWith(caption: TextStyle(color: Colors.black26)),
-          ),
-
-
-          ///////////////////////////////////////
-
-          child: BottomNavigationBar(
-            currentIndex: selectedCurrentIndex,
-            onTap: (index) => setState(() => selectedCurrentIndex = index),
-            items: BottomNavs
-                .values // BottomNavs contains the list items located in enums.
-                .map((nav) => BottomNavigationBarItem(
-              icon: Icon(nav.icon),
-              label: nav.text,
-            ))
-                .toList(), //
-            selectedFontSize: 13, // Size ng selected icon sa bott navbar
-            unselectedFontSize: 10, // ICON in bottom navigation// size naman kapag di selected
-          ),
+        bottomNavigationBar: Stack(
+          children: [
+            // Original bottom navigation bar
+            Theme(
+              data: Theme.of(context).copyWith(
+                canvasColor: Color(0xFFDCF2F1),
+                textTheme: Theme.of(context)
+                    .textTheme
+                    .copyWith(caption: TextStyle(color: Colors.black26)),
+              ),
+              child: BottomNavigationBar(
+                currentIndex: selectedCurrentIndex,
+                onTap: (index) =>
+                    setState(() => selectedCurrentIndex = index),
+                items: BottomNavs.values
+                    .map((nav) => BottomNavigationBarItem(
+                  icon: Icon(nav.icon),
+                  label: nav.text,
+                ))
+                    .toList(),
+                selectedItemColor:
+                Color(0xFF4CB9E7), // Define the color of the selected item here
+                unselectedItemColor: Color(0xFF0C356A),
+                selectedFontSize:
+                13, // Size of selected icon in bottom navigation bar
+                unselectedFontSize:
+                10, // Size of unselected icon in bottom navigation bar
+              ),
+            ),
+            // Overlay dots.gif
+            // Overlay dots.gif
+            Positioned(
+              height: 400,
+              child: IgnorePointer(
+                child: Transform.scale(
+                  scale: 1.2, // Adjust the scale factor as needed
+                  child: Image.asset(
+                    'assets/overlay/dots.gif',
+                    fit: BoxFit.fitWidth,
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
         floatingActionButton: const PersonalHelper(),
       ),

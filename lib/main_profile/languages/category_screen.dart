@@ -40,7 +40,7 @@ class CategoryScreen extends StatelessWidget {
                       fontSize: 24, // Change the font size
                       color: Colors.black, // Change the text color
                       fontWeight: FontWeight.bold, // Apply font weight
-                      letterSpacing: 1.5, // Apply letter spacing
+                      letterSpacing: 1.0, // Apply letter spacing
                     ),
                   ),
                 ),
