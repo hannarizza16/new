@@ -1005,7 +1005,7 @@ const cPlusCodex = {
         ]
       },
       24: {
-        'topic': '11.     Booleans',
+        'topic': '12.     Booleans',
         'subTopic': [
           {
             'heading': "C++ Booleans",
@@ -1018,7 +1018,7 @@ const cPlusCodex = {
         ]
       },
       25: {
-        'topic': '     11.1     Boolean Values',
+        'topic': '     12.1     Boolean Values',
         'subTopic': [
           {
             'heading': "Boolean Values",
@@ -1034,7 +1034,7 @@ const cPlusCodex = {
         ]
       },
       26: {
-        'topic': '     11.2     Boolean Expressions',
+        'topic': '     12.2     Boolean Expressions',
         'subTopic': [
           {
             'heading': "Boolean Expression",
@@ -1066,8 +1066,429 @@ const cPlusCodex = {
                 '\n\nExample',
             'attachment': "assets/cPlus_intermediate/10.36.png"
           },
+          {
+            'body': "Cool, right? An even better approach (since we are on a roll now), would be to wrap the code above in an if...else statement, so we can perform different actions depending on the result:"
+                '\n\nExample: Output "Old enough to vote!" if myAge is greater than or equal to 18. Otherwise output "Not old enough to vote."',
+            'attachment': "assets/cPlus_intermediate/10.37.png"
+          },
+          {
+            'body': "Booleans are the basis for all C++ comparisons and conditions."
+                "\n\nYou will learn more about conditions (if...else) in the next chapter."
+          },
         ]
-      }
+      },
+      27: {
+        'topic': '13.     Conditions and If Statements',
+        'subTopic': [
+          {
+            'heading': "Conditions and If Statements",
+            'body': "You already know that C++ supports the usual logical conditions from mathematics:"
+                "\n\n   • Less than: a < b"
+                "\n\n   • Less than or equal to: a <= b"
+                "\n\n   • Greater than: a > b"
+                "\n\n   • Greater than or equal to: a >= b"
+                "\n\n   • Equal to a == b"
+                "\n\n   • Not Equal to: a != b"
+                "\n\nYou can use these conditions to perform different actions for different decisions."
+                "\n\n\nC++ has the following conditional statements:"
+                "\n\n   • Use if to specify a block of code to be executed, if a specified condition is true"
+                "\n\n   • Use else to specify a block of code to be executed, if the same condition is false"
+                "\n\n   • Use else if to specify a new condition to test, if the first condition is false"
+                "\n\n   • Use switch to specify many alternative blocks of code to be executed",
+          },
+          {
+            'heading': "The if Statement",
+            'body':
+                "Use the if statement to specify a block of C++ code to be executed if a condition is true."
+                    "\n\nSyntax",
+            'attachment': "assets/cPlus_intermediate/10.38.png",
+          },
+          {
+            'body': "*Note that if is in lowercase letters. Uppercase letters (If or IF) will generate an error."
+                "\n\nIn the example below, we test two values to find out if 20 is greater than 18. If the condition is true, print some text:"
+                "\n\nExample",
+            'attachment': "assets/cPlus_intermediate/10.39.png",
+          },
+          {
+            'body': "We can also test variables:"
+                "\n\nExample",
+            'attachment': "assets/cPlus_intermediate/10.40.png",
+          },
+          {
+            'body': "Example explained"
+                '\nIn the example above we use two variables, x and y, to test whether x is greater than y (using the > operator). As x is 20, and y is 18, and we know that 20 is greater than 18, we print to the screen that "x is greater than y".'
+          },
+        ]
+      },
+      28: {
+        'topic': '     13.1     else',
+        'subTopic': [
+          {
+            'heading': "The else Statement",
+            'body':
+                "Use the else statement to specify a block of code to be executed if the condition is false."
+                    "\n\nSyntax",
+            'attachment': "assets/cPlus_intermediate/10.41.png",
+          },
+          {
+            'body': "Example",
+            'attachment': "assets/cPlus_intermediate/10.42.png"
+          },
+          {
+            'body': "Example explained"
+                '\nIn the example above, time (20) is greater than 18, so the condition is false. Because of this, we move on to the else condition and print to the screen "Good evening". If the time was less than 18, the program would print "Good day".',
+          }
+        ]
+      },
+      29: {
+        'topic': '     13.2     Else If',
+        'subTopic': [
+          {
+            'heading': "The else if Statement",
+            'body':
+                "Use the else if statement to specify a new condition if the first condition is false."
+                    "\n\nSyntax",
+            'attachment': "assets/cPlus_intermediate/10.43.png"
+          },
+          {
+            'body': "Example",
+            'attachment': "assets/cPlus_intermediate/10.44.png"
+          },
+          {
+            'body': "Example explained"
+                '\n\nIn the example above, time (22) is greater than 10, so the first condition is false. The next condition, in the else if statement, is also false, so we move on to the else condition since condition1 and condition2 is both false - and print to the screen "Good evening".'
+                '\n\nHowever, if the time was 14, our program would print "Good day."'
+          },
+        ]
+      },
+      30: {
+        'topic': '     13.3     Short Hand If Else',
+        'subTopic': [
+          {
+            'heading': "Short Hand If...Else (Ternary Operator)",
+            'body':
+                "There is also a short-hand if else, which is known as the ternary operator because it consists of three operands. It can be used to replace multiple lines of code with a single line. It is often used to replace simple if else statements:"
+                    "\n\nSyntax",
+            'attachment': "assets/cPlus_intermediate/10.45.png"
+          },
+          {
+            'body': "Instead of writing:"
+                "\n\nExample",
+            'attachment': "assets/cPlus_intermediate/10.46.png"
+          },
+          {
+            'body': "You can simply write:"
+                "\n\nExample",
+            'attachment': "assets/cPlus_intermediate/10.47.png"
+          },
+        ]
+      },
+      31: {
+        'topic': '14.     Switch',
+        'subTopic': [
+          {
+            'heading': "Switch Statements",
+            'body':
+                "Use the switch statement to select one of many code blocks to be executed."
+                    "\n\nSyntax",
+            'attachment': "assets/cPlus_intermediate/10.48.png"
+          },
+          {
+            'body': "This is how it works:"
+                "\n\n   • The switch expression is evaluated once"
+                "\n\n   • The value of the expression is compared with the values of each case"
+                "\n\n   • If there is a match, the associated block of code is executed"
+                "\n\n   • The break and default keywords are optional, and will be described later in this chapter"
+                "\n\nThe example below uses the weekday number to calculate the weekday name:"
+                "\n\nExample",
+            'attachment': "assets/cPlus_intermediate/10.49.png"
+          },
+          {
+            'heading': "\nThe break Keyword",
+            'body': "When C++ reaches a break keyword, it breaks out of the switch block."
+                "\n\nThis will stop the execution of more code and case testing inside the block."
+                "\n\nWhen a match is found, and the job is done, it's time for a break. There is no need for more testing."
+                '\n\nA break can save a lot of execution time because it "ignores" the execution of all the rest of the code in the switch block.'
+          }
+        ]
+      },
+      32: {
+        'topic': '15.     While Loop',
+        'subTopic': [
+          {
+            'heading': "C++ Loops",
+            'body': "Loops can execute a block of code as long as a specified condition is reached."
+                "\n\nLoops are handy because they save time, reduce errors, and they make code more readable."
+          },
+          {
+            'heading': "While Loop",
+            'body':
+                "The while loop loops through a block of code as long as a specified condition is true:"
+                    "\n\nSyntax",
+            'attachment': "assets/cPlus_intermediate/10.50.png"
+          },
+          {
+            'body':
+                "In the example below, the code in the loop will run, over and over again, as long as a variable (i) is less than 5:"
+                    "\n\nExample",
+            'attachment': "assets/cPlus_intermediate/10.51.png"
+          },
+          {
+            'body':
+                "*Note: Do not forget to increase the variable used in the condition, otherwise the loop will never end!"
+          },
+        ]
+      },
+      33: {
+        'topic': '     15.1     Do/While Loop',
+        'subTopic': [
+          {
+            'heading': "The Do/While Loop",
+            'body':
+                "The do/while loop is a variant of the while loop. This loop will execute the code block once, before checking if the condition is true, then it will repeat the loop as long as the condition is true."
+                    "\n\nSyntax",
+            'attachment': "assets/cPlus_intermediate/10.52.png"
+          },
+          {
+            'body':
+                "The example below uses a do/while loop. The loop will always be executed at least once, even if the condition is false, because the code block is executed before the condition is tested:"
+                    "\n\nExample",
+            'attachment': "assets/cPlus_intermediate/10.53.png"
+          },
+          {
+            'body':
+                "*Note:Do not forget to increase the variable used in the condition, otherwise the loop will never end!"
+          },
+        ]
+      },
+      34: {
+        'topic': '16.     For Loop',
+        'subTopic': [
+          {
+            'heading': "For Loop",
+            'body':
+                "When you know exactly how many times you want to loop through a block of code, use the for loop instead of a while loop:"
+                    "\n\nSyntax",
+            'attachment': "assets/cPlus_intermediate/10.54.png"
+          },
+          {
+            'body': "Statement 1 - is executed (one time) before the execution of the code block."
+                "\n\nStatement 2 - defines the condition for executing the code block."
+                "\n\nStatement 3 - is executed (every time) after the code block has been executed."
+                "\n\nThe example below will print the numbers 0 to 4:"
+                "\n\nExample",
+            'attachment': "assets/cPlus_intermediate/10.55.png"
+          },
+          {
+            'body': "Example explained"
+                "\n\nStatement 1 sets a variable before the loop starts (int i = 0)."
+                "\n\nStatement 2 defines the condition for the loop to run (i must be less than 5). If the condition is true, the loop will start over again, if it is false, the loop will end."
+                "\n\nStatement 3 increases a value (i++) each time the code block in the loop has been executed."
+                "\n\nAnother Example: This example will only print even values between 0 and 10:",
+            'attachment': "assets/cPlus_intermediate/10.56.png"
+          },
+          {
+            'heading': "Nested Loops",
+            'body': "It is also possible to place a loop inside another loop. This is called a nested loop."
+                '\n\nThe "inner loop" will be executed one time for each iteration of the "outer loop":'
+                "\n\nExample",
+            'attachment': "assets/cPlus_intermediate/10.57.png"
+          },
+          {
+            'heading': "The foreach Loop",
+            'body':
+                'There is also a "for-each loop" (introduced in C++ version 11 (2011), which is used exclusively to loop through elements in an array (or other data sets):'
+                    "\n\nSyntax",
+            'attachment': "assets/cPlus_intermediate/10.58.png"
+          },
+          {
+            'body':
+                'The following example outputs all elements in an array, using a "for-each loop":'
+                    "\n\nExample",
+            'attachment': "assets/cPlus_intermediate/10.59.png"
+          },
+        ]
+      },
+      35: {
+        'topic': '17.     Break and Continue',
+        'subTopic': [
+          {
+            'heading': "Break",
+            'body': 'You have already seen the break statement used in an earlier chapter of this tutorial. It was used to "jump out" of a switch statement.'
+                "\n\nThe break statement can also be used to jump out of a loop."
+                "\n\nThis example jumps out of the loop when i is equal to 4:"
+                "\n\n\nExample",
+            'attachment': "assets/cPlus_intermediate/10.60.png"
+          },
+          {
+            'heading': "Continue",
+            'body':
+                "The continue statement breaks one iteration (in the loop), if a specified condition occurs, and continues with the next iteration in the loop."
+                    "\nThis example skips the value of 4:"
+                    "\n\n\nExample",
+            'attachment': "assets/cPlus_intermediate/10.61.png"
+          },
+          {
+            'heading': "Break and Continue in While Loop",
+            'body': "You can also use break and continue in while loops:"
+                "\n\nBreak Example",
+            'attachment': "assets/cPlus_intermediate/10.62.png"
+          },
+          {
+            'body': "Continue Example",
+            'attachment': "assets/cPlus_intermediate/10.63.png"
+          },
+        ]
+      },
+      36: {
+        'topic': '18.     Arrays',
+        'subTopic': [
+          {
+            'heading': "Arrays",
+            'body': "Arrays are used to store multiple values in a single variable, instead of declaring separate variables for each value."
+                "\n\nTo declare an array, define the variable type, specify the name of the array followed by square brackets and specify the number of elements it should store:",
+            'attachment': "assets/cPlus_intermediate/18.1.png"
+          },
+          {
+            'body':
+                "We have now declared a variable that holds an array of four strings. To insert values to it, we can use an array literal - place the values in a comma-separated list, inside curly braces:",
+            'attachment': "assets/cPlus_intermediate/18.2.png"
+          },
+          {
+            'body': "To create an array of three integers, you could write:",
+            'attachment': "assets/cPlus_intermediate/18.3.png"
+          },
+          {
+            'heading': "\nAccess the Elements of an Array",
+            'body': "You access an array element by referring to the index number inside square brackets []."
+                "\n\nThis statement accesses the value of the first element in cars:"
+                "\n\nExample",
+            'attachment': "assets/cPlus_intermediate/18.4.png"
+          },
+          {
+            'body':
+                "Note: Array indexes start with 0: [0] is the first element. [1] is the second element, etc."
+          },
+          {
+            'heading': "Change an Array Element",
+            'body':
+                "To change the value of a specific element, refer to the index number:",
+            'attachment': "assets/cPlus_intermediate/18.5.png"
+          },
+          {
+            'body': "Example",
+            'attachment': "assets/cPlus_intermediate/18.6.png"
+          }
+        ]
+      },
+      37: {
+        'topic': '     18.1     Arrays and Loops',
+        'subTopic': [
+          {
+            'heading': "Loop Through an Array",
+            'body': "You can loop through the array elements with the for loop."
+                "\n\nThe following example outputs all elements in the cars array:"
+                "\n\nExample",
+            'attachment': "assets/cPlus_intermediate/18.7.png"
+          },
+          {
+            'body':
+                "This example outputs the index of each element together with its value:"
+                    "\n\nExample",
+            'attachment': "assets/cPlus_intermediate/18.8.png"
+          },
+          {
+            'body':
+                "And this example shows how to loop through an array of integers:"
+                    "\n\nExample",
+            'attachment': "assets/cPlus_intermediate/18.9.png"
+          },
+          {
+            'heading': "The foreach Loop",
+            'body':
+                'There is also a "for-each loop" (introduced in C++ version 11 (2011), which is used exclusively to loop through elements in an array:'
+                    "\n\nSyntax",
+            'attachment': "assets/cPlus_intermediate/18.10.png"
+          },
+          {
+            'body':
+                'The following example outputs all elements in an array, using a "for-each loop":'
+                    "\n\nExample",
+            'attachment': "assets/cPlus_intermediate/18.11.png"
+          },
+        ]
+      },
+      38: {
+        'topic': '     18.2     Omit Array Size',
+        'subTopic': [
+          {
+            'heading': "Omit Array Size",
+            'body':
+                "In C++, you don't have to specify the size of the array. The compiler is smart enough to determine the size of the array based on the number of inserted values:",
+            'attachment': "assets/cPlus_intermediate/18.12.png"
+          },
+          {
+            'body': "The example above is equal to:",
+            'attachment': "assets/cPlus_intermediate/18.13.png"
+          },
+          {
+            'body':
+                'However, the last approach is considered as "good practice", because it will reduce the chance of errors in your program.'
+          },
+          {
+            'heading': "Omit Elements on Declaration",
+            'body':
+                "It is also possible to declare an array without specifying the elements on declaration, and add them later:"
+                    "\n\nExample",
+            'attachment': "assets/cPlus_intermediate/18.14.png"
+          }
+        ]
+      },
+      39: {
+        'topic': '     18.3     Get Array Size',
+        'subTopic': [
+          {
+            'heading': "Get the Size of an Array",
+            'body':
+                "To get the size of an array, you can use the sizeof() operator:"
+                    "\n\nExample",
+            'attachment': "assets/cPlus_intermediate/18.15.png"
+          },
+          {
+            'body': "Why did the result show 20 instead of 5, when the array contains 5 elements?"
+                "\n\nIt is because the sizeof() operator returns the size of a type in bytes."
+                "\n\nYou learned from the Data Types chapter that an int type is usually 4 bytes, so from the example above, 4 x 5 (4 bytes x 5 elements) = 20 bytes."
+                "\n\nTo find out how many elements an array has, you have to divide the size of the array by the size of the data type it contains:"
+                "\n\n\nExample",
+            'attachment': "assets/cPlus_intermediate/18.16.png"
+          },
+          {
+            'heading': "\nLoop Through an Array with sizeof()",
+            'body': "In the Arrays and Loops Chapter, we wrote the size of the array in the loop condition (i < 5). This is not ideal, since it will only work for arrays of a specified size."
+                "\n\nHowever, by using the sizeof() approach from the example above, we can now make loops that work for arrays of any size, which is more sustainable."
+                "\n\nInstead of writing:",
+            'attachment': "assets/cPlus_intermediate/18.17.png"
+          },
+          {
+            'body': "It is better to write:"
+                "\n\nExample",
+            'attachment': "assets/cPlus_intermediate/18.18.png"
+          },
+          {
+            'body':
+                'Note that, in C++ version 11 (2011), you can also use the "for-each" loop:'
+                    "\n\nExample",
+            'attachment': "assets/cPlus_intermediate/18.18.png"
+          },
+          {
+            'body': "It is good to know the different ways to loop through an array, since you may encounter them all in different programs."
+          }
+        ]
+      },
+      // 40: {
+      //   'topic': '     18.4     Multidimensional Arrays',
+      //   'subTopic': [{}]
+      // },
     },
     Categories.advanced: {},
   },
