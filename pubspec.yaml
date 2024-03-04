@@ -131,6 +131,73 @@ flutter:
     - assets/overlay/shine4.gif
 
 
+    #gamedev
+    - assets/game_dev/1.png
+    - assets/game_dev/2.png
+    - assets/game_dev/3.png
+    - assets/game_dev/4.png
+    - assets/game_dev/5.png
+    - assets/game_dev/6.png
+    - assets/game_dev/7.png
+    - assets/game_dev/8.png
+    - assets/game_dev/9.png
+    - assets/game_dev/10.png
+    - assets/game_dev/11.png
+    - assets/game_dev/12.png
+    - assets/game_dev/13.png
+    - assets/game_dev/14.png
+    - assets/game_dev/15.png
+    - assets/game_dev/16.png
+    - assets/game_dev/17.png
+    - assets/game_dev/18.png
+    - assets/game_dev/19.png
+    - assets/game_dev/20.png
+    - assets/game_dev/21.png
+    - assets/game_dev/22.png
+
+
+      #web
+    - assets/web/1.png
+    - assets/web/2.png
+    - assets/web/3.png
+    - assets/web/4.png
+    - assets/web/5.png
+    - assets/web/6.png
+    - assets/web/7.png
+    - assets/web/8.png
+    - assets/web/9.png
+    - assets/web/10.png
+    - assets/web/11.png
+    - assets/web/12.png
+    - assets/web/13.png
+    - assets/web/14.png
+    - assets/web/15.png
+    - assets/web/16.png
+    - assets/web/17.png
+    - assets/web/18.png
+    - assets/web/19.png
+    - assets/web/20.png
+    - assets/web/21.png
+    - assets/web/22.png
+    - assets/web/23.png
+    - assets/web/24.png
+    - assets/web/25.png
+    - assets/web/26.png
+    - assets/web/27.png
+    - assets/web/28.png
+    - assets/web/29.png
+    - assets/web/30.png
+    - assets/web/31.png
+    - assets/web/32.png
+    - assets/web/33.png
+    - assets/web/34.png
+    - assets/web/35.png
+    - assets/web/36.png
+    - assets/web/37.png
+
+
+
+
     - assets/logo.gif
     - assets/logo2.gif
     - assets/codex.png
@@ -1512,6 +1579,7 @@ flutter:
     - assets/php_beginner/s_2.png
     - assets/php_beginner/s_3.png
     - assets/php_beginner/s_4.png
+    -
     #PHP Comments
     - assets/php_beginner/c_1.png
     - assets/php_beginner/c_2.png
@@ -1896,7 +1964,27 @@ flutter:
     - assets/php_advance/call_1.png
     - assets/php_advance/call_2.png
     - assets/php_advance/call_3.png
-
+    #PHP and JSON
+    - assets/php_advance/js_1.png
+    - assets/php_advance/js_2.png
+    - assets/php_advance/js_3.png
+    - assets/php_advance/js_4.png
+    - assets/php_advance/js_5.png
+    - assets/php_advance/js_6.png
+    - assets/php_advance/js_7.png
+    - assets/php_advance/js_8.png
+    #PHP Exceptions
+    - assets/php_advance/ex_1.png
+    - assets/php_advance/ex_2.png
+    - assets/php_advance/ex_3.png
+    - assets/php_advance/ex_4.png
+    - assets/php_advance/ex_5.png
+    - assets/php_advance/ex_6.png
+    - assets/php_advance/ex_7.png
+    - assets/php_advance/ex_8.png
+    - assets/php_advance/ex_9.png
+    - assets/php_advance/ex_10.png
+    - assets/php_advance/ex_11.png
 
 
 
