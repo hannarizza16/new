@@ -80,9 +80,12 @@ class _ResultScreenState extends State<ResultScreen>
     if (correctAnswers == widget.questions.length) {
       motivatingQuote =
           "Congratulations! Achieving a perfect score is a testament to your dedication and knowledge. It's not just a victory; it's a milestone in your journey of continuous learning.";
-    } else if (correctAnswers >= widget.questions.length - 1) {
+    } else if (correctAnswers >= widget.questions.length - 10) {
       motivatingQuote =
           "You did great! Success is not just about the destination; it's about the journey. Your commitment and effort are evident in your performance.";
+    } else if (correctAnswers >= widget.questions.length - 15) {
+      motivatingQuote =
+          "You are doing exceptionally well! Your dedication to learning shines through your remarkable performance. Keep up the excellent work!";
     } else {
       motivatingQuote =
           "Don't be discouraged by a low score. Every mistake is a step towards learning and improvement. Keep pushing yourself, and success will follow!";
@@ -236,8 +239,7 @@ class _ResultScreenState extends State<ResultScreen>
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text('Confirm Exit'),
-          content: Text(
-              'Are you sure you want to exit?'),
+          content: Text('Are you sure you want to exit?'),
           actions: <Widget>[
             TextButton(
               onPressed: () {

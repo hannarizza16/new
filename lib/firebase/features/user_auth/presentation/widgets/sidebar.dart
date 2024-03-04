@@ -5,7 +5,6 @@ import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:first_project/extension/sidebar_section_ext.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -48,11 +47,11 @@ class _SideBarState extends State<SideBar> {
 
     if (currentUserEmail != null) {
       CollectionReference users =
-          FirebaseFirestore.instance.collection('students');
+      FirebaseFirestore.instance.collection('students');
 
       try {
         QuerySnapshot querySnapshot =
-            await users.where('email', isEqualTo: currentUserEmail).get();
+        await users.where('email', isEqualTo: currentUserEmail).get();
 
         if (querySnapshot.docs.isNotEmpty) {
           setState(() {
@@ -82,7 +81,7 @@ class _SideBarState extends State<SideBar> {
 
       if (cachedImageURL != null) {
         setState(() async {
-          _image = await DefaultCacheManager().getSingleFile(cachedImageURL);
+          _image = File(cachedImageURL);
         });
       } else {
         try {
@@ -130,7 +129,7 @@ class _SideBarState extends State<SideBar> {
           .ref()
           .child('profile_images/$fileName');
       firebase_storage.UploadTask uploadTask =
-          storageReference.putFile(_image!);
+      storageReference.putFile(_image!);
 
       await uploadTask.whenComplete(() => null);
 
@@ -150,7 +149,7 @@ class _SideBarState extends State<SideBar> {
   Future<void> updateProfileImageURL(String imageURL) async {
     String? userId = FirebaseAuth.instance.currentUser!.uid;
     DocumentReference userRef =
-        FirebaseFirestore.instance.collection('students').doc(userId);
+    FirebaseFirestore.instance.collection('students').doc(userId);
 
     await userRef.update({'profile_image_url': imageURL});
 
@@ -234,11 +233,12 @@ class _SideBarState extends State<SideBar> {
                     userEmail,
                     style: profileTextStyle,
                   ),
-                  currentAccountPicture: _image != null
-                      ? CircleAvatar(
-                    backgroundImage: FileImage(_image!),
-                  )
-                      : CircleAvatar(
+                  currentAccountPicture: CircleAvatar(
+                    radius: 50, // Adjust the size here
+                    backgroundImage: _image != null ? FileImage(_image!) : null,
+                    child: _image == null
+                        ? Icon(Icons.person, size: 50, color: Colors.grey) // Display default avatar
+                        : null,
                   ),
                   decoration: BoxDecoration(
                     color: Colors.transparent,
@@ -254,17 +254,17 @@ class _SideBarState extends State<SideBar> {
                 ),
                 ...SideBarSection.values
                     .where((section) =>
-                        section != SideBarSection.leaderboards &&
-                        section != SideBarSection.settings)
+                section != SideBarSection.leaderboards &&
+                    section != SideBarSection.settings)
                     .map(
                       (section) => InkWell(
-                        onTap: () => _onItemTapped(context, section),
-                        child: ListTile(
-                          leading: Icon(section.icon),
-                          title: Text(section.text),
-                        ),
-                      ),
-                    )
+                    onTap: () => _onItemTapped(context, section),
+                    child: ListTile(
+                      leading: Icon(section.icon),
+                      title: Text(section.text),
+                    ),
+                  ),
+                )
                     .toList(),
               ],
             );

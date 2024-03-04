@@ -284,13 +284,12 @@ class _ProfilePageState extends State<ProfilePage> {
           color: Colors.white,
           border: Border.all(color: Colors.blue, width: 2),
         ),
-        child: _image != null
-            ? CircleAvatar(
-          radius: profileHeight / 2,
-          backgroundImage: FileImage(_image!),
-        )
-            : CircleAvatar(
-          radius: profileHeight / 2,
+        child: CircleAvatar(
+          radius: profileHeight * 0.4, // Adjusted size here
+          backgroundImage: _image != null ? FileImage(_image!) : null,
+          child: _image == null
+              ? Icon(Icons.person, size: profileHeight * 0.6, color: Colors.grey) // Display default avatar
+              : null,
         ),
       ),
       Positioned(
@@ -312,6 +311,8 @@ class _ProfilePageState extends State<ProfilePage> {
       ),
     ],
   );
+
+
 
   Widget buildColumn(BuildContext context, int _score) => Column(
     crossAxisAlignment: CrossAxisAlignment.start,
@@ -362,6 +363,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     SizedBox(height: 100),
                     BorderedCircleAvatar(
                       imageasset: 'assets/overlay/beg1.png',
+                      gifAsset: 'assets/overlay/shine4.gif',
                       onTap: () {
                         showDialog(
                           context: context,
@@ -391,6 +393,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       children: [
                         BorderedCircleAvatar(
                           imageasset: 'assets/overlay/beg2.png',
+                          gifAsset: 'assets/overlay/shine4.gif',
                           onTap: () {
                             showDialog(
                               context: context,
@@ -422,6 +425,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       children: [
                         BorderedCircleAvatar(
                           imageasset: 'assets/overlay/beg3.png',
+                          gifAsset: 'assets/overlay/shine4.gif',
                           onTap: () {
                             showDialog(
                               context: context,
@@ -452,7 +456,8 @@ class _ProfilePageState extends State<ProfilePage> {
                     Row(
                       children: [
                         BorderedCircleAvatar(
-                          imageasset: 'assets/overlay/beg2.png',
+                          imageasset: 'assets/overlay/beg4.png',
+                          gifAsset: 'assets/overlay/shine4.gif',
                           onTap: () {
                             showDialog(
                               context: context,
@@ -483,7 +488,8 @@ class _ProfilePageState extends State<ProfilePage> {
                     Row(
                       children: [
                         BorderedCircleAvatar(
-                          imageasset: 'assets/overlay/beg3.png',
+                          imageasset: 'assets/overlay/beg5.png',
+                          gifAsset: 'assets/overlay/shine4.gif',
                           onTap: () {
                             showDialog(
                               context: context,
@@ -561,6 +567,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           children: [
                             BorderedCircleAvatar(
                               imageasset: 'assets/overlay/interm1.png',
+                              gifAsset: 'assets/overlay/shine2.gif',
                               onTap: () {
                                 showDialog(
                                   context: context,
@@ -593,6 +600,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           children: [
                             BorderedCircleAvatar(
                               imageasset: 'assets/overlay/interm2.png',
+                              gifAsset: 'assets/overlay/shine2.gif',
                               onTap: () {
                                 showDialog(
                                   context: context,
@@ -625,6 +633,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           children: [
                             BorderedCircleAvatar(
                               imageasset: 'assets/overlay/interm3.png',
+                              gifAsset: 'assets/overlay/shine2.gif',
                               onTap: () {
                                 showDialog(
                                   context: context,
@@ -653,6 +662,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             ),
                           ],
                         ),
+
                       ],
                     ),
                   ),
@@ -698,6 +708,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           Row(children: [
                             BorderedCircleAvatar(
                               imageasset: 'assets/overlay/advanced1.png',
+                              gifAsset: 'assets/overlay/shine3.gif',
                               onTap: () {
                                 showDialog(
                                   context: context,
@@ -728,6 +739,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               children: [
                                 BorderedCircleAvatar(
                                   imageasset: 'assets/overlay/advanced2.png',
+                                  gifAsset: 'assets/overlay/shine3.gif',
                                   onTap: () {
                                     showDialog(
                                       context: context,
@@ -758,6 +770,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   children: [
                                     BorderedCircleAvatar(
                                       imageasset: 'assets/overlay/advanced3.png',
+                                      gifAsset: 'assets/overlay/shine3.gif',
                                       onTap: () {
                                         showDialog(
                                           context: context,
@@ -790,6 +803,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             ),
                           ]),
                         ]))))
+
           ],
         )
       ]);
@@ -809,21 +823,22 @@ class _ProfilePageState extends State<ProfilePage> {
 
 class BorderedCircleAvatar extends StatelessWidget {
   final String imageasset;
+  final String gifAsset; // Add gif asset path
   final double radius;
   final Color borderColor;
   final int userScore;
-  final int
-  requiredScore; // Add a variable to hold the required score for the avatar to return to original color
+  final int requiredScore;
   final double borderWidth;
   final VoidCallback onTap;
 
   const BorderedCircleAvatar({
     required this.imageasset,
-    this.radius = 30,
-    this.borderColor = Colors.white,
+    required this.gifAsset, // Initialize gif asset path
+    this.radius = 33,
+    this.borderColor = Colors.cyan,
     this.borderWidth = 3.0,
     required this.userScore,
-    required this.requiredScore, // Accept the required score as a parameter
+    required this.requiredScore,
     required this.onTap,
     Key? key,
   }) : super(key: key);
@@ -831,7 +846,7 @@ class BorderedCircleAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool returnToNaturalColor = userScore >= requiredScore;
-    // Debugging
+
     return Padding(
       padding: EdgeInsets.only(top: 9.0, bottom: 9.0, left: 15, right: 15),
       child: GestureDetector(
@@ -844,19 +859,27 @@ class BorderedCircleAvatar extends StatelessWidget {
           child: ClipOval(
             child: ColorFiltered(
               colorFilter: returnToNaturalColor
-                  ? ColorFilter.mode(Colors.transparent,
-                  BlendMode.multiply) // Return to natural color
+                  ? ColorFilter.mode(Colors.transparent, BlendMode.multiply)
                   : ColorFilter.mode(
-                Colors.grey, // Grayscale filter
+                Colors.grey,
                 BlendMode.saturation,
               ),
-              child: Image.asset(
-                imageasset,
-                fit: BoxFit.cover,
-                width: radius *
-                    2, // Set the width to twice the radius to maintain circular shape
-                height: radius *
-                    2, // Set the height to twice the radius to maintain circular shape
+              child: Stack(
+                children: [
+                  Image.asset(
+                    imageasset,
+                    fit: BoxFit.cover,
+                    width: radius * 2,
+                    height: radius * 2,
+                  ),
+                  if (returnToNaturalColor) // Conditionally render .gif overlay
+                    Image.asset(
+                      gifAsset,
+                      fit: BoxFit.cover,
+                      width: radius * 2,
+                      height: radius * 2,
+                    ),
+                ],
               ),
             ),
           ),

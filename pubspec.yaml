@@ -58,6 +58,7 @@ dependencies:
   intl: ^0.17.0
   flare_flutter: ^3.0.2
   markdown: ^4.0.0
+  flutter_animate: ^4.5.0
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -124,6 +125,10 @@ flutter:
     - assets/overlay/beg4.png
     - assets/overlay/beg5.png
     - assets/overlay/loading2.gif
+    - assets/overlay/shine.gif
+    - assets/overlay/shine2.gif
+    - assets/overlay/shine3.gif
+    - assets/overlay/shine4.gif
 
 
     - assets/logo.gif
