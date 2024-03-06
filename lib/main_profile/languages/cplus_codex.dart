@@ -2118,8 +2118,149 @@ const cPlusCodex = {
             'attachment': "assets/cPlus_advanced/1.36.png"
           },
           {
-
+            'body': 'Why And When To Use "Inheritance"?'
+                "\n\n- It is useful for code reusability: reuse attributes and methods of an existing class when you create a new class."
+          },
+        ]
+      },
+      16: {
+        'topic': '     11.1     Multilevel Inheritance',
+        'subTopic': [
+          {
+            'heading': "Multilevel Inheritance",
+            'body': "A class can also be derived from one class, which is already derived from another class."
+                "\n\nIn the following example, MyGrandChild is derived from class MyChild (which is derived from MyClass)."
+                "\n\nExample",
+            'attachment': "assets/cPlus_advanced/1.37.png"
+          },
+        ]
+      },
+      17: {
+        'topic': '     11.2     Multiple Inheritance',
+        'subTopic': [
+          {
+            'heading': "Multiple Inheritance",
+            'body':
+                "A class can also be derived from more than one base class, using a comma-separated list:"
+                    "\n\nExample",
+            'attachment': "assets/cPlus_advanced/1.38.png"
           }
+        ]
+      },
+      18: {
+        'topic': '     11.3     Access Specifiers',
+        'subTopic': [
+          {
+            'heading': "Access Specifiers",
+            'body':
+                "You learned from the Access Specifiers chapter that there are three specifiers available in C++. Until now, we have only used public (members of a class are accessible from outside the class) and private (members can only be accessed within the class). The third specifier, protected, is similar to private, but it can also be accessed in the inherited class:"
+                    "\n\nExample",
+            'attachment': "assets/cPlus_advanced/1.39.png"
+          }
+        ]
+      },
+      19: {
+        'topic': '12.     Polymorphism',
+        'subTopic': [
+          {
+            'heading': "Polymorphism",
+            'body': 'Polymorphism means "many forms", and it occurs when we have many classes that are related to each other by inheritance.'
+                '\n\nLike we specified in the previous chapter; Inheritance lets us inherit attributes and methods from another class. Polymorphism uses those methods to perform different tasks. This allows us to perform a single action in different ways.'
+                '\n\nFor example, think of a base class called Animal that has a method called animalSound(). Derived classes of Animals could be Pigs, Cats, Dogs, Birds - And they also have their own implementation of an animal sound (the pig oinks, and the cat meows, etc.):'
+                '\n\n\nExample',
+            'attachment': "assets/cPlus_advanced/1.40.png"
+          },
+          {
+            'body': "*Remember from the Inheritance chapter that we use the : symbol to inherit from a class."
+                "\n\nNow we can create Pig and Dog objects and override the animalSound() method:"
+                "\n\nExample",
+            'attachment': "assets/cPlus_advanced/1.41.png"
+          },
+          {
+            'body': '*Why And When To Use "Inheritance" and "Polymorphism"?'
+                '\n\n- It is useful for code reusability: reuse attributes and methods of an existing class when you create a new class.'
+          },
+        ]
+      },
+      20: {
+        'topic': '13.     Files',
+        'subTopic': [
+          {
+            'heading': "Files",
+            'body': "The fstream library allows us to work with files."
+                "\n\nTo use the fstream library, include both the standard <iostream> AND the <fstream> header file:"
+                "\n\nExample",
+            'attachment': "assets/cPlus_advanced/1.42.png"
+          },
+          {
+            'body':
+                "There are three classes included in the fstream library, which are used to create, write or read files:",
+            'attachment': "assets/cPlus_advanced/1.43.png"
+          },
+          {
+            'heading': "Create and Write To a File",
+            'body':
+                "To create a file, use either the ofstream or fstream class, and specify the name of the file."
+                    "\n\nTo write to the file, use the insertion operator (<<)."
+                    "\n\nExample",
+            'attachment': "assets/cPlus_advanced/1.44.png"
+          },
+          {
+            'heading': "Why do we close the file?",
+            'body':
+                "It is considered good practice, and it can clean up unnecessary memory space."
+          },
+          {
+            'heading': "Read a File",
+            'body': "To read from a file, use either the ifstream or fstream class, and the name of the file."
+                "\n\nNote that we also use a while loop together with the getline() function (which belongs to the ifstream class) to read the file line by line, and to print the content of the file:"
+                "\n\nExample",
+            'attachment': "assets/cPlus_advanced/1.45.png"
+          },
+        ]
+      },
+      21: {
+        'topic': '14.     Exceptions',
+        'subTopic': [
+          {
+            'heading': "Exceptions",
+            'body': "When executing C++ code, different errors can occur: coding errors made by the programmer, errors due to wrong input, or other unforeseeable things."
+                "\n\nWhen an error occurs, C++ will normally stop and generate an error message. The technical term for this is: C++ will throw an exception (throw an error).",
+          },
+          {
+            'heading': "C++ try and catch",
+            'body': "Exception handling in C++ consist of three keywords: try, throw and catch:"
+                "\n\nThe try statement allows you to define a block of code to be tested for errors while it is being executed."
+                "\n\nThe throw keyword throws an exception when a problem is detected, which lets us create a custom error."
+                "\n\nThe catch statement allows you to define a block of code to be executed, if an error occurs in the try block."
+                "\n\nThe try and catch keywords come in pairs:"
+                "\n\n\nExample",
+            'attachment': "assets/cPlus_advanced/1.46.png"
+          },
+          {
+            'body': "Consider the following example:"
+                "\n\nExample",
+            'attachment': "assets/cPlus_advanced/1.47.png"
+          },
+          {
+            'body': "Example explained"
+                "\n\nWe use the try block to test some code: If the age variable is less than 18, we will throw an exception, and handle it in our catch block."
+                "\n\nIn the catch block, we catch the error and do something about it. The catch statement takes a parameter: in our example we use an int variable (myNum) (because we are throwing an exception of int type in the try block (age)), to output the value of age."
+                "\n\nIf no error occurs (e.g. if age is 20 instead of 15, meaning it will be be greater than 18), the catch block is skipped:"
+                "\n\nExample",
+            'attachment': "assets/cPlus_advanced/1.48.png"
+          },
+          {
+            'body': "You can also use the throw keyword to output a reference number, like a custom error number/code for organizing purposes:"
+            "\n\nExample",
+            'attachment': "assets/cPlus_advanced/1.49.png"
+          },
+          {
+            'heading': "\nHandle Any Type of Exceptions (...)",
+            'body': 'If you do not know the throw type used in the try block, you can use the "three dots" syntax (...) inside the catch block, which will handle any type of exception:'
+            '\n\nExample',
+            'attachment': "assets/cPlus_advanced/1.50.png"
+          },
         ]
       },
     },
