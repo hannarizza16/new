@@ -95,7 +95,7 @@ const machineCourse = {
         },
         {
           'heading': "Deep Learning (DL) ",
-          'attachment': " assets/machine_learning/ml_8.png",
+          'attachment': "assets/machine_learning/ml_8.png",
           'body': "Deep Learning is a subset of Machine Learning."
           "\n\nDeep Learning is responsible for the AI boom of the last years."
           "\n\nDeep learning is an advanced type of ML that handles complex tasks like image recognition."
@@ -513,6 +513,138 @@ const machineCourse = {
 
       ]
     },
+    5: {
+      'topic': "6.     The History of Language",
+      'subTopic': [
+        {
+          'heading': "What is a Language?",
+          'attachment': "",
+          'body': "Apes and Whales communicate with each other."
+          "\n\nBirds and Bees communicate with each other."
+          "\n\nBut only humans have developed a real Language."
+          "\n\nNo other species can express ideas using sentences constructed by a set of words (with verbs and nouns)."
+          "\n\nThis skill is remarkable. And what is even more remarkable: Even children master this skill."
+        },
+        {
+          'heading': "Spoken Languages ",
+          'attachment': "assets/machine_learning/ml_16.png",
+          'body': "We are not sure of how old the spoken language is. The topic is difficult to study because of the lack of evidence."
+          "\n\nWe don't know how it started. But we have a clue"
+          "\n\nThe great African apes, Pan and Gorilla, are our closest living relatives. Why are they called Apes? Because they ape. Apes mime to get their message across."
+          "\n\nIt is assumed that the evolution of languages must have been a long process. Our ancestors might have started speaking a million years ago, but with fewer words, more miming, and no grammar."
+
+        },
+        {
+          'heading': "Cognitive Development ",
+          'attachment': "",
+          'body': "According to Hauser, Chomsky, and Fitch (2002), there are six aspects of language development:"
+              "\n\n•Theory of Mind"
+              "\n\n•Understanding Vocal Signals"
+              "\n\n•Understanding Imitation"
+              "\n\n•Understanding Numbers"
+              "\n\n•Understanding Intentional Communication"
+              "\n\n•Understanding Non-linguistic Representations"
+
+        },
+        {
+          'heading': "Human Languages ",
+          'attachment': "assets/machine_learning/ml_17.png",
+          'body': "Human languages contain a limited set of Words put together in Sentences:"
+        },
+        {
+          'heading': "Computer Languages ",
+          'attachment': "assets/machine_learning/ml_18.png",
+          'body': "Computers are programmed with a limited set of Words put together in computer Statements:"
+        },
+        {
+          'heading': "Written Languages ",
+          'attachment': "assets/machine_learning/ml_19.png",
+          'body': "Egyptian and Sumerian are the earliest known written languages."
+
+            "\n\nThe oldest written language in use today, is Chinese"
+        },
+
+
+
+      ]
+    },
+    6: {
+      'topic': "7.     The History of AI",
+      'subTopic': [
+        {
+          'heading': "History of AI and ML ",
+          'attachment': "assets/machine_learning/ml_20.png",
+          'body': ""
+        },
+        {
+          'heading': " ",
+          'attachment': "assets/machine_learning/ml_21.png",
+          'body': ""
+        },
+        {
+          'heading': "Why AI Now? ",
+          'attachment': "",
+          'body': "One of the greatest innovators in the field of machine learning was John McCarthy, widely recognized as the Father of Artificial Intelligence."
+          "\n\nIn the mid 1950s, McCarthy coined the term Artificial Intelligence and defined it as the science of making intelligent machines."
+          "\n\n The algorithms has been here since then. Why is AI more interesting now?"
+          "\n\nThe answer is:"
+          "Computing power has not been strong enough"
+          "Computer storage has not been large enough"
+          "Big data has not been available"
+          "Fast Internet has not been available"
+          "\n\nAnother strong force is the major investments from big companies (Google, Microsoft, Facebook, YouTube) because their datasets became much too big to handle traditionally."
+        },
+        {
+          'heading': " ",
+          'attachment': "assets/machine_learning/ml_22.png",
+          'body': ""
+        },
+
+
+      ]
+    },
+    7: {
+      'topic': "8.     History of Robots",
+      'subTopic': [
+        {
+          'heading': "Industrial Robots ",
+          'attachment': "",
+          'body': "Industrial robots have been around for more than 50 years."
+          "The first robot patent was applied for in 1954 and granted in 1961."
+          "In 1969, Victor Scheinman invented the Stanford Arm (Stanford University), and in 1972 he designed the MIT Arm for the MIT Artificial Intelligence Lab."
+
+        },
+        {
+          'heading': " ",
+          'attachment': "assets/machine_learning/ml_23.png",
+          'body': "Robots and Artificial Intelligence are two different things."
+          "\n\nRobot technology is not a subset of Artificial Intelligence."
+          "\n\nA robot is a physical thing. After 50 years of development, almost anything is programmable, your radio, your watch, your phone, and even robots."
+        },
+        {
+          'heading': "AI Robots ",
+          'attachment': "",
+          'body': "Artificial Intelligence can be built into robots, and AI is a very exciting field in future robotics."
+          "\n\nHanson Robotics' Sophia personifies some dreams for the future of AI."
+          "\n\nSophia is a combination of science, engineering, and artistry. She is a human-crafted science fiction character depicting the future of AI and robotics."
+
+        },
+        {
+          'heading': "Can AI Robots Interact Socially? ",
+          'attachment': "",
+          'body': "Yes, AI Robots can learn to interact socially."
+          "\n\nKismet (a MIT robot) is programmed to understand body language and voice inflection. The creators study how human and babies interact, based on tone of speech and visual cue."
+          "\n\n"
+        },
+
+
+
+
+      ]
+    },
+
+
+
 
 
   }

@@ -352,12 +352,12 @@ const mobileCourse = {
           "\n\n   -Auto release"
         },
         {
-          'heading': "iPHONE DEVELOPMENT: APPLICATION LIFE CYCLE ",
-          'attachment': "assets/mobile_development/mobile_.png",
+          'heading': "iPHONE Development: Application life cycle ",
+          'attachment': "assets/mobile_development/mobile_7.png",
           'body': ""
         },
         {
-          'heading': "iPHONE DEVELOPMENT: SECURITY MODEL ",
+          'heading': "iPHONE Development: security model ",
           'attachment': "",
           'body': "Originally all applications ran as root"
           "\n\nNot a whole lot better now"
