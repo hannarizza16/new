@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:first_project/firebase/features/user_auth/presentation/pages/sign_up_page.dart';
+import 'package:first_project/firebase/features/user_auth/presentation/pages/professor_sign_up_page.dart';
+
 import 'package:first_project/firebase/features/user_auth/presentation/widgets/form_container_widget.dart';
 import 'package:first_project/firebase/global/common/toast.dart';
 import 'package:first_project/main_profile//particles_fly.dart';
@@ -130,30 +132,58 @@ class _LoginPageState extends State<LoginPage> {
                 const SizedBox(
                   height: 20,
                 ),
-                Row(
+                Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text("Don't have an account?"),
-                    const SizedBox(
-                      width: 5,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text("Don't have an account?"),
+                      ],
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          FadePageRoute(builder: (context) => const SignUpPage()),
-                        );
-                      },
-                      child: const Text(
-                        "Sign Up",
-                        style: TextStyle(
-                          color: Colors.blue,
-                          fontWeight: FontWeight.bold,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const SizedBox(width: 5),
+                        const Text("Sign up as"),
+                        const SizedBox(width: 5),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              FadePageRoute(builder: (context) => const SignUpPage()),
+                            );
+                          },
+                          child: const Text(
+                            "Student",
+                            style: TextStyle(
+                              color: Colors.blue,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                         ),
-                      ),
+                        const SizedBox(width: 5), // nilabas sa gesture detector para maging plain text pero under row pa din sila
+                        const Text("|"),
+                        GestureDetector( // then nag create ng another gesture detector para sa another text na may pupuntahan
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              FadePageRoute(builder: (context) => const ProfessorSignUpPage()),
+                            );
+                          },
+                          child: const Text(
+                            " Professor",
+                            style: TextStyle(
+                              color: Colors.blue,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),// Plain text next to "Student"
+                      ],
                     ),
                   ],
                 ),
+
               ],
             ),
           ],
