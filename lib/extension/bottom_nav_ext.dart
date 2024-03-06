@@ -7,9 +7,9 @@ extension BottomNavsExt on BottomNavs {
   IconData get icon {
     switch (this) {
       case BottomNavs.leaderboards:
-        return CupertinoIcons.ant;
-      case BottomNavs.statistics:
         return Icons.bar_chart;
+      case BottomNavs.statistics:
+        return CupertinoIcons.book_fill;
       case BottomNavs.home:
         return Icons.home;
       case BottomNavs.challenges:
