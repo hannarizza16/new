@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:first_project/enums/enums.dart';
 
 const cSharpCodex = {
@@ -499,7 +501,7 @@ const cSharpCodex = {
         ]
       },
       20: {
-        'topic': '    10.2     Access Strings',
+        'topic': '    12.3     Access Strings',
         'subTopic': [
           {
             'heading': 'Access Strings',
@@ -521,7 +523,7 @@ const cSharpCodex = {
         ]
       },
       21: {
-        'topic': '    10.3     Special Characters',
+        'topic': '    12.4     Special Characters',
         'subTopic': [
           {
             'heading': 'Strings - Special Characters',
@@ -551,7 +553,7 @@ const cSharpCodex = {
         ]
       },
       22: {
-        'topic': '11.     Booleans',
+        'topic': '13.     Booleans',
         'subTopic': [
           {
             'heading': 'Booleans',
@@ -592,7 +594,7 @@ const cSharpCodex = {
         ]
       },
       23: {
-        'topic': '12.     If ... Else',
+        'topic': '14.     If ... Else',
         'subTopic': [
           {
             'heading': 'Conditions and If Statements',
@@ -627,6 +629,617 @@ const cSharpCodex = {
             'body': "Example explained: \n\nIn the example above we use two variables, x and y, to test whether x is greater than y (using the > operator). As x is 20, and y is 18, and we know that 20 is greater than 18, we print to the screen that 'x is greater than y'."
           }
         ]
+      },
+      24: {
+        'topic': "    14.1     The else Statement",
+        'subTopic': [
+          {
+            'heading': "The else Statement",
+            'attachment': 'assets/C#/a89.png',
+            'body': 'Use the else statement to specify a block of code to be executed if the condition is False.'
+          },
+          {
+            'body': 'Example explained.\n\nIn the example above, time (20) is greater than 18, so the condition is False. Because of this, we move on to the else condition and print to the screen "Good evening". If the time was less than 18, the program would print "Good day".'
+          }
+        ]
+      },
+      25: {
+        'topic': '    14.2     The else if Statement',
+        'subTopic': [
+          {
+            'heading': 'The else if Statement',
+            'attachment': 'assets/C#/a90.png',
+            'body': 'Use the else if statement to specify a new condition if the first condition is False.'
+          },
+          {
+            'body': "Example Explained"
+                "\n\nIn the example above, time 22 is greater than 10, so the first condition is False. The next condition, in the else if statement, is also False, so we move on to the else condition since condition1 and condition2 is both False - and print to the screen 'Good evening'."
+                "\n\nHowever, if the time was 14, our program would print 'Good day.'"
+          }
+        ]
+      },
+      26: {
+        'topic': '    14.3     Short Hand If...Else',
+        'subTopic': [
+          {
+            'heading': 'Short Hand If...Else (Ternary Operator)',
+            'attachment': 'assets/C#/a91.png',
+            'body': 'There is also a short-hand if else, which is known as the ternary operator because it consists of three operands. It can be used to replace multiple lines of code with a single line. It is often used to replace simple if else statements:'
+          }
+        ]
+      },
+      27: {
+        'topic': '15.     Switch',
+        'subTopic': [
+          {
+            'heading': 'Switch Statements',
+            'attachment': 'assets/C#/a92.png',
+            'body': 'Use the switch statement to select one of many code blocks to be executed.'
+          },
+          {
+            'attachment': 'assets/C#/a93.png',
+            'body': 'This is how it works:'
+            '\n\n : The switch expression is evaluated once'
+                '\n\n : The value of the expression is compared with the values of each case'
+            '\n\n : If there is a match, the associated block of code is executed'
+            '\n\n : The break and default keywords will be described later in this chapter'
+            '\n\n\nThe example below uses the weekday number to calculate the weekday name:'
+          },
+          {
+            'heading': '\n\nThe break Keyword',
+            'body': 'When C# reaches a break keyword, it breaks out of the switch block.'
+                '\n\nThis will stop the execution of more code and case testing inside the block.'
+                '\n\nWhen a match is found, and the job is done, its time for a break. There is no need for more testing.'
+          },
+          {
+            'heading': 'The default Keyword',
+            'attachment': 'assets/C#/a94.png',
+            'body': 'The default keyword is optional and specifies some code to run if there is no case match:'
+          }
+        ]
+      },
+      28: {
+        'topic': '15.     While Loop',
+        'subTopic': [
+          {
+            'heading': 'Loops',
+            'body': 'Loops can execute a block of code as long as a specified condition is reached.'
+                '\n\nLoops are handy because they save time, reduce errors, and they make code more readable.'
+          },
+          {
+            'heading': 'While Loop',
+            'attachment': 'assets/C#/a95.png',
+            'body': 'The while loop loops through a block of code as long as a specified condition is True:'
+
+          },
+          {
+            'heading': '\n\nThe Do/While Loop',
+            'attachment': 'assets/C#/a96.png',
+            'body': 'The do/while loop is a variant of the while loop. This loop will execute the code block once, before checking if the condition is true, then it will repeat the loop as long as the condition is true.'
+          }
+        ]
+      },
+      29: {
+        'topic': '16.     For Loop',
+        'subTopic': [
+          {
+            'heading': 'For Loop',
+            'attachment': 'assets/C#/a97.png',
+            'body': 'When you know exactly how many times you want to loop through a block of code, use the for loop instead of a while loop:'
+          },
+          {
+            'attachment': 'assets/C#/a98.png',
+            'body': 'Example explained'
+            '\n\n Statement 1 sets a variable before the loop starts (int i = 0).'
+                '\n\n Statement 2 defines the condition for the loop to run (i must be less than 5). If the condition is true, the loop will start over again, if it is false, the loop will end.'
+                '\n\n Statement 3 increases a value (i++) each time the code block in the loop has been executed.4'
+                '\n\nThe example below will print the numbers 0 to 4:'
+          },
+          {
+            'heading': '\n\nNested Loops',
+            'attachment': 'assets/C#/a99.png',
+            'body': 'It is also possible to place a loop inside another loop. This is called a nested loop.'
+                '\n\nThe "inner loop" will be executed one time for each iteration of the "outer loop":'
+          }
+        ]
+      },
+      30: {
+        'topic': '    16.1     Foreach Loop',
+        'subTopic': [
+          {
+            'heading': 'The Foreach Loop',
+            'attachment': 'assets/C#/a100.png',
+            'body': 'There is also a foreach loop, which is used exclusively to loop through elements in an array:'
+          }
+        ]
+      },
+      31: {
+        'topic': '17.     Break and Continue',
+        'subTopic': [
+          {
+            'heading': 'Break',
+            'attachment': 'assets/C#/a101.png',
+            'body': 'You have already seen the break statement used in an earlier chapter of this tutorial. It was used to "jump out" of a switch statement.'
+                '\n\nThe break statement can also be used to jump out of a loop.'
+                '\n\nThis example jumps out of the loop when i is equal to 4:'
+          },
+          {
+            'heading': '\n\nContinue',
+            'attachment': 'assets/C#/a102.png',
+            'body': 'The continue statement breaks one iteration (in the loop), if a specified condition occurs, and continues with the next iteration in the loop.\n\nThis example skips the value of 4:'
+          },
+          {
+            'heading': '\n\nBreak and Continue in While Loop',
+            'attachment': 'assets/C#/a103.png',
+            'body': 'You can also use break and continue in while loops:'
+          }
+        ]
+      },
+      32: {
+        'topic': '18.     Arrays',
+        'subTopic': [
+          {
+            'heading': 'Create an Array',
+            'attachment': 'assets/C#/a104.png',
+            'body': 'Arrays are used to store multiple values in a single variable, instead of declaring separate variables for each value.\n\nTo declare an array, define the variable type with square brackets:'
+          },
+          {
+            'heading': '\n\nAccess the Elements of an Array',
+            'attachment': 'assets/C#/a105.png',
+            'body': 'You access an array element by referring to the index number.\n\nThis statement accesses the value of the first element in cars:'
+          },
+          {
+            'heading': '\n\nChange an Array Element',
+            'attachment': 'assets/C#/a106.png',
+            'body': 'To change the value of a specific element, refer to the index number:'
+          },
+          {
+            'heading': '\n\nArray Length',
+            'attachment': 'assets/C#/a107.png',
+            'body': 'To find out how many elements an array has, use the Length property:'
+          },
+          {
+            'heading': '\n\nOther Ways to Create an Array',
+            'attachment': 'assets/C#/a108.png',
+            'body': 'If you are familiar with C#, you might have seen arrays created with the new keyword, and perhaps you have seen arrays with a specified size as well. In C#, there are different ways to create an array:'
+          }
+        ]
+      },
+      33: {
+        'topic': '    18.1     Loop Through Arrays',
+        'subTopic': [
+          {
+            'heading': 'Loop Through Arrays',
+            'attachment': 'assets/C#/a109.png',
+            'body': 'You can loop through the array elements with the for loop, and use the Length property to specify how many times the loop should run.\n\nThe following example outputs all elements in the cars array:'
+          },
+          {
+            'heading': '\n\nThe foreach Loop',
+            'attachment': 'assets/C#/a110.png',
+            'body': 'There is also a foreach loop, which is used exclusively to loop through elements in an array:'
+          },
+          {
+            'body': 'The example above can be read like this: for each string element (called i - as in index) in cars, print out the value of i.'
+            '\n\nIf you compare the for loop and foreach loop, you will see that the foreach method is easier to write, it does not require a counter (using the Length property), and it is more readable.'
+          }
+        ]
+      },
+      34: {
+        'topic': '    18.2     Sort Arrays',
+        'subTopic': [
+          {
+            'heading': 'Sort an Arrays',
+            'attachment': 'assets/C#/a111.png',
+            'body': 'There are many array methods available, for example Sort(), which sorts an array alphabetically or in an ascending order:'
+          },
+          {
+            'heading': '\n\nSystem.Linq Namespace',
+            'attachment': 'assets/C#/a112.png',
+            'body': 'Other useful array methods, such as Min, Max, and Sum, can be found in the System.Linq namespace:'
+          }
+        ]
+      },
+      35: {
+        'topic': '    18.3     Multidimensional Arrays',
+        'subTopic': [
+          {
+            'heading': 'Multidimensional Arrays',
+            'body': 'In the previous chapter, you learned about arrays, which is also known as single dimension arrays. These are great, and something you will use a lot while programming in C#. However, if you want to store data as a tabular form, like a table with rows and columns, you need to get familiar with multidimensional arrays.'
+                '\n\nA multidimensional array is basically an array of arrays.'
+                '\n\nArrays can have any number of dimensions. The most common are two-dimensional arrays (2D).'
+          },
+          {
+            'heading': 'Two-Dimensional Arrays',
+            'attachment': 'assets/C#/a113.png',
+            'body': 'To create a 2D array, add each array within its own set of curly braces, and insert a comma (,) inside the square brackets:'
+          },
+          {
+            'attachment': 'assets/C#/a114.png',
+            'body': 'numbers is now an array with two arrays as its elements. The first array element contains three elements: 1, 4 and 2, while the second array element contains 3, 6 and 8. To visualize it, think of the array as a table with rows and columns:'
+          },
+          {
+            'heading': '\n\nAccess Elements of a 2D Array',
+            'attachment': 'assets/C#/a115.png',
+            'body': 'To access an element of a two-dimensional array, you must specify two indexes: one for the array, and one for the element inside that array. Or better yet, with the table visualization in mind; one for the row and one for the column (see example below).'
+                '\n\nThis statement accesses the value of the element in the first row (0) and third column (2) of the numbers array:'
+          },
+          {
+            'heading': '\n\nChange Elements of a 2D Array',
+            'attachment': 'assets/C#/a116.png',
+            'body': 'You can also change the value of an element.\n\nThe following example will change the value of the element in the first row (0) and first column (0):'
+          },
+          {
+            'heading': '\n\nLoop Through a 2D Array',
+            'attachment': 'assets/C#/a117.png',
+            'body': 'You can easily loop through the elements of a two-dimensional array with a foreach loop:'
+          },
+          {
+            'attachment': 'assets/C#/a118.png',
+            'body': 'You can also use a for loop. For multidimensional arrays, you need one loop for each of the arrays dimensions.\n\nAlso note that we have to use GetLength() instead of Length to specify how many times the loop should run:'
+          }
+        ]
+      }
+
+
+
+
+
+    },
+    Categories.intermediate: {
+      0: {
+        'topic': '1.     Methods',
+        'subTopic': [
+          {
+            'heading': 'Methods',
+            'body': 'A method is a block of code which only runs when it is called.\n\nYou can pass data, known as parameters, into a method.\n\nMethods are used to perform certain actions, and they are also known as functions.\n\nWhy use methods? To reuse code: define the code once, and use it many times.'
+          },
+          {
+            'heading': '\n\nCreate a Method',
+            'attachment': 'assets/C#/a119.png',
+            'body': 'A method is defined with the name of the method, followed by parentheses (). C# provides some pre-defined methods, which you already are familiar with, such as Main(), but you can also create your own methods to perform certain actions:'
+          },
+          {
+            'body': 'Example Explained'
+                '\n\n• MyMethod() is the name of the method'
+                '\n\n• Static means that the method belongs to the Program class and not an object of the Program class. You will learn more about objects and how to access methods through objects later in this tutorial.'
+                '\n\n• Void means that this method does not have a return value. You will learn more about return values later in this chapter'
+          },
+          {
+            'heading': '\n\nCall a Method',
+            'attachment': 'assets/C#/a120.png',
+            'body': 'To call (execute) a method, write the methods name followed by two parentheses () and a semicolon;'
+                '\n\nIn the following example, MyMethod() is used to print a text (the action), when it is called:'
+          },
+          {
+            'attachment': 'assets/C#/a121.png',
+            'body': 'A method can be called multiple times:'
+          }
+        ]
+      },
+      1: {
+        'topic': '2.     Method Parameters',
+        'subTopic': [
+          {
+            'heading': 'Parameters and Arguments',
+            'attachment': 'assets/C#/a122.png',
+            'body': 'Information can be passed to methods as parameter. Parameters act as variables inside the method.'
+                '\n\nThey are specified after the method name, inside the parentheses. You can add as many parameters as you want, just separate them with a comma.'
+                '\n\nThe following example has a method that takes a string called fname as parameter. When the method is called, we pass along a first name, which is used inside the method to print the full name:'
+          },
+          {
+            'heading': '\n\nMultiple Parameters',
+            'attachment': 'assets/C#/a123.png',
+            'body': 'You can have as many parameters as you like, just separate them with commas:'
+          }
+        ]
+      },
+      2: {
+        'topic': '    2.1     Default Parameter Value',
+        'subTopic': [
+          {
+            'heading': 'Default Parameter Value',
+            'attachment': 'assets/C#/a124.png',
+            'body': 'You can also use a default parameter value, by using the equals sign (=).'
+                '\n\nIf we call the method without an argument, it uses the default value ("Norway"):'
+          }
+        ]
+      },
+      3: {
+        'topic': '    2.2     Return Values',
+        'subTopic': [
+          {
+            'heading': 'Return Values',
+            'attachment': 'assets/C#/a125.png',
+            'body': 'In the previous page, we used the void keyword in all examples, which indicates that the method should not return a value.'
+                '\n\nIf you want the method to return a value, you can use a primitive data type (such as int or double) instead of void, and use the return keyword inside the method:'
+          },
+          {
+            'attachment': 'assets/C#/a126.png',
+            'body': 'this example returns the sum of a methods two parameters:'
+          },
+          {
+            'attachment': 'assets/C#/a127.png',
+            'body': 'You can also store the result in a variable (recommended, as it is easier to read and maintain):'
+          }
+        ]
+      },
+      4: {
+        'topic': '    2.3     Named Arguments',
+        'subTopic': [
+          {
+            'heading': 'Named Arguments',
+            'attachment': 'assets/C#/a128.png',
+            'body': 'It is also possible to send arguments with the key: value syntax.\n\nThat way, the order of the arguments does not matter:'
+          }
+        ]
+      },
+      5: {
+        'topic': '3.     Method Overloading',
+        'subTopic': [
+          {
+            'heading': 'Method Overloading',
+            'attachment': 'assets/C#/a129.png',
+            'body': 'With method overloading, multiple methods can have the same name with different parameters:'
+          },
+          {
+            'attachment': 'assets/C#/a130.png',
+            'body': 'Consider the following example, which have two methods that add numbers of different type:'
+          },
+          {
+            'attachment': 'assets/C#/a131.png',
+            'body': 'Instead of defining two methods that should do the same thing, it is better to overload one.\n\nIn the example below, we overload the PlusMethod method to work for both int and double:'
+          }
+        ]
+      }
+
+
+
+
+
+    },
+    Categories.advanced: {
+      0: {
+        'topic': '1.     OOP',
+        'subTopic': [
+          {
+            'heading': 'What is OOP?',
+            'body': 'OOP stands for Object-Oriented Programming.'
+                '\n\n• Procedural programming is about writing procedures or methods that perform operations on the data, while object-oriented programming is about creating objects that contain both data and methods.'
+                '\n\n• Object-oriented programming has several advantages over procedural programming:'
+                '\n\n• OOP is faster and easier to execute'
+                '\n\n• OOP provides a clear structure for the programs'
+                '\n\n• OOP helps to keep the C# code DRY "Dont Repeat Yourself", and makes the code easier to maintain, modify and debug'
+                '\n\n• OOP makes it possible to create full reusable applications with less code and shorter development time'
+                '\n\nTip: The "Dont Repeat Yourself" (DRY) principle is about reducing the repetition of code. You should extract out the codes that are common for the application, and place them at a single place and reuse them instead of repeating it.'
+          },
+          {
+            'heading': 'What are Classes and Objects?',
+            'attachment': 'assets/C#/a133.png',
+            'body': 'Classes and objects are the two main aspects of object-oriented programming.\n\nLook at the following illustration to see the difference between class and objects:'
+          },
+          {
+            'body': 'So, a class is a template for objects, and an object is an instance of a class.'
+                '\n\nWhen the individual objects are created, they inherit all the variables and methods from the class.'
+                '\n\nYou will learn much more about classes and objects in the next chapter.'
+          }
+        ]
+      },
+      1: {
+        'topic': '2.     Classes and Objects',
+        'subTopic': [
+          {
+            'heading': 'Classes and Objects',
+            'body': '\n\nYou learned from the previous chapter that C# is an object-oriented programming language.'
+                '\n\nEverything in C# is associated with classes and objects, along with its attributes and methods. For example: in real life, a car is an object. The car has attributes, such as weight and color, and methods, such as drive and brake.'
+                '\n\nA Class is like an object constructor, or a "blueprint" for creating objects.'
+          },
+          {
+            'heading': 'Create a Class',
+            'attachment': 'assets/C#/a134.png',
+            'body': 'To create a class, use the class keyword:'
+          },
+          {
+            'heading': '\n\nCreate an Object',
+            'attachment': 'assets/C#/a135.png',
+            'body': 'An object is created from a class. We have already created the class named Car, so now we can use this to create objects.'
+                '\n\nTo create an object of Car, specify the class name, followed by the object name, and use the keyword new:'
+          }
+        ]
+      },
+      2: {
+        'topic': '    2.1     Multiple Classes and Objects',
+        'subTopic': [
+          {
+            'heading': 'Multiple Objects',
+            'attachment': 'assets/C#/a136.png',
+            'body': 'You can create multiple objects of one class:'
+          },
+          {
+            'heading': '\n\nUsing Multiple Classes',
+            'attachment': 'assets/C#/a137.png',
+            'body': 'You can also create an object of a class and access it in another class. This is often used for better organization of classes (one class has all the fields and methods, while the other class holds the Main() method (code to be executed)).'
+                '\n\n • prog2.cs'
+                '\n\n • prog.cs'
+          }
+        ]
+      },
+      3: {
+        'topic': '3.     Class Members',
+        'subTopic': [
+          {
+            'heading': 'Class Members',
+            'attachment': 'assets/C#/a138.png',
+            'body': 'Fields and methods inside classes are often referred to as "Class Members":'
+          },
+          {
+            'heading': '\n\nFields',
+            'attachment': 'assets/C#/a139.png',
+            'body': 'In the previous chapter, you learned that variables inside a class are called fields, and that you can access them by creating an object of the class, and by using the dot syntax (.).'
+                '\n\nThe following example will create an object of the Car class, with the name myObj. Then we print the value of the fields color and maxSpeed:'
+          },
+          {
+            'attachment': 'assets/C#/a140.png',
+            'body': 'You can also leave the fields blank, and modify them when creating the object:'
+          },
+          {
+            'attachment': 'assets/C#/a141.png',
+            'body': 'This is especially useful when creating multiple objects of one class:'
+          },
+          {
+            'heading': '\n\nObject Methods',
+            'attachment': 'assets/C#/a142.png',
+            'body': 'You learned from the C# Methods chapter that methods are used to perform certain actions.'
+                '\n\nMethods normally belong to a class, and they define how an object of a class behaves.'
+                '\n\nJust like with fields, you can access methods with the dot syntax. However, note that the method must be public. And remember that we use the name of the method followed by two parentheses () and a semicolon ; to call (execute) the method:'
+          },
+          {
+            'heading': '\n\nUse Multiple Classes',
+            'attachment': 'assets/C#/a143.png',
+            'body': 'Remember from the last chapter, that we can use multiple classes for better organization (one for fields and methods, and another one for execution). This is recommended:'
+          },
+        ]
+      },
+      4: {
+        'topic': '4.     Constructors',
+        'subTopic': [
+          {
+            'heading': 'Constructors',
+            'attachment': 'assets/C#/a144.png',
+            'body': 'A constructor is a special method that is used to initialize objects. The advantage of a constructor, is that it is called when an object of a class is created. It can be used to set initial values for fields:'
+          },
+          {
+            'heading': '\n\nConstructor Parameters',
+            'attachment': 'assets/C#/a145.png',
+            'body': 'Constructors can also take parameters, which is used to initialize fields.'
+                '\n\nThe following example adds a string modelName parameter to the constructor. Inside the constructor we set model to modelName (model=modelName). When we call the constructor, we pass a parameter to the constructor ("Mustang"), which will set the value of model to "Mustang":'
+          },
+          {
+            'attachment': 'assets/C#/a146.png',
+            'body': 'You can have as many parameters as you want:'
+          },
+          {
+            'heading': '\n\nConstructors Save Time',
+            'attachment': 'assets/C#/a147.png',
+            'body': 'When you consider the example from the previous chapter, you will notice that constructors are very useful, as they help reducing the amount of code:'
+          }
+        ]
+      },
+      5: {
+        'topic': '5.     Access Modifiers',
+        'subTopic': [
+          {
+            'heading': 'Access Modifiers',
+            'attachment': 'assets/C#/a148.png',
+            'body': 'By now, you are quite familiar with the public keyword that appears in many of our examples:'
+          },
+          {
+            'heading': '\n\nPrivate Modifier',
+            'attachment': 'assets/C#/a149.png',
+            'body': 'If you declare a field with a private access modifier, it can only be accessed within the same class:'
+          },
+          {
+            'attachment': 'assets/C#/a150.png',
+            'body': 'If you try to access it outside the class, an error will occur:'
+          },
+          {
+            'heading': '\n\nPublic Modifier',
+            'attachment': 'assets/C#/a151.png',
+            'body': 'If you declare a field with a public access modifier, it is accessible for all classes:'
+          },
+          {
+            'attachment': 'assets/C#/a152.png',
+            'body': 'Note: By default, all members of a class are private if you dont specify an access modifier:'
+          }
+        ]
+      },
+      6: {
+        'topic': '6.     Properties (Get and Set)',
+        'subTopic': [
+          {
+            'heading': 'Properties and Encapsulation',
+            'body': 'Before we start to explain properties, you should have a basic understanding of "Encapsulation".'
+                '\n\nThe meaning of Encapsulation, is to make sure that "sensitive" data is hidden from users. To achieve this, you must:'
+                '\n\n •  declare fields/variables as private'
+                '\n\n •  provide public get and set methods, through properties, to access and update the value of a private field'
+          },
+          {
+            'heading': '\n\nProperties',
+            'attachment': 'assets/C#/a153.png',
+            'body': 'You learned from the previous chapter that private variables can only be accessed within the same class (an outside class has no access to it). However, sometimes we need to access them - and it can be done with properties.'
+                '\n\nA property is like a combination of a variable and a method, and it has two methods: a get and a set method:'
+          },
+          {
+            'attachment': 'assets/C#/a154.png',
+            'body': 'Example explained'
+                '\n\nThe Name property is associated with the name field. It is a good practice to use the same name for both the property and the private field, but with an uppercase first letter.'
+                '\n\nThe get method returns the value of the variable name.'
+                '\n\nThe set method assigns a value to the name variable. The value keyword represents the value we assign to the property.'
+                '\n\nNow we can use the Name property to access and update the private field of the Person class:'
+          },
+          {
+            'heading': '\n\nAutomatic Properties (Short Hand)',
+            'attachment': 'assets/C#/a155.png',
+            'body': 'C# also provides a way to use short-hand / automatic properties, where you do not have to define the field for the property, and you only have to write get; and set; inside the property.'
+                '\n\nThe following example will produce the same result as the example above. The only difference is that there is less code:'
+          },
+          {
+            'heading': '\n\nWhy Encapsulation?',
+            'body': '\n\n • Better control of class members (reduce the possibility of yourself (or others) to mess up the code)'
+                '\n\n • Fields can be made read-only (if you only use the get method), or write-only (if you only use the set method)'
+                '\n\n • Flexible: the programmer can change one part of the code without affecting other parts'
+                '\n\n • Increased security of data'
+          }
+        ]
+      },
+      7: {
+        'topic': '7.     Inheritance',
+        'subTopic': [
+          {
+            'heading': 'Inheritance (Derived and Base Class)',
+            'attachment': 'assets/C#/a156.png',
+            'body': 'In C#, it is possible to inherit fields and methods from one class to another. We group the "inheritance concept" into two categories:'
+                '\n\n • Derived Class (child) - the class that inherits from another class'
+                '\n\n • Base Class (parent) - the class being inherited from'
+                '\n\nTo inherit from a class, use the : symbol.'
+                '\n\nIn the example below, the Car class (child) inherits the fields and methods from the Vehicle class (parent):'
+          },
+          {
+            'heading': '\n\nThe sealed Keyword',
+            'attachment': 'assets/C#/a157.png',
+            'body': 'If you dont want other classes to inherit from a class, use the sealed keyword:'
+          }
+        ]
+      },
+      8: {
+        'topic': '8.     Enum',
+        'subTopic': [
+          {
+            'heading': 'Enums',
+            'attachment': 'assets/C#/a158.png',
+            'body': 'An enum is a special "class" that represents a group of constants (unchangeable/read-only variables).'
+                '\n\nTo create an enum, use the enum keyword (instead of class or interface), and separate the enum items with a comma:'
+          },
+          {
+            'heading': '\n\nEnum inside a Class',
+            'attachment': 'assets/C#/a159.png',
+            'body': 'You can also have an enum inside a class:'
+          },
+          {
+            'heading': '\n\nEnum Values',
+            'attachment': 'assets/C#/a160.png',
+            'body': 'By default, the first item of an enum has the value 0. The second has the value 1, and so on.'
+                '\n\nTo get the integer value from an item, you must explicitly convert the item to an int:'
+          },
+          {
+            'attachment': 'assets/C#/a161.png',
+            'body': '\n\nYou can also assign your own enum values, and the next items will update their numbers accordingly:'
+          },
+          {
+            'heading': '\n\nEnum in a Switch Statement',
+            'attachment': 'assets/C#/a162.png',
+            'body': 'Enums are often used in switch statements to check for corresponding values:'
+          }
+        ]
       }
 
 
@@ -636,17 +1249,7 @@ const cSharpCodex = {
 
 
 
-
-
-
-
-
-
-
-
     },
-    Categories.intermediate: {},
-    Categories.advanced: {},
   },
 
 };
