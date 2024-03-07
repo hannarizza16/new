@@ -30,7 +30,7 @@ class _LessonScreenState extends State<LessonScreen>{
 
   late List<Topic> topics;
   late int selectedTopicIndex;
-  bool _isSidebarOpen = true;
+  bool _isSidebarOpen = false;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
