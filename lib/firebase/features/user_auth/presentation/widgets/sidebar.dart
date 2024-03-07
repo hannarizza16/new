@@ -8,6 +8,12 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+// import 'package:first_project/bottom_navigations/profile_bottom.dart';
+// import 'package:first_project/firebase/features/user_auth/presentation/pages/home_page.dart';
+import 'package:first_project/side_bar/update_profile.dart';
+import 'package:first_project/side_bar/about.dart';
+import 'package:first_project/side_bar/help.dart';
+
 
 import '../../../../../enums/enums.dart';
 import '../pages/login_page.dart';
@@ -172,11 +178,21 @@ class _SideBarState extends State<SideBar> {
   void _onItemTapped(BuildContext context, SideBarSection section) {
     switch (section) {
       case SideBarSection.updateProfile:
-        return Navigator.of(context).pop();
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => UpdateProfile()),
+        );
+        break;
       case SideBarSection.about:
-        return Navigator.of(context).pop();
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => AboutProfile()),
+        );
       case SideBarSection.help:
-        return Navigator.of(context).pop();
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => HelpProfile()),
+        );
       case SideBarSection.logout:
         FirebaseAuth.instance.signOut(); // Sign out the user
         Fluttertoast.showToast(
@@ -249,7 +265,7 @@ class _SideBarState extends State<SideBar> {
                         child: _image == null
                             ? Icon(Icons.person,
                                 size: 50,
-                                color: Colors.grey) // Display default avatar
+                                color: Colors.white) // Display default avatar
                             : null,
                       ),
                       decoration: BoxDecoration(

@@ -99,29 +99,31 @@ class _MainHomePageState extends State<MainHomePage> {
         return shouldLogout ?? false;
       },
       child: Scaffold(
-        drawer: const SideBar(),
-        appBar: AppBar(
-          title: const Text('CodeX'),
-          titleTextStyle: TextStyle(
-            color: Color(0xFF0C356A),
-            fontSize: 21, // Change the font size as needed
-            fontWeight: FontWeight.bold, // Make the font bold
-          ),
-          backgroundColor: Color(0xFFDCF2F1), // app bar color only
+        drawer: const SideBar(
+
         ),
-        backgroundColor:
-        Colors.transparent, // BACKGROUND OF top app and other pages
-        body: Container(
-          decoration: BoxDecoration(
-            //LANGUAGES NA SLIDING
-            gradient: LinearGradient(
-              colors: [Color(0xFFDCF2F1), Color(0xFFDCF2F1)],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
+          appBar: AppBar(
+            title: const Text('CodeX'),
+            titleTextStyle: TextStyle(
+              color: Color(0xFF0C356A),
+              fontSize: 21, // Change the font size as needed
+              fontWeight: FontWeight.bold, // Make the font bold
             ),
+            backgroundColor: Color(0xFFDCF2F1), // app bar color only
           ),
-          child: _bottomScreens[selectedCurrentIndex],
-        ),
+          backgroundColor:
+          Colors.transparent, // BACKGROUND OF top app and other pages
+          body: Container(
+            decoration: BoxDecoration(
+              //LANGUAGES NA SLIDING
+              gradient: LinearGradient(
+                colors: [Color(0xFFDCF2F1), Color(0xFFDCF2F1)],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+            ),
+            child: _bottomScreens[selectedCurrentIndex],
+          ),
 
         bottomNavigationBar: Stack(
           children: [
