@@ -130,6 +130,8 @@ flutter:
     - assets/overlay/shine3.gif
     - assets/overlay/shine4.gif
     - assets/overlay/city.gif
+    - assets/banner.png
+
 
 
     #gamedev
