@@ -35,3 +35,48 @@ Checkbox(
                                   fontWeight: FontWeight.bold,
                                   letterSpacing: 2.0),
                             ),
+
+
+
+                            ----------------
+                            //Password validation
+
+
+                            Row(
+                                                      children: [
+                                                        Align(
+                                                          alignment: Alignment.centerLeft,
+                                                          child: Text(
+                                                            _passwordController.text.isEmpty
+                                                                ? 'create a secure and valid password'
+                                                                : !_passwordController.text
+                                                                        .contains(RegExp(r'[A-Z]'))
+                                                                    ? 'Password must contain an uppercase letter'
+                                                                    : !_passwordController.text.contains(
+                                                                            RegExp(
+                                                                                r'[!@#$%^&*(),.?":{}|<>]'))
+                                                                        ? 'Password must contain special character'
+                                                                        : !_passwordController.text
+                                                                                .contains(RegExp(r'[0-9]'))
+                                                                            ? 'Password must contain at least one number'
+                                                                            : 'Password secure',
+                                                            style: TextStyle(
+                                                              color: _passwordController.text.isEmpty
+                                                                  ? Colors.black54
+                                                                  : !_passwordController.text
+                                                                          .contains(RegExp(r'[A-Z]'))
+                                                                      ? Colors.red
+                                                                      : !_passwordController.text.contains(
+                                                                              RegExp(
+                                                                                  r'[!@#$%^&*(),.?":{}|<>]'))
+                                                                          ? Colors.red
+                                                                          : !_passwordController.text
+                                                                                  .contains(
+                                                                                      RegExp(r'[0-9]'))
+                                                                              ? Colors.red
+                                                                              : Colors.green,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),

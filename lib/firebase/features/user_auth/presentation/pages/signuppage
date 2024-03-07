@@ -132,47 +132,33 @@ class _SignUpPageState extends State<SignUpPage> {
                           isPasswordField: true,
                         ),
 
-
-                        //PASSWORD VALIDATION CONDITION STATEMENT
-                        Row(
-                          children: [
-                            Align(
-                              alignment: Alignment.centerLeft,
-                              child: Text(
-                                _passwordController.text.isEmpty
-                                    ? 'create a secure and valid password'
-                                    : !_passwordController.text
-                                            .contains(RegExp(r'[A-Z]'))
-                                        ? 'Password must contain an uppercase letter'
-                                        : !_passwordController.text.contains(
-                                                RegExp(
-                                                    r'[!@#$%^&*(),.?":{}|<>]'))
-                                            ? 'Password must contain special character'
-                                            : !_passwordController.text
-                                                    .contains(RegExp(r'[0-9]'))
-                                                ? 'Password must contain at least one number'
-                                                : 'Password secure',
-                                style: TextStyle(
-                                  color: _passwordController.text.isEmpty
-                                      ? Colors.black54
-                                      : !_passwordController.text
-                                              .contains(RegExp(r'[A-Z]'))
-                                          ? Colors.red
-                                          : !_passwordController.text.contains(
-                                                  RegExp(
-                                                      r'[!@#$%^&*(),.?":{}|<>]'))
-                                              ? Colors.red
-                                              : !_passwordController.text
-                                                      .contains(
-                                                          RegExp(r'[0-9]'))
-                                                  ? Colors.red
-                                                  : Colors.green,
-                                ),
-                              ),
+                      Row(
+                        children: [
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                if (!_passwordController.text.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]')))
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 10.0),
+                                    child: Text(
+                                      'Password must contain special characters',
+                                      style: TextStyle(color: Colors.red),
+                                    ),
+                                  ),
+                                if (!_passwordController.text.contains(RegExp(r'[0-9]')))
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 10.0),
+                                    child: Text(
+                                      'Password must contain numbers',
+                                      style: TextStyle(color: Colors.red),
+                                    ),
+                                  ),
+                              ],
                             ),
-                          ],
-                        ),
-
+                          )
+                        ]),
                         const SizedBox(
                           height: 15,
                         ),
@@ -209,8 +195,11 @@ class _SignUpPageState extends State<SignUpPage> {
                                     fontWeight: FontWeight.bold),
                               ),
                             )
+
                           ],
+
                         ),
+
                         GestureDetector(
                           onTap: () {
                             if (isChecked) {

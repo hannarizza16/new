@@ -7,6 +7,8 @@ import 'package:first_project/firebase/features/user_auth/presentation/pages/log
 import 'package:first_project/firebase/features/user_auth/presentation/widgets/form_container_widget.dart';
 import 'package:first_project/firebase/global/common/toast.dart';
 
+import 'package:first_project/firebase/features/user_auth/presentation/pages/terms_and_condition.dart';
+
 import 'otp_screen.dart';
 
 class ProfessorSignUpPage extends StatefulWidget {
@@ -30,6 +32,7 @@ class _ProfessorSignUpPageState extends State<ProfessorSignUpPage> {
   TextEditingController();
 
   bool isSigningUp = false;
+  bool isChecked = false;
 
   @override
   void dispose() {
@@ -63,7 +66,7 @@ class _ProfessorSignUpPageState extends State<ProfessorSignUpPage> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 15),
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 110),
+                    padding: const EdgeInsets.only(top: 60),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -128,15 +131,47 @@ class _ProfessorSignUpPageState extends State<ProfessorSignUpPage> {
                           hintText: "Enter Secure Password ",
                           isPasswordField: true,
                         ),
-                        const Row(children: [
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              'Password must contain special character',
-                              style: TextStyle(color: Colors.green),
+
+                        //PASSWORD VALIDATION CONDITION STATEMENT
+                        Row(
+                          children: [
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                _passwordController.text.isEmpty
+                                    ? 'create a secure and valid password'
+                                    : !_passwordController.text
+                                    .contains(RegExp(r'[A-Z]'))
+                                    ? 'Password must contain an uppercase letter'
+                                    : !_passwordController.text.contains(
+                                    RegExp(
+                                        r'[!@#$%^&*(),.?":{}|<>]'))
+                                    ? 'Password must contain special character'
+                                    : !_passwordController.text
+                                    .contains(RegExp(r'[0-9]'))
+                                    ? 'Password must contain at least one number'
+                                    : 'Password secure',
+                                style: TextStyle(
+                                  color: _passwordController.text.isEmpty
+                                      ? Colors.black54
+                                      : !_passwordController.text
+                                      .contains(RegExp(r'[A-Z]'))
+                                      ? Colors.red
+                                      : !_passwordController.text.contains(
+                                      RegExp(
+                                          r'[!@#$%^&*(),.?":{}|<>]'))
+                                      ? Colors.red
+                                      : !_passwordController.text
+                                      .contains(
+                                      RegExp(r'[0-9]'))
+                                      ? Colors.red
+                                      : Colors.green,
+                                ),
+                              ),
                             ),
-                          )
-                        ]),
+                          ],
+                        ),
+
                         const SizedBox(
                           height: 15,
                         ),
@@ -146,12 +181,45 @@ class _ProfessorSignUpPageState extends State<ProfessorSignUpPage> {
                           hintText: "Re-enter Password ",
                           isPasswordField: true,
                         ),
-                        const SizedBox(
-                          height: 30,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Checkbox(
+                              value: isChecked,
+                              onChanged: (bool? value) {
+                                setState(() {
+                                  isChecked = value ?? false;
+                                });
+                              },
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                // Navigate to the login page with fade animation
+                                Navigator.push(
+                                  context,
+                                  FadePageRoute(
+                                      builder: (context) => ConditionPage()),
+                                );
+                              },
+                              child: const Text(
+                                "I agree to the terms and condition",
+                                style: TextStyle(
+                                    color: Colors.blue,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            )
+
+                          ],
+
                         ),
+
                         GestureDetector(
                           onTap: () {
-                            _signUp();
+                            if (isChecked) {
+                              _signUp();
+                            } else {
+                              showToast(message: "Please agree to the terms");
+                            }
                           },
                           child: Container(
                             width: double.infinity,
