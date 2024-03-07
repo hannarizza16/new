@@ -5,8 +5,9 @@ enum SplashTransitionType {
 }
 
 enum SideBarSection {
-  leaderboards('LeaderBoards'),
-  settings('Settings'),
+  updateProfile('Update Profile'),
+  about('About'),
+  help('help'),
   logout('Logout');
 
   final String text;

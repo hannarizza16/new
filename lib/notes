@@ -1,0 +1,25 @@
+ ...SideBarSection.values
+                      .where((section) => section != SideBarSection.logout)
+                      .map(
+                        (section) => InkWell(
+                          onTap: () => _onItemTapped(context, section),
+                          child: ListTile(
+                            leading: Icon(section.icon),
+                            title: Text(section.text),
+                          ),
+                        ),
+                      )
+                      .toList(),
+
+                     // this filters ther sidebar and hides the other part of the list
+
+
+ for (var section in SideBarSection.values) // this hides the logout from the list and i created a container para ma separate siya
+                      if (section != SideBarSection.logout) //
+                        InkWell(
+                          onTap: () => _onItemTapped(context, section),
+                          child: ListTile(
+                            leading: Icon(section.icon),
+                            title: Text(section.text),
+
+                            //this also

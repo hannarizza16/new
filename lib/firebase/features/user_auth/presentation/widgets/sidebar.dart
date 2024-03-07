@@ -8,6 +8,12 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+// import 'package:first_project/bottom_navigations/profile_bottom.dart';
+// import 'package:first_project/firebase/features/user_auth/presentation/pages/home_page.dart';
+import 'package:first_project/side_bar/update_profile.dart';
+import 'package:first_project/side_bar/about.dart';
+import 'package:first_project/side_bar/help.dart';
+
 
 import '../../../../../enums/enums.dart';
 import '../pages/login_page.dart';
@@ -47,11 +53,11 @@ class _SideBarState extends State<SideBar> {
 
     if (currentUserEmail != null) {
       CollectionReference users =
-      FirebaseFirestore.instance.collection('students');
+          FirebaseFirestore.instance.collection('students');
 
       try {
         QuerySnapshot querySnapshot =
-        await users.where('email', isEqualTo: currentUserEmail).get();
+            await users.where('email', isEqualTo: currentUserEmail).get();
 
         if (querySnapshot.docs.isNotEmpty) {
           setState(() {
@@ -129,7 +135,7 @@ class _SideBarState extends State<SideBar> {
           .ref()
           .child('profile_images/$fileName');
       firebase_storage.UploadTask uploadTask =
-      storageReference.putFile(_image!);
+          storageReference.putFile(_image!);
 
       await uploadTask.whenComplete(() => null);
 
@@ -149,7 +155,7 @@ class _SideBarState extends State<SideBar> {
   Future<void> updateProfileImageURL(String imageURL) async {
     String? userId = FirebaseAuth.instance.currentUser!.uid;
     DocumentReference userRef =
-    FirebaseFirestore.instance.collection('students').doc(userId);
+        FirebaseFirestore.instance.collection('students').doc(userId);
 
     await userRef.update({'profile_image_url': imageURL});
 
@@ -171,8 +177,22 @@ class _SideBarState extends State<SideBar> {
 
   void _onItemTapped(BuildContext context, SideBarSection section) {
     switch (section) {
-      case SideBarSection.settings:
-        return Navigator.of(context).pop();
+      case SideBarSection.updateProfile:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => UpdateProfile()),
+        );
+        break;
+      case SideBarSection.about:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => AboutProfile()),
+        );
+      case SideBarSection.help:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => HelpProfile()),
+        );
       case SideBarSection.logout:
         FirebaseAuth.instance.signOut(); // Sign out the user
         Fluttertoast.showToast(
@@ -184,7 +204,9 @@ class _SideBarState extends State<SideBar> {
           backgroundColor: Colors.grey,
           textColor: Colors.white,
           fontSize: 16.0,
+
         );
+
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => const LoginPage()),
@@ -196,14 +218,14 @@ class _SideBarState extends State<SideBar> {
   }
 
   TextStyle profileTextStyle = TextStyle(
-    color: Colors.black,
+    color: Colors.white,
     fontWeight: FontWeight.bold,
   );
 
   @override
   Widget build(BuildContext context) {
     final TextStyle profileTextStyle = TextStyle(
-      color: Colors.black,
+      color: Colors.white,
       fontWeight: FontWeight.bold,
     );
 
@@ -221,51 +243,70 @@ class _SideBarState extends State<SideBar> {
             );
           } else {
             String userEmail = snapshot.data ?? "No email";
-            return ListView(
-              padding: EdgeInsets.zero,
+            return Column(
               children: [
-                UserAccountsDrawerHeader(
-                  accountName: Text(
-                    _nameController.text,
-                    style: profileTextStyle,
-                  ),
-                  accountEmail: Text(
-                    userEmail,
-                    style: profileTextStyle,
-                  ),
-                  currentAccountPicture: CircleAvatar(
-                    radius: 50, // Adjust the size here
-                    backgroundImage: _image != null ? FileImage(_image!) : null,
-                    child: _image == null
-                        ? Icon(Icons.person, size: 50, color: Colors.grey) // Display default avatar
-                        : null,
-                  ),
-                  decoration: BoxDecoration(
-                    color: Colors.transparent,
-                    image: DecorationImage(
-                      image: AssetImage('assets/logorizal_4.png'),
-                      fit: BoxFit.cover,
-                      colorFilter: ColorFilter.mode(
-                        Colors.white.withOpacity(0.3),
-                        BlendMode.dstATop,
+                Expanded(
+                    child: ListView(
+                  padding: EdgeInsets.zero,
+                  children: [
+                    UserAccountsDrawerHeader(
+                      accountName: Text(
+                        _nameController.text,
+                        style: profileTextStyle,
+                      ),
+                      accountEmail: Text(
+                        userEmail,
+                        style: profileTextStyle,
+                      ),
+                      currentAccountPicture: CircleAvatar(
+                        radius: 50, // Adjust the size here
+                        backgroundImage:
+                            _image != null ? FileImage(_image!) : null,
+                        child: _image == null
+                            ? Icon(Icons.person,
+                                size: 50,
+                                color: Colors.white) // Display default avatar
+                            : null,
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.transparent,
+                        image: DecorationImage(
+                          image: AssetImage('assets/overlay/city.gif'),
+                          fit: BoxFit.cover,
+                          // colorFilter: ColorFilter.mode(
+                          //   Colors.white.withOpacity(0.3),
+                          //   BlendMode.dstATop,
+                          // ),
+                        ),
                       ),
                     ),
+                    for (var section in SideBarSection.values) // this hides the logout from the list and i created a container para ma separate siya
+                      if (section != SideBarSection.logout) //
+                        InkWell(
+                          onTap: () => _onItemTapped(context, section),
+                          child: ListTile(
+                            leading: Icon(section.icon),
+                            title: Text(section.text),
+                          ),
+                        ),
+                  ],
+                    ),
+                ),
+                Container(
+                  color: Colors.red, // Set background color to red
+                  child: ListTile(
+                    leading: Icon(
+                      SideBarSection.logout.icon,
+                      color: Colors.white, // Set icon color to white
+                    ),
+                    title: Text(
+                      SideBarSection.logout.text,
+                      style: TextStyle(
+                          color: Colors.white), // Set text color to white
+                    ),
+                    onTap: () => _onItemTapped(context, SideBarSection.logout),
                   ),
                 ),
-                ...SideBarSection.values
-                    .where((section) =>
-                section != SideBarSection.leaderboards &&
-                    section != SideBarSection.settings)
-                    .map(
-                      (section) => InkWell(
-                    onTap: () => _onItemTapped(context, section),
-                    child: ListTile(
-                      leading: Icon(section.icon),
-                      title: Text(section.text),
-                    ),
-                  ),
-                )
-                    .toList(),
               ],
             );
           }
