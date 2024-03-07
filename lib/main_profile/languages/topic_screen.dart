@@ -30,7 +30,7 @@ class _TopicScreenState extends State<TopicScreen> {
 
   late List<Topic> topics;
   late int selectedTopicIndex;
-  bool _isSidebarOpen = false;
+  bool _isSidebarOpen = false; // sidebar ng topic screen pag open is nakaclose siya kasi naka false.
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
