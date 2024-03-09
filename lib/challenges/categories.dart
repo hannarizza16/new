@@ -14,44 +14,41 @@ List<QuizCategory> getQuizCategories() {
   return [
     QuizCategory( //done
       category: 'C',
-      expertise: ['Beginner', 'Intermediate', 'Advanced'],
+      expertise: ['Level 1', 'Level 2', 'Level 3', 'Level 4', 'Level 5'],
       subtext: [
         'Navigate the fundamentals of C \nfrom syntax to memory management'
       ],
     ),
     QuizCategory(
       category: 'C++',
-      expertise: ['Beginner', 'Intermediate', 'Advanced'],
+      expertise: ['Level 1', 'Level 2', 'Level 3', 'Level 4', 'Level 5'],
       subtext: [
         'Level up with classes, inheritance, \nand advanced C++ features'
       ],
     ),
     QuizCategory( //done
       category: 'Java',
-      expertise: ['Beginner', 'Intermediate', 'Advanced'],
+      expertise: ['Level 1', 'Level 2', 'Level 3', 'Level 4', 'Level 5'],
       subtext: [
         'Showcase your skills in Java`s  \nrich class library and multithreading'
       ],
     ),
     QuizCategory(
       category: 'Dart',
-      expertise: ['Beginner', 'Intermediate', 'Advanced'],
+      expertise: ['Level 1', 'Level 2', 'Level 3', 'Level 4', 'Level 5'],
       subtext: [
         'Demonstrate proficiency in Dart, Flutter, \nand UI responsiveness'
       ],
     ),
     QuizCategory(
       category: 'C#',
-      expertise: ['Beginner', 'Intermediate', 'Advanced'],
+      expertise: ['Level 1', 'Level 2', 'Level 3', 'Level 4', 'Level 5'],
       subtext: ['Explore C# beauty, from programming \nto concise syntax'],
     ),
     QuizCategory
       (category: 'PHP',
-        expertise: [
-      'Beginner',
-      'Intermediate',
-      'Advanced'
-    ], subtext: [
+        expertise: ['Level 1', 'Level 2', 'Level 3', 'Level 4', 'Level 5'],
+        subtext: [
       'Unravel the elegance of PHP, \nfrom web development to code structures'
     ]),
     // Add more categories as needed
