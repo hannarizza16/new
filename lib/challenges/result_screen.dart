@@ -254,16 +254,7 @@ class _ResultScreenState extends State<ResultScreen>
         List<String> userSelectedAnswers = userAnswers.map((answerIndex) => questions[answerIndex].answerChoices[answerIndex].text).toList();
 
         // Add a new document to the 'stats_record' collection
-        await firestore.collection('stats_record').add({
-          'timestamp': DateTime.now(),
-          'userEmail': userEmail,
-          'score': score,
-          'totalQuestions': totalQuestions,
-          'questions': questionTexts,
-          'correctAnswers': correctAnswers,
-          'userSelectedAnswers': userSelectedAnswers,
-          'scoreDocumentId': scoreRef.id, // Reference to the score document
-        });
+
         print("Score added to stats_record collection in Firebase: $score");
       } else {
         print(
@@ -274,7 +265,6 @@ class _ResultScreenState extends State<ResultScreen>
           "Failed to retrieve user information or add score to Firebase: $error");
     }
   }
-
 
 
   void _showExitConfirmationDialog(BuildContext context) {
