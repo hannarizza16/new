@@ -1,11 +1,9 @@
+import 'package:first_project/bottom_navigations/quiz_score_details.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:first_project/gradient_background.dart';
-
-
-
 
 class StatisticsWidget extends StatefulWidget {
   @override
@@ -36,26 +34,42 @@ class _StatisticsWidgetState extends State<StatisticsWidget> {
   }
 
   Future<void> fetchUserScores() async {
-    QuerySnapshot<Map<String, dynamic>> querySnapshot =
-    await FirebaseFirestore.instance
+    QuerySnapshot<Map<String, dynamic>> querySnapshot = await FirebaseFirestore
+        .instance
         .collection('scores')
         .where('userEmail', isEqualTo: currentUserEmail)
         .get();
     setState(() {
-      userScores = querySnapshot.docs.map((doc) => doc.data()).toList();
+      userScores = querySnapshot.docs.map((doc) {
+        Map<String, dynamic> data = doc.data();
+        data['scoreDocumentId'] = doc.id; // Add scoreDocumentId
+        return data;
+      }).toList();
       userScores.sort((a, b) => b['timestamp'].compareTo(a['timestamp']));
     });
   }
 
+
+  Future<void> _showRecordDetailsPage(BuildContext context, Map<String, dynamic> data) async {
+    await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => RecordDetailsPage(recordData: data),
+      ),
+    );
+  }
+
+
   @override
   Widget build(BuildContext context) {
-    List<Map<String, dynamic>> filteredScores = userScores
-        .where((score) {
-      print(" Language: $selectedLanguage, Selected Expertise: $selectedExpertise");
-      return (selectedLanguage == "All" || score['category'] == selectedLanguage) &&
-          (selectedExpertise == "All" || score['expertise'] == selectedExpertise);
-    })
-        .toList();
+    List<Map<String, dynamic>> filteredScores = userScores.where((score) {
+      print(
+          " Language: $selectedLanguage, Selected Expertise: $selectedExpertise");
+      return (selectedLanguage == "All" ||
+          score['category'] == selectedLanguage) &&
+          (selectedExpertise == "All" ||
+              score['expertise'] == selectedExpertise);
+    }).toList();
 
     return GradientContainer(
       child: Stack(
@@ -80,7 +94,8 @@ class _StatisticsWidgetState extends State<StatisticsWidget> {
           Column(
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 50.0, top: 10.0, bottom: 10.0),
+                padding:
+                const EdgeInsets.only(left: 50.0, top: 10.0, bottom: 10.0),
                 child: Row(
                   children: [
                     Text("Language: "),
@@ -91,8 +106,15 @@ class _StatisticsWidgetState extends State<StatisticsWidget> {
                           selectedLanguage = value!;
                         });
                       },
-                      items: <String>['All', 'C', 'C++', 'Java', 'Dart','C#', 'PHP']
-                          .map<DropdownMenuItem<String>>((String value) {
+                      items: <String>[
+                        'All',
+                        'C',
+                        'C++',
+                        'Java',
+                        'Dart',
+                        'C#',
+                        'PHP'
+                      ].map<DropdownMenuItem<String>>((String value) {
                         return DropdownMenuItem<String>(
                           value: value,
                           child: Text(value),
@@ -108,8 +130,14 @@ class _StatisticsWidgetState extends State<StatisticsWidget> {
                           selectedExpertise = value!;
                         });
                       },
-                      items: <String>['All', 'Beginner', 'Intermediate', 'Advanced']
-                          .map<DropdownMenuItem<String>>((String value) {
+                      items: <String>[
+                        'All',
+                        'Level 1',
+                        'Level 2',
+                        'Level 3',
+                        'Level 4',
+                        'Level 5'
+                      ].map<DropdownMenuItem<String>>((String value) {
                         return DropdownMenuItem<String>(
                           value: value,
                           child: Text(value),
@@ -125,11 +153,14 @@ class _StatisticsWidgetState extends State<StatisticsWidget> {
                   itemCount: filteredScores.length,
                   itemBuilder: (context, index) {
                     String category = filteredScores[index]['category'];
-                    String expertiseLevel = filteredScores[index]['expertise'];
+                    String expertiseLevel =
+                    filteredScores[index]['expertise'];
                     int score = filteredScores[index]['score'] ?? 0;
-                    Timestamp timestamp = filteredScores[index]['timestamp'];
+                    Timestamp timestamp =
+                    filteredScores[index]['timestamp'];
                     DateTime dateTime = timestamp.toDate();
-                    String formattedDateTime = DateFormat('dd/MM/yyyy hh:mm a').format(dateTime);
+                    String formattedDateTime =
+                    DateFormat('dd/MM/yyyy hh:mm a').format(dateTime);
                     int totalQuestions = 20;
                     int perfectScore = totalQuestions * 1;
 
@@ -143,6 +174,7 @@ class _StatisticsWidgetState extends State<StatisticsWidget> {
                     } else {
                       cardColor = Color(0xFF0B60B0);
                     }
+
 
                     return Padding(
                       padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
@@ -172,7 +204,7 @@ class _StatisticsWidgetState extends State<StatisticsWidget> {
                                       '$category Language',
                                       style: TextStyle(
                                         fontSize: 24.0,
-                                        color: Color(0xFFFFCC70),
+                                        color: const Color(0xFFFFCC70),
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
@@ -208,6 +240,7 @@ class _StatisticsWidgetState extends State<StatisticsWidget> {
                         ),
                       ),
                     );
+
                   },
                 )
                     : Center(

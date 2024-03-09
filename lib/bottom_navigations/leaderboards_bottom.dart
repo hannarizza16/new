@@ -35,24 +35,32 @@ class _LeaderboardState extends State<Leaderboard> {
 
   @override
   Widget build(BuildContext context) {
-
     return StreamBuilder<QuerySnapshot>(
       stream: FirebaseFirestore.instance.collection('scores').snapshots(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(child: CircularProgressIndicator());
         }
+
+        if (snapshot.hasError) {
+          return Center(
+            child: Text('Error: ${snapshot.error}'),
+          );
+        }
+
         final List<DocumentSnapshot> documents = snapshot.data!.docs;
         final List<Map<String, dynamic>> leaderboardData =
         documents.map((doc) => doc.data() as Map<String, dynamic>).toList();
 
-        // Group scores by userEmail and expertise, and get the highest score for each combination
+        print('Records retrieved from Firestore: $leaderboardData');
+
+// Group scores by userEmail and expertise, and get the highest score for each combination
         final Map<String, Map<String, dynamic>> userScores = {};
         leaderboardData.forEach((player) {
           final userEmail = player['userEmail'];
           final expertise = player['expertise'];
           final category = player['category'];
-          final key = '$expertise-$category';
+          final key = '$userEmail-$expertise-$category'; // Update key to include userEmail
           if (userEmail != null) {
             if (!userScores.containsKey(key) ||
                 player['score'] > userScores[key]!['score']) {
@@ -61,15 +69,13 @@ class _LeaderboardState extends State<Leaderboard> {
           }
         });
 
-
-        // Apply filters
+// Apply filters
         List<Map<String, dynamic>> filteredLeaderboard =
         userScores.values.where((score) {
-          print(" Language: $selectedCategory, Selected Expertise: $selectedExpertise");
           return (selectedCategory == "All" || score['category'] == selectedCategory) &&
               (selectedExpertise == "All" || score['expertise'] == selectedExpertise);
-        })
-            .toList();
+        }).toList();
+
 
         final sortedLeaderboard = filteredLeaderboard.toList()
           ..sort((a, b) =>
@@ -80,6 +86,9 @@ class _LeaderboardState extends State<Leaderboard> {
             : sortedLeaderboard;
         final otherPlayers =
         sortedLeaderboard.length >= 3 ? sortedLeaderboard.sublist(3) : [];
+
+
+        print('Top players: $topPlayers');
 
         return Stack(
           children: [
@@ -148,9 +157,11 @@ class _LeaderboardState extends State<Leaderboard> {
                           },
                           items: <String>[
                             'All',
-                            'Beginner',
-                            'Intermediate',
-                            'Advanced'
+                            'Level 1',
+                            'Level 2',
+                            'Level 3',
+                            'Level 4',
+                            'Level 5'
                           ].map<DropdownMenuItem<String>>((String value) {
                             return DropdownMenuItem<String>(
                               value: value,
@@ -226,7 +237,8 @@ class _LeaderboardState extends State<Leaderboard> {
         domainFn: (dynamic data, _) =>
         '${data['lastName']}, ${data['firstName']}',
         measureFn: (dynamic data, _) => data['score'],
-        colorFn: (_, __) => charts.ColorUtil.fromDartColor(const Color(0xFF0C356A)),
+        colorFn: (_, __) =>
+            charts.ColorUtil.fromDartColor(const Color(0xFF0C356A)),
       )
     ];
 

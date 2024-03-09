@@ -17,7 +17,6 @@ class QuizQuestion {
   }
 }
 
-
 class AnswerChoice {
   final String text;
   final bool isCorrect;
@@ -100,7 +99,15 @@ Map<String, List<QuizQuestion>> questionsMap = {
         AnswerChoice(text: 'D. Runtime Error', isCorrect: false),
       ],
     ),
-
+    QuizQuestion(
+      questionText: 'What is the correct syntax for declaring a variable in C?',
+      answerChoices: [
+        AnswerChoice(text: 'A. int x;', isCorrect: true),
+        AnswerChoice(text: 'B. variable x;', isCorrect: false),
+        AnswerChoice(text: 'C. x = int;', isCorrect: false),
+        AnswerChoice(text: 'D. declare x as int;', isCorrect: false),
+      ],
+    ),
   ],
 };
 
@@ -117,3 +124,4 @@ List<QuizQuestion> getQuestionsForCategoryAndLevel(
     throw ArgumentError('Invalid category or expertise level');
   }
 }
+

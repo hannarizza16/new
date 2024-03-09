@@ -1,5 +1,5 @@
+import 'package:first_project/challenges/quiz_details.dart';
 import 'package:flutter/material.dart';
-
 import 'questions.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -72,131 +72,155 @@ class _ResultScreenState extends State<ResultScreen>
     // Save the score to Firebase
     if (userEmail != null) {
       _saveScoreToFirebase(correctAnswers, widget.questions.length, userEmail,
-          widget.category, widget.expertise);
+          widget.category, widget.expertise, widget.questions, widget.userAnswers);
+
+
     }
 
     // Determine the motivating quote based on the score
     String motivatingQuote = '';
     if (correctAnswers == widget.questions.length) {
       motivatingQuote =
-          "Congratulations! Achieving a perfect score is a testament to your dedication and knowledge. It's not just a victory; it's a milestone in your journey of continuous learning.";
+      "Congratulations! Achieving a perfect score is a testament to your dedication and knowledge. It's not just a victory; it's a milestone in your journey of continuous learning.";
     } else if (correctAnswers >= widget.questions.length - 10) {
       motivatingQuote =
-          "You did great! Success is not just about the destination; it's about the journey. Your commitment and effort are evident in your performance.";
+      "You did great! Success is not just about the destination; it's about the journey. Your commitment and effort are evident in your performance.";
     } else if (correctAnswers >= widget.questions.length - 15) {
       motivatingQuote =
-          "You are doing exceptionally well! Your dedication to learning shines through your remarkable performance. Keep up the excellent work!";
+      "You are doing exceptionally well! Your dedication to learning shines through your remarkable performance. Keep up the excellent work!";
     } else {
       motivatingQuote =
-          "Don't be discouraged by a low score. Every mistake is a step towards learning and improvement. Keep pushing yourself, and success will follow!";
+      "Don't be discouraged by a low score. Every mistake is a step towards learning and improvement. Keep pushing yourself, and success will follow!";
     }
 
     return WillPopScope(
-        onWillPop: () async {
-          // Handle the back button press
-          _showExitConfirmationDialog(context);
-          return false;
-        },
-        child: Scaffold(
-            appBar: AppBar(
-              title: Text('Quiz Result',
-                  style: TextStyle(color: Color(0xFF06283D))),
-              backgroundColor: Color(0xFFDCF2F1),
-            ),
-            body: Stack(children: [
-              AnimatedBuilder(
-                animation: _controller,
-                builder: (context, child) {
-                  return Container(
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [
-                          _animation.value ?? Color(0xFF85F4FF),
-                          Color(0xFFC5FFF8),
-                          _animation.value ?? Color(0xFF85F4FF),
-                        ],
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                      ),
+      onWillPop: () async {
+        // Handle the back button press
+        _showExitConfirmationDialog(context);
+        return false;
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('Quiz Result', style: TextStyle(color: Color(0xFF06283D))),
+          backgroundColor: Color(0xFFDCF2F1),
+        ),
+        body: Stack(
+          children: [
+            AnimatedBuilder(
+              animation: _controller,
+              builder: (context, child) {
+                return Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        _animation.value ?? Color(0xFF85F4FF),
+                        Color(0xFFC5FFF8),
+                        _animation.value ?? Color(0xFF85F4FF),
+                      ],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
                     ),
-                    child: Center(
-                      child: Padding(
-                        padding: EdgeInsets.all(20),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Expanded(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    'Your Score: $correctAnswers / ${widget.questions.length}',
-                                    style: TextStyle(
-                                        fontSize: 30, color: Color(0xFF0C356A)),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                  SizedBox(height: 20),
-                                  if (wrongQuestions.isNotEmpty)
-                                    Center(
-                                      child: Text(
-                                        'Incorrect Answers in Question: \n${wrongQuestions.join(', ')}',
-                                        style: TextStyle(
-                                          fontSize: 18,
-                                          color: Colors.red,
-                                        ),
-                                        textAlign: TextAlign.center,
+                  ),
+                  child: Center(
+                    child: Padding(
+                      padding: EdgeInsets.all(20),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'Your Score: $correctAnswers / ${widget.questions.length}',
+                                  style: TextStyle(fontSize: 30, color: Color(0xFF0C356A)),
+                                  textAlign: TextAlign.center,
+                                ),
+                                SizedBox(height: 20),
+                                if (wrongQuestions.isNotEmpty)
+                                  Center(
+                                    child: Text(
+                                      'Incorrect Answers in Question: \n${wrongQuestions.join(', ')}',
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                        color: Colors.red,
                                       ),
+                                      textAlign: TextAlign.center,
                                     ),
-                                  SizedBox(height: 20),
-                                  Text(
-                                    motivatingQuote,
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      color: Color(0xFF0C356A),
-                                      fontStyle: FontStyle.italic,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                    textAlign: TextAlign.center,
                                   ),
-                                ],
-                              ),
+                                SizedBox(height: 20),
+                                Text(
+                                  motivatingQuote,
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    color: Color(0xFF0C356A),
+                                    fontStyle: FontStyle.italic,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                                SizedBox(height: 20),
+                                ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => QuizDetailsScreen(
+                                          questions: widget.questions,
+                                          userAnswers: widget.userAnswers,
+
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  child: Text('Quiz Details'),
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
-                  );
-                },
-              ),
-              Positioned.fill(
-                child: Stack(
-                  children: [
-                    Positioned.fill(
-                      child: Image.asset(
-                        'assets/confetti.gif',
-                        fit: BoxFit.cover,
-                      ),
+                  ),
+                );
+              },
+            ),
+            Positioned.fill(
+              child: Stack(
+                children: [
+                  IgnorePointer(
+                    ignoring: true, // Ignore pointer events
+                    child: Image.asset(
+                      'assets/confetti.gif',
+                      fit: BoxFit.cover,
                     ),
-                    Positioned(
-                      left: 0,
-                      right: 0,
-                      bottom: 0,
+                  ),
+                  Positioned(
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    child: IgnorePointer(
+                      ignoring: true, // Ignore pointer events
                       child: Image.asset(
                         'assets/fireworks.gif',
                         fit: BoxFit.contain,
                         height: 250, // Adjust the height as needed
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ])));
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
   void _saveScoreToFirebase(int score, int totalQuestions, String userEmail,
-      String category, String expertise) async {
+      String category, String expertise, List<QuizQuestion> questions, List<int> userAnswers) async {
     // Get a reference to the Firestore database
     FirebaseFirestore firestore = FirebaseFirestore.instance;
 
@@ -211,8 +235,8 @@ class _ResultScreenState extends State<ResultScreen>
         String firstName = userQuery.docs.first['first_name'];
         String lastName = userQuery.docs.first['last_name'];
 
-        // Add a new document with a generated ID
-        await firestore.collection('scores').add({
+        // Add a new document to the 'scores' collection
+        DocumentReference scoreRef = await firestore.collection('scores').add({
           'score': score,
           'totalQuestions': totalQuestions,
           'userEmail': userEmail,
@@ -222,7 +246,25 @@ class _ResultScreenState extends State<ResultScreen>
           'expertise': expertise,
           'timestamp': DateTime.now(),
         });
-        print("Score added to Firebase: $score");
+        print("Score added to scores collection in Firebase: $score");
+
+        // Extract question texts, correct answers, and user answers
+        List<String> questionTexts = questions.map((question) => question.questionText).toList();
+        List<String> correctAnswers = questions.map((question) => question.answerChoices.indexWhere((choice) => choice.isCorrect).toString()).toList();
+        List<String> userSelectedAnswers = userAnswers.map((answerIndex) => questions[answerIndex].answerChoices[answerIndex].text).toList();
+
+        // Add a new document to the 'stats_record' collection
+        await firestore.collection('stats_record').add({
+          'timestamp': DateTime.now(),
+          'userEmail': userEmail,
+          'score': score,
+          'totalQuestions': totalQuestions,
+          'questions': questionTexts,
+          'correctAnswers': correctAnswers,
+          'userSelectedAnswers': userSelectedAnswers,
+          'scoreDocumentId': scoreRef.id, // Reference to the score document
+        });
+        print("Score added to stats_record collection in Firebase: $score");
       } else {
         print(
             "User with email $userEmail not found in the 'students' collection.");
@@ -232,6 +274,8 @@ class _ResultScreenState extends State<ResultScreen>
           "Failed to retrieve user information or add score to Firebase: $error");
     }
   }
+
+
 
   void _showExitConfirmationDialog(BuildContext context) {
     showDialog(
@@ -255,7 +299,7 @@ class _ResultScreenState extends State<ResultScreen>
                   MaterialPageRoute(
                     builder: (context) => MainHomePage(),
                   ),
-                  (route) => false, // This line clears the navigation stack
+                      (route) => false, // This line clears the navigation stack
                 );
               },
               child: Text('Exit'),
@@ -266,3 +310,4 @@ class _ResultScreenState extends State<ResultScreen>
     );
   }
 }
+
