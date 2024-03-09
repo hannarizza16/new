@@ -21,9 +21,9 @@ class _LoginPageState extends State<LoginPage> {
   bool _isSigning = false;
   final FirebaseAuthService _auth = FirebaseAuthService();
   final TextEditingController _emailController =
-  TextEditingController(text: 'hrmalana@rtu.edu.ph');
+  TextEditingController(text: 'cjevardome@rtu.edu.ph');
   final TextEditingController _passwordController =
-  TextEditingController(text: 'hannacute@');
+  TextEditingController(text: 'ggggg@');
 
   @override
   void dispose() {

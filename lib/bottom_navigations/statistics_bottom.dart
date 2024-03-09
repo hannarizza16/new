@@ -1,4 +1,3 @@
-import 'package:first_project/bottom_navigations/quiz_score_details.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
@@ -47,16 +46,6 @@ class _StatisticsWidgetState extends State<StatisticsWidget> {
       }).toList();
       userScores.sort((a, b) => b['timestamp'].compareTo(a['timestamp']));
     });
-  }
-
-
-  Future<void> _showRecordDetailsPage(BuildContext context, Map<String, dynamic> data) async {
-    await Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => RecordDetailsPage(recordData: data),
-      ),
-    );
   }
 
 

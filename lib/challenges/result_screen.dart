@@ -253,9 +253,7 @@ class _ResultScreenState extends State<ResultScreen>
         List<String> correctAnswers = questions.map((question) => question.answerChoices.indexWhere((choice) => choice.isCorrect).toString()).toList();
         List<String> userSelectedAnswers = userAnswers.map((answerIndex) => questions[answerIndex].answerChoices[answerIndex].text).toList();
 
-        // Add a new document to the 'stats_record' collection
 
-        print("Score added to stats_record collection in Firebase: $score");
       } else {
         print(
             "User with email $userEmail not found in the 'students' collection.");
@@ -300,4 +298,3 @@ class _ResultScreenState extends State<ResultScreen>
     );
   }
 }
-
