@@ -285,7 +285,7 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
         child: CircleAvatar(
           radius: profileHeight * 0.4, // Adjusted size here
-          backgroundImage: _image != null ? FileImage(_image!) : null,
+          backgroundImage: _image != null ? NetworkImage(_image!.path) : null,
           child: _image == null
               ? Icon(Icons.person, size: profileHeight * 0.6, color: Colors.grey) // Display default avatar
               : null,

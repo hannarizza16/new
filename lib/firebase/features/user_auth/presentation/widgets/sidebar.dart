@@ -14,7 +14,6 @@ import 'package:first_project/side_bar/update_profile.dart';
 import 'package:first_project/side_bar/about.dart';
 import 'package:first_project/side_bar/help.dart';
 
-
 import '../../../../../enums/enums.dart';
 import '../pages/login_page.dart';
 
@@ -86,21 +85,21 @@ class _SideBarState extends State<SideBar> {
       String? cachedImageURL = prefs.getString(cacheKey);
 
       if (cachedImageURL != null) {
-        setState(() async {
+        setState(() {
           _image = File(cachedImageURL);
         });
       } else {
         try {
-          String fileName = currentUserEmail + '_profile_image';
+          String fileName = currentUserEmail;
           firebase_storage.Reference storageReference = firebase_storage
               .FirebaseStorage.instance
               .ref()
               .child('profile_images/$fileName');
           String downloadURL = await storageReference.getDownloadURL();
+          await prefs.setString(cacheKey, downloadURL); // Make sure to await here
           setState(() {
             _image = File.fromUri(Uri.parse(downloadURL));
           });
-          prefs.setString(cacheKey, downloadURL);
         } catch (e) {
           print('Error loading profile image: $e');
         }
@@ -204,7 +203,6 @@ class _SideBarState extends State<SideBar> {
           backgroundColor: Colors.grey,
           textColor: Colors.white,
           fontSize: 16.0,
-
         );
 
         Navigator.pushReplacement(
@@ -246,51 +244,50 @@ class _SideBarState extends State<SideBar> {
             return Column(
               children: [
                 Expanded(
-                    child: ListView(
-                  padding: EdgeInsets.zero,
-                  children: [
-                    UserAccountsDrawerHeader(
-                      accountName: Text(
-                        _nameController.text,
-                        style: profileTextStyle,
-                      ),
-                      accountEmail: Text(
-                        userEmail,
-                        style: profileTextStyle,
-                      ),
-                      currentAccountPicture: CircleAvatar(
-                        radius: 50, // Adjust the size here
-                        backgroundImage:
-                            _image != null ? FileImage(_image!) : null,
-                        child: _image == null
-                            ? Icon(Icons.person,
-                                size: 50,
-                                color: Colors.white) // Display default avatar
-                            : null,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.transparent,
-                        image: DecorationImage(
-                          image: AssetImage('assets/overlay/city.gif'),
-                          fit: BoxFit.cover,
-                          // colorFilter: ColorFilter.mode(
-                          //   Colors.white.withOpacity(0.3),
-                          //   BlendMode.dstATop,
-                          // ),
+                  child: ListView(
+                    padding: EdgeInsets.zero,
+                    children: [
+                      UserAccountsDrawerHeader(
+                        accountName: Text(
+                          _nameController.text,
+                          style: profileTextStyle,
                         ),
-                      ),
-                    ),
-                    for (var section in SideBarSection.values) // this hides the logout from the list and i created a container para ma separate siya
-                      if (section != SideBarSection.logout) //
-                        InkWell(
-                          onTap: () => _onItemTapped(context, section),
-                          child: ListTile(
-                            leading: Icon(section.icon),
-                            title: Text(section.text),
+                        accountEmail: Text(
+                          userEmail,
+                          style: profileTextStyle,
+                        ),
+                        currentAccountPicture: CircleAvatar(
+                          radius: 50, // Adjust the size here
+                          backgroundImage: _image != null ? NetworkImage(_image!.path) : null,
+                          child: _image == null
+                              ? Icon(Icons.person, size: 50, color: Colors.white) // Display default avatar
+                              : null,
+                        ),
+
+                        decoration: BoxDecoration(
+                          color: Colors.transparent,
+                          image: DecorationImage(
+                            image: AssetImage('assets/overlay/city.gif'),
+                            fit: BoxFit.cover,
+                            // colorFilter: ColorFilter.mode(
+                            //   Colors.white.withOpacity(0.3),
+                            //   BlendMode.dstATop,
+                            // ),
                           ),
                         ),
-                  ],
-                    ),
+                      ),
+                      for (var section in SideBarSection
+                          .values) // this hides the logout from the list and i created a container para ma separate siya
+                        if (section != SideBarSection.logout) //
+                          InkWell(
+                            onTap: () => _onItemTapped(context, section),
+                            child: ListTile(
+                              leading: Icon(section.icon),
+                              title: Text(section.text),
+                            ),
+                          ),
+                    ],
+                  ),
                 ),
                 Container(
                   color: Colors.red, // Set background color to red
