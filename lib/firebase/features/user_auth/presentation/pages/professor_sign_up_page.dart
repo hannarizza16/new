@@ -21,7 +21,7 @@ class ProfessorSignUpPage extends StatefulWidget {
 class _ProfessorSignUpPageState extends State<ProfessorSignUpPage> {
   final FirebaseAuthService _auth = FirebaseAuthService();
 
-  final TextEditingController _studentIDController = TextEditingController();
+  final TextEditingController _professor_numberController = TextEditingController();
   final TextEditingController _emailController =
   TextEditingController(text: '@rtu.edu.ph');
   final TextEditingController _passwordController = TextEditingController();
@@ -36,7 +36,7 @@ class _ProfessorSignUpPageState extends State<ProfessorSignUpPage> {
 
   @override
   void dispose() {
-    _studentIDController.dispose();
+    _professor_numberController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
     _confirmPasswordController.dispose();
@@ -108,7 +108,7 @@ class _ProfessorSignUpPageState extends State<ProfessorSignUpPage> {
                           height: 10,
                         ),
                         FormContainerWidget(
-                          controller: _studentIDController,
+                          controller: _professor_numberController,
                           labelText: "Professor's ID Number",
                           hintText: "2023-102345",
                           isPasswordField: false,
@@ -287,7 +287,7 @@ class _ProfessorSignUpPageState extends State<ProfessorSignUpPage> {
       isSigningUp = true;
     });
 
-    String studentID = _studentIDController.text;
+    String professorNumber = _professor_numberController.text;
     String email = _emailController.text;
     String password = _passwordController.text;
     String confirmPassword = _confirmPasswordController.text;
@@ -311,7 +311,7 @@ class _ProfessorSignUpPageState extends State<ProfessorSignUpPage> {
       return;
     }
 
-    if (email.isEmpty || password.isEmpty || studentID.isEmpty) {
+    if (email.isEmpty || password.isEmpty || professorNumber.isEmpty) {
       setState(() {
         isSigningUp = false;
       });
@@ -338,7 +338,7 @@ class _ProfessorSignUpPageState extends State<ProfessorSignUpPage> {
       }
 
       QuerySnapshot emailSnapshot = await FirebaseFirestore.instance
-          .collection('students')
+          .collection('professor_instructor')
           .where('email', isEqualTo: email)
           .get();
 
@@ -357,7 +357,7 @@ class _ProfessorSignUpPageState extends State<ProfessorSignUpPage> {
         showToast(
             message: "Verification email sent. Please verify your email.");
 
-        await saveUserDataToFirestore(studentID, email);
+        await saveUserDataToFirestore(professorNumber, email);
 
         Navigator.push(
           context,
@@ -374,17 +374,19 @@ class _ProfessorSignUpPageState extends State<ProfessorSignUpPage> {
     }
   }
 
-  Future<void> saveUserDataToFirestore(String studentID, String email) async {
+  Future<void> saveUserDataToFirestore(String professorNumber, String email) async {
     CollectionReference collRef =
-    FirebaseFirestore.instance.collection('students');
+    FirebaseFirestore.instance.collection('professor_instructor');
     await collRef.add({
       'email': _emailController.text,
-      'student_number': _studentIDController.text,
+      'professorNumber': _professor_numberController.text,
       'first_name': _firstNameController.text,
       'last_name': _lastNameController.text,
       'middle_initial': _middleIntController.text,
       'confirm_password': _confirmPasswordController.text,
       'password': _passwordController.text,
+      'isProfessor_instructor': true, // Add the isStudent identifier here
+
     });
   }
 }

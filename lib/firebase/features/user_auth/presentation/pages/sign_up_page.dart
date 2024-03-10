@@ -383,6 +383,8 @@ class _SignUpPageState extends State<SignUpPage> {
       'middle_initial': _middleIntController.text,
       'confirm_password': _confirmPasswordController.text,
       'password': _passwordController.text,
+      'isStudent': true, // Add the isStudent identifier here
+
     });
   }
 }
