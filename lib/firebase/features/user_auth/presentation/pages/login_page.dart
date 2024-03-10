@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:first_project/firebase/features/user_auth/presentation/pages/prof_page.dart';
 import 'package:first_project/firebase/features/user_auth/presentation/pages/sign_up_page.dart';
 import 'package:first_project/firebase/features/user_auth/presentation/pages/professor_sign_up_page.dart';
 
@@ -214,21 +216,58 @@ class _LoginPageState extends State<LoginPage> {
       _isSigning = false;
     });
 
+// Inside your _signIn method
     if (user != null) {
       if (user.emailVerified) {
-        showToast(message: "User is successfully signed in");
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const MainHomePage()),
-        );
+        String email = user.email ?? '';
+
+        // Check if email is for a student
+        if (email.endsWith('@rtu.edu.ph')) {
+          // Check if the user is a student
+          QuerySnapshot studentSnapshot = await FirebaseFirestore.instance
+              .collection('students')
+              .where('email', isEqualTo: email)
+              .get();
+
+          if (studentSnapshot.docs.isNotEmpty) {
+            showToast(message: "User is successfully signed in as a student");
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => MainHomePage()),
+            );
+            return;
+          }
+        }
+        // Check if email is for a professor
+        if (email.endsWith('@rtu.edu.ph')) {
+          // Check if the user is a professor
+          QuerySnapshot professorSnapshot = await FirebaseFirestore.instance
+              .collection('professor_instructor')
+              .where('email', isEqualTo: email)
+              .get();
+
+          if (professorSnapshot.docs.isNotEmpty) {
+            showToast(message: "User is successfully signed in as a professor");
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ProfessorHomePage()),
+            );
+            return;
+          }
+        }
+
+        // Email is not associated with any role
+        showToast(message: "Invalid email address or user not found");
       } else {
         showToast(message: "Email is not verified");
       }
-    } else {
-      showToast(message: "Failed to sign in. Please check your credentials.");
     }
-  }
+
+    }
+
+
 }
+
 
 class FadePageRoute<T> extends MaterialPageRoute<T> {
   FadePageRoute({required WidgetBuilder builder, RouteSettings? settings})
