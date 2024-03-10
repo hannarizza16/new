@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:first_project/firebase/features/user_auth/presentation/pages/prof_page.dart';
+import 'package:first_project/professors_profile/prof_page.dart';
 import 'package:first_project/firebase/features/user_auth/presentation/pages/sign_up_page.dart';
 import 'package:first_project/firebase/features/user_auth/presentation/pages/professor_sign_up_page.dart';
 

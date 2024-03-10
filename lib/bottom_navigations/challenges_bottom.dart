@@ -19,11 +19,11 @@ class ChallengesPage extends StatelessWidget {
           // Optional: Change the color for visual indication
           color: Colors.blue,
           child: const Text(
-            'Challenges Page',
+            'This is Challenges Page',
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
-              color: Colors.white,
+              color: Colors.black,
             ),
           ),
         ),
