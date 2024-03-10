@@ -69,3 +69,10 @@ enum ProfBottomNav {
 
 }
 
+enum AdminBottomNav {
+  accounts('User Account'),
+  list('List');
+
+  final String text;
+  const AdminBottomNav (this.text);
+}
