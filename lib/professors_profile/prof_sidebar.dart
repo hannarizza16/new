@@ -10,7 +10,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 // import 'package:first_project/bottom_navigations/profile_bottom.dart';
 // import 'package:first_project/firebase/features/user_auth/presentation/pages/home_page.dart';
-import 'package:first_project/side_bar/update_profile.dart';
+import 'package:first_project/professors_profile/prof_update_profile.dart';
 import 'package:first_project/side_bar/about.dart';
 import 'package:first_project/side_bar/help.dart';
 
@@ -179,7 +179,7 @@ class _ProfessorSideBarState extends State<ProfessorSideBar> {
       case SideBarSection.updateProfile:
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => UpdateProfile()),
+          MaterialPageRoute(builder: (context) => ProfUpdateProfile()),
         );
         break;
       // case SideBarSection.about:

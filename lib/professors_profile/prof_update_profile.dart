@@ -3,14 +3,14 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-class UpdateProfile extends StatefulWidget {
-  const UpdateProfile({Key? key}) : super(key: key);
+class ProfUpdateProfile extends StatefulWidget {
+  const ProfUpdateProfile({Key? key}) : super(key: key);
 
   @override
-  _UpdateProfileState createState() => _UpdateProfileState();
+  _ProfUpdateProfileState createState() => _ProfUpdateProfileState();
 }
 
-class _UpdateProfileState extends State<UpdateProfile> {
+class _ProfUpdateProfileState extends State<ProfUpdateProfile> {
   TextEditingController firstNameController = TextEditingController();
   TextEditingController lastNameController = TextEditingController();
   TextEditingController middleInitialController = TextEditingController();
@@ -51,12 +51,9 @@ class _UpdateProfileState extends State<UpdateProfile> {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    double paddingValue = screenWidth * 0.04; // 10% of screen width adjustment of the padding
-
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Update Profile'),
+        title: const Text('CodeX'),
         titleTextStyle: TextStyle(
           color: Color(0xFF0C356A),
           fontSize: 21,
@@ -79,9 +76,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-            Padding(
-            padding: EdgeInsets.symmetric(horizontal: paddingValue),
-            child: TextFormField(
+                TextFormField(
                   controller: firstNameController,
                   decoration: InputDecoration(labelText: 'First Name'),
                   validator: (value) {
@@ -94,10 +89,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                     return null;
                   },
                 ),
-            ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: paddingValue),
-            child: TextFormField(
+                TextFormField(
                   controller: lastNameController,
                   decoration: InputDecoration(labelText: 'Last Name'),
                   validator: (value) {
@@ -110,10 +102,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                     return null;
                   },
                 ),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: paddingValue),
-            child: TextFormField(
+                TextFormField(
                   controller: middleInitialController,
                   decoration: InputDecoration(labelText: 'Middle Initial'),
                   maxLength: 1,
@@ -124,7 +113,6 @@ class _UpdateProfileState extends State<UpdateProfile> {
                     return null;
                   },
                 ),
-          ),
                 ElevatedButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
@@ -185,11 +173,6 @@ class _UpdateProfileState extends State<UpdateProfile> {
         textColor: Colors.white,
         fontSize: 16.0,
       );
-      // // Wait for 3 seconds before navigating back to the previous screen
-      // await Future.delayed(Duration(seconds: 3));
-      //
-      // // Navigate back to the previous screen
-      // Navigator.pop(context);
     } else {
       // Handle the case when no document is found
       Fluttertoast.showToast(

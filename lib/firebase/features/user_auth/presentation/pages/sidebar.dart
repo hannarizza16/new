@@ -15,7 +15,7 @@ import 'package:first_project/side_bar/about.dart';
 import 'package:first_project/side_bar/help.dart';
 
 import '../../../../../enums/enums.dart';
-import '../pages/login_page.dart';
+import 'login_page.dart';
 
 class SideBar extends StatefulWidget {
   const SideBar({Key? key}) : super(key: key);

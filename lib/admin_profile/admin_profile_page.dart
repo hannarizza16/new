@@ -101,7 +101,7 @@ class _ProfessorHomePageState extends State<ProfessorHomePage> {
 
         ),
         appBar: AppBar(
-          title: const Text('CodeX (Professor)'),
+          title: const Text('CodeX (Admin)'),
           titleTextStyle: TextStyle(
             color: Color(0xFF0C356A),
             fontSize: 21, // Change the font size as needed

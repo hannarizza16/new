@@ -4,7 +4,7 @@ import 'package:first_project/bottom_navigations/leaderboards_bottom.dart';
 import 'package:first_project/bottom_navigations/profile_bottom.dart';
 import 'package:first_project/challenges/category_selection.dart';
 import 'package:first_project/firebase/features/user_auth/presentation/widgets/draggable_fab.dart';
-import 'package:first_project/firebase/features/user_auth/presentation/widgets/sidebar.dart';
+import 'package:first_project/firebase/features/user_auth/presentation/pages/sidebar.dart';
 import 'package:first_project/extension/bottom_nav_ext.dart';
 import 'package:first_project/enums/enums.dart';
 import 'package:flutter/material.dart';
@@ -103,7 +103,7 @@ class _MainHomePageState extends State<MainHomePage> {
 
         ),
           appBar: AppBar(
-            title: const Text('CodeX'),
+            title: const Text('CodeX (Student)'),
             titleTextStyle: TextStyle(
               color: Color(0xFF0C356A),
               fontSize: 21, // Change the font size as needed
