@@ -1,28 +1,26 @@
-import 'package:first_project/bottom_navigations/statistics_bottom.dart';
-import 'package:first_project/bottom_navigations/home_bottom.dart';
-import 'package:first_project/bottom_navigations/leaderboards_bottom.dart';
-import 'package:first_project/bottom_navigations/profile_bottom.dart';
-import 'package:first_project/challenges/category_selection.dart';
+import 'package:first_project/professors_profile/bottom_professor/challenges_professor_bottom.dart';
+import 'package:first_project/professors_profile/bottom_professor/students_bottom.dart';
+import 'package:first_project/professors_profile/bottom_professor/records_bottom.dart';
 import 'package:first_project/firebase/features/user_auth/presentation/widgets/draggable_fab.dart';
-import 'package:first_project/firebase/features/user_auth/presentation/pages/sidebar.dart';
-import 'package:first_project/extension/bottom_nav_ext.dart';
+import 'package:first_project/extension/prof_bottom_nav_ext.dart';
 import 'package:first_project/enums/enums.dart';
 import 'package:flutter/material.dart';
+import 'package:first_project/professors_profile/prof_sidebar.dart';
 
-class MainHomePage extends StatefulWidget {
-  const MainHomePage({Key? key}) : super(key: key);
+class ProfessorHomePage extends StatefulWidget {
+  const ProfessorHomePage({Key? key}) : super(key: key);
 
   @override
-  State<MainHomePage> createState() => _MainHomePageState();
+  State<ProfessorHomePage> createState() => _ProfessorHomePageState();
 }
 
-class _MainHomePageState extends State<MainHomePage> {
-  final _bottomScreens = [
-    LeaderboardScreen(),
-    StatisticsWidget(),
-    const AllLanguages(), // state name
-    const CategorySelection(),
-    const ProfilePage(),
+class _ProfessorHomePageState extends State<ProfessorHomePage> {
+  final _profBottomScreen = [
+    ProfessorChallengesScreen(),
+    StudentBottomScreen(),
+    RecordsBottomScreen(),
+
+
   ]; // kung anong pinindot mo na button sa bottom nav //this is home
 
   int selectedCurrentIndex = 2; // kung anong unang mag pop up pag log in bottom nav bar to.
@@ -99,31 +97,31 @@ class _MainHomePageState extends State<MainHomePage> {
         return shouldLogout ?? false;
       },
       child: Scaffold(
-        drawer: const SideBar(
+        drawer: const ProfessorSideBar(
 
         ),
-          appBar: AppBar(
-            title: const Text('CodeX (Student)'),
-            titleTextStyle: TextStyle(
-              color: Color(0xFF0C356A),
-              fontSize: 21, // Change the font size as needed
-              fontWeight: FontWeight.bold, // Make the font bold
-            ),
-            backgroundColor: Color(0xFFDCF2F1), // app bar color only
+        appBar: AppBar(
+          title: const Text('CodeX (Professor)'),
+          titleTextStyle: TextStyle(
+            color: Color(0xFF0C356A),
+            fontSize: 21, // Change the font size as needed
+            fontWeight: FontWeight.bold, // Make the font bold
           ),
-          backgroundColor:
-          Colors.transparent, // BACKGROUND OF top app and other pages
-          body: Container(
-            decoration: BoxDecoration(
-              //LANGUAGES NA SLIDING
-              gradient: LinearGradient(
-                colors: [Color(0xFFDCF2F1), Color(0xFFDCF2F1)],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-              ),
+          backgroundColor: Color(0xFFDCF2F1), // app bar color only
+        ),
+        backgroundColor:
+        Colors.transparent, // BACKGROUND OF top app and other pages
+        body: Container(
+          decoration: BoxDecoration(
+            //LANGUAGES NA SLIDING
+            gradient: LinearGradient(
+              colors: [Color(0xFFDCF2F1), Color(0xFFDCF2F1)],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
             ),
-            child: _bottomScreens[selectedCurrentIndex],
           ),
+          child: _profBottomScreen[selectedCurrentIndex],
+        ),
 
         bottomNavigationBar: Stack(
           children: [
@@ -139,7 +137,7 @@ class _MainHomePageState extends State<MainHomePage> {
                 currentIndex: selectedCurrentIndex,
                 onTap: (index) =>
                     setState(() => selectedCurrentIndex = index),
-                items: BottomNavs.values
+                items: ProfBottomNav.values
                     .map((nav) => BottomNavigationBarItem(
                   icon: Icon(nav.icon),
                   label: nav.text,

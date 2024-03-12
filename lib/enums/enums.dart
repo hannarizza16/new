@@ -59,3 +59,20 @@ enum SubjectSection {
   const SubjectSection (this.value);
 }
 
+enum ProfBottomNav {
+  challenges('Challenges'),
+  students('Students'),
+  records('Records');
+
+  final String text;
+  const ProfBottomNav (this.text);
+
+}
+
+enum AdminBottomNav {
+  accounts('User Account'),
+  list('List');
+
+  final String text;
+  const AdminBottomNav (this.text);
+}

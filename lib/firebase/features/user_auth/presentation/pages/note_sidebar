@@ -1,0 +1,43 @@
+
+ ----SIDEBAR FILE
+
+   // Define the updateProfileData function
+  void updateProfileData(Map<String, dynamic> updatedData) {
+    // Implement the logic to update the profile data here
+    // For example, you can update the name displayed in the sidebar
+    setState(() {
+      _firstName = updatedData['first_name'];
+      _middleInitial = updatedData['middle_initial'];
+      _lastName = updatedData['last_name'];
+      _nameController.text = '$_firstName $_middleInitial. $_lastName';
+      //
+    });
+  }
+ -- added this para sa call back function na kapag nag update sa update profile pagka back is updated at mag shoshow agad yung updated version ng name
+
+
+ void _onItemTapped(BuildContext context, SideBarSection section) {
+     switch (section) {
+       case SideBarSection.updateProfile:
+         Navigator.push(
+           context,
+           MaterialPageRoute(builder: (context) => UpdateProfile(updateProfileData: updateProfileData,)),
+
+           --- then kinall dito sa UpdateProfile(updateProfileData: updateProfileData,)),
+
+
+----- UPDATE_PROFILE FILE
+
+
+class UpdateProfile extends StatefulWidget {
+  final Function(Map<String, dynamic>) updateProfileData;
+
+  -- nag lagay ng function
+
+  --- then added this below flutter toast when successfully updated para automatic bag back after ilang seconds
+
+   // Wait for 3 seconds before navigating back to the previous screen
+        await Future.delayed(Duration(seconds: 3));
+
+        // Navigate back to the previous screen
+        Navigator.pop(context);    // STUDENT sidebar

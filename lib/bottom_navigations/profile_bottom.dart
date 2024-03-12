@@ -9,6 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 
 
+
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
 
@@ -161,6 +162,19 @@ class _ProfilePageState extends State<ProfilePage> {
       // Hindi na natin kailangan i-set ang _image variable dito dahil hindi naman ito ginagamit
     }
   }
+  //
+  // // Define the updateProfileData function
+  // void updateProfileData(Map<String, dynamic> updatedData) {
+  //   // Implement the logic to update the profile data here
+  //   // For example, you can update the name displayed in the sidebar
+  //   setState(() {
+  //     _firstName = updatedData['first_name'];
+  //     _middleInitial = updatedData['middle_initial'];
+  //     _lastName = updatedData['last_name'];
+  //     _nameController.text = '$_firstName $_middleInitial. $_lastName';
+  //     //
+  //   });
+  // }
 
   Future<void> updateProfileImageURL(String imageURL) async {
     String? userId = FirebaseAuth.instance.currentUser!.uid;
@@ -169,6 +183,16 @@ class _ProfilePageState extends State<ProfilePage> {
 
     await userRef.update({'profile_image_url': imageURL});
 
+  }
+
+
+  void updateProfileData(Map<String, dynamic> updatedData) {
+    setState(() {
+      _firstName = updatedData['first_name'];
+      _middleInitial = updatedData['middle_initial'];
+      _lastName = updatedData['last_name'];
+      _nameController.text = '$_firstName $_middleInitial. $_lastName';
+    });
   }
 
   Widget build(BuildContext context) {

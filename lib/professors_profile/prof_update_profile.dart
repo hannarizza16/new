@@ -3,17 +3,17 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-class UpdateProfile extends StatefulWidget {
+class ProfUpdateProfile extends StatefulWidget {
   final Function(Map<String, dynamic>) updateProfileData;
 
-  const UpdateProfile({Key? key, required this.updateProfileData})
+  const ProfUpdateProfile({Key? key, required this.updateProfileData})
       : super(key: key);
 
   @override
-  _UpdateProfileState createState() => _UpdateProfileState();
+  _ProfUpdateProfileState createState() => _ProfUpdateProfileState();
 }
 
-class _UpdateProfileState extends State<UpdateProfile> {
+class _ProfUpdateProfileState extends State<ProfUpdateProfile> {
   bool _isUpdating = false;
   TextEditingController firstNameController = TextEditingController();
   TextEditingController lastNameController = TextEditingController();
@@ -46,7 +46,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
           firstNameController.text = snapshot.docs.first['first_name'];
           lastNameController.text = snapshot.docs.first['last_name'];
           middleInitialController.text = snapshot
-                  .docs.first['middle_initial'] ??
+              .docs.first['middle_initial'] ??
               ''; // If middle initial is not present, default to empty string
         });
       } else {
@@ -89,11 +89,11 @@ class _UpdateProfileState extends State<UpdateProfile> {
                         children: [
                           Padding(
                             padding:
-                                EdgeInsets.symmetric(horizontal: paddingValue),
+                            EdgeInsets.symmetric(horizontal: paddingValue),
                             child: TextFormField(
                               controller: firstNameController,
                               decoration:
-                                  InputDecoration(labelText: 'First Name'),
+                              InputDecoration(labelText: 'First Name'),
                               validator: (value) {
                                 if (value == null || value.trim().isEmpty) {
                                   return 'Please enter your first name';
@@ -108,11 +108,11 @@ class _UpdateProfileState extends State<UpdateProfile> {
                           ),
                           Padding(
                             padding:
-                                EdgeInsets.symmetric(horizontal: paddingValue),
+                            EdgeInsets.symmetric(horizontal: paddingValue),
                             child: TextFormField(
                               controller: lastNameController,
                               decoration:
-                                  InputDecoration(labelText: 'Last Name'),
+                              InputDecoration(labelText: 'Last Name'),
                               validator: (value) {
                                 if (value == null || value.trim().isEmpty) {
                                   return 'Please enter your last name';
@@ -127,11 +127,11 @@ class _UpdateProfileState extends State<UpdateProfile> {
                           ),
                           Padding(
                             padding:
-                                EdgeInsets.symmetric(horizontal: paddingValue),
+                            EdgeInsets.symmetric(horizontal: paddingValue),
                             child: TextFormField(
                               controller: middleInitialController,
                               decoration:
-                                  InputDecoration(labelText: 'Middle Initial'),
+                              InputDecoration(labelText: 'Middle Initial'),
                               maxLength: 1,
                               validator: (value) {
                                 if (!RegExp(r'^[a-zA-Z]*$')
@@ -143,18 +143,18 @@ class _UpdateProfileState extends State<UpdateProfile> {
                             ),
                           ),
                           const SizedBox(height: 20
-                            ),
+                          ),
                           GestureDetector(
                             onTap: () async {
                               if (_formKey.currentState!.validate()) {
                                 setState(() {
                                   _isUpdating =
-                                      true; // Set _isUpdating to true when updating starts
+                                  true; // Set _isUpdating to true when updating starts
                                 });
                                 await updateProfile(); // Wait for the updateProfile method to complete
                                 setState(() {
                                   _isUpdating =
-                                      false; // Set _isUpdating to false when updating completes
+                                  false; // Set _isUpdating to false when updating completes
                                 });
                               }
                             },
@@ -168,15 +168,15 @@ class _UpdateProfileState extends State<UpdateProfile> {
                               child: Center(
                                 child: _isUpdating
                                     ? const CircularProgressIndicator(
-                                        color: Colors.white)
+                                    color: Colors.white)
                                     : const Text(
-                                        "Update Profile",
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold,
-                                          letterSpacing: 2.0,
-                                        ),
-                                      ),
+                                  "Update Profile",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    letterSpacing: 2.0,
+                                  ),
+                                ),
                               ),
                             ),
                           ),
@@ -213,7 +213,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
       await FirebaseFirestore.instance
           .collection('scores')
           .where('userEmail',
-              isEqualTo: FirebaseAuth.instance.currentUser?.email)
+          isEqualTo: FirebaseAuth.instance.currentUser?.email)
           .get()
           .then((querySnapshot) {
         querySnapshot.docs.forEach((doc) {
@@ -259,3 +259,4 @@ class _UpdateProfileState extends State<UpdateProfile> {
     }
   }
 }
+

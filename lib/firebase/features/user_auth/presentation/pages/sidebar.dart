@@ -15,7 +15,7 @@ import 'package:first_project/side_bar/about.dart';
 import 'package:first_project/side_bar/help.dart';
 
 import '../../../../../enums/enums.dart';
-import '../pages/login_page.dart';
+import 'login_page.dart';
 
 class SideBar extends StatefulWidget {
   const SideBar({Key? key}) : super(key: key);
@@ -30,6 +30,8 @@ class _SideBarState extends State<SideBar> {
   late String _middleInitial;
   late String _lastName;
   File? _image;
+  bool _isProfileImageLoaded = false; // Flag to track if profile image is loaded
+
 
   @override
   void initState() {
@@ -38,14 +40,26 @@ class _SideBarState extends State<SideBar> {
     _firstName = '';
     _middleInitial = '';
     _lastName = '';
-    _fetchNameFromFirestore();
+    if (!_isProfileImageLoaded) {
+      _fetchNameFromFirestore();
+    }
   }
+
 
   @override
   void dispose() {
     _nameController.dispose();
     super.dispose();
   }
+
+  // @override
+  // void didChangeDependencies() {
+  //   super.didChangeDependencies();
+  //   // Fetch profile information only when the widget is first built
+  //   if (!_isProfileImageLoaded) {
+  //     _fetchNameFromFirestore();
+  //   }
+  // }
 
   void _fetchNameFromFirestore() async {
     String? currentUserEmail = FirebaseAuth.instance.currentUser?.email;
@@ -65,8 +79,11 @@ class _SideBarState extends State<SideBar> {
             _lastName = querySnapshot.docs.first['last_name'];
             _nameController.text = '$_firstName $_middleInitial. $_lastName';
           });
-          // Load ng profile image URL galing sa Firestore
-          loadProfileImage();
+
+          // Load profile image kapag di pa na loload, load once
+          if (!_isProfileImageLoaded) {
+            loadProfileImage(); // Load ng profile image URL galing sa Firestore
+          }
         }
       } catch (e) {
         print('Error fetching name: $e');
@@ -87,6 +104,7 @@ class _SideBarState extends State<SideBar> {
       if (cachedImageURL != null) {
         setState(() {
           _image = File(cachedImageURL);
+          _isProfileImageLoaded = true; //this is set to true para ma make sure na once lang mag loload ang image.
         });
       } else {
         try {
@@ -99,6 +117,7 @@ class _SideBarState extends State<SideBar> {
           await prefs.setString(cacheKey, downloadURL); // Make sure to await here
           setState(() {
             _image = File.fromUri(Uri.parse(downloadURL));
+            _isProfileImageLoaded = true; //this is set to true para ma make sure na once lang mag loload ang image.
           });
         } catch (e) {
           print('Error loading profile image: $e');
@@ -174,12 +193,27 @@ class _SideBarState extends State<SideBar> {
     }
   }
 
+  // Define the updateProfileData function
+  void updateProfileData(Map<String, dynamic> updatedData) {
+    // Implement the logic to update the profile data here
+    // For example, you can update the name displayed in the sidebar
+    setState(() {
+      _firstName = updatedData['first_name'];
+      _middleInitial = updatedData['middle_initial'];
+      _lastName = updatedData['last_name'];
+      _nameController.text = '$_firstName $_middleInitial. $_lastName';
+      //
+    });
+  }
+
   void _onItemTapped(BuildContext context, SideBarSection section) {
     switch (section) {
       case SideBarSection.updateProfile:
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => UpdateProfile()),
+          MaterialPageRoute(builder: (context) => UpdateProfile(updateProfileData: updateProfileData,)),
+
+
         );
         break;
       case SideBarSection.about:
