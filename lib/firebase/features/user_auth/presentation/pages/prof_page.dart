@@ -3,50 +3,84 @@ import 'package:flutter/material.dart';
 class ProfessorHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Professor Home'),
+    return MaterialApp(
+      theme: ThemeData.dark().copyWith(
+        primaryColor: Color(0xFF102027), // Dark Blue
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'Welcome, Professor!',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Professor Home'),
+        ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Welcome, Professor!',
+                style: TextStyle(
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                // Add functionality here
-              },
-              child: Text('View Courses'),
-            ),
-            SizedBox(height: 10),
-            ElevatedButton(
-              onPressed: () {
-                // Add functionality here
-              },
-              child: Text('View Students'),
-            ),
-            SizedBox(height: 10),
-            ElevatedButton(
-              onPressed: () {
-                // Add functionality here
-              },
-              child: Text('Upload Grades'),
-            ),
-            // Add more buttons or widgets as needed
-          ],
+              SizedBox(height: 40),
+              ElevatedButton(
+                onPressed: () {
+                  // Add functionality here
+                },
+                style: ElevatedButton.styleFrom(
+                  primary: Color(0xFF4CAF50), // Green
+                  padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                child: Text(
+                  'View Courses',
+                  style: TextStyle(fontSize: 18),
+                ),
+              ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  // Add functionality here
+                },
+                style: ElevatedButton.styleFrom(
+                  primary: Color(0xFF4CAF50), // Green
+                  padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                child: Text(
+                  'View Students',
+                  style: TextStyle(fontSize: 18),
+                ),
+              ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  // Add functionality here
+                },
+                style: ElevatedButton.styleFrom(
+                  primary: Color(0xFF4CAF50), // Green
+                  padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                child: Text(
+                  'Upload Grades',
+                  style: TextStyle(fontSize: 18),
+                ),
+              ),
+              // Add more buttons or widgets as needed
+            ],
+          ),
         ),
       ),
     );
   }
 }
-
 class FadePageRoute<T> extends MaterialPageRoute<T> {
   FadePageRoute({required WidgetBuilder builder, RouteSettings? settings})
       : super(builder: builder, settings: settings);

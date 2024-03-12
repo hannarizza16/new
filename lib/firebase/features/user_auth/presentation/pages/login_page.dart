@@ -222,7 +222,7 @@ class _LoginPageState extends State<LoginPage> {
         String email = user.email ?? '';
 
         // Check if email is for a student
-        if (email.endsWith('@rtu.edu.ph')) {
+        if (email.endsWith('@rtu.edu.ph') || email.endsWith('@gmail.com')) {
           // Check if the user is a student
           QuerySnapshot studentSnapshot = await FirebaseFirestore.instance
               .collection('students')
@@ -239,7 +239,7 @@ class _LoginPageState extends State<LoginPage> {
           }
         }
         // Check if email is for a professor
-        if (email.endsWith('@rtu.edu.ph')) {
+        if (email.endsWith('@rtu.edu.ph') || email.endsWith('@rtu.edu.ph')) {
           // Check if the user is a professor
           QuerySnapshot professorSnapshot = await FirebaseFirestore.instance
               .collection('professor_instructor')

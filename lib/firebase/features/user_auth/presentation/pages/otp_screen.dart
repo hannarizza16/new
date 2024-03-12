@@ -5,6 +5,7 @@ import 'dart:async';
 
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:first_project/firebase/features/user_auth/presentation/pages/login_page.dart';
 import 'package:first_project/main_profile/particles_fly.dart';
 import 'package:first_project/firebase/features/user_auth/presentation/pages/home_page.dart';
 import 'package:flutter/material.dart';
@@ -114,14 +115,14 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
     final auth = FirebaseAuth.instance.currentUser!;
     await auth.sendEmailVerification();
     setState(() {
-      verificationMessage = 'Your account is being verifie';
+      verificationMessage = 'Your account is being verified';
     });
   }
 
   void navigateToHomePage() {
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => MainHomePage()),
+      MaterialPageRoute(builder: (context) => LoginPage()),
     );
   }
 
