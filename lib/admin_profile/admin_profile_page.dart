@@ -2,20 +2,20 @@ import 'package:first_project/firebase/features/user_auth/presentation/widgets/d
 import 'package:first_project/extension/prof_bottom_nav_ext.dart';
 import 'package:first_project/enums/enums.dart';
 import 'package:flutter/material.dart';
-import 'package:first_project/professors_profile/prof_sidebar.dart';
+import 'package:first_project/admin_profile/admin_sidebar.dart';
 import 'package:first_project/admin_profile/admin_bottom/list_bottom_nav.dart';
 import 'package:first_project/admin_profile/admin_bottom/accounts_bottom.dart';
 
 
 
-class ProfessorHomePage extends StatefulWidget {
-  const ProfessorHomePage({Key? key}) : super(key: key);
+class AdminHomePage extends StatefulWidget {
+  const AdminHomePage({Key? key}) : super(key: key);
 
   @override
-  State<ProfessorHomePage> createState() => _ProfessorHomePageState();
+  State<AdminHomePage> createState() => _AdminHomePageState();
 }
 
-class _ProfessorHomePageState extends State<ProfessorHomePage> {
+class _AdminHomePageState extends State<AdminHomePage> {
   final _adminBottomScreen = [
     AdminBottomAccountScreen(),
     AdminBottomListScreen(),
@@ -97,7 +97,7 @@ class _ProfessorHomePageState extends State<ProfessorHomePage> {
         return shouldLogout ?? false;
       },
       child: Scaffold(
-        drawer: const ProfessorSideBar(
+        drawer: const AdminSideBar(
 
         ),
         appBar: AppBar(
