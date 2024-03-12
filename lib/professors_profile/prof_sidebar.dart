@@ -174,12 +174,25 @@ class _ProfessorSideBarState extends State<ProfessorSideBar> {
     }
   }
 
+  // Define the updateProfileData function
+  void updateProfileData(Map<String, dynamic> updatedData) {
+    // Implement the logic to update the profile data here
+    // For example, you can update the name displayed in the sidebar
+    setState(() {
+      _firstName = updatedData['first_name'];
+      _middleInitial = updatedData['middle_initial'];
+      _lastName = updatedData['last_name'];
+      _nameController.text = '$_firstName $_middleInitial. $_lastName';
+      //
+    });
+  }
+
   void _onItemTapped(BuildContext context, SideBarSection section) {
     switch (section) {
       case SideBarSection.updateProfile:
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => ProfUpdateProfile()),
+          MaterialPageRoute(builder: (context) => ProfUpdateProfile(updateProfileData: updateProfileData,)),
         );
         break;
       // case SideBarSection.about:

@@ -26,7 +26,13 @@ class _AllLanguagesState extends State<AllLanguages> {
   static const Color defaultSelectedButtonColor = Colors.transparent;
   static const Color selectedDefaultButtonTextColor = Colors.black;
   static const Color selectedButtonTextColor = Color(0xFFFFCC70); //yellow
-  static const Color darkBlue = Color(0xFF0C356A); //card color
+  static const Color cardContainer = Color(0xFF0C356A); //card color
+  static const Color borderSide = Color(0xFF096E9C6);
+  static const Color textCourses = Color(0xFF0C356A);
+  static const Color textSubjectCourses = Color(0xFFFFCC70);
+  static const Color textSubjectInfo = Colors.white;
+
+
 
   static final _viewLanguageScreen = [
     const CLanguage(),
@@ -114,7 +120,7 @@ class _AllLanguagesState extends State<AllLanguages> {
                       child: Text(
                         'Courses',
                         style: TextStyle(
-                          color: Color(0xFF0C356A),
+                          color: textCourses,
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                         ),
@@ -141,11 +147,11 @@ class _AllLanguagesState extends State<AllLanguages> {
                                 SubjectSection.values[index].value;
                             return Card(
                               elevation: 10,
-                              color: darkBlue,
+                              color: cardContainer,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20),
                                 side: const BorderSide(
-                                  color: Color(0xFF096E9C6), // Set the color using Color object
+                                  color: borderSide, // Set the color using Color object
                                   width: 3,
                                 ),
                               ),
@@ -175,7 +181,7 @@ class _AllLanguagesState extends State<AllLanguages> {
                                               style: const TextStyle(
                                                 fontSize: 15,
                                                 fontWeight: FontWeight.w500,
-                                                color: Color(0xFFFFCC70),
+                                                color: textSubjectCourses,
                                               ),
                                               overflow: TextOverflow.ellipsis,
                                               maxLines: 2,
@@ -193,7 +199,7 @@ class _AllLanguagesState extends State<AllLanguages> {
                                                     : "Empower computers to learn and adapt autonomously.",
                                                 style: const TextStyle(
                                                   fontSize: 12,
-                                                  color: Colors.white, // Change color if necessary
+                                                  color: textSubjectInfo, // Change color if necessary
                                                 ),
                                               ),
                                             ),
