@@ -119,7 +119,7 @@ class _RecordsBottomScreenState extends State<RecordsBottomScreen> {
         Text(label + ': '),
         DropdownButton<T>(
           value: value,
-          hint: Text('Filter by $label'),
+          hint: Text('None'),
           onChanged: onChanged,
           items: items,
         ),

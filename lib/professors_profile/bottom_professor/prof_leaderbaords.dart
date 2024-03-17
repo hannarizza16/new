@@ -1,10 +1,11 @@
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 
 import 'package:first_project/gradient_background.dart';
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -32,11 +33,28 @@ class ProfLeaderboard extends StatefulWidget {
 class _ProfLeaderboardState extends State<ProfLeaderboard> {
   String selectedCategory = "All";
   String selectedExpertise = "All";
+  late String currentUserEmail; // Variable to store current user's email
+
+  @override
+  void initState() {
+    super.initState();
+    fetchCurrentUserEmail(); // Fetch current user's email when widget initializes
+  }
+
+  Future<void> fetchCurrentUserEmail() async {
+    // Fetch current user's email from Firebase Authentication
+    User? user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      setState(() {
+        currentUserEmail = user.email!;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-      stream: FirebaseFirestore.instance.collection('scores').snapshots(),
+      stream: FirebaseFirestore.instance.collection('scores').where('selected_teacher', isEqualTo: currentUserEmail).snapshots(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(child: CircularProgressIndicator());
