@@ -8,6 +8,7 @@ import 'package:first_project/firebase/features/user_auth/presentation/widgets/f
 import 'package:first_project/firebase/global/common/toast.dart';
 import 'package:first_project/main_profile//particles_fly.dart';
 import 'package:flutter/material.dart';
+import '../../../../../admin_profile/admin_profile_page.dart';
 import '../../firebase_auth_implementation/firebase_auth_services.dart';
 import 'forgot_password.dart';
 import 'home_page.dart';
@@ -22,11 +23,14 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   bool _isSigning = false;
   final FirebaseAuthService _auth = FirebaseAuthService();
-  final TextEditingController _emailController = TextEditingController(text: '2020-103967@rtu.edu.ph');
-  final TextEditingController _passwordController = TextEditingController(text: 'mathew15C.');
+  // final TextEditingController _emailController = TextEditingController(text: '2020-103967@rtu.edu.ph');
+  // final TextEditingController _passwordController = TextEditingController(text: 'mathew15C.');
 
   // final TextEditingController _emailController = TextEditingController(text: 'mrcluntad@rtu.edu.ph');
   // final TextEditingController _passwordController = TextEditingController(text: 'A@12345678');
+
+  final TextEditingController _emailController = TextEditingController(text: 'administrator');
+  final TextEditingController _passwordController = TextEditingController(text: 'Admin@L1b3rtad');
 
   @override
   void dispose() {
@@ -220,6 +224,25 @@ class _LoginPageState extends State<LoginPage> {
     setState(() {
       _isSigning = false;
     });
+
+
+    // Admin credentials
+    if (email == 'administrator' && password == 'Admin@L1b3rtad') {
+      showToast(message: 'Admin login successful');
+      // Navigate to admin page
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => AdminHomePage()),
+      );
+      return;
+    }
+
+    setState(() {
+      _isSigning = false;
+    });
+
+
+
 
 // Inside your _signIn method
     if (user != null) {

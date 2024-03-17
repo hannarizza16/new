@@ -23,7 +23,7 @@ class _AdminHomePageState extends State<AdminHomePage> {
 
   ]; // kung anong pinindot mo na button sa bottom nav //this is home
 
-  int selectedCurrentIndex = 2; // kung anong unang mag pop up pag log in bottom nav bar to.
+  int selectedCurrentIndex = 1; // kung anong unang mag pop up pag log in bottom nav bar to.
 
   Future<bool> _onWillPop() async {
     if (selectedCurrentIndex == 0) {
