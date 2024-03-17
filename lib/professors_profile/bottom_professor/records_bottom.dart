@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:first_project/gradient_background.dart';
 
 class RecordsBottomScreen extends StatefulWidget {
   @override
@@ -15,17 +16,54 @@ class _RecordsBottomScreenState extends State<RecordsBottomScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
+        body: Stack(children: [
+      // Layer 1: Gradient Container
+      const GradientContainer(
+        child: SizedBox.expand(), // Expand to fill the whole screen
+      ),
+      // Layer 2: Image
+
+      Positioned(
+        left: 0, // Align left
+        top: 0, // Align top
+        right: 0, // Align right
+        bottom: 0, // Align bottom
+        child: Opacity(
+          opacity: 0.2, // Specify the opacity value here (0.0 - 1.0)
+          child: Image.asset(
+            'assets/overlay/2.jpg', // Replace with your image path
+            fit: BoxFit.cover,
+          ),
+        ),
+      ),
+      // Layer 2: Image
+      // Layer 3: Other Widgets
+      Column(
         children: [
+          Container(
+            alignment: Alignment.center,
+            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+            child: Text(
+              'Student Record',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Colors.blue,
+                letterSpacing: 1.5,
+              ),
+            ),
+          ),
           SingleChildScrollView(
+            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             scrollDirection: Axis.horizontal,
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 _buildFilterDropdown(
                   'Section',
                   _selectedSection,
                   _buildDropdownItems(),
-                      (String? newValue) {
+                  (String? newValue) {
                     setState(() {
                       _selectedSection = newValue;
                     });
@@ -36,7 +74,7 @@ class _RecordsBottomScreenState extends State<RecordsBottomScreen> {
                   'Year Level',
                   _selectedYearLevel,
                   _buildYearLevelDropdownItems(),
-                      (int? newValue) {
+                  (int? newValue) {
                     setState(() {
                       _selectedYearLevel = newValue;
                     });
@@ -47,7 +85,7 @@ class _RecordsBottomScreenState extends State<RecordsBottomScreen> {
                   'Sort By',
                   _selectedSortBy,
                   _buildSortByDropdownItems(),
-                      (String? newValue) {
+                  (String? newValue) {
                     setState(() {
                       _selectedSortBy = newValue;
                     });
@@ -75,13 +113,16 @@ class _RecordsBottomScreenState extends State<RecordsBottomScreen> {
 
                   return Column(
                     children: documents.map((document) {
-                      Map<String, dynamic> data = document.data() as Map<String, dynamic>;
+                      Map<String, dynamic> data =
+                          document.data() as Map<String, dynamic>;
 
                       // Format the details
                       String fullName =
-                      '${data['lastName'] ?? ''}, ${data['firstName'] ?? ''} ${data['middleInitial'] ?? ''}'.trim();
+                          '${data['lastName'] ?? ''}, ${data['firstName'] ?? ''} ${data['middleInitial'] ?? ''}'
+                              .trim();
                       String section = data['section'] ?? '';
-                      int yearLevel = data['yearLevel'] ?? 0; // Assuming default value is 0
+                      int yearLevel =
+                          data['yearLevel'] ?? 0; // Assuming default value is 0
 
                       return ListTile(
                         onTap: () {
@@ -95,7 +136,8 @@ class _RecordsBottomScreenState extends State<RecordsBottomScreen> {
                             Text('Year Level: $yearLevel'),
                           ],
                         ),
-                        subtitle: Text('Score: ${data['score'] ?? ''}'), // Display the score
+                        subtitle: Text(
+                            'Score: ${data['score'] ?? ''}'), // Display the score
                       );
                     }).toList(),
                   );
@@ -105,15 +147,15 @@ class _RecordsBottomScreenState extends State<RecordsBottomScreen> {
           ),
         ],
       ),
-    );
+    ]));
   }
 
   Widget _buildFilterDropdown<T>(
-      String label,
-      T? value,
-      List<DropdownMenuItem<T>> items,
-      ValueChanged<T?> onChanged,
-      ) {
+    String label,
+    T? value,
+    List<DropdownMenuItem<T>> items,
+    ValueChanged<T?> onChanged,
+  ) {
     return Row(
       children: [
         Text(label + ': '),
@@ -128,7 +170,9 @@ class _RecordsBottomScreenState extends State<RecordsBottomScreen> {
   }
 
   Future<QuerySnapshot> _getRecords() {
-    Query query = FirebaseFirestore.instance.collection('scores').where('selected_teacher', isEqualTo: FirebaseAuth.instance.currentUser!.email);
+    Query query = FirebaseFirestore.instance.collection('scores').where(
+        'selected_teacher',
+        isEqualTo: FirebaseAuth.instance.currentUser!.email);
 
     if (_selectedSection != null) {
       query = query.where('section', isEqualTo: _selectedSection);
@@ -145,10 +189,12 @@ class _RecordsBottomScreenState extends State<RecordsBottomScreen> {
     return query.get();
   }
 
-  void _showDeleteConfirmationDialog(BuildContext context, QueryDocumentSnapshot document) {
+  void _showDeleteConfirmationDialog(
+      BuildContext context, QueryDocumentSnapshot document) {
     showDialog(
       context: context,
-      barrierDismissible: false, // Prevent dismissing the dialog by tapping outside
+      barrierDismissible:
+          false, // Prevent dismissing the dialog by tapping outside
       builder: (context) {
         return DeleteConfirmationDialog(
           document: document,
@@ -176,7 +222,8 @@ class _RecordsBottomScreenState extends State<RecordsBottomScreen> {
     // For now, I'll assume you have a predefined list of year levels
     List<int> yearLevels = [1, 2, 3, 4];
     for (int yearLevel in yearLevels) {
-      items.add(DropdownMenuItem(child: Text(yearLevel.toString()), value: yearLevel));
+      items.add(DropdownMenuItem(
+          child: Text(yearLevel.toString()), value: yearLevel));
     }
     return items;
   }
@@ -198,7 +245,8 @@ class DeleteConfirmationDialog extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _DeleteConfirmationDialogState createState() => _DeleteConfirmationDialogState();
+  _DeleteConfirmationDialogState createState() =>
+      _DeleteConfirmationDialogState();
 }
 
 class _DeleteConfirmationDialogState extends State<DeleteConfirmationDialog> {
@@ -207,9 +255,12 @@ class _DeleteConfirmationDialogState extends State<DeleteConfirmationDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: _showSecondDialog ? Text('Confirm Deletion Again') : Text('Confirm Deletion'),
+      title: _showSecondDialog
+          ? Text('Confirm Deletion Again')
+          : Text('Confirm Deletion'),
       content: _showSecondDialog
-          ? Text('Are you sure you want to delete this record? This action cannot be undone.')
+          ? Text(
+              'Are you sure you want to delete this record? This action cannot be undone.')
           : Text('Are you sure you want to delete this record?'),
       actions: [
         TextButton(
