@@ -2,8 +2,10 @@ import 'package:first_project/extension/admin_bottom_nav_ext.dart';
 import 'package:first_project/enums/enums.dart';
 import 'package:flutter/material.dart';
 import 'package:first_project/admin_profile/admin_sidebar.dart';
-import 'package:first_project/admin_profile/admin_bottom/list_bottom_nav.dart';
-import 'package:first_project/admin_profile/admin_bottom/accounts_bottom.dart';
+import 'package:first_project/admin_profile/admin_bottom/professor_account_bottom.dart';
+import 'package:first_project/admin_profile/admin_bottom/student_accounts_bottom.dart';
+import 'package:first_project/admin_profile/admin_bottom/score_database.dart';
+
 
 
 
@@ -16,8 +18,9 @@ class AdminHomePage extends StatefulWidget {
 
 class _AdminHomePageState extends State<AdminHomePage> {
   final _adminBottomScreen = [
-    AdminBottomAccountScreen(),
-    AdminBottomListScreen(),
+    AdminBottomStudentAccountScreen(),
+    AdminBottomProfessorAccountScreen(),
+    AdminBottomScoreDatabaseScreen(),
 
 
   ]; // kung anong pinindot mo na button sa bottom nav //this is home

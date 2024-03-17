@@ -228,6 +228,7 @@ class _StudentBottomScreenState extends State<StudentBottomScreen> {
                             },
                           );
                         },
+
                         title: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [

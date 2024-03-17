@@ -6,10 +6,13 @@ import 'package:flutter/cupertino.dart';
 extension AdminBottomNavExt on AdminBottomNav {
   IconData get icon {
     switch (this) {
-      case AdminBottomNav.accounts:
+      case AdminBottomNav.studentaccounts:
         return CupertinoIcons.person_3_fill;
-      case AdminBottomNav.list:
+      case AdminBottomNav.professoraccount:
         return CupertinoIcons.square_list_fill;
+      case AdminBottomNav.score:
+        return CupertinoIcons.square_list_fill;
+
 
     }
   }
