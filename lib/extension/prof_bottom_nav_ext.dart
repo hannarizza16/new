@@ -6,6 +6,8 @@ import 'package:flutter/cupertino.dart';
 extension ProfBottomNavExt on ProfBottomNav {
   IconData get icon {
     switch (this) {
+      case ProfBottomNav.leaderboard:
+        return Icons.bar_chart;
       case ProfBottomNav.challenges:
         return CupertinoIcons.gamecontroller_alt_fill;
       case ProfBottomNav.students:

@@ -60,6 +60,7 @@ enum SubjectSection {
 }
 
 enum ProfBottomNav {
+  leaderboard('Leaderboards'),
   challenges('Challenges'),
   students('Students'),
   records('Records');

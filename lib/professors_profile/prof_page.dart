@@ -1,3 +1,4 @@
+import 'package:first_project/professors_profile/bottom_professor/prof_leaderbaords.dart';
 import 'package:first_project/professors_profile/bottom_professor/challenges_professor_bottom.dart';
 import 'package:first_project/professors_profile/bottom_professor/students_bottom.dart';
 import 'package:first_project/professors_profile/bottom_professor/records_bottom.dart';
@@ -6,6 +7,7 @@ import 'package:first_project/extension/prof_bottom_nav_ext.dart';
 import 'package:first_project/enums/enums.dart';
 import 'package:flutter/material.dart';
 import 'package:first_project/professors_profile/prof_sidebar.dart';
+
 
 class ProfessorHomePage extends StatefulWidget {
   const ProfessorHomePage({Key? key}) : super(key: key);
@@ -16,6 +18,7 @@ class ProfessorHomePage extends StatefulWidget {
 
 class _ProfessorHomePageState extends State<ProfessorHomePage> {
   final _profBottomScreen = [
+    ProfLeaderboardScreen(),
     ProfessorChallengesScreen(),
     StudentBottomScreen(),
     RecordsBottomScreen(),

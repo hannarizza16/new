@@ -214,7 +214,8 @@ class _ProfessorSideBarState extends State<ProfessorSideBar> {
                       ),
                       ...SideBarSection.values // this section hides the about, logout, help in the list and left the update profile only
                           .where((section) =>
-                      section != SideBarSection.about &&
+                      section !=  SideBarSection.updateProfile &&
+                      section !=  SideBarSection.about &&
                           section != SideBarSection.help &&
                           section != SideBarSection.logout)
                           .map(
