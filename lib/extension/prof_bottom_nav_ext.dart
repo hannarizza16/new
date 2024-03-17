@@ -8,8 +8,6 @@ extension ProfBottomNavExt on ProfBottomNav {
     switch (this) {
       case ProfBottomNav.leaderboard:
         return Icons.bar_chart;
-      case ProfBottomNav.challenges:
-        return CupertinoIcons.gamecontroller_alt_fill;
       case ProfBottomNav.students:
         return CupertinoIcons.person_3_fill;
       case ProfBottomNav.records:

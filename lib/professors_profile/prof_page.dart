@@ -1,5 +1,4 @@
 import 'package:first_project/professors_profile/bottom_professor/prof_leaderbaords.dart';
-import 'package:first_project/professors_profile/bottom_professor/challenges_professor_bottom.dart';
 import 'package:first_project/professors_profile/bottom_professor/students_bottom.dart';
 import 'package:first_project/professors_profile/bottom_professor/records_bottom.dart';
 import 'package:first_project/firebase/features/user_auth/presentation/widgets/draggable_fab.dart';
@@ -19,7 +18,6 @@ class ProfessorHomePage extends StatefulWidget {
 class _ProfessorHomePageState extends State<ProfessorHomePage> {
   final _profBottomScreen = [
     ProfLeaderboardScreen(),
-    ProfessorChallengesScreen(),
     StudentBottomScreen(),
     RecordsBottomScreen(),
 
