@@ -152,6 +152,7 @@ class _RecordsBottomScreenState extends State<RecordsBottomScreen> {
                       );
                     }).toList(),
                   );
+
                 },
               ),
             ),
