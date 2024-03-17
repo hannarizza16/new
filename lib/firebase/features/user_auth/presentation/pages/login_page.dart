@@ -22,10 +22,11 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   bool _isSigning = false;
   final FirebaseAuthService _auth = FirebaseAuthService();
-  final TextEditingController _emailController =
-  TextEditingController(text: 'cjevardome@rtu.edu.ph');
-  final TextEditingController _passwordController =
-  TextEditingController(text: 'ggggg@');
+  final TextEditingController _emailController = TextEditingController(text: '2020-103967@rtu.edu.ph');
+  final TextEditingController _passwordController = TextEditingController(text: 'mathew15C.');
+
+  // final TextEditingController _emailController = TextEditingController(text: 'mrcluntad@rtu.edu.ph');
+  // final TextEditingController _passwordController = TextEditingController(text: 'A@12345678');
 
   @override
   void dispose() {
@@ -118,16 +119,15 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     child: Center(
                       child: _isSigning
-                          ? const CircularProgressIndicator(
-                          color: Colors.white)
+                          ? const CircularProgressIndicator(color: Colors.white)
                           : const Text(
-                        "Log In",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 2.0,
-                        ),
-                      ),
+                              "Log In",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                letterSpacing: 2.0,
+                              ),
+                            ),
                     ),
                   ),
                 ),
@@ -153,7 +153,8 @@ class _LoginPageState extends State<LoginPage> {
                           onTap: () {
                             Navigator.push(
                               context,
-                              FadePageRoute(builder: (context) => const SignUpPage()),
+                              FadePageRoute(
+                                  builder: (context) => const SignUpPage()),
                             );
                           },
                           child: const Text(
@@ -164,13 +165,18 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                           ),
                         ),
-                        const SizedBox(width: 5), // nilabas sa gesture detector para maging plain text pero under row pa din sila
+                        const SizedBox(
+                            width:
+                                5), // nilabas sa gesture detector para maging plain text pero under row pa din sila
                         const Text("|"),
-                        GestureDetector( // then nag create ng another gesture detector para sa another text na may pupuntahan
+                        GestureDetector(
+                          // then nag create ng another gesture detector para sa another text na may pupuntahan
                           onTap: () {
                             Navigator.push(
                               context,
-                              FadePageRoute(builder: (context) => const ProfessorSignUpPage()),
+                              FadePageRoute(
+                                  builder: (context) =>
+                                      const ProfessorSignUpPage()),
                             );
                           },
                           child: const Text(
@@ -180,12 +186,11 @@ class _LoginPageState extends State<LoginPage> {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                        ),// Plain text next to "Student"
+                        ), // Plain text next to "Student"
                       ],
                     ),
                   ],
                 ),
-
               ],
             ),
           ],
@@ -262,12 +267,8 @@ class _LoginPageState extends State<LoginPage> {
         showToast(message: "Email is not verified");
       }
     }
-
-    }
-
-
+  }
 }
-
 
 class FadePageRoute<T> extends MaterialPageRoute<T> {
   FadePageRoute({required WidgetBuilder builder, RouteSettings? settings})

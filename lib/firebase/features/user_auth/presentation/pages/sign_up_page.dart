@@ -22,14 +22,13 @@ class _SignUpPageState extends State<SignUpPage> {
   final FirebaseAuthService _auth = FirebaseAuthService();
 
   final TextEditingController _studentIDController = TextEditingController();
-  final TextEditingController _emailController =
-      TextEditingController(text: '@rtu.edu.ph');
+  final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _firstNameController = TextEditingController();
   final TextEditingController _lastNameController = TextEditingController();
   final TextEditingController _middleIntController = TextEditingController();
   final TextEditingController _confirmPasswordController =
-      TextEditingController();
+  TextEditingController();
 
   bool isSigningUp = false;
   bool isChecked = false;
@@ -83,7 +82,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         FormContainerWidget(
                           controller: _lastNameController,
                           labelText: "Last Name",
-                          hintText: "Rizal",
+                          hintText: "Last Name",
                           isPasswordField: false,
                         ),
                         const SizedBox(
@@ -92,17 +91,18 @@ class _SignUpPageState extends State<SignUpPage> {
                         FormContainerWidget(
                           controller: _firstNameController,
                           labelText: "First Name",
-                          hintText: "Jose",
+                          hintText: "First Name",
                           isPasswordField: false,
                         ),
                         const SizedBox(
                           height: 10,
                         ),
-                        FormContainerWidget(
+                        middleInitialField(
                           controller: _middleIntController,
                           labelText: "Middle Initial",
-                          hintText: "P",
+                          hintText: "Middle Initial",
                           isPasswordField: false,
+                          maxLength : 1,
                         ),
                         const SizedBox(
                           height: 10,
@@ -110,7 +110,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         FormContainerWidget(
                           controller: _studentIDController,
                           labelText: "Student Number",
-                          hintText: "2023-102345",
+                          hintText: "Student Number",
                           isPasswordField: false,
                         ),
                         const SizedBox(
@@ -119,7 +119,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         FormContainerWidget(
                           controller: _emailController,
                           labelText: "School Email",
-                          hintText: "jrizal@rtu.edu.ph",
+                          hintText: "School Email",
                           isPasswordField: false,
                         ),
                         const SizedBox(
@@ -132,7 +132,6 @@ class _SignUpPageState extends State<SignUpPage> {
                           isPasswordField: true,
                         ),
 
-
                         //PASSWORD VALIDATION CONDITION STATEMENT
                         Row(
                           children: [
@@ -140,33 +139,33 @@ class _SignUpPageState extends State<SignUpPage> {
                               alignment: Alignment.centerLeft,
                               child: Text(
                                 _passwordController.text.isEmpty
-                                    ? 'create a secure and valid password'
+                                    ? 'Create a secure and valid password'
                                     : !_passwordController.text
-                                            .contains(RegExp(r'[A-Z]'))
-                                        ? 'Password must contain an uppercase letter'
-                                        : !_passwordController.text.contains(
-                                                RegExp(
-                                                    r'[!@#$%^&*(),.?":{}|<>]'))
-                                            ? 'Password must contain special character'
-                                            : !_passwordController.text
-                                                    .contains(RegExp(r'[0-9]'))
-                                                ? 'Password must contain at least one number'
-                                                : 'Password secure',
+                                    .contains(RegExp(r'[A-Z]'))
+                                    ? 'Password must contain an uppercase letter'
+                                    : !_passwordController.text.contains(
+                                    RegExp(
+                                        r'[!@#$%^&*(),.?":{}|<>]'))
+                                    ? 'Password must contain special character'
+                                    : !_passwordController.text
+                                    .contains(RegExp(r'[0-9]'))
+                                    ? 'Password must contain at least one number'
+                                    : 'Password secure',
                                 style: TextStyle(
                                   color: _passwordController.text.isEmpty
                                       ? Colors.black54
                                       : !_passwordController.text
-                                              .contains(RegExp(r'[A-Z]'))
-                                          ? Colors.red
-                                          : !_passwordController.text.contains(
-                                                  RegExp(
-                                                      r'[!@#$%^&*(),.?":{}|<>]'))
-                                              ? Colors.red
-                                              : !_passwordController.text
-                                                      .contains(
-                                                          RegExp(r'[0-9]'))
-                                                  ? Colors.red
-                                                  : Colors.green,
+                                      .contains(RegExp(r'[A-Z]'))
+                                      ? Colors.red
+                                      : !_passwordController.text.contains(
+                                      RegExp(
+                                          r'[!@#$%^&*(),.?":{}|<>]'))
+                                      ? Colors.red
+                                      : !_passwordController.text
+                                      .contains(
+                                      RegExp(r'[0-9]'))
+                                      ? Colors.red
+                                      : Colors.green,
                                 ),
                               ),
                             ),
@@ -229,14 +228,14 @@ class _SignUpPageState extends State<SignUpPage> {
                             child: Center(
                               child: isSigningUp
                                   ? const CircularProgressIndicator(
-                                      color: Colors.white)
+                                  color: Colors.white)
                                   : const Text(
-                                      "Sign Up",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold,
-                                          letterSpacing: 2.0),
-                                    ),
+                                "Sign Up",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    letterSpacing: 2.0),
+                              ),
                             ),
                           ),
                         ),
@@ -279,6 +278,28 @@ class _SignUpPageState extends State<SignUpPage> {
       ),
     );
   }
+  Widget middleInitialField({
+    required TextEditingController controller,
+    required String labelText,
+    required String hintText,
+    required bool isPasswordField,
+    int? maxLength,
+  }) {
+    return TextField(
+      controller: controller,
+      obscureText: isPasswordField,
+      maxLength: maxLength,
+      decoration: InputDecoration(
+        labelText: labelText,
+        hintText: hintText,
+        border: OutlineInputBorder(),
+        filled: true,
+        fillColor: Colors.deepPurple[50], // Adjust the shade of gray as needed
+        counterText: '', // Hides the character count display
+      ),
+    );
+  }
+
 
   void _signUp() async {
     setState(() {
@@ -301,7 +322,8 @@ class _SignUpPageState extends State<SignUpPage> {
       return;
     }
 
-    if (initial.length != 1 || !initial.contains(RegExp(r'[a-zA-Z]'))) {
+    // Check if middle initial is provided and validate its format
+    if (initial.isNotEmpty && (initial.length != 1 || !initial.contains(RegExp(r'[a-zA-Z]')))) {
       setState(() {
         isSigningUp = false;
       });
@@ -326,12 +348,25 @@ class _SignUpPageState extends State<SignUpPage> {
         return;
       }
 
-      if (!password.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) {
+
+      if (password.length <=5) {
+        setState(() {
+          isSigningUp = false;
+        });
+        showToast(message: "Password must be at least 6 characters long");
+        return;
+      }
+
+
+      // Check for additional password requirements
+      if (!RegExp(r'^(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[!@#$%^&*(),.?":{}|<>]).{3,}$')
+          .hasMatch(password)) {
         setState(() {
           isSigningUp = false;
         });
         showToast(
-            message: "Password must contain at least one special character");
+            message:
+            "Password must contain at least one Uppercase, number, and 3 special character");
         return;
       }
 
@@ -368,13 +403,13 @@ class _SignUpPageState extends State<SignUpPage> {
       });
       showToast(
           message:
-              "Please use an RTU email address (e.g., yourname@rtu.edu.ph).");
+          "Please use an RTU email address (e.g., yourname@rtu.edu.ph).");
     }
   }
 
   Future<void> saveUserDataToFirestore(String studentID, String email) async {
     CollectionReference collRef =
-        FirebaseFirestore.instance.collection('students');
+    FirebaseFirestore.instance.collection('students');
     await collRef.add({
       'email': _emailController.text,
       'student_number': _studentIDController.text,
@@ -384,7 +419,6 @@ class _SignUpPageState extends State<SignUpPage> {
       'confirm_password': _confirmPasswordController.text,
       'password': _passwordController.text,
       'isStudent': true, // Add the isStudent identifier here
-
     });
   }
 }
@@ -394,21 +428,21 @@ class FadePageRoute<T> extends PageRouteBuilder<T> {
 
   FadePageRoute({required this.builder})
       : super(
-          pageBuilder: (
-            BuildContext context,
-            Animation<double> animation,
-            Animation<double> secondaryAnimation,
-          ) =>
-              builder(context),
-          transitionsBuilder: (
-            BuildContext context,
-            Animation<double> animation,
-            Animation<double> secondaryAnimation,
-            Widget child,
-          ) =>
-              FadeTransition(
-            opacity: animation,
-            child: child,
-          ),
-        );
+    pageBuilder: (
+        BuildContext context,
+        Animation<double> animation,
+        Animation<double> secondaryAnimation,
+        ) =>
+        builder(context),
+    transitionsBuilder: (
+        BuildContext context,
+        Animation<double> animation,
+        Animation<double> secondaryAnimation,
+        Widget child,
+        ) =>
+        FadeTransition(
+          opacity: animation,
+          child: child,
+        ),
+  );
 }

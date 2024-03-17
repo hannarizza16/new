@@ -211,10 +211,12 @@ class _LeaderboardState extends State<Leaderboard> {
                           ),
                         ),
                         title: Text(
-                            '${player['lastName']}, ${player['firstName']}'),
+                          '${player['lastName']}, ${player['firstName']}',
+                          style: TextStyle(color: Colors.black), // Adjust text color as needed
+                        ),
                         trailing: Text(
-                          '${player['score']}',
-                          style: scoreTextStyle,
+                          "Score: ${player['score']}",
+                          style: TextStyle(fontSize: 15, color: Colors.deepPurple[600]), // Set score text color to indigo[300]
                         ),
                       );
                     },

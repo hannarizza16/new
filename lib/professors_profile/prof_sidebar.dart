@@ -52,7 +52,7 @@ class _ProfessorSideBarState extends State<ProfessorSideBar> {
 
     if (currentUserEmail != null) {
       CollectionReference users =
-      FirebaseFirestore.instance.collection('students');
+      FirebaseFirestore.instance.collection('professor_instructor');
 
       try {
         QuerySnapshot querySnapshot =
@@ -66,7 +66,7 @@ class _ProfessorSideBarState extends State<ProfessorSideBar> {
             _nameController.text = '$_firstName $_middleInitial. $_lastName';
           });
           // Load ng profile image URL galing sa Firestore
-          loadProfileImage();
+
         }
       } catch (e) {
         print('Error fetching name: $e');
@@ -76,90 +76,7 @@ class _ProfessorSideBarState extends State<ProfessorSideBar> {
     }
   }
 
-  void loadProfileImage() async {
-    String? currentUserEmail = FirebaseAuth.instance.currentUser?.email;
 
-    if (currentUserEmail != null) {
-      String cacheKey = 'profile_image_url_$currentUserEmail';
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      String? cachedImageURL = prefs.getString(cacheKey);
-
-      if (cachedImageURL != null) {
-        setState(() {
-          _image = File(cachedImageURL);
-        });
-      } else {
-        try {
-          String fileName = currentUserEmail;
-          firebase_storage.Reference storageReference = firebase_storage
-              .FirebaseStorage.instance
-              .ref()
-              .child('profile_images/$fileName');
-          String downloadURL = await storageReference.getDownloadURL();
-          await prefs.setString(cacheKey, downloadURL); // Make sure to await here
-          setState(() {
-            _image = File.fromUri(Uri.parse(downloadURL));
-          });
-        } catch (e) {
-          print('Error loading profile image: $e');
-        }
-      }
-    } else {
-      print('No current user or user email found.');
-    }
-  }
-
-  Future<void> getImage() async {
-    final picker = ImagePicker();
-    final pickedFile = await picker.getImage(source: ImageSource.gallery);
-
-    setState(() {
-      if (pickedFile != null) {
-        _image = File(pickedFile.path);
-        // Upload ng larawan sa Firebase Storage pagkatapos pumili ng larawan
-        uploadImageToFirebaseStorage(); // Dito dapat walang argumento
-      } else {
-        print('No image selected.');
-      }
-    });
-  }
-
-  Future<void> uploadImageToFirebaseStorage() async {
-    String? currentUserEmail = FirebaseAuth.instance.currentUser?.email;
-
-    if (currentUserEmail != null && _image != null) {
-      String fileName = currentUserEmail + '_profile_image';
-      firebase_storage.Reference storageReference = firebase_storage
-          .FirebaseStorage.instance
-          .ref()
-          .child('profile_images/$fileName');
-      firebase_storage.UploadTask uploadTask =
-      storageReference.putFile(_image!);
-
-      await uploadTask.whenComplete(() => null);
-
-      // Kapag natapos na ang pag-upload, tawagin ang function para i-update ang profile image URL sa Firestore
-      String downloadURL = await storageReference.getDownloadURL();
-
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      String cacheKey = 'profile_image_url_$currentUserEmail';
-      prefs.setString(cacheKey, downloadURL);
-
-      updateProfileImageURL(downloadURL);
-
-      // Hindi na natin kailangan i-set ang _image variable dito dahil hindi naman ito ginagamit
-    }
-  }
-
-  Future<void> updateProfileImageURL(String imageURL) async {
-    String? userId = FirebaseAuth.instance.currentUser!.uid;
-    DocumentReference userRef =
-    FirebaseFirestore.instance.collection('students').doc(userId);
-
-    await userRef.update({'profile_image_url': imageURL});
-
-    print('Profile image URL updated in Firestore');
-  }
 
   Future<String?> _getUserEmail() async {
     // Get the current user
@@ -195,16 +112,16 @@ class _ProfessorSideBarState extends State<ProfessorSideBar> {
           MaterialPageRoute(builder: (context) => ProfUpdateProfile(updateProfileData: updateProfileData,)),
         );
         break;
-      // case SideBarSection.about:
-      //   Navigator.push(
-      //     context,
-      //     MaterialPageRoute(builder: (context) => AboutProfile()),
-      //   );
-      // case SideBarSection.help:
-      //   Navigator.push(
-      //     context,
-      //     MaterialPageRoute(builder: (context) => HelpProfile()),
-      //   );
+    // case SideBarSection.about:
+    //   Navigator.push(
+    //     context,
+    //     MaterialPageRoute(builder: (context) => AboutProfile()),
+    //   );
+    // case SideBarSection.help:
+    //   Navigator.push(
+    //     context,
+    //     MaterialPageRoute(builder: (context) => HelpProfile()),
+    //   );
       case SideBarSection.logout:
         FirebaseAuth.instance.signOut(); // Sign out the user
         Fluttertoast.showToast(
@@ -270,13 +187,19 @@ class _ProfessorSideBarState extends State<ProfessorSideBar> {
                           style: profileTextStyle,
                         ),
                         currentAccountPicture: CircleAvatar(
-                          radius: 50, // Adjust the size here
-                          backgroundImage: _image != null ? NetworkImage(_image!.path) : null,
-                          child: _image == null
-                              ? Icon(Icons.person, size: 50, color: Colors.white) // Display default avatar
-                              : null,
+                          radius: 20, // Adjust the size here
+                          backgroundImage: AssetImage(
+                            'assets/dumpss/lecturer.gif',
+                          ),
+                          backgroundColor: Colors.transparent, // Ensure the background is transparent
+                          // Set fit for the background image
+                          child: ClipOval(
+                            child: Image.asset(
+                              'assets/dumpss/lecturer.gif',
+                              fit: BoxFit.cover,
+                            ),
+                          ),
                         ),
-
                         decoration: BoxDecoration(
                           color: Colors.transparent,
                           image: DecorationImage(

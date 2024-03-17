@@ -1,8 +1,6 @@
-
 library particles_fly;
+
 import 'dart:async';
-
-
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:first_project/firebase/features/user_auth/presentation/pages/login_page.dart';
@@ -14,6 +12,7 @@ class ThreeDotLoader extends StatefulWidget {
   @override
   _ThreeDotLoaderState createState() => _ThreeDotLoaderState();
 }
+
 //hello
 class _ThreeDotLoaderState extends State<ThreeDotLoader>
     with SingleTickerProviderStateMixin {
@@ -24,7 +23,7 @@ class _ThreeDotLoaderState extends State<ThreeDotLoader>
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(seconds:2), // Adjust duration for slower animation
+      duration: Duration(seconds: 2), // Adjust duration for slower animation
     )..repeat();
   }
 
@@ -71,7 +70,7 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
   Timer? timer;
   String verificationMessage = '';
 
-  int countdown = 5;
+  int countdown = 4;
 
   @override
   void initState() {
@@ -84,7 +83,7 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
 
       timer = Timer.periodic(
         Duration(seconds: 3),
-            (_) => checkEmailVerified(),
+        (_) => checkEmailVerified(),
       );
     }
   }
@@ -101,8 +100,12 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
     setState(() {
       isEmailVerified = FirebaseAuth.instance.currentUser!.emailVerified;
       verificationMessage = isEmailVerified
-          ? 'Congratulations! Your account is verified'
-          : 'Your account is being verified, \n Please check you email';
+          ? 'Congratulations! Your account is verified.'
+          '\nPlease Login again'
+          : 'A verification email has been sent\n'
+              'to the address you provided.\n'
+          'To complete the verification process,'
+          '\nplease click the link on your email.';
     });
 
     if (isEmailVerified) {
@@ -130,7 +133,7 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
     const oneSec = Duration(seconds: 1);
     timer = Timer.periodic(
       oneSec,
-          (Timer timer) {
+      (Timer timer) {
         if (countdown == 1) {
           timer.cancel();
           navigateToHomePage();
@@ -148,44 +151,40 @@ class _VerifyEmailPageState extends State<VerifyEmailPage> {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Stack(
-          children: [
-            ParticlesFly(
-              height: size.height,
-              width: size.width,
-              connectDots: true,
-              numberOfParticles: 20,
-              lineColor: Colors.black26,
-              particleColor: Colors.blue,
-            ),
-
-
-      Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(height: size.height * 0.4),
-            ThreeDotLoader(), // Use custom loading animation here
-            SizedBox(height: 10),
-            Text(
-              verificationMessage,
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 20),
-            if (isEmailVerified)
-              Text(
-                'Directing to Home screen in $countdown',
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 15),
-              ),
-          ],
+        body: SingleChildScrollView(
+            child: Stack(
+      children: [
+        ParticlesFly(
+          height: size.height,
+          width: size.width,
+          connectDots: true,
+          numberOfParticles: 20,
+          lineColor: Colors.black26,
+          particleColor: Colors.blue,
         ),
-      ),
-          ],
-        )
-      )
-    );
+        Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(height: size.height * 0.4),
+              ThreeDotLoader(), // Use custom loading animation here
+              SizedBox(height: 10),
+              Text(
+                verificationMessage,
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 20),
+              if (isEmailVerified)
+                Text(
+                  'Directing to Login Page in $countdown',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 15),
+                ),
+            ],
+          ),
+        ),
+      ],
+    )));
   }
 }

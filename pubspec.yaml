@@ -102,6 +102,7 @@ flutter:
   assets:
 
       #wall overlay
+    - assets/dumpss/lecturer.gif
     - assets/overlay/1.png
     - assets/overlay/dots.gif
     - assets/overlay/transparent.gif

@@ -38,15 +38,28 @@ class _StatisticsWidgetState extends State<StatisticsWidget> {
         .collection('scores')
         .where('userEmail', isEqualTo: currentUserEmail)
         .get();
+    List<Map<String, dynamic>> scoresList = [];
+    for (QueryDocumentSnapshot<Map<String, dynamic>> doc in querySnapshot.docs) {
+      Map<String, dynamic> data = doc.data();
+      data['scoreDocumentId'] = doc.id; // Add scoreDocumentId
+      // Fetch selected_teacher from students collection
+      DocumentSnapshot<Map<String, dynamic>> studentSnapshot =
+      await FirebaseFirestore.instance
+          .collection('students')
+          .doc(data['email']) // Use userEmail to fetch student document
+          .get();
+      if (studentSnapshot.exists) {
+        // Add selected_teacher to the data
+        data['selected_teacher'] = studentSnapshot.data()?['selected_teacher'];
+      }
+      scoresList.add(data);
+    }
     setState(() {
-      userScores = querySnapshot.docs.map((doc) {
-        Map<String, dynamic> data = doc.data();
-        data['scoreDocumentId'] = doc.id; // Add scoreDocumentId
-        return data;
-      }).toList();
+      userScores = scoresList;
       userScores.sort((a, b) => b['timestamp'].compareTo(a['timestamp']));
     });
   }
+
 
 
   @override
@@ -150,7 +163,7 @@ class _StatisticsWidgetState extends State<StatisticsWidget> {
                     DateTime dateTime = timestamp.toDate();
                     String formattedDateTime =
                     DateFormat('dd/MM/yyyy hh:mm a').format(dateTime);
-                    int totalQuestions = 20;
+                    int totalQuestions = 10;
                     int perfectScore = totalQuestions * 1;
 
                     Color cardColor = Colors.transparent;
@@ -158,7 +171,7 @@ class _StatisticsWidgetState extends State<StatisticsWidget> {
                       cardColor = Colors.red;
                     } else if (score == perfectScore) {
                       cardColor = Colors.green;
-                    } else if (score <= 10 && score >= 1) {
+                    } else if (score <= 5 && score >= 1) {
                       cardColor = Color(0xFF0C356A);
                     } else {
                       cardColor = Color(0xFF0B60B0);
@@ -207,7 +220,7 @@ class _StatisticsWidgetState extends State<StatisticsWidget> {
                                     ),
                                     SizedBox(height: 8.0),
                                     Text(
-                                      'Score: $score / 20',
+                                      'Score: $score / 10',
                                       style: TextStyle(
                                         fontSize: 18.0,
                                         color: Colors.white,
