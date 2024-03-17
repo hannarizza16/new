@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:first_project/gradient_background.dart';
+import 'package:intl/intl.dart';
 
 class RecordsBottomScreen extends StatefulWidget {
   @override
@@ -12,6 +13,7 @@ class _RecordsBottomScreenState extends State<RecordsBottomScreen> {
   String? _selectedSection;
   int? _selectedYearLevel;
   String? _selectedSortBy;
+
 
   @override
   Widget build(BuildContext context) {
@@ -116,6 +118,14 @@ class _RecordsBottomScreenState extends State<RecordsBottomScreen> {
                       Map<String, dynamic> data =
                           document.data() as Map<String, dynamic>;
 
+                      // Convert timestamp to DateTime
+                      DateTime timestamp = (data['timestamp'] as Timestamp).toDate();
+
+                      // Format the date
+                      String formattedDate =
+                      DateFormat.yMMMd().add_jm().format(timestamp);
+
+
                       // Format the details
                       String fullName =
                           '${data['lastName'] ?? ''}, ${data['firstName'] ?? ''} ${data['middleInitial'] ?? ''}'
@@ -134,6 +144,7 @@ class _RecordsBottomScreenState extends State<RecordsBottomScreen> {
                             Text('Name: $fullName'),
                             Text('Section: $section'),
                             Text('Year Level: $yearLevel'),
+                            Text('Date & Time: $formattedDate'),
                           ],
                         ),
                         subtitle: Text(

@@ -18,9 +18,9 @@ class AdminHomePage extends StatefulWidget {
 
 class _AdminHomePageState extends State<AdminHomePage> {
   final _adminBottomScreen = [
-    AdminBottomStudentAccountScreen(),
-    AdminBottomProfessorAccountScreen(),
-    AdminBottomScoreDatabaseScreen(),
+    AdminBottomStudentAccount(),
+    AdminBottomProfessorAccountState(),
+    AdminBottomScoreDatabase(),
 
 
   ]; // kung anong pinindot mo na button sa bottom nav //this is home

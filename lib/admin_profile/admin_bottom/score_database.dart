@@ -1,43 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
-
-import 'package:first_project/gradient_background.dart';
-
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  runApp(MaterialApp(
-    home: AdminBottomScoreDatabaseScreen(),
-  ));
-}
-
-class AdminBottomScoreDatabaseScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        body: Stack(children: [
-      const GradientContainer(
-        child: SizedBox.expand(), // Expand to fill the whole screen
-      ),
-
-      Positioned(
-        left: 0, // Align left
-        top: 0, // Align top
-        right: 0, // Align right
-        bottom: 0, // Align bottom
-        child: Opacity(
-          opacity: 0.2, // Specify the opacity value here (0.0 - 1.0)
-          child: Image.asset(
-            'assets/overlay/2.jpg', // Replace with your image path
-            fit: BoxFit.cover,
-          ),
-        ),
-      ),
-
-      AdminBottomScoreDatabase(),
-    ]));
-  }
-}
+import 'package:intl/intl.dart';
 
 class AdminBottomScoreDatabase extends StatefulWidget {
   @override
@@ -46,17 +10,128 @@ class AdminBottomScoreDatabase extends StatefulWidget {
 }
 
 class _AdminBottomScoreDatabaseState extends State<AdminBottomScoreDatabase> {
+  String? _selectedSection;
+
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        'This is Score Database ',
-        style: TextStyle(
-          fontSize: 24,
-          fontWeight: FontWeight.bold,
-          color: Colors.black,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  'Section:',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              DropdownButton<String>(
+                value: _selectedSection,
+                onChanged: (newValue) {
+                  setState(() {
+                    _selectedSection = newValue;
+                  });
+                },
+                items: [
+                  DropdownMenuItem(
+                    child: Text("All"),
+                    value: null, // Null indicates all sections
+                  ),
+                  DropdownMenuItem(
+                    child: Text("101P"),
+                    value: "101P",
+                  ),
+                  DropdownMenuItem(
+                    child: Text("102P"),
+                    value: "102P",
+                  ),
+                  DropdownMenuItem(
+                    child: Text("401P"),
+                    value: "401P",
+                  ),
+                  DropdownMenuItem(
+                    child: Text("501P"),
+                    value: "501P",
+                  ),
+                  DropdownMenuItem(
+                    child: Text("801P"),
+                    value: "801P",
+                  ),
+                  // Add more sections as needed
+                ],
+                hint: Text('Select Section'),
+              ),
+            ],
+          ),
         ),
-      ),
+        Expanded(
+          child: StreamBuilder(
+            stream: _selectedSection != null
+                ? FirebaseFirestore.instance
+                .collection('scores')
+                .where('section', isEqualTo: _selectedSection)
+                .orderBy('lastName')
+                .snapshots()
+                : FirebaseFirestore.instance
+                .collection('scores')
+                .orderBy('lastName')
+                .snapshots(),
+            builder:
+                (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+              if (!snapshot.hasData) {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+              return ListView(
+                children: snapshot.data!.docs.map((document) {
+                  Map<String, dynamic> data =
+                  document.data() as Map<String, dynamic>;
+
+                  // Convert timestamp to DateTime
+                  DateTime timestamp =
+                  (data['timestamp'] as Timestamp).toDate();
+
+                  // Format the date
+                  String formattedDate =
+                  DateFormat.yMMMd().add_jm().format(timestamp);
+
+                  // Check if middle initial is null
+                  String middleInitial = data['middleInitial'] != null
+                      ? data['middleInitial']
+                      : '';
+
+                  return ListTile(
+                    title: Text(
+                        '${data['lastName']}, ${data['firstName']} ${middleInitial.isNotEmpty ? middleInitial : ""}'),
+                    subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('User Email: ${data['userEmail']}'),
+                        Text('Year Level: ${data['yearLevel']}'),
+                        Text('Section: ${data['section']}'),
+                        Text('Category: ${data['category']}'),
+                        Text('Expertise: ${data['expertise']}'),
+                        Text('Score: ${data['score']}'),
+                        Text('Date & Time: $formattedDate'),
+                        Text('Total Questions: ${data['totalQuestions']}'),
+                        Text(
+                            'Selected Teacher: ${data['selected_teacher']}'),
+                      ],
+                    ),
+                  );
+                }).toList(),
+              );
+            },
+          ),
+        ),
+      ],
     );
   }
 }
