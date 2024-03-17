@@ -1,5 +1,4 @@
-import 'package:first_project/firebase/features/user_auth/presentation/widgets/draggable_fab.dart';
-import 'package:first_project/extension/prof_bottom_nav_ext.dart';
+import 'package:first_project/extension/admin_bottom_nav_ext.dart';
 import 'package:first_project/enums/enums.dart';
 import 'package:flutter/material.dart';
 import 'package:first_project/admin_profile/admin_sidebar.dart';
@@ -137,7 +136,7 @@ class _AdminHomePageState extends State<AdminHomePage> {
                 currentIndex: selectedCurrentIndex,
                 onTap: (index) =>
                     setState(() => selectedCurrentIndex = index),
-                items: ProfBottomNav.values
+                items: AdminBottomNav.values //important!! this connects the bottom navigation bar
                     .map((nav) => BottomNavigationBarItem(
                   icon: Icon(nav.icon),
                   label: nav.text,
@@ -168,7 +167,6 @@ class _AdminHomePageState extends State<AdminHomePage> {
             ),
           ],
         ),
-        floatingActionButton: const PersonalHelper(),
       ),
     );
   }
