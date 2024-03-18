@@ -64,6 +64,7 @@ dependencies:
   screenshot: ^2.1.0
   path_provider: ^2.0.2
   provider: ^6.1.2
+  video_player: ^2.2.12
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -102,6 +103,7 @@ flutter:
   assets:
 
       #wall overlay
+    - assets/dumpss/splash.mp4
     - assets/dumpss/lecturer.gif
     - assets/overlay/1.png
     - assets/overlay/dots.gif

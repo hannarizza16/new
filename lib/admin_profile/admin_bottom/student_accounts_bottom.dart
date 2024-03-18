@@ -61,12 +61,7 @@ class _AdminBottomStudentAccountState extends State<AdminBottomStudentAccount> {
               _selectedSection = newValue;
             });
           },
-          items: <String>['All', '101P',
-            '102P',
-            '202P',
-            '401P',
-            '501P',
-            '801P'] // Add more sections as needed
+          items: <String>['All', '101P', '102P'] // Add more sections as needed
               .map<DropdownMenuItem<String>>(
                 (String value) => DropdownMenuItem<String>(
               value: value,
@@ -97,44 +92,53 @@ class _AdminBottomStudentAccountState extends State<AdminBottomStudentAccount> {
 
               return ListView(
                 children: snapshot.data!.docs.map((document) {
-                  return ListTile(
-                    title: Text(
-                      '${document['last_name'] ?? ""}, ${document['first_name']} ${document['middle_initial'] ?? ""}',
-                    ),
-                    subtitle: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text('Student Number: ${document['student_number']}'),
-                        Text('Section: ${document['section'] ?? ""}'),
-                        Text('Year Level: ${document['year_level'] ?? ""}'),
-                        Text('Selected Teacher: ${document['selected_teacher'] ?? ""}'),
-                        Text('Email: ${document['email'] ?? ""}'),
-                        InkWell(
-                          onTap: () async {
-                            final email = document['email'];
-                            // Show dialog box for password input
-                            final bool success = await _showPasswordDialog(context);
-                            if (success) {
-                              // Show confirmation dialog
-                              final bool confirmDelete = await _showConfirmationDialog(context);
-                              if (confirmDelete) {
-                                // Delete documents from Firestore
-                                await _deleteUserData(email);
-                                // Delete email from Authentication
-                                FirebaseAuth.instance.currentUser!.delete(); // This will delete the currently signed-in user
+                  final Map<String, dynamic>? data = document.data() as Map<String, dynamic>?; // Explicit cast
+                  if (data != null && data.containsKey('section')) { // Check if 'section' field exists
+                    return ListTile(
+                      title: Text(
+                        '${data['last_name'] ?? ""}, ${data['first_name']} ${data['middle_initial'] ?? ""}',
+                      ),
+                      subtitle: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('Student Number: ${data['student_number']}'),
+                          Text('Section: ${data['section'] ?? ""}'),
+                          Text('Year Level: ${data['year_level'] ?? ""}'),
+                          Text('Selected Teacher: ${data['selected_teacher'] ?? ""}'),
+                          Text('Email: ${data['email'] ?? ""}'),
+                          InkWell(
+                            onTap: () async {
+                              final email = data['email'];
+                              // Show dialog box for password input
+                              final bool success = await _showPasswordDialog(context);
+                              if (success) {
+                                // Show confirmation dialog
+                                final bool confirmDelete = await _showConfirmationDialog(context);
+                                if (confirmDelete) {
+                                  // Delete documents from Firestore
+                                  await _deleteUserData(email);
+                                  // Delete email from Authentication
+                                  FirebaseAuth.instance.currentUser!.delete(); // This will delete the currently signed-in user
+                                }
                               }
-                            }
-                          },
-                          child: Text(
-                            'Delete', // Make 'Delete' clickable
-                            style: TextStyle(color: Colors.red),
+                            },
+                            child: Text(
+                              'Delete', // Make 'Delete' clickable
+                              style: TextStyle(color: Colors.red),
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                  );
+                        ],
+                      ),
+                    );
+                  } else {
+                    // Handle case when 'section' field doesn't exist
+                    return ListTile(
+                      title: Text('Document doesn\'t contain "section" field'),
+                    );
+                  }
                 }).toList(),
               );
+
             },
           ),
         ),
@@ -230,4 +234,4 @@ class _AdminBottomStudentAccountState extends State<AdminBottomStudentAccount> {
       },
     ) ?? false; // Return false if dialog is dismissed
   }
-} //ditooooo den
+}

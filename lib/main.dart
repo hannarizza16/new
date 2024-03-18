@@ -4,8 +4,10 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:first_project/firebase/features/user_auth/presentation/pages/login_page.dart';
 import 'package:first_project/firebase/features/user_auth/presentation/pages/sign_up_page.dart';
-import 'firebase/features/app/splash_screen/splash_screen.dart';
+// import 'firebase/features/app/splash_screen/splash_screen.dart';
 import 'package:permission_handler/permission_handler.dart';
+
+import 'firebase/features/app/splash_screen/splash_screen.dart';
 
 
 void requestPermissions() async {
@@ -42,7 +44,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
-        '/': (context) => const SplashScreen(
+        '/': (context) =>  SplashScreen(
           // Here, you can decide whether to show the LoginPage or HomePage based on user authentication
           child: LoginPage(),
         ),
