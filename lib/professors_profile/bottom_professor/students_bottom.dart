@@ -64,8 +64,15 @@ class _StudentBottomScreenState extends State<StudentBottomScreen> {
               ),
             ),
           ),
+
+          //blue line
+          Divider(
+            color: Colors.blue,
+            thickness: 2.0,
+          ),
+
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 2),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -154,11 +161,9 @@ class _StudentBottomScreenState extends State<StudentBottomScreen> {
                     return Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8.0),
                         child: ListTile(
-
                             title: Container(
                                 padding: EdgeInsets.all(8),
-                                margin: EdgeInsets.symmetric(
-                                    vertical: 1, horizontal: 5),
+                                margin: EdgeInsets.symmetric(horizontal: 5),
                                 decoration: BoxDecoration(
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(8),
@@ -196,7 +201,7 @@ class _StudentBottomScreenState extends State<StudentBottomScreen> {
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(8),
                                         color: Colors
-                                            .blue, // You can change the color here
+                                            .transparent, // You can change the color here
                                       ),
                                       child: ElevatedButton(
                                           onPressed: () {
@@ -204,13 +209,15 @@ class _StudentBottomScreenState extends State<StudentBottomScreen> {
                                               context,
                                               studentData['last_name'],
                                               studentData['first_name'],
-                                              studentData['middle_initial'] ?? '',
+                                              studentData['middle_initial'] ??
+                                                  '',
                                               studentData, // passing of studentData
-
                                             );
-
                                           },
-                                          child: Text('Unenroll'),
+                                          child: Text('Unenroll',
+                                              style: TextStyle(
+                                                color: Colors.red,
+                                              )),
                                           style: ElevatedButton.styleFrom(
                                             primary: Colors
                                                 .transparent, // Remove button background color
@@ -233,29 +240,31 @@ class _StudentBottomScreenState extends State<StudentBottomScreen> {
   }
 }
 
-void _showDeleteConfirmationDialog(BuildContext context, String lastName, String firstName, String middleInitial, DocumentSnapshot studentData)  {
- // passing this as a parameter since it is called in list tile DocumentSnapshot studentData and retrieved the data from the list builder.
+void _showDeleteConfirmationDialog(BuildContext context, String lastName,
+    String firstName, String middleInitial, DocumentSnapshot studentData) {
+  // passing this as a parameter since it is called in list tile DocumentSnapshot studentData and retrieved the data from the list builder.
   showDialog(
     context: context,
     builder: (BuildContext context) {
-      String fullName = '$lastName, $firstName ${middleInitial.isNotEmpty
-          ? middleInitial + '.'
-          : ''}';
+      String fullName =
+          '$lastName, $firstName ${middleInitial.isNotEmpty ? middleInitial + '.' : ''}';
       return AlertDialog(
         title: Text('Unenroll Student'),
-          content: RichText(
+        content: RichText(
           text: TextSpan(
-          style: TextStyle(color: Colors.black),
-        children:[
-          TextSpan(
-      text: 'Are you sure you want to unenroll \n\n'),
-          TextSpan(
-            text: '$fullName?',
-            style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red),
+            style: TextStyle(color: Colors.black),
+            children: [
+              TextSpan(text: 'Are you sure you want to unenroll \n\n'),
+              TextSpan(
+                text: '$fullName?',
+                style:
+                    TextStyle(fontWeight: FontWeight.bold, color: Colors.red),
+              ),
+            ],
           ),
-        ],
-      ),
-      ),
+        ),
+
+        //style
         actions: <Widget>[
           TextButton(
             child: Text('No'),
@@ -264,10 +273,9 @@ void _showDeleteConfirmationDialog(BuildContext context, String lastName, String
             },
           ),
           TextButton(
-            child: Text('Yes'),
+            child: Text('Yes', style: TextStyle(color: Colors.red)),
             onPressed: () {
-              Navigator.of(context)
-                  .pop(); // Close current dialog
+              Navigator.of(context).pop(); // Close current dialog
               showDialog(
                 context: context,
                 builder: (BuildContext context) {
@@ -278,34 +286,28 @@ void _showDeleteConfirmationDialog(BuildContext context, String lastName, String
                       TextButton(
                         child: Text('No'),
                         onPressed: () {
-                          Navigator.of(context)
-                              .pop();
+                          Navigator.of(context).pop();
                         },
                       ),
+
+                      //condition
                       TextButton(
                         child: Text('Yes'),
                         onPressed: () {
+
                           // Clear the selected_teacher field
                           FirebaseFirestore.instance
-                              .collection(
-                              'students')
+                              .collection('students')
                               .doc(studentData.id)
-                              .update({
-                            'selected_teacher': null
-                          }).then((_) {
-                            ScaffoldMessenger.of(
-                                context)
-                                .showSnackBar(
+                              .update({'selected_teacher': null}).then((_) {
+                            ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
-                                  content: Text(
-                                      'Student unenrolled successfully')),
+                                  content:
+                                      Text('Student unenrolled successfully')),
                             );
-                            Navigator.of(context)
-                                .pop(); // Close current dialog
+                            Navigator.of(context).pop(); // Close current dialog
                           }).catchError((error) {
-                            ScaffoldMessenger.of(
-                                context)
-                                .showSnackBar(
+                            ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                   content: Text(
                                       'Failed to unenroll student: $error')),
