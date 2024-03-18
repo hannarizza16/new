@@ -160,7 +160,10 @@ class _StudentBottomScreenState extends State<StudentBottomScreen> {
                     var studentData = snapshot.data!.docs[index];
                     return Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8.0),
+
                         child: ListTile(
+
+                          //white container design
                             title: Container(
                                 padding: EdgeInsets.all(8),
                                 margin: EdgeInsets.symmetric(horizontal: 5),
@@ -176,6 +179,7 @@ class _StudentBottomScreenState extends State<StudentBottomScreen> {
                                     ),
                                   ],
                                 ), // changes position of shadow
+
 
                                 child: Row(children: [
                                   Expanded(
@@ -196,6 +200,8 @@ class _StudentBottomScreenState extends State<StudentBottomScreen> {
                                       ],
                                     ),
                                   ),
+
+
                                   SizedBox(width: 10),
                                   Container(
                                       decoration: BoxDecoration(
@@ -227,7 +233,9 @@ class _StudentBottomScreenState extends State<StudentBottomScreen> {
                                                 horizontal: 16,
                                                 vertical:
                                                     8), // Adjust button padding
-                                          )))
+                                          )
+                                      )
+                                  )
                                 ]))));
                   },
                 );
@@ -256,10 +264,11 @@ void _showDeleteConfirmationDialog(BuildContext context, String lastName,
             children: [
               TextSpan(text: 'Are you sure you want to unenroll \n\n'),
               TextSpan(
-                text: '$fullName?',
+                text: '$fullName',
                 style:
                     TextStyle(fontWeight: FontWeight.bold, color: Colors.red),
               ),
+              TextSpan(text: ' ?', style: TextStyle(color: Colors.black))
             ],
           ),
         ),

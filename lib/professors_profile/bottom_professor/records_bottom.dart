@@ -14,7 +14,6 @@ class _RecordsBottomScreenState extends State<RecordsBottomScreen> {
   int? _selectedYearLevel;
   String? _selectedSortBy;
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,6 +54,13 @@ class _RecordsBottomScreenState extends State<RecordsBottomScreen> {
               ),
             ),
           ),
+
+          //blue line
+          Divider(
+            color: Colors.blue,
+            thickness: 2.0,
+          ),
+
           SingleChildScrollView(
             padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             scrollDirection: Axis.horizontal,
@@ -96,6 +102,7 @@ class _RecordsBottomScreenState extends State<RecordsBottomScreen> {
               ],
             ),
           ),
+
           Expanded(
             child: SingleChildScrollView(
               child: FutureBuilder(
@@ -119,12 +126,12 @@ class _RecordsBottomScreenState extends State<RecordsBottomScreen> {
                           document.data() as Map<String, dynamic>;
 
                       // Convert timestamp to DateTime
-                      DateTime timestamp = (data['timestamp'] as Timestamp).toDate();
+                      DateTime timestamp =
+                          (data['timestamp'] as Timestamp).toDate();
 
                       // Format the date
                       String formattedDate =
-                      DateFormat.yMMMd().add_jm().format(timestamp);
-
+                          DateFormat.yMMMd().add_jm().format(timestamp);
 
                       // Format the details
                       String fullName =
@@ -135,24 +142,76 @@ class _RecordsBottomScreenState extends State<RecordsBottomScreen> {
                           data['yearLevel'] ?? 0; // Assuming default value is 0
 
                       return ListTile(
-                        onTap: () {
-                          _showDeleteConfirmationDialog(context, document);
-                        },
-                        title: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text('Name: $fullName'),
-                            Text('Section: $section'),
-                            Text('Year Level: $yearLevel'),
-                            Text('Date & Time: $formattedDate'),
-                          ],
-                        ),
-                        subtitle: Text(
-                            'Score: ${data['score'] ?? ''}'), // Display the score
-                      );
+                          // onTap: () {
+                          //
+                          // },
+
+                          //white container design
+                          title: Container(
+                              padding: EdgeInsets.all(8),
+                              margin: EdgeInsets.symmetric(horizontal: 5),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(8),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.5),
+                                    spreadRadius: 2,
+                                    blurRadius: 5,
+                                    offset: Offset(0, 3),
+                                  ),
+                                ],
+                              ),
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text('Name: $fullName'),
+                                        Text('Section: $section'),
+                                        Text('Year Level: $yearLevel'),
+                                        Text('Date & Time: $formattedDate'),
+                                        Text('Score: ${data['score'] ?? ''}',
+                                            style: TextStyle(
+                                              color: (data['score'] ?? 0) < 5
+                                                  ? Colors.red
+                                                  : Colors.green,
+                                            )),
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(width: 10),
+                                  Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(8),
+                                        color: Colors
+                                            .transparent, // You can change the color here
+                                      ),
+                                      child: ElevatedButton(
+                                          onPressed: () {
+                                            _showDeleteConfirmationDialog(
+                                                context, document);
+                                          },
+                                          child: Text('Delete',
+                                              style: TextStyle(
+                                                color: Colors.red,
+                                              )),
+                                          style: ElevatedButton.styleFrom(
+                                            primary: Colors
+                                                .transparent, // Remove button background color
+                                            elevation:
+                                                0, // Remove button elevation
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: 16,
+                                                vertical:
+                                                    8), // Adjust button padding
+                                          )))
+                                ],
+                              )));
                     }).toList(),
                   );
-
                 },
               ),
             ),
@@ -240,6 +299,7 @@ class _RecordsBottomScreenState extends State<RecordsBottomScreen> {
     return items;
   }
 
+  //sorting of name
   List<DropdownMenuItem<String>> _buildSortByDropdownItems() {
     List<DropdownMenuItem<String>> items = [];
     items.add(DropdownMenuItem(child: Text('Last Name'), value: 'lastName'));
@@ -266,14 +326,45 @@ class _DeleteConfirmationDialogState extends State<DeleteConfirmationDialog> {
 
   @override
   Widget build(BuildContext context) {
+    String fullName =
+        '${widget.document['lastName'] ?? ''}, ${widget.document['firstName'] ?? ''} ${widget.document['middleInitial'] ?? ''}'
+            .trim();
+
     return AlertDialog(
       title: _showSecondDialog
           ? Text('Confirm Deletion Again')
           : Text('Confirm Deletion'),
       content: _showSecondDialog
-          ? Text(
-              'Are you sure you want to delete this record? This action cannot be undone.')
-          : Text('Are you sure you want to delete this record?'),
+          ? RichText(
+              text: TextSpan(
+                  text: 'Are you sure you want to delete the record for ',
+                  style: TextStyle(
+                    color: Colors.black,
+                  ),
+                  children: <TextSpan>[
+                  TextSpan(
+                    text: '$fullName',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.red),
+                  ),
+                  TextSpan(
+                    text: '? This action cannot be undone.',
+                    style: TextStyle(color: Colors.black),
+                  )
+                ]))
+          : RichText(
+              text: TextSpan(
+                  text: 'Are you sure you want to delete the record for ',
+                  style: TextStyle(color: Colors.black),
+                  children: <TextSpan>[
+                  TextSpan(
+                      text: '$fullName',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.red,
+                      )),
+                  TextSpan(text: ' ?', style: TextStyle(color: Colors.black))
+                ])),
       actions: [
         TextButton(
           onPressed: () {
@@ -291,7 +382,10 @@ class _DeleteConfirmationDialogState extends State<DeleteConfirmationDialog> {
               }
             });
           },
-          child: Text('Yes'),
+          child: Text(
+            'Yes',
+            style: TextStyle(color: Colors.red),
+          ),
         ),
       ],
     );
