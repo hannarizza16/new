@@ -289,6 +289,7 @@ class _SignUpPageState extends State<SignUpPage> {
       controller: controller,
       obscureText: isPasswordField,
       maxLength: maxLength,
+      textCapitalization: TextCapitalization.characters, // Capitalize all characters
       decoration: InputDecoration(
         labelText: labelText,
         hintText: hintText,
@@ -339,7 +340,7 @@ class _SignUpPageState extends State<SignUpPage> {
       return;
     }
 
-    if (email.endsWith('@rtu.edu.ph') || email.endsWith('@gmail.com')) {
+    if (email.endsWith('@rtu.edu.ph') || email.endsWith('@rtu.edu.ph')) {
       if (password != confirmPassword) {
         setState(() {
           isSigningUp = false;
