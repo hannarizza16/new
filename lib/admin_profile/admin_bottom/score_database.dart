@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -82,30 +81,34 @@ class _AdminBottomScoreDatabaseState extends State<AdminBottomScoreDatabase> {
                 .collection('scores')
                 .orderBy('lastName')
                 .snapshots(),
-            builder:
-                (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-              if (!snapshot.hasData) {
+            builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
                 return Center(
                   child: CircularProgressIndicator(),
                 );
               }
+              if (snapshot.hasError) {
+                return Center(
+                  child: Text('Error: ${snapshot.error}'),
+                );
+              }
+              if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+                return Center(
+                  child: Text('No data available for selected section.'),
+                );
+              }
               return ListView(
-                children: snapshot.data!.docs.map((document) {
-                  Map<String, dynamic> data =
-                  document.data() as Map<String, dynamic>;
+                children: snapshot.data!.docs.map((DocumentSnapshot document) {
+                  Map<String, dynamic> data = document.data() as Map<String, dynamic>;
 
                   // Convert timestamp to DateTime
-                  DateTime timestamp =
-                  (data['timestamp'] as Timestamp).toDate();
+                  DateTime timestamp = (data['timestamp'] as Timestamp).toDate();
 
                   // Format the date
-                  String formattedDate =
-                  DateFormat.yMMMd().add_jm().format(timestamp);
+                  String formattedDate = DateFormat.yMMMd().add_jm().format(timestamp);
 
                   // Check if middle initial is null
-                  String middleInitial = data['middleInitial'] != null
-                      ? data['middleInitial']
-                      : '';
+                  String middleInitial = data['middleInitial'] != null ? data['middleInitial'] : '';
 
                   return ListTile(
                     title: Text(
@@ -121,8 +124,7 @@ class _AdminBottomScoreDatabaseState extends State<AdminBottomScoreDatabase> {
                         Text('Score: ${data['score']}'),
                         Text('Date & Time: $formattedDate'),
                         Text('Total Questions: ${data['totalQuestions']}'),
-                        Text(
-                            'Selected Teacher: ${data['selected_teacher']}'),
+                        Text('Selected Teacher: ${data['selected_teacher']}'),
                       ],
                     ),
                   );
