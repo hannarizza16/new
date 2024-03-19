@@ -24,7 +24,7 @@ class _LoginPageState extends State<LoginPage> {
   bool _isSigning = false;
   final FirebaseAuthService _auth = FirebaseAuthService();
 
-  // //professor
+  //professor
   // final TextEditingController _emailController = TextEditingController(text: '2020-103967@rtu.edu.ph');
   // final TextEditingController _passwordController = TextEditingController(text: 'mathew15C.');
   //

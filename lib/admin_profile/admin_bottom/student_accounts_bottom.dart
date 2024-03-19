@@ -44,7 +44,8 @@ class AdminBottomStudentAccountScreen extends StatelessWidget {
 
 class AdminBottomStudentAccount extends StatefulWidget {
   @override
-  _AdminBottomStudentAccountState createState() => _AdminBottomStudentAccountState();
+  _AdminBottomStudentAccountState createState() =>
+      _AdminBottomStudentAccountState();
 }
 
 class _AdminBottomStudentAccountState extends State<AdminBottomStudentAccount> {
@@ -64,10 +65,10 @@ class _AdminBottomStudentAccountState extends State<AdminBottomStudentAccount> {
           items: <String>['All', '101P', '102P'] // Add more sections as needed
               .map<DropdownMenuItem<String>>(
                 (String value) => DropdownMenuItem<String>(
-              value: value,
-              child: Text(value),
-            ),
-          )
+                  value: value,
+                  child: Text(value),
+                ),
+              )
               .toList(),
         ),
         Expanded(
@@ -75,10 +76,11 @@ class _AdminBottomStudentAccountState extends State<AdminBottomStudentAccount> {
             stream: _selectedSection == 'All'
                 ? FirebaseFirestore.instance.collection('students').snapshots()
                 : FirebaseFirestore.instance
-                .collection('students')
-                .where('section', isEqualTo: _selectedSection)
-                .snapshots(),
-            builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                    .collection('students')
+                    .where('section', isEqualTo: _selectedSection)
+                    .snapshots(),
+            builder:
+                (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return Center(
                   child: CircularProgressIndicator(),
@@ -92,44 +94,86 @@ class _AdminBottomStudentAccountState extends State<AdminBottomStudentAccount> {
 
               return ListView(
                 children: snapshot.data!.docs.map((document) {
-                  final Map<String, dynamic>? data = document.data() as Map<String, dynamic>?; // Explicit cast
-                  if (data != null && data.containsKey('section')) { // Check if 'section' field exists
+                  final Map<String, dynamic>? data =
+                      document.data() as Map<String, dynamic>?; // Explicit cast
+                  if (data != null && data.containsKey('section')) {
+                    // Check if 'section' field exists
+
                     return ListTile(
-                      title: Text(
-                        '${data['last_name'] ?? ""}, ${data['first_name']} ${data['middle_initial'] ?? ""}',
-                      ),
-                      subtitle: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('Student Number: ${data['student_number']}'),
-                          Text('Section: ${data['section'] ?? ""}'),
-                          Text('Year Level: ${data['year_level'] ?? ""}'),
-                          Text('Selected Teacher: ${data['selected_teacher'] ?? ""}'),
-                          Text('Email: ${data['email'] ?? ""}'),
-                          InkWell(
-                            onTap: () async {
-                              final email = data['email'];
-                              // Show dialog box for password input
-                              final bool success = await _showPasswordDialog(context);
-                              if (success) {
-                                // Show confirmation dialog
-                                final bool confirmDelete = await _showConfirmationDialog(context);
-                                if (confirmDelete) {
-                                  // Delete documents from Firestore
-                                  await _deleteUserData(email);
-                                  // Delete email from Authentication
-                                  FirebaseAuth.instance.currentUser!.delete(); // This will delete the currently signed-in user
-                                }
-                              }
-                            },
-                            child: Text(
-                              'Delete', // Make 'Delete' clickable
-                              style: TextStyle(color: Colors.red),
+                        title: Container(
+                            padding: EdgeInsets.all(8),
+                            margin: EdgeInsets.symmetric(horizontal: 5),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(8),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  spreadRadius: 2,
+                                  blurRadius: 5,
+                                  offset: Offset(0, 3),
+                                ),
+                              ],
                             ),
-                          ),
-                        ],
-                      ),
-                    );
+                            child: Row(children: [
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      '${data['last_name'] ?? ""}, ${data['first_name']} ${data['middle_initial'] ?? ""}',
+                                    ),
+                                    Text(
+                                        'Student Number: ${data['student_number']}'),
+                                    Text('Section: ${data['section'] ?? ""}'),
+                                    Text(
+                                        'Year Level: ${data['year_level'] ?? ""}'),
+                                    Text('Email: ${data['email'] ?? ""}'),
+                                    Text(
+                                        '\nSelected Teacher: ${data['selected_teacher'] ?? ""} \n'),
+
+                                    Center(
+                                    child: Container(
+                                      width: 100,
+                                      height: 25,
+                                      decoration: BoxDecoration(
+                                        color: Colors.blue, // Background color
+                                        borderRadius: BorderRadius.circular(4),
+
+                                      ),
+
+                                      child: Center(
+                                          child: InkWell(
+                                        onTap: () async {
+                                          final email = data['email'];
+                                          // Show dialog box for password input
+                                          final bool success =
+                                              await _showPasswordDialog(
+                                                  context);
+                                          if (success) {
+                                            // Show confirmation dialog
+                                            final bool confirmDelete =
+                                                await _showConfirmationDialog(
+                                                    context);
+                                            if (confirmDelete) {
+                                              // Delete documents from Firestore
+                                              await _deleteUserData(email);
+                                              // Delete email from Authentication
+                                              FirebaseAuth.instance.currentUser!
+                                                  .delete(); // This will delete the currently signed-in user
+                                            }
+                                          }
+                                        },
+                                        child: Text(
+                                          'Delete', // Make 'Delete' clickable
+                                          style: TextStyle(color: Colors.white),
+                                        ),
+                                      )),
+                                    )
+                                    )],
+                                ),
+                              )
+                            ])));
                   } else {
                     // Handle case when 'section' field doesn't exist
                     return ListTile(
@@ -138,7 +182,6 @@ class _AdminBottomStudentAccountState extends State<AdminBottomStudentAccount> {
                   }
                 }).toList(),
               );
-
             },
           ),
         ),
@@ -153,7 +196,8 @@ class _AdminBottomStudentAccountState extends State<AdminBottomStudentAccount> {
         .get();
     final scoreDocs = await FirebaseFirestore.instance
         .collection('scores')
-        .where('userEmail', isEqualTo: email) // Adjust field name as per your collection
+        .where('userEmail',
+            isEqualTo: email) // Adjust field name as per your collection
         .get();
 
     final batch = FirebaseFirestore.instance.batch();
@@ -168,70 +212,76 @@ class _AdminBottomStudentAccountState extends State<AdminBottomStudentAccount> {
 
   Future<bool> _showPasswordDialog(BuildContext context) async {
     return await showDialog<bool>(
-      context: context,
-      builder: (context) {
-        String? enteredPassword;
-        return AlertDialog(
-          title: Text('Enter Password'),
-          content: TextField(
-            onChanged: (value) {
-              enteredPassword = value;
-            },
-            obscureText: true,
-            decoration: InputDecoration(hintText: 'Password'),
-          ),
-          actions: <Widget>[
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop(false); // Return false if cancel button is pressed
-              },
-              child: Text('Cancel'),
-            ),
-            TextButton(
-              onPressed: () async {
-                // Perform password validation here, for demonstration, just compare with a hard-coded password
-                if (enteredPassword == 'adminpassword') {
-                  Navigator.of(context).pop(true); // Return true if entered password is correct
-                } else {
-                  // Show error message if password is incorrect
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text('Invalid password'),
-                    ),
-                  );
-                }
-              },
-              child: Text('Submit'),
-            ),
-          ],
-        );
-      },
-    ) ?? false; // Return false if dialog is dismissed
+          context: context,
+          builder: (context) {
+            String? enteredPassword;
+            return AlertDialog(
+              title: Text('Enter Password'),
+              content: TextField(
+                onChanged: (value) {
+                  enteredPassword = value;
+                },
+                obscureText: true,
+                decoration: InputDecoration(hintText: 'Password'),
+              ),
+              actions: <Widget>[
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context)
+                        .pop(false); // Return false if cancel button is pressed
+                  },
+                  child: Text('Cancel'),
+                ),
+                TextButton(
+                  onPressed: () async {
+                    // Perform password validation here, for demonstration, just compare with a hard-coded password
+                    if (enteredPassword == 'adminpassword') {
+                      Navigator.of(context).pop(
+                          true); // Return true if entered password is correct
+                    } else {
+                      // Show error message if password is incorrect
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text('Invalid password'),
+                        ),
+                      );
+                    }
+                  },
+                  child: Text('Submit'),
+                ),
+              ],
+            );
+          },
+        ) ??
+        false; // Return false if dialog is dismissed
   }
 
   Future<bool> _showConfirmationDialog(BuildContext context) async {
     return await showDialog<bool>(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: Text('Confirm Deletion'),
-          content: Text('Are you sure you want to delete this data?'),
-          actions: <Widget>[
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop(false); // Return false if cancel button is pressed
-              },
-              child: Text('Cancel'),
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop(true); // Return true if confirm button is pressed
-              },
-              child: Text('Confirm'),
-            ),
-          ],
-        );
-      },
-    ) ?? false; // Return false if dialog is dismissed
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: Text('Confirm Deletion'),
+              content: Text('Are you sure you want to delete this data?'),
+              actions: <Widget>[
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context)
+                        .pop(false); // Return false if cancel button is pressed
+                  },
+                  child: Text('Cancel'),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context)
+                        .pop(true); // Return true if confirm button is pressed
+                  },
+                  child: Text('Confirm'),
+                ),
+              ],
+            );
+          },
+        ) ??
+        false; // Return false if dialog is dismissed
   }
 }
