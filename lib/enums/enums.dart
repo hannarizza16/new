@@ -6,7 +6,7 @@ enum SplashTransitionType {
 
 enum SideBarSection {
   updateProfile('Update Profile'),
-  about('About'),
+  about('Student Information'),
   help('help'),
   logout('Logout');
 

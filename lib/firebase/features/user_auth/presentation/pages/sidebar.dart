@@ -310,19 +310,37 @@ class _SideBarState extends State<SideBar> {
                           ),
                         ),
                       ),
-                      for (var section in SideBarSection
-                          .values) // this hides the logout from the list and i created a container para ma separate siya
-                        if (section != SideBarSection.logout) //
-                          InkWell(
-                            onTap: () => _onItemTapped(context, section),
-                            child: ListTile(
-                              leading: Icon(section.icon),
-                              title: Text(section.text),
-                            ),
-                          ),
+                      // for (var section in SideBarSection
+                      //     .values) // this hides the logout from the list and i created a container para ma separate siya
+                      //   if (section != SideBarSection.logout) //
+                //           InkWell(
+                //             onTap: () => _onItemTapped(context, section),
+                //             child: ListTile(
+                //               leading: Icon(section.icon),
+                //               title: Text(section.text),
+                //             ),
+                //           ),
+                //     ],
+                //   ),
+                // ),
+
+                      ...SideBarSection.values // this section hides the about, logout, help in the list and left the update profile only
+                          .where((section) =>
+                          section != SideBarSection.help &&
+                          section != SideBarSection.logout)
+                          .map(
+                            (section) => ListTile(
+                          leading: Icon(section.icon),
+                          title: Text(section.text),
+                          onTap: () => _onItemTapped(context, section),
+                        ),
+                      )
+                          .toList(),
                     ],
                   ),
                 ),
+
+
                 Container(
                   color: Colors.red, // Set background color to red
                   child: ListTile(
