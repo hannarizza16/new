@@ -10,8 +10,8 @@ extension AdminBottomNavExt on AdminBottomNav {
         return CupertinoIcons.person_3_fill;
       case AdminBottomNav.professoraccount:
         return CupertinoIcons.square_list_fill;
-      case AdminBottomNav.score:
-        return CupertinoIcons.square_list_fill;
+      // case AdminBottomNav.score:
+      //   return CupertinoIcons.square_list_fill;
 
 
     }

@@ -2,6 +2,8 @@ import 'package:chat_gpt_sdk/chat_gpt_sdk.dart';
 import 'package:dash_chat_2/dash_chat_2.dart';
 import 'package:flutter/material.dart';
 import 'package:first_project/ai_storage/consts.dart';
+// import 'package:intl/intl.dart'; // For formatting dates
+
 
 class ChatPage extends StatefulWidget {
   const ChatPage({Key? key}) : super(key: key);
@@ -22,48 +24,71 @@ class _ChatPageState extends State<ChatPage> {
   );
 
   final ChatUser _currentUser =
-  ChatUser(id: '1', firstName: 'Code', lastName: 'Cultivator');
+      ChatUser(id: '1', firstName: 'Code', lastName: 'Cultivator');
 
-  final ChatUser _gptChatUser = ChatUser(id: '2', firstName: 'Jr.', lastName: 'AI');
+  final ChatUser _gptChatUser =
+      ChatUser(id: '2', firstName: 'Jr.', lastName: 'AI');
 
   final List<ChatMessage> _messages = <ChatMessage>[];
   final List<ChatUser> _typingUsers = <ChatUser>[];
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color.fromRGBO(
-          0,
-          166,
-          126,
-          1,
-        ),
-        title: const Text(
-          'Jr. AI',
-          style: TextStyle(
-            color: Colors.white,
-          ),
-        ),
-      ),
-      body: DashChat(
-          currentUser: _currentUser,
-          typingUsers: _typingUsers,
-          messageOptions: const MessageOptions(
-            currentUserContainerColor: Colors.black,
-            containerColor: Color.fromRGBO(
-              0,
-              166,
-              126,
-              1,
+    return Theme(
+        data: ThemeData(
+          textTheme: TextTheme(
+            bodyLarge: TextStyle(
+              // fontFamily: 'YourFont', // Specify the font family
+              fontSize: 16, // Change the font size as needed
+              fontWeight: FontWeight.normal, // Specify the font weight
+              color: Colors.white, // Specify the text color
             ),
-            textColor: Colors.white,
           ),
-          onSend: (ChatMessage m) {
-            getChatResponse(m);
-          },
-          messages: _messages),
-    );
+        ),
+    child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Color(0xFF0C356A),
+          title: const Text(
+            'Jr. AI',
+            style: TextStyle(
+              color: Colors.white,
+            ),
+          ),
+        ),
+        body: Container(
+          decoration: BoxDecoration(
+
+            //LANGUAGES NA SLIDING
+            gradient: LinearGradient(
+              colors: [Color(0xFF0C356A), Color(0xFF05172E)],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+
+
+          ),
+
+
+
+          child: DashChat(
+              currentUser: _currentUser,
+              typingUsers: _typingUsers,
+              messageOptions: const MessageOptions(
+
+                //chat container of the user
+                currentUserContainerColor: Color(0xFF448AFF),
+                currentUserTextColor: Colors.white,
+
+                //chat container of JA
+                containerColor: Color(0xFF092852),
+                textColor: Colors.white,
+              ),
+
+              onSend: (ChatMessage m) {
+                getChatResponse(m);
+              },
+              messages: _messages),
+        )));
   }
 
   Future<void> getChatResponse(ChatMessage m) async {
@@ -116,11 +141,13 @@ class _ChatPageState extends State<ChatPage> {
               user: _gptChatUser,
               createdAt: DateTime.now(),
               text: "Sorry, I couldn't generate a response.",
+
             ),
           );
         });
       }
     } catch (e) {
+
       // Handle errors
       setState(() {
         _messages.insert(
@@ -129,11 +156,16 @@ class _ChatPageState extends State<ChatPage> {
             user: _gptChatUser,
             createdAt: DateTime.now(),
             // text: "An error occurred: $e",
-            text: "Sorry, I'm currently experiencing server downtime. Please try again in 20 seconds.",
+            text:
+                "Sorry, I'm currently experiencing server downtime. Please try again in 20 seconds.",
+
           ),
         );
       });
-    } finally {
+    }
+
+    //typing indicator
+    finally {
       // Remove typing indicator
       setState(() {
         _typingUsers.remove(_gptChatUser);

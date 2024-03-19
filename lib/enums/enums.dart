@@ -71,8 +71,8 @@ enum ProfBottomNav {
 
 enum AdminBottomNav {
   studentaccounts('Student List'),
-  professoraccount('Professor List'),
-  score('Score Database');
+  professoraccount('Professor List');
+  // score('Score Database');
 
   final String text;
   const AdminBottomNav (this.text);

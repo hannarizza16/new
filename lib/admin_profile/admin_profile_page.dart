@@ -20,7 +20,7 @@ class _AdminHomePageState extends State<AdminHomePage> {
   final _adminBottomScreen = [
     AdminBottomStudentAccount(),
     AdminBottomProfessorAccountState(),
-    AdminBottomScoreDatabase(),
+    // AdminBottomScoreDatabase(),
 
 
   ]; // kung anong pinindot mo na button sa bottom nav //this is home

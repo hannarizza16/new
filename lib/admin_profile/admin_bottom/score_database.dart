@@ -111,11 +111,10 @@ class _AdminBottomScoreDatabaseState extends State<AdminBottomScoreDatabase> {
                   String middleInitial = data['middleInitial'] != null ? data['middleInitial'] : '';
 
                   return ListTile(
-                    title: Text(
-                        '${data['lastName']}, ${data['firstName']} ${middleInitial.isNotEmpty ? middleInitial : ""}'),
-                    subtitle: Column(
+                    title: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        Text('${data['lastName']}, ${data['firstName']} ${middleInitial.isNotEmpty ? middleInitial : ""}'),
                         Text('User Email: ${data['userEmail']}'),
                         Text('Year Level: ${data['yearLevel']}'),
                         Text('Section: ${data['section']}'),
