@@ -184,11 +184,11 @@ class _AdminBottomProfessorAccountStateState
                                     style: ButtonStyle(
                                       backgroundColor:
                                           MaterialStateProperty.all(Colors
-                                              .green), // Change background color to red
+                                              .transparent), // Change background color to red
                                     ),
                                     child: Text(
                                       "Delete",
-                                      style: TextStyle(color: Colors.red),
+                                      style: TextStyle(color: Colors.white),
                                     ),
                                   ))
                             ],
