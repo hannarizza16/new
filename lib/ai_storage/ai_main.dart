@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:first_project/ai_storage/consts.dart';
 // import 'package:intl/intl.dart'; // For formatting dates
 
-
 class ChatPage extends StatefulWidget {
   const ChatPage({Key? key}) : super(key: key);
 
@@ -46,52 +45,62 @@ class _ChatPageState extends State<ChatPage> {
             ),
           ),
         ),
-
-
-    child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Color(0xFF0C356A),
-          title: const Text(
-            'Jr. AI',
-            style: TextStyle(
-              color: Colors.white,
-            ),
-          ),
-        ),
-        body: Container(
-          decoration: BoxDecoration(
-
-            //LANGUAGES NA SLIDING
-            gradient: LinearGradient(
-              colors: [Color(0xFF0C356A), Color(0xFF05172E)],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
+        child: Scaffold(
+            appBar: AppBar(
+              backgroundColor: Color(0xFF0C356A),
+              title: const Text(
+                'Jr. AI',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
             ),
 
-
-          ),
-
-
-
-          child: DashChat(
-              currentUser: _currentUser,
-              typingUsers: _typingUsers,
-              messageOptions: const MessageOptions(
-
-                //chat container of the user
-                currentUserContainerColor: Color(0xFF448AFF),
-                currentUserTextColor: Colors.white,
-
-                //chat container of JA
-                containerColor: Color(0xFF092852),
-                textColor: Colors.white,
+            body: Container(
+              decoration: BoxDecoration(
+                //LANGUAGES NA SLIDING
+                gradient: LinearGradient(
+                  colors: [Color(0xFF0C356A), Color(0xFF05172E)],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
               ),
 
-              onSend: (ChatMessage m) {
-                getChatResponse(m);
-              },
-              messages: _messages),
-        )));
+              //Back Logo dapat mauna to sa stack
+              child: Stack(
+                children:[ Center(
+                  //Add opacity if ayaw mo nung  ma chachange pa yung color
+                  child: Opacity(
+                  opacity: 0.3,
+                  child: Image.asset(
+                    'assets/E.png', // Replace with your logo asset path
+                    width: 200, // Adjust the width as needed
+                    height: 200,
+                    // Adjust the height as needed
+                  ),
+                ),
+                ),
+
+                    DashChat(
+                        currentUser: _currentUser,
+                        typingUsers: _typingUsers,
+                        messageOptions: const MessageOptions(
+                          //chat container of the user
+                          currentUserContainerColor: Color(0xFF448AFF),
+                          currentUserTextColor: Colors.white,
+
+                          //chat container of JA
+                          containerColor: Color(0xFF092852),
+                          textColor: Colors.white,
+                        ),
+                        onSend: (ChatMessage m) {
+                          getChatResponse(m);
+                        },
+                        messages: _messages),
+                  ],
+                ),
+              ),
+            ));
   }
 
   Future<void> getChatResponse(ChatMessage m) async {
@@ -144,13 +153,11 @@ class _ChatPageState extends State<ChatPage> {
               user: _gptChatUser,
               createdAt: DateTime.now(),
               text: "Sorry, I couldn't generate a response.",
-
             ),
           );
         });
       }
     } catch (e) {
-
       // Handle errors
       setState(() {
         _messages.insert(
@@ -161,7 +168,6 @@ class _ChatPageState extends State<ChatPage> {
             // text: "An error occurred: $e",
             text:
                 "Sorry, I'm currently experiencing server downtime. Please try again in 20 seconds.",
-
           ),
         );
       });
