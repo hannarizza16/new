@@ -34,6 +34,7 @@ class _ChatPageState extends State<ChatPage> {
 
   @override
   Widget build(BuildContext context) {
+    // this controls text of time, and kug ano yung tinatype mo.
     return Theme(
         data: ThemeData(
           textTheme: TextTheme(
@@ -45,6 +46,8 @@ class _ChatPageState extends State<ChatPage> {
             ),
           ),
         ),
+
+
     child: Scaffold(
         appBar: AppBar(
           backgroundColor: Color(0xFF0C356A),
