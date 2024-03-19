@@ -41,7 +41,7 @@ class _ChatPageState extends State<ChatPage> {
               // fontFamily: 'YourFont', // Specify the font family
               fontSize: 16, // Change the font size as needed
               fontWeight: FontWeight.normal, // Specify the font weight
-              color: Colors.white, // Specify the text color
+              color: Colors.black, // Specify the text color
             ),
           ),
         ),
@@ -77,11 +77,11 @@ class _ChatPageState extends State<ChatPage> {
 
                 //chat container of the user
                 currentUserContainerColor: Color(0xFF448AFF),
-                currentUserTextColor: Colors.black,
+                currentUserTextColor: Colors.white,
 
                 //chat container of JA
                 containerColor: Color(0xFF092852),
-                textColor: Colors.black,
+                textColor: Colors.white,
               ),
 
               onSend: (ChatMessage m) {
