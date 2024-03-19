@@ -77,7 +77,7 @@ class _ChatPageState extends State<ChatPage> {
 
                 //chat container of the user
                 currentUserContainerColor: Color(0xFF448AFF),
-                currentUserTextColor: Colors.white,
+                currentUserTextColor: Colors.black,
 
                 //chat container of JA
                 containerColor: Color(0xFF092852),
