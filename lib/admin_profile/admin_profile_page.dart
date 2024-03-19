@@ -105,19 +105,21 @@ class _AdminHomePageState extends State<AdminHomePage> {
         appBar: AppBar(
           title: const Text('CodeX (Admin)'),
           titleTextStyle: TextStyle(
-            color: Color(0xFF0C356A),
+            color: Colors.white,
             fontSize: 21, // Change the font size as needed
             fontWeight: FontWeight.bold, // Make the font bold
           ),
-          backgroundColor: Color(0xFFDCF2F1), // app bar color only
+          backgroundColor: Color(0xFF0C356A), // app bar color only
         ),
-        backgroundColor:
-        Colors.transparent, // BACKGROUND OF top app and other pages
+        // backgroundColor:
+        // Colors.pink, // BACKGROUND OF top app and other pages
+
+        //body color
         body: Container(
           decoration: BoxDecoration(
             //LANGUAGES NA SLIDING
             gradient: LinearGradient(
-              colors: [Color(0xFFDCF2F1), Color(0xFFDCF2F1)],
+              colors: [Color(0xFF0C356A), Color(0xFF05172E)],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
@@ -125,12 +127,13 @@ class _AdminHomePageState extends State<AdminHomePage> {
           child: _adminBottomScreen[selectedCurrentIndex],
         ),
 
+        //Bottom Nav Bar
         bottomNavigationBar: Stack(
           children: [
             // Original bottom navigation bar
             Theme(
               data: Theme.of(context).copyWith(
-                canvasColor: Color(0xFFDCF2F1),
+                canvasColor: Color(0xFF05172E),
                 textTheme: Theme.of(context)
                     .textTheme
                     .copyWith(caption: TextStyle(color: Colors.black26)),
@@ -147,7 +150,7 @@ class _AdminHomePageState extends State<AdminHomePage> {
                     .toList(),
                 selectedItemColor:
                 Color(0xFF4CB9E7), // Define the color of the selected item here
-                unselectedItemColor: Color(0xFF0C356A),
+                unselectedItemColor: Color(0xFF1F3DA0),
                 selectedFontSize:
                 13, // Size of selected icon in bottom navigation bar
                 unselectedFontSize:

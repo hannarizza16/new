@@ -51,6 +51,9 @@ class AdminBottomStudentAccount extends StatefulWidget {
 class _AdminBottomStudentAccountState extends State<AdminBottomStudentAccount> {
   String? _selectedSection = 'All'; // Set 'All' as default filter
 
+  final Color mainDarkBlue = Color(0xFF0C356A);
+  final Color textWhite = Colors.white;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -62,11 +65,13 @@ class _AdminBottomStudentAccountState extends State<AdminBottomStudentAccount> {
               _selectedSection = newValue;
             });
           },
+
+          dropdownColor: mainDarkBlue, // color bg ng dropdown
           items: <String>['All', '101P', '102P'] // Add more sections as needed
               .map<DropdownMenuItem<String>>(
                 (String value) => DropdownMenuItem<String>(
                   value: value,
-                  child: Text(value),
+                  child: Text(value, style: TextStyle(color: textWhite)),
                 ),
               )
               .toList(),
@@ -104,76 +109,83 @@ class _AdminBottomStudentAccountState extends State<AdminBottomStudentAccount> {
                             padding: EdgeInsets.all(8),
                             margin: EdgeInsets.symmetric(horizontal: 5),
                             decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: Colors.transparent,
                               borderRadius: BorderRadius.circular(8),
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.grey.withOpacity(0.5),
-                                  spreadRadius: 2,
+                                  color: Colors.grey.withOpacity(0.2),
+                                  spreadRadius: 1,
                                   blurRadius: 5,
                                   offset: Offset(0, 3),
                                 ),
                               ],
                             ),
-                            child: Row(children: [
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      '${data['last_name'] ?? ""}, ${data['first_name']} ${data['middle_initial'] ?? ""}',
-                                    ),
-                                    Text(
-                                        'Student Number: ${data['student_number']}'),
-                                    Text('Section: ${data['section'] ?? ""}'),
-                                    Text(
-                                        'Year Level: ${data['year_level'] ?? ""}'),
-                                    Text('Email: ${data['email'] ?? ""}'),
-                                    Text(
-                                        '\nSelected Teacher: ${data['selected_teacher'] ?? ""} \n'),
 
-                                    Center(
-                                    child: Container(
-                                      width: 100,
-                                      height: 25,
-                                      decoration: BoxDecoration(
-                                        color: Colors.blue, // Background color
-                                        borderRadius: BorderRadius.circular(4),
 
-                                      ),
-
-                                      child: Center(
-                                          child: InkWell(
-                                        onTap: () async {
-                                          final email = data['email'];
-                                          // Show dialog box for password input
-                                          final bool success =
-                                              await _showPasswordDialog(
-                                                  context);
-                                          if (success) {
-                                            // Show confirmation dialog
-                                            final bool confirmDelete =
-                                                await _showConfirmationDialog(
-                                                    context);
-                                            if (confirmDelete) {
-                                              // Delete documents from Firestore
-                                              await _deleteUserData(email);
-                                              // Delete email from Authentication
-                                              FirebaseAuth.instance.currentUser!
-                                                  .delete(); // This will delete the currently signed-in user
-                                            }
-                                          }
-                                        },
-                                        child: Text(
-                                          'Delete', // Make 'Delete' clickable
-                                          style: TextStyle(color: Colors.white),
+                            child: DefaultTextStyle( // set the text style into default ni wrap ko na lang para di paisa isa
+                                style: TextStyle(color: textWhite),
+                                child: Row(children: [
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          '${data['last_name'] ?? ""}, ${data['first_name']} ${data['middle_initial'] ?? ""}\n',
+                                          // style: TextStyle(color: textWhite),
                                         ),
-                                      )),
-                                    )
-                                    )],
-                                ),
-                              )
-                            ])));
+                                        Text(
+                                            'Student Number: ${data['student_number']}'),
+                                        Text(
+                                            'Section: ${data['section'] ?? ""}'),
+                                        Text(
+                                            'Year Level: ${data['year_level'] ?? ""}'),
+                                        Text('Email: ${data['email'] ?? ""}'),
+                                        Text(
+                                            '\nSelected Teacher: ${data['selected_teacher'] ?? ""} \n'),
+                                        Center(
+                                            child: Container(
+                                          width: 100,
+                                          height: 25,
+                                          decoration: BoxDecoration(
+                                            color: Colors.blue.shade900, // delete button bg color
+                                              // Color(0xFF4CB9E7),
+                                            borderRadius:
+                                                BorderRadius.circular(4),
+                                          ),
+                                          child: Center(
+                                              child: InkWell(
+                                            onTap: () async {
+                                              final email = data['email'];
+                                              // Show dialog box for password input
+                                              final bool success =
+                                                  await _showPasswordDialog(
+                                                      context);
+                                              if (success) {
+                                                // Show confirmation dialog
+                                                final bool confirmDelete =
+                                                    await _showConfirmationDialog(
+                                                        context);
+                                                if (confirmDelete) {
+                                                  // Delete documents from Firestore
+                                                  await _deleteUserData(email);
+                                                  // Delete email from Authentication
+                                                  FirebaseAuth
+                                                      .instance.currentUser!
+                                                      .delete(); // This will delete the currently signed-in user
+                                                }
+                                              }
+                                            },
+                                            child: Text(
+                                              'Delete', // Make 'Delete' clickable
+                                              // style: TextStyle(color: Colors.white),
+                                            ),
+                                          )),
+                                        ))
+                                      ],
+                                    ),
+                                  )
+                                ]))));
                   } else {
                     // Handle case when 'section' field doesn't exist
                     return ListTile(

@@ -14,7 +14,17 @@ class _AdminBottomProfessorAccountStateState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: StreamBuilder(
+      body:
+        Container(
+        decoration: BoxDecoration(
+        //LANGUAGES NA SLIDING
+        gradient: LinearGradient(
+        colors: [Color(0xFF0C356A), Color(0xFF05172E)],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+    ),
+    ),
+    child: StreamBuilder(
         stream: FirebaseFirestore.instance
             .collection('professor_instructor')
             .snapshots(),
@@ -37,16 +47,18 @@ class _AdminBottomProfessorAccountStateState
                           margin: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
 
                           decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: Colors.transparent,
                               borderRadius: BorderRadius.circular(8),
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.grey.withOpacity(0.5),
+                                  color: Colors.grey.withOpacity(0.2),
                                   spreadRadius: 2,
                                   blurRadius: 5,
                                   offset: Offset(0, 3),
                                 )
                               ]),
+                          child: DefaultTextStyle(
+                style: TextStyle(color: Colors.white),
                           child: Row(
                             children: [
                               Expanded(
@@ -54,7 +66,7 @@ class _AdminBottomProfessorAccountStateState
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      '${professor['last_name']}, ${professor['first_name']} ${professor['middle_initial'] ?? 'N/A'}',
+                                      '${professor['last_name']}, ${professor['first_name']} ${professor['middle_initial'] ?? 'N/A'}\n',
                                     ),
                                     Text('Email: ${professor['email']}'),
                                     Text(
@@ -79,13 +91,13 @@ class _AdminBottomProfessorAccountStateState
                                     },
                                     child: Text(
                                       "Delete",
-                                      style: TextStyle(color: Colors.red),
+                                      style: TextStyle(color: Color(0xFF4CB9E7),
                                     ),
                                   ))
 
 
-                              ],
-                          )));
+                              )],
+                          ))));
                 } else {
                   return SizedBox(); // Return an empty widget if professor is null
                 }
@@ -98,7 +110,7 @@ class _AdminBottomProfessorAccountStateState
           }
         },
       ),
-    );
+    ));
   }
 
 

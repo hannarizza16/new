@@ -233,6 +233,10 @@ class _AdminSideBarState extends State<AdminSideBar> {
     fontWeight: FontWeight.bold,
   );
 
+
+  final Color logoutButton = Color(0xFF082347);
+
+
   @override
   Widget build(BuildContext context) {
     final TextStyle profileTextStyle = TextStyle(
@@ -257,6 +261,15 @@ class _AdminSideBarState extends State<AdminSideBar> {
             return Column(
               children: [
                 Expanded(
+              child: Container(
+                decoration: BoxDecoration(
+                  //LANGUAGES NA SLIDING
+                  gradient: LinearGradient(
+                    colors: [Color(0xFF05172E), Color(0xFF0C356A) ],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                ),
                   child: ListView(
                     padding: EdgeInsets.zero,
                     children: [
@@ -280,7 +293,7 @@ class _AdminSideBarState extends State<AdminSideBar> {
                         decoration: BoxDecoration(
                           color: Colors.transparent,
                           image: DecorationImage(
-                            image: AssetImage('assets/overlay/city.gif'),
+                            image: AssetImage('assets/blue_plate - Copy.gif'),
                             fit: BoxFit.cover,
                             // colorFilter: ColorFilter.mode(
                             //   Colors.white.withOpacity(0.3),
@@ -306,8 +319,9 @@ class _AdminSideBarState extends State<AdminSideBar> {
                     ],
                   ),
                 ),
+                ),
                 Container(
-                  color: Colors.red, // Set background color to red
+                  color: logoutButton, // Set background color to red
                   child: ListTile(
                     leading: Icon(
                       SideBarSection.logout.icon,
@@ -321,7 +335,7 @@ class _AdminSideBarState extends State<AdminSideBar> {
                     onTap: () => _onItemTapped(context, SideBarSection.logout),
                   ),
                 ),
-              ],
+                ],
             );
           }
         },

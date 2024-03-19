@@ -58,7 +58,6 @@ class _ChatPageState extends State<ChatPage> {
 
             body: Container(
               decoration: BoxDecoration(
-                //LANGUAGES NA SLIDING
                 gradient: LinearGradient(
                   colors: [Color(0xFF0C356A), Color(0xFF05172E)],
                   begin: Alignment.topLeft,
