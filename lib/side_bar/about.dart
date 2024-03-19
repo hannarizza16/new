@@ -1,72 +1,108 @@
+import 'package:first_project/side_bar/update_profile.dart';
 import 'package:flutter/material.dart';
-// import 'package:first_project/bottom_navigations/statistics_bottom.dart';
-// import 'package:first_project/bottom_navigations/home_bottom.dart';
-// import 'package:first_project/bottom_navigations/leaderboards_bottom.dart';
-// import 'package:first_project/bottom_navigations/profile_bottom.dart';
-// import 'package:first_project/challenges/category_selection.dart';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class AboutProfile extends StatefulWidget {
-  const AboutProfile({Key? key}) : super(key: key);
-
   @override
   _AboutProfileState createState() => _AboutProfileState();
 }
 
 class _AboutProfileState extends State<AboutProfile> {
-  // final _bottomScreens = [
-  //   LeaderboardScreen(),
-  //   StatisticsWidget(),
-  //   const AllLanguages(), // state name
-  //   const CategorySelection(),
-  //   const ProfilePage(),
-  // ];
+  Map<String, dynamic> userData = {};
+
+  @override
+  void initState() {
+    super.initState();
+    fetchUserData();
+  }
+
+  Future<void> fetchUserData() async {
+    // Get current user's email
+    String? userEmail = FirebaseAuth.instance.currentUser?.email;
+
+    if (userEmail != null) {
+      QuerySnapshot<Map<String, dynamic>> snapshot = await FirebaseFirestore
+          .instance
+          .collection('students')
+          .where('email', isEqualTo: userEmail)
+          .get();
+
+      if (snapshot.docs.isNotEmpty) {
+        setState(() {
+          userData = snapshot.docs.first.data();
+        });
+      } else {
+        print("Document not found");
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('CodeX'),
-        titleTextStyle: TextStyle(
-          color: Color(0xFF0C356A),
-          fontSize: 21,
-          fontWeight: FontWeight.bold,
-        ),
-        backgroundColor: Color(0xFFDCF2F1),
+        title: Text('About Profile'),
       ),
-      backgroundColor: Colors.transparent,
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [Color(0xFFDCF2F1), Color(0xFFDCF2F1)],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
-        ),
-
-
-        child: Center(
-          child: GestureDetector(
-            // onTap: () {
-            //  // Navigate to the QuizApp when Challenges is clicked
-            //   Navigator.push(
-            //     context,
-            //     MaterialPageRoute(builder: (context) => const CategorySelection()),
-            //   );
-            // },
-            child: Container(
-              // Optional: Change the color for visual indication
-              color: Colors.blue,
-              child: const Text(
-                'About Profile',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
+      body: SingleChildScrollView(
+        padding: EdgeInsets.all(20.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: 30),
+            _buildProfileField('Last Name:                  ', userData['last_name'] ?? '---'),
+            _buildProfileField('First Name:                 ', userData['first_name'] ?? '---'),
+            _buildProfileField('Middle Initial:             ', userData['middle_initial'] ?? '---'),
+            _buildProfileField('Selected Teacher:     ', userData['selected_teacher'] ?? '---'),
+            _buildProfileField('Year Level:                 ', userData['year_level'] != null ? userData['year_level'].toString() : '------'),
+            _buildProfileField('Section:                      ', userData['section'] ?? '---'),
+            _buildProfileField('Student Number:      ', userData['student_number'] ?? '---', color: Colors.green),
+            _buildProfileField('Email:                         ', FirebaseAuth.instance.currentUser?.email ?? '---', color: Colors.green),
+            SizedBox(height: 20),
+            Center( // Centering the button
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => UpdateProfile(updateProfileData: (data) {
+                      // Handle updated profile data if needed
+                    })),
+                  );
+                },
+                child: Text('Update Profile'),
               ),
             ),
-          ),
+          ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildProfileField(String label, String value, {Color color = Colors.blue}) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 10),
+      padding: EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(5),
+        border: Border.all(color: Colors.grey),
+        color: color, // Set the color here
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            label,
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          ),
+          SizedBox(width: 10),
+          Expanded(
+            child: Text(
+              value,
+              style: TextStyle(fontSize: 16, color: Colors.white), // Change text color to white for visibility
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+        ],
       ),
     );
   }

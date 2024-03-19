@@ -4,6 +4,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import 'about.dart';
+
 class UpdateProfile extends StatefulWidget {
   final Function(Map<String, dynamic>) updateProfileData;
 
@@ -226,6 +228,11 @@ class _UpdateProfileState extends State<UpdateProfile> {
                       setState(() {
                         _isUpdating = false;
                       });
+                      // Navigate to the AboutProfile screen
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => AboutProfile()),
+                      );
                     }
                   },
                   child: Container(
