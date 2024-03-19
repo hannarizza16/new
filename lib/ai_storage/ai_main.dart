@@ -81,7 +81,7 @@ class _ChatPageState extends State<ChatPage> {
 
                 //chat container of JA
                 containerColor: Color(0xFF092852),
-                textColor: Colors.white,
+                textColor: Colors.black,
               ),
 
               onSend: (ChatMessage m) {
