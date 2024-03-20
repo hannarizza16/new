@@ -55,19 +55,14 @@ class MyApp extends StatelessWidget {
             color: Colors.black,
             fontSize: 18,// content color under the title
           ),
-          actionsPadding: EdgeInsets.only(bottom: 0, left: 2, top: 0),
+          actionsPadding: EdgeInsets.only(bottom: 2, right: 6, top: 0),
 
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(7.0), // Set the border radius
           ),
         ),
       ),
-      builder: (BuildContext context, Widget? child) {
-        return Container(
-          width: 1000, // Set the desired width
-          child: child,
-        );
-      },
+
 
 
       routes: {
