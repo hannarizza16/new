@@ -267,7 +267,7 @@ void _showDeleteConfirmationDialog(BuildContext context, String lastName,
               TextSpan(
                 text: '$fullName',
                 style:
-                    TextStyle(color: Colors.red, fontSize: 18), //fontWeight: FontWeight.bold,
+                    TextStyle(color: Colors.red, fontSize: 16), //fontWeight: FontWeight.bold,
               ),
               TextSpan(text: '?')
             ],
