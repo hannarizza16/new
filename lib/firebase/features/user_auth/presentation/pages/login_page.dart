@@ -25,13 +25,13 @@ class _LoginPageState extends State<LoginPage> {
   final FirebaseAuthService _auth = FirebaseAuthService();
 
   // professor
-  final TextEditingController _emailController = TextEditingController(text: '2020-103967@rtu.edu.ph');
-  final TextEditingController _passwordController = TextEditingController(text: 'mathew15C.');
+  // final TextEditingController _emailController = TextEditingController(text: '2020-103967@rtu.edu.ph');
+  // final TextEditingController _passwordController = TextEditingController(text: 'mathew15C.');
   //
   //
-  // //student
-  // final TextEditingController _emailController = TextEditingController(text: 'mrcluntad@rtu.edu.ph');
-  // final TextEditingController _passwordController = TextEditingController(text: 'A@12345678');
+  //student
+  final TextEditingController _emailController = TextEditingController(text: 'mrcluntad@rtu.edu.ph');
+  final TextEditingController _passwordController = TextEditingController(text: 'A@12345678');
 
 
   // //administrator
@@ -234,7 +234,7 @@ class _LoginPageState extends State<LoginPage> {
 
     // Admin credentials
     if (email == 'administrator' && password == 'Admin@L1b3rtad') {
-      showToast(message: 'Admin login successful');
+      showToast(message: 'Admin login successfully');
       // Navigate to admin page
       Navigator.push(
         context,
@@ -264,7 +264,7 @@ class _LoginPageState extends State<LoginPage> {
               .get();
 
           if (studentSnapshot.docs.isNotEmpty) {
-            showToast(message: "User is successfully signed in as a student");
+            showToast(message: "Welcome student"); // or pwede din to na name
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => MainHomePage()),

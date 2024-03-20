@@ -143,7 +143,7 @@ void deleteConfirmationDialog(
               Navigator.of(context).pop(null);
               _passwordController.clear();
             },
-            child: Text("Cancel"),
+            child: Text("Cancel", style: TextStyle(color: Colors.black, fontSize: 16,)),
           ),
           TextButton(
             onPressed: () {

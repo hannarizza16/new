@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
           backgroundColor: Colors.white, // Set the background color
           titleTextStyle: TextStyle(
             color: Colors.black, // Set the title text color
-            // fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.bold,
             fontSize: 21, // Title size
           ),
           contentTextStyle: TextStyle(

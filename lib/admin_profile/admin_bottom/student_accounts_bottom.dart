@@ -242,7 +242,7 @@ class _AdminBottomStudentAccountState extends State<AdminBottomStudentAccount> {
                     Navigator.of(context)
                         .pop(false); // Return false if cancel button is pressed
                   },
-                  child: Text('Cancel'),
+                  child: Text('Cancel', style: TextStyle(color: Colors.black, fontSize: 16,)),
                 ),
                 TextButton(
                   onPressed: () async {
@@ -259,7 +259,7 @@ class _AdminBottomStudentAccountState extends State<AdminBottomStudentAccount> {
                       );
                     }
                   },
-                  child: Text('Submit'),
+                  child: Text('Submit', style: TextStyle(color: Color(0xFF1F3DA0), fontSize: 16,)),
                 ),
               ],
             );

@@ -364,13 +364,13 @@ class _DeleteConfirmationDialogState extends State<DeleteConfirmationDialog> {
           : RichText(
               text: TextSpan(
                   text: 'Are you sure you want to delete the record for ',
-                  style: TextStyle(color: Colors.black),
+                  style: TextStyle(color: Colors.black, fontSize: 16),
                   children: <TextSpan>[
                   TextSpan(
                       text: '$fullName',
                       style: TextStyle(
                         // fontWeight: FontWeight.bold,
-                        color: Colors.red,
+                        color: Colors.red, fontSize: 16
                       )),
                   TextSpan(text: '?', style: TextStyle(color: Colors.black))
                 ]
@@ -381,7 +381,7 @@ class _DeleteConfirmationDialogState extends State<DeleteConfirmationDialog> {
           onPressed: () {
             Navigator.of(context).pop(); // Close the dialog
           },
-          child: Text('Cancel', style: TextStyle(color: Colors.black),),
+          child: Text('Cancel', style: TextStyle(color: Colors.black, fontSize: 16),),
         ),
         TextButton(
           onPressed: () {
@@ -408,7 +408,7 @@ class _DeleteConfirmationDialogState extends State<DeleteConfirmationDialog> {
             },
             child: Text(
               isDeleteClicked ? 'Delete' : 'Yes', // Change text based on isDeleteClicked value
-              style: TextStyle(color: Colors.red),
+              style: TextStyle(color: Colors.red, fontSize: 16),
             ),
           ),
         ),

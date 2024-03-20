@@ -43,6 +43,12 @@ class _AboutProfileState extends State<AboutProfile> {
     return Scaffold(
       appBar: AppBar(
         title: Text('About Profile'),
+          titleTextStyle: TextStyle(
+            color: Color(0xFF0C356A),
+            fontSize: 21, // Change the font size as needed
+            fontWeight: FontWeight.bold, // Make the font bold
+          ),
+          backgroundColor: Color(0xFFDCF2F1)
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(20.0),
@@ -56,12 +62,12 @@ class _AboutProfileState extends State<AboutProfile> {
             _buildProfileField('Selected Teacher:     ', userData['selected_teacher'] ?? '---'),
             _buildProfileField('Year Level:                 ', userData['year_level'] != null ? userData['year_level'].toString() : '------'),
             _buildProfileField('Section:                      ', userData['section'] ?? '---'),
-            _buildProfileField('Student Number:      ', userData['student_number'] ?? '---', color: Colors.green),
-            _buildProfileField('Email:                         ', FirebaseAuth.instance.currentUser?.email ?? '---', color: Colors.green),
+            _buildProfileField('Student Number:      ', userData['student_number'] ?? '---', ),
+            _buildProfileField('Email:                         ', FirebaseAuth.instance.currentUser?.email ?? '---', ),
             SizedBox(height: 20),
             Center( // Centering the button
-              child: ElevatedButton(
-                onPressed: () {
+              child: GestureDetector(
+                onTap: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => UpdateProfile(updateProfileData: (data) {
@@ -69,16 +75,29 @@ class _AboutProfileState extends State<AboutProfile> {
                     })),
                   );
                 },
-                child: Text('Update Profile'),
-              ),
+                child: Container(
+                    width: double.infinity,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF30CBF8),
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                child: Center(
+                child: Text('Update Profile',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 2.0,
+                  ),),
+                )),
             ),
-          ],
+            )],
         ),
       ),
     );
   }
 
-  Widget _buildProfileField(String label, String value, {Color color = Colors.blue}) {
+  Widget _buildProfileField(String label, String value, {Color color = Colors.transparent}) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
       padding: EdgeInsets.all(10),
@@ -98,7 +117,7 @@ class _AboutProfileState extends State<AboutProfile> {
           Expanded(
             child: Text(
               value,
-              style: TextStyle(fontSize: 16, color: Colors.white), // Change text color to white for visibility
+              style: TextStyle(fontSize: 16, color: Colors.black), // Change text color to white for visibility
               overflow: TextOverflow.ellipsis,
             ),
           ),

@@ -85,6 +85,12 @@ class _UpdateProfileState extends State<UpdateProfile> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Update Profile'),
+          titleTextStyle: TextStyle(
+            color: Color(0xFF0C356A),
+            fontSize: 21, // Change the font size as needed
+            fontWeight: FontWeight.bold, // Make the font bold
+          ),
+          backgroundColor: Color(0xFFDCF2F1)
       ),
       body: SingleChildScrollView(
         child: Container(
