@@ -68,7 +68,7 @@ class QuizDetailsScreen extends StatelessWidget {
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                child: Text('No', style: TextStyle(color: Colors.black)),
+                child: Text('No', style: TextStyle(color: Colors.black, fontSize: 16)),
               ),
               TextButton(
                 onPressed: () async {
@@ -91,7 +91,7 @@ class QuizDetailsScreen extends StatelessWidget {
                     print('Error occurred while sending email: $e');
                   }
                 },
-                child: Text('Yes', style: TextStyle(color: Colors.greenAccent.shade700)),
+                child: Text('Yes', style: TextStyle(color: Colors.greenAccent.shade700, fontSize: 16)),
               ),
 
             ],

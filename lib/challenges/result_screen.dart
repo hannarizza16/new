@@ -282,7 +282,7 @@ class _ResultScreenState extends State<ResultScreen>
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text('Cancel', style: TextStyle(color: Colors.black)),
+              child: Text('Cancel', style: TextStyle(color: Colors.black, fontSize: 16)),
             ),
             TextButton(
               onPressed: () {
@@ -295,7 +295,7 @@ class _ResultScreenState extends State<ResultScreen>
                       (route) => false, // This line clears the navigation stack
                 );
               },
-              child: Text('Exit',  style: TextStyle(color: Colors.red)),
+              child: Text('Exit',  style: TextStyle(color: Colors.red, fontSize: 16)),
             ),
           ],
         );

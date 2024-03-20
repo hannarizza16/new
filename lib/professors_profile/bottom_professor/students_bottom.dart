@@ -261,13 +261,13 @@ void _showDeleteConfirmationDialog(BuildContext context, String lastName,
         title: Text('Unenroll Student'),
         content: RichText(
           text: TextSpan(
-            style: TextStyle(color: Colors.black),
+            style: TextStyle(color: Colors.black, fontSize: 18),
             children: [
-              TextSpan(text: 'Are you sure you want to unenroll\n'),
+              TextSpan(text: 'Are you sure you want to unenroll '),
               TextSpan(
                 text: '$fullName',
                 style:
-                    TextStyle(color: Colors.red), //fontWeight: FontWeight.bold,
+                    TextStyle(color: Colors.red, fontSize: 18), //fontWeight: FontWeight.bold,
               ),
               TextSpan(text: '?')
             ],
@@ -283,7 +283,7 @@ void _showDeleteConfirmationDialog(BuildContext context, String lastName,
             },
           ),
           TextButton(
-            child: Text('Yes', style: TextStyle(color: Colors.red)),
+            child: Text('Yes', style: TextStyle(color: Colors.red, fontSize: 16)),
             onPressed: () {
               Navigator.of(context).pop(); // Close current dialog
               showDialog(
@@ -294,7 +294,7 @@ void _showDeleteConfirmationDialog(BuildContext context, String lastName,
                     content: Text('Are you sure?'),
                     actions: <Widget>[
                       TextButton(
-                        child: Text('Cancel', style: TextStyle(color: Colors.black)),
+                        child: Text('Cancel', style: TextStyle(color: Colors.black, fontSize: 16)),
                         onPressed: () {
                           Navigator.of(context).pop();
                         },
@@ -302,7 +302,7 @@ void _showDeleteConfirmationDialog(BuildContext context, String lastName,
 
                       //condition
                       TextButton(
-                        child: Text('Unenroll', style: TextStyle(color: Colors.red)),
+                        child: Text('Unenroll', style: TextStyle(color: Colors.red, fontSize: 16)),
                         onPressed: () {
 
                           // Clear the selected_teacher field
