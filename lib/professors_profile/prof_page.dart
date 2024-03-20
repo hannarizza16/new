@@ -42,14 +42,14 @@ class _ProfessorHomePageState extends State<ProfessorHomePage> {
                   Navigator.of(context).pop(false);
                 },
                 child: const Text('Cancel',
-                  style: TextStyle(color: Colors.black, fontSize: 18,),),
+                  style: TextStyle(color: Colors.black, fontSize: 16,),),
               ),
               TextButton(
                 onPressed: () {
                   Navigator.of(context).pop(true);
                 },
                 child: const Text('Log Out',
-                  style: TextStyle(color: Colors.red, fontSize: 18,),
+                  style: TextStyle(color: Colors.red, fontSize: 16,),
                 ),
               ),
             ],
