@@ -34,22 +34,22 @@ class _ProfessorHomePageState extends State<ProfessorHomePage> {
 
 
           return AlertDialog(
-            title: const Text('Logout'),
-            content: const Text('Are you sure you want to log out?'),
+            title: const Text('Log Out'),
+            content: const Text('Log Out of your account?'),
             actions: <Widget>[
               TextButton(
                 onPressed: () {
                   Navigator.of(context).pop(false);
                 },
                 child: const Text('Cancel',
-                  style: TextStyle(color: Colors.black),),
+                  style: TextStyle(color: Colors.black, fontSize: 16,),),
               ),
               TextButton(
                 onPressed: () {
                   Navigator.of(context).pop(true);
                 },
                 child: const Text('Log Out',
-                  style: TextStyle(color: Colors.red),
+                  style: TextStyle(color: Colors.red, fontSize: 16,),
                 ),
               ),
             ],

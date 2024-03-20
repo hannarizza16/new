@@ -35,8 +35,8 @@ class _MainHomePageState extends State<MainHomePage> {
 
 
           return AlertDialog(
-                title: const Text('Logout'),
-                content: const Text('Are you sure you want to log out?'),
+                title: const Text('Log Out'),
+                content: const Text('Log Out of your account?'),
                 actions: <Widget>[
                   TextButton(
                     onPressed: () {
