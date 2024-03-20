@@ -53,7 +53,7 @@ class MyApp extends StatelessWidget {
           ),
           contentTextStyle: TextStyle(
             color: Colors.black,
-            fontSize: 16,// content color under the title
+            fontSize: 18,// content color under the title
           ),
 
 

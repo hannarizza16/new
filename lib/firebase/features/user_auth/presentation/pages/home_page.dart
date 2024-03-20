@@ -35,22 +35,22 @@ class _MainHomePageState extends State<MainHomePage> {
 
 
           return AlertDialog(
-                title: const Text('Log Out'),
-                content: const Text('Log Out of your account?'),
+                // title: const Text('Log Out'),
+                content: const Text('\nLog out of your account?'),
                 actions: <Widget>[
                   TextButton(
                     onPressed: () {
                       Navigator.of(context).pop(false);
                     },
                     child: const Text('Cancel',
-                      style: TextStyle(color: Colors.black),),
+                      style: TextStyle(color: Colors.black, fontSize: 18,),),
                   ),
                   TextButton(
                     onPressed: () {
                       Navigator.of(context).pop(true);
                     },
                     child: const Text('Log Out',
-                      style: TextStyle(color: Colors.red),
+                      style: TextStyle(color: Colors.red, fontSize: 18,),
                     ),
                   ),
                 ],
