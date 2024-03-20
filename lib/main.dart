@@ -43,6 +43,25 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        // Other theme configurations...
+
+        // Define the AlertDialog theme
+        dialogTheme: DialogTheme(
+          backgroundColor: Colors.pink, // Set the background color
+          titleTextStyle: TextStyle(
+            color: Colors.pink, // Set the title text color
+            fontWeight: FontWeight.bold,
+          ),
+          contentTextStyle: TextStyle(
+            color: Colors.black, // Set the content text color
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16.0), // Set the border radius
+          ),
+        ),
+      ),
+
 
       routes: {
         '/': (context) =>  SplashScreen(
