@@ -36,7 +36,7 @@ class _AdminHomePageState extends State<AdminHomePage> {
 
           return AlertDialog(
                 // title: const Text('Log Out'),
-                content: const Text('Log out of your account?'),
+                content: const Text('\nLog out of your account?'),
                 actions: <Widget>[
                   TextButton(
                     onPressed: () {
