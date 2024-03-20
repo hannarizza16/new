@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
           titleTextStyle: TextStyle(
             color: Colors.black, // Set the title text color
             // fontWeight: FontWeight.bold,
-            fontSize: 20, // Title size
+            fontSize: 21, // Title size
           ),
           contentTextStyle: TextStyle(
             color: Colors.black,
