@@ -175,7 +175,12 @@ class _ResultScreenState extends State<ResultScreen>
                                       ),
                                     );
                                   },
-                                  child: Text('Quiz Details'),
+                                  style: ElevatedButton.styleFrom(
+                                    primary: Colors.white, // Set background color to white
+                                  ),
+
+                                  child: Text('Quiz Details', style: TextStyle(color: Colors.black),),
+
                                 ),
                               ],
                             ),
@@ -277,7 +282,7 @@ class _ResultScreenState extends State<ResultScreen>
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text('Cancel'),
+              child: Text('Cancel', style: TextStyle(color: Colors.black)),
             ),
             TextButton(
               onPressed: () {
@@ -290,7 +295,7 @@ class _ResultScreenState extends State<ResultScreen>
                       (route) => false, // This line clears the navigation stack
                 );
               },
-              child: Text('Exit'),
+              child: Text('Exit',  style: TextStyle(color: Colors.red)),
             ),
           ],
         );

@@ -30,13 +30,13 @@ class _LoginPageState extends State<LoginPage> {
   //
   //
   // //student
-  // final TextEditingController _emailController = TextEditingController(text: 'mrcluntad@rtu.edu.ph');
-  // final TextEditingController _passwordController = TextEditingController(text: 'A@12345678');
+  final TextEditingController _emailController = TextEditingController(text: 'mrcluntad@rtu.edu.ph');
+  final TextEditingController _passwordController = TextEditingController(text: 'A@12345678');
 
 
   // //administrator
-  final TextEditingController _emailController = TextEditingController(text: 'administrator');
-  final TextEditingController _passwordController = TextEditingController(text: 'Admin@L1b3rtad');
+  // final TextEditingController _emailController = TextEditingController(text: 'administrator');
+  // final TextEditingController _passwordController = TextEditingController(text: 'Admin@L1b3rtad');
 
   @override
   void dispose() {
@@ -282,7 +282,7 @@ class _LoginPageState extends State<LoginPage> {
               .get();
 
           if (professorSnapshot.docs.isNotEmpty) {
-            showToast(message: "User is successfully signed in as a professor");
+            showToast(message: "Welcome Professor");
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => ProfessorHomePage()),

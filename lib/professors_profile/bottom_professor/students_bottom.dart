@@ -256,19 +256,20 @@ void _showDeleteConfirmationDialog(BuildContext context, String lastName,
     builder: (BuildContext context) {
       String fullName =
           '$lastName, $firstName ${middleInitial.isNotEmpty ? middleInitial + '.' : ''}';
-      return AlertDialog(
+
+      return  AlertDialog(
         title: Text('Unenroll Student'),
         content: RichText(
           text: TextSpan(
             style: TextStyle(color: Colors.black),
             children: [
-              TextSpan(text: 'Are you sure you want to unenroll \n\n'),
+              TextSpan(text: 'Are you sure you want to unenroll\n'),
               TextSpan(
                 text: '$fullName',
                 style:
-                    TextStyle(fontWeight: FontWeight.bold, color: Colors.red),
+                    TextStyle(color: Colors.red), //fontWeight: FontWeight.bold,
               ),
-              TextSpan(text: ' ?', style: TextStyle(color: Colors.black))
+              TextSpan(text: '?')
             ],
           ),
         ),
@@ -276,7 +277,7 @@ void _showDeleteConfirmationDialog(BuildContext context, String lastName,
         //style
         actions: <Widget>[
           TextButton(
-            child: Text('No'),
+            child: Text('Cancel', style: TextStyle(color: Colors.black) ),
             onPressed: () {
               Navigator.of(context).pop();
             },
@@ -293,7 +294,7 @@ void _showDeleteConfirmationDialog(BuildContext context, String lastName,
                     content: Text('Are you sure?'),
                     actions: <Widget>[
                       TextButton(
-                        child: Text('No'),
+                        child: Text('Cancel', style: TextStyle(color: Colors.black)),
                         onPressed: () {
                           Navigator.of(context).pop();
                         },
@@ -301,7 +302,7 @@ void _showDeleteConfirmationDialog(BuildContext context, String lastName,
 
                       //condition
                       TextButton(
-                        child: Text('Yes'),
+                        child: Text('Unenroll', style: TextStyle(color: Colors.red)),
                         onPressed: () {
 
                           // Clear the selected_teacher field

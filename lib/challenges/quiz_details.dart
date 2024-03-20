@@ -32,8 +32,9 @@ class QuizDetailsScreen extends StatelessWidget {
               onPressed: () {
                 _sendEmail(context);
               },
-              label: Text('Send a copy'),
-              icon: Icon(Icons.email),
+              label: Text('Send a copy' , style: TextStyle(color: Colors.black),),
+              icon: Icon(Icons.email, color: Colors.black),
+              backgroundColor: Colors.white,
             ),
           ),
         ],
@@ -64,6 +65,12 @@ class QuizDetailsScreen extends StatelessWidget {
             content: Text('Do you want to send the quiz details to your email?'),
             actions: <Widget>[
               TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text('No', style: TextStyle(color: Colors.black)),
+              ),
+              TextButton(
                 onPressed: () async {
                   Navigator.of(context).pop();
                   try {
@@ -84,14 +91,9 @@ class QuizDetailsScreen extends StatelessWidget {
                     print('Error occurred while sending email: $e');
                   }
                 },
-                child: Text('Yes'),
+                child: Text('Yes', style: TextStyle(color: Colors.greenAccent.shade700)),
               ),
-              TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: Text('No'),
-              ),
+
             ],
           );
         },

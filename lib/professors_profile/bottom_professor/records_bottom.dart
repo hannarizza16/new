@@ -323,6 +323,7 @@ class DeleteConfirmationDialog extends StatefulWidget {
 
 class _DeleteConfirmationDialogState extends State<DeleteConfirmationDialog> {
   bool _showSecondDialog = false;
+  bool isDeleteClicked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -349,13 +350,17 @@ class _DeleteConfirmationDialogState extends State<DeleteConfirmationDialog> {
                   TextSpan(
                     text: '$fullName',
                     style: TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.red),
+                        // fontWeight: FontWeight.bold,
+                        color: Colors.red),
                   ),
                   TextSpan(
                     text: '? This action cannot be undone.',
                     style: TextStyle(color: Colors.black),
                   )
-                ]))
+
+                ]
+              )
+      )
           : RichText(
               text: TextSpan(
                   text: 'Are you sure you want to delete the record for ',
@@ -364,17 +369,19 @@ class _DeleteConfirmationDialogState extends State<DeleteConfirmationDialog> {
                   TextSpan(
                       text: '$fullName',
                       style: TextStyle(
-                        fontWeight: FontWeight.bold,
+                        // fontWeight: FontWeight.bold,
                         color: Colors.red,
                       )),
-                  TextSpan(text: ' ?', style: TextStyle(color: Colors.black))
-                ])),
+                  TextSpan(text: '?', style: TextStyle(color: Colors.black))
+                ]
+              )
+      ),
       actions: [
         TextButton(
           onPressed: () {
             Navigator.of(context).pop(); // Close the dialog
           },
-          child: Text('No', style: TextStyle(color: Colors.black),),
+          child: Text('Cancel', style: TextStyle(color: Colors.black),),
         ),
         TextButton(
           onPressed: () {
@@ -386,9 +393,23 @@ class _DeleteConfirmationDialogState extends State<DeleteConfirmationDialog> {
               }
             });
           },
-          child: Text(
-            'Yes',
-            style: TextStyle(color: Colors.red),
+          child: TextButton(
+            onPressed: () {
+              setState(() { // ito ginagamit kapag nag seset ka ng condition
+                if (isDeleteClicked) {
+                  // If delete button is clicked, perform the delete action
+                  _deleteRecord(context); // Call the delete method
+                } else {
+                  // If delete button is not clicked, show the second confirmation dialog
+                  _showSecondDialog = true;
+                  isDeleteClicked = true; // Set delete clicked to true
+                }
+              });
+            },
+            child: Text(
+              isDeleteClicked ? 'Delete' : 'Yes', // Change text based on isDeleteClicked value
+              style: TextStyle(color: Colors.red),
+            ),
           ),
         ),
       ],

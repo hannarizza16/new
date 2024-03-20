@@ -28,39 +28,42 @@ class _AdminHomePageState extends State<AdminHomePage> {
   int selectedCurrentIndex = 1; // kung anong unang mag pop up pag log in bottom nav bar to.
 
   Future<bool> _onWillPop() async {
-    if (selectedCurrentIndex == 0) {
+    if (selectedCurrentIndex == selectedCurrentIndex) {
       final shouldLogout = await showDialog(
         context: context,
         builder: (context) {
+
+
           return AlertDialog(
-            title: const Text('Logout'),
-            content: const Text('Are you sure you want to log out?'),
-            actions: <Widget>[
-              TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop(true);
-                },
-                child: const Text('Yes'),
-              ),
-              TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop(false);
-                },
-                child: const Text('No'),
-              ),
-            ],
-          );
+                title: const Text('Logout'),
+                content: const Text('Are you sure you want to log out?'),
+                actions: <Widget>[
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop(false);
+                    },
+                    child: const Text('Cancel',
+                      style: TextStyle(color: Colors.black),),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop(true);
+                    },
+                    child: const Text('Log Out',
+                      style: TextStyle(color: Colors.red),
+                    ),
+                  ),
+                ],
+              );
         },
       );
 
       if (shouldLogout ?? false) {
         // If the user confirms logout, navigate to the login screen
-        Navigator.of(context).pushReplacementNamed(
-            '/login'); // Replace '/login' with your login screen route
-        return false; // Returning false to prevent default system navigation
+        Navigator.of(context).pop('LoginPage');  // Replace '/login' with your login screen route// Returning false to prevent default system navigation
       }
 
-      return shouldLogout ?? true;
+      return shouldLogout ?? false;
     }
     return true;
   }
@@ -68,36 +71,7 @@ class _AdminHomePageState extends State<AdminHomePage> {
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop: () async {
-        final shouldLogout = await showDialog(
-          context: context,
-          builder: (context) {
-            return AlertDialog(
-              title: const Text('Logout'),
-              content: const Text('Are you sure you want to log out?'),
-              actions: <Widget>[
-                TextButton(
-                  onPressed: () {
-                    Navigator.of(context).pop(true);
-                  },
-                  child: const Text('Yes'),
-                ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.of(context).pop(false);
-                  },
-                  child: const Text('No'),
-                ),
-              ],
-            );
-          },
-        );
-
-        if (shouldLogout ?? false) {
-          Navigator.of(context).pop('LoginPage'); // Replace '/login' with your login screen route
-        }
-        return shouldLogout ?? false;
-      },
+      onWillPop: _onWillPop,
       child: Scaffold(
         drawer: const AdminSideBar(
 

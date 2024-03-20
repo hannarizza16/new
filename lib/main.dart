@@ -44,21 +44,22 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        // Other theme configurations...
-
-        // Define the AlertDialog theme
         dialogTheme: DialogTheme(
-          backgroundColor: Colors.pink, // Set the background color
+          backgroundColor: Colors.white, // Set the background color
           titleTextStyle: TextStyle(
-            color: Colors.pink, // Set the title text color
-            fontWeight: FontWeight.bold,
+            color: Colors.black, // Set the title text color
+            // fontWeight: FontWeight.bold,
+            fontSize: 20, // Title size
           ),
           contentTextStyle: TextStyle(
-            color: Colors.black, // Set the content text color
+            color: Colors.black, // content color under the title
           ),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16.0), // Set the border radius
-          ),
+
+
+
+          // shape: RoundedRectangleBorder(
+          //   borderRadius: BorderRadius.circular(16.0), // Set the border radius
+          // ),
         ),
       ),
 
