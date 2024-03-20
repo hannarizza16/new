@@ -35,7 +35,7 @@ class _ProfessorHomePageState extends State<ProfessorHomePage> {
 
           return AlertDialog(
             // title: const Text('Log Out'),
-            content:Center(child: const Text('Log out of your account?')),
+            content:const Text('Log out of your account?'),
             actions: <Widget>[
               TextButton(
                 onPressed: () {
