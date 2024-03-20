@@ -56,11 +56,9 @@ class MyApp extends StatelessWidget {
             fontSize: 18,// content color under the title
           ),
 
-
-
-          // shape: RoundedRectangleBorder(
-          //   borderRadius: BorderRadius.circular(16.0), // Set the border radius
-          // ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(7.0), // Set the border radius
+          ),
         ),
       ),
 
