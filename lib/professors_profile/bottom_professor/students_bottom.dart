@@ -261,7 +261,7 @@ void _showDeleteConfirmationDialog(BuildContext context, String lastName,
         title: Text('Unenroll Student'),
         content: RichText(
           text: TextSpan(
-            style: TextStyle(color: Colors.black, fontSize: 18),
+            style: TextStyle(color: Colors.black, fontSize: 16),
             children: [
               TextSpan(text: 'Are you sure you want to unenroll '),
               TextSpan(
@@ -277,7 +277,7 @@ void _showDeleteConfirmationDialog(BuildContext context, String lastName,
         //style
         actions: <Widget>[
           TextButton(
-            child: Text('Cancel', style: TextStyle(color: Colors.black) ),
+            child: Text('Cancel', style: TextStyle(color: Colors.black, fontSize: 16) ),
             onPressed: () {
               Navigator.of(context).pop();
             },
