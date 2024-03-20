@@ -330,7 +330,11 @@ class _DeleteConfirmationDialogState extends State<DeleteConfirmationDialog> {
         '${widget.document['lastName'] ?? ''}, ${widget.document['firstName'] ?? ''} ${widget.document['middleInitial'] ?? ''}'
             .trim();
 
-    return AlertDialog(
+    return Theme(
+        data: Theme.of(context).copyWith(
+          dialogBackgroundColor: Colors.white,
+        ),
+    child: AlertDialog(
       title: _showSecondDialog
           ? Text('Confirm Deletion Again')
           : Text('Confirm Deletion'),
@@ -370,7 +374,7 @@ class _DeleteConfirmationDialogState extends State<DeleteConfirmationDialog> {
           onPressed: () {
             Navigator.of(context).pop(); // Close the dialog
           },
-          child: Text('No'),
+          child: Text('No', style: TextStyle(color: Colors.black),),
         ),
         TextButton(
           onPressed: () {
@@ -388,7 +392,7 @@ class _DeleteConfirmationDialogState extends State<DeleteConfirmationDialog> {
           ),
         ),
       ],
-    );
+    ));
   }
 
   void _deleteRecord(BuildContext context) async {
