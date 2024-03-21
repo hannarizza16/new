@@ -9,7 +9,8 @@ import 'about.dart';
 class UpdateProfile extends StatefulWidget {
   final Function(Map<String, dynamic>) updateProfileData;
 
-  const UpdateProfile({Key? key, required this.updateProfileData}) : super(key: key);
+  const UpdateProfile({Key? key, required this.updateProfileData})
+      : super(key: key);
 
   @override
   _UpdateProfileState createState() => _UpdateProfileState();
@@ -52,7 +53,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
               snapshot.docs.first['middle_initial'] ?? '';
           yearLevelController.text = snapshot.docs.first['year_level'] ?? '';
           selectedTeacher =
-          snapshot.docs.first['selected_teacher']; // Update selectedTeacher
+              snapshot.docs.first['selected_teacher']; // Update selectedTeacher
         });
       } else {
         print("Document not found");
@@ -63,7 +64,9 @@ class _UpdateProfileState extends State<UpdateProfile> {
   Future<List<Map<String, dynamic>>> fetchTeachers() async {
     try {
       QuerySnapshot<Map<String, dynamic>> querySnapshot =
-      await FirebaseFirestore.instance.collection('professor_instructor').get();
+          await FirebaseFirestore.instance
+              .collection('professor_instructor')
+              .get();
       List<Map<String, dynamic>> teachers = [];
       querySnapshot.docs.forEach((doc) {
         Map<String, dynamic> teacherData = {
@@ -84,189 +87,196 @@ class _UpdateProfileState extends State<UpdateProfile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Update Profile'),
+          title: const Text('Update Profile'),
           titleTextStyle: TextStyle(
-            color: Color(0xFF0C356A),
+            color: Colors.white,
             fontSize: 21, // Change the font size as needed
             fontWeight: FontWeight.bold, // Make the font bold
           ),
-          backgroundColor: Color(0xFFDCF2F1)
-      ),
+          backgroundColor: Color(0xFF0C356A)),
+
       body: SingleChildScrollView(
-        child: Container(
-          padding: EdgeInsets.all(20.0),
-          child: Form(
-            key: _formKey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                TextFormField(
-                  controller: firstNameController,
-                  decoration: InputDecoration(labelText: 'First Name'),
-                  validator: (value) {
-                    if (value == null || value
-                        .trim()
-                        .isEmpty) {
-                      return 'Please enter your first name';
-                    }
-                    if (!RegExp(r"^[a-zA-Z',\s]*$").hasMatch(value)) {
-                      return 'Please enter only letters, spaces, or characters like \' and ,';
-                    }
-                    return null;
-                  },
-                ),
-                TextFormField(
-                  controller: lastNameController,
-                  decoration: InputDecoration(labelText: 'Last Name'),
-                  validator: (value) {
-                    if (value == null || value
-                        .trim()
-                        .isEmpty) {
-                      return 'Please enter your last name';
-                    }
-                    if (!RegExp(r"^[a-zA-Z',\s]*$").hasMatch(value)) {
-                      return 'Please enter only letters, spaces, or characters like \' and ,';
-                    }
-                    return null;
-                  },
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 0),
-                  child: TextFormField(
-                    controller: middleInitialController,
-                    decoration: InputDecoration(labelText: 'Middle Initial'),
-                    maxLength: 1,
-                    validator: (value) {
-                      if (!RegExp(r'^[a-zA-Z]*$').hasMatch(value ?? '')) {
-                        return 'Please enter only one letter';
-                      }
-                      return null;
-                    },
-                    textCapitalization: TextCapitalization.characters,
-                    // Auto-capitalizes the input
-                    keyboardType: TextInputType
-                        .text, // Forces the keyboard to use capital letters
-                  ),
-                ),
-                FutureBuilder<List<Map<String, dynamic>>>(
-                  future: fetchTeachers(),
-                  builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return Container();
-                    } else if (snapshot.hasError) {
-                      return Text('Error: ${snapshot.error}');
-                    } else {
-                      List<Map<String, dynamic>> teachers = snapshot.data ?? [];
-                      return DropdownButtonFormField<String?>(
-                        value: selectedTeacher,
-                        onChanged: (value) {
-                          setState(() {
-                            selectedTeacher = value; // Update selectedTeacher
-                          });
-                        },
-                        items: teachers.map((teacher) {
-                          return DropdownMenuItem<String?>(
-                            value: teacher['id'],
-                            child: Text(
-                                '${teacher['lastName']}, ${teacher['firstName']}'),
-                          );
-                        }).toList(),
-                        decoration: InputDecoration(
-                          labelText: 'Select Teacher',
-                        ),
-                      );
-                    }
-                  },
-                ),
-                TextFormField(
-                  controller: yearLevelController,
-                  decoration: InputDecoration(labelText: 'Year Level'),
-                  validator: (value) {
-                    if (value == null || value
-                        .trim()
-                        .isEmpty) {
-                      return 'Please enter your year level';
-                    }
-                    if (!RegExp(r'^[1-4]$').hasMatch(value)) {
-                      return 'Please enter a valid year level (1, 2, 3, or 4)';
-                    }
-                    return null;
-                  },
-                  keyboardType: TextInputType.number,
-                  inputFormatters: [
-                    FilteringTextInputFormatter.allow(RegExp(r'[1-4]')),
-                    // Allow only 1, 2, 3, or 4
-                    LengthLimitingTextInputFormatter(1),
-                    // Set max length to 1
-                  ],
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 0),
-                  child: TextFormField(
-                    controller: sectionController,
-                    decoration: InputDecoration(labelText: 'Section'),
-                    validator: (value) {
-                      if (value == null || value
-                          .trim()
-                          .isEmpty) {
-                        return 'Please enter your section';
-                      }
-                      return null;
-                    },
-                    onChanged: (value) {
-                      sectionController.text = value.toUpperCase();
-                      sectionController.selection = TextSelection.fromPosition(
-                          TextPosition(offset: sectionController.text.length));
-                    },
-                    textCapitalization: TextCapitalization.characters,
-                  ),
-                ),
-                const SizedBox(height: 20
-                ),
-                GestureDetector(
-                  onTap: () async {
-                    if (_formKey.currentState!.validate()) {
-                      setState(() {
-                        _isUpdating = true;
-                      });
-                      await updateProfile();
-                      setState(() {
-                        _isUpdating = false;
-                      });
-                      // Navigate to the AboutProfile screen
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => AboutProfile()),
-                      );
-                    }
-                  },
-                  child: Container(
-                    width: double.infinity,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      color: const Color(0xFF30CBF8),
-                      borderRadius: BorderRadius.circular(5),
+
+            padding: EdgeInsets.all(20.0),
+            child: Form(
+              key: _formKey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  TextFormField(
+                    controller: firstNameController,
+                    decoration: InputDecoration(
+                      labelText: 'First Name',
+                      // labelStyle: TextStyle(color: Colors.black),
+                      hintStyle: TextStyle(color: Colors.black),
+                      // focusedBorder: UnderlineInputBorder(
+                      //   borderSide: BorderSide(color: Colors.black), // border color when clicked of focused
+                      // ),
+                      // enabledBorder: UnderlineInputBorder(
+                      //   borderSide: BorderSide(color: Colors.black), // Border color when not focused
+                      // ),
                     ),
-                    child: Center(
-                      child: _isUpdating
-                          ? CircularProgressIndicator(color: Colors.white)
-                          : Text(
-                        "Update Profile",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 2.0,
-                        ),
+                    style:
+                        TextStyle(color: Colors.black), // Set input text color
+// Set label text color
+
+                    validator: (value) {
+                      if (value == null || value.trim().isEmpty) {
+                        return 'Please enter your first name';
+                      }
+                      if (!RegExp(r"^[a-zA-Z',\s]*$").hasMatch(value)) {
+                        return 'Please enter only letters, spaces, or characters like \' and ,';
+                      }
+                      return null;
+                    },
+                  ),
+                  TextFormField(
+                    controller: lastNameController,
+                    decoration: InputDecoration(labelText: 'Last Name'),
+                    validator: (value) {
+                      if (value == null || value.trim().isEmpty) {
+                        return 'Please enter your last name';
+                      }
+                      if (!RegExp(r"^[a-zA-Z',\s]*$").hasMatch(value)) {
+                        return 'Please enter only letters, spaces, or characters like \' and ,';
+                      }
+                      return null;
+                    },
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 0),
+                    child: TextFormField(
+                      controller: middleInitialController,
+                      decoration: InputDecoration(labelText: 'Middle Initial'),
+                      maxLength: 1,
+                      validator: (value) {
+                        if (!RegExp(r'^[a-zA-Z]*$').hasMatch(value ?? '')) {
+                          return 'Please enter only one letter';
+                        }
+                        return null;
+                      },
+                      textCapitalization: TextCapitalization.characters,
+                      // Auto-capitalizes the input
+                      keyboardType: TextInputType
+                          .text, // Forces the keyboard to use capital letters
+                    ),
+                  ),
+                  FutureBuilder<List<Map<String, dynamic>>>(
+                    future: fetchTeachers(),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return Container();
+                      } else if (snapshot.hasError) {
+                        return Text('Error: ${snapshot.error}');
+                      } else {
+                        List<Map<String, dynamic>> teachers =
+                            snapshot.data ?? [];
+                        return DropdownButtonFormField<String?>(
+                          value: selectedTeacher,
+                          onChanged: (value) {
+                            setState(() {
+                              selectedTeacher = value; // Update selectedTeacher
+                            });
+                          },
+                          items: teachers.map((teacher) {
+                            return DropdownMenuItem<String?>(
+                              value: teacher['id'],
+                              child: Text(
+                                  '${teacher['lastName']}, ${teacher['firstName']}'),
+                            );
+                          }).toList(),
+                          decoration: InputDecoration(
+                            labelText: 'Select Teacher',
+                          ),
+                        );
+                      }
+                    },
+                  ),
+                  TextFormField(
+                    controller: yearLevelController,
+                    decoration: InputDecoration(labelText: 'Year Level'),
+                    validator: (value) {
+                      if (value == null || value.trim().isEmpty) {
+                        return 'Please enter your year level';
+                      }
+                      if (!RegExp(r'^[1-4]$').hasMatch(value)) {
+                        return 'Please enter a valid year level (1, 2, 3, or 4)';
+                      }
+                      return null;
+                    },
+                    keyboardType: TextInputType.number,
+                    inputFormatters: [
+                      FilteringTextInputFormatter.allow(RegExp(r'[1-4]')),
+                      // Allow only 1, 2, 3, or 4
+                      LengthLimitingTextInputFormatter(1),
+                      // Set max length to 1
+                    ],
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 0),
+                    child: TextFormField(
+                      controller: sectionController,
+                      decoration: InputDecoration(labelText: 'Section'),
+                      validator: (value) {
+                        if (value == null || value.trim().isEmpty) {
+                          return 'Please enter your section';
+                        }
+                        return null;
+                      },
+                      onChanged: (value) {
+                        sectionController.text = value.toUpperCase();
+                        sectionController.selection =
+                            TextSelection.fromPosition(TextPosition(
+                                offset: sectionController.text.length));
+                      },
+                      textCapitalization: TextCapitalization.characters,
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  GestureDetector(
+                    onTap: () async {
+                      if (_formKey.currentState!.validate()) {
+                        setState(() {
+                          _isUpdating = true;
+                        });
+                        await updateProfile();
+                        setState(() {
+                          _isUpdating = false;
+                        });
+                        // Navigate to the AboutProfile screen
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => AboutProfile()),
+                        );
+                      }
+                    },
+                    child: Container(
+                      width: double.infinity,
+                      height: 50,
+                      decoration: BoxDecoration(
+                        color: const Color(0xFF0C356A),
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      child: Center(
+                        child: _isUpdating
+                            ? CircularProgressIndicator(color: Colors.white)
+                            : Text(
+                                "Update",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  letterSpacing: 2.0,
+                                ),
+                              ),
                       ),
                     ),
                   ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
+                ],
+              ),
+            )),
+
     );
   }
 
@@ -286,20 +296,23 @@ class _UpdateProfileState extends State<UpdateProfile> {
     if (snapshot.docs.isNotEmpty) {
       String docId = snapshot.docs.first.id;
 
-      await FirebaseFirestore.instance.collection('students').doc(docId).update(
-          {
-            'first_name': updatedFirstName,
-            'last_name': updatedLastName,
-            'middle_initial': updatedMiddleInitial,
-            'section': updatedSection,
-            'selected_teacher': selectedTeacher,
-            'year_level': updatedYearLevel,
-          });
+      await FirebaseFirestore.instance
+          .collection('students')
+          .doc(docId)
+          .update({
+        'first_name': updatedFirstName,
+        'last_name': updatedLastName,
+        'middle_initial': updatedMiddleInitial,
+        'section': updatedSection,
+        'selected_teacher': selectedTeacher,
+        'year_level': updatedYearLevel,
+      });
 
       // Update credentials in scores database (for leaderboards)
-      await FirebaseFirestore.instance.collection('scores')
-          .where(
-          'userEmail', isEqualTo: FirebaseAuth.instance.currentUser?.email)
+      await FirebaseFirestore.instance
+          .collection('scores')
+          .where('userEmail',
+              isEqualTo: FirebaseAuth.instance.currentUser?.email)
           .get()
           .then((querySnapshot) {
         querySnapshot.docs.forEach((doc) {
