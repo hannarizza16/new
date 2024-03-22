@@ -69,10 +69,10 @@ class _AdminSideBarState extends State<AdminSideBar> {
           loadProfileImage();
         }
       } catch (e) {
-        print('Error fetching name: $e');
+        print('Administrator Detected');
       }
     } else {
-      print('No current user or user email found.');
+      print('Administrator Detected');
     }
   }
 
@@ -101,11 +101,11 @@ class _AdminSideBarState extends State<AdminSideBar> {
             _image = File.fromUri(Uri.parse(downloadURL));
           });
         } catch (e) {
-          print('Error loading profile image: $e');
+          print('Administrator Detected');
         }
       }
     } else {
-      print('No current user or user email found.');
+      print('Administrator Detected');
     }
   }
 
@@ -119,7 +119,7 @@ class _AdminSideBarState extends State<AdminSideBar> {
         // Upload ng larawan sa Firebase Storage pagkatapos pumili ng larawan
         uploadImageToFirebaseStorage(); // Dito dapat walang argumento
       } else {
-        print('No image selected.');
+        print('Administrator Detected');
       }
     });
   }
@@ -147,7 +147,7 @@ class _AdminSideBarState extends State<AdminSideBar> {
 
       updateProfileImageURL(downloadURL);
 
-      // Hindi na natin kailangan i-set ang _image variable dito dahil hindi naman ito ginagamit
+      // Hindi na natin kailangan i-set ang _image variable hindi ginagamit
     }
   }
 
@@ -257,7 +257,7 @@ class _AdminSideBarState extends State<AdminSideBar> {
               child: Text('Error: ${snapshot.error}'),
             );
           } else {
-            String userEmail = snapshot.data ?? "No email";
+            String userEmail = snapshot.data ?? "Administrator";
             return Column(
               children: [
                 Expanded(

@@ -232,7 +232,6 @@ class _RecordsBottomScreenState extends State<RecordsBottomScreen> {
         Text(label + ': '),
         DropdownButton<T>(
           value: value,
-          hint: Text('None'),
           onChanged: onChanged,
           items: items,
         ),
@@ -252,11 +251,15 @@ class _RecordsBottomScreenState extends State<RecordsBottomScreen> {
       query = query.where('yearLevel', isEqualTo: _selectedYearLevel);
     }
 
-    // Add sorting
-    if (_selectedSortBy != null) {
-      query = query.orderBy(_selectedSortBy!);
-    }
 
+    // Add sorting
+    if (_selectedSortBy != 'lastName') {
+      query = query.orderBy('score', descending: true);
+    }
+    if (_selectedSortBy != 'score') {
+      // Sort by score in descending order
+      query = query.orderBy('lastName');
+    }
     return query.get();
   }
 
@@ -279,7 +282,7 @@ class _RecordsBottomScreenState extends State<RecordsBottomScreen> {
     items.add(DropdownMenuItem(child: Text('All'), value: null));
     // Replace this with your own implementation to retrieve sections
     // For now, I'll assume you have a predefined list of sections
-    List<String> sections = ['101P', '102P', '202P', '401P', '501P', '801P'];
+    List<String> sections = ['101P', '102P', '201P', '202P', '801P'];
     for (String section in sections) {
       items.add(DropdownMenuItem(child: Text(section), value: section));
     }

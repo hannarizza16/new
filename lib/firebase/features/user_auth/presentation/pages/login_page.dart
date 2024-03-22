@@ -30,9 +30,10 @@ class _LoginPageState extends State<LoginPage> {
   //
   //
   //student
-  final TextEditingController _emailController = TextEditingController(text: 'mrcluntad@rtu.edu.ph');
-  final TextEditingController _passwordController = TextEditingController(text: 'A@12345678');
-
+  // final TextEditingController _emailController = TextEditingController(text: 'mrcluntad@rtu.edu.ph');
+  // final TextEditingController _passwordController = TextEditingController(text: 'A@12345678');
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   // //administrator
   // final TextEditingController _emailController = TextEditingController(text: 'administrator');

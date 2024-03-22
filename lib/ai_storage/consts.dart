@@ -1,5 +1,4 @@
-const OPENAI_API_KEY = "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";
+const OPENAI_API_KEY = "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";
 
-// COLREST POKEMON
 // CHAT GPT OPENAI
 // https://platform.openai.com/api-keys

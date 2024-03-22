@@ -14,9 +14,8 @@ class _StudentBottomScreenState extends State<StudentBottomScreen> {
     'All',
     '101P',
     '102P',
+    '201P',
     '202P',
-    '401P',
-    '501P',
     '801P'
   ]; // Add specific sections
   final List<int> _yearLevels = [0, 1, 2, 3, 4]; // Add specific year levels

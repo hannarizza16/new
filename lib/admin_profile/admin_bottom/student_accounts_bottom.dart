@@ -67,7 +67,7 @@ class _AdminBottomStudentAccountState extends State<AdminBottomStudentAccount> {
           },
 
           dropdownColor: mainDarkBlue, // color bg ng dropdown
-          items: <String>['All', '101P', '102P'] // Add more sections as needed
+          items: <String>['All', '101P', '102P', '201P', '202P', '801P'] // Add more sections as needed
               .map<DropdownMenuItem<String>>(
                 (String value) => DropdownMenuItem<String>(
                   value: value,

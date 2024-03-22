@@ -19,7 +19,7 @@ class _ExpertiseLevelSelectionState extends State<ExpertiseLevelSelection> with 
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Select an Expertise Level for ${widget.category}',
+          'Select a level',
           style: TextStyle(color: Color(0xFF06283D)), // Changing font color
         ),
         backgroundColor: Color(0xFFDCF2F1),

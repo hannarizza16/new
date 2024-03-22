@@ -51,12 +51,8 @@ class _AdminBottomScoreDatabaseState extends State<AdminBottomScoreDatabase> {
                     value: "102P",
                   ),
                   DropdownMenuItem(
-                    child: Text("401P"),
-                    value: "401P",
-                  ),
-                  DropdownMenuItem(
-                    child: Text("501P"),
-                    value: "501P",
+                    child: Text("201P"),
+                    value: "201P",
                   ),
                   DropdownMenuItem(
                     child: Text("801P"),
