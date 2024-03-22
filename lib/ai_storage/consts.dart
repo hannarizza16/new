@@ -1,4 +1,4 @@
-const OPENAI_API_KEY = "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";
+const OPENAI_API_KEY = "";
 
 // CHAT GPT OPENAI
 // https://platform.openai.com/api-keys
