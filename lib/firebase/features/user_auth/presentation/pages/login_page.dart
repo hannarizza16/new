@@ -4,6 +4,7 @@ import 'package:first_project/professors_profile/prof_page.dart';
 import 'package:first_project/firebase/features/user_auth/presentation/pages/sign_up_page.dart';
 import 'package:first_project/firebase/features/user_auth/presentation/pages/professor_sign_up_page.dart';
 
+
 import 'package:first_project/firebase/features/user_auth/presentation/widgets/form_container_widget.dart';
 import 'package:first_project/firebase/global/common/toast.dart';
 import 'package:first_project/main_profile//particles_fly.dart';
@@ -158,7 +159,7 @@ class _LoginPageState extends State<LoginPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const SizedBox(width: 5),
-                        const Text("Sign up as"),
+                        // const Text("Sign up "),
                         const SizedBox(width: 5),
                         GestureDetector(
                           onTap: () {
@@ -169,35 +170,35 @@ class _LoginPageState extends State<LoginPage> {
                             );
                           },
                           child: const Text(
-                            "Student",
+                            "Sign Up",
                             style: TextStyle(
                               color: Colors.blue,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
-                        const SizedBox(
-                            width:
-                                5), // nilabas sa gesture detector para maging plain text pero under row pa din sila
-                        const Text("|"),
-                        GestureDetector(
-                          // then nag create ng another gesture detector para sa another text na may pupuntahan
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              FadePageRoute(
-                                  builder: (context) =>
-                                      const ProfessorSignUpPage()),
-                            );
-                          },
-                          child: const Text(
-                            " Professor",
-                            style: TextStyle(
-                              color: Colors.blue,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ), // Plain text next to "Student"
+                        // const SizedBox(
+                        //     width:
+                        //         5), // nilabas sa gesture detector para maging plain text pero under row pa din sila
+                        // const Text("|"),
+                        // GestureDetector(
+                        //   // then nag create ng another gesture detector para sa another text na may pupuntahan
+                        //   onTap: () {
+                        //     Navigator.push(
+                        //       context,
+                        //       FadePageRoute(
+                        //           builder: (context) =>
+                        //               const ProfessorSignUpPage()),
+                        //     );
+                        //   },
+                          // child: const Text(
+                          //   " Professor",
+                          //   style: TextStyle(
+                          //     color: Colors.blue,
+                          //     fontWeight: FontWeight.bold,
+                          //   ),
+                          // ),
+                        // ), // Plain text next to "Student"
                       ],
                     ),
                   ],
