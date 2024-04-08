@@ -52,7 +52,7 @@ class _ProfessorSideBarState extends State<ProfessorSideBar> {
 
     if (currentUserEmail != null) {
       CollectionReference users =
-      FirebaseFirestore.instance.collection('professor_instructor');
+      FirebaseFirestore.instance.collection('professors');
 
       try {
         QuerySnapshot querySnapshot =
@@ -60,9 +60,9 @@ class _ProfessorSideBarState extends State<ProfessorSideBar> {
 
         if (querySnapshot.docs.isNotEmpty) {
           setState(() {
-            _firstName = querySnapshot.docs.first['first_name'];
-            _middleInitial = querySnapshot.docs.first['middle_initial'];
-            _lastName = querySnapshot.docs.first['last_name'];
+            _firstName = querySnapshot.docs.first['fname'];
+            _middleInitial = querySnapshot.docs.first['middlename'];
+            _lastName = querySnapshot.docs.first['lname'];
             _nameController.text = '$_firstName $_middleInitial. $_lastName';
           });
           // Load ng profile image URL galing sa Firestore
@@ -91,37 +91,13 @@ class _ProfessorSideBarState extends State<ProfessorSideBar> {
     }
   }
 
-  // Define the updateProfileData function
-  void updateProfileData(Map<String, dynamic> updatedData) {
-    // Implement the logic to update the profile data here
-    // For example, you can update the name displayed in the sidebar
-    setState(() {
-      _firstName = updatedData['first_name'];
-      _middleInitial = updatedData['middle_initial'];
-      _lastName = updatedData['last_name'];
-      _nameController.text = '$_firstName $_middleInitial. $_lastName';
-      //
-    });
-  }
+
 
   void _onItemTapped(BuildContext context, SideBarSection section) {
     switch (section) {
       case SideBarSection.updateProfile:
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => ProfUpdateProfile(updateProfileData: updateProfileData,)),
-        );
         break;
-    // case SideBarSection.about:
-    //   Navigator.push(
-    //     context,
-    //     MaterialPageRoute(builder: (context) => AboutProfile()),
-    //   );
-    // case SideBarSection.help:
-    //   Navigator.push(
-    //     context,
-    //     MaterialPageRoute(builder: (context) => HelpProfile()),
-    //   );
+
       case SideBarSection.logout:
         FirebaseAuth.instance.signOut(); // Sign out the user
         Fluttertoast.showToast(
@@ -182,9 +158,20 @@ class _ProfessorSideBarState extends State<ProfessorSideBar> {
                           _nameController.text,
                           style: profileTextStyle,
                         ),
-                        accountEmail: Text(
-                          userEmail,
-                          style: profileTextStyle,
+                        accountEmail: FutureBuilder<String?>(
+                          future: _getUserEmail(),
+                          builder: (context, snapshot) {
+                            if (snapshot.connectionState == ConnectionState.waiting) {
+                              return SizedBox.shrink();
+                            } else if (snapshot.hasError) {
+                              return Text('Error: ${snapshot.error}');
+                            } else {
+                              return Text(
+                                snapshot.data ?? "No email",
+                                style: profileTextStyle,
+                              );
+                            }
+                          },
                         ),
                         currentAccountPicture: CircleAvatar(
                           radius: 20, // Adjust the size here
@@ -205,13 +192,11 @@ class _ProfessorSideBarState extends State<ProfessorSideBar> {
                           image: DecorationImage(
                             image: AssetImage('assets/overlay/city.gif'),
                             fit: BoxFit.cover,
-                            // colorFilter: ColorFilter.mode(
-                            //   Colors.white.withOpacity(0.3),
-                            //   BlendMode.dstATop,
-                            // ),
                           ),
                         ),
                       ),
+
+
                       ...SideBarSection.values // this section hides the about, logout, help in the list and left the update profile only
                           .where((section) =>
                       section !=  SideBarSection.updateProfile &&

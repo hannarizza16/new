@@ -411,7 +411,8 @@ class _SignUpPageState extends State<SignUpPage> {
   Future<void> saveUserDataToFirestore(String studentID, String email) async {
     CollectionReference collRef =
     FirebaseFirestore.instance.collection('students');
-    await collRef.add({
+    // Use email as the document ID
+    await collRef.doc(email).set({
       'email': _emailController.text,
       'student_number': _studentIDController.text,
       'first_name': _firstNameController.text,
@@ -422,6 +423,7 @@ class _SignUpPageState extends State<SignUpPage> {
       'isStudent': true, // Add the isStudent identifier here
     });
   }
+
 }
 
 class FadePageRoute<T> extends PageRouteBuilder<T> {

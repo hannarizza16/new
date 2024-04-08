@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:first_project/professors_profile/prof_page.dart';
 import 'package:first_project/firebase/features/user_auth/presentation/pages/sign_up_page.dart';
 import 'package:first_project/firebase/features/user_auth/presentation/pages/professor_sign_up_page.dart';
-
 
 import 'package:first_project/firebase/features/user_auth/presentation/widgets/form_container_widget.dart';
 import 'package:first_project/firebase/global/common/toast.dart';
@@ -31,10 +31,10 @@ class _LoginPageState extends State<LoginPage> {
   //
   //
   //student
-  // final TextEditingController _emailController = TextEditingController(text: 'mrcluntad@rtu.edu.ph');
-  // final TextEditingController _passwordController = TextEditingController(text: 'A@12345678');
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController(text: 'mrcluntad@rtu.edu.ph');
+  final TextEditingController _passwordController = TextEditingController(text: 'A@12345678');
+  // final TextEditingController _emailController = TextEditingController();
+  // final TextEditingController _passwordController = TextEditingController();
 
   // //administrator
   // final TextEditingController _emailController = TextEditingController(text: 'administrator');
@@ -191,13 +191,13 @@ class _LoginPageState extends State<LoginPage> {
                         //               const ProfessorSignUpPage()),
                         //     );
                         //   },
-                          // child: const Text(
-                          //   " Professor",
-                          //   style: TextStyle(
-                          //     color: Colors.blue,
-                          //     fontWeight: FontWeight.bold,
-                          //   ),
-                          // ),
+                        // child: const Text(
+                        //   " Professor",
+                        //   style: TextStyle(
+                        //     color: Colors.blue,
+                        //     fontWeight: FontWeight.bold,
+                        //   ),
+                        // ),
                         // ), // Plain text next to "Student"
                       ],
                     ),
@@ -233,7 +233,6 @@ class _LoginPageState extends State<LoginPage> {
       _isSigning = false;
     });
 
-
     // Admin credentials
     if (email == 'administrator' && password == 'Admin@L1b3rtad') {
       showToast(message: 'Admin login successfully');
@@ -249,11 +248,9 @@ class _LoginPageState extends State<LoginPage> {
       _isSigning = false;
     });
 
-
-
-
 // Inside your _signIn method
     if (user != null) {
+      print(user.toString());
       if (user.emailVerified) {
         String email = user.email ?? '';
 
@@ -274,23 +271,34 @@ class _LoginPageState extends State<LoginPage> {
             return;
           }
         }
-        // Check if email is for a professor
-        // if (email.endsWith('@gmail.com') || email.endsWith('@gmail.com')) {
-        if (email.endsWith('@rtu.edu.ph') || email.endsWith('@rtu.edu.ph')) {
-          // Check if the user is a professor
-          QuerySnapshot professorSnapshot = await FirebaseFirestore.instance
-              .collection('professor_instructor')
-              .where('email', isEqualTo: email)
-              .get();
 
-          if (professorSnapshot.docs.isNotEmpty) {
+        // Fetch user data from Realtime Database
+        DatabaseReference databaseReference =
+            FirebaseDatabase.instance.reference();
+        final ref = FirebaseDatabase.instance.ref();
+        final snapshot = await ref.child('professors/').get();
+        if (snapshot.exists) {
+          Map<dynamic, dynamic> professors =
+              snapshot.value as Map<dynamic, dynamic>;
+
+          List<String> professorsWithEmail = [];
+
+          professors.forEach((key, value) {
+            if (value['email'] == email) {
+              professorsWithEmail.add(key);
+            }
+          });
+          if (professorsWithEmail.isNotEmpty) {
             showToast(message: "Welcome Professor");
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => ProfessorHomePage()),
             );
-            return;
+          } else {
+            showToast(message: "Welcome Student");
           }
+        } else {
+          print('No data available.');
         }
 
         // Email is not associated with any role

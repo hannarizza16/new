@@ -31,19 +31,16 @@ class _ExpertiseLevelSelectionState extends State<ExpertiseLevelSelection> with 
               .expertise
               .length,
           itemBuilder: (context, index) {
-            final expertise = getQuizCategories()
-                .firstWhere((element) => element.category == widget.category)
-                .expertise[index];
+            final category = getQuizCategories().firstWhere((element) => element.category == widget.category);
+            final expertise = category.expertise[index];
+            final descriptionIndex = category.expertise.indexOf(expertise); // Index of current expertise level
+            final description = category.expertiseText[descriptionIndex];
+
 
             EdgeInsetsGeometry margin = EdgeInsets.symmetric(horizontal: 16, vertical: 8);
             if (index == 0) {
               margin = EdgeInsets.fromLTRB(16, 16, 16, 8);
-            } else if (index ==
-                getQuizCategories()
-                    .firstWhere((element) => element.category == widget.category)
-                    .expertise
-                    .length -
-                    1) {
+            } else if (index == category.expertise.length - 1) {
               margin = EdgeInsets.fromLTRB(16, 8, 16, 16);
             }
 
@@ -59,40 +56,25 @@ class _ExpertiseLevelSelectionState extends State<ExpertiseLevelSelection> with 
                   _navigateToQuizApp(context, widget.category, expertise);
                 },
                 child: Container(
-                  height: 80,
-                  width: MediaQuery.of(context).size.width - 32,
-                  child: Row(
+                  padding: EdgeInsets.all(20), // Adjust the padding here to increase card size
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Expanded(
-                        child: Center(
-                          child: ListTile(
-                            title: Text(
-                              expertise,
-                              style: TextStyle(fontSize: 18, color: Color(0xFFFFCC70)),
-                            ),
-                          ),
-                        ),
+                      Text(
+                        expertise,
+                        style: TextStyle(fontSize: 18, color: Color(0xFFFFCC70)),
                       ),
-                      _buildDesignElement(),
+                      SizedBox(height: 12), // Increased space between text and description
+                      Text(
+                        description,
+                        style: TextStyle(color: Colors.white, fontStyle: FontStyle.italic), // Italicize the description
+                      ),
                     ],
                   ),
                 ),
               ),
             );
           },
-        ),
-      ),
-    );
-  }
-
-  Widget _buildDesignElement() {
-    return Container(
-      width: 20,
-      decoration: BoxDecoration(
-        color: Color(0xFF096E9C6),
-        borderRadius: BorderRadius.only(
-          topRight: Radius.circular(15.0),
-          bottomRight: Radius.circular(15.0),
         ),
       ),
     );
